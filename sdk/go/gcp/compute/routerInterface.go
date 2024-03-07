@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,16 +47,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.
 //
-//   - `{{project_id}}/{{region}}/{{router}}/{{name}}`
+// * `{{project_id}}/{{region}}/{{router}}/{{name}}`
 //
-//   - `{{region}}/{{router}}/{{name}}`
+// * `{{region}}/{{router}}/{{name}}`
 //
-//     When using the `pulumi import` command, router interfaces can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, router interfaces can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}

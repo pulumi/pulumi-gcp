@@ -25,8 +25,10 @@ import (
 //   - [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
 //
 // ## Example Usage
+//
 // ### Monitoring Service Custom
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,14 +60,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Service can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:monitoring/customService:CustomService default {{name}}

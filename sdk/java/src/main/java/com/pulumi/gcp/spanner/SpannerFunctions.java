@@ -24,6 +24,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner database.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -54,6 +56,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(GetDatabaseIamPolicyArgs args) {
@@ -63,6 +66,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner database.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -93,6 +98,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseIamPolicyResult> getDatabaseIamPolicyPlain(GetDatabaseIamPolicyPlainArgs args) {
@@ -102,6 +108,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner database.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +140,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(GetDatabaseIamPolicyArgs args, InvokeOptions options) {
@@ -141,6 +150,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner database.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +182,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseIamPolicyResult> getDatabaseIamPolicyPlain(GetDatabaseIamPolicyPlainArgs args, InvokeOptions options) {
@@ -180,34 +192,6 @@ public final class SpannerFunctions {
      * Get a spanner instance from Google Cloud by its name.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = SpannerFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args) {
@@ -217,34 +201,6 @@ public final class SpannerFunctions {
      * Get a spanner instance from Google Cloud by its name.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = SpannerFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args) {
@@ -254,34 +210,6 @@ public final class SpannerFunctions {
      * Get a spanner instance from Google Cloud by its name.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = SpannerFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
@@ -291,34 +219,6 @@ public final class SpannerFunctions {
      * Get a spanner instance from Google Cloud by its name.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = SpannerFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;bar&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
@@ -328,6 +228,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -357,6 +259,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args) {
@@ -366,6 +269,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -395,6 +300,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args) {
@@ -404,6 +310,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -433,6 +341,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
@@ -442,6 +351,8 @@ public final class SpannerFunctions {
      * Retrieves the current IAM policy data for a Spanner instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -471,6 +382,7 @@ public final class SpannerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {

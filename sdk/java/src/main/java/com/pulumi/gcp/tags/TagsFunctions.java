@@ -27,64 +27,6 @@ public final class TagsFunctions {
      * Get a tag key by org or project `parent` and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;organizations/12345&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;projects/abc&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTagKeyResult> getTagKey(GetTagKeyArgs args) {
@@ -94,64 +36,6 @@ public final class TagsFunctions {
      * Get a tag key by org or project `parent` and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;organizations/12345&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;projects/abc&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTagKeyResult> getTagKeyPlain(GetTagKeyPlainArgs args) {
@@ -161,64 +45,6 @@ public final class TagsFunctions {
      * Get a tag key by org or project `parent` and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;organizations/12345&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;projects/abc&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTagKeyResult> getTagKey(GetTagKeyArgs args, InvokeOptions options) {
@@ -228,64 +54,6 @@ public final class TagsFunctions {
      * Get a tag key by org or project `parent` and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;organizations/12345&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentTagKey = TagsFunctions.getTagKey(GetTagKeyArgs.builder()
-     *             .parent(&#34;projects/abc&#34;)
-     *             .shortName(&#34;environment&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTagKeyResult> getTagKeyPlain(GetTagKeyPlainArgs args, InvokeOptions options) {
@@ -295,6 +63,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagkey
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -323,6 +93,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(GetTagKeyIamPolicyArgs args) {
@@ -332,6 +103,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagkey
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -360,6 +133,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagKeyIamPolicyResult> getTagKeyIamPolicyPlain(GetTagKeyIamPolicyPlainArgs args) {
@@ -369,6 +143,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagkey
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -397,6 +173,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(GetTagKeyIamPolicyArgs args, InvokeOptions options) {
@@ -406,6 +183,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagkey
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -434,6 +213,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagKeyIamPolicyResult> getTagKeyIamPolicyPlain(GetTagKeyIamPolicyPlainArgs args, InvokeOptions options) {
@@ -443,35 +223,6 @@ public final class TagsFunctions {
      * Get a tag value by `parent` key and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
-     *             .parent(&#34;tagKeys/56789&#34;)
-     *             .shortName(&#34;production&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTagValueResult> getTagValue(GetTagValueArgs args) {
@@ -481,35 +232,6 @@ public final class TagsFunctions {
      * Get a tag value by `parent` key and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
-     *             .parent(&#34;tagKeys/56789&#34;)
-     *             .shortName(&#34;production&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTagValueResult> getTagValuePlain(GetTagValuePlainArgs args) {
@@ -519,35 +241,6 @@ public final class TagsFunctions {
      * Get a tag value by `parent` key and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
-     *             .parent(&#34;tagKeys/56789&#34;)
-     *             .shortName(&#34;production&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetTagValueResult> getTagValue(GetTagValueArgs args, InvokeOptions options) {
@@ -557,35 +250,6 @@ public final class TagsFunctions {
      * Get a tag value by `parent` key and `short_name`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.tags.TagsFunctions;
-     * import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var environmentProdTagValue = TagsFunctions.getTagValue(GetTagValueArgs.builder()
-     *             .parent(&#34;tagKeys/56789&#34;)
-     *             .shortName(&#34;production&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetTagValueResult> getTagValuePlain(GetTagValuePlainArgs args, InvokeOptions options) {
@@ -595,6 +259,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagvalue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -623,6 +289,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagValueIamPolicyResult> getTagValueIamPolicy(GetTagValueIamPolicyArgs args) {
@@ -632,6 +299,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagvalue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -660,6 +329,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagValueIamPolicyResult> getTagValueIamPolicyPlain(GetTagValueIamPolicyPlainArgs args) {
@@ -669,6 +339,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagvalue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -697,6 +369,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagValueIamPolicyResult> getTagValueIamPolicy(GetTagValueIamPolicyArgs args, InvokeOptions options) {
@@ -706,6 +379,8 @@ public final class TagsFunctions {
      * Retrieves the current IAM policy data for tagvalue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -734,6 +409,7 @@ public final class TagsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagValueIamPolicyResult> getTagValueIamPolicyPlain(GetTagValueIamPolicyPlainArgs args, InvokeOptions options) {

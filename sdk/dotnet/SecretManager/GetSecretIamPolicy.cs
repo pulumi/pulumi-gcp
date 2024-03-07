@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecretIamPolicyResult> InvokeAsync(GetSecretIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretIamPolicyResult>("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args ?? new GetSecretIamPolicyArgs(), options.WithDefaults());
@@ -45,6 +47,7 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,6 +64,7 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecretIamPolicyResult> Invoke(GetSecretIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretIamPolicyResult>("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args ?? new GetSecretIamPolicyInvokeArgs(), options.WithDefaults());

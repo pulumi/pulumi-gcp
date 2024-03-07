@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster to a Fleet](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ *
  * ### Gkehub Fleet Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,16 +34,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Fleet can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/fleets/default`
+ * * `projects/{{project}}/locations/global/fleets/default`
  *
- *  * `{{project}}`
+ * * `{{project}}`
  *
- *  When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkehub/fleet:Fleet default projects/{{project}}/locations/global/fleets/default

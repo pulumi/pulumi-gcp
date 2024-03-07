@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  * affect billing. You cannot update the source representation instance.
  * 
  * ## Example Usage
+ * 
  * ### Sql Source Representation Instance Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,7 +63,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Sql Source Representation Instance Postgres
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -96,18 +102,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * SourceRepresentationInstance can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/instances/{{name}}`
+ * * `projects/{{project}}/instances/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}

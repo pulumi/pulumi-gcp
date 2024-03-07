@@ -379,8 +379,10 @@ class ResourcePolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
         ## Example Usage
+
         ### Resource Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,8 +399,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -426,8 +430,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,8 +446,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 collocation="COLLOCATED",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy Max Distance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,8 +463,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 max_distance=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Instance Schedule Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -475,8 +485,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 time_zone="US/Central",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Snapshot Schedule Chain Name
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,8 +518,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Consistency Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -519,20 +533,21 @@ class ResourcePolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ResourcePolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
@@ -589,8 +604,10 @@ class ResourcePolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
         ## Example Usage
+
         ### Resource Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -607,8 +624,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,8 +655,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -650,8 +671,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 collocation="COLLOCATED",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy Max Distance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -665,8 +688,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 max_distance=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Instance Schedule Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -685,8 +710,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 time_zone="US/Central",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Snapshot Schedule Chain Name
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -716,8 +743,10 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Resource Policy Consistency Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -729,20 +758,21 @@ class ResourcePolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ResourcePolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}

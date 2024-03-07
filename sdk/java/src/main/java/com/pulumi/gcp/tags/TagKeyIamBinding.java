@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.tags.TagKeyIamBinding` resources **can be** used in conjunction with `gcp.tags.TagKeyIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_tags\_tag\_key\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,8 +72,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_tags\_tag\_key\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,8 +107,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_tags\_tag\_key\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -134,40 +142,41 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- *  * tagKeys/{{name}}
+ * * tagKeys/{{name}}
  * 
- *  * {{name}}
+ * * {{name}}
  * 
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- *  Tags tagkey IAM resources can be imported using the resource identifiers, role, and member.
+ * Tags tagkey IAM resources can be imported using the resource identifiers, role, and member.
  * 
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:tags/tagKeyIamBinding:TagKeyIamBinding editor &#34;tagKeys/{{tag_key}} roles/viewer user:jane@example.com&#34;
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:tags/tagKeyIamBinding:TagKeyIamBinding editor &#34;tagKeys/{{tag_key}} roles/viewer&#34;
  * ```
  * 
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:tags/tagKeyIamBinding:TagKeyIamBinding editor tagKeys/{{tag_key}}
  * ```
  * 
- *  -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:tags/tagKeyIamBinding:TagKeyIamBinding")

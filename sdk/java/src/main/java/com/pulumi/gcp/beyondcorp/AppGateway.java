@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  * 
  * ## Example Usage
+ * 
  * ### Beyondcorp App Gateway Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,7 +64,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beyondcorp App Gateway Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -98,20 +104,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * AppGateway can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:beyondcorp/appGateway:AppGateway default projects/{{project}}/locations/{{region}}/appGateways/{{name}}

@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 //
 // ## Example Usage
+//
 // ### Bigquery Analyticshub Listing Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,8 +74,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Analyticshub Listing Restricted
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,18 +131,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Listing can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
+// * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
 //
-//   - `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
+// * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
 //
-//   - `{{location}}/{{data_exchange_id}}/{{listing_id}}`
+// * `{{location}}/{{data_exchange_id}}/{{listing_id}}`
 //
-//     When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}

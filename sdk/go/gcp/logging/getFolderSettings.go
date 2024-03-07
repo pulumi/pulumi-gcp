@@ -19,8 +19,10 @@ import (
 // * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
 //
 // ## Example Usage
+//
 // ### Logging Folder Settings Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupFolderSettings(ctx *pulumi.Context, args *LookupFolderSettingsArgs, opts ...pulumi.InvokeOption) (*LookupFolderSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderSettingsResult

@@ -120,12 +120,14 @@ def get_database_instances(database_version: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_database_instances(project="test-project")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str database_version: To filter out the Cloud SQL instances which are of the specified database version.
@@ -169,12 +171,14 @@ def get_database_instances_output(database_version: Optional[pulumi.Input[Option
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_database_instances(project="test-project")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str database_version: To filter out the Cloud SQL instances which are of the specified database version.

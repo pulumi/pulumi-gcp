@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/logging/docs/apis)
 //
 // ## Example Usage
+//
 // ### Logging Linked Dataset Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,8 +59,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Logging Linked Dataset All Params
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,14 +99,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // LinkedDataset can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}`
+// * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}`
 //
-//     When using the `pulumi import` command, LinkedDataset can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, LinkedDataset can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:logging/linkedDataset:LinkedDataset default {{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}

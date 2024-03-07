@@ -918,8 +918,10 @@ class Dataset(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Bigquery Dataset Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -945,8 +947,10 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -967,8 +971,10 @@ class Dataset(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Dataset
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1022,8 +1028,10 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Routine
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1070,8 +1078,10 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset External Reference Aws Docs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1086,18 +1096,19 @@ class Dataset(pulumi.CustomResource):
                 connection="projects/project/locations/aws-us-east-1/connections/connection",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Dataset can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/datasets/{{dataset_id}}`
+        * `projects/{{project}}/datasets/{{dataset_id}}`
 
-         * `{{project}}/{{dataset_id}}`
+        * `{{project}}/{{dataset_id}}`
 
-         * `{{dataset_id}}`
+        * `{{dataset_id}}`
 
-         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
@@ -1201,8 +1212,10 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Bigquery Dataset Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1228,8 +1241,10 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1250,8 +1265,10 @@ class Dataset(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Dataset
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1305,8 +1322,10 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Authorized Routine
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1353,8 +1372,10 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset External Reference Aws Docs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1369,18 +1390,19 @@ class Dataset(pulumi.CustomResource):
                 connection="projects/project/locations/aws-us-east-1/connections/connection",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Dataset can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/datasets/{{dataset_id}}`
+        * `projects/{{project}}/datasets/{{dataset_id}}`
 
-         * `{{project}}/{{dataset_id}}`
+        * `{{project}}/{{dataset_id}}`
 
-         * `{{dataset_id}}`
+        * `{{dataset_id}}`
 
-         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}

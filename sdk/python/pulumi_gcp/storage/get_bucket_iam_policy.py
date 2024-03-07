@@ -85,12 +85,14 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.storage.get_bucket_iam_policy(bucket=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: Used to find the parent resource to bind the IAM policy to
@@ -115,12 +117,14 @@ def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.storage.get_bucket_iam_policy(bucket=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: Used to find the parent resource to bind the IAM policy to

@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
  * ## Example Usage
+ *
  * ### External Ssl Proxy Lb Mig Backend
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -169,8 +171,10 @@ import * as utilities from "../utilities";
  *     targetTags: ["allow-health-check"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### External Tcp Proxy Lb Mig Backend
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -290,8 +294,10 @@ import * as utilities from "../utilities";
  *     targetTags: ["allow-health-check"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### External Http Lb Mig Backend Custom Header
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -422,8 +428,10 @@ import * as utilities from "../utilities";
  *     targetTags: ["allow-health-check"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule Http
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -469,8 +477,10 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule Internal
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -560,8 +570,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule External Managed
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -602,8 +614,10 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Global Forwarding Rule Hybrid
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -719,8 +733,10 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Global Internal Http Lb With Mig Backend
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -881,8 +897,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Private Service Connect Google Apis
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -921,8 +939,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Private Service Connect Google Apis No Automate Dns
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -958,18 +978,19 @@ import * as utilities from "../utilities";
  *     noAutomateDnsZone: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * GlobalForwardingRule can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/global/forwardingRules/{{name}}`
+ * * `projects/{{project}}/global/forwardingRules/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}

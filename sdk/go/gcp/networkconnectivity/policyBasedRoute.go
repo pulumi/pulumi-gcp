@@ -21,8 +21,10 @@ import (
 //   - [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
 //
 // ## Example Usage
+//
 // ### Network Connectivity Policy Based Route Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,8 +61,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Connectivity Policy Based Route Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,18 +123,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // PolicyBasedRoute can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
+// * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}

@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute
         /// Provides access to available Google Compute Reservation Resources for a given project.
         /// See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("gcp:compute/getReservation:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
@@ -39,6 +41,7 @@ namespace Pulumi.Gcp.Compute
         /// Provides access to available Google Compute Reservation Resources for a given project.
         /// See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReservationResult>("gcp:compute/getReservation:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());

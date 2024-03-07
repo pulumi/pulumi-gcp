@@ -23,6 +23,8 @@ public final class CloudfunctionsFunctions {
      * and [API](https://cloud.google.com/functions/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -51,6 +53,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFunctionResult> getFunction(GetFunctionArgs args) {
@@ -62,6 +65,8 @@ public final class CloudfunctionsFunctions {
      * and [API](https://cloud.google.com/functions/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFunctionResult> getFunctionPlain(GetFunctionPlainArgs args) {
@@ -101,6 +107,8 @@ public final class CloudfunctionsFunctions {
      * and [API](https://cloud.google.com/functions/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFunctionResult> getFunction(GetFunctionArgs args, InvokeOptions options) {
@@ -140,6 +149,8 @@ public final class CloudfunctionsFunctions {
      * and [API](https://cloud.google.com/functions/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +179,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFunctionResult> getFunctionPlain(GetFunctionPlainArgs args, InvokeOptions options) {
@@ -177,6 +189,8 @@ public final class CloudfunctionsFunctions {
      * Retrieves the current IAM policy data for cloudfunction
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,6 +221,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFunctionIamPolicyResult> getFunctionIamPolicy(GetFunctionIamPolicyArgs args) {
@@ -216,6 +231,8 @@ public final class CloudfunctionsFunctions {
      * Retrieves the current IAM policy data for cloudfunction
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -246,6 +263,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFunctionIamPolicyResult> getFunctionIamPolicyPlain(GetFunctionIamPolicyPlainArgs args) {
@@ -255,6 +273,8 @@ public final class CloudfunctionsFunctions {
      * Retrieves the current IAM policy data for cloudfunction
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -285,6 +305,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFunctionIamPolicyResult> getFunctionIamPolicy(GetFunctionIamPolicyArgs args, InvokeOptions options) {
@@ -294,6 +315,8 @@ public final class CloudfunctionsFunctions {
      * Retrieves the current IAM policy data for cloudfunction
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -324,6 +347,7 @@ public final class CloudfunctionsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFunctionIamPolicyResult> getFunctionIamPolicyPlain(GetFunctionIamPolicyPlainArgs args, InvokeOptions options) {

@@ -22,8 +22,10 @@ import (
 // * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
 //
 // ## Example Usage
+//
 // ### Network Services Gateway Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,8 +54,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Gateway Advanced
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,8 +90,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Gateway Secure Web Proxy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -203,8 +209,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Gateway Multiple Swp Same Network
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -342,18 +350,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Gateway can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}

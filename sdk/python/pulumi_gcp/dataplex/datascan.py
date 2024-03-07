@@ -563,8 +563,10 @@ class Datascan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
+
         ### Dataplex Datascan Basic Profile
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -583,8 +585,10 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Profile
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,8 +634,10 @@ class Datascan(pulumi.CustomResource):
             location="US",
             delete_contents_on_destroy=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Basic Quality
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -659,8 +665,10 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Quality
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -758,20 +766,21 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Datascan can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
+        * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
 
-         * `{{project}}/{{location}}/{{data_scan_id}}`
+        * `{{project}}/{{location}}/{{data_scan_id}}`
 
-         * `{{location}}/{{data_scan_id}}`
+        * `{{location}}/{{data_scan_id}}`
 
-         * `{{data_scan_id}}`
+        * `{{data_scan_id}}`
 
-         When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
@@ -827,8 +836,10 @@ class Datascan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
+
         ### Dataplex Datascan Basic Profile
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -847,8 +858,10 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Profile
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -894,8 +907,10 @@ class Datascan(pulumi.CustomResource):
             location="US",
             delete_contents_on_destroy=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Basic Quality
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -923,8 +938,10 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Dataplex Datascan Full Quality
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1022,20 +1039,21 @@ class Datascan(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Datascan can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
+        * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
 
-         * `{{project}}/{{location}}/{{data_scan_id}}`
+        * `{{project}}/{{location}}/{{data_scan_id}}`
 
-         * `{{location}}/{{data_scan_id}}`
+        * `{{location}}/{{data_scan_id}}`
 
-         * `{{data_scan_id}}`
+        * `{{data_scan_id}}`
 
-         When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}

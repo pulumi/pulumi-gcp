@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,6 +64,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressResult

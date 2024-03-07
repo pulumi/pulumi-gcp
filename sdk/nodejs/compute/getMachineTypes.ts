@@ -16,63 +16,6 @@ import * as utilities from "../utilities";
  * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
  *
  * ## Example Usage
- * ### Property-Based Availability
- *
- * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const example = gcp.compute.getMachineTypes({
- *     filter: "memoryMb = 16384 AND guestCpus = 8",
- *     zone: zone,
- * });
- * const exampleInstanceTemplate: gcp.compute.InstanceTemplate[] = [];
- * for (const range = {value: 0}; range.value < notImplemented("toset(data.google_compute_machine_types.example.machine_types[*].name)"); range.value++) {
- *     exampleInstanceTemplate.push(new gcp.compute.InstanceTemplate(`example-${range.value}`, {
- *         machineType: range.value,
- *         disks: [{
- *             sourceImage: "debian-cloud/debian-11",
- *             autoDelete: true,
- *             boot: true,
- *         }],
- *     }));
- * }
- * ```
- * ### Machine Family Preference
- *
- * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const example = gcp.compute.getMachineTypes({
- *     filter: "memoryMb = 16384 AND guestCpus = 4",
- *     zone: zone,
- * });
- * const exampleInstanceTemplate = new gcp.compute.InstanceTemplate("example", {
- *     machineType: notImplemented(`coalescelist(
- * [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c3-")],
- * [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c2-")],
- * [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"n2-")],
- * )`)[0],
- *     disks: [{
- *         sourceImage: "debian-cloud/debian-11",
- *         autoDelete: true,
- *         boot: true,
- *     }],
- * });
- * ```
  */
 export function getMachineTypes(args?: GetMachineTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineTypesResult> {
     args = args || {};
@@ -129,63 +72,6 @@ export interface GetMachineTypesResult {
  * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
  *
  * ## Example Usage
- * ### Property-Based Availability
- *
- * Create a VM instance template for each machine type with 16GB of memory and 8 CPUs available in the provided zone.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const example = gcp.compute.getMachineTypes({
- *     filter: "memoryMb = 16384 AND guestCpus = 8",
- *     zone: zone,
- * });
- * const exampleInstanceTemplate: gcp.compute.InstanceTemplate[] = [];
- * for (const range = {value: 0}; range.value < notImplemented("toset(data.google_compute_machine_types.example.machine_types[*].name)"); range.value++) {
- *     exampleInstanceTemplate.push(new gcp.compute.InstanceTemplate(`example-${range.value}`, {
- *         machineType: range.value,
- *         disks: [{
- *             sourceImage: "debian-cloud/debian-11",
- *             autoDelete: true,
- *             boot: true,
- *         }],
- *     }));
- * }
- * ```
- * ### Machine Family Preference
- *
- * Create an instance template, preferring `c3` machine family if available in the provided zone, otherwise falling back to `c2` and finally `n2`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const example = gcp.compute.getMachineTypes({
- *     filter: "memoryMb = 16384 AND guestCpus = 4",
- *     zone: zone,
- * });
- * const exampleInstanceTemplate = new gcp.compute.InstanceTemplate("example", {
- *     machineType: notImplemented(`coalescelist(
- * [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c3-")],
- * [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"c2-")],
- * [formtindata.google_compute_machine_types.example.machine_types:mt.nameifstartswith(mt.name,"n2-")],
- * )`)[0],
- *     disks: [{
- *         sourceImage: "debian-cloud/debian-11",
- *         autoDelete: true,
- *         boot: true,
- *     }],
- * });
- * ```
  */
 export function getMachineTypesOutput(args?: GetMachineTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineTypesResult> {
     return pulumi.output(args).apply((a: any) => getMachineTypes(a, opts))

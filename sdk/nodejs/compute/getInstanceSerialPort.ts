@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  * });
  * export const serialOut = serial.then(serial => serial.contents);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,6 +69,7 @@ import * as utilities from "../utilities";
  * }));
  * export const serialOut = serial.apply(serial => serial.contents);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {
 
@@ -127,6 +131,7 @@ export interface GetInstanceSerialPortResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -138,9 +143,11 @@ export interface GetInstanceSerialPortResult {
  * });
  * export const serialOut = serial.then(serial => serial.contents);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -183,6 +190,7 @@ export interface GetInstanceSerialPortResult {
  * }));
  * export const serialOut = serial.apply(serial => serial.contents);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSerialPortResult> {
     return pulumi.output(args).apply((a: any) => getInstanceSerialPort(a, opts))

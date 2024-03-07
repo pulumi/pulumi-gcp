@@ -23,9 +23,169 @@ namespace Pulumi.Gcp.BigTable
     /// The workaround is unreplicating the instance first by updating the instance to have one
     /// cluster.
     /// 
-    /// ## Import
+    /// ## Example Usage
     /// 
-    /// This resource does not support import.
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
+    ///     {
+    ///         Name = "tf-instance",
+    ///         Clusters = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "tf-instance-cluster",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var table = new Gcp.BigTable.Table("table", new()
+    ///     {
+    ///         Name = "tf-table",
+    ///         InstanceName = instance.Name,
+    ///         ColumnFamilies = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "name",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigTable.GCPolicy("policy", new()
+    ///     {
+    ///         InstanceName = instance.Name,
+    ///         Table = table.Name,
+    ///         ColumnFamily = "name",
+    ///         DeletionPolicy = "ABANDON",
+    ///         GcRules = @"  {
+    ///     ""rules"": [
+    ///       {
+    ///         ""max_age"": ""168h""
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.BigTable.GCPolicy("policy", new()
+    ///     {
+    ///         InstanceName = instance.Name,
+    ///         Table = table.Name,
+    ///         ColumnFamily = "name",
+    ///         DeletionPolicy = "ABANDON",
+    ///         GcRules = @"  {
+    ///     ""mode"": ""union"",
+    ///     ""rules"": [
+    ///       {
+    ///         ""max_age"": ""168h""
+    ///       },
+    ///       {
+    ///         ""max_version"": 10
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// An example of more complex GC policy:
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
+    ///     {
+    ///         Name = "instance_name",
+    ///         Clusters = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "cid",
+    ///                 Zone = "us-central1-b",
+    ///             },
+    ///         },
+    ///         InstanceType = "DEVELOPMENT",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var table = new Gcp.BigTable.Table("table", new()
+    ///     {
+    ///         Name = "your-table",
+    ///         InstanceName = instance.Id,
+    ///         ColumnFamilies = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "cf1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigTable.GCPolicy("policy", new()
+    ///     {
+    ///         InstanceName = instance.Id,
+    ///         Table = table.Name,
+    ///         ColumnFamily = "cf1",
+    ///         DeletionPolicy = "ABANDON",
+    ///         GcRules = @"  {
+    ///     ""mode"": ""union"",
+    ///     ""rules"": [
+    ///       {
+    ///         ""max_age"": ""10h""
+    ///       },
+    ///       {
+    ///         ""mode"": ""intersection"",
+    ///         ""rules"": [
+    ///           {
+    ///             ""max_age"": ""2h""
+    ///           },
+    ///           {
+    ///             ""max_version"": 2
+    ///           }
+    ///         ]
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// This is equivalent to running the following `cbt` command:
     /// </summary>
     [GcpResourceType("gcp:bigtable/gCPolicy:GCPolicy")]
     public partial class GCPolicy : global::Pulumi.CustomResource

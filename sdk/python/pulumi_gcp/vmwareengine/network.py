@@ -278,8 +278,10 @@ class Network(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
 
         ## Example Usage
+
         ### Vmware Engine Network Standard
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -290,8 +292,10 @@ class Network(pulumi.CustomResource):
             type="STANDARD",
             description="VMwareEngine standard network sample")
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Legacy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -315,18 +319,19 @@ class Network(pulumi.CustomResource):
             description="VMwareEngine legacy network sample")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Network can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/network:Network default projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}
@@ -367,8 +372,10 @@ class Network(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
 
         ## Example Usage
+
         ### Vmware Engine Network Standard
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,8 +386,10 @@ class Network(pulumi.CustomResource):
             type="STANDARD",
             description="VMwareEngine standard network sample")
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Legacy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -404,18 +413,19 @@ class Network(pulumi.CustomResource):
             description="VMwareEngine legacy network sample")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Network can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/network:Network default projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}

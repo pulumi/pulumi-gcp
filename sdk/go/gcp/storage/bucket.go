@@ -24,8 +24,10 @@ import (
 // determined which will require enabling the compute api.
 //
 // ## Example Usage
+//
 // ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,8 +76,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Life Cycle Settings For Storage Bucket Objects
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,8 +124,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Enabling Public Access Prevention
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -147,24 +155,23 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// # Storage buckets can be imported using the `name` or
+// Storage buckets can be imported using the `name` or  `project/name`. If the project is not
 //
-// `project/name`. If the project is not
+// passed to the import command it will be inferred from the provider block or environment variables.
 //
-//	passed to the import command it will be inferred from the provider block or environment variables.
+// # If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
 //
-//	If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
+// not enabled).
 //
-//	not enabled).
+// * `{{project_id}}/{{bucket}}`
 //
-//	* `{{project_id}}/{{bucket}}`
+// * `{{bucket}}`
 //
-//	* `{{bucket}}`
-//
-//	When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
@@ -174,11 +181,11 @@ import (
 // $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
 // ```
 //
-//	`false` in state. If you've set it to `true` in config, run `pulumi up` to
+// `false` in state. If you've set it to `true` in config, run `pulumi up` to
 //
-//	update the value set in state. If you delete this resource before updating the
+// update the value set in state. If you delete this resource before updating the
 //
-//	value, objects in the bucket will not be destroyed.
+// value, objects in the bucket will not be destroyed.
 type Bucket struct {
 	pulumi.CustomResourceState
 

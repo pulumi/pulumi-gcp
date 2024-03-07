@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/certificate-manager/docs)
 //
 // ## Example Usage
+//
 // ### Certificate Manager Trust Config
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,18 +80,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TrustConfig can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}

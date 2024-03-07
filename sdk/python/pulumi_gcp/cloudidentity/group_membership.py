@@ -263,8 +263,10 @@ class GroupMembership(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Cloud Identity Group Membership
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -296,8 +298,10 @@ class GroupMembership(pulumi.CustomResource):
                 name="MEMBER",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Identity Group Membership User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -325,14 +329,15 @@ class GroupMembership(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GroupMembership can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, GroupMembership can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GroupMembership can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
@@ -371,8 +376,10 @@ class GroupMembership(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Cloud Identity Group Membership
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -404,8 +411,10 @@ class GroupMembership(pulumi.CustomResource):
                 name="MEMBER",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Identity Group Membership User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -433,14 +442,15 @@ class GroupMembership(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GroupMembership can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, GroupMembership can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GroupMembership can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}

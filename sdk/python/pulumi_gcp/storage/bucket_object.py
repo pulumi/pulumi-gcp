@@ -717,6 +717,7 @@ class BucketObject(pulumi.CustomResource):
 
         Example creating a public object in an existing `image-store` bucket.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -726,9 +727,11 @@ class BucketObject(pulumi.CustomResource):
             source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"),
             bucket="image-store")
         ```
+        <!--End PulumiCodeChooser -->
 
         Example creating an empty folder in an existing `image-store` bucket.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -738,6 +741,7 @@ class BucketObject(pulumi.CustomResource):
             content=" ",
             bucket="image-store")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -789,6 +793,7 @@ class BucketObject(pulumi.CustomResource):
 
         Example creating a public object in an existing `image-store` bucket.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -798,9 +803,11 @@ class BucketObject(pulumi.CustomResource):
             source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"),
             bucket="image-store")
         ```
+        <!--End PulumiCodeChooser -->
 
         Example creating an empty folder in an existing `image-store` bucket.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -810,6 +817,7 @@ class BucketObject(pulumi.CustomResource):
             content=" ",
             bucket="image-store")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

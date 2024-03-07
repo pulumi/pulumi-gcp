@@ -16,10 +16,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionNetworkEndpointGroupResult> InvokeAsync(GetRegionNetworkEndpointGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkEndpointGroupResult>("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args ?? new GetRegionNetworkEndpointGroupArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionNetworkEndpointGroupResult> Invoke(GetRegionNetworkEndpointGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionNetworkEndpointGroupResult>("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args ?? new GetRegionNetworkEndpointGroupInvokeArgs(), options.WithDefaults());

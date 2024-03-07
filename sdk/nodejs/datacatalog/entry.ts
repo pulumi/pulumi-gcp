@@ -21,8 +21,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ *
  * ### Data Catalog Entry Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,8 +37,10 @@ import * as utilities from "../utilities";
  *     userSpecifiedSystem: "SomethingExternal",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Catalog Entry Fileset
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,8 +55,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Catalog Entry Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -105,14 +111,15 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Entry can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datacatalog/entry:Entry default {{name}}

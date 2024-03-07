@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -16,6 +17,7 @@ import * as utilities from "../utilities";
  * const default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransferProjectServiceAccount(args?: GetTransferProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServiceAccountResult> {
     args = args || {};
@@ -63,6 +65,7 @@ export interface GetTransferProjectServiceAccountResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,6 +73,7 @@ export interface GetTransferProjectServiceAccountResult {
  * const default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransferProjectServiceAccountOutput(args?: GetTransferProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getTransferProjectServiceAccount(a, opts))

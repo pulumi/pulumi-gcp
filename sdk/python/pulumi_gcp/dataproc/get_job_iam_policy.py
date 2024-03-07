@@ -104,6 +104,7 @@ def get_job_iam_policy(job_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -111,6 +112,7 @@ def get_job_iam_policy(job_id: Optional[str] = None,
     policy = gcp.dataproc.get_job_iam_policy(job_id=pyspark["reference"][0]["jobId"],
         region="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str job_id: The name or relative resource id of the job to manage IAM policies for.
@@ -141,6 +143,7 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -148,6 +151,7 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
     policy = gcp.dataproc.get_job_iam_policy(job_id=pyspark["reference"][0]["jobId"],
         region="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str job_id: The name or relative resource id of the job to manage IAM policies for.

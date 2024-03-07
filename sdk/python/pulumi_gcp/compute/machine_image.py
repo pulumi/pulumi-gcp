@@ -312,8 +312,10 @@ class MachineImage(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 
         ## Example Usage
+
         ### Machine Image Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -333,8 +335,10 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link)
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Machine Image Kms
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,18 +367,19 @@ class MachineImage(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MachineImage can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/machineImages/{{name}}`
+        * `projects/{{project}}/global/machineImages/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
@@ -424,8 +429,10 @@ class MachineImage(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 
         ## Example Usage
+
         ### Machine Image Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -445,8 +452,10 @@ class MachineImage(pulumi.CustomResource):
             name="my-image",
             source_instance=vm.self_link)
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Machine Image Kms
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -475,18 +484,19 @@ class MachineImage(pulumi.CustomResource):
                 kms_key_name=crypto_key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MachineImage can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/machineImages/{{name}}`
+        * `projects/{{project}}/global/machineImages/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}

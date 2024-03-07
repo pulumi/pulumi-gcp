@@ -988,8 +988,10 @@ class Cluster(pulumi.CustomResource):
         See Example.
 
         ## Example Usage
+
         ### Alloydb Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1001,8 +1003,10 @@ class Cluster(pulumi.CustomResource):
             network=default_network.id)
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1046,8 +1050,10 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Restore
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1098,8 +1104,10 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Secondary Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1139,20 +1147,21 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
+        * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
 
-         * `{{project}}/{{location}}/{{cluster_id}}`
+        * `{{project}}/{{location}}/{{cluster_id}}`
 
-         * `{{location}}/{{cluster_id}}`
+        * `{{location}}/{{cluster_id}}`
 
-         * `{{cluster_id}}`
+        * `{{cluster_id}}`
 
-         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -1239,8 +1248,10 @@ class Cluster(pulumi.CustomResource):
         See Example.
 
         ## Example Usage
+
         ### Alloydb Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1252,8 +1263,10 @@ class Cluster(pulumi.CustomResource):
             network=default_network.id)
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1297,8 +1310,10 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Cluster Restore
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1349,8 +1364,10 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Secondary Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1390,20 +1407,21 @@ class Cluster(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
+        * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
 
-         * `{{project}}/{{location}}/{{cluster_id}}`
+        * `{{project}}/{{location}}/{{cluster_id}}`
 
-         * `{{location}}/{{cluster_id}}`
+        * `{{location}}/{{cluster_id}}`
 
-         * `{{cluster_id}}`
+        * `{{cluster_id}}`
 
-         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}

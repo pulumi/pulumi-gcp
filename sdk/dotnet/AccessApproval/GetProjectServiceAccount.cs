@@ -20,10 +20,9 @@ namespace Pulumi.Gcp.AccessApproval
         /// this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
         /// Cloud KMS key used to sign approvals.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountArgs(), options.WithDefaults());
@@ -61,10 +59,9 @@ namespace Pulumi.Gcp.AccessApproval
         /// this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
         /// Cloud KMS key used to sign approvals.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectServiceAccountResult> Invoke(GetProjectServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithDefaults());

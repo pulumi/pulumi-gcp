@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Artifact Registry Vpcsc Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -29,18 +31,19 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// VPCSCConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}

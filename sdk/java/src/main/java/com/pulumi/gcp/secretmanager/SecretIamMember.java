@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_secret\_manager\_secret\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,8 +72,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_secret\_manager\_secret\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,8 +108,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_secret\_manager\_secret\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -136,42 +144,43 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- *  * projects/{{project}}/secrets/{{secret_id}}
+ * * projects/{{project}}/secrets/{{secret_id}}
  * 
- *  * {{project}}/{{secret_id}}
+ * * {{project}}/{{secret_id}}
  * 
- *  * {{secret_id}}
+ * * {{secret_id}}
  * 
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- *  Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member.
+ * Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member.
  * 
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:secretmanager/secretIamMember:SecretIamMember editor &#34;projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor user:jane@example.com&#34;
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:secretmanager/secretIamMember:SecretIamMember editor &#34;projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor&#34;
  * ```
  * 
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:secretmanager/secretIamMember:SecretIamMember editor projects/{{project}}/secrets/{{secret_id}}
  * ```
  * 
- *  -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:secretmanager/secretIamMember:SecretIamMember")

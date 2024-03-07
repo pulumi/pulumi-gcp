@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Iap Brand
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,18 +59,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Brand can be imported using any of these accepted formats:
 //
-//   - `projects/{{project_id}}/brands/{{brand_id}}`
+// * `projects/{{project_id}}/brands/{{brand_id}}`
 //
-//   - `projects/{{project_number}}/brands/{{brand_id}}`
+// * `projects/{{project_number}}/brands/{{brand_id}}`
 //
-//   - `{{project_number}}/{{brand_id}}`
+// * `{{project_number}}/{{brand_id}}`
 //
-//     When using the `pulumi import` command, Brand can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Brand can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}

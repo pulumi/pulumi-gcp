@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Spanner
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Spanner
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseIamPolicyResult> InvokeAsync(GetDatabaseIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseIamPolicyResult>("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args ?? new GetDatabaseIamPolicyArgs(), options.WithDefaults());
@@ -42,6 +44,7 @@ namespace Pulumi.Gcp.Spanner
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,6 +62,7 @@ namespace Pulumi.Gcp.Spanner
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseIamPolicyResult> Invoke(GetDatabaseIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIamPolicyResult>("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args ?? new GetDatabaseIamPolicyInvokeArgs(), options.WithDefaults());

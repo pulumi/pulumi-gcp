@@ -186,8 +186,10 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
+
         ### Firebase App Check App Attest Config Minimal
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -205,8 +207,10 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             project="my-project-name",
             app_id=default.app_id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase App Check App Attest Config Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -225,18 +229,19 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             app_id=default.app_id,
             token_ttl="7200s")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AppAttestConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/apps/{{app_id}}/appAttestConfig`
+        * `projects/{{project}}/apps/{{app_id}}/appAttestConfig`
 
-         * `{{project}}/{{app_id}}`
+        * `{{project}}/{{app_id}}`
 
-         * `{{app_id}}`
+        * `{{app_id}}`
 
-         When using the `pulumi import` command, AppAttestConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AppAttestConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig default projects/{{project}}/apps/{{app_id}}/appAttestConfig
@@ -280,8 +285,10 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
+
         ### Firebase App Check App Attest Config Minimal
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,8 +306,10 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             project="my-project-name",
             app_id=default.app_id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase App Check App Attest Config Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,18 +328,19 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
             app_id=default.app_id,
             token_ttl="7200s")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AppAttestConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/apps/{{app_id}}/appAttestConfig`
+        * `projects/{{project}}/apps/{{app_id}}/appAttestConfig`
 
-         * `{{project}}/{{app_id}}`
+        * `{{project}}/{{app_id}}`
 
-         * `{{app_id}}`
+        * `{{app_id}}`
 
-         When using the `pulumi import` command, AppAttestConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AppAttestConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig default projects/{{project}}/apps/{{app_id}}/appAttestConfig

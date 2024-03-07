@@ -105,6 +105,7 @@ def get_app_engine_service_iam_policy(app_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_app_engine_service_iam_policy(app_id: Optional[str] = None,
         app_id=version["project"],
         service=version["service"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -146,6 +148,7 @@ def get_app_engine_service_iam_policy_output(app_id: Optional[pulumi.Input[str]]
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -154,6 +157,7 @@ def get_app_engine_service_iam_policy_output(app_id: Optional[pulumi.Input[str]]
         app_id=version["project"],
         service=version["service"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to

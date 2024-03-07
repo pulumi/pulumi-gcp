@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_bigquery\_table\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,9 +43,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,8 +70,10 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ## google\_bigquery\_table\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,9 +86,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,8 +108,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ## google\_bigquery\_table\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,9 +124,11 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -135,44 +146,45 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
- *  * projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
+ * * projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
  *
- *  * {{project}}/{{dataset_id}}/{{table_id}}
+ * * {{project}}/{{dataset_id}}/{{table_id}}
  *
- *  * {{dataset_id}}/{{table_id}}
+ * * {{dataset_id}}/{{table_id}}
  *
- *  * {{table_id}}
+ * * {{table_id}}
  *
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  *
- *  BigQuery table IAM resources can be imported using the resource identifiers, role, and member.
+ * BigQuery table IAM resources can be imported using the resource identifiers, role, and member.
  *
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *
  * ```sh
  * $ pulumi import gcp:bigquery/iamMember:IamMember editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner user:jane@example.com"
  * ```
  *
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  *
  * ```sh
  * $ pulumi import gcp:bigquery/iamMember:IamMember editor "projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} roles/bigquery.dataOwner"
  * ```
  *
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
  * $ pulumi import gcp:bigquery/iamMember:IamMember editor projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
  * ```
  *
- *  -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class IamMember extends pulumi.CustomResource {
     /**

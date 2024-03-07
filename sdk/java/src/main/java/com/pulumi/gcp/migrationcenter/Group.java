@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have something in common, while allowing users to add annotations to the group.
  * 
  * ## Example Usage
+ * 
  * ### Migration Group Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,18 +56,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Group can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
+ * * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
  * 
- *  * `{{project}}/{{location}}/{{group_id}}`
+ * * `{{project}}/{{location}}/{{group_id}}`
  * 
- *  * `{{location}}/{{group_id}}`
+ * * `{{location}}/{{group_id}}`
  * 
- *  When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}

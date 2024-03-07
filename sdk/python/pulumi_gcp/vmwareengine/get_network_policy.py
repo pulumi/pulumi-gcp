@@ -165,6 +165,7 @@ def get_network_policy(location: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -172,6 +173,7 @@ def get_network_policy(location: Optional[str] = None,
     my_network_policy = gcp.vmwareengine.get_network_policy(name="my-network-policy",
         location="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the resource.
@@ -213,6 +215,7 @@ def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -220,6 +223,7 @@ def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
     my_network_policy = gcp.vmwareengine.get_network_policy(name="my-network-policy",
         location="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the resource.

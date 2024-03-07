@@ -189,6 +189,7 @@ def get_region_network_endpoint_group(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -197,6 +198,7 @@ def get_region_network_endpoint_group(name: Optional[str] = None,
         region="us-central1")
     rneg2 = gcp.compute.get_region_network_endpoint_group(self_link="https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The Network Endpoint Group name. Provide either this or a `self_link`.
@@ -242,6 +244,7 @@ def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -250,6 +253,7 @@ def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optiona
         region="us-central1")
     rneg2 = gcp.compute.get_region_network_endpoint_group(self_link="https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The Network Endpoint Group name. Provide either this or a `self_link`.

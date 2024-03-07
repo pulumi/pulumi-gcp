@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  * developer experience and broader support of Cloud Run features.
  *
  * ## Example Usage
+ *
  * ### Cloud Run Service Pubsub
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -69,8 +71,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Cloud Run Service Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,8 +96,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloud Run Service Sql
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,8 +133,10 @@ import * as utilities from "../utilities";
  *     autogenerateRevisionName: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloud Run Service Noauth
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -156,8 +165,10 @@ import * as utilities from "../utilities";
  *     policyData: noauth.then(noauth => noauth.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloud Run Service Probes
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -192,8 +203,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloud Run Service Multicontainer
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -256,18 +269,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Service can be imported using any of these accepted formats:
  *
- *  * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
+ * * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
  *
- *  * `{{location}}/{{project}}/{{name}}`
+ * * `{{location}}/{{project}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}

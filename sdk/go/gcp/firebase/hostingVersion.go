@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Firebasehosting Version Redirect
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,8 +64,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Version Cloud Run
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,8 +134,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Version Cloud Functions
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -211,16 +217,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Version can be imported using any of these accepted formats:
 //
-//   - `sites/{{site_id}}/versions/{{version_id}}`
+// * `sites/{{site_id}}/versions/{{version_id}}`
 //
-//   - `{{site_id}}/{{version_id}}`
+// * `{{site_id}}/{{version_id}}`
 //
-//     When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}

@@ -17,8 +17,10 @@ namespace Pulumi.Gcp.VMwareEngine
     /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Vmware Engine External Access Rule Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,8 +78,10 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vmware Engine External Access Rule Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -167,14 +171,15 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ExternalAccessRule can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/externalAccessRules/{{name}}`
+    /// * `{{parent}}/externalAccessRules/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,20 +33,21 @@ import * as utilities from "../utilities";
  *     healthChecks: defaultHttpHealthCheck.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Target pools can be imported using any of the following formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}

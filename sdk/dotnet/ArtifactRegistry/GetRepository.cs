@@ -16,10 +16,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// the [official documentation](https://cloud.google.com/artifact-registry/docs/)
         /// and [API](https://cloud.google.com/artifact-registry/docs/apis).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("gcp:artifactregistry/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// the [official documentation](https://cloud.google.com/artifact-registry/docs/)
         /// and [API](https://cloud.google.com/artifact-registry/docs/apis).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:artifactregistry/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());

@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
  * ## google\_compute\_image\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,8 +72,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -116,7 +121,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_compute\_image\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -148,8 +156,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -187,7 +198,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## google\_compute\_image\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -219,8 +233,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -258,42 +275,43 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- *  * projects/{{project}}/global/images/{{name}}
+ * * projects/{{project}}/global/images/{{name}}
  * 
- *  * {{project}}/{{name}}
+ * * {{project}}/{{name}}
  * 
- *  * {{name}}
+ * * {{name}}
  * 
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- *  Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
+ * Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
  * 
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor &#34;projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com&#34;
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor &#34;projects/{{project}}/global/images/{{image}} roles/compute.imageUser&#34;
  * ```
  * 
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor projects/{{project}}/global/images/{{image}}
  * ```
  * 
- *  -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:compute/imageIamPolicy:ImageIamPolicy")

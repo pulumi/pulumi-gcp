@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
  *
  * ## Example Usage
+ *
  * ### Service Attachment Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,8 +88,10 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Service Attachment Explicit Projects
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -164,8 +168,10 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Service Attachment Reconcile Connections
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -229,20 +235,21 @@ import * as utilities from "../utilities";
  *     reconcileConnections: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ServiceAttachment can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}

@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_storage\_bucket\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,9 +39,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,8 +64,10 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ## google\_storage\_bucket\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,9 +78,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,8 +98,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ## google\_storage\_bucket\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -103,9 +112,11 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -121,40 +132,41 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
- *  * b/{{name}}
+ * * b/{{name}}
  *
- *  * {{name}}
+ * * {{name}}
  *
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  *
- *  Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member.
+ * Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member.
  *
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *
  * ```sh
  * $ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
  * ```
  *
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  *
  * ```sh
  * $ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor "b/{{bucket}} roles/storage.objectViewer"
  * ```
  *
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
  * $ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor b/{{bucket}}
  * ```
  *
- *  -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class BucketIAMPolicy extends pulumi.CustomResource {
     /**

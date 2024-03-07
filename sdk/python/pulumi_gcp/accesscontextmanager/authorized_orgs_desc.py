@@ -390,8 +390,10 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Access Context Manager Authorized Orgs Desc Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,14 +412,15 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                 "organizations/98765",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AuthorizedOrgsDesc can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}
@@ -485,8 +488,10 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Access Context Manager Authorized Orgs Desc Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,14 +510,15 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                 "organizations/98765",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AuthorizedOrgsDesc can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}

@@ -319,8 +319,10 @@ class Database(pulumi.CustomResource):
         Google's cloud.
 
         ## Example Usage
+
         ### Sql Database Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,8 +340,10 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
+        <!--End PulumiCodeChooser -->
         ### Sql Database Deletion Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,22 +362,23 @@ class Database(pulumi.CustomResource):
             instance=instance.name,
             deletion_policy="ABANDON")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
+        * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
 
-         * `instances/{{instance}}/databases/{{name}}`
+        * `instances/{{instance}}/databases/{{name}}`
 
-         * `{{project}}/{{instance}}/{{name}}`
+        * `{{project}}/{{instance}}/{{name}}`
 
-         * `{{instance}}/{{name}}`
+        * `{{instance}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
@@ -432,8 +437,10 @@ class Database(pulumi.CustomResource):
         Google's cloud.
 
         ## Example Usage
+
         ### Sql Database Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -451,8 +458,10 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
+        <!--End PulumiCodeChooser -->
         ### Sql Database Deletion Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,22 +480,23 @@ class Database(pulumi.CustomResource):
             instance=instance.name,
             deletion_policy="ABANDON")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
+        * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
 
-         * `instances/{{instance}}/databases/{{name}}`
+        * `instances/{{instance}}/databases/{{name}}`
 
-         * `{{project}}/{{instance}}/{{name}}`
+        * `{{project}}/{{instance}}/{{name}}`
 
-         * `{{instance}}/{{name}}`
+        * `{{instance}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}

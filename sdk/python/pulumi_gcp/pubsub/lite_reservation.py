@@ -198,8 +198,10 @@ class LiteReservation(pulumi.CustomResource):
             * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 
         ## Example Usage
+
         ### Pubsub Lite Reservation Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -210,20 +212,21 @@ class LiteReservation(pulumi.CustomResource):
             project=project.number,
             throughput_capacity=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Reservation can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/liteReservation:LiteReservation default projects/{{project}}/locations/{{region}}/reservations/{{name}}
@@ -270,8 +273,10 @@ class LiteReservation(pulumi.CustomResource):
             * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
 
         ## Example Usage
+
         ### Pubsub Lite Reservation Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,20 +287,21 @@ class LiteReservation(pulumi.CustomResource):
             project=project.number,
             throughput_capacity=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Reservation can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/liteReservation:LiteReservation default projects/{{project}}/locations/{{region}}/reservations/{{name}}

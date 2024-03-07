@@ -23,7 +23,7 @@ public final class BudgetThresholdRule {
     private @Nullable String spendBasis;
     /**
      * @return Send an alert when this threshold is exceeded. This is a
-     * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
+     * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
      * 
      */
     private Double thresholdPercent;
@@ -41,7 +41,7 @@ public final class BudgetThresholdRule {
     }
     /**
      * @return Send an alert when this threshold is exceeded. This is a
-     * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
+     * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
      * 
      */
     public Double thresholdPercent() {

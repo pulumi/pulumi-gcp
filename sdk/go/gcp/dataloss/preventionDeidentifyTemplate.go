@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 //
 // ## Example Usage
+//
 // ### Dlp Deidentify Template Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -143,8 +145,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dlp Deidentify Template Image Transformations
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -197,16 +201,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // DeidentifyTemplate can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/deidentifyTemplates/{{name}}`
+// * `{{parent}}/deidentifyTemplates/{{name}}`
 //
-//   - `{{parent}}/{{name}}`
+// * `{{parent}}/{{name}}`
 //
-//     When using the `pulumi import` command, DeidentifyTemplate can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, DeidentifyTemplate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}

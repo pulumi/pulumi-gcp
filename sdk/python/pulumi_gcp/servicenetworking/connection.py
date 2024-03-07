@@ -206,6 +206,7 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -231,16 +232,17 @@ class Connection(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceNetworkingConnection can be imported using any of these accepted formats
 
-         * `{{peering-network}}:{{service}}`
+        * `{{peering-network}}:{{service}}`
 
-         * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}`
+        * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}`
 
-         When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicenetworking/connection:Connection default {{peering-network}}:{{service}}
@@ -276,6 +278,7 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -301,16 +304,17 @@ class Connection(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceNetworkingConnection can be imported using any of these accepted formats
 
-         * `{{peering-network}}:{{service}}`
+        * `{{peering-network}}:{{service}}`
 
-         * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}`
+        * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}`
 
-         When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicenetworking/connection:Connection default {{peering-network}}:{{service}}

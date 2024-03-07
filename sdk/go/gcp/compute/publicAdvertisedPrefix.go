@@ -21,8 +21,10 @@ import (
 //   - [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 //
 // ## Example Usage
+//
 // ### Public Advertised Prefixes Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,18 +51,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // PublicAdvertisedPrefix can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
+// * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}

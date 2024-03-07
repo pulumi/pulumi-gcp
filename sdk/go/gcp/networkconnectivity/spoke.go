@@ -15,7 +15,9 @@ import (
 // The NetworkConnectivity Spoke resource
 //
 // ## Example Usage
+//
 // ### Linked_vpc_network
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,7 +72,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Router_appliance
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,18 +165,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Spoke can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}

@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.cloudrun.IamBinding` resources **can be** used in conjunction with `gcp.cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_cloud\_run\_service\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,8 +74,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_service\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -106,8 +111,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_cloud\_run\_service\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -140,44 +148,45 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- *  * projects/{{project}}/locations/{{location}}/services/{{service}}
+ * * projects/{{project}}/locations/{{location}}/services/{{service}}
  * 
- *  * {{project}}/{{location}}/{{service}}
+ * * {{project}}/{{location}}/{{service}}
  * 
- *  * {{location}}/{{service}}
+ * * {{location}}/{{service}}
  * 
- *  * {{service}}
+ * * {{service}}
  * 
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- *  Cloud Run service IAM resources can be imported using the resource identifiers, role, and member.
+ * Cloud Run service IAM resources can be imported using the resource identifiers, role, and member.
  * 
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:cloudrun/iamBinding:IamBinding editor &#34;projects/{{project}}/locations/{{location}}/services/{{service}} roles/viewer user:jane@example.com&#34;
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:cloudrun/iamBinding:IamBinding editor &#34;projects/{{project}}/locations/{{location}}/services/{{service}} roles/viewer&#34;
  * ```
  * 
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:cloudrun/iamBinding:IamBinding editor projects/{{project}}/locations/{{location}}/services/{{service}}
  * ```
  * 
- *  -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:cloudrun/iamBinding:IamBinding")

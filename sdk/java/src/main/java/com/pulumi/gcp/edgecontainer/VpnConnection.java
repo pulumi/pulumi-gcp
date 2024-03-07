@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  * 
  * ## Example Usage
+ * 
  * ### Edgecontainer Vpn Connection
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -109,18 +112,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * VpnConnection can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}

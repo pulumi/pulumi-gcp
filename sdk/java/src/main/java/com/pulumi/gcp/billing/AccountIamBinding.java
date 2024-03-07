@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.billing.AccountIamBinding` resources **can be** used in conjunction with `gcp.billing.AccountIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_billing\_account\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,8 +68,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -98,8 +103,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_billing\_account\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -130,28 +138,29 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Importing IAM policies
  * 
- *  IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
+ * IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
  * 
- *  * `{{billing_account_id}}`
+ * * `{{billing_account_id}}`
  * 
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  * 
- *  tf
+ * tf
  * 
- *  import {
+ * import {
  * 
- *  id = {{billing_account_id}}
+ *   id = {{billing_account_id}}
  * 
- *  to = google_billing_account_iam_policy.default
+ *   to = google_billing_account_iam_policy.default
  * 
- *  }
+ * }
  * 
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  * 
  * ```sh
  * $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding default {{billing_account_id}}

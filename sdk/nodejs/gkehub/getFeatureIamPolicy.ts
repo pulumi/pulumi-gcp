@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: feature.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFeatureIamPolicy(args: GetFeatureIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureIamPolicyResult> {
 
@@ -75,6 +77,7 @@ export interface GetFeatureIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,6 +88,7 @@ export interface GetFeatureIamPolicyResult {
  *     name: feature.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFeatureIamPolicyOutput(args: GetFeatureIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getFeatureIamPolicy(a, opts))

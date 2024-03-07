@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,9 +54,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,9 +79,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_healthcare\_hl7\_v2\_store\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,28 +101,29 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
     /// 
-    ///  IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example:
+    /// IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example:
     /// 
-    ///  * `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"`
+    /// * `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"`
     /// 
-    ///  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
     /// 
-    ///  tf
+    /// tf
     /// 
-    ///  import {
+    /// import {
     /// 
-    ///  id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
+    ///   id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
     /// 
-    ///  to = google_healthcare_hl7_v2_store_iam_policy.default
+    ///   to = google_healthcare_hl7_v2_store_iam_policy.default
     /// 
-    ///  }
+    /// }
     /// 
-    ///  The `pulumi import` command can also be used:
+    /// The `pulumi import` command can also be used:
     /// 
     /// ```sh
     /// $ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}

@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Dataform Repository
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -88,7 +91,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataform Repository Ssh
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -158,20 +164,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Repository can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}

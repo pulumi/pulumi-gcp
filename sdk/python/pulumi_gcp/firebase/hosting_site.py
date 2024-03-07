@@ -194,8 +194,10 @@ class HostingSite(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Firebasehosting Site Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -204,8 +206,10 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-no-app")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Site Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -218,20 +222,21 @@ class HostingSite(pulumi.CustomResource):
             site_id="site-with-app",
             app_id=default.app_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Site can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/sites/{{site_id}}`
+        * `projects/{{project}}/sites/{{site_id}}`
 
-         * `{{project}}/{{site_id}}`
+        * `{{project}}/{{site_id}}`
 
-         * `sites/{{site_id}}`
+        * `sites/{{site_id}}`
 
-         * `{{site_id}}`
+        * `{{site_id}}`
 
-         When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
@@ -267,8 +272,10 @@ class HostingSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Firebasehosting Site Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,8 +284,10 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-no-app")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Site Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,20 +300,21 @@ class HostingSite(pulumi.CustomResource):
             site_id="site-with-app",
             app_id=default.app_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Site can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/sites/{{site_id}}`
+        * `projects/{{project}}/sites/{{site_id}}`
 
-         * `{{project}}/{{site_id}}`
+        * `{{project}}/{{site_id}}`
 
-         * `sites/{{site_id}}`
+        * `sites/{{site_id}}`
 
-         * `{{site_id}}`
+        * `{{site_id}}`
 
-         When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}

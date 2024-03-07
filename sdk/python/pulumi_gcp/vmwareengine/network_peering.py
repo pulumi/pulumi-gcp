@@ -510,8 +510,10 @@ class NetworkPeering(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/addPeering)
 
         ## Example Usage
+
         ### Vmware Engine Network Peering Ven
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,8 +537,10 @@ class NetworkPeering(pulumi.CustomResource):
             export_custom_routes_with_public_ip=False,
             import_custom_routes_with_public_ip=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Peering Standard
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -553,18 +557,19 @@ class NetworkPeering(pulumi.CustomResource):
             peer_network_type="STANDARD",
             vmware_engine_network=network_peering_standard_nw.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkPeering can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
+        * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default projects/{{project}}/locations/global/networkPeerings/{{name}}
@@ -613,8 +618,10 @@ class NetworkPeering(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/addPeering)
 
         ## Example Usage
+
         ### Vmware Engine Network Peering Ven
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -638,8 +645,10 @@ class NetworkPeering(pulumi.CustomResource):
             export_custom_routes_with_public_ip=False,
             import_custom_routes_with_public_ip=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Peering Standard
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,18 +665,19 @@ class NetworkPeering(pulumi.CustomResource):
             peer_network_type="STANDARD",
             vmware_engine_network=network_peering_standard_nw.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkPeering can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
+        * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default projects/{{project}}/locations/global/networkPeerings/{{name}}

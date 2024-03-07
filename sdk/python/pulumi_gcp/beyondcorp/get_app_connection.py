@@ -153,12 +153,14 @@ def get_app_connection(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_beyondcorp_app_connection = gcp.beyondcorp.get_app_connection(name="my-beyondcorp-app-connection")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the App Connection.
@@ -201,12 +203,14 @@ def get_app_connection_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_beyondcorp_app_connection = gcp.beyondcorp.get_app_connection(name="my-beyondcorp-app-connection")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the App Connection.

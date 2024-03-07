@@ -22,8 +22,10 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ *
  * ### Cloud Identity Groups Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,14 +42,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Group can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudidentity/group:Group default {{name}}

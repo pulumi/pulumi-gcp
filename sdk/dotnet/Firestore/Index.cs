@@ -29,8 +29,10 @@ namespace Pulumi.Gcp.Firestore
     /// will be the same as the App Engine location specified.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Firestore Index Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,8 +100,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Index Datastore Mode
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -132,14 +136,15 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Index can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firestore/index:Index default {{name}}

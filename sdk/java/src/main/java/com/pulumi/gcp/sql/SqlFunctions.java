@@ -39,6 +39,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance backup run.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -68,6 +70,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupRunResult> getBackupRun(GetBackupRunArgs args) {
@@ -77,6 +80,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance backup run.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -106,6 +111,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupRunResult> getBackupRunPlain(GetBackupRunPlainArgs args) {
@@ -115,6 +121,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance backup run.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupRunResult> getBackupRun(GetBackupRunArgs args, InvokeOptions options) {
@@ -153,6 +162,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance backup run.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -182,6 +193,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupRunResult> getBackupRunPlain(GetBackupRunPlainArgs args, InvokeOptions options) {
@@ -193,8 +205,6 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args) {
         return getCaCerts(args, InvokeOptions.Empty);
@@ -204,8 +214,6 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
-     * 
-     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetCaCertsResult> getCaCertsPlain(GetCaCertsPlainArgs args) {
@@ -217,8 +225,6 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
-     * ## Example Usage
-     * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getCaCerts:getCaCerts", TypeShape.of(GetCaCertsResult.class), args, Utilities.withVersion(options));
@@ -229,8 +235,6 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
      * 
-     * ## Example Usage
-     * 
      */
     public static CompletableFuture<GetCaCertsResult> getCaCertsPlain(GetCaCertsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getCaCerts:getCaCerts", TypeShape.of(GetCaCertsResult.class), args, Utilities.withVersion(options));
@@ -239,6 +243,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a database in a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -268,6 +274,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args) {
@@ -277,6 +284,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a database in a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -306,6 +315,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args) {
@@ -315,6 +325,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a database in a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -344,6 +356,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOptions options) {
@@ -353,6 +366,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a database in a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -382,6 +397,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args, InvokeOptions options) {
@@ -391,6 +407,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -419,6 +437,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args) {
@@ -428,6 +447,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -456,6 +477,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args) {
@@ -465,6 +487,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -493,6 +517,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOptions options) {
@@ -502,6 +527,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a Cloud SQL instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -530,6 +557,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
@@ -542,6 +570,8 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -571,6 +601,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs args) {
@@ -583,6 +614,8 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -612,6 +645,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTimePlain(GetDatabaseInstanceLatestRecoveryTimePlainArgs args) {
@@ -624,6 +658,8 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -653,6 +689,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOptions options) {
@@ -665,6 +702,8 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -694,6 +733,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTimePlain(GetDatabaseInstanceLatestRecoveryTimePlainArgs args, InvokeOptions options) {
@@ -703,6 +743,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -731,6 +773,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances() {
@@ -740,6 +783,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -768,6 +813,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain() {
@@ -777,6 +823,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -805,6 +853,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args) {
@@ -814,6 +863,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -842,6 +893,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args) {
@@ -851,6 +903,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -879,6 +933,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOptions options) {
@@ -888,6 +943,8 @@ public final class SqlFunctions {
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -916,6 +973,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args, InvokeOptions options) {
@@ -924,6 +982,8 @@ public final class SqlFunctions {
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -952,6 +1012,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
@@ -960,6 +1021,8 @@ public final class SqlFunctions {
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -988,6 +1051,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -996,6 +1060,8 @@ public final class SqlFunctions {
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1024,6 +1090,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
@@ -1032,6 +1099,8 @@ public final class SqlFunctions {
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1060,6 +1129,7 @@ public final class SqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
@@ -1073,6 +1143,9 @@ public final class SqlFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTiersResult> getTiers() {
         return getTiers(GetTiersArgs.Empty, InvokeOptions.Empty);
@@ -1084,6 +1157,9 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTiersResult> getTiersPlain() {
@@ -1097,6 +1173,9 @@ public final class SqlFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTiersResult> getTiers(GetTiersArgs args) {
         return getTiers(args, InvokeOptions.Empty);
@@ -1108,6 +1187,9 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTiersResult> getTiersPlain(GetTiersPlainArgs args) {
@@ -1121,6 +1203,9 @@ public final class SqlFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTiersResult> getTiers(GetTiersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getTiers:getTiers", TypeShape.of(GetTiersResult.class), args, Utilities.withVersion(options));
@@ -1132,6 +1217,9 @@ public final class SqlFunctions {
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTiersResult> getTiersPlain(GetTiersPlainArgs args, InvokeOptions options) {

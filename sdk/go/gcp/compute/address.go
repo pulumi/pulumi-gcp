@@ -33,8 +33,10 @@ import (
 //   - [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 //
 // ## Example Usage
+//
 // ### Address Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,8 +60,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Address With Subnetwork
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,8 +106,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Address With Gce Endpoint
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,8 +135,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Instance With Ip
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -184,8 +192,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Compute Address Ipsec Interconnect
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -221,20 +231,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Address can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}

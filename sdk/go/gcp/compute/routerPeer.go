@@ -24,8 +24,10 @@ import (
 //   - [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
+//
 // ### Router Peer Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,8 +56,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Router Peer Disabled
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,8 +90,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Router Peer Bfd
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,8 +129,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Router Peer Router Appliance
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -271,20 +279,21 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // RouterBgpPeer can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{router}}/{{name}}`
+// * `{{project}}/{{region}}/{{router}}/{{name}}`
 //
-//   - `{{region}}/{{router}}/{{name}}`
+// * `{{region}}/{{router}}/{{name}}`
 //
-//   - `{{router}}/{{name}}`
+// * `{{router}}/{{name}}`
 //
-//     When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}

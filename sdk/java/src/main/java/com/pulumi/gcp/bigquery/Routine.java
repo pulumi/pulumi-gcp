@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  * 
  * ## Example Usage
+ * 
  * ### Bigquery Routine Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,7 +71,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Json
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -118,7 +124,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Tvf
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -178,7 +187,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Pyspark
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -251,7 +263,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Pyspark Mainfile
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -308,7 +323,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Spark Jar
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -368,7 +386,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Remote Function
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -423,18 +444,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Routine can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
+ * * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
  * 
- *  * `{{project}}/{{dataset_id}}/{{routine_id}}`
+ * * `{{project}}/{{dataset_id}}/{{routine_id}}`
  * 
- *  * `{{dataset_id}}/{{routine_id}}`
+ * * `{{dataset_id}}/{{routine_id}}`
  * 
- *  When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}

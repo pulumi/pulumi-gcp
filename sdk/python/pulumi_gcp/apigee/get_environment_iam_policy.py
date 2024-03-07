@@ -95,6 +95,7 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,6 +103,7 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
     policy = gcp.apigee.get_environment_iam_policy(org_id=apigee_environment["orgId"],
         env_id=apigee_environment["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str env_id: Used to find the parent resource to bind the IAM policy to
@@ -129,6 +131,7 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -136,6 +139,7 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None
     policy = gcp.apigee.get_environment_iam_policy(org_id=apigee_environment["orgId"],
         env_id=apigee_environment["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str env_id: Used to find the parent resource to bind the IAM policy to

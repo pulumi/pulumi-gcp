@@ -437,8 +437,10 @@ class NetworkAttachment(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Attachment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,8 +472,10 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Attachment Instance Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -508,20 +512,21 @@ class NetworkAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}
@@ -563,8 +568,10 @@ class NetworkAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Attachment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,8 +603,10 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Attachment Instance Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -634,20 +643,21 @@ class NetworkAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}

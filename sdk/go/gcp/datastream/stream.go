@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 //
 // ## Example Usage
+//
 // ### Datastream Stream Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -276,8 +278,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Datastream Stream Postgresql
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -400,8 +404,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Datastream Stream Oracle
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -524,8 +530,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Datastream Stream Postgresql Bigquery Dataset Id
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -657,8 +665,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Datastream Stream Bigquery
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -803,18 +813,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Stream can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
+// * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
 //
-//   - `{{project}}/{{location}}/{{stream_id}}`
+// * `{{project}}/{{location}}/{{stream_id}}`
 //
-//   - `{{location}}/{{stream_id}}`
+// * `{{location}}/{{stream_id}}`
 //
-//     When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}

@@ -79,12 +79,14 @@ def get_databases(instance: Optional[str] = None,
     Use this data source to get information about a list of databases in a Cloud SQL instance.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_databases(instance=main["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.
@@ -113,12 +115,14 @@ def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
     Use this data source to get information about a list of databases in a Cloud SQL instance.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_databases(instance=main["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.

@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Spanner
     ///     * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Spanner Instance Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,8 +45,10 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Spanner Instance Processing Units
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,8 +70,10 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Spanner Instance With Autoscaling
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -101,8 +107,10 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Spanner Instance Multi Regional
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,18 +132,19 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Instance can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/instances/{{name}}`
+    /// * `projects/{{project}}/instances/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}

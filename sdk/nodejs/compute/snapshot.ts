@@ -27,8 +27,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  *
  * ## Example Usage
+ *
  * ### Snapshot Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -54,8 +56,10 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Snapshot Chainname
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,18 +86,19 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Snapshot can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/global/snapshots/{{name}}`
+ * * `projects/{{project}}/global/snapshots/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}

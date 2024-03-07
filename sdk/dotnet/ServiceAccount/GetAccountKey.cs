@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountKeyResult> InvokeAsync(GetAccountKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountKeyResult>("gcp:serviceaccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountKeyResult> Invoke(GetAccountKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountKeyResult>("gcp:serviceaccount/getAccountKey:getAccountKey", args ?? new GetAccountKeyInvokeArgs(), options.WithDefaults());

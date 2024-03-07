@@ -691,8 +691,10 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
+
         ### Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -705,8 +707,10 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
+        <!--End PulumiCodeChooser -->
         ### Route Ilb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,8 +749,10 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
+        <!--End PulumiCodeChooser -->
         ### Route Ilb Vip
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -805,18 +811,19 @@ class Route(pulumi.CustomResource):
                 "tag2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Route can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/routes/{{name}}`
+        * `projects/{{project}}/global/routes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
@@ -925,8 +932,10 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
+
         ### Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -939,8 +948,10 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
+        <!--End PulumiCodeChooser -->
         ### Route Ilb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -979,8 +990,10 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
+        <!--End PulumiCodeChooser -->
         ### Route Ilb Vip
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1039,18 +1052,19 @@ class Route(pulumi.CustomResource):
                 "tag2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Route can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/routes/{{name}}`
+        * `projects/{{project}}/global/routes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}

@@ -25,8 +25,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
 // ## Example Usage
+//
 // ### Backend Service Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,8 +62,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service External Iap
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,8 +95,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Simple
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,8 +136,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Include Http Headers
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,8 +175,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Include Named Cookies
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -208,8 +218,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -252,8 +264,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Cache Bypass Cache On Request Headers
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -304,8 +318,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Traffic Director Round Robin
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -341,8 +357,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Traffic Director Ring Hash
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -394,8 +412,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service Network Endpoint
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -453,8 +473,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Backend Service External Managed
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -489,18 +511,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // BackendService can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/backendServices/{{name}}`
+// * `projects/{{project}}/global/backendServices/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}

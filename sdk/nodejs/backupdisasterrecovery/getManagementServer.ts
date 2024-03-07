@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getManagementServer(args: GetManagementServerArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementServerResult> {
 
@@ -52,6 +54,7 @@ export interface GetManagementServerResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,6 +63,7 @@ export interface GetManagementServerResult {
  *     location: "us-central1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getManagementServerOutput(args: GetManagementServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementServerResult> {
     return pulumi.output(args).apply((a: any) => getManagementServer(a, opts))

@@ -23,6 +23,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,14 +73,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Billing account logging sinks can be imported using this format:
 //
-//   - `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
+// * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
 //
-//     When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}

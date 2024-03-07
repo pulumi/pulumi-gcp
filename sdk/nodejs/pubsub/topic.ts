@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  * by using the `gcp.projects.ServiceIdentity` resource.
  *
  * ## Example Usage
+ *
  * ### Pubsub Topic Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,8 +35,10 @@ import * as utilities from "../utilities";
  *     messageRetentionDuration: "86600s",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,8 +56,10 @@ import * as utilities from "../utilities";
  *     kmsKeyName: cryptoKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Geo Restricted
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,8 +71,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Schema Settings
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,18 +106,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Topic can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/topics/{{name}}`
+ * * `projects/{{project}}/topics/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}

@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
  *
  * ## Example Usage
+ *
  * ### Tpu Node Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,8 +33,10 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Tpu Node Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,20 +71,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Node can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+ * * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  *
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

@@ -15,8 +15,10 @@ namespace Pulumi.Gcp.Container
     /// For more information, see:
     /// * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
     /// ## Example Usage
+    /// 
     /// ### Basic_azure_client
     /// A basic example of a containerazure azure client
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,18 +38,19 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Client can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/azureClients/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/azureClients/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:container/azureClient:AzureClient default projects/{{project}}/locations/{{location}}/azureClients/{{name}}

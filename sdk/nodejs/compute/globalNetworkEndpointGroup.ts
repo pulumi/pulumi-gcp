@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
  *
  * ## Example Usage
+ *
  * ### Global Network Endpoint Group
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,8 +33,10 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Global Network Endpoint Group Ip Address
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,18 +47,19 @@ import * as utilities from "../utilities";
  *     defaultPort: 90,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
+ * * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}

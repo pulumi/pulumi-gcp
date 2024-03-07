@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,9 +42,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,6 +80,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

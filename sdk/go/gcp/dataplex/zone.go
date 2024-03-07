@@ -15,8 +15,10 @@ import (
 // The Dataplex Zone resource
 //
 // ## Example Usage
+//
 // ### Basic_zone
 // A basic example of a dataplex zone
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,18 +68,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Zone can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{lake}}/{{name}}`
+// * `{{project}}/{{location}}/{{lake}}/{{name}}`
 //
-//   - `{{location}}/{{lake}}/{{name}}`
+// * `{{location}}/{{lake}}/{{name}}`
 //
-//     When using the `pulumi import` command, Zone can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Zone can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/zone:Zone default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}

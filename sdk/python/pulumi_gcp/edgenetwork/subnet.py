@@ -463,8 +463,10 @@ class Subnet(pulumi.CustomResource):
             * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 
         ## Example Usage
+
         ### Edgenetwork Subnet
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -486,8 +488,10 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Edgenetwork Subnet With Vlan Id
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -510,22 +514,23 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnet can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
+        * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
 
-         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
+        * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
 
-         * `{{location}}/{{zone}}/{{subnet_id}}`
+        * `{{location}}/{{zone}}/{{subnet_id}}`
 
-         * `{{location}}/{{subnet_id}}`
+        * `{{location}}/{{subnet_id}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
@@ -581,8 +586,10 @@ class Subnet(pulumi.CustomResource):
             * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 
         ## Example Usage
+
         ### Edgenetwork Subnet
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,8 +611,10 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Edgenetwork Subnet With Vlan Id
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -628,22 +637,23 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnet can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
+        * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
 
-         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
+        * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
 
-         * `{{location}}/{{zone}}/{{subnet_id}}`
+        * `{{location}}/{{zone}}/{{subnet_id}}`
 
-         * `{{location}}/{{subnet_id}}`
+        * `{{location}}/{{subnet_id}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}

@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Vertex AI Conversation](https://cloud.google.com/dialogflow/cx/docs/concept/generative)
  * 
  * ## Example Usage
+ * 
  * ### Discoveryengine Chat Engine Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -97,18 +100,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ChatEngine can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
+ * * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
  * 
- *  * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
+ * * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
  * 
- *  * `{{location}}/{{collection_id}}/{{engine_id}}`
+ * * `{{location}}/{{collection_id}}/{{engine_id}}`
  * 
- *  When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}

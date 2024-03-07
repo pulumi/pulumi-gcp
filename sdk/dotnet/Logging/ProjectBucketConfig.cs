@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,9 +44,11 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with customId
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,9 +67,11 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with Log Analytics enabled
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,9 +91,11 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with customId and cmekSettings
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -139,9 +146,11 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create logging bucket with index configs
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -165,14 +174,15 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported using the following format:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
     /// 
-    ///  When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}

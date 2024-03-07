@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
  *
  * ## Example Usage
+ *
  * ### Discoveryengine Datastore Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,18 +34,19 @@ import * as utilities from "../utilities";
  *     createAdvancedSiteSearch: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * DataStore can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}`
+ * * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}`
  *
- *  * `{{project}}/{{location}}/{{data_store_id}}`
+ * * `{{project}}/{{location}}/{{data_store_id}}`
  *
- *  * `{{location}}/{{data_store_id}}`
+ * * `{{location}}/{{data_store_id}}`
  *
- *  When using the `pulumi import` command, DataStore can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DataStore can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:discoveryengine/dataStore:DataStore default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}

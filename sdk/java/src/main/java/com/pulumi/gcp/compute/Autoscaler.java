@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  * 
  * ## Example Usage
+ * 
  * ### Autoscaler Single Instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -127,7 +130,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Autoscaler Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -222,20 +228,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Autoscaler can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
  * 
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  * 
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
@@ -261,8 +268,8 @@ public class Autoscaler extends com.pulumi.resources.CustomResource {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.
-     * Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%!
+     * (MISSING)Structure is documented below.
      * 
      */
     @Export(name="autoscalingPolicy", refs={AutoscalerAutoscalingPolicy.class}, tree="[0]")
@@ -273,8 +280,8 @@ public class Autoscaler extends com.pulumi.resources.CustomResource {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.
-     * Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%!
+     * (MISSING)Structure is documented below.
      * 
      */
     public Output<AutoscalerAutoscalingPolicy> autoscalingPolicy() {

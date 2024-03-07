@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Network Security Address Groups Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,8 +46,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Address Groups Organization Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,8 +73,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Address Groups Advanced
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,14 +101,15 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// AddressGroup can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/locations/{{location}}/addressGroups/{{name}}`
+    /// * `{{parent}}/locations/{{location}}/addressGroups/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, AddressGroup can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, AddressGroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}

@@ -273,8 +273,10 @@ class Taxonomy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+
         ### Data Catalog Taxonomy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -284,14 +286,15 @@ class Taxonomy(pulumi.CustomResource):
             description="A collection of policy tags",
             activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Taxonomy can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
@@ -333,8 +336,10 @@ class Taxonomy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+
         ### Data Catalog Taxonomy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,14 +349,15 @@ class Taxonomy(pulumi.CustomResource):
             description="A collection of policy tags",
             activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Taxonomy can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}

@@ -26,37 +26,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
-     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
-     *                 .id(&#34;my-group@example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupLookupResult> getGroupLookup(GetGroupLookupArgs args) {
@@ -68,37 +37,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
-     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
-     *                 .id(&#34;my-group@example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupLookupResult> getGroupLookupPlain(GetGroupLookupPlainArgs args) {
@@ -110,37 +48,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
-     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
-     *                 .id(&#34;my-group@example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupLookupResult> getGroupLookup(GetGroupLookupArgs args, InvokeOptions options) {
@@ -152,37 +59,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
-     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
-     *                 .id(&#34;my-group@example.com&#34;)
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupLookupResult> getGroupLookupPlain(GetGroupLookupPlainArgs args, InvokeOptions options) {
@@ -194,34 +70,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var members = CloudidentityFunctions.getGroupMemberships(GetGroupMembershipsArgs.builder()
-     *             .group(&#34;groups/123eab45c6defghi&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupMembershipsResult> getGroupMemberships(GetGroupMembershipsArgs args) {
@@ -233,34 +81,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var members = CloudidentityFunctions.getGroupMemberships(GetGroupMembershipsArgs.builder()
-     *             .group(&#34;groups/123eab45c6defghi&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupMembershipsResult> getGroupMembershipsPlain(GetGroupMembershipsPlainArgs args) {
@@ -272,34 +92,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var members = CloudidentityFunctions.getGroupMemberships(GetGroupMembershipsArgs.builder()
-     *             .group(&#34;groups/123eab45c6defghi&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupMembershipsResult> getGroupMemberships(GetGroupMembershipsArgs args, InvokeOptions options) {
@@ -311,34 +103,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#memberships
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var members = CloudidentityFunctions.getGroupMemberships(GetGroupMembershipsArgs.builder()
-     *             .group(&#34;groups/123eab45c6defghi&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupMembershipsResult> getGroupMembershipsPlain(GetGroupMembershipsPlainArgs args, InvokeOptions options) {
@@ -350,34 +114,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = CloudidentityFunctions.getGroups(GetGroupsArgs.builder()
-     *             .parent(&#34;customers/A01b123xz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -389,34 +125,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = CloudidentityFunctions.getGroups(GetGroupsArgs.builder()
-     *             .parent(&#34;customers/A01b123xz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -428,34 +136,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = CloudidentityFunctions.getGroups(GetGroupsArgs.builder()
-     *             .parent(&#34;customers/A01b123xz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -467,34 +147,6 @@ public final class CloudidentityFunctions {
      * https://cloud.google.com/identity/docs/concepts/overview#groups
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
-     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = CloudidentityFunctions.getGroups(GetGroupsArgs.builder()
-     *             .parent(&#34;customers/A01b123xz&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {

@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Network Security Client Tls Policy Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,8 +44,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Security Client Tls Policy Advanced
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,18 +92,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ClientTlsPolicy can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, ClientTlsPolicy can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ClientTlsPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy default projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}

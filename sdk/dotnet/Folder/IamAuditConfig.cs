@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Folder
     ///    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
     ///    applying the change.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,9 +66,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// With IAM Conditions:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -105,9 +108,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_folder\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -128,9 +133,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// With IAM Conditions:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -157,9 +164,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_folder\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -177,9 +186,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// With IAM Conditions:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -203,9 +214,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_folder\_iam\_audit\_config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -237,28 +250,29 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ### Importing Audit Configs
     /// 
-    ///  An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
+    /// An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
     /// 
-    ///  * `"folder/{{folder_id}} foo.googleapis.com"`
+    /// * `"folder/{{folder_id}} foo.googleapis.com"`
     /// 
-    ///  An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+    /// An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
     /// 
-    ///  tf
+    /// tf
     /// 
-    ///  import {
+    /// import {
     /// 
-    ///  id = "folder/{{folder_id}} foo.googleapis.com"
+    ///   id = "folder/{{folder_id}} foo.googleapis.com"
     /// 
-    ///  to = google_folder_iam_audit_config.default
+    ///   to = google_folder_iam_audit_config.default
     /// 
-    ///  }
+    /// }
     /// 
-    ///  The `pulumi import` command can also be used:
+    /// The `pulumi import` command can also be used:
     /// 
     /// ```sh
     /// $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"

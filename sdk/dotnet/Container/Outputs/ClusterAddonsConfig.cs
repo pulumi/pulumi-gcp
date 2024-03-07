@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// 
         /// 
         /// This example `addons_config` disables two addons:
-        /// 
-        /// &lt;a name="nested_binary_authorization"&gt;&lt;/a&gt;The `binary_authorization` block supports:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigConfigConnectorConfig? ConfigConnectorConfig;
         /// <summary>

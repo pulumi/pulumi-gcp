@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
  * 
  * ## Example Usage
+ * 
  * ### Network Peering Routes Config Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -87,7 +90,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Peering Routes Config Gke
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -170,18 +176,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
+ * * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
  * 
- *  * `{{project}}/{{network}}/{{peering}}`
+ * * `{{project}}/{{network}}/{{peering}}`
  * 
- *  * `{{network}}/{{peering}}`
+ * * `{{network}}/{{peering}}`
  * 
- *  When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}

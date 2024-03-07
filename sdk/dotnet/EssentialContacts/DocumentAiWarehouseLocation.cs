@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Document Ai Warehouse Location
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,6 +45,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

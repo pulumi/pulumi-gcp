@@ -16,27 +16,13 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#memberships
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
-        ///     {
-        ///         Group = "groups/123eab45c6defghi",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_cloud_identity_group_memberships" "members" {
+        ///   group = "groups/123eab45c6defghi"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupMembershipsResult> InvokeAsync(GetGroupMembershipsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsArgs(), options.WithDefaults());
@@ -46,27 +32,13 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#memberships
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
-        ///     {
-        ///         Group = "groups/123eab45c6defghi",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_cloud_identity_group_memberships" "members" {
+        ///   group = "groups/123eab45c6defghi"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupMembershipsResult> Invoke(GetGroupMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsInvokeArgs(), options.WithDefaults());

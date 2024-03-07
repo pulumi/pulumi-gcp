@@ -22,8 +22,10 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ *
  * ### Monitoring App Engine Service
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -59,6 +61,7 @@ import * as utilities from "../utilities";
  *     moduleId: myapp.service,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceResult> {
 
@@ -131,8 +134,10 @@ export interface GetAppEngineServiceResult {
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ *
  * ### Monitoring App Engine Service
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,6 +173,7 @@ export interface GetAppEngineServiceResult {
  *     moduleId: myapp.service,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceResult> {
     return pulumi.output(args).apply((a: any) => getAppEngineService(a, opts))

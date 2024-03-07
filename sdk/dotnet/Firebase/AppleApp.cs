@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Firebase Apple App Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,8 +32,10 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebase Apple App Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,22 +73,23 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// AppleApp can be imported using any of these accepted formats:
     /// 
-    ///  * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
+    /// * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
     /// 
-    ///  * `projects/{{project}}/iosApps/{{app_id}}`
+    /// * `projects/{{project}}/iosApps/{{app_id}}`
     /// 
-    ///  * `{{project}}/{{project}}/{{app_id}}`
+    /// * `{{project}}/{{project}}/{{app_id}}`
     /// 
-    ///  * `iosApps/{{app_id}}`
+    /// * `iosApps/{{app_id}}`
     /// 
-    ///  * `{{app_id}}`
+    /// * `{{app_id}}`
     /// 
-    ///  When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}

@@ -16,46 +16,27 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_compute_lb_ip_ranges" "ranges" {
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ranges = Gcp.Compute.GetLBIPRanges.Invoke();
+        /// resource "google_compute_firewall" "lb" {
+        ///   name    = "lb-firewall"
+        ///   network = google_compute_network.main.name
         /// 
-        ///     var lb = new Gcp.Compute.Firewall("lb", new()
-        ///     {
-        ///         Name = "lb-firewall",
-        ///         Network = main.Name,
-        ///         Allows = new[]
-        ///         {
-        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
-        ///             {
-        ///                 Protocol = "tcp",
-        ///                 Ports = new[]
-        ///                 {
-        ///                     "80",
-        ///                 },
-        ///             },
-        ///         },
-        ///         SourceRanges = ranges.Apply(getLBIPRangesResult =&gt; getLBIPRangesResult.Networks),
-        ///         TargetTags = new[]
-        ///         {
-        ///             "InstanceBehindLoadBalancer",
-        ///         },
-        ///     });
+        ///   allow {
+        ///     protocol = "tcp"
+        ///     ports    = ["80"]
+        ///   }
         /// 
-        /// });
+        ///   source_ranges = data.google_compute_lb_ip_ranges.ranges.network
+        ///   target_tags = [
+        ///     "InstanceBehindLoadBalancer",
+        ///   ]
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLBIPRangesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithDefaults());
@@ -65,46 +46,27 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_compute_lb_ip_ranges" "ranges" {
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ranges = Gcp.Compute.GetLBIPRanges.Invoke();
+        /// resource "google_compute_firewall" "lb" {
+        ///   name    = "lb-firewall"
+        ///   network = google_compute_network.main.name
         /// 
-        ///     var lb = new Gcp.Compute.Firewall("lb", new()
-        ///     {
-        ///         Name = "lb-firewall",
-        ///         Network = main.Name,
-        ///         Allows = new[]
-        ///         {
-        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
-        ///             {
-        ///                 Protocol = "tcp",
-        ///                 Ports = new[]
-        ///                 {
-        ///                     "80",
-        ///                 },
-        ///             },
-        ///         },
-        ///         SourceRanges = ranges.Apply(getLBIPRangesResult =&gt; getLBIPRangesResult.Networks),
-        ///         TargetTags = new[]
-        ///         {
-        ///             "InstanceBehindLoadBalancer",
-        ///         },
-        ///     });
+        ///   allow {
+        ///     protocol = "tcp"
+        ///     ports    = ["80"]
+        ///   }
         /// 
-        /// });
+        ///   source_ranges = data.google_compute_lb_ip_ranges.ranges.network
+        ///   target_tags = [
+        ///     "InstanceBehindLoadBalancer",
+        ///   ]
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLBIPRangesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithDefaults());

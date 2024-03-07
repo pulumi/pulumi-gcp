@@ -205,8 +205,10 @@ class Contact(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Essential Contact
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -218,14 +220,15 @@ class Contact(pulumi.CustomResource):
             language_tag="en-GB",
             notification_category_subscriptions=["ALL"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Contact can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Contact can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Contact can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}
@@ -263,8 +266,10 @@ class Contact(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Essential Contact
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -276,14 +281,15 @@ class Contact(pulumi.CustomResource):
             language_tag="en-GB",
             notification_category_subscriptions=["ALL"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Contact can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Contact can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Contact can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}

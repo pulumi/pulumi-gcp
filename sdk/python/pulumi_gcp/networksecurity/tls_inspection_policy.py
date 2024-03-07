@@ -280,8 +280,10 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Security Tls Inspection Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,18 +355,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             ca_pool=default.id,
             exclude_public_ca_set=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TlsInspectionPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, TlsInspectionPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TlsInspectionPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}
@@ -399,8 +402,10 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Security Tls Inspection Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,18 +477,19 @@ class TlsInspectionPolicy(pulumi.CustomResource):
             ca_pool=default.id,
             exclude_public_ca_set=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TlsInspectionPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, TlsInspectionPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TlsInspectionPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy default projects/{{project}}/locations/{{location}}/tlsInspectionPolicies/{{name}}

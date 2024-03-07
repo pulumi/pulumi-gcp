@@ -24,11 +24,11 @@ namespace Pulumi.Gcp.Organizations
         /// use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
         /// receive an error otherwise. The provider uses this scope by default.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Exporting An Email
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +45,7 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClientOpenIdUserInfoResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithDefaults());
@@ -64,11 +63,11 @@ namespace Pulumi.Gcp.Organizations
         /// use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
         /// receive an error otherwise. The provider uses this scope by default.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Exporting An Email
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +84,7 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClientOpenIdUserInfoResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithDefaults());

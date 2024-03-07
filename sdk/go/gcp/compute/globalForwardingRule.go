@@ -21,8 +21,10 @@ import (
 // https://cloud.google.com/compute/docs/load-balancing/http/
 //
 // ## Example Usage
+//
 // ### External Ssl Proxy Lb Mig Backend
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -251,8 +253,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### External Tcp Proxy Lb Mig Backend
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -436,8 +440,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### External Http Lb Mig Backend Custom Header
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -639,8 +645,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule Http
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -723,8 +731,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule Internal
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -872,8 +882,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule External Managed
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -948,8 +960,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Global Forwarding Rule Hybrid
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1136,8 +1150,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Global Internal Http Lb With Mig Backend
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1373,8 +1389,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Private Service Connect Google Apis
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1437,8 +1455,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Private Service Connect Google Apis No Automate Dns
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1498,18 +1518,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // GlobalForwardingRule can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/forwardingRules/{{name}}`
+// * `projects/{{project}}/global/forwardingRules/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}

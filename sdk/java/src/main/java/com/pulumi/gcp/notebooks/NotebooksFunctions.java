@@ -21,6 +21,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for instance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -51,6 +53,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args) {
@@ -60,6 +63,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for instance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args) {
@@ -99,6 +105,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for instance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
@@ -138,6 +147,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for instance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +179,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -177,6 +189,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for runtime
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,6 +221,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRuntimeIamPolicyResult> getRuntimeIamPolicy(GetRuntimeIamPolicyArgs args) {
@@ -216,6 +231,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for runtime
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -246,6 +263,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRuntimeIamPolicyResult> getRuntimeIamPolicyPlain(GetRuntimeIamPolicyPlainArgs args) {
@@ -255,6 +273,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for runtime
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -285,6 +305,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRuntimeIamPolicyResult> getRuntimeIamPolicy(GetRuntimeIamPolicyArgs args, InvokeOptions options) {
@@ -294,6 +315,8 @@ public final class NotebooksFunctions {
      * Retrieves the current IAM policy data for runtime
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -324,6 +347,7 @@ public final class NotebooksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRuntimeIamPolicyResult> getRuntimeIamPolicyPlain(GetRuntimeIamPolicyPlainArgs args, InvokeOptions options) {

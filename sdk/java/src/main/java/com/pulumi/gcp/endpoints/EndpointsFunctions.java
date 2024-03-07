@@ -49,6 +49,8 @@ public final class EndpointsFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -77,6 +79,7 @@ public final class EndpointsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args) {
@@ -86,6 +89,8 @@ public final class EndpointsFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -114,6 +119,7 @@ public final class EndpointsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args) {
@@ -123,6 +129,8 @@ public final class EndpointsFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -151,6 +159,7 @@ public final class EndpointsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOptions options) {
@@ -160,6 +169,8 @@ public final class EndpointsFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -188,6 +199,7 @@ public final class EndpointsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args, InvokeOptions options) {

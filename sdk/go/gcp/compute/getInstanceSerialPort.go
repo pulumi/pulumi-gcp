@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,9 +43,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,6 +122,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetInstanceSerialPort(ctx *pulumi.Context, args *GetInstanceSerialPortArgs, opts ...pulumi.InvokeOption) (*GetInstanceSerialPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceSerialPortResult

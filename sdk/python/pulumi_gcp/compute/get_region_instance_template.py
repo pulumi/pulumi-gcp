@@ -446,6 +446,7 @@ def get_region_instance_template(filter: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -456,6 +457,7 @@ def get_region_instance_template(filter: Optional[str] = None,
     generic_regex = gcp.compute.get_region_instance_template(filter="name != generic-tpl-20200107",
         most_recent=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A filter to retrieve the instance templates.
@@ -529,6 +531,7 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -539,6 +542,7 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
     generic_regex = gcp.compute.get_region_instance_template(filter="name != generic-tpl-20200107",
         most_recent=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A filter to retrieve the instance templates.

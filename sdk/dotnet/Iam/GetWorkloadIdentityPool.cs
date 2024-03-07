@@ -14,27 +14,13 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// Get a IAM workload identity pool from Google Cloud by its id.
         /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Iam.GetWorkloadIdentityPool.Invoke(new()
-        ///     {
-        ///         WorkloadIdentityPoolId = "foo-pool",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_iam_workload_identity_pool" "foo" {
+        ///   workload_identity_pool_id = "foo-pool"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWorkloadIdentityPoolResult> InvokeAsync(GetWorkloadIdentityPoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithDefaults());
@@ -42,27 +28,13 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// Get a IAM workload identity pool from Google Cloud by its id.
         /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foo = Gcp.Iam.GetWorkloadIdentityPool.Invoke(new()
-        ///     {
-        ///         WorkloadIdentityPoolId = "foo-pool",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_iam_workload_identity_pool" "foo" {
+        ///   workload_identity_pool_id = "foo-pool"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetWorkloadIdentityPoolResult> Invoke(GetWorkloadIdentityPoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithDefaults());

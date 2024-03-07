@@ -17,10 +17,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about private cloud NSX credentials, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNsxCredentialsResult> InvokeAsync(GetNsxCredentialsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNsxCredentialsResult>("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args ?? new GetNsxCredentialsArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about private cloud NSX credentials, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNsxCredentialsResult> Invoke(GetNsxCredentialsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNsxCredentialsResult>("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args ?? new GetNsxCredentialsInvokeArgs(), options.WithDefaults());

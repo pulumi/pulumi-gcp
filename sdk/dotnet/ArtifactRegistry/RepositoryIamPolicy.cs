@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// ## google\_artifact\_registry\_repository\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,9 +60,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_artifact\_registry\_repository\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -84,9 +87,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_artifact\_registry\_repository\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,44 +111,45 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    ///  * projects/{{project}}/locations/{{location}}/repositories/{{repository}}
+    /// * projects/{{project}}/locations/{{location}}/repositories/{{repository}}
     /// 
-    ///  * {{project}}/{{location}}/{{repository}}
+    /// * {{project}}/{{location}}/{{repository}}
     /// 
-    ///  * {{location}}/{{repository}}
+    /// * {{location}}/{{repository}}
     /// 
-    ///  * {{repository}}
+    /// * {{repository}}
     /// 
-    ///  Any variables not passed in the import command will be taken from the provider configuration.
+    /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    ///  Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member.
+    /// Artifact Registry repository IAM resources can be imported using the resource identifiers, role, and member.
     /// 
-    ///  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+    /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader user:jane@example.com"
     /// ```
     /// 
-    ///  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+    /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor "projects/{{project}}/locations/{{location}}/repositories/{{repository}} roles/artifactregistry.reader"
     /// ```
     /// 
-    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy editor projects/{{project}}/locations/{{location}}/repositories/{{repository}}
     /// ```
     /// 
-    ///  -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy")]
     public partial class RepositoryIamPolicy : global::Pulumi.CustomResource

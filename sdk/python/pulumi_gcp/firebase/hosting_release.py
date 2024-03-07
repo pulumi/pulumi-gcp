@@ -283,8 +283,10 @@ class HostingRelease(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Firebasehosting Release In Site
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -306,8 +308,10 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release In Channel
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -333,8 +337,10 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release Disable
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,20 +353,21 @@ class HostingRelease(pulumi.CustomResource):
             type="SITE_DISABLE",
             message="Take down site")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Release can be imported using any of these accepted formats:
 
-         * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
+        * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
 
-         * `sites/{{site_id}}/releases/{{release_id}}`
+        * `sites/{{site_id}}/releases/{{release_id}}`
 
-         * `{{site_id}}/{{channel_id}}/{{release_id}}`
+        * `{{site_id}}/{{channel_id}}/{{release_id}}`
 
-         * `{{site_id}}/{{release_id}}`
+        * `{{site_id}}/{{release_id}}`
 
-         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
@@ -406,8 +413,10 @@ class HostingRelease(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Firebasehosting Release In Site
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -429,8 +438,10 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release In Channel
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -456,8 +467,10 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Release Disable
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,20 +483,21 @@ class HostingRelease(pulumi.CustomResource):
             type="SITE_DISABLE",
             message="Take down site")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Release can be imported using any of these accepted formats:
 
-         * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
+        * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
 
-         * `sites/{{site_id}}/releases/{{release_id}}`
+        * `sites/{{site_id}}/releases/{{release_id}}`
 
-         * `{{site_id}}/{{channel_id}}/{{release_id}}`
+        * `{{site_id}}/{{channel_id}}/{{release_id}}`
 
-         * `{{site_id}}/{{release_id}}`
+        * `{{site_id}}/{{release_id}}`
 
-         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}

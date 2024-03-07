@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -112,18 +114,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * BigQuery tables can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
+ * * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
  * 
- *  * `{{project}}/{{dataset_id}}/{{table_id}}`
+ * * `{{project}}/{{dataset_id}}/{{table_id}}`
  * 
- *  * `{{dataset_id}}/{{table_id}}`
+ * * `{{dataset_id}}/{{table_id}}`
  * 
- *  When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}

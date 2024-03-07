@@ -142,16 +142,6 @@ def get_certificate(name: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_cert = gcp.compute.get_certificate(name="my-cert")
-    pulumi.export("certificate", my_cert.certificate)
-    pulumi.export("certificateId", my_cert.certificate_id)
-    pulumi.export("selfLink", my_cert.self_link)
-    ```
-
 
     :param str name: The name of the certificate.
            
@@ -187,16 +177,6 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     Get info about a Google Compute SSL Certificate from its name.
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_cert = gcp.compute.get_certificate(name="my-cert")
-    pulumi.export("certificate", my_cert.certificate)
-    pulumi.export("certificateId", my_cert.certificate_id)
-    pulumi.export("selfLink", my_cert.self_link)
-    ```
 
 
     :param str name: The name of the certificate.

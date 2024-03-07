@@ -25,8 +25,10 @@ namespace Pulumi.Gcp.OsConfig
     ///     *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Os Config Os Policy Assignment Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -167,18 +169,19 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OSPolicyAssignment can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, OSPolicyAssignment can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, OSPolicyAssignment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}

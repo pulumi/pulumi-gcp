@@ -989,8 +989,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         information, see Creating VLAN Attachments.
 
         ## Example Usage
+
         ### Interconnect Attachment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1011,8 +1013,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             router=foobar.id,
             mtu="1500")
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Interconnect Attachment Ipsec Encryption
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1042,20 +1046,21 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InterconnectAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
@@ -1168,8 +1173,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         information, see Creating VLAN Attachments.
 
         ## Example Usage
+
         ### Interconnect Attachment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1190,8 +1197,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             router=foobar.id,
             mtu="1500")
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Interconnect Attachment Ipsec Encryption
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1221,20 +1230,21 @@ class InterconnectAttachment(pulumi.CustomResource):
             encryption="IPSEC",
             ipsec_internal_addresses=[address.self_link])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InterconnectAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}

@@ -27,10 +27,9 @@ namespace Pulumi.Gcp.Projects
         /// * How-to Guides
         ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectServiceResult> InvokeAsync(GetProjectServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceResult>("gcp:projects/getProjectService:getProjectService", args ?? new GetProjectServiceArgs(), options.WithDefaults());
@@ -68,10 +66,9 @@ namespace Pulumi.Gcp.Projects
         /// * How-to Guides
         ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectServiceResult> Invoke(GetProjectServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceResult>("gcp:projects/getProjectService:getProjectService", args ?? new GetProjectServiceInvokeArgs(), options.WithDefaults());

@@ -17,8 +17,10 @@ import (
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 // ## Example Usage
+//
 // ### Basic_azure_node_pool
 // A basic example of a containerazure azure node pool
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -137,18 +139,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // NodePool can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{cluster}}/{{name}}`
+// * `{{project}}/{{location}}/{{cluster}}/{{name}}`
 //
-//   - `{{location}}/{{cluster}}/{{name}}`
+// * `{{location}}/{{cluster}}/{{name}}`
 //
-//     When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}

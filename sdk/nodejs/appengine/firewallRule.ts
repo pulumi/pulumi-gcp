@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
  *
  * ## Example Usage
+ *
  * ### App Engine Firewall Rule Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,18 +40,19 @@ import * as utilities from "../utilities";
  *     sourceRange: "*",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FirewallRule can be imported using any of these accepted formats:
  *
- *  * `apps/{{project}}/firewall/ingressRules/{{priority}}`
+ * * `apps/{{project}}/firewall/ingressRules/{{priority}}`
  *
- *  * `{{project}}/{{priority}}`
+ * * `{{project}}/{{priority}}`
  *
- *  * `{{priority}}`
+ * * `{{priority}}`
  *
- *  When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}

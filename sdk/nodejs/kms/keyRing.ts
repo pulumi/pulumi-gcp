@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  *     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
  *
  * ## Example Usage
+ *
  * ### Kms Key Ring Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,18 +31,19 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * KeyRing can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/keyRings/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/keyRings/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}

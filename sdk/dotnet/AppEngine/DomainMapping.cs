@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
     /// 
     /// ## Example Usage
+    /// 
     /// ### App Engine Domain Mapping Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,18 +42,19 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// DomainMapping can be imported using any of these accepted formats:
     /// 
-    ///  * `apps/{{project}}/domainMappings/{{domain_name}}`
+    /// * `apps/{{project}}/domainMappings/{{domain_name}}`
     /// 
-    ///  * `{{project}}/{{domain_name}}`
+    /// * `{{project}}/{{domain_name}}`
     /// 
-    ///  * `{{domain_name}}`
+    /// * `{{domain_name}}`
     /// 
-    ///  When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}

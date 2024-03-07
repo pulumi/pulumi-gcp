@@ -374,8 +374,10 @@ class Snapshot(pulumi.CustomResource):
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
 
         ## Example Usage
+
         ### Filestore Snapshot Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,8 +399,10 @@ class Snapshot(pulumi.CustomResource):
             instance=instance.name,
             location="us-east1")
         ```
+        <!--End PulumiCodeChooser -->
         ### Filestore Snapshot Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,18 +428,19 @@ class Snapshot(pulumi.CustomResource):
                 "my_label": "value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Snapshot can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}`
 
-         * `{{project}}/{{location}}/{{instance}}/{{name}}`
+        * `{{project}}/{{location}}/{{instance}}/{{name}}`
 
-         * `{{location}}/{{instance}}/{{name}}`
+        * `{{location}}/{{instance}}/{{name}}`
 
-         When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:filestore/snapshot:Snapshot default projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}
@@ -488,8 +493,10 @@ class Snapshot(pulumi.CustomResource):
             * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
 
         ## Example Usage
+
         ### Filestore Snapshot Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -511,8 +518,10 @@ class Snapshot(pulumi.CustomResource):
             instance=instance.name,
             location="us-east1")
         ```
+        <!--End PulumiCodeChooser -->
         ### Filestore Snapshot Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -538,18 +547,19 @@ class Snapshot(pulumi.CustomResource):
                 "my_label": "value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Snapshot can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}`
 
-         * `{{project}}/{{location}}/{{instance}}/{{name}}`
+        * `{{project}}/{{location}}/{{instance}}/{{name}}`
 
-         * `{{location}}/{{instance}}/{{name}}`
+        * `{{location}}/{{instance}}/{{name}}`
 
-         When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:filestore/snapshot:Snapshot default projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}

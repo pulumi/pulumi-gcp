@@ -21,6 +21,8 @@ public final class FolderFunctions {
      * Retrieves the current IAM policy data for a folder.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args) {
@@ -58,6 +61,8 @@ public final class FolderFunctions {
      * Retrieves the current IAM policy data for a folder.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +91,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args) {
@@ -95,6 +101,8 @@ public final class FolderFunctions {
      * Retrieves the current IAM policy data for a folder.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +131,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
@@ -132,6 +141,8 @@ public final class FolderFunctions {
      * Retrieves the current IAM policy data for a folder.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -160,6 +171,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
@@ -171,6 +183,8 @@ public final class FolderFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +215,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args) {
@@ -212,6 +227,8 @@ public final class FolderFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -242,6 +259,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationPolicyResult> getOrganizationPolicyPlain(GetOrganizationPolicyPlainArgs args) {
@@ -253,6 +271,8 @@ public final class FolderFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -283,6 +303,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOptions options) {
@@ -294,6 +315,8 @@ public final class FolderFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -324,6 +347,7 @@ public final class FolderFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationPolicyResult> getOrganizationPolicyPlain(GetOrganizationPolicyPlainArgs args, InvokeOptions options) {

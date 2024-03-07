@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDataExchangeIamPolicyResult> InvokeAsync(GetDataExchangeIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeIamPolicyResult>("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", args ?? new GetDataExchangeIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDataExchangeIamPolicyResult> Invoke(GetDataExchangeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataExchangeIamPolicyResult>("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", args ?? new GetDataExchangeIamPolicyInvokeArgs(), options.WithDefaults());

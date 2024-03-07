@@ -397,8 +397,10 @@ class GrpcRoute(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Services Grpc Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,8 +427,10 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Matches And Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,8 +480,10 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -508,18 +514,19 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GrpcRoute can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+        * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
@@ -556,8 +563,10 @@ class GrpcRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Services Grpc Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -584,8 +593,10 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Matches And Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -635,8 +646,10 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -667,18 +680,19 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GrpcRoute can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+        * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}

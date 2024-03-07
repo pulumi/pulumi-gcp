@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Target Https Proxy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,8 +112,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Target Https Proxy Http Keep Alive Timeout
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -202,8 +206,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Target Https Proxy Mtls
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -350,8 +356,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Target Https Proxy Certificate Manager Certificate
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -436,18 +444,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// TargetHttpsProxy can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/global/targetHttpsProxies/{{name}}`
+    /// * `projects/{{project}}/global/targetHttpsProxies/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}

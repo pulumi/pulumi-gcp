@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = [&#34;attached_disk&#34;]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -78,16 +80,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Attached Disk can be imported the following ways:
  * 
- *  * `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}`
+ * * `projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}`
  * 
- *  * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}`
+ * * `{{project}}/{{zone}}/{{instance.name}}/{{disk.name}}`
  * 
- *  When using the `pulumi import` command, Attached Disk can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Attached Disk can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}

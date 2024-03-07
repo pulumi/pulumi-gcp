@@ -17,8 +17,10 @@ namespace Pulumi.Gcp.Organizations
     /// * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Organization Access Approval Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,8 +53,10 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Organization Access Approval Active Key Version
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -118,16 +122,17 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OrganizationSettings can be imported using any of these accepted formats:
     /// 
-    ///  * `organizations/{{organization_id}}/accessApprovalSettings`
+    /// * `organizations/{{organization_id}}/accessApprovalSettings`
     /// 
-    ///  * `{{organization_id}}`
+    /// * `{{organization_id}}`
     /// 
-    ///  When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings

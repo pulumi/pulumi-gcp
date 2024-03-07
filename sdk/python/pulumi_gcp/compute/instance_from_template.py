@@ -1291,6 +1291,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1320,6 +1321,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                 "my_key": "my_value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1395,6 +1397,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1424,6 +1427,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                 "my_key": "my_value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

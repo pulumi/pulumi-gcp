@@ -129,6 +129,7 @@ def get_managed_zone(name: Optional[str] = None,
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -141,6 +142,7 @@ def get_managed_zone(name: Optional[str] = None,
         managed_zone=env_dns_zone.name,
         rrdatas=["test"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: A unique name for the resource.
@@ -174,6 +176,7 @@ def get_managed_zone_output(name: Optional[pulumi.Input[str]] = None,
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -186,6 +189,7 @@ def get_managed_zone_output(name: Optional[pulumi.Input[str]] = None,
         managed_zone=env_dns_zone.name,
         rrdatas=["test"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: A unique name for the resource.

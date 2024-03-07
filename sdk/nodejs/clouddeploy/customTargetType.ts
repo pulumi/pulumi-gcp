@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
  *
  * ## Example Usage
+ *
  * ### Clouddeploy Custom Target Type Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,8 +43,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Clouddeploy Custom Target Type Git Skaffold Modules
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,8 +69,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,18 +94,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * CustomTargetType can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}

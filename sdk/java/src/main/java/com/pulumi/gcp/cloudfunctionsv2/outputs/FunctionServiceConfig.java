@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FunctionServiceConfig {
     /**
-     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
      * 
      */
     private @Nullable Boolean allTrafficOnLatestRevision;
@@ -118,7 +118,7 @@ public final class FunctionServiceConfig {
 
     private FunctionServiceConfig() {}
     /**
-     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
      * 
      */
     public Optional<Boolean> allTrafficOnLatestRevision() {

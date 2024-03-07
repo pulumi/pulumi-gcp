@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/docs/app-check)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Firebase App Check Debug Token Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,18 +58,19 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// DebugToken can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}`
+    /// * `projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}`
     /// 
-    ///  * `{{project}}/{{app_id}}/{{debug_token_id}}`
+    /// * `{{project}}/{{app_id}}/{{debug_token_id}}`
     /// 
-    ///  * `{{app_id}}/{{debug_token_id}}`
+    /// * `{{app_id}}/{{debug_token_id}}`
     /// 
-    ///  When using the `pulumi import` command, DebugToken can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, DebugToken can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}

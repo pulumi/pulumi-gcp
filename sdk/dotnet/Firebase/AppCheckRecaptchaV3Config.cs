@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/docs/app-check)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Firebase App Check Recaptcha V3 Config Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,18 +55,19 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// RecaptchaV3Config can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
+    /// * `projects/{{project}}/apps/{{app_id}}/recaptchaV3Config`
     /// 
-    ///  * `{{project}}/{{app_id}}`
+    /// * `{{project}}/{{app_id}}`
     /// 
-    ///  * `{{app_id}}`
+    /// * `{{app_id}}`
     /// 
-    ///  When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, RecaptchaV3Config can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config default projects/{{project}}/apps/{{app_id}}/recaptchaV3Config

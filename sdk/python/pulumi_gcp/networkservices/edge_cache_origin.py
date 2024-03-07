@@ -706,8 +706,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
 
         ## Example Usage
+
         ### Network Services Edge Cache Origin Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -717,8 +719,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for media edge test")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -776,8 +780,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 connect_timeout="10s",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin V4auth
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -800,18 +806,19 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 origin_region="auto",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EdgeCacheOrigin can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
+        * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}
@@ -898,8 +905,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
 
         ## Example Usage
+
         ### Network Services Edge Cache Origin Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -909,8 +918,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             origin_address="gs://media-edge-default",
             description="The default bucket for media edge test")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -968,8 +979,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 connect_timeout="10s",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Origin V4auth
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -992,18 +1005,19 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 origin_region="auto",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EdgeCacheOrigin can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
+        * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}

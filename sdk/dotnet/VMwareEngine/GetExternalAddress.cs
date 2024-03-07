@@ -17,10 +17,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about external address, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExternalAddressResult> InvokeAsync(GetExternalAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalAddressResult>("gcp:vmwareengine/getExternalAddress:getExternalAddress", args ?? new GetExternalAddressArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about external address, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExternalAddressResult> Invoke(GetExternalAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalAddressResult>("gcp:vmwareengine/getExternalAddress:getExternalAddress", args ?? new GetExternalAddressInvokeArgs(), options.WithDefaults());

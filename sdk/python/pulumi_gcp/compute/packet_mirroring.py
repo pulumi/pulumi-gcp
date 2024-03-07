@@ -393,8 +393,10 @@ class PacketMirroring(pulumi.CustomResource):
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
         ## Example Usage
+
         ### Compute Packet Mirroring Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -457,20 +459,21 @@ class PacketMirroring(pulumi.CustomResource):
                 direction="BOTH",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PacketMirroring can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
@@ -531,8 +534,10 @@ class PacketMirroring(pulumi.CustomResource):
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
         ## Example Usage
+
         ### Compute Packet Mirroring Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -595,20 +600,21 @@ class PacketMirroring(pulumi.CustomResource):
                 direction="BOTH",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PacketMirroring can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}

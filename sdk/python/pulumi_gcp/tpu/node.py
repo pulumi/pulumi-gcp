@@ -564,8 +564,10 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
+
         ### Tpu Node Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -578,8 +580,10 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
+        <!--End PulumiCodeChooser -->
         ### Tpu Node Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,20 +615,21 @@ class Node(pulumi.CustomResource):
                 preemptible=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Node can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+        * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
@@ -692,8 +697,10 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
+
         ### Tpu Node Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -706,8 +713,10 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
+        <!--End PulumiCodeChooser -->
         ### Tpu Node Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -739,20 +748,21 @@ class Node(pulumi.CustomResource):
                 preemptible=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Node can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+        * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

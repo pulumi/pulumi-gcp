@@ -105,6 +105,7 @@ def get_subnetwork_iam_policy(project: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_subnetwork_iam_policy(project: Optional[str] = None,
         region=network_with_private_secondary_ip_ranges["region"],
         subnetwork=network_with_private_secondary_ip_ranges["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -149,6 +151,7 @@ def get_subnetwork_iam_policy_output(project: Optional[pulumi.Input[Optional[str
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -157,6 +160,7 @@ def get_subnetwork_iam_policy_output(project: Optional[pulumi.Input[Optional[str
         region=network_with_private_secondary_ip_ranges["region"],
         subnetwork=network_with_private_secondary_ip_ranges["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

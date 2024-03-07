@@ -273,8 +273,10 @@ class OrganizationCustomModule(pulumi.CustomResource):
             * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
+
         ### Scc Organization Custom Module Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -295,8 +297,10 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 severity="MEDIUM",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Scc Organization Custom Module Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -331,16 +335,17 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 recommendation="Steps to resolve violation",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OrganizationCustomModule can be imported using any of these accepted formats:
 
-         * `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}`
+        * `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}`
 
-         * `{{organization}}/{{name}}`
+        * `{{organization}}/{{name}}`
 
-         When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}
@@ -383,8 +388,10 @@ class OrganizationCustomModule(pulumi.CustomResource):
             * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
+
         ### Scc Organization Custom Module Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -405,8 +412,10 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 severity="MEDIUM",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Scc Organization Custom Module Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,16 +450,17 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 recommendation="Steps to resolve violation",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OrganizationCustomModule can be imported using any of these accepted formats:
 
-         * `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}`
+        * `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}`
 
-         * `{{organization}}/{{name}}`
+        * `{{organization}}/{{name}}`
 
-         When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}

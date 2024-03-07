@@ -21,8 +21,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Region Ssl Certificate Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,8 +51,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Ssl Certificate Random Provider
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,8 +99,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Ssl Certificate Target Https Proxies
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -200,20 +206,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// RegionSslCertificate can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
+    /// * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{name}}`
+    /// * `{{region}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}

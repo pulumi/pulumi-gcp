@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// The Cloud Deploy `Target` resource
     /// 
     /// ## Example Usage
+    /// 
     /// ### Multi_target
     /// tests creating and updating a multi-target
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,8 +67,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Run_target
     /// tests creating and updating a cloud run target
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -113,8 +117,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Target
     /// Creates a basic Cloud Deploy target
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,18 +158,19 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Target can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}

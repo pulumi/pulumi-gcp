@@ -15,8 +15,10 @@ import (
 // The AssuredWorkloads Workload resource
 //
 // ## Example Usage
+//
 // ### Basic_workload
 // A basic test of a assuredworkloads api
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Sovereign_controls_workload
 // A Sovereign Controls test of the assuredworkloads api
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -115,16 +119,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Workload can be imported using any of these accepted formats:
 //
-//   - `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}`
+// * `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}`
 //
-//   - `{{organization}}/{{location}}/{{name}}`
+// * `{{organization}}/{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Workload can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Workload can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}

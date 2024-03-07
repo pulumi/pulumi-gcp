@@ -28,6 +28,7 @@ import (
 //
 // ## google\_gke\_hub\_scope\_iam\_policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,9 +68,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_gke\_hub\_scope\_iam\_binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,9 +101,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_gke\_hub\_scope\_iam\_member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,42 +132,43 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
-//   - projects/{{project}}/locations/global/scopes/{{scope_id}}
+// * projects/{{project}}/locations/global/scopes/{{scope_id}}
 //
-//   - {{project}}/{{scope_id}}
+// * {{project}}/{{scope_id}}
 //
-//   - {{scope_id}}
+// * {{scope_id}}
 //
-//     Any variables not passed in the import command will be taken from the provider configuration.
+// Any variables not passed in the import command will be taken from the provider configuration.
 //
-//     GKEHub scope IAM resources can be imported using the resource identifiers, role, and member.
+// GKEHub scope IAM resources can be imported using the resource identifiers, role, and member.
 //
-//     IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //
 // ```sh
 // $ pulumi import gcp:gkehub/scopeIamMember:ScopeIamMember editor "projects/{{project}}/locations/global/scopes/{{scope_id}} roles/viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 //
 // ```sh
 // $ pulumi import gcp:gkehub/scopeIamMember:ScopeIamMember editor "projects/{{project}}/locations/global/scopes/{{scope_id}} roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+// IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
 // $ pulumi import gcp:gkehub/scopeIamMember:ScopeIamMember editor projects/{{project}}/locations/global/scopes/{{scope_id}}
 // ```
 //
-//	-> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 //
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ScopeIamMember struct {
 	pulumi.CustomResourceState
 

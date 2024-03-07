@@ -26,8 +26,10 @@ import * as utilities from "../utilities";
  * is allowed for the database parameter.
  *
  * ## Example Usage
+ *
  * ### Firestore Document Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,8 +59,10 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firestore Document Nested Document
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -102,14 +106,15 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Document can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firestore/document:Document default {{name}}

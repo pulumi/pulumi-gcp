@@ -433,8 +433,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
             * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
         ## Example Usage
+
         ### Cloudbuild Bitbucket Server Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -451,8 +453,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Repositories
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,8 +483,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Peered Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,18 +527,19 @@ class BitbucketServerConfig(pulumi.CustomResource):
         -----END CERTIFICATE-----
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BitbucketServerConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
+        * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
 
-         * `{{project}}/{{location}}/{{config_id}}`
+        * `{{project}}/{{location}}/{{config_id}}`
 
-         * `{{location}}/{{config_id}}`
+        * `{{location}}/{{config_id}}`
 
-         When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}
@@ -583,8 +590,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
             * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
         ## Example Usage
+
         ### Cloudbuild Bitbucket Server Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -601,8 +610,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Repositories
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -629,8 +640,10 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Peered Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -671,18 +684,19 @@ class BitbucketServerConfig(pulumi.CustomResource):
         -----END CERTIFICATE-----
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BitbucketServerConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
+        * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
 
-         * `{{project}}/{{location}}/{{config_id}}`
+        * `{{project}}/{{location}}/{{config_id}}`
 
-         * `{{location}}/{{config_id}}`
+        * `{{location}}/{{config_id}}`
 
-         When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}

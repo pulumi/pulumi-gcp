@@ -21,8 +21,10 @@ import (
 //   - [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
 //
 // ## Example Usage
+//
 // ### Edgecontainer Cluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,8 +76,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Edgecontainer Cluster With Maintenance Window
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,8 +138,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Edgecontainer Local Control Plane Cluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,18 +200,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Cluster can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:edgecontainer/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{name}}

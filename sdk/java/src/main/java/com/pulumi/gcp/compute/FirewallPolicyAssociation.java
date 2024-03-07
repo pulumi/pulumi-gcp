@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,16 +59,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * FirewallPolicyAssociation can be imported using any of these accepted formats:
  * 
- *  * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+ * * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
  * 
- *  * `{{firewall_policy}}/{{name}}`
+ * * `{{firewall_policy}}/{{name}}`
  * 
- *  When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}

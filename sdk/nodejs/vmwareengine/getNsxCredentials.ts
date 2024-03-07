@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  *     parent: "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNsxCredentials(args: GetNsxCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetNsxCredentialsResult> {
 
@@ -65,6 +67,7 @@ export interface GetNsxCredentialsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,6 +76,7 @@ export interface GetNsxCredentialsResult {
  *     parent: "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNsxCredentialsOutput(args: GetNsxCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNsxCredentialsResult> {
     return pulumi.output(args).apply((a: any) => getNsxCredentials(a, opts))

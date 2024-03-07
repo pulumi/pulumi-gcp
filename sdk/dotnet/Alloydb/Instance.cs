@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Alloydb Instance Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -71,8 +73,10 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Alloydb Secondary Instance Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -155,18 +159,19 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Instance can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
+    /// * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
     /// 
-    ///  * `{{location}}/{{cluster}}/{{instance_id}}`
+    /// * `{{location}}/{{cluster}}/{{instance_id}}`
     /// 
-    ///  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}

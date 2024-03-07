@@ -329,8 +329,10 @@ class Queue(pulumi.CustomResource):
         A named resource to which messages are sent by publishers.
 
         ## Example Usage
+
         ### Queue Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,8 +341,10 @@ class Queue(pulumi.CustomResource):
             name="cloud-tasks-queue-test",
             location="us-central1")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Tasks Queue Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,18 +372,19 @@ class Queue(pulumi.CustomResource):
                 sampling_ratio=0.9,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Queue can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/queues/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/queues/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Queue can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Queue can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
@@ -428,8 +433,10 @@ class Queue(pulumi.CustomResource):
         A named resource to which messages are sent by publishers.
 
         ## Example Usage
+
         ### Queue Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -438,8 +445,10 @@ class Queue(pulumi.CustomResource):
             name="cloud-tasks-queue-test",
             location="us-central1")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Tasks Queue Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,18 +476,19 @@ class Queue(pulumi.CustomResource):
                 sampling_ratio=0.9,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Queue can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/queues/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/queues/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Queue can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Queue can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}

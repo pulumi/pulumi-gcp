@@ -241,8 +241,10 @@ class TransferAgentPool(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 
         ## Example Usage
+
         ### Agent Pool Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -259,18 +261,19 @@ class TransferAgentPool(pulumi.CustomResource):
                 limit_mbps="120",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AgentPool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/agentPools/{{name}}`
+        * `projects/{{project}}/agentPools/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
@@ -319,8 +322,10 @@ class TransferAgentPool(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 
         ## Example Usage
+
         ### Agent Pool Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,18 +342,19 @@ class TransferAgentPool(pulumi.CustomResource):
                 limit_mbps="120",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AgentPool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/agentPools/{{name}}`
+        * `projects/{{project}}/agentPools/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}

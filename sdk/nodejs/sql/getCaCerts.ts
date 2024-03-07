@@ -11,24 +11,6 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const caCerts = gcp.sql.getCaCerts({
- *     instance: "primary-database-server",
- * });
- * const furthestExpirationTime = notImplemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0];
- * const latestCaCert = caCerts.then(caCerts => .filter(v => v.expirationTime == furthestExpirationTime).map(v => (v.cert)));
- * export const dbLatestCaCert = latestCaCert;
- * ```
  */
 export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> {
 
@@ -77,24 +59,6 @@ export interface GetCaCertsResult {
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const caCerts = gcp.sql.getCaCerts({
- *     instance: "primary-database-server",
- * });
- * const furthestExpirationTime = notImplemented("reverse(sort([fork,vindata.google_sql_ca_certs.ca_certs.certs:v.expiration_time]))")[0];
- * const latestCaCert = caCerts.then(caCerts => .filter(v => v.expirationTime == furthestExpirationTime).map(v => (v.cert)));
- * export const dbLatestCaCert = latestCaCert;
- * ```
  */
 export function getCaCertsOutput(args: GetCaCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertsResult> {
     return pulumi.output(args).apply((a: any) => getCaCerts(a, opts))

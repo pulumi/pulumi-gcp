@@ -14,20 +14,22 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.ProjectDefaultNetworkTier("default", {networkTier: "PREMIUM"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Compute Engine Default Network Tier can be imported using any of these accepted formats:
  *
- *  * `{{project_id}}`
+ * * `{{project_id}}`
  *
- *  When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}

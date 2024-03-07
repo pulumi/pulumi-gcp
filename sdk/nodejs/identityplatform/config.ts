@@ -22,8 +22,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
  *
  * ## Example Usage
+ *
  * ### Identity Platform Config Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,18 +95,19 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Config can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/config`
+ * * `projects/{{project}}/config`
  *
- *  * `projects/{{project}}`
+ * * `projects/{{project}}`
  *
- *  * `{{project}}`
+ * * `{{project}}`
  *
- *  When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config

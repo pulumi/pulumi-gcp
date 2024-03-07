@@ -403,8 +403,10 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Security Client Tls Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -417,8 +419,10 @@ class ClientTlsPolicy(pulumi.CustomResource):
             description="my description",
             sni="secure.example.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Client Tls Policy Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,18 +451,19 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ClientTlsPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ClientTlsPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ClientTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy default projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}
@@ -500,8 +505,10 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Security Client Tls Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,8 +521,10 @@ class ClientTlsPolicy(pulumi.CustomResource):
             description="my description",
             sni="secure.example.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Client Tls Policy Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -544,18 +553,19 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ClientTlsPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ClientTlsPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ClientTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy default projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{name}}

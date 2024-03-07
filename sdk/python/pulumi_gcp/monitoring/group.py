@@ -267,8 +267,10 @@ class Group(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 
         ## Example Usage
+
         ### Monitoring Group Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,8 +279,10 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Group Subgroup
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,14 +295,15 @@ class Group(pulumi.CustomResource):
             filter="resource.metadata.region=\\"europe-west2\\"",
             parent_name=parent.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Group can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/group:Group default {{name}}
@@ -341,8 +346,10 @@ class Group(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 
         ## Example Usage
+
         ### Monitoring Group Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -351,8 +358,10 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Group Subgroup
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,14 +374,15 @@ class Group(pulumi.CustomResource):
             filter="resource.metadata.region=\\"europe-west2\\"",
             parent_name=parent.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Group can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/group:Group default {{name}}

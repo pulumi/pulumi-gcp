@@ -262,8 +262,10 @@ class InboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+
         ### Identity Platform Inbound Saml Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -285,18 +287,19 @@ class InboundSamlConfig(pulumi.CustomResource):
                 callback_uri="https://example.com",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InboundSamlConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/inboundSamlConfigs/{{name}}`
+        * `projects/{{project}}/inboundSamlConfigs/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
@@ -339,8 +342,10 @@ class InboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+
         ### Identity Platform Inbound Saml Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -362,18 +367,19 @@ class InboundSamlConfig(pulumi.CustomResource):
                 callback_uri="https://example.com",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InboundSamlConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/inboundSamlConfigs/{{name}}`
+        * `projects/{{project}}/inboundSamlConfigs/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}

@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *
  * Example file object  stored within a folder.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const encrypted = key.then(key => key.content);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketObjectContent(args: GetBucketObjectContentArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectContentResult> {
 
@@ -103,6 +105,7 @@ export interface GetBucketObjectContentResult {
  *
  * Example file object  stored within a folder.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -113,6 +116,7 @@ export interface GetBucketObjectContentResult {
  * });
  * export const encrypted = key.then(key => key.content);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketObjectContentOutput(args: GetBucketObjectContentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectContentResult> {
     return pulumi.output(args).apply((a: any) => getBucketObjectContent(a, opts))

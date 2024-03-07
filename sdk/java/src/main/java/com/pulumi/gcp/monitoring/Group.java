@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  * 
  * ## Example Usage
+ * 
  * ### Monitoring Group Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,7 +61,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Group Subgroup
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -94,14 +100,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Group can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:monitoring/group:Group default {{name}}

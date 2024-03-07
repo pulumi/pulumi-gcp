@@ -18,10 +18,9 @@ namespace Pulumi.Gcp.Sql
         /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.Gcp.Sql
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabaseInstanceLatestRecoveryTimeResult> InvokeAsync(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.Gcp.Sql
         /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.Gcp.Sql
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> Invoke(GetDatabaseInstanceLatestRecoveryTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeInvokeArgs(), options.WithDefaults());

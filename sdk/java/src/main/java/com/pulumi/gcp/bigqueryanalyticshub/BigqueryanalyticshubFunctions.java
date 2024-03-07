@@ -21,6 +21,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for dataexchange
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -51,6 +53,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs args) {
@@ -60,6 +63,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for dataexchange
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicyPlain(GetDataExchangeIamPolicyPlainArgs args) {
@@ -99,6 +105,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for dataexchange
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs args, InvokeOptions options) {
@@ -138,6 +147,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for dataexchange
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +179,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicyPlain(GetDataExchangeIamPolicyPlainArgs args, InvokeOptions options) {
@@ -177,6 +189,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for listing
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -208,6 +222,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListingIamPolicyResult> getListingIamPolicy(GetListingIamPolicyArgs args) {
@@ -217,6 +232,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for listing
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -248,6 +265,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListingIamPolicyResult> getListingIamPolicyPlain(GetListingIamPolicyPlainArgs args) {
@@ -257,6 +275,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for listing
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -288,6 +308,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListingIamPolicyResult> getListingIamPolicy(GetListingIamPolicyArgs args, InvokeOptions options) {
@@ -297,6 +318,8 @@ public final class BigqueryanalyticshubFunctions {
      * Retrieves the current IAM policy data for listing
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -328,6 +351,7 @@ public final class BigqueryanalyticshubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListingIamPolicyResult> getListingIamPolicyPlain(GetListingIamPolicyPlainArgs args, InvokeOptions options) {

@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Active Directory Domain Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -41,14 +43,15 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Domain can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:activedirectory/domain:Domain default {{name}}

@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOrganizationResult> InvokeAsync(GetOrganizationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
@@ -42,6 +44,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());

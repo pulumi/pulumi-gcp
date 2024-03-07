@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
  * 
  * ## Example Usage
+ * 
  * ### Securityposture Posture Deployment Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -89,14 +92,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * PostureDeployment can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}`
+ * * `{{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}`
  * 
- *  When using the `pulumi import` command, PostureDeployment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, PostureDeployment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securityposture/postureDeployment:PostureDeployment default {{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}

@@ -18,8 +18,9 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInRep
      */
     private @Nullable Integer fixed;
     /**
-     * @return Specifies a percentage of instances between 0 to 100%, inclusive.
-     * For example, specify 80 for 80%.
+     * @return Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+     * For example, specify 80 for 80%!
+     * (MISSING)
      * 
      */
     private @Nullable Integer percent;
@@ -34,8 +35,9 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInRep
         return Optional.ofNullable(this.fixed);
     }
     /**
-     * @return Specifies a percentage of instances between 0 to 100%, inclusive.
-     * For example, specify 80 for 80%.
+     * @return Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+     * For example, specify 80 for 80%!
+     * (MISSING)
      * 
      */
     public Optional<Integer> percent() {

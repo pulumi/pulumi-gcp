@@ -223,8 +223,10 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
         ## Example Usage
+
         ### Network Peering Routes Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,8 +253,10 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Peering Routes Config Gke
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,18 +303,19 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
+        * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
 
-         * `{{project}}/{{network}}/{{peering}}`
+        * `{{project}}/{{network}}/{{peering}}`
 
-         * `{{network}}/{{peering}}`
+        * `{{network}}/{{peering}}`
 
-         When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
@@ -355,8 +360,10 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
         ## Example Usage
+
         ### Network Peering Routes Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,8 +390,10 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Peering Routes Config Gke
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -431,18 +440,19 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
+        * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
 
-         * `{{project}}/{{network}}/{{peering}}`
+        * `{{project}}/{{network}}/{{peering}}`
 
-         * `{{network}}/{{peering}}`
+        * `{{network}}/{{peering}}`
 
-         When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}

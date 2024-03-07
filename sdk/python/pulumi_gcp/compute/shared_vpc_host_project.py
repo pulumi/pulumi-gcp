@@ -76,6 +76,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -91,14 +92,15 @@ class SharedVPCHostProject(pulumi.CustomResource):
             host_project=host.project,
             service_project="service-project-id-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g.
 
-         * `{{project_id}}`
+        * `{{project_id}}`
 
-         When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
@@ -125,6 +127,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -140,14 +143,15 @@ class SharedVPCHostProject(pulumi.CustomResource):
             host_project=host.project,
             service_project="service-project-id-2")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g.
 
-         * `{{project_id}}`
+        * `{{project_id}}`
 
-         When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}

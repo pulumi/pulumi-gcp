@@ -753,8 +753,10 @@ class FhirStore(pulumi.CustomResource):
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
         ## Example Usage
+
         ### Healthcare Fhir Store Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -780,8 +782,10 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Streaming Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -821,8 +825,10 @@ class FhirStore(pulumi.CustomResource):
             )])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
+        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -846,8 +852,10 @@ class FhirStore(pulumi.CustomResource):
                 pubsub_topic=topic.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Configs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -874,16 +882,17 @@ class FhirStore(pulumi.CustomResource):
                 send_previous_resource_on_delete=True,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FhirStore can be imported using any of these accepted formats:
 
-         * `{{dataset}}/fhirStores/{{name}}`
+        * `{{dataset}}/fhirStores/{{name}}`
 
-         * `{{dataset}}/{{name}}`
+        * `{{dataset}}/{{name}}`
 
-         When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
@@ -976,8 +985,10 @@ class FhirStore(pulumi.CustomResource):
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
         ## Example Usage
+
         ### Healthcare Fhir Store Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1003,8 +1014,10 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Streaming Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1044,8 +1057,10 @@ class FhirStore(pulumi.CustomResource):
             )])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
+        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1069,8 +1084,10 @@ class FhirStore(pulumi.CustomResource):
                 pubsub_topic=topic.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Configs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1097,16 +1114,17 @@ class FhirStore(pulumi.CustomResource):
                 send_previous_resource_on_delete=True,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FhirStore can be imported using any of these accepted formats:
 
-         * `{{dataset}}/fhirStores/{{name}}`
+        * `{{dataset}}/fhirStores/{{name}}`
 
-         * `{{dataset}}/{{name}}`
+        * `{{dataset}}/{{name}}`
 
-         When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}

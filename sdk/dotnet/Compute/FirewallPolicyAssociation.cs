@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,16 +41,17 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// FirewallPolicyAssociation can be imported using any of these accepted formats:
     /// 
-    ///  * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+    /// * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
     /// 
-    ///  * `{{firewall_policy}}/{{name}}`
+    /// * `{{firewall_policy}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}

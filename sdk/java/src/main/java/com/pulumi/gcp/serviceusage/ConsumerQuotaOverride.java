@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  * 
  * ## Example Usage
+ * 
  * ### Consumer Quota Override
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,7 +77,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Consumer Quota Override
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -121,7 +127,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Consumer Quota Override Custom Dimension
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -168,18 +177,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ConsumerQuotaOverride can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+ * * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
  * 
- *  * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+ * * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
  * 
- *  * `{{service}}/{{metric}}/{{limit}}/{{name}}`
+ * * `{{service}}/{{metric}}/{{limit}}/{{name}}`
  * 
- *  When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
@@ -211,7 +221,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dimensions);
     }
     /**
-     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      * 
      */
@@ -219,7 +229,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * @return If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      * 
      */

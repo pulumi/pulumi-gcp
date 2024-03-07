@@ -84,12 +84,14 @@ def get_iam_policy(service_account_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.serviceaccount.get_iam_policy(service_account_id=test_account["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_account_id: The fully-qualified name of the service account to apply policy to.
@@ -114,12 +116,14 @@ def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.serviceaccount.get_iam_policy(service_account_id=test_account["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str service_account_id: The fully-qualified name of the service account to apply policy to.

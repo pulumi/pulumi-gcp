@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  *
  * Example picture stored within a folder.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  *     bucket: "image-store",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
     args = args || {};
@@ -130,6 +132,7 @@ export interface GetBucketObjectResult {
  *
  * Example picture stored within a folder.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -139,6 +142,7 @@ export interface GetBucketObjectResult {
  *     bucket: "image-store",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketObjectOutput(args?: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
     return pulumi.output(args).apply((a: any) => getBucketObject(a, opts))

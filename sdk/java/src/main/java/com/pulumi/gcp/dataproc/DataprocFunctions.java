@@ -33,6 +33,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -63,6 +65,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs args) {
@@ -72,6 +75,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -102,6 +107,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicyPlain(GetAutoscalingPolicyIamPolicyPlainArgs args) {
@@ -111,6 +117,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs args, InvokeOptions options) {
@@ -150,6 +159,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for autoscalingpolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -180,6 +191,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicyPlain(GetAutoscalingPolicyIamPolicyPlainArgs args, InvokeOptions options) {
@@ -189,6 +201,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc cluster.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -218,6 +232,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterIamPolicyResult> getClusterIamPolicy(GetClusterIamPolicyArgs args) {
@@ -227,6 +242,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc cluster.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -256,6 +273,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterIamPolicyResult> getClusterIamPolicyPlain(GetClusterIamPolicyPlainArgs args) {
@@ -265,6 +283,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc cluster.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -294,6 +314,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterIamPolicyResult> getClusterIamPolicy(GetClusterIamPolicyArgs args, InvokeOptions options) {
@@ -303,6 +324,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc cluster.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -332,6 +355,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterIamPolicyResult> getClusterIamPolicyPlain(GetClusterIamPolicyPlainArgs args, InvokeOptions options) {
@@ -341,6 +365,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc job.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -370,6 +396,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetJobIamPolicyResult> getJobIamPolicy(GetJobIamPolicyArgs args) {
@@ -379,6 +406,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc job.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -408,6 +437,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args) {
@@ -417,6 +447,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc job.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -446,6 +478,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetJobIamPolicyResult> getJobIamPolicy(GetJobIamPolicyArgs args, InvokeOptions options) {
@@ -455,6 +488,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for a Dataproc job.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -484,6 +519,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args, InvokeOptions options) {
@@ -505,35 +541,6 @@ public final class DataprocFunctions {
      * Get a Dataproc Metastore service from Google Cloud by its id and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dataproc.DataprocFunctions;
-     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .serviceId(&#34;foo-bar&#34;)
-     *             .location(&#34;global&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetMetastoreServiceResult> getMetastoreService(GetMetastoreServiceArgs args) {
@@ -543,35 +550,6 @@ public final class DataprocFunctions {
      * Get a Dataproc Metastore service from Google Cloud by its id and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dataproc.DataprocFunctions;
-     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .serviceId(&#34;foo-bar&#34;)
-     *             .location(&#34;global&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetMetastoreServiceResult> getMetastoreServicePlain(GetMetastoreServicePlainArgs args) {
@@ -581,35 +559,6 @@ public final class DataprocFunctions {
      * Get a Dataproc Metastore service from Google Cloud by its id and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dataproc.DataprocFunctions;
-     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .serviceId(&#34;foo-bar&#34;)
-     *             .location(&#34;global&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetMetastoreServiceResult> getMetastoreService(GetMetastoreServiceArgs args, InvokeOptions options) {
@@ -619,35 +568,6 @@ public final class DataprocFunctions {
      * Get a Dataproc Metastore service from Google Cloud by its id and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dataproc.DataprocFunctions;
-     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
-     *             .serviceId(&#34;foo-bar&#34;)
-     *             .location(&#34;global&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetMetastoreServiceResult> getMetastoreServicePlain(GetMetastoreServicePlainArgs args, InvokeOptions options) {
@@ -657,6 +577,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -687,6 +609,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs args) {
@@ -696,6 +619,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -726,6 +651,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyPlain(GetMetastoreServiceIamPolicyPlainArgs args) {
@@ -735,6 +661,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -765,6 +693,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs args, InvokeOptions options) {
@@ -774,6 +703,8 @@ public final class DataprocFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -804,6 +735,7 @@ public final class DataprocFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyPlain(GetMetastoreServiceIamPolicyPlainArgs args, InvokeOptions options) {

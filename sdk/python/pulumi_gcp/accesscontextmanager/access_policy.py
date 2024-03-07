@@ -218,8 +218,10 @@ class AccessPolicy(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Access Context Manager Access Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -228,8 +230,10 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
+        <!--End PulumiCodeChooser -->
         ### Access Context Manager Access Policy Scoped
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -243,14 +247,15 @@ class AccessPolicy(pulumi.CustomResource):
             title="Scoped Access Policy",
             scopes=project.number.apply(lambda number: f"projects/{number}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AccessPolicy can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
@@ -293,8 +298,10 @@ class AccessPolicy(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Access Context Manager Access Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,8 +310,10 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
+        <!--End PulumiCodeChooser -->
         ### Access Context Manager Access Policy Scoped
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -318,14 +327,15 @@ class AccessPolicy(pulumi.CustomResource):
             title="Scoped Access Policy",
             scopes=project.number.apply(lambda number: f"projects/{number}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AccessPolicy can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}

@@ -468,8 +468,10 @@ class CryptoKey(pulumi.CustomResource):
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
+
         ### Kms Crypto Key Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -482,8 +484,10 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
+        <!--End PulumiCodeChooser -->
         ### Kms Crypto Key Asymmetric Sign
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -499,16 +503,17 @@ class CryptoKey(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CryptoKey can be imported using any of these accepted formats:
 
-         * `{{key_ring}}/cryptoKeys/{{name}}`
+        * `{{key_ring}}/cryptoKeys/{{name}}`
 
-         * `{{key_ring}}/{{name}}`
+        * `{{key_ring}}/{{name}}`
 
-         When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
@@ -571,8 +576,10 @@ class CryptoKey(pulumi.CustomResource):
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
+
         ### Kms Crypto Key Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -585,8 +592,10 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
+        <!--End PulumiCodeChooser -->
         ### Kms Crypto Key Asymmetric Sign
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -602,16 +611,17 @@ class CryptoKey(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CryptoKey can be imported using any of these accepted formats:
 
-         * `{{key_ring}}/cryptoKeys/{{name}}`
+        * `{{key_ring}}/cryptoKeys/{{name}}`
 
-         * `{{key_ring}}/{{name}}`
+        * `{{key_ring}}/{{name}}`
 
-         When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}

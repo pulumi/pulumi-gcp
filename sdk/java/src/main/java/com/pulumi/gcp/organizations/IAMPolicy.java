@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  *    fully managed by this provider.I f you do use this resource,
  *    the best way to be sure that you are not making dangerous changes is to start
  *    by **importing** your existing policy, and examining the diff very closely.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -76,8 +78,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -121,10 +126,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_organization\_iam\_binding
  * 
  * &gt; **Note:** If `role` is set to `roles/owner` and you don&#39;t specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -155,8 +163,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -193,8 +204,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_organization\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -225,8 +239,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -263,8 +280,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_organization\_iam\_audit\_config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -303,28 +323,29 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Importing Audit Configs
  * 
- *  An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource&#39;s `org_id` and the `service`, e.g:
+ * An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource&#39;s `org_id` and the `service`, e.g:
  * 
- *  * `&#34;{{org_id}} foo.googleapis.com&#34;`
+ * * `&#34;{{org_id}} foo.googleapis.com&#34;`
  * 
- *  An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
  * 
- *  tf
+ * tf
  * 
- *  import {
+ * import {
  * 
- *  id = &#34;{{org_id}} foo.googleapis.com&#34;
+ *   id = &#34;{{org_id}} foo.googleapis.com&#34;
  * 
- *  to = google_organization_iam_audit_config.default
+ *   to = google_organization_iam_audit_config.default
  * 
- *  }
+ * }
  * 
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  * 
  * ```sh
  * $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy default &#34;{{org_id}} foo.googleapis.com&#34;

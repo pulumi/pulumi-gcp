@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
  * ## Example Usage
+ *
  * ### Redis Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,8 +29,10 @@ import * as utilities from "../utilities";
  *     memorySizeGb: 1,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Redis Instance Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,8 +75,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Redis Instance Full With Persistence Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,8 +95,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Redis Instance Private Service
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -128,8 +136,10 @@ import * as utilities from "../utilities";
  *     displayName: "Test Instance",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Redis Instance Mrr
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -163,8 +173,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Redis Instance Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -205,20 +217,21 @@ import * as utilities from "../utilities";
  *     customerManagedKey: redisKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

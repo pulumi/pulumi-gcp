@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Firebasehosting Channel Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,8 +37,10 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebasehosting Channel Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,16 +69,17 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Channel can be imported using any of these accepted formats:
     /// 
-    ///  * `sites/{{site_id}}/channels/{{channel_id}}`
+    /// * `sites/{{site_id}}/channels/{{channel_id}}`
     /// 
-    ///  * `{{site_id}}/{{channel_id}}`
+    /// * `{{site_id}}/{{channel_id}}`
     /// 
-    ///  When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}

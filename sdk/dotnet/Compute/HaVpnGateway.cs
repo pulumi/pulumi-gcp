@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Ha Vpn Gateway Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,8 +49,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Ha Vpn Gateway Ipv6
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,8 +77,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Compute Ha Vpn Gateway Encrypted Interconnect
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -167,20 +173,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// HaVpnGateway can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+    /// * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{name}}`
+    /// * `{{region}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}

@@ -301,8 +301,10 @@ class RecordSet(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Binding a DNS name to the ephemeral IP of a new instance:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -330,8 +332,11 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=prod.name,
             rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding an A record
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -346,8 +351,11 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["8.8.8.8"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding an MX record
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,10 +376,13 @@ class RecordSet(pulumi.CustomResource):
                 "10 alt4.aspmx.l.google.com.",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding an SPF record
 
         Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -386,10 +397,13 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["\\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\\""])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding a CNAME record
 
          The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -404,9 +418,12 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["frontend.mydomain.com."])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Setting Routing Policy instead of using rrdatas
         ### Geolocation
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -429,8 +446,11 @@ class RecordSet(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Primary-Backup
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -482,18 +502,19 @@ class RecordSet(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DNS record sets can be imported using either of these accepted formats:
 
-         * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
+        * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
 
-         * `{{project}}/{{zone}}/{{name}}/{{type}}`
+        * `{{project}}/{{zone}}/{{name}}/{{type}}`
 
-         * `{{zone}}/{{name}}/{{type}}`
+        * `{{zone}}/{{name}}/{{type}}`
 
-         When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
@@ -507,7 +528,7 @@ class RecordSet(pulumi.CustomResource):
         $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
         ```
 
-         Note: The record name must include the trailing dot at the end.
+        Note: The record name must include the trailing dot at the end.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -536,8 +557,10 @@ class RecordSet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Binding a DNS name to the ephemeral IP of a new instance:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -565,8 +588,11 @@ class RecordSet(pulumi.CustomResource):
             managed_zone=prod.name,
             rrdatas=[frontend_instance.network_interfaces[0].access_configs[0].nat_ip])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding an A record
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -581,8 +607,11 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["8.8.8.8"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding an MX record
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -603,10 +632,13 @@ class RecordSet(pulumi.CustomResource):
                 "10 alt4.aspmx.l.google.com.",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding an SPF record
 
         Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -621,10 +653,13 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["\\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\\""])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding a CNAME record
 
          The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -639,9 +674,12 @@ class RecordSet(pulumi.CustomResource):
             ttl=300,
             rrdatas=["frontend.mydomain.com."])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Setting Routing Policy instead of using rrdatas
         ### Geolocation
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -664,8 +702,11 @@ class RecordSet(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Primary-Backup
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -717,18 +758,19 @@ class RecordSet(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DNS record sets can be imported using either of these accepted formats:
 
-         * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
+        * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
 
-         * `{{project}}/{{zone}}/{{name}}/{{type}}`
+        * `{{project}}/{{zone}}/{{name}}/{{type}}`
 
-         * `{{zone}}/{{name}}/{{type}}`
+        * `{{zone}}/{{name}}/{{type}}`
 
-         When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
@@ -742,7 +784,7 @@ class RecordSet(pulumi.CustomResource):
         $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
         ```
 
-         Note: The record name must include the trailing dot at the end.
+        Note: The record name must include the trailing dot at the end.
 
         :param str resource_name: The name of the resource.
         :param RecordSetArgs args: The arguments to use to populate this resource's properties.

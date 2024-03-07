@@ -24,8 +24,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 //
 // ## Example Usage
+//
 // ### Beyondcorp App Connector Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,8 +64,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Beyondcorp App Connector Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,20 +110,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // AppConnector can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/appConnectors/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/appConnectors/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, AppConnector can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, AppConnector can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:beyondcorp/appConnector:AppConnector default projects/{{project}}/locations/{{region}}/appConnectors/{{name}}

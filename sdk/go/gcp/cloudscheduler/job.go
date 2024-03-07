@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/scheduler/)
 //
 // ## Example Usage
+//
 // ### Scheduler Job Pubsub
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Http
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,8 +117,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Paused
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,8 +167,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Scheduler Job App Engine
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -205,8 +213,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Oauth
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -246,8 +256,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Scheduler Job Oidc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -287,20 +299,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Job can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}

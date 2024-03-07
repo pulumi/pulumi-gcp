@@ -394,8 +394,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Region Security Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -405,8 +407,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="basic region security policy",
             type="CLOUD_ARMOR")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy With Ddos Protection Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -419,8 +423,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ddos_protection="ADVANCED_PREVIEW",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy With User Defined Fields
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,20 +452,21 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionSecurityPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}
@@ -510,8 +517,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Region Security Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,8 +530,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             description="basic region security policy",
             type="CLOUD_ARMOR")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy With Ddos Protection Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,8 +546,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ddos_protection="ADVANCED_PREVIEW",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy With User Defined Fields
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,20 +575,21 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionSecurityPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}

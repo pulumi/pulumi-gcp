@@ -15,10 +15,9 @@ namespace Pulumi.Gcp.Monitoring
         /// Returns the list of IP addresses that checkers run from. For more information see
         /// the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Gcp.Monitoring
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUptimeCheckIPsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckIPsResult>("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", InvokeArgs.Empty, options.WithDefaults());
@@ -45,10 +43,9 @@ namespace Pulumi.Gcp.Monitoring
         /// Returns the list of IP addresses that checkers run from. For more information see
         /// the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Gcp.Monitoring
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUptimeCheckIPsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUptimeCheckIPsResult>("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", InvokeArgs.Empty, options.WithDefaults());

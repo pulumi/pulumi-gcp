@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
 //
 // ## Example Usage
+//
 // ### Redis Cluster Ha
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,20 +91,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Cluster can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}

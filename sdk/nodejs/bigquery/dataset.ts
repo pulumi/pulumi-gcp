@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Bigquery Dataset Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,8 +38,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Dataset Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,8 +65,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Dataset Authorized Dataset
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -118,8 +124,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Dataset Authorized Routine
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,8 +176,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Dataset External Reference Aws Docs
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -185,18 +195,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Dataset can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/datasets/{{dataset_id}}`
+ * * `projects/{{project}}/datasets/{{dataset_id}}`
  *
- *  * `{{project}}/{{dataset_id}}`
+ * * `{{project}}/{{dataset_id}}`
  *
- *  * `{{dataset_id}}`
+ * * `{{dataset_id}}`
  *
- *  When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}

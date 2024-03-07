@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEntryGroupIamPolicyResult> InvokeAsync(GetEntryGroupIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntryGroupIamPolicyResult>("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyArgs(), options.WithDefaults());
@@ -44,6 +46,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,6 +62,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithDefaults());

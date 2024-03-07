@@ -306,6 +306,7 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -317,9 +318,11 @@ class OrganizationPolicy(pulumi.CustomResource):
                 enforced=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -333,9 +336,11 @@ class OrganizationPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         Or to deny some services, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -350,9 +355,11 @@ class OrganizationPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To restore the default project organization policy, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,18 +371,19 @@ class OrganizationPolicy(pulumi.CustomResource):
                 default=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project organization policies can be imported using any of the follow formats:
 
-         * `projects/{{project_id}}:constraints/{{constraint}}`
+        * `projects/{{project_id}}:constraints/{{constraint}}`
 
-         * `{{project_id}}:constraints/{{constraint}}`
+        * `{{project_id}}:constraints/{{constraint}}`
 
-         * `{{project_id}}:{{constraint}}`
+        * `{{project_id}}:{{constraint}}`
 
-         When using the `pulumi import` command, project organization policies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, project organization policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default projects/{{project_id}}:constraints/{{constraint}}
@@ -426,6 +434,7 @@ class OrganizationPolicy(pulumi.CustomResource):
 
         To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,9 +446,11 @@ class OrganizationPolicy(pulumi.CustomResource):
                 enforced=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,9 +464,11 @@ class OrganizationPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         Or to deny some services, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,9 +483,11 @@ class OrganizationPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To restore the default project organization policy, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,18 +499,19 @@ class OrganizationPolicy(pulumi.CustomResource):
                 default=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project organization policies can be imported using any of the follow formats:
 
-         * `projects/{{project_id}}:constraints/{{constraint}}`
+        * `projects/{{project_id}}:constraints/{{constraint}}`
 
-         * `{{project_id}}:constraints/{{constraint}}`
+        * `{{project_id}}:constraints/{{constraint}}`
 
-         * `{{project_id}}:{{constraint}}`
+        * `{{project_id}}:{{constraint}}`
 
-         When using the `pulumi import` command, project organization policies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, project organization policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default projects/{{project_id}}:constraints/{{constraint}}

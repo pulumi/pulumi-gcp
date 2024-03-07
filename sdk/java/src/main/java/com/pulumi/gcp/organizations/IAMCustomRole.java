@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * This snippet creates a customized IAM organization role.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,13 +69,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Customized IAM organization role can be imported using their URI, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+ * $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
  * ```
  * 
  */

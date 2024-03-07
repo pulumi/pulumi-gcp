@@ -23,8 +23,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 //
 // ## Example Usage
+//
 // ### Monitoring Alert Policy Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,8 +70,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Monitoring Alert Policy Evaluation Missing Data
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,8 +118,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Monitoring Alert Policy Forecast Options
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -162,8 +168,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Monitoring Alert Policy Promql Condition
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -203,14 +211,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // AlertPolicy can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

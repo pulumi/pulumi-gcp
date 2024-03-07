@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  * that you define for the host and path of an incoming URL.
  * 
  * ## Example Usage
+ * 
  * ### Region Url Map Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -117,7 +120,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map Default Route Action
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -314,7 +320,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Path
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -446,7 +455,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Path Partial
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -546,7 +558,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Route
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -657,7 +672,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Url Map L7 Ilb Route Partial
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -743,20 +761,335 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Int Https Lb Https Redirect
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.tls.PrivateKey;
+ * import com.pulumi.tls.PrivateKeyArgs;
+ * import com.pulumi.tls.SelfSignedCert;
+ * import com.pulumi.tls.SelfSignedCertArgs;
+ * import com.pulumi.tls.inputs.SelfSignedCertSubjectArgs;
+ * import com.pulumi.gcp.compute.RegionSslCertificate;
+ * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpsProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpsProxyArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;l7-ilb-network&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;l7-ilb-proxy-subnet&#34;)
+ *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
+ *             .role(&#34;ACTIVE&#34;)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;l7-ilb-subnet&#34;)
+ *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var defaultAddress = new Address(&#34;defaultAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;l7-ilb-ip&#34;)
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .address(&#34;10.0.1.5&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .purpose(&#34;SHARED_LOADBALANCER_VIP&#34;)
+ *             .build());
+ * 
+ *         var defaultPrivateKey = new PrivateKey(&#34;defaultPrivateKey&#34;, PrivateKeyArgs.builder()        
+ *             .algorithm(&#34;RSA&#34;)
+ *             .rsaBits(2048)
+ *             .build());
+ * 
+ *         var defaultSelfSignedCert = new SelfSignedCert(&#34;defaultSelfSignedCert&#34;, SelfSignedCertArgs.builder()        
+ *             .keyAlgorithm(defaultPrivateKey.algorithm())
+ *             .privateKeyPem(defaultPrivateKey.privateKeyPem())
+ *             .validityPeriodHours(12)
+ *             .earlyRenewalHours(3)
+ *             .allowedUses(            
+ *                 &#34;key_encipherment&#34;,
+ *                 &#34;digital_signature&#34;,
+ *                 &#34;server_auth&#34;)
+ *             .dnsNames(&#34;example.com&#34;)
+ *             .subject(SelfSignedCertSubjectArgs.builder()
+ *                 .commonName(&#34;example.com&#34;)
+ *                 .organization(&#34;ACME Examples, Inc&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionSslCertificate = new RegionSslCertificate(&#34;defaultRegionSslCertificate&#34;, RegionSslCertificateArgs.builder()        
+ *             .namePrefix(&#34;my-certificate-&#34;)
+ *             .privateKey(defaultPrivateKey.privateKeyPem())
+ *             .certificate(defaultSelfSignedCert.certPem())
+ *             .region(&#34;europe-west1&#34;)
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .name(&#34;l7-ilb-hc&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network(default_.id())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name(&#34;l7-ilb-mig-template&#34;)
+ *             .machineType(&#34;e2-small&#34;)
+ *             .tags(&#34;http-server&#34;)
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .metadata(Map.of(&#34;startup-script&#34;, &#34;&#34;&#34;
+ * #! /bin/bash
+ * set -euo pipefail
+ * 
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ * 
+ * NAME=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/hostname&#34;)
+ * IP=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip&#34;)
+ * METADATA=$(curl -f -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True&#34; | jq &#39;del(.[&#34;startup-script&#34;])&#39;)
+ * 
+ * cat &lt;&lt;EOF &gt; /var/www/html/index.html
+ * &lt;pre&gt;
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * &lt;/pre&gt;
+ * EOF
+ *             &#34;&#34;&#34;))
+ *             .build());
+ * 
+ *         var defaultRegionInstanceGroupManager = new RegionInstanceGroupManager(&#34;defaultRegionInstanceGroupManager&#34;, RegionInstanceGroupManagerArgs.builder()        
+ *             .name(&#34;l7-ilb-mig1&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(defaultInstanceTemplate.id())
+ *                 .name(&#34;primary&#34;)
+ *                 .build())
+ *             .namedPorts(RegionInstanceGroupManagerNamedPortArgs.builder()
+ *                 .name(&#34;http-server&#34;)
+ *                 .port(80)
+ *                 .build())
+ *             .baseInstanceName(&#34;vm&#34;)
+ *             .targetSize(2)
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;l7-ilb-backend-service&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .portName(&#34;http-server&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(defaultRegionInstanceGroupManager.instanceGroup())
+ *                 .balancingMode(&#34;UTILIZATION&#34;)
+ *                 .capacityScaler(1)
+ *                 .build())
+ *             .build());
+ * 
+ *         var httpsLb = new RegionUrlMap(&#34;httpsLb&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;l7-ilb-regional-url-map&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .build());
+ * 
+ *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy(&#34;defaultRegionTargetHttpsProxy&#34;, RegionTargetHttpsProxyArgs.builder()        
+ *             .name(&#34;l7-ilb-target-https-proxy&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .urlMap(httpsLb.id())
+ *             .sslCertificates(defaultRegionSslCertificate.selfLink())
+ *             .build());
+ * 
+ *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;l7-ilb-forwarding-rule&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .ipProtocol(&#34;TCP&#34;)
+ *             .ipAddress(defaultAddress.id())
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .portRange(&#34;443&#34;)
+ *             .target(defaultRegionTargetHttpsProxy.id())
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .networkTier(&#34;PREMIUM&#34;)
+ *             .build());
+ * 
+ *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l7-ilb-fw-allow-hc&#34;)
+ *             .direction(&#34;INGRESS&#34;)
+ *             .network(default_.id())
+ *             .sourceRanges(            
+ *                 &#34;130.211.0.0/22&#34;,
+ *                 &#34;35.191.0.0/16&#34;,
+ *                 &#34;35.235.240.0/20&#34;)
+ *             .allows(FirewallAllowArgs.builder()
+ *                 .protocol(&#34;tcp&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var backends = new Firewall(&#34;backends&#34;, FirewallArgs.builder()        
+ *             .name(&#34;l7-ilb-fw-allow-ilb-to-backends&#34;)
+ *             .direction(&#34;INGRESS&#34;)
+ *             .network(default_.id())
+ *             .sourceRanges(&#34;10.0.0.0/24&#34;)
+ *             .targetTags(&#34;http-server&#34;)
+ *             .allows(FirewallAllowArgs.builder()
+ *                 .protocol(&#34;tcp&#34;)
+ *                 .ports(                
+ *                     &#34;80&#34;,
+ *                     &#34;443&#34;,
+ *                     &#34;8080&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .name(&#34;l7-ilb-test-vm&#34;)
+ *             .zone(&#34;europe-west1-b&#34;)
+ *             .machineType(&#34;e2-small&#34;)
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .network(default_.id())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(&#34;debian-cloud/debian-10&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var redirectRegionUrlMap = new RegionUrlMap(&#34;redirectRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
+ *             .name(&#34;l7-ilb-redirect-url-map&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts(&#34;*&#34;)
+ *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(defaultRegionBackendService.id())
+ *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                     .paths(&#34;/&#34;)
+ *                     .urlRedirect(RegionUrlMapPathMatcherPathRuleUrlRedirectArgs.builder()
+ *                         .httpsRedirect(true)
+ *                         .hostRedirect(&#34;10.0.1.5:443&#34;)
+ *                         .redirectResponseCode(&#34;PERMANENT_REDIRECT&#34;)
+ *                         .stripQuery(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *             .name(&#34;l7-ilb-target-http-proxy&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .urlMap(redirectRegionUrlMap.id())
+ *             .build());
+ * 
+ *         var redirect = new ForwardingRule(&#34;redirect&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;l7-ilb-redirect&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .ipProtocol(&#34;TCP&#34;)
+ *             .ipAddress(defaultAddress.id())
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .portRange(&#34;80&#34;)
+ *             .target(defaultRegionTargetHttpProxy.id())
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .networkTier(&#34;PREMIUM&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * RegionUrlMap can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}

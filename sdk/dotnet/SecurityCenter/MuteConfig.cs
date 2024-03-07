@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.SecurityCenter
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Scc Mute Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,14 +42,15 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// MuteConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:securitycenter/muteConfig:MuteConfig default {{name}}

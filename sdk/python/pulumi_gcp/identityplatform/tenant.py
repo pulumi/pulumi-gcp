@@ -248,8 +248,10 @@ class Tenant(pulumi.CustomResource):
         the Cloud Console prior to creating tenants.
 
         ## Example Usage
+
         ### Identity Platform Tenant Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -258,18 +260,19 @@ class Tenant(pulumi.CustomResource):
             display_name="tenant",
             allow_password_signup=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Tenant can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/tenants/{{name}}`
+        * `projects/{{project}}/tenants/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
@@ -314,8 +317,10 @@ class Tenant(pulumi.CustomResource):
         the Cloud Console prior to creating tenants.
 
         ## Example Usage
+
         ### Identity Platform Tenant Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,18 +329,19 @@ class Tenant(pulumi.CustomResource):
             display_name="tenant",
             allow_password_signup=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Tenant can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/tenants/{{name}}`
+        * `projects/{{project}}/tenants/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}

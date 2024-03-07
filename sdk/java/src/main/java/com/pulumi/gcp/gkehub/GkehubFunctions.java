@@ -24,6 +24,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for feature
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -54,6 +56,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFeatureIamPolicyResult> getFeatureIamPolicy(GetFeatureIamPolicyArgs args) {
@@ -63,6 +66,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for feature
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -93,6 +98,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFeatureIamPolicyResult> getFeatureIamPolicyPlain(GetFeatureIamPolicyPlainArgs args) {
@@ -102,6 +108,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for feature
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +140,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFeatureIamPolicyResult> getFeatureIamPolicy(GetFeatureIamPolicyArgs args, InvokeOptions options) {
@@ -141,6 +150,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for feature
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +182,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFeatureIamPolicyResult> getFeatureIamPolicyPlain(GetFeatureIamPolicyPlainArgs args, InvokeOptions options) {
@@ -180,6 +192,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for membership
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -210,6 +224,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMembershipIamPolicyResult> getMembershipIamPolicy(GetMembershipIamPolicyArgs args) {
@@ -219,6 +234,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for membership
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -249,6 +266,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMembershipIamPolicyResult> getMembershipIamPolicyPlain(GetMembershipIamPolicyPlainArgs args) {
@@ -258,6 +276,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for membership
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -288,6 +308,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMembershipIamPolicyResult> getMembershipIamPolicy(GetMembershipIamPolicyArgs args, InvokeOptions options) {
@@ -297,6 +318,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for membership
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -327,6 +350,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMembershipIamPolicyResult> getMembershipIamPolicyPlain(GetMembershipIamPolicyPlainArgs args, InvokeOptions options) {
@@ -336,6 +360,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for scope
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -365,6 +391,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScopeIamPolicyResult> getScopeIamPolicy(GetScopeIamPolicyArgs args) {
@@ -374,6 +401,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for scope
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -403,6 +432,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScopeIamPolicyResult> getScopeIamPolicyPlain(GetScopeIamPolicyPlainArgs args) {
@@ -412,6 +442,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for scope
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -441,6 +473,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScopeIamPolicyResult> getScopeIamPolicy(GetScopeIamPolicyArgs args, InvokeOptions options) {
@@ -450,6 +483,8 @@ public final class GkehubFunctions {
      * Retrieves the current IAM policy data for scope
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -479,6 +514,7 @@ public final class GkehubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScopeIamPolicyResult> getScopeIamPolicyPlain(GetScopeIamPolicyPlainArgs args, InvokeOptions options) {

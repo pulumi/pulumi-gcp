@@ -564,8 +564,10 @@ class Workflow(pulumi.CustomResource):
             * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 
         ## Example Usage
+
         ### Workflow Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -613,6 +615,7 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -663,8 +666,10 @@ class Workflow(pulumi.CustomResource):
             * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 
         ## Example Usage
+
         ### Workflow Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -712,6 +717,7 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

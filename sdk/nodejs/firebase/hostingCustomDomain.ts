@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Firebasehosting Customdomain Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,8 +22,10 @@ import * as utilities from "../utilities";
  *     customDomain: "custom.domain.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Customdomain Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,8 +43,10 @@ import * as utilities from "../utilities";
  *     waitDnsVerification: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Customdomain Cloud Run
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -84,20 +90,21 @@ import * as utilities from "../utilities";
  *     waitDnsVerification: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * CustomDomain can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
+ * * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
  *
- *  * `sites/{{site_id}}/customDomains/{{custom_domain}}`
+ * * `sites/{{site_id}}/customDomains/{{custom_domain}}`
  *
- *  * `{{project}}/{{site_id}}/{{custom_domain}}`
+ * * `{{project}}/{{site_id}}/{{custom_domain}}`
  *
- *  * `{{site_id}}/{{custom_domain}}`
+ * * `{{site_id}}/{{custom_domain}}`
  *
- *  When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}

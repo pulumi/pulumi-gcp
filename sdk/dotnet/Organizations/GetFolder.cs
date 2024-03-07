@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,6 +41,7 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
@@ -47,6 +49,7 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,6 +76,7 @@ namespace Pulumi.Gcp.Organizations
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());

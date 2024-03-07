@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,6 +28,7 @@ import * as utilities from "../utilities";
  *     serviceProject: "service-project-id-1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * For a complete Shared VPC example with both host and service projects, see
  * [`gcp.compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
@@ -35,9 +37,9 @@ import * as utilities from "../utilities";
  *
  * Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
  *
- *  * `{{host_project}/{{service_project}}`
+ * * `{{host_project}/{{service_project}}`
  *
- *  When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}

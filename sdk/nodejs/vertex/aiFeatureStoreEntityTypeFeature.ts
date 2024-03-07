@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
+ *
  * ### Vertex Ai Featurestore Entitytype Feature
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,8 +48,10 @@ import * as utilities from "../utilities";
  *     valueType: "INT64_ARRAY",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,14 +94,15 @@ import * as utilities from "../utilities";
  *     valueType: "INT64_ARRAY",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
  *
- *  * `{{entitytype}}/features/{{name}}`
+ * * `{{entitytype}}/features/{{name}}`
  *
- *  When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}

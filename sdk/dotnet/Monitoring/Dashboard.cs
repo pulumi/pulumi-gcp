@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Monitoring Dashboard Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,8 +49,11 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Monitoring Dashboard GridLayout
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,16 +128,17 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Dashboard can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/dashboards/{{dashboard_id}}`
+    /// * `projects/{{project}}/dashboards/{{dashboard_id}}`
     /// 
-    ///  * `{{dashboard_id}}`
+    /// * `{{dashboard_id}}`
     /// 
-    ///  When using the `pulumi import` command, Dashboard can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Dashboard can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}

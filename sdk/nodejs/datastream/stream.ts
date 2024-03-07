@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
  *
  * ## Example Usage
+ *
  * ### Datastream Stream Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -198,8 +200,10 @@ import * as utilities from "../utilities";
  *     customerManagedEncryptionKey: "kms-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Datastream Stream Postgresql
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -283,8 +287,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Datastream Stream Oracle
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -368,8 +374,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Datastream Stream Postgresql Bigquery Dataset Id
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -463,8 +471,10 @@ import * as utilities from "../utilities";
  *     name: "db",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Datastream Stream Bigquery
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -561,18 +571,19 @@ import * as utilities from "../utilities";
  *     backfillNone: {},
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Stream can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
+ * * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
  *
- *  * `{{project}}/{{location}}/{{stream_id}}`
+ * * `{{project}}/{{location}}/{{stream_id}}`
  *
- *  * `{{location}}/{{stream_id}}`
+ * * `{{location}}/{{stream_id}}`
  *
- *  When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}

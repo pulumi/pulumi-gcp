@@ -406,8 +406,10 @@ class AppGateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
+
         ### Beyondcorp App Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -418,8 +420,10 @@ class AppGateway(pulumi.CustomResource):
             region="us-central1",
             host_type="GCP_REGIONAL_MIG")
         ```
+        <!--End PulumiCodeChooser -->
         ### Beyondcorp App Gateway Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -435,20 +439,21 @@ class AppGateway(pulumi.CustomResource):
             },
             host_type="GCP_REGIONAL_MIG")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AppGateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/appGateway:AppGateway default projects/{{project}}/locations/{{region}}/appGateways/{{name}}
@@ -505,8 +510,10 @@ class AppGateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
         ## Example Usage
+
         ### Beyondcorp App Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -517,8 +524,10 @@ class AppGateway(pulumi.CustomResource):
             region="us-central1",
             host_type="GCP_REGIONAL_MIG")
         ```
+        <!--End PulumiCodeChooser -->
         ### Beyondcorp App Gateway Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,20 +543,21 @@ class AppGateway(pulumi.CustomResource):
             },
             host_type="GCP_REGIONAL_MIG")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AppGateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:beyondcorp/appGateway:AppGateway default projects/{{project}}/locations/{{region}}/appGateways/{{name}}

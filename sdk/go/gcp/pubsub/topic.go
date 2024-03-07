@@ -23,8 +23,10 @@ import (
 // by using the `projects.ServiceIdentity` resource.
 //
 // ## Example Usage
+//
 // ### Pubsub Topic Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,8 +54,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Cmek
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,8 +97,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Geo Restricted
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,8 +129,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Schema Settings
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,18 +184,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Topic can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/topics/{{name}}`
+// * `projects/{{project}}/topics/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}

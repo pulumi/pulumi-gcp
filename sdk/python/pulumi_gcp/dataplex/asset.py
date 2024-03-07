@@ -520,7 +520,9 @@ class Asset(pulumi.CustomResource):
         The Dataplex Asset resource
 
         ## Example Usage
+
         ### Basic_asset
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -564,18 +566,19 @@ class Asset(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Asset can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
 
-         * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+        * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
 
-         * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+        * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
 
-         When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/asset:Asset default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}
@@ -615,7 +618,9 @@ class Asset(pulumi.CustomResource):
         The Dataplex Asset resource
 
         ## Example Usage
+
         ### Basic_asset
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -659,18 +664,19 @@ class Asset(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Asset can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
 
-         * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+        * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
 
-         * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+        * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
 
-         When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataplex/asset:Asset default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}

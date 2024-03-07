@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupManagementServer(ctx *pulumi.Context, args *LookupManagementServerArgs, opts ...pulumi.InvokeOption) (*LookupManagementServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementServerResult

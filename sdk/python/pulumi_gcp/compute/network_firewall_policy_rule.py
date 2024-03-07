@@ -462,7 +462,9 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
+
         ### Global
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -516,18 +518,19 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 src_address_groups=[basic_global_networksecurity_address_group.id],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkFirewallPolicyRule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
+        * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
 
-         * `{{project}}/{{firewall_policy}}/{{priority}}`
+        * `{{project}}/{{firewall_policy}}/{{priority}}`
 
-         * `{{firewall_policy}}/{{priority}}`
+        * `{{firewall_policy}}/{{priority}}`
 
-         When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
@@ -566,7 +569,9 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
+
         ### Global
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -620,18 +625,19 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 src_address_groups=[basic_global_networksecurity_address_group.id],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkFirewallPolicyRule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
+        * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
 
-         * `{{project}}/{{firewall_policy}}/{{priority}}`
+        * `{{project}}/{{firewall_policy}}/{{priority}}`
 
-         * `{{firewall_policy}}/{{priority}}`
+        * `{{firewall_policy}}/{{priority}}`
 
-         When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}

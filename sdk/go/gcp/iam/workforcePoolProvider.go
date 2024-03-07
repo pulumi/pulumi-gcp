@@ -24,8 +24,10 @@ import (
 // billing/quota project. The account team notifies you when the project is granted access.
 //
 // ## Example Usage
+//
 // ### Iam Workforce Pool Provider Saml Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,8 +67,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workforce Pool Provider Saml Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -110,8 +114,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workforce Pool Provider Oidc Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,8 +167,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workforce Pool Provider Oidc Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -220,16 +228,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // WorkforcePoolProvider can be imported using any of these accepted formats:
 //
-//   - `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
+// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
 //
-//   - `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
+// * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 //
-//     When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
@@ -284,8 +293,6 @@ type WorkforcePoolProvider struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	//   An object containing a list of `"key": value` pairs.
-	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -407,8 +414,6 @@ type workforcePoolProviderState struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	//   An object containing a list of `"key": value` pairs.
-	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -492,8 +497,6 @@ type WorkforcePoolProviderState struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	//   An object containing a list of `"key": value` pairs.
-	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -581,8 +584,6 @@ type workforcePoolProviderArgs struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	//   An object containing a list of `"key": value` pairs.
-	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -657,8 +658,6 @@ type WorkforcePoolProviderArgs struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
-	//   An object containing a list of `"key": value` pairs.
-	//   Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -821,8 +820,6 @@ func (o WorkforcePoolProviderOutput) AttributeCondition() pulumi.StringPtrOutput
 //     For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 //     For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 //     on a Google token:
-//     An object containing a list of `"key": value` pairs.
-//     Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 func (o WorkforcePoolProviderOutput) AttributeMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)
 }

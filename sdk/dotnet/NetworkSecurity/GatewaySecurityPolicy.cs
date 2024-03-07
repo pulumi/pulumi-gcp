@@ -17,8 +17,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Network Security Gateway Security Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,8 +38,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Gateway Security Policy Tls Inspection Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,18 +156,19 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// GatewaySecurityPolicy can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}

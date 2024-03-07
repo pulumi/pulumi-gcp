@@ -16,11 +16,11 @@ namespace Pulumi.Gcp.Projects
         /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Searching For Projects About To Be Deleted In An Org
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +41,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
@@ -52,11 +51,11 @@ namespace Pulumi.Gcp.Projects
         /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Searching For Projects About To Be Deleted In An Org
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +76,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

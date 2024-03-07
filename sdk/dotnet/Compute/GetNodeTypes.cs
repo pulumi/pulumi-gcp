@@ -15,10 +15,9 @@ namespace Pulumi.Gcp.Compute
         /// Provides available node types for Compute Engine sole-tenant nodes in a zone
         /// for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeTypesResult> InvokeAsync(GetNodeTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.Gcp.Compute
         /// Provides available node types for Compute Engine sole-tenant nodes in a zone
         /// for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeTypesResult> Invoke(GetNodeTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeTypesResult>("gcp:compute/getNodeTypes:getNodeTypes", args ?? new GetNodeTypesInvokeArgs(), options.WithDefaults());

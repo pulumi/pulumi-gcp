@@ -120,6 +120,7 @@ def get_default_service_account(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -127,6 +128,7 @@ def get_default_service_account(project: Optional[str] = None,
     default = gcp.appengine.get_default_service_account()
     pulumi.export("defaultAccount", default.email)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project ID. If it is not provided, the provider project is used.
@@ -154,6 +156,7 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -161,6 +164,7 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
     default = gcp.appengine.get_default_service_account()
     pulumi.export("defaultAccount", default.email)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project ID. If it is not provided, the provider project is used.

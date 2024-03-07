@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
  *
  * ## Example Usage
+ *
  * ### Monitoring Monitored Project Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,16 +32,17 @@ import * as utilities from "../utilities";
  *     name: basic.projectId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * MonitoredProject can be imported using any of these accepted formats:
  *
- *  * `v1/locations/global/metricsScopes/{{name}}`
+ * * `v1/locations/global/metricsScopes/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}

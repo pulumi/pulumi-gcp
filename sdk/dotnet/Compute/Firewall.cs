@@ -30,8 +30,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Firewall Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,8 +76,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firewall With Target Tags
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,18 +119,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Firewall can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/global/firewalls/{{name}}`
+    /// * `projects/{{project}}/global/firewalls/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Firewall can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Firewall can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}

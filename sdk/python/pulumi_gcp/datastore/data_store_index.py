@@ -226,8 +226,10 @@ class DataStoreIndex(pulumi.CustomResource):
         Datastore location will be the same as the App Engine location specified.
 
         ## Example Usage
+
         ### Datastore Index
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -245,18 +247,19 @@ class DataStoreIndex(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Index can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/indexes/{{index_id}}`
+        * `projects/{{project}}/indexes/{{index_id}}`
 
-         * `{{project}}/{{index_id}}`
+        * `{{project}}/{{index_id}}`
 
-         * `{{index_id}}`
+        * `{{index_id}}`
 
-         When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
@@ -306,8 +309,10 @@ class DataStoreIndex(pulumi.CustomResource):
         Datastore location will be the same as the App Engine location specified.
 
         ## Example Usage
+
         ### Datastore Index
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -325,18 +330,19 @@ class DataStoreIndex(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Index can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/indexes/{{index_id}}`
+        * `projects/{{project}}/indexes/{{index_id}}`
 
-         * `{{project}}/{{index_id}}`
+        * `{{project}}/{{index_id}}`
 
-         * `{{index_id}}`
+        * `{{index_id}}`
 
-         When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}

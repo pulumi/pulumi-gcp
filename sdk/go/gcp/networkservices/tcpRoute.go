@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Network Services Tcp Route Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,8 +80,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Tcp Route Actions
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -137,8 +141,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Tcp Route Mesh Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -215,8 +221,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Tcp Route Gateway Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -298,18 +306,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TcpRoute can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
+// * `projects/{{project}}/locations/global/tcpRoutes/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}

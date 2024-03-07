@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
+ * 
  * ### Gkehub Scope Rbac Role Binding Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,18 +72,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ScopeRBACRoleBinding can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
+ * * `projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}`
  * 
- *  * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
+ * * `{{project}}/{{scope_id}}/{{scope_rbac_role_binding_id}}`
  * 
- *  * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
+ * * `{{scope_id}}/{{scope_rbac_role_binding_id}}`
  * 
- *  When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ScopeRBACRoleBinding can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding default projects/{{project}}/locations/global/scopes/{{scope_id}}/rbacrolebindings/{{scope_rbac_role_binding_id}}

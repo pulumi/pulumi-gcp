@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
  * 
  * ## Example Usage
+ * 
  * ### Certificate Manager Certificate Issuance Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -129,18 +132,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * CertificateIssuanceConfig can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}

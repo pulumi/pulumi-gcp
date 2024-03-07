@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
  *
  * ## Example Usage
+ *
  * ### Logging Folder Settings All
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,16 +41,17 @@ import * as utilities from "../utilities";
  *     member: settings.apply(settings => `serviceAccount:${settings.kmsServiceAccountId}`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FolderSettings can be imported using any of these accepted formats:
  *
- *  * `folders/{{folder}}/settings`
+ * * `folders/{{folder}}/settings`
  *
- *  * `{{folder}}`
+ * * `{{folder}}`
  *
- *  When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings

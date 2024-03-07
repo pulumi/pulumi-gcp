@@ -354,8 +354,10 @@ class DataExchange(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
+
         ### Bigquery Analyticshub Data Exchange Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,20 +368,21 @@ class DataExchange(pulumi.CustomResource):
             display_name="my_data_exchange",
             description="example data exchange")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DataExchange can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
+        * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
 
-         * `{{project}}/{{location}}/{{data_exchange_id}}`
+        * `{{project}}/{{location}}/{{data_exchange_id}}`
 
-         * `{{location}}/{{data_exchange_id}}`
+        * `{{location}}/{{data_exchange_id}}`
 
-         * `{{data_exchange_id}}`
+        * `{{data_exchange_id}}`
 
-         When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
@@ -428,8 +431,10 @@ class DataExchange(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
         ## Example Usage
+
         ### Bigquery Analyticshub Data Exchange Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,20 +445,21 @@ class DataExchange(pulumi.CustomResource):
             display_name="my_data_exchange",
             description="example data exchange")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DataExchange can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
+        * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
 
-         * `{{project}}/{{location}}/{{data_exchange_id}}`
+        * `{{project}}/{{location}}/{{data_exchange_id}}`
 
-         * `{{location}}/{{data_exchange_id}}`
+        * `{{location}}/{{data_exchange_id}}`
 
-         * `{{data_exchange_id}}`
+        * `{{data_exchange_id}}`
 
-         When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}

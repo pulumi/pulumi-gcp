@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
  * 
  * ## Example Usage
+ * 
  * ### Network Services Edge Cache Origin Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,7 +63,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Origin Advanced
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -142,7 +148,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Edge Cache Origin V4auth
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -197,18 +206,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * EdgeCacheOrigin can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
+ * * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}

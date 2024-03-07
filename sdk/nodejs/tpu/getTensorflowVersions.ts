@@ -9,14 +9,18 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getTensorflowVersions({});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Configure Basic TPU Node With Available Version
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,6 +34,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> {
     args = args || {};
@@ -77,14 +82,18 @@ export interface GetTensorflowVersionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getTensorflowVersions({});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Configure Basic TPU Node With Available Version
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,6 +107,7 @@ export interface GetTensorflowVersionsResult {
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTensorflowVersionsOutput(args?: GetTensorflowVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTensorflowVersionsResult> {
     return pulumi.output(args).apply((a: any) => getTensorflowVersions(a, opts))

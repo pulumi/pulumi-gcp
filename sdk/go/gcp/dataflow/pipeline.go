@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dataflow)
 //
 // ## Example Usage
+//
 // ### Data Pipeline Pipeline
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,20 +96,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Pipeline can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/pipelines/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/pipelines/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataflow/pipeline:Pipeline default projects/{{project}}/locations/{{region}}/pipelines/{{name}}

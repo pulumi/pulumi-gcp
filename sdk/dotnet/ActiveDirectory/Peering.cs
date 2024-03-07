@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.ActiveDirectory
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Active Directory Peering Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,6 +75,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

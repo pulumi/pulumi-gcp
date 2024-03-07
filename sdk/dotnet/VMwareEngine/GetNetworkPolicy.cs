@@ -17,10 +17,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about network policy, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNetworkPolicyResult> InvokeAsync(GetNetworkPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPolicyResult>("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args ?? new GetNetworkPolicyArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about network policy, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNetworkPolicyResult> Invoke(GetNetworkPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPolicyResult>("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args ?? new GetNetworkPolicyInvokeArgs(), options.WithDefaults());

@@ -21,8 +21,10 @@ import (
 //   - [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
 //
 // ## Example Usage
+//
 // ### Vertex Ai Feature Group Feature
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,20 +118,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // FeatureGroupFeature can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{feature_group}}/{{name}}`
+// * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
 //
-//   - `{{region}}/{{feature_group}}/{{name}}`
+// * `{{region}}/{{feature_group}}/{{name}}`
 //
-//   - `{{feature_group}}/{{name}}`
+// * `{{feature_group}}/{{name}}`
 //
-//     When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}

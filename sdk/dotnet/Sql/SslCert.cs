@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// Example creating a SQL Client Certificate.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,6 +49,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

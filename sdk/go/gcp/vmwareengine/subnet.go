@@ -21,8 +21,10 @@ import (
 // * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
 //
 // ## Example Usage
+//
 // ### Vmware Engine Subnet User Defined
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,14 +80,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Subnet can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/subnets/{{name}}`
+// * `{{parent}}/subnets/{{name}}`
 //
-//     When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}

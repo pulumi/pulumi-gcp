@@ -410,8 +410,10 @@ class RegionSslCertificate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
         ## Example Usage
+
         ### Region Ssl Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,8 +426,10 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Random Provider
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,8 +450,10 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Target Https Proxies
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,20 +509,21 @@ class RegionSslCertificate(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionSslCertificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
@@ -580,8 +587,10 @@ class RegionSslCertificate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
         ## Example Usage
+
         ### Region Ssl Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -594,8 +603,10 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Random Provider
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -616,8 +627,10 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Ssl Certificate Target Https Proxies
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -673,20 +686,21 @@ class RegionSslCertificate(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionSslCertificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionSslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}

@@ -33,7 +33,10 @@ import javax.annotation.Nullable;
  *     * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
  * 
  * ## Example Usage
+ * 
  * ### Compute Region Commitment Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -73,7 +76,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Region Commitment Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -117,20 +123,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * RegionCommitment can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/regions/{{region}}/commitments/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/commitments/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, RegionCommitment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RegionCommitment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionCommitment:RegionCommitment default projects/{{project}}/regions/{{region}}/commitments/{{name}}

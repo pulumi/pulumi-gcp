@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Network Services Http Route Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,8 +60,10 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Http Route Matches And Actions
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -218,8 +222,10 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Http Route Actions
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -345,8 +351,10 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Http Route Mesh Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -406,18 +414,19 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// HttpRoute can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
+    /// * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}

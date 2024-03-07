@@ -469,8 +469,10 @@ class NotificationChannel(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
+
         ### Notification Channel Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,8 +485,10 @@ class NotificationChannel(pulumi.CustomResource):
             },
             force_delete=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Notification Channel Sensitive
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -499,14 +503,15 @@ class NotificationChannel(pulumi.CustomResource):
                 auth_token="one",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NotificationChannel can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
@@ -575,8 +580,10 @@ class NotificationChannel(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
+
         ### Notification Channel Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -589,8 +596,10 @@ class NotificationChannel(pulumi.CustomResource):
             },
             force_delete=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Notification Channel Sensitive
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -605,14 +614,15 @@ class NotificationChannel(pulumi.CustomResource):
                 auth_token="one",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NotificationChannel can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}

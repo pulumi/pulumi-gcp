@@ -27,6 +27,7 @@ import (
 //
 // Example creating an ACL on a bucket with one owner, and one reader.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,6 +62,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

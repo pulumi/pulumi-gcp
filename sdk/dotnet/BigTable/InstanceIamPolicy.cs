@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// ## google\_bigtable\_instance\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,9 +55,11 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_bigtable\_instance\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,9 +80,11 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_bigtable\_instance\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -97,28 +102,29 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
     /// 
-    ///  IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
+    /// IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
     /// 
-    ///  * `"projects/{project}/instances/{instance}"`
+    /// * `"projects/{project}/instances/{instance}"`
     /// 
-    ///  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
     /// 
-    ///  tf
+    /// tf
     /// 
-    ///  import {
+    /// import {
     /// 
-    ///  id = "projects/{project}/instances/{instance}"
+    ///   id = "projects/{project}/instances/{instance}"
     /// 
-    ///  to = google_bigtable_instance_iam_policy.default
+    ///   to = google_bigtable_instance_iam_policy.default
     /// 
-    ///  }
+    /// }
     /// 
-    ///  The `pulumi import` command can also be used:
+    /// The `pulumi import` command can also be used:
     /// 
     /// ```sh
     /// $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}

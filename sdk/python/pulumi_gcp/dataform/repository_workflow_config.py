@@ -338,8 +338,10 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Dataform Repository Workflow Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -417,20 +419,21 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RepositoryWorkflowConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
 
-         * `{{project}}/{{region}}/{{repository}}/{{name}}`
+        * `{{project}}/{{region}}/{{repository}}/{{name}}`
 
-         * `{{region}}/{{repository}}/{{name}}`
+        * `{{region}}/{{repository}}/{{name}}`
 
-         * `{{repository}}/{{name}}`
+        * `{{repository}}/{{name}}`
 
-         When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}
@@ -472,8 +475,10 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Dataform Repository Workflow Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,20 +556,21 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
             cron_schedule="0 7 * * *",
             time_zone="America/New_York")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RepositoryWorkflowConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
 
-         * `{{project}}/{{region}}/{{repository}}/{{name}}`
+        * `{{project}}/{{region}}/{{repository}}/{{name}}`
 
-         * `{{region}}/{{repository}}/{{name}}`
+        * `{{region}}/{{repository}}/{{name}}`
 
-         * `{{repository}}/{{name}}`
+        * `{{repository}}/{{name}}`
 
-         When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}

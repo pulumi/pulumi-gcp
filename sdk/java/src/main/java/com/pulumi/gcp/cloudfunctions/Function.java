@@ -37,7 +37,10 @@ import javax.annotation.Nullable;
  * for Cloud Functions.
  * 
  * ## Example Usage
+ * 
  * ### Public Function
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -99,7 +102,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Single User
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -165,16 +172,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}

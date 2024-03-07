@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
  * 
  * ## Example Usage
+ * 
  * ### Network Services Gateway Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,7 +64,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Gateway Advanced
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -95,7 +101,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Gateway Secure Web Proxy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -197,7 +206,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Services Gateway Multiple Swp Same Network
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -313,18 +325,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Gateway can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}

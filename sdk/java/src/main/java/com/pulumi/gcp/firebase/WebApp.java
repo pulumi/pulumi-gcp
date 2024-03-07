@@ -25,7 +25,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://firebase.google.com/)
  * 
  * ## Example Usage
+ * 
  * ### Firebase Web App Custom Api Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,22 +75,23 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * WebApp can be imported using any of these accepted formats:
  * 
- *  * `{{project}} projects/{{project}}/webApps/{{app_id}}`
+ * * `{{project}} projects/{{project}}/webApps/{{app_id}}`
  * 
- *  * `projects/{{project}}/webApps/{{app_id}}`
+ * * `projects/{{project}}/webApps/{{app_id}}`
  * 
- *  * `{{project}}/{{project}}/{{app_id}}`
+ * * `{{project}}/{{project}}/{{app_id}}`
  * 
- *  * `webApps/{{app_id}}`
+ * * `webApps/{{app_id}}`
  * 
- *  * `{{app_id}}`
+ * * `{{app_id}}`
  * 
- *  When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}

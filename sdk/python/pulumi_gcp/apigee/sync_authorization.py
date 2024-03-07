@@ -150,8 +150,10 @@ class SyncAuthorization(pulumi.CustomResource):
             * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
 
         ## Example Usage
+
         ### Apigee Sync Authorization Basic Test
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -179,16 +181,17 @@ class SyncAuthorization(pulumi.CustomResource):
             name=apigee_org.name,
             identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SyncAuthorization can be imported using any of these accepted formats:
 
-         * `organizations/{{name}}/syncAuthorization`
+        * `organizations/{{name}}/syncAuthorization`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
@@ -225,8 +228,10 @@ class SyncAuthorization(pulumi.CustomResource):
             * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
 
         ## Example Usage
+
         ### Apigee Sync Authorization Basic Test
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,16 +259,17 @@ class SyncAuthorization(pulumi.CustomResource):
             name=apigee_org.name,
             identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SyncAuthorization can be imported using any of these accepted formats:
 
-         * `organizations/{{name}}/syncAuthorization`
+        * `organizations/{{name}}/syncAuthorization`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization

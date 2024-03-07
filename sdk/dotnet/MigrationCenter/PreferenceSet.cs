@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.MigrationCenter
     ///     * [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Preference Set Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,8 +50,10 @@ namespace Pulumi.Gcp.MigrationCenter
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Preference Set Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -114,18 +118,19 @@ namespace Pulumi.Gcp.MigrationCenter
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// PreferenceSet can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{preference_set_id}}`
+    /// * `{{project}}/{{location}}/{{preference_set_id}}`
     /// 
-    ///  * `{{location}}/{{preference_set_id}}`
+    /// * `{{location}}/{{preference_set_id}}`
     /// 
-    ///  When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}

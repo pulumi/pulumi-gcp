@@ -104,6 +104,7 @@ def get_table_iam_policy(instance: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -111,6 +112,7 @@ def get_table_iam_policy(instance: Optional[str] = None,
     policy = gcp.bigtable.get_table_iam_policy(instance=instance["name"],
         table=table["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name or relative resource id of the instance that owns the table.
@@ -142,6 +144,7 @@ def get_table_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -149,6 +152,7 @@ def get_table_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     policy = gcp.bigtable.get_table_iam_policy(instance=instance["name"],
         table=table["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name or relative resource id of the instance that owns the table.

@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  * 
  * ## Example Usage
+ * 
  * ### Router Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -76,7 +79,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Compute Router Encrypted Interconnect
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -118,20 +124,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Router can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}

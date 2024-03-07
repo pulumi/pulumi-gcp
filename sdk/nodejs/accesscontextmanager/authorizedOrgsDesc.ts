@@ -24,8 +24,10 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ *
  * ### Access Context Manager Authorized Orgs Desc Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,14 +48,15 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AuthorizedOrgsDesc can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}

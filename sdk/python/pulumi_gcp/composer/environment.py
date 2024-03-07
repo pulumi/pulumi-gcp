@@ -296,13 +296,13 @@ class Environment(pulumi.CustomResource):
 
         Environment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
@@ -342,13 +342,13 @@ class Environment(pulumi.CustomResource):
 
         Environment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}

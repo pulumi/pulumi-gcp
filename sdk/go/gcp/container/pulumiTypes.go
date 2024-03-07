@@ -10441,8 +10441,6 @@ type ClusterAddonsConfig struct {
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
 	//
 	// This example `addonsConfig` disables two addons:
-	//
-	// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 	ConfigConnectorConfig *ClusterAddonsConfigConfigConnectorConfig `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -10512,8 +10510,6 @@ type ClusterAddonsConfigArgs struct {
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
 	//
 	// This example `addonsConfig` disables two addons:
-	//
-	// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 	ConfigConnectorConfig ClusterAddonsConfigConfigConnectorConfigPtrInput `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -10651,8 +10647,6 @@ func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunC
 // The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
 //
 // This example `addonsConfig` disables two addons:
-//
-// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 func (o ClusterAddonsConfigOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig { return v.ConfigConnectorConfig }).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
 }
@@ -10781,8 +10775,6 @@ func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudr
 // The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
 //
 // This example `addonsConfig` disables two addons:
-//
-// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 func (o ClusterAddonsConfigPtrOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig {
 		if v == nil {
@@ -17723,8 +17715,6 @@ type ClusterMasterAuth struct {
 	// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
-	//
-	// This block also contains several computed attributes, documented below.
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
 	// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
 	ClientKey *string `pulumi:"clientKey"`
@@ -17747,8 +17737,6 @@ type ClusterMasterAuthArgs struct {
 	// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
-	//
-	// This block also contains several computed attributes, documented below.
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigInput `pulumi:"clientCertificateConfig"`
 	// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
@@ -17839,8 +17827,6 @@ func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
 }
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
-//
-// This block also contains several computed attributes, documented below.
 func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigOutput)
 }
@@ -17890,8 +17876,6 @@ func (o ClusterMasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
 }
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
-//
-// This block also contains several computed attributes, documented below.
 func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig {
 		if v == nil {

@@ -499,8 +499,10 @@ class ConnectivityTest(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 
         ## Example Usage
+
         ### Network Management Connectivity Test Instances
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -545,8 +547,10 @@ class ConnectivityTest(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Management Connectivity Test Addresses
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -584,18 +588,19 @@ class ConnectivityTest(pulumi.CustomResource):
             ),
             protocol="UDP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ConnectivityTest can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
+        * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
@@ -677,8 +682,10 @@ class ConnectivityTest(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 
         ## Example Usage
+
         ### Network Management Connectivity Test Instances
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -723,8 +730,10 @@ class ConnectivityTest(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Management Connectivity Test Addresses
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -762,18 +771,19 @@ class ConnectivityTest(pulumi.CustomResource):
             ),
             protocol="UDP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ConnectivityTest can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
+        * `projects/{{project}}/locations/global/connectivityTests/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}

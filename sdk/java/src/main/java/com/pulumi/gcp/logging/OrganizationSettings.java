@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  *     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
  * 
  * ## Example Usage
+ * 
  * ### Logging Organization Settings All
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,16 +73,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * OrganizationSettings can be imported using any of these accepted formats:
  * 
- *  * `organizations/{{organization}}/settings`
+ * * `organizations/{{organization}}/settings`
  * 
- *  * `{{organization}}`
+ * * `{{organization}}`
  * 
- *  When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default organizations/{{organization}}/settings

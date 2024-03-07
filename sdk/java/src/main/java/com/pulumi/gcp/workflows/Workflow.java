@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
  * 
  * ## Example Usage
+ * 
  * ### Workflow Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -96,6 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

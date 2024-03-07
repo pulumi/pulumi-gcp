@@ -22,8 +22,10 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+//
 // ### Identity Platform Project Default Config
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,18 +64,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ProjectDefaultConfig can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/config/{{name}}`
+// * `projects/{{project}}/config/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, ProjectDefaultConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ProjectDefaultConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default projects/{{project}}/config/{{name}}

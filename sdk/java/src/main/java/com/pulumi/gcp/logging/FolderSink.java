@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  *     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -79,14 +81,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Folder-level logging sinks can be imported using this format:
  * 
- *  * `folders/{{folder_id}}/sinks/{{name}}`
+ * * `folders/{{folder_id}}/sinks/{{name}}`
  * 
- *  When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}

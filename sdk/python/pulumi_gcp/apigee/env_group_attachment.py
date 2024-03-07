@@ -144,11 +144,11 @@ class EnvGroupAttachment(pulumi.CustomResource):
 
         EnvgroupAttachment can be imported using any of these accepted formats:
 
-         * `{{envgroup_id}}/attachments/{{name}}`
+        * `{{envgroup_id}}/attachments/{{name}}`
 
-         * `{{envgroup_id}}/{{name}}`
+        * `{{envgroup_id}}/{{name}}`
 
-         When using the `pulumi import` command, EnvgroupAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EnvgroupAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/attachments/{{name}}
@@ -188,11 +188,11 @@ class EnvGroupAttachment(pulumi.CustomResource):
 
         EnvgroupAttachment can be imported using any of these accepted formats:
 
-         * `{{envgroup_id}}/attachments/{{name}}`
+        * `{{envgroup_id}}/attachments/{{name}}`
 
-         * `{{envgroup_id}}/{{name}}`
+        * `{{envgroup_id}}/{{name}}`
 
-         When using the `pulumi import` command, EnvgroupAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EnvgroupAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/envGroupAttachment:EnvGroupAttachment default {{envgroup_id}}/attachments/{{name}}

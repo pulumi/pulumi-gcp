@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
  *
  * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default 'root'@'%' user with no password. This user will be deleted by the provider on
+ * default 'root'@'%!'(MISSING) user with no password. This user will be deleted by the provider on
  * instance creation. You should use `gcp.sql.User` to define a custom user with
  * a restricted host and strong password.
  *
@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
  *
  * ## Example Usage
+ *
  * ### SQL Second Generation Instance
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,9 +37,12 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Private IP Instance
  * > **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,8 +76,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### ENTERPRISE_PLUS Instance with dataCacheConfig
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -89,8 +97,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Cloud SQL Instance with PSC connectivity
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,18 +126,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database instances can be imported using one of any of these accepted formats:
  *
- *  * `projects/{{project}}/instances/{{name}}`
+ * * `projects/{{project}}/instances/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
@@ -140,11 +152,11 @@ import * as utilities from "../utilities";
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
  * ```
  *
- *  config and set on the server.
+ * config and set on the server.
  *
- *  When importing, double-check that your config has all the fields set that you expect- just seeing
+ * When importing, double-check that your config has all the fields set that you expect- just seeing
  *
- *  no diff isn't sufficient to know that your config could reproduce the imported resource.
+ * no diff isn't sufficient to know that your config could reproduce the imported resource.
  */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**

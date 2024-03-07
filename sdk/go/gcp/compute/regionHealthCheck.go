@@ -30,8 +30,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 //
 // ## Example Usage
+//
 // ### Region Health Check Tcp
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,8 +62,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Tcp Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,8 +101,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Ssl
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,8 +133,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Ssl Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -164,8 +172,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,8 +204,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http Logs
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -227,8 +239,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -265,8 +279,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Https
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -295,8 +311,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Https Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -333,8 +351,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http2
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -363,8 +383,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Http2 Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -401,8 +423,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Grpc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -431,8 +455,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Health Check Grpc Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -463,20 +489,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // RegionHealthCheck can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/healthChecks/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/healthChecks/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, RegionHealthCheck can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, RegionHealthCheck can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default projects/{{project}}/regions/{{region}}/healthChecks/{{name}}

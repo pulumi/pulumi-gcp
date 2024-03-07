@@ -11,13 +11,13 @@ import * as utilities from "../utilities";
  *
  * Instance templates can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}

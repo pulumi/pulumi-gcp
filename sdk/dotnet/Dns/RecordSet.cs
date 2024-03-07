@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Dns
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Binding a DNS name to the ephemeral IP of a new instance:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,8 +68,11 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Adding an A record
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,8 +101,11 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Adding an MX record
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -130,10 +138,13 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Adding an SPF record
     /// 
     /// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -162,10 +173,13 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Adding a CNAME record
     /// 
     ///  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -194,9 +208,12 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Setting Routing Policy instead of using rrdatas
     /// ### Geolocation
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -237,8 +254,11 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Primary-Backup
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -327,18 +347,19 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// DNS record sets can be imported using either of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
+    /// * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
     /// 
-    ///  * `{{project}}/{{zone}}/{{name}}/{{type}}`
+    /// * `{{project}}/{{zone}}/{{name}}/{{type}}`
     /// 
-    ///  * `{{zone}}/{{name}}/{{type}}`
+    /// * `{{zone}}/{{name}}/{{type}}`
     /// 
-    ///  When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
@@ -352,7 +373,7 @@ namespace Pulumi.Gcp.Dns
     /// $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
     /// ```
     /// 
-    ///  Note: The record name must include the trailing dot at the end.
+    /// Note: The record name must include the trailing dot at the end.
     /// </summary>
     [GcpResourceType("gcp:dns/recordSet:RecordSet")]
     public partial class RecordSet : global::Pulumi.CustomResource

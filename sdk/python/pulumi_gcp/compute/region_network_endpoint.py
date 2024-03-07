@@ -267,8 +267,10 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+
         ### Region Network Endpoint Internet Ip Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -287,8 +289,10 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Internet Fqdn Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -307,20 +311,21 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionNetworkEndpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         * `{{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `{{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         * `{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         * `{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         When using the `pulumi import` command, RegionNetworkEndpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionNetworkEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
@@ -373,8 +378,10 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+
         ### Region Network Endpoint Internet Ip Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -393,8 +400,10 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Internet Fqdn Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -413,20 +422,21 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionNetworkEndpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         * `{{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `{{project}}/{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         * `{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `{{region}}/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         * `{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+        * `{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
 
-         When using the `pulumi import` command, RegionNetworkEndpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionNetworkEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{region_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}

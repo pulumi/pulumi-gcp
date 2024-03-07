@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Healthcare Fhir Store Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,8 +66,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Fhir Store Streaming Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -139,8 +143,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Fhir Store Notification Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -181,8 +187,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Fhir Store Notification Configs
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -229,16 +237,17 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// FhirStore can be imported using any of these accepted formats:
     /// 
-    ///  * `{{dataset}}/fhirStores/{{name}}`
+    /// * `{{dataset}}/fhirStores/{{name}}`
     /// 
-    ///  * `{{dataset}}/{{name}}`
+    /// * `{{dataset}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}

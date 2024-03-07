@@ -220,6 +220,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
         ## google\\_compute\\_machine\\_image\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -233,9 +234,11 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,8 +257,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,9 +271,11 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.admin",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -284,8 +291,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -296,9 +305,11 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.admin",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -314,42 +325,43 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/global/machineImages/{{name}}
+        * projects/{{project}}/global/machineImages/{{name}}
 
-         * {{project}}/{{name}}
+        * {{project}}/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member.
+        Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor projects/{{project}}/global/machineImages/{{machine_image}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -395,6 +407,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
         ## google\\_compute\\_machine\\_image\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -408,9 +421,11 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -429,8 +444,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,9 +458,11 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.admin",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -459,8 +478,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,9 +492,11 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.admin",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,42 +512,43 @@ class MachineImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/global/machineImages/{{name}}
+        * projects/{{project}}/global/machineImages/{{name}}
 
-         * {{project}}/{{name}}
+        * {{project}}/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member.
+        Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor projects/{{project}}/global/machineImages/{{machine_image}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param MachineImageIamPolicyArgs args: The arguments to use to populate this resource's properties.

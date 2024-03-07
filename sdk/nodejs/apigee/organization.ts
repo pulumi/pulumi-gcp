@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  *
  * ## Example Usage
+ *
  * ### Apigee Organization Cloud Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,8 +44,10 @@ import * as utilities from "../utilities";
  *     authorizedNetwork: apigeeNetwork.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,8 +60,10 @@ import * as utilities from "../utilities";
  *     disableVpcPeering: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -102,8 +108,10 @@ import * as utilities from "../utilities";
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -135,16 +143,17 @@ import * as utilities from "../utilities";
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Organization can be imported using any of these accepted formats:
  *
- *  * `organizations/{{name}}`
+ * * `organizations/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}

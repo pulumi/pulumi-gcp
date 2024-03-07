@@ -329,8 +329,10 @@ class FirewallEndpoint(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Security Firewall Endpoint Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,14 +345,15 @@ class FirewallEndpoint(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FirewallEndpoint can be imported using any of these accepted formats:
 
-         * `{{parent}}/locations/{{location}}/firewallEndpoints/{{name}}`
+        * `{{parent}}/locations/{{location}}/firewallEndpoints/{{name}}`
 
-         When using the `pulumi import` command, FirewallEndpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FirewallEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/firewallEndpoint:FirewallEndpoint default {{parent}}/locations/{{location}}/firewallEndpoints/{{name}}
@@ -378,8 +381,10 @@ class FirewallEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Security Firewall Endpoint Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,14 +397,15 @@ class FirewallEndpoint(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FirewallEndpoint can be imported using any of these accepted formats:
 
-         * `{{parent}}/locations/{{location}}/firewallEndpoints/{{name}}`
+        * `{{parent}}/locations/{{location}}/firewallEndpoints/{{name}}`
 
-         When using the `pulumi import` command, FirewallEndpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FirewallEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/firewallEndpoint:FirewallEndpoint default {{parent}}/locations/{{location}}/firewallEndpoints/{{name}}

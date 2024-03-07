@@ -13,6 +13,7 @@ import (
 
 // Use this data source to get information about a Google Billing Account.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs, opts ...pulumi.InvokeOption) (*GetBillingAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingAccountResult

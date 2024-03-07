@@ -289,6 +289,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         This snippet creates a customized IAM role.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,18 +304,19 @@ class IAMCustomRole(pulumi.CustomResource):
                 "iam.roles.delete",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom Roles can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/roles/{{role_id}}`
+        * `projects/{{project}}/roles/{{role_id}}`
 
-         * `{{project}}/{{role_id}}`
+        * `{{project}}/{{role_id}}`
 
-         * `{{role_id}}`
+        * `{{role_id}}`
 
-         When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default projects/{{project}}/roles/{{role_id}}
@@ -363,6 +365,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         This snippet creates a customized IAM role.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,18 +380,19 @@ class IAMCustomRole(pulumi.CustomResource):
                 "iam.roles.delete",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom Roles can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/roles/{{role_id}}`
+        * `projects/{{project}}/roles/{{role_id}}`
 
-         * `{{project}}/{{role_id}}`
+        * `{{project}}/{{role_id}}`
 
-         * `{{role_id}}`
+        * `{{role_id}}`
 
-         When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default projects/{{project}}/roles/{{role_id}}

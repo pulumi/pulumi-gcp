@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * For more information see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,6 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

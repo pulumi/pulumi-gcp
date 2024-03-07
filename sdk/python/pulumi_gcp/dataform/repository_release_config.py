@@ -338,8 +338,10 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Dataform Repository Release Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -387,20 +389,21 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RepositoryReleaseConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
 
-         * `{{project}}/{{region}}/{{repository}}/{{name}}`
+        * `{{project}}/{{region}}/{{repository}}/{{name}}`
 
-         * `{{region}}/{{repository}}/{{name}}`
+        * `{{region}}/{{repository}}/{{name}}`
 
-         * `{{repository}}/{{name}}`
+        * `{{repository}}/{{name}}`
 
-         When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
@@ -442,8 +445,10 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Dataform Repository Release Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,20 +496,21 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RepositoryReleaseConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
 
-         * `{{project}}/{{region}}/{{repository}}/{{name}}`
+        * `{{project}}/{{region}}/{{repository}}/{{name}}`
 
-         * `{{region}}/{{repository}}/{{name}}`
+        * `{{region}}/{{repository}}/{{name}}`
 
-         * `{{repository}}/{{name}}`
+        * `{{repository}}/{{name}}`
 
-         When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}

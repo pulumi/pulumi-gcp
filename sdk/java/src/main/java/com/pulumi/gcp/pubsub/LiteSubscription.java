@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
  * 
  * ## Example Usage
+ * 
  * ### Pubsub Lite Subscription Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -84,20 +87,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Subscription can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
+ * * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
  * 
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  * 
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}

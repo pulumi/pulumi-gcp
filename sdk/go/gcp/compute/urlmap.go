@@ -19,8 +19,10 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
 //
 // ## Example Usage
+//
 // ### Url Map Bucket And Service
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,8 +134,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Route
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -264,8 +268,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Route Partial
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -353,8 +359,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Path
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -512,8 +520,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Traffic Director Path Partial
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -637,8 +647,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Header Based Routing
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -751,8 +763,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Parameter Based Routing
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -865,8 +879,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Url Map Path Template Match
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -978,18 +994,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // UrlMap can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/urlMaps/{{name}}`
+// * `projects/{{project}}/global/urlMaps/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, UrlMap can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, UrlMap can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/uRLMap:URLMap default projects/{{project}}/global/urlMaps/{{name}}

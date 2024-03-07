@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.CloudAsset
     ///     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Cloud Asset Organization Feed
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -75,16 +77,17 @@ namespace Pulumi.Gcp.CloudAsset
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OrganizationFeed can be imported using any of these accepted formats:
     /// 
-    ///  * `organizations/{{org_id}}/feeds/{{name}}`
+    /// * `organizations/{{org_id}}/feeds/{{name}}`
     /// 
-    ///  * `{{org_id}}/{{name}}`
+    /// * `{{org_id}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, OrganizationFeed can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, OrganizationFeed can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}

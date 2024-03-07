@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetFolderServiceAccount(ctx *pulumi.Context, args *GetFolderServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetFolderServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFolderServiceAccountResult

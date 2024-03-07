@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
  * ## Example Usage
+ *
  * ### Dialogflow Agent Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,14 +43,15 @@ import * as utilities from "../utilities";
  *     tier: "TIER_STANDARD",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Agent can be imported using any of these accepted formats:
  *
- *  * `{{project}}`
+ * * `{{project}}`
  *
- *  When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:diagflow/agent:Agent default {{project}}

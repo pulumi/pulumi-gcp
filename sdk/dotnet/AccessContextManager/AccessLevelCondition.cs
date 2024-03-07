@@ -32,8 +32,10 @@ namespace Pulumi.Gcp.AccessContextManager
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Access Context Manager Access Level Condition Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -122,6 +124,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

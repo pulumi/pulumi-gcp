@@ -24,6 +24,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppConnectionResult> getAppConnection(GetAppConnectionArgs args) {
@@ -61,6 +64,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppConnectionResult> getAppConnectionPlain(GetAppConnectionPlainArgs args) {
@@ -98,6 +104,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppConnectionResult> getAppConnection(GetAppConnectionArgs args, InvokeOptions options) {
@@ -135,6 +144,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -163,6 +174,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppConnectionResult> getAppConnectionPlain(GetAppConnectionPlainArgs args, InvokeOptions options) {
@@ -172,6 +184,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -200,6 +214,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppConnectorResult> getAppConnector(GetAppConnectorArgs args) {
@@ -209,6 +224,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +254,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppConnectorResult> getAppConnectorPlain(GetAppConnectorPlainArgs args) {
@@ -246,6 +264,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -274,6 +294,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppConnectorResult> getAppConnector(GetAppConnectorArgs args, InvokeOptions options) {
@@ -283,6 +304,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -311,6 +334,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppConnectorResult> getAppConnectorPlain(GetAppConnectorPlainArgs args, InvokeOptions options) {
@@ -320,6 +344,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -348,6 +374,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppGatewayResult> getAppGateway(GetAppGatewayArgs args) {
@@ -357,6 +384,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -385,6 +414,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppGatewayResult> getAppGatewayPlain(GetAppGatewayPlainArgs args) {
@@ -394,6 +424,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -422,6 +454,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppGatewayResult> getAppGateway(GetAppGatewayArgs args, InvokeOptions options) {
@@ -431,6 +464,8 @@ public final class BeyondcorpFunctions {
      * Get information about a Google BeyondCorp App Gateway.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -459,6 +494,7 @@ public final class BeyondcorpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppGatewayResult> getAppGatewayPlain(GetAppGatewayPlainArgs args, InvokeOptions options) {

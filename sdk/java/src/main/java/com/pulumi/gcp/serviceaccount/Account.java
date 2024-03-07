@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * This snippet creates a service account in a project.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,14 +64,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Service accounts can be imported using their URI, e.g.
  * 
- *  * `projects/{{project_id}}/serviceAccounts/{{email}}`
+ * * `projects/{{project_id}}/serviceAccounts/{{email}}`
  * 
- *  When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}

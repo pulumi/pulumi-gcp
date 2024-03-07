@@ -404,6 +404,7 @@ class FolderSink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,14 +426,15 @@ class FolderSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Folder-level logging sinks can be imported using this format:
 
-         * `folders/{{folder_id}}/sinks/{{name}}`
+        * `folders/{{folder_id}}/sinks/{{name}}`
 
-         When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}
@@ -476,6 +478,7 @@ class FolderSink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -497,14 +500,15 @@ class FolderSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Folder-level logging sinks can be imported using this format:
 
-         * `folders/{{folder_id}}/sinks/{{name}}`
+        * `folders/{{folder_id}}/sinks/{{name}}`
 
-         When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}

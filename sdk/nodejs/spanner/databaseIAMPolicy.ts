@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_spanner\_database\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,9 +37,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,9 +63,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_spanner\_database\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,9 +79,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,9 +100,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_spanner\_database\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -107,9 +116,11 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,28 +137,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ### Importing IAM policies
  *
- *  IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+ * IAM policy imports use the identifier of the Spanner Database resource in question. For example:
  *
- *  * `{{project}}/{{instance}}/{{database}}`
+ * * `{{project}}/{{instance}}/{{database}}`
  *
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  *
- *  tf
+ * tf
  *
- *  import {
+ * import {
  *
- *  id = {{project}}/{{instance}}/{{database}}
+ *   id = {{project}}/{{instance}}/{{database}}
  *
- *  to = google_spanner_database_iam_policy.default
+ *   to = google_spanner_database_iam_policy.default
  *
- *  }
+ * }
  *
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  *
  * ```sh
  * $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy default {{project}}/{{instance}}/{{database}}

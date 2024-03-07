@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Network Security Server Tls Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,8 +70,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Server Tls Policy Advanced
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,8 +100,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Server Tls Policy Server Cert
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -127,8 +133,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Server Tls Policy Mtls
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -201,18 +209,19 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ServerTlsPolicy can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}

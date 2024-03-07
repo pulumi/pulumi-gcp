@@ -18,10 +18,9 @@ namespace Pulumi.Gcp.Storage
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.Gcp.Storage
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketResult>("gcp:storage/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());

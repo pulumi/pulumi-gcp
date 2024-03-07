@@ -47,7 +47,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring App Engine Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +120,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppEngineServiceResult> getAppEngineService(GetAppEngineServiceArgs args) {
@@ -138,7 +142,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring App Engine Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -208,6 +215,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppEngineServiceResult> getAppEngineServicePlain(GetAppEngineServicePlainArgs args) {
@@ -229,7 +237,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring App Engine Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -299,6 +310,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppEngineServiceResult> getAppEngineService(GetAppEngineServiceArgs args, InvokeOptions options) {
@@ -320,7 +332,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring App Engine Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -390,6 +405,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppEngineServiceResult> getAppEngineServicePlain(GetAppEngineServicePlainArgs args, InvokeOptions options) {
@@ -411,7 +427,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Cluster Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -443,6 +462,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterIstioServiceResult> getClusterIstioService(GetClusterIstioServiceArgs args) {
@@ -464,7 +484,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Cluster Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -496,6 +519,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterIstioServiceResult> getClusterIstioServicePlain(GetClusterIstioServicePlainArgs args) {
@@ -517,7 +541,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Cluster Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -549,6 +576,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterIstioServiceResult> getClusterIstioService(GetClusterIstioServiceArgs args, InvokeOptions options) {
@@ -570,7 +598,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Cluster Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -602,6 +633,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterIstioServiceResult> getClusterIstioServicePlain(GetClusterIstioServicePlainArgs args, InvokeOptions options) {
@@ -623,7 +655,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Istio Canonical Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -654,6 +689,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIstioCanonicalServiceResult> getIstioCanonicalService(GetIstioCanonicalServiceArgs args) {
@@ -675,7 +711,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Istio Canonical Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -706,6 +745,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIstioCanonicalServiceResult> getIstioCanonicalServicePlain(GetIstioCanonicalServicePlainArgs args) {
@@ -727,7 +767,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Istio Canonical Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -758,6 +801,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIstioCanonicalServiceResult> getIstioCanonicalService(GetIstioCanonicalServiceArgs args, InvokeOptions options) {
@@ -779,7 +823,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Istio Canonical Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -810,6 +857,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIstioCanonicalServiceResult> getIstioCanonicalServicePlain(GetIstioCanonicalServicePlainArgs args, InvokeOptions options) {
@@ -831,7 +879,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Mesh Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -862,6 +913,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMeshIstioServiceResult> getMeshIstioService(GetMeshIstioServiceArgs args) {
@@ -883,7 +935,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Mesh Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -914,6 +969,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMeshIstioServiceResult> getMeshIstioServicePlain(GetMeshIstioServicePlainArgs args) {
@@ -935,7 +991,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Mesh Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -966,6 +1025,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMeshIstioServiceResult> getMeshIstioService(GetMeshIstioServiceArgs args, InvokeOptions options) {
@@ -987,7 +1047,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Monitoring Mesh Istio Service
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1018,6 +1081,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMeshIstioServiceResult> getMeshIstioServicePlain(GetMeshIstioServicePlainArgs args, InvokeOptions options) {
@@ -1037,7 +1101,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Notification Channel Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1088,6 +1155,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotificationChannelResult> getNotificationChannel() {
@@ -1107,7 +1175,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Notification Channel Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1158,6 +1229,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotificationChannelResult> getNotificationChannelPlain() {
@@ -1177,7 +1249,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Notification Channel Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1228,6 +1303,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotificationChannelResult> getNotificationChannel(GetNotificationChannelArgs args) {
@@ -1247,7 +1323,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Notification Channel Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1298,6 +1377,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotificationChannelResult> getNotificationChannelPlain(GetNotificationChannelPlainArgs args) {
@@ -1317,7 +1397,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Notification Channel Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1368,6 +1451,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotificationChannelResult> getNotificationChannel(GetNotificationChannelArgs args, InvokeOptions options) {
@@ -1387,7 +1471,10 @@ public final class MonitoringFunctions {
      *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
      * 
      * ## Example Usage
+     * 
      * ### Notification Channel Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1438,6 +1525,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotificationChannelResult> getNotificationChannelPlain(GetNotificationChannelPlainArgs args, InvokeOptions options) {
@@ -1447,6 +1535,8 @@ public final class MonitoringFunctions {
      * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1475,6 +1565,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
@@ -1488,6 +1579,8 @@ public final class MonitoringFunctions {
      * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1516,6 +1609,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
@@ -1529,6 +1623,8 @@ public final class MonitoringFunctions {
      * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1557,6 +1653,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
@@ -1570,6 +1667,8 @@ public final class MonitoringFunctions {
      * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1598,6 +1697,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
@@ -1612,6 +1712,8 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1638,6 +1740,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs() {
@@ -1648,6 +1751,8 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1674,6 +1779,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain() {
@@ -1684,6 +1790,8 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1710,6 +1818,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs(InvokeArgs args) {
@@ -1720,6 +1829,8 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1746,6 +1857,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain(InvokeArgs args) {
@@ -1756,6 +1868,8 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1782,6 +1896,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUptimeCheckIPsResult> getUptimeCheckIPs(InvokeArgs args, InvokeOptions options) {
@@ -1792,6 +1907,8 @@ public final class MonitoringFunctions {
      * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1818,6 +1935,7 @@ public final class MonitoringFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUptimeCheckIPsResult> getUptimeCheckIPsPlain(InvokeArgs args, InvokeOptions options) {

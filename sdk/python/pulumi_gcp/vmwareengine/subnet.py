@@ -338,8 +338,10 @@ class Subnet(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
 
         ## Example Usage
+
         ### Vmware Engine Subnet User Defined
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -369,14 +371,15 @@ class Subnet(pulumi.CustomResource):
             parent=subnet_pc.id,
             ip_cidr_range="192.168.100.0/26")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnet can be imported using any of these accepted formats:
 
-         * `{{parent}}/subnets/{{name}}`
+        * `{{parent}}/subnets/{{name}}`
 
-         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}
@@ -410,8 +413,10 @@ class Subnet(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
 
         ## Example Usage
+
         ### Vmware Engine Subnet User Defined
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,14 +446,15 @@ class Subnet(pulumi.CustomResource):
             parent=subnet_pc.id,
             ip_cidr_range="192.168.100.0/26")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnet can be imported using any of these accepted formats:
 
-         * `{{parent}}/subnets/{{name}}`
+        * `{{parent}}/subnets/{{name}}`
 
-         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}

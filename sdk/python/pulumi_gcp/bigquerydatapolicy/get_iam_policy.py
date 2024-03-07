@@ -105,6 +105,7 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
         location=data_policy["location"],
         data_policy_id=data_policy["dataPolicyId"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The name of the location of the data policy.
@@ -146,6 +148,7 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -154,6 +157,7 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
         location=data_policy["location"],
         data_policy_id=data_policy["dataPolicyId"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The name of the location of the data policy.

@@ -550,8 +550,10 @@ class CxSecuritySettings(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+
         ### Dialogflowcx Security Settings Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,8 +564,10 @@ class CxSecuritySettings(pulumi.CustomResource):
             purge_data_types=[],
             retention_window_days=7)
         ```
+        <!--End PulumiCodeChooser -->
         ### Dialogflowcx Security Settings Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -615,18 +619,19 @@ class CxSecuritySettings(pulumi.CustomResource):
             ),
             retention_strategy="REMOVE_AFTER_CONVERSATION")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SecuritySettings can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default projects/{{project}}/locations/{{location}}/securitySettings/{{name}}
@@ -695,8 +700,10 @@ class CxSecuritySettings(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
         ## Example Usage
+
         ### Dialogflowcx Security Settings Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -707,8 +714,10 @@ class CxSecuritySettings(pulumi.CustomResource):
             purge_data_types=[],
             retention_window_days=7)
         ```
+        <!--End PulumiCodeChooser -->
         ### Dialogflowcx Security Settings Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -760,18 +769,19 @@ class CxSecuritySettings(pulumi.CustomResource):
             ),
             retention_strategy="REMOVE_AFTER_CONVERSATION")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SecuritySettings can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default projects/{{project}}/locations/{{location}}/securitySettings/{{name}}

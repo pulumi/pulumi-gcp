@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
  *
  * ## Example Usage
+ *
  * ### Document Ai Warehouse Location
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,6 +32,7 @@ import * as utilities from "../utilities";
  *     documentCreatorDefaultRole: "DOCUMENT_ADMIN",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

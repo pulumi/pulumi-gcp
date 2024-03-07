@@ -22,8 +22,10 @@ import (
 //   - [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 //
 // ## Example Usage
+//
 // ### Healthcare Dicom Store Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,8 +70,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Healthcare Dicom Store Bq Stream
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -147,16 +151,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // DicomStore can be imported using any of these accepted formats:
 //
-//   - `{{dataset}}/dicomStores/{{name}}`
+// * `{{dataset}}/dicomStores/{{name}}`
 //
-//   - `{{dataset}}/{{name}}`
+// * `{{dataset}}/{{name}}`
 //
-//     When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}

@@ -29,6 +29,7 @@ import (
 //
 // This snippet creates a customized IAM organization role.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,15 +61,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Customized IAM organization role can be imported using their URI, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
-//
+// $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
 // ```
 type IAMCustomRole struct {
 	pulumi.CustomResourceState

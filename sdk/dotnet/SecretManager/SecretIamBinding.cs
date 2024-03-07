@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// ## google\_secret\_manager\_secret\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,9 +59,11 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_secret\_manager\_secret\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -82,9 +85,11 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_secret\_manager\_secret\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,42 +108,43 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    ///  * projects/{{project}}/secrets/{{secret_id}}
+    /// * projects/{{project}}/secrets/{{secret_id}}
     /// 
-    ///  * {{project}}/{{secret_id}}
+    /// * {{project}}/{{secret_id}}
     /// 
-    ///  * {{secret_id}}
+    /// * {{secret_id}}
     /// 
-    ///  Any variables not passed in the import command will be taken from the provider configuration.
+    /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    ///  Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member.
+    /// Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member.
     /// 
-    ///  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+    /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:secretmanager/secretIamBinding:SecretIamBinding editor "projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor user:jane@example.com"
     /// ```
     /// 
-    ///  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+    /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:secretmanager/secretIamBinding:SecretIamBinding editor "projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor"
     /// ```
     /// 
-    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:secretmanager/secretIamBinding:SecretIamBinding editor projects/{{project}}/secrets/{{secret_id}}
     /// ```
     /// 
-    ///  -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:secretmanager/secretIamBinding:SecretIamBinding")]
     public partial class SecretIamBinding : global::Pulumi.CustomResource

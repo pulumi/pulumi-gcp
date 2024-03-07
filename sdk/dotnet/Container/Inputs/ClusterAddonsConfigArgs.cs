@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// 
         /// 
         /// This example `addons_config` disables two addons:
-        /// 
-        /// &lt;a name="nested_binary_authorization"&gt;&lt;/a&gt;The `binary_authorization` block supports:
         /// </summary>
         [Input("configConnectorConfig")]
         public Input<Inputs.ClusterAddonsConfigConfigConnectorConfigArgs>? ConfigConnectorConfig { get; set; }

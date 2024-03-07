@@ -17,8 +17,10 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Identity Platform Oauth Idp Config Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,18 +41,19 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OauthIdpConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/oauthIdpConfigs/{{name}}`
+    /// * `projects/{{project}}/oauthIdpConfigs/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}

@@ -329,8 +329,10 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
+
         ### Cloudbuildv2 Repository Ghe Doc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,8 +381,10 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Repository Github Doc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,18 +420,19 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Repository can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
 
-         * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
+        * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
 
-         * `{{location}}/{{parent_connection}}/{{name}}`
+        * `{{location}}/{{parent_connection}}/{{name}}`
 
-         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}
@@ -472,8 +477,10 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
+
         ### Cloudbuildv2 Repository Ghe Doc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,8 +529,10 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudbuildv2 Repository Github Doc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -559,18 +568,19 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Repository can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
 
-         * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
+        * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
 
-         * `{{location}}/{{parent_connection}}/{{name}}`
+        * `{{location}}/{{parent_connection}}/{{name}}`
 
-         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}

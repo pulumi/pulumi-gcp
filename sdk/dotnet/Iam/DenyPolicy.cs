@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Iam
     ///     * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Iam Deny Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -104,14 +106,15 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// DenyPolicy can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/{{name}}`
+    /// * `{{parent}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}

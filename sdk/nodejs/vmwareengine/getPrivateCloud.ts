@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateCloud(args: GetPrivateCloudArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateCloudResult> {
 
@@ -84,6 +86,7 @@ export interface GetPrivateCloudResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,6 +96,7 @@ export interface GetPrivateCloudResult {
  *     location: "us-central1-a",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateCloudOutput(args: GetPrivateCloudOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateCloudResult> {
     return pulumi.output(args).apply((a: any) => getPrivateCloud(a, opts))

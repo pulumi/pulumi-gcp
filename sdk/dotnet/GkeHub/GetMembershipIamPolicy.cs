@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMembershipIamPolicyResult> InvokeAsync(GetMembershipIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMembershipIamPolicyResult>("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.GkeHub
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMembershipIamPolicyResult> Invoke(GetMembershipIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMembershipIamPolicyResult>("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyInvokeArgs(), options.WithDefaults());

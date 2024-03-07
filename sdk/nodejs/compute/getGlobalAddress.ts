@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  *     rrdatas: [myAddress.then(myAddress => myAddress.address)],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
 
@@ -92,6 +94,7 @@ export interface GetGlobalAddressResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -111,6 +114,7 @@ export interface GetGlobalAddressResult {
  *     rrdatas: [myAddress.then(myAddress => myAddress.address)],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalAddressResult> {
     return pulumi.output(args).apply((a: any) => getGlobalAddress(a, opts))

@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,14 +22,15 @@ import * as utilities from "../utilities";
  *     value: "my_value",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Project metadata items can be imported using the `key`, e.g.
  *
- *  * `{{key}}`
+ * * `{{key}}`
  *
- *  When using the `pulumi import` command, project metadata items can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, project metadata items can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default {{key}}

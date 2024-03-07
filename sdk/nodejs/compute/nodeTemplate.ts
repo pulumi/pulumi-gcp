@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  *
  * ## Example Usage
+ *
  * ### Node Template Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,8 +32,10 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Node Template Server Binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,20 +55,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NodeTemplate can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}

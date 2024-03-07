@@ -95,6 +95,7 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,6 +103,7 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
     policy = gcp.iap.get_web_backend_service_iam_policy(project=default["project"],
         web_backend_service=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -131,6 +133,7 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -138,6 +141,7 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
     policy = gcp.iap.get_web_backend_service_iam_policy(project=default["project"],
         web_backend_service=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

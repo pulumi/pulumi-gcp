@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSnapshotIamPolicyResult> InvokeAsync(GetSnapshotIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotIamPolicyResult>("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyArgs(), options.WithDefaults());
@@ -45,6 +47,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,6 +64,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSnapshotIamPolicyResult> Invoke(GetSnapshotIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotIamPolicyResult>("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyInvokeArgs(), options.WithDefaults());

@@ -132,8 +132,10 @@ class ServicePerimeters(pulumi.CustomResource):
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         ## Example Usage
+
         ### Access Context Manager Service Perimeters Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -179,16 +181,17 @@ class ServicePerimeters(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServicePerimeters can be imported using any of these accepted formats:
 
-         * `{{parent}}/servicePerimeters`
+        * `{{parent}}/servicePerimeters`
 
-         * `{{parent}}`
+        * `{{parent}}`
 
-         When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
@@ -226,8 +229,10 @@ class ServicePerimeters(pulumi.CustomResource):
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         ## Example Usage
+
         ### Access Context Manager Service Perimeters Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -273,16 +278,17 @@ class ServicePerimeters(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServicePerimeters can be imported using any of these accepted formats:
 
-         * `{{parent}}/servicePerimeters`
+        * `{{parent}}/servicePerimeters`
 
-         * `{{parent}}`
+        * `{{parent}}`
 
-         When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters

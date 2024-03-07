@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  * billing/quota project. The account team notifies you when the project is granted access.
  * 
  * ## Example Usage
+ * 
  * ### Iam Workforce Pool Provider Saml Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -75,7 +78,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Provider Saml Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -123,7 +129,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Provider Oidc Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -180,7 +189,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workforce Pool Provider Oidc Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -244,16 +256,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * WorkforcePoolProvider can be imported using any of these accepted formats:
  * 
- *  * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
+ * * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
  * 
- *  * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
+ * * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
  * 
- *  When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
@@ -326,8 +339,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      *   on a Google token:
-     *   An object containing a list of `&#34;key&#34;: value` pairs.
-     *   Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
     @Export(name="attributeMapping", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -371,8 +382,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      *   on a Google token:
-     *   An object containing a list of `&#34;key&#34;: value` pairs.
-     *   Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
     public Output<Optional<Map<String,String>>> attributeMapping() {

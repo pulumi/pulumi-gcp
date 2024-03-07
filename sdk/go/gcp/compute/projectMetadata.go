@@ -24,6 +24,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,8 +52,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Adding An SSH Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,14 +85,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Project metadata can be imported using the project ID:
 //
-//   - `{{project_id}}`
+// * `{{project_id}}`
 //
-//     When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}

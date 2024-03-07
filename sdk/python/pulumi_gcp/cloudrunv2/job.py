@@ -745,8 +745,10 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
+
         ### Cloudrunv2 Job Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -762,8 +764,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Limits
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -785,8 +789,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Sql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -848,8 +854,10 @@ class Job(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Vpcaccess
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -886,8 +894,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Directvpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -916,8 +926,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Secret
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -962,8 +974,10 @@ class Job(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Emptydir
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -991,18 +1005,19 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Job can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
@@ -1061,8 +1076,10 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
+
         ### Cloudrunv2 Job Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1078,8 +1095,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Limits
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1101,8 +1120,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Sql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1164,8 +1185,10 @@ class Job(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Vpcaccess
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1202,8 +1225,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Directvpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1232,8 +1257,10 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Secret
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1278,8 +1305,10 @@ class Job(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Job Emptydir
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1307,18 +1336,19 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Job can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}

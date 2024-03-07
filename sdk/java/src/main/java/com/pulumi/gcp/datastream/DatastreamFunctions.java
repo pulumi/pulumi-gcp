@@ -19,6 +19,8 @@ public final class DatastreamFunctions {
      * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class DatastreamFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStaticIpsResult> getStaticIps(GetStaticIpsArgs args) {
@@ -59,6 +62,8 @@ public final class DatastreamFunctions {
      * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class DatastreamFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStaticIpsResult> getStaticIpsPlain(GetStaticIpsPlainArgs args) {
@@ -99,6 +105,8 @@ public final class DatastreamFunctions {
      * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class DatastreamFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStaticIpsResult> getStaticIps(GetStaticIpsArgs args, InvokeOptions options) {
@@ -139,6 +148,8 @@ public final class DatastreamFunctions {
      * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -169,6 +180,7 @@ public final class DatastreamFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStaticIpsResult> getStaticIpsPlain(GetStaticIpsPlainArgs args, InvokeOptions options) {

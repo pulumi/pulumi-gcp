@@ -20,8 +20,10 @@ import (
 // * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 //
 // ## Example Usage
+//
 // ### Network Security Gateway Security Policy Rules Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,8 +62,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Security Gateway Security Policy Rules Advanced
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,18 +106,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // GatewaySecurityPolicyRule can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}`
+// * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}`
 //
-//   - `{{location}}/{{gateway_security_policy}}/{{name}}`
+// * `{{location}}/{{gateway_security_policy}}/{{name}}`
 //
-//     When using the `pulumi import` command, GatewaySecurityPolicyRule can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, GatewaySecurityPolicyRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}

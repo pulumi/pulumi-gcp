@@ -84,12 +84,14 @@ def get_iam_policy(project: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.projects.get_iam_policy(project="myproject")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project id of the target project. This is not
@@ -115,12 +117,14 @@ def get_iam_policy_output(project: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.projects.get_iam_policy(project="myproject")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project id of the target project. This is not

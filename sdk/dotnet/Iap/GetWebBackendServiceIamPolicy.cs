@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWebBackendServiceIamPolicyResult> InvokeAsync(GetWebBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebBackendServiceIamPolicyResult>("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args ?? new GetWebBackendServiceIamPolicyArgs(), options.WithDefaults());
@@ -45,6 +47,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,6 +64,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWebBackendServiceIamPolicyResult> Invoke(GetWebBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebBackendServiceIamPolicyResult>("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args ?? new GetWebBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());

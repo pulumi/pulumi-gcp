@@ -22,7 +22,10 @@ import javax.annotation.Nullable;
  * Certificate represents a HTTP-reachable backend for a Certificate.
  * 
  * ## Example Usage
+ * 
  * ### Certificate Manager Google Managed Certificate Dns
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,7 +80,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Issuance Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -187,7 +193,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Certificate Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -241,7 +250,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Self Managed Certificate Regional
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -281,7 +293,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -391,7 +406,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Dns All Regions
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -445,18 +463,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Certificate can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}

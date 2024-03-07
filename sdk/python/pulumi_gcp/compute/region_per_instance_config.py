@@ -415,8 +415,10 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
+
         ### Stateful Rigm
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,20 +485,21 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionPerInstanceConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
 
-         * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
+        * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
 
-         * `{{region}}/{{region_instance_group_manager}}/{{name}}`
+        * `{{region}}/{{region_instance_group_manager}}/{{name}}`
 
-         * `{{region_instance_group_manager}}/{{name}}`
+        * `{{region_instance_group_manager}}/{{name}}`
 
-         When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
@@ -562,8 +565,10 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
         ## Example Usage
+
         ### Stateful Rigm
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,20 +635,21 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionPerInstanceConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
 
-         * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
+        * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
 
-         * `{{region}}/{{region_instance_group_manager}}/{{name}}`
+        * `{{region}}/{{region_instance_group_manager}}/{{name}}`
 
-         * `{{region_instance_group_manager}}/{{name}}`
+        * `{{region_instance_group_manager}}/{{name}}`
 
-         When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}

@@ -186,6 +186,7 @@ def get_connector(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -197,6 +198,7 @@ def get_connector(name: Optional[str] = None,
         network="default",
         region="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.
@@ -248,6 +250,7 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -259,6 +262,7 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
         network="default",
         region="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.

@@ -12,6 +12,7 @@ namespace Pulumi.Gcp.Dataflow
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,6 +33,8 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Note on "destroy" / "apply"
     /// 
     /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -61,6 +64,7 @@ namespace Pulumi.Gcp.Dataflow
     /// random_id
     /// resource, for example:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,6 +100,7 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

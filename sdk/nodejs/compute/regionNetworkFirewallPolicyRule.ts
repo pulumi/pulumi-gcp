@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicyRule resource
  *
  * ## Example Usage
+ *
  * ### Regional
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,20 +73,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NetworkFirewallPolicyRule can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}`
+ * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}`
  *
- *  * `{{project}}/{{region}}/{{firewall_policy}}/{{priority}}`
+ * * `{{project}}/{{region}}/{{firewall_policy}}/{{priority}}`
  *
- *  * `{{region}}/{{firewall_policy}}/{{priority}}`
+ * * `{{region}}/{{firewall_policy}}/{{priority}}`
  *
- *  * `{{firewall_policy}}/{{priority}}`
+ * * `{{firewall_policy}}/{{priority}}`
  *
- *  When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}

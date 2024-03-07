@@ -16,39 +16,18 @@ namespace Pulumi.Gcp.Compute
         /// see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
         /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// 	
-        /// object NotImplemented(string errorMessage) 
-        /// {
-        ///     throw new System.NotImplementedException(errorMessage);
+        /// ```tf
+        /// data "google_compute_backend_service" "baz" {
+        ///   name = "foobar"
         /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var baz = Gcp.Compute.GetBackendService.Invoke(new()
-        ///     {
-        ///         Name = "foobar",
-        ///     });
-        /// 
-        ///     var @default = new Gcp.Compute.BackendService("default", new()
-        ///     {
-        ///         Name = "backend-service",
-        ///         HealthChecks = NotImplemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0],
-        ///     });
-        /// 
-        /// });
+        /// resource "google_compute_backend_service" "default" {
+        ///   name          = "backend-service"
+        ///   health_checks = [tolist(data.google_compute_backend_service.baz.health_checks)[0]]
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceArgs(), options.WithDefaults());
@@ -58,39 +37,18 @@ namespace Pulumi.Gcp.Compute
         /// see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
         /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// 	
-        /// object NotImplemented(string errorMessage) 
-        /// {
-        ///     throw new System.NotImplementedException(errorMessage);
+        /// ```tf
+        /// data "google_compute_backend_service" "baz" {
+        ///   name = "foobar"
         /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var baz = Gcp.Compute.GetBackendService.Invoke(new()
-        ///     {
-        ///         Name = "foobar",
-        ///     });
-        /// 
-        ///     var @default = new Gcp.Compute.BackendService("default", new()
-        ///     {
-        ///         Name = "backend-service",
-        ///         HealthChecks = NotImplemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0],
-        ///     });
-        /// 
-        /// });
+        /// resource "google_compute_backend_service" "default" {
+        ///   name          = "backend-service"
+        ///   health_checks = [tolist(data.google_compute_backend_service.baz.health_checks)[0]]
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackendServiceResult> Invoke(GetBackendServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceInvokeArgs(), options.WithDefaults());

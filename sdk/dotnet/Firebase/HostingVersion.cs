@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Firebasehosting Version Redirect
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,8 +55,10 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebasehosting Version Cloud Run
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -116,8 +120,10 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebasehosting Version Cloud Functions
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -185,16 +191,17 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Version can be imported using any of these accepted formats:
     /// 
-    ///  * `sites/{{site_id}}/versions/{{version_id}}`
+    /// * `sites/{{site_id}}/versions/{{version_id}}`
     /// 
-    ///  * `{{site_id}}/{{version_id}}`
+    /// * `{{site_id}}/{{version_id}}`
     /// 
-    ///  When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}

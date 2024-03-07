@@ -17,10 +17,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about private cloud Vcenter credentials, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVcenterCredentialsResult> InvokeAsync(GetVcenterCredentialsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVcenterCredentialsResult>("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args ?? new GetVcenterCredentialsArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.Gcp.VMwareEngine
         /// To get more information about private cloud Vcenter credentials, see:
         /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVcenterCredentialsResult> Invoke(GetVcenterCredentialsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVcenterCredentialsResult>("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args ?? new GetVcenterCredentialsInvokeArgs(), options.WithDefaults());

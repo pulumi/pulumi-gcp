@@ -324,8 +324,10 @@ class ExtensionsInstance(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Firebase Extentions Instance Resize Image
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -362,18 +364,19 @@ class ExtensionsInstance(pulumi.CustomResource):
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/instances/{{instance_id}}`
+        * `projects/{{project}}/instances/{{instance_id}}`
 
-         * `{{project}}/{{instance_id}}`
+        * `{{project}}/{{instance_id}}`
 
-         * `{{instance_id}}`
+        * `{{instance_id}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}
@@ -404,8 +407,10 @@ class ExtensionsInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Firebase Extentions Instance Resize Image
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,18 +447,19 @@ class ExtensionsInstance(pulumi.CustomResource):
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/instances/{{instance_id}}`
+        * `projects/{{project}}/instances/{{instance_id}}`
 
-         * `{{project}}/{{instance_id}}`
+        * `{{project}}/{{instance_id}}`
 
-         * `{{instance_id}}`
+        * `{{instance_id}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}

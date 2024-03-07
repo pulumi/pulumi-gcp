@@ -9,14 +9,18 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getV2AcceleratorTypes({});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Configure Basic TPU VM With Available Type
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,6 +34,7 @@ import * as utilities from "../utilities";
  *     acceleratorType: available.then(available => available.types?.[0]),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getV2AcceleratorTypes(args?: GetV2AcceleratorTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetV2AcceleratorTypesResult> {
     args = args || {};
@@ -77,14 +82,18 @@ export interface GetV2AcceleratorTypesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getV2AcceleratorTypes({});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Configure Basic TPU VM With Available Type
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,6 +107,7 @@ export interface GetV2AcceleratorTypesResult {
  *     acceleratorType: available.then(available => available.types?.[0]),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getV2AcceleratorTypesOutput(args?: GetV2AcceleratorTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2AcceleratorTypesResult> {
     return pulumi.output(args).apply((a: any) => getV2AcceleratorTypes(a, opts))

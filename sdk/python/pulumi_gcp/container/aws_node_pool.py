@@ -556,8 +556,10 @@ class AwsNodePool(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+
         ### Basic_aws_cluster
         A basic example of a containeraws node pool
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -678,8 +680,10 @@ class AwsNodePool(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -797,8 +801,10 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums (beta)
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -920,18 +926,19 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NodePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+        * `{{project}}/{{location}}/{{cluster}}/{{name}}`
 
-         * `{{location}}/{{cluster}}/{{name}}`
+        * `{{location}}/{{cluster}}/{{name}}`
 
-         When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/awsNodePool:AwsNodePool default projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}
@@ -975,8 +982,10 @@ class AwsNodePool(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+
         ### Basic_aws_cluster
         A basic example of a containeraws node pool
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1097,8 +1106,10 @@ class AwsNodePool(pulumi.CustomResource):
             ),
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1216,8 +1227,10 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums (beta)
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1339,18 +1352,19 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NodePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+        * `{{project}}/{{location}}/{{cluster}}/{{name}}`
 
-         * `{{location}}/{{cluster}}/{{name}}`
+        * `{{location}}/{{cluster}}/{{name}}`
 
-         When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/awsNodePool:AwsNodePool default projects/{{project}}/locations/{{location}}/awsClusters/{{cluster}}/awsNodePools/{{name}}

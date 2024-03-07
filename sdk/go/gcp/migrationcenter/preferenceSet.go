@@ -21,8 +21,10 @@ import (
 //   - [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
 //
 // ## Example Usage
+//
 // ### Preference Set Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,8 +58,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Preference Set Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,18 +123,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // PreferenceSet can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
+// * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
 //
-//   - `{{project}}/{{location}}/{{preference_set_id}}`
+// * `{{project}}/{{location}}/{{preference_set_id}}`
 //
-//   - `{{location}}/{{preference_set_id}}`
+// * `{{location}}/{{preference_set_id}}`
 //
-//     When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}

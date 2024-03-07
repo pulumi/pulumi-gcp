@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * This snippet creates a customized IAM organization role.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,13 +38,14 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Customized IAM organization role can be imported using their URI, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+ * $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
  * ```
  */
 export class IAMCustomRole extends pulumi.CustomResource {

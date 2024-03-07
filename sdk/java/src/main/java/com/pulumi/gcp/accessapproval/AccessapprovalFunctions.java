@@ -30,6 +30,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -66,6 +68,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderServiceAccountResult> getFolderServiceAccount(GetFolderServiceAccountArgs args) {
@@ -81,6 +84,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderServiceAccountResult> getFolderServiceAccountPlain(GetFolderServiceAccountPlainArgs args) {
@@ -132,6 +138,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +176,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderServiceAccountResult> getFolderServiceAccount(GetFolderServiceAccountArgs args, InvokeOptions options) {
@@ -183,6 +192,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -219,6 +230,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderServiceAccountResult> getFolderServiceAccountPlain(GetFolderServiceAccountPlainArgs args, InvokeOptions options) {
@@ -234,6 +246,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +284,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(GetOrganizationServiceAccountArgs args) {
@@ -285,6 +300,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -321,6 +338,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationServiceAccountResult> getOrganizationServiceAccountPlain(GetOrganizationServiceAccountPlainArgs args) {
@@ -336,6 +354,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -372,6 +392,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(GetOrganizationServiceAccountArgs args, InvokeOptions options) {
@@ -387,6 +408,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -423,6 +446,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationServiceAccountResult> getOrganizationServiceAccountPlain(GetOrganizationServiceAccountPlainArgs args, InvokeOptions options) {
@@ -438,6 +462,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -474,6 +500,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args) {
@@ -489,6 +516,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -525,6 +554,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args) {
@@ -540,6 +570,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -576,6 +608,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOptions options) {
@@ -591,6 +624,8 @@ public final class AccessapprovalFunctions {
      * Cloud KMS key used to sign approvals.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -627,6 +662,7 @@ public final class AccessapprovalFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args, InvokeOptions options) {

@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
 
         /// <summary>
         /// The number of nodes in the cluster.
-        /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
         /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }

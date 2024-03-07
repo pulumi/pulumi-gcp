@@ -83,7 +83,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The number of nodes in the cluster.
-     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
      * 
      */
     @Import(name="numNodes")
@@ -91,7 +91,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The number of nodes in the cluster.
-     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
      * 
      */
     public Optional<Output<Integer>> numNodes() {
@@ -262,7 +262,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param numNodes The number of nodes in the cluster.
-         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param numNodes The number of nodes in the cluster.
-         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
          * 
          * @return builder
          * 
