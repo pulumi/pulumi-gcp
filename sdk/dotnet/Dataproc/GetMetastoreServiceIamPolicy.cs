@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMetastoreServiceIamPolicyResult> InvokeAsync(GetMetastoreServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreServiceIamPolicyResult>("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args ?? new GetMetastoreServiceIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMetastoreServiceIamPolicyResult> Invoke(GetMetastoreServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreServiceIamPolicyResult>("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args ?? new GetMetastoreServiceIamPolicyInvokeArgs(), options.WithDefaults());

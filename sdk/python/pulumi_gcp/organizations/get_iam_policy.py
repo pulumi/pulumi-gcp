@@ -86,10 +86,6 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
 
     **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
 
-    This data source is used to define IAM policies to apply to other resources.
-    Currently, defining a policy through a datasource and referencing that policy
-    from another resource is the only way to apply an IAM policy to a resource.
-
 
     :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
     :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
@@ -121,10 +117,6 @@ def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence
     other Google Cloud Platform IAM resources, such as the `projects.IAMPolicy` resource.
 
     **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-
-    This data source is used to define IAM policies to apply to other resources.
-    Currently, defining a policy through a datasource and referencing that policy
-    from another resource is the only way to apply an IAM policy to a resource.
 
 
     :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.

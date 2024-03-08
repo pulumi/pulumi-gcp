@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have something in common, while allowing users to add annotations to the group.
  *
  * ## Example Usage
+ *
  * ### Migration Group Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,18 +26,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Group can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
+ * * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
  *
- *  * `{{project}}/{{location}}/{{group_id}}`
+ * * `{{project}}/{{location}}/{{group_id}}`
  *
- *  * `{{location}}/{{group_id}}`
+ * * `{{location}}/{{group_id}}`
  *
- *  When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}

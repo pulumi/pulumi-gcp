@@ -47,8 +47,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * 
      * This example `addons_config` disables two addons:
      * 
-     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
-     * 
      */
     @Import(name="configConnectorConfig")
     private @Nullable Output<ClusterAddonsConfigConfigConnectorConfigArgs> configConnectorConfig;
@@ -58,8 +56,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
      * 
      * This example `addons_config` disables two addons:
-     * 
-     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
      * 
      */
     public Optional<Output<ClusterAddonsConfigConfigConnectorConfigArgs>> configConnectorConfig() {
@@ -334,8 +330,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * 
          * This example `addons_config` disables two addons:
          * 
-         * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
-         * 
          * @return builder
          * 
          */
@@ -349,8 +343,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
          * 
          * This example `addons_config` disables two addons:
-         * 
-         * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
          * 
          * @return builder
          * 

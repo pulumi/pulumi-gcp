@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
  * 
  * ## Example Usage
+ * 
  * ### Dns Policy Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,18 +94,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Policy can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/policies/{{name}}`
+ * * `projects/{{project}}/policies/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}

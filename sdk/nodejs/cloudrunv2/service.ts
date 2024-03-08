@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * ## Example Usage
+ *
  * ### Cloudrunv2 Service Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,8 +35,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Limits
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,8 +60,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Sql
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -130,8 +136,10 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Vpcaccess
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -170,8 +178,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Directvpc
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -199,8 +209,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Probes
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -229,8 +241,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Secret
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -277,8 +291,10 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Multicontainer
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -326,8 +342,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Mount Gcs
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -359,8 +377,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudrunv2 Service Mount Nfs
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -409,18 +429,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Service can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/services/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/services/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -609,7 +630,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly trafficStatuses!: pulumi.Output<outputs.cloudrunv2.ServiceTrafficStatus[]>;
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
      * Structure is documented below.
      */
     public readonly traffics!: pulumi.Output<outputs.cloudrunv2.ServiceTraffic[]>;
@@ -875,7 +896,7 @@ export interface ServiceState {
      */
     trafficStatuses?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTrafficStatus>[]>;
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
      * Structure is documented below.
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;
@@ -969,7 +990,7 @@ export interface ServiceArgs {
      */
     template: pulumi.Input<inputs.cloudrunv2.ServiceTemplate>;
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
      * Structure is documented below.
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;

@@ -30,6 +30,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for connection
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -60,6 +62,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args) {
@@ -69,6 +72,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for connection
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -99,6 +104,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionIamPolicyResult> getConnectionIamPolicyPlain(GetConnectionIamPolicyPlainArgs args) {
@@ -108,6 +114,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for connection
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -138,6 +146,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args, InvokeOptions options) {
@@ -147,6 +156,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for connection
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -177,6 +188,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionIamPolicyResult> getConnectionIamPolicyPlain(GetConnectionIamPolicyPlainArgs args, InvokeOptions options) {
@@ -188,6 +200,8 @@ public final class BigqueryFunctions {
      * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -217,6 +231,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatasetResult> getDataset(GetDatasetArgs args) {
@@ -228,6 +243,8 @@ public final class BigqueryFunctions {
      * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -257,6 +274,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatasetResult> getDatasetPlain(GetDatasetPlainArgs args) {
@@ -268,6 +286,8 @@ public final class BigqueryFunctions {
      * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -297,6 +317,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatasetResult> getDataset(GetDatasetArgs args, InvokeOptions options) {
@@ -308,6 +329,8 @@ public final class BigqueryFunctions {
      * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -337,6 +360,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatasetResult> getDatasetPlain(GetDatasetPlainArgs args, InvokeOptions options) {
@@ -346,6 +370,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for a BigQuery dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -374,6 +400,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args) {
@@ -383,6 +410,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for a BigQuery dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -411,6 +440,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatasetIamPolicyResult> getDatasetIamPolicyPlain(GetDatasetIamPolicyPlainArgs args) {
@@ -420,6 +450,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for a BigQuery dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -448,6 +480,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args, InvokeOptions options) {
@@ -457,6 +490,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for a BigQuery dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -485,6 +520,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatasetIamPolicyResult> getDatasetIamPolicyPlain(GetDatasetIamPolicyPlainArgs args, InvokeOptions options) {
@@ -502,6 +538,8 @@ public final class BigqueryFunctions {
      * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -536,6 +574,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount() {
@@ -553,6 +592,8 @@ public final class BigqueryFunctions {
      * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -587,6 +628,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain() {
@@ -604,6 +646,8 @@ public final class BigqueryFunctions {
      * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -638,6 +682,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount(GetDefaultServiceAccountArgs args) {
@@ -655,6 +700,8 @@ public final class BigqueryFunctions {
      * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -689,6 +736,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain(GetDefaultServiceAccountPlainArgs args) {
@@ -706,6 +754,8 @@ public final class BigqueryFunctions {
      * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -740,6 +790,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount(GetDefaultServiceAccountArgs args, InvokeOptions options) {
@@ -757,6 +808,8 @@ public final class BigqueryFunctions {
      * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -791,6 +844,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain(GetDefaultServiceAccountPlainArgs args, InvokeOptions options) {
@@ -800,6 +854,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for table
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -830,6 +886,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args) {
@@ -839,6 +896,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for table
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -869,6 +928,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTableIamPolicyResult> getTableIamPolicyPlain(GetTableIamPolicyPlainArgs args) {
@@ -878,6 +938,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for table
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -908,6 +970,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args, InvokeOptions options) {
@@ -917,6 +980,8 @@ public final class BigqueryFunctions {
      * Retrieves the current IAM policy data for table
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -947,6 +1012,7 @@ public final class BigqueryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTableIamPolicyResult> getTableIamPolicyPlain(GetTableIamPolicyPlainArgs args, InvokeOptions options) {

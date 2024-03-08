@@ -12,57 +12,73 @@ namespace Pulumi.Gcp.Organizations
     public static class GetClientConfig
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_client_config" "current" {
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["project"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
-        ///     };
-        /// });
+        /// output "project" {
+        ///   value = data.google_client_config.current.project
+        /// }
         /// ```
         /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
+        /// ### Configure Kubernetes Provider With OAuth2 Access Token
+        /// 
+        /// ```tf
+        /// data "google_client_config" "default" {
+        /// }
+        /// 
+        /// data "google_container_cluster" "my_cluster" {
+        ///   name = "my-cluster"
+        ///   zone = "us-east1-a"
+        /// }
+        /// 
+        /// provider "kubernetes" {
+        ///   host  = "https://${data.google_container_cluster.my_cluster.endpoint}"
+        ///   token = data.google_client_config.default.access_token
+        ///   cluster_ca_certificate = base64decode(
+        ///     data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate,
+        ///   )
+        /// }
+        /// ```
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_client_config" "current" {
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["project"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
-        ///     };
-        /// });
+        /// output "project" {
+        ///   value = data.google_client_config.current.project
+        /// }
         /// ```
         /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
+        /// ### Configure Kubernetes Provider With OAuth2 Access Token
+        /// 
+        /// ```tf
+        /// data "google_client_config" "default" {
+        /// }
+        /// 
+        /// data "google_container_cluster" "my_cluster" {
+        ///   name = "my-cluster"
+        ///   zone = "us-east1-a"
+        /// }
+        /// 
+        /// provider "kubernetes" {
+        ///   host  = "https://${data.google_container_cluster.my_cluster.endpoint}"
+        ///   token = data.google_client_config.default.access_token
+        ///   cluster_ca_certificate = base64decode(
+        ///     data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate,
+        ///   )
+        /// }
+        /// ```
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());

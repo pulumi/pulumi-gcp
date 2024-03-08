@@ -28,6 +28,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,28 +54,29 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Project services can be imported using the `project_id` and `service`, e.g.
 //
-//   - `{{project_id}}/{{service}}`
+// * `{{project_id}}/{{service}}`
 //
-//     When using the `pulumi import` command, project services can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, project services can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:projects/service:Service default {{project_id}}/{{service}}
 // ```
 //
-//	Note that unlike other resources that fail if they already exist,
+// Note that unlike other resources that fail if they already exist,
 //
-//	`pulumi up` can be successfully used to verify already enabled services.
+// `pulumi up` can be successfully used to verify already enabled services.
 //
-//	This means that when importing existing resources into Terraform, you can either
+// # This means that when importing existing resources into Terraform, you can either
 //
-//	import the `google_project_service` resources or treat them as new
+// import the `google_project_service` resources or treat them as new
 //
-//	infrastructure and run `pulumi up` to add them to state.
+// infrastructure and run `pulumi up` to add them to state.
 type Service struct {
 	pulumi.CustomResourceState
 

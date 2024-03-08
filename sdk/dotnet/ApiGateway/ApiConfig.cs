@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.ApiGateway
     ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Apigateway Api Config Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,8 +59,10 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apigateway Api Config Grpc
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -122,18 +126,19 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ApiConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
+    /// * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
     /// 
-    ///  * `{{project}}/{{api}}/{{api_config_id}}`
+    /// * `{{project}}/{{api}}/{{api_config_id}}`
     /// 
-    ///  * `{{api}}/{{api_config_id}}`
+    /// * `{{api}}/{{api_config_id}}`
     /// 
-    ///  When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}

@@ -219,6 +219,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -229,14 +230,15 @@ class OrganizationExclusion(pulumi.CustomResource):
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Organization-level logging exclusions can be imported using their URI, e.g.
 
-         * `organizations/{{organization}}/exclusions/{{name}}`
+        * `organizations/{{organization}}/exclusions/{{name}}`
 
-         When using the `pulumi import` command, organization-level logging exclusions can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, organization-level logging exclusions can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion default organizations/{{organization}}/exclusions/{{name}}
@@ -270,6 +272,7 @@ class OrganizationExclusion(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -280,14 +283,15 @@ class OrganizationExclusion(pulumi.CustomResource):
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Organization-level logging exclusions can be imported using their URI, e.g.
 
-         * `organizations/{{organization}}/exclusions/{{name}}`
+        * `organizations/{{organization}}/exclusions/{{name}}`
 
-         When using the `pulumi import` command, organization-level logging exclusions can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, organization-level logging exclusions can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion default organizations/{{organization}}/exclusions/{{name}}

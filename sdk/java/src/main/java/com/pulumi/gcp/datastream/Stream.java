@@ -30,7 +30,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
  * 
  * ## Example Usage
+ * 
  * ### Datastream Stream Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -270,7 +273,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Postgresql
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -390,7 +396,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Oracle
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -511,7 +520,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Postgresql Bigquery Dataset Id
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -653,7 +665,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Bigquery
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -805,18 +820,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Stream can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
+ * * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
  * 
- *  * `{{project}}/{{location}}/{{stream_id}}`
+ * * `{{project}}/{{location}}/{{stream_id}}`
  * 
- *  * `{{location}}/{{stream_id}}`
+ * * `{{location}}/{{stream_id}}`
  * 
- *  When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}

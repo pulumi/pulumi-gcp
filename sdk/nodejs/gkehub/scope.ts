@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ *
  * ### Gkehub Scope Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,18 +38,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Scope can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
+ * * `projects/{{project}}/locations/global/scopes/{{scope_id}}`
  *
- *  * `{{project}}/{{scope_id}}`
+ * * `{{project}}/{{scope_id}}`
  *
- *  * `{{scope_id}}`
+ * * `{{scope_id}}`
  *
- *  When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Scope can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}

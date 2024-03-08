@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     taxonomy: basicTaxonomy.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyIamPolicyResult> {
 
@@ -70,6 +72,7 @@ export interface GetTaxonomyIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -78,6 +81,7 @@ export interface GetTaxonomyIamPolicyResult {
  *     taxonomy: basicTaxonomy.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getTaxonomyIamPolicy(a, opts))

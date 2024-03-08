@@ -175,6 +175,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -184,6 +185,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str key_ring: The `id` of the Google Cloud Platform KeyRing to which the key belongs.
@@ -227,6 +229,7 @@ def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -236,6 +239,7 @@ def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str key_ring: The `id` of the Google Cloud Platform KeyRing to which the key belongs.

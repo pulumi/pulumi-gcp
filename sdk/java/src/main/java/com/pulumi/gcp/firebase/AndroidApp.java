@@ -17,7 +17,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Firebase Android App Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,7 +53,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebase Android App Custom Api Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,22 +108,23 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * AndroidApp can be imported using any of these accepted formats:
  * 
- *  * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
+ * * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
  * 
- *  * `projects/{{project}}/androidApps/{{app_id}}`
+ * * `projects/{{project}}/androidApps/{{app_id}}`
  * 
- *  * `{{project}}/{{project}}/{{app_id}}`
+ * * `{{project}}/{{project}}/{{app_id}}`
  * 
- *  * `androidApps/{{app_id}}`
+ * * `androidApps/{{app_id}}`
  * 
- *  * `{{app_id}}`
+ * * `{{app_id}}`
  * 
- *  When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}

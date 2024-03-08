@@ -486,8 +486,10 @@ class AiEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+
         ### Vertex Ai Endpoint Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,18 +524,19 @@ class AiEndpoint(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
@@ -582,8 +585,10 @@ class AiEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+
         ### Vertex Ai Endpoint Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -618,18 +623,19 @@ class AiEndpoint(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}

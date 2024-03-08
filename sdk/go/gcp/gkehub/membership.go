@@ -21,8 +21,10 @@ import (
 //   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 //
 // ## Example Usage
+//
 // ### Gkehub Membership Regional
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,8 +70,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Gkehub Membership Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -117,8 +121,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Gkehub Membership Issuer
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,18 +175,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Membership can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
+// * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
 //
-//   - `{{project}}/{{location}}/{{membership_id}}`
+// * `{{project}}/{{location}}/{{membership_id}}`
 //
-//   - `{{location}}/{{membership_id}}`
+// * `{{location}}/{{membership_id}}`
 //
-//     When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}

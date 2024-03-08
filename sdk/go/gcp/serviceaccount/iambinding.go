@@ -25,8 +25,10 @@ import (
 // > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## Example Usage
+//
 // ### Service Account IAM Policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,8 +74,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Service Account IAM Binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -108,8 +113,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Service Account IAM Binding With IAM Conditions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -149,8 +157,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Service Account IAM Member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -201,8 +212,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Service Account IAM Member With IAM Conditions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -240,12 +254,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ### Importing with conditions:
 //
-//	Here are examples of importing IAM memberships and bindings that include conditions:
+// Here are examples of importing IAM memberships and bindings that include conditions:
 //
 // ```sh
 // $ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"

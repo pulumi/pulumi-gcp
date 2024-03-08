@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// A Google Bare Metal Admin Cluster.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Gkeonprem Bare Metal Admin Cluster Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -111,8 +113,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkeonprem Bare Metal Admin Cluster Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -268,18 +272,19 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// BareMetalAdminCluster can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}

@@ -22,8 +22,10 @@ import (
 //   - [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 //
 // ## Example Usage
+//
 // ### Filestore Backup Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,18 +78,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Backup can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/backups/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/backups/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:filestore/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{name}}

@@ -122,6 +122,7 @@ class Registry(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -130,9 +131,11 @@ class Registry(pulumi.CustomResource):
             project="my-project",
             location="EU")
         ```
+        <!--End PulumiCodeChooser -->
 
         The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -145,6 +148,7 @@ class Registry(pulumi.CustomResource):
             role="roles/storage.objectViewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -168,6 +172,7 @@ class Registry(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -176,9 +181,11 @@ class Registry(pulumi.CustomResource):
             project="my-project",
             location="EU")
         ```
+        <!--End PulumiCodeChooser -->
 
         The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -191,6 +198,7 @@ class Registry(pulumi.CustomResource):
             role="roles/storage.objectViewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

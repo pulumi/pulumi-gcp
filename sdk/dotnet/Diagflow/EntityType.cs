@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Dialogflow Entity Type Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,14 +67,15 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// EntityType can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}

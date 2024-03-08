@@ -493,8 +493,10 @@ class Function(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
 
         ## Example Usage
+
         ### Cloudfunctions2 Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -529,8 +531,10 @@ class Function(pulumi.CustomResource):
             ))
         pulumi.export("functionUri", function.service_config.uri)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -586,8 +590,10 @@ class Function(pulumi.CustomResource):
                 retry_policy="RETRY_POLICY_RETRY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Scheduler Auth
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -651,8 +657,10 @@ class Function(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Gcs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,8 +739,10 @@ class Function(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Auditlogs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -823,8 +833,10 @@ class Function(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Secret Env
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -877,8 +889,10 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Secret Volume
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -930,8 +944,10 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Private Workerpool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -974,8 +990,10 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Cmek Docs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1039,18 +1057,19 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         function can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, function can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, function can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
@@ -1104,8 +1123,10 @@ class Function(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions)
 
         ## Example Usage
+
         ### Cloudfunctions2 Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1140,8 +1161,10 @@ class Function(pulumi.CustomResource):
             ))
         pulumi.export("functionUri", function.service_config.uri)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1197,8 +1220,10 @@ class Function(pulumi.CustomResource):
                 retry_policy="RETRY_POLICY_RETRY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Scheduler Auth
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1262,8 +1287,10 @@ class Function(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Gcs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1342,8 +1369,10 @@ class Function(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Basic Auditlogs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1434,8 +1463,10 @@ class Function(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Secret Env
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1488,8 +1519,10 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Secret Volume
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1541,8 +1574,10 @@ class Function(pulumi.CustomResource):
             secret_data="secret",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Private Workerpool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1585,8 +1620,10 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudfunctions2 Cmek Docs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1650,18 +1687,19 @@ class Function(pulumi.CustomResource):
                 timeout_seconds=60,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         function can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, function can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, function can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}

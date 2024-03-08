@@ -1244,6 +1244,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1257,6 +1258,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                 "my_key": "my_value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1326,6 +1328,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1339,6 +1342,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                 "my_key": "my_value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param InstanceFromMachineImageArgs args: The arguments to use to populate this resource's properties.

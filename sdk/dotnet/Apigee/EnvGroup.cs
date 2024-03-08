@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Apigee Environment Group Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,16 +76,17 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Envgroup can be imported using any of these accepted formats:
     /// 
-    ///  * `{{org_id}}/envgroups/{{name}}`
+    /// * `{{org_id}}/envgroups/{{name}}`
     /// 
-    ///  * `{{org_id}}/{{name}}`
+    /// * `{{org_id}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Envgroup can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Envgroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/envgroups/{{name}}

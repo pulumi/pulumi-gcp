@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
+ *
  * ### Region Target Https Proxy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -72,8 +74,10 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Region Target Https Proxy Certificate Manager Certificate
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -109,20 +113,21 @@ import * as utilities from "../utilities";
  *     certificateManagerCertificates: [pulumi.interpolate`//certificatemanager.googleapis.com/${defaultCertificate.id}`],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RegionTargetHttpsProxy can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, RegionTargetHttpsProxy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RegionTargetHttpsProxy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}

@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Datastream
     ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Datastream Connection Profile Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,8 +45,10 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Datastream Connection Profile Postgresql Private Connection
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,8 +156,10 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Datastream Connection Profile Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -187,8 +193,10 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Datastream Connection Profile Postgres
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -271,18 +279,19 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ConnectionProfile can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{connection_profile_id}}`
+    /// * `{{project}}/{{location}}/{{connection_profile_id}}`
     /// 
-    ///  * `{{location}}/{{connection_profile_id}}`
+    /// * `{{location}}/{{connection_profile_id}}`
     /// 
-    ///  When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}

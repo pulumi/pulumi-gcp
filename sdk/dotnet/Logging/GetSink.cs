@@ -17,12 +17,12 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Retrieve Project Logging Sink Basic
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +38,7 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSinkResult> InvokeAsync(GetSinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSinkResult>("gcp:logging/getSink:getSink", args ?? new GetSinkArgs(), options.WithDefaults());
@@ -50,12 +49,12 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Retrieve Project Logging Sink Basic
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +70,7 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSinkResult> Invoke(GetSinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSinkResult>("gcp:logging/getSink:getSink", args ?? new GetSinkInvokeArgs(), options.WithDefaults());

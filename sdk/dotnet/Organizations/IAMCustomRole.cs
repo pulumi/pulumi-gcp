@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// This snippet creates a customized IAM organization role.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,13 +51,14 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Customized IAM organization role can be imported using their URI, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+    /// $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
     /// ```
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMCustomRole:IAMCustomRole")]

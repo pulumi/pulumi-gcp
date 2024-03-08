@@ -28,8 +28,8 @@ class AutoscalerArgs:
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%.
-               Structure is documented below.
+               on cpuUtilization to 0.6 or 60%!
+               (MISSING)Structure is documented below.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -60,8 +60,8 @@ class AutoscalerArgs:
         define one or more of the policies for an autoscaler: cpuUtilization,
         customMetricUtilizations, and loadBalancingUtilization.
         If none of these are specified, the default will be to autoscale based
-        on cpuUtilization to 0.6 or 60%.
-        Structure is documented below.
+        on cpuUtilization to 0.6 or 60%!
+        (MISSING)Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -152,8 +152,8 @@ class _AutoscalerState:
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%.
-               Structure is documented below.
+               on cpuUtilization to 0.6 or 60%!
+               (MISSING)Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -192,8 +192,8 @@ class _AutoscalerState:
         define one or more of the policies for an autoscaler: cpuUtilization,
         customMetricUtilizations, and loadBalancingUtilization.
         If none of these are specified, the default will be to autoscale based
-        on cpuUtilization to 0.6 or 60%.
-        Structure is documented below.
+        on cpuUtilization to 0.6 or 60%!
+        (MISSING)Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -317,8 +317,10 @@ class Autoscaler(pulumi.CustomResource):
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
         ## Example Usage
+
         ### Autoscaler Single Instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,8 +376,10 @@ class Autoscaler(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Autoscaler Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -429,20 +433,21 @@ class Autoscaler(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Autoscaler can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
@@ -466,8 +471,8 @@ class Autoscaler(pulumi.CustomResource):
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%.
-               Structure is documented below.
+               on cpuUtilization to 0.6 or 60%!
+               (MISSING)Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -499,8 +504,10 @@ class Autoscaler(pulumi.CustomResource):
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
         ## Example Usage
+
         ### Autoscaler Single Instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -556,8 +563,10 @@ class Autoscaler(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Autoscaler Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,20 +620,21 @@ class Autoscaler(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Autoscaler can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
@@ -715,8 +725,8 @@ class Autoscaler(pulumi.CustomResource):
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%.
-               Structure is documented below.
+               on cpuUtilization to 0.6 or 60%!
+               (MISSING)Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -752,8 +762,8 @@ class Autoscaler(pulumi.CustomResource):
         define one or more of the policies for an autoscaler: cpuUtilization,
         customMetricUtilizations, and loadBalancingUtilization.
         If none of these are specified, the default will be to autoscale based
-        on cpuUtilization to 0.6 or 60%.
-        Structure is documented below.
+        on cpuUtilization to 0.6 or 60%!
+        (MISSING)Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
 

@@ -25,6 +25,7 @@ import (
 //
 // Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,14 +139,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Storage Transfer Jobs can be imported using the Transfer Job's `project` and `name` (without the `transferJob/` prefix), e.g.
 //
-//   - `{{project_id}}/{{name}}`, where `name` is a numeric value.
+// * `{{project_id}}/{{name}}`, where `name` is a numeric value.
 //
-//     When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789

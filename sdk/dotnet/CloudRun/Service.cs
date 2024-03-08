@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.CloudRun
     /// developer experience and broader support of Cloud Run features.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Cloud Run Service Pubsub
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,8 +112,11 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Cloud Run Service Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -149,8 +154,10 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloud Run Service Sql
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -202,8 +209,10 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloud Run Service Noauth
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -256,8 +265,10 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloud Run Service Probes
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -313,8 +324,10 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloud Run Service Multicontainer
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -421,18 +434,19 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Service can be imported using any of these accepted formats:
     /// 
-    ///  * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
+    /// * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
     /// 
-    ///  * `{{location}}/{{project}}/{{name}}`
+    /// * `{{location}}/{{project}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}

@@ -130,13 +130,6 @@ def get_network(name: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_network = gcp.compute.get_network(name="default-us-east1")
-    ```
-
 
     :param str name: The name of the network.
            
@@ -170,13 +163,6 @@ def get_network_output(name: Optional[pulumi.Input[str]] = None,
     Get a network within GCE from its name.
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_network = gcp.compute.get_network(name="default-us-east1")
-    ```
 
 
     :param str name: The name of the network.

@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
  * 
  * ## Example Usage
+ * 
  * ### Bigquerydatatransfer Config Scheduled Query
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,14 +93,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Config can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}

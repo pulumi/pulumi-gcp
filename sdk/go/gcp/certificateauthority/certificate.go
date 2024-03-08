@@ -18,8 +18,10 @@ import (
 // `tier = "ENTERPRISE"`
 //
 // ## Example Usage
+//
 // ### Privateca Certificate Generated Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -177,8 +179,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Privateca Certificate With Template
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -353,8 +357,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Privateca Certificate Csr
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -439,8 +445,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Privateca Certificate No Authority
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -556,18 +564,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Certificate can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{pool}}/{{name}}`
+// * `{{project}}/{{location}}/{{pool}}/{{name}}`
 //
-//   - `{{location}}/{{pool}}/{{name}}`
+// * `{{location}}/{{pool}}/{{name}}`
 //
-//     When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}

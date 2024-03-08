@@ -27,8 +27,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
+//
 // ### Notebook Instance Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,8 +60,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Basic Stopped
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,8 +94,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Basic Container
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,8 +130,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Basic Gpu
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,8 +168,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -231,18 +241,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Instance can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}

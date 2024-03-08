@@ -186,8 +186,10 @@ class Service(pulumi.CustomResource):
             * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
         ## Example Usage
+
         ### Service Directory Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -203,18 +205,19 @@ class Service(pulumi.CustomResource):
                 "region": "us-central1",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Service can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
+        * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
 
-         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
+        * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
 
-         * `{{location}}/{{namespace_id}}/{{service_id}}`
+        * `{{location}}/{{namespace_id}}/{{service_id}}`
 
-         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
@@ -257,8 +260,10 @@ class Service(pulumi.CustomResource):
             * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
         ## Example Usage
+
         ### Service Directory Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -274,18 +279,19 @@ class Service(pulumi.CustomResource):
                 "region": "us-central1",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Service can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
+        * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
 
-         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
+        * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
 
-         * `{{location}}/{{namespace_id}}/{{service_id}}`
+        * `{{location}}/{{namespace_id}}/{{service_id}}`
 
-         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}

@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,20 +67,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Target pools can be imported using any of the following formats:
  * 
- *  * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/targetPools/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, target pools can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}

@@ -18,6 +18,8 @@ public final class CloudtasksFunctions {
      * Retrieves the current IAM policy data for queue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -48,6 +50,7 @@ public final class CloudtasksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueueIamPolicyResult> getQueueIamPolicy(GetQueueIamPolicyArgs args) {
@@ -57,6 +60,8 @@ public final class CloudtasksFunctions {
      * Retrieves the current IAM policy data for queue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -87,6 +92,7 @@ public final class CloudtasksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueueIamPolicyResult> getQueueIamPolicyPlain(GetQueueIamPolicyPlainArgs args) {
@@ -96,6 +102,8 @@ public final class CloudtasksFunctions {
      * Retrieves the current IAM policy data for queue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class CloudtasksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueueIamPolicyResult> getQueueIamPolicy(GetQueueIamPolicyArgs args, InvokeOptions options) {
@@ -135,6 +144,8 @@ public final class CloudtasksFunctions {
      * Retrieves the current IAM policy data for queue
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -165,6 +176,7 @@ public final class CloudtasksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueueIamPolicyResult> getQueueIamPolicyPlain(GetQueueIamPolicyPlainArgs args, InvokeOptions options) {

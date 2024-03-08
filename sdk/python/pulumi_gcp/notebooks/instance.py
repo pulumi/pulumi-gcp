@@ -1390,8 +1390,10 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+
         ### Notebook Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1405,8 +1407,10 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-cpu",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Stopped
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1421,8 +1425,10 @@ class Instance(pulumi.CustomResource):
             ),
             desired_state="STOPPED")
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Container
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1439,8 +1445,10 @@ class Instance(pulumi.CustomResource):
                 tag="latest",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Gpu
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1459,8 +1467,10 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-gpu",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1501,18 +1511,19 @@ class Instance(pulumi.CustomResource):
             kms_key="my-crypto-key",
             desired_state="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
@@ -1629,8 +1640,10 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+
         ### Notebook Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1644,8 +1657,10 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-cpu",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Stopped
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1660,8 +1675,10 @@ class Instance(pulumi.CustomResource):
             ),
             desired_state="STOPPED")
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Container
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1678,8 +1695,10 @@ class Instance(pulumi.CustomResource):
                 tag="latest",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Basic Gpu
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1698,8 +1717,10 @@ class Instance(pulumi.CustomResource):
                 image_family="tf-latest-gpu",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Notebook Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1740,18 +1761,19 @@ class Instance(pulumi.CustomResource):
             kms_key="my-crypto-key",
             desired_state="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}

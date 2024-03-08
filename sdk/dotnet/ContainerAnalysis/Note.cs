@@ -21,8 +21,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Container Analysis Note Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,8 +47,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Container Analysis Note Attestation Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -84,18 +88,19 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Note can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/notes/{{name}}`
+    /// * `projects/{{project}}/notes/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}

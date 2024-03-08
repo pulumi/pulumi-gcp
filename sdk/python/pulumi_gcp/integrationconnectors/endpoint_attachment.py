@@ -349,8 +349,10 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
 
         ## Example Usage
+
         ### Integration Connectors Endpoint Attachment
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,18 +366,19 @@ class EndpointAttachment(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EndpointAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}
@@ -421,8 +424,10 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
 
         ## Example Usage
+
         ### Integration Connectors Endpoint Attachment
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -436,18 +441,19 @@ class EndpointAttachment(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EndpointAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}

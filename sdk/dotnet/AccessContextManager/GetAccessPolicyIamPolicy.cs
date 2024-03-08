@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessPolicyIamPolicyResult> InvokeAsync(GetAccessPolicyIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPolicyIamPolicyResult>("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyArgs(), options.WithDefaults());
@@ -44,6 +46,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,6 +62,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessPolicyIamPolicyResult> Invoke(GetAccessPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPolicyIamPolicyResult>("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyInvokeArgs(), options.WithDefaults());

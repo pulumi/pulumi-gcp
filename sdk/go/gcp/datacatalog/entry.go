@@ -26,8 +26,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
+//
 // ### Data Catalog Entry Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,8 +62,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Data Catalog Entry Fileset
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,8 +102,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Data Catalog Entry Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -174,14 +180,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Entry can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:datacatalog/entry:Entry default {{name}}

@@ -20,8 +20,10 @@ import (
 //   - [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 //
 // ## Example Usage
+//
 // ### Workflow Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,6 +95,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -167,8 +167,10 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
+
     ### Monitoring Cluster Istio Service
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -179,6 +181,7 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
         service_namespace="istio-system",
         service_name="istio-policy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_name: The name of the Kubernetes cluster in which this Istio service 
@@ -242,8 +245,10 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
+
     ### Monitoring Cluster Istio Service
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -254,6 +259,7 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
         service_namespace="istio-system",
         service_name="istio-policy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_name: The name of the Kubernetes cluster in which this Istio service 

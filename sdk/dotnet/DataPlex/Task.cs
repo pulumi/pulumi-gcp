@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.DataPlex
     ///     * [Official Documentation](https://cloud.google.com/dataplex/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Dataplex Task Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,8 +75,10 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataplex Task Spark
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -168,8 +172,10 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataplex Task Notebook
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -263,18 +269,19 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Task can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
+    /// * `{{project}}/{{location}}/{{lake}}/{{task_id}}`
     /// 
-    ///  * `{{location}}/{{lake}}/{{task_id}}`
+    /// * `{{location}}/{{lake}}/{{task_id}}`
     /// 
-    ///  When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Task can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}

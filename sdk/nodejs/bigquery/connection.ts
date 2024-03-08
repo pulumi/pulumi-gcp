@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  *
  * ## Example Usage
+ *
  * ### Bigquery Connection Cloud Resource
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,8 +32,10 @@ import * as utilities from "../utilities";
  *     cloudResource: {},
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,8 +78,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -119,8 +125,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Aws
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -137,8 +145,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Azure
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -154,8 +164,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Cloudspanner
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -171,8 +183,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Cloudspanner Databoost
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -190,8 +204,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Connection Spark
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -226,18 +242,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Connection can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
+ * * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
  *
- *  * `{{project}}/{{location}}/{{connection_id}}`
+ * * `{{project}}/{{location}}/{{connection_id}}`
  *
- *  * `{{location}}/{{connection_id}}`
+ * * `{{location}}/{{connection_id}}`
  *
- *  When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}

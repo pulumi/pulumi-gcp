@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
+ *
  * ### Router Peer Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,8 +36,10 @@ import * as utilities from "../utilities";
  *     "interface": "interface-1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Router Peer Disabled
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,8 +55,10 @@ import * as utilities from "../utilities";
  *     enable: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Router Peer Bfd
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,8 +79,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Router Peer Router Appliance
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,20 +176,21 @@ import * as utilities from "../utilities";
  *     peerIpAddress: addrPeer.address,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RouterBgpPeer can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{router}}/{{name}}`
+ * * `{{project}}/{{region}}/{{router}}/{{name}}`
  *
- *  * `{{region}}/{{router}}/{{name}}`
+ * * `{{region}}/{{router}}/{{name}}`
  *
- *  * `{{router}}/{{name}}`
+ * * `{{router}}/{{name}}`
  *
- *  When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}

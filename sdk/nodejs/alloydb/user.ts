@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
  *
  * ## Example Usage
+ *
  * ### Alloydb User Builtin
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,8 +57,10 @@ import * as utilities from "../utilities";
  *     databaseRoles: ["alloydbsuperuser"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Alloydb User Iam
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,18 +99,19 @@ import * as utilities from "../utilities";
  *     databaseRoles: ["alloydbiamuser"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * User can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
+ * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
  *
- *  * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
+ * * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
  *
- *  * `{{location}}/{{cluster}}/{{user_id}}`
+ * * `{{location}}/{{cluster}}/{{user_id}}`
  *
- *  When using the `pulumi import` command, User can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, User can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:alloydb/user:User default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}

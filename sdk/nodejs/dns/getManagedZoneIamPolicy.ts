@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     managedZone: _default.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getManagedZoneIamPolicy(args: GetManagedZoneIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneIamPolicyResult> {
 
@@ -68,6 +70,7 @@ export interface GetManagedZoneIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,6 +80,7 @@ export interface GetManagedZoneIamPolicyResult {
  *     managedZone: _default.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getManagedZoneIamPolicyOutput(args: GetManagedZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZoneIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getManagedZoneIamPolicy(a, opts))

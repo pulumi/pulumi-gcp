@@ -104,6 +104,7 @@ def get_database_iam_policy(database: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -112,6 +113,7 @@ def get_database_iam_policy(database: Optional[str] = None,
         database=database["name"],
         instance=database["instance"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str database: The name of the Spanner database.
@@ -145,6 +147,7 @@ def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -153,6 +156,7 @@ def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
         database=database["name"],
         instance=database["instance"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str database: The name of the Spanner database.

@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * This snippet creates a customized IAM role.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,18 +68,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Custom Roles can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/roles/{{role_id}}`
+ * * `projects/{{project}}/roles/{{role_id}}`
  * 
- *  * `{{project}}/{{role_id}}`
+ * * `{{project}}/{{role_id}}`
  * 
- *  * `{{role_id}}`
+ * * `{{role_id}}`
  * 
- *  When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Custom Roles can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default projects/{{project}}/roles/{{role_id}}

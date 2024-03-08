@@ -203,8 +203,10 @@ class ApiKey(pulumi.CustomResource):
         The Apikeys Key resource
 
         ## Example Usage
+
         ### Android_key
         A basic example of a android api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -230,8 +232,10 @@ class ApiKey(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Basic_key
         A basic example of a api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,8 +258,10 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic example of a ios api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -278,8 +284,10 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal example of a api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -293,8 +301,10 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name)
         ```
+        <!--End PulumiCodeChooser -->
         ### Server_key
         A basic example of a server api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -317,18 +327,19 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Key can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/keys/{{name}}`
+        * `projects/{{project}}/locations/global/keys/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}
@@ -359,8 +370,10 @@ class ApiKey(pulumi.CustomResource):
         The Apikeys Key resource
 
         ## Example Usage
+
         ### Android_key
         A basic example of a android api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -386,8 +399,10 @@ class ApiKey(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Basic_key
         A basic example of a api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,8 +425,10 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic example of a ios api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -434,8 +451,10 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal example of a api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,8 +468,10 @@ class ApiKey(pulumi.CustomResource):
             display_name="sample-key",
             project=basic.name)
         ```
+        <!--End PulumiCodeChooser -->
         ### Server_key
         A basic example of a server api keys key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -473,18 +494,19 @@ class ApiKey(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Key can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/keys/{{name}}`
+        * `projects/{{project}}/locations/global/keys/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}

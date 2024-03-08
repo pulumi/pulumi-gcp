@@ -21,8 +21,10 @@ import (
 //   - [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 //
 // ## Example Usage
+//
 // ### Healthcare Consent Store Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,8 +56,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Healthcare Consent Store Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,8 +96,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Healthcare Consent Store Iam
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -146,14 +152,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ConsentStore can be imported using any of these accepted formats:
 //
-//   - `{{dataset}}/consentStores/{{name}}`
+// * `{{dataset}}/consentStores/{{name}}`
 //
-//     When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}

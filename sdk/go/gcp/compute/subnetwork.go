@@ -43,8 +43,10 @@ import (
 //   - [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 //
 // ## Example Usage
+//
 // ### Subnetwork Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,8 +86,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Subnetwork Logging Config
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,8 +128,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Subnetwork Internal L7lb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,8 +167,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Subnetwork Ipv6
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -198,8 +206,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Subnetwork Internal Ipv6
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -236,8 +246,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Subnetwork Purpose Private Nat
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -272,8 +284,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Subnetwork Cidr Overlap
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -308,20 +322,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Subnetwork can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}

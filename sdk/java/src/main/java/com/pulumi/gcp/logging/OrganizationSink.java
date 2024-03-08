@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  *     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,14 +74,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Organization-level logging sinks can be imported using this format:
  * 
- *  * `organizations/{{organization_id}}/sinks/{{sink_id}}`
+ * * `organizations/{{organization_id}}/sinks/{{sink_id}}`
  * 
- *  When using the `pulumi import` command, organization-level logging sinks can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, organization-level logging sinks can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}

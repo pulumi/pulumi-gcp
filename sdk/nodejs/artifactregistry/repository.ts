@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
  * ## Example Usage
+ *
  * ### Artifact Registry Repository Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,8 +31,10 @@ import * as utilities from "../utilities";
  *     format: "DOCKER",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Docker
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,8 +49,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,8 +71,10 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Virtual
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -105,8 +113,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Remote
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -125,8 +135,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Remote Apt
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -148,8 +160,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Remote Yum
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -171,8 +185,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Cleanup
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -223,8 +239,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Artifact Registry Repository Remote Custom
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -265,20 +283,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Repository can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+ * * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
  *
- *  * `{{project}}/{{location}}/{{repository_id}}`
+ * * `{{project}}/{{location}}/{{repository_id}}`
  *
- *  * `{{location}}/{{repository_id}}`
+ * * `{{location}}/{{repository_id}}`
  *
- *  * `{{repository_id}}`
+ * * `{{repository_id}}`
  *
- *  When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}

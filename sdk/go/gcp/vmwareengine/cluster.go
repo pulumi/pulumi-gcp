@@ -19,8 +19,10 @@ import (
 // * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
 //
 // ## Example Usage
+//
 // ### Vmware Engine Cluster Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,8 +83,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Vmware Engine Cluster Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -145,14 +149,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Cluster can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/clusters/{{name}}`
+// * `{{parent}}/clusters/{{name}}`
 //
-//     When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}

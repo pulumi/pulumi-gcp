@@ -557,8 +557,10 @@ class BackupPlan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
+
         ### Gkebackup Backupplan Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -588,8 +590,10 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Autopilot
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -620,8 +624,10 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -665,8 +671,10 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -714,18 +722,19 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackupPlan can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{name}}
@@ -783,8 +792,10 @@ class BackupPlan(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
+
         ### Gkebackup Backupplan Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -814,8 +825,10 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Autopilot
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -846,8 +859,10 @@ class BackupPlan(pulumi.CustomResource):
                 all_namespaces=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -891,8 +906,10 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Backupplan Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -940,18 +957,19 @@ class BackupPlan(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackupPlan can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/backupPlans/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackupPlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/backupPlan:BackupPlan default projects/{{project}}/locations/{{location}}/backupPlans/{{name}}

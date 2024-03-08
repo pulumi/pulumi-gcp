@@ -1210,8 +1210,10 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
+
         ### Redis Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1220,8 +1222,10 @@ class Instance(pulumi.CustomResource):
             name="memory-cache",
             memory_size_gb=1)
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1261,8 +1265,10 @@ class Instance(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Full With Persistence Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1278,8 +1284,10 @@ class Instance(pulumi.CustomResource):
                 rdb_snapshot_period="TWELVE_HOURS",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Private Service
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1314,8 +1322,10 @@ class Instance(pulumi.CustomResource):
             redis_version="REDIS_4_0",
             display_name="Test Instance")
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Mrr
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1346,8 +1356,10 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1383,20 +1395,21 @@ class Instance(pulumi.CustomResource):
             },
             customer_managed_key=redis_key.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
@@ -1504,8 +1517,10 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
         ## Example Usage
+
         ### Redis Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1514,8 +1529,10 @@ class Instance(pulumi.CustomResource):
             name="memory-cache",
             memory_size_gb=1)
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1555,8 +1572,10 @@ class Instance(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Full With Persistence Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1572,8 +1591,10 @@ class Instance(pulumi.CustomResource):
                 rdb_snapshot_period="TWELVE_HOURS",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Private Service
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1608,8 +1629,10 @@ class Instance(pulumi.CustomResource):
             redis_version="REDIS_4_0",
             display_name="Test Instance")
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Mrr
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1640,8 +1663,10 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Redis Instance Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1677,20 +1702,21 @@ class Instance(pulumi.CustomResource):
             },
             customer_managed_key=redis_key.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:redis/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

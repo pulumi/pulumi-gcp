@@ -173,6 +173,7 @@ def get_subnet(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -180,6 +181,7 @@ def get_subnet(name: Optional[str] = None,
     my_subnet = gcp.vmwareengine.get_subnet(name="service-1",
         parent="project/my-project/locations/us-west1-a/privateClouds/my-cloud")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource. 
@@ -222,6 +224,7 @@ def get_subnet_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -229,6 +232,7 @@ def get_subnet_output(name: Optional[pulumi.Input[str]] = None,
     my_subnet = gcp.vmwareengine.get_subnet(name="service-1",
         parent="project/my-project/locations/us-west1-a/privateClouds/my-cloud")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource. 

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceGroupManager(args?: GetInstanceGroupManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupManagerResult> {
     args = args || {};
@@ -101,6 +103,7 @@ export interface GetInstanceGroupManagerResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -113,6 +116,7 @@ export interface GetInstanceGroupManagerResult {
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceGroupManagerOutput(args?: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResult> {
     return pulumi.output(args).apply((a: any) => getInstanceGroupManager(a, opts))

@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,6 +33,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetJobIamPolicyResult> InvokeAsync(GetJobIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobIamPolicyResult>("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args ?? new GetJobIamPolicyArgs(), options.WithDefaults());
@@ -41,6 +43,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,6 +60,7 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetJobIamPolicyResult> Invoke(GetJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobIamPolicyResult>("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args ?? new GetJobIamPolicyInvokeArgs(), options.WithDefaults());

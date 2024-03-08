@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -16,6 +17,7 @@ import * as utilities from "../utilities";
  * const default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
@@ -65,6 +67,7 @@ export interface GetTransferProjectServieAccountResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -72,6 +75,7 @@ export interface GetTransferProjectServieAccountResult {
  * const default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
     public sealed class FunctionServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        /// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
         /// </summary>
         [Input("allTrafficOnLatestRevision")]
         public Input<bool>? AllTrafficOnLatestRevision { get; set; }

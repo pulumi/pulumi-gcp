@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
  * 
  * ## Example Usage
+ * 
  * ### Vmware Engine Private Cloud Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -81,7 +84,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Private Cloud Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -136,18 +142,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * PrivateCloud can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/privateClouds/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/privateClouds/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, PrivateCloud can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, PrivateCloud can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vmwareengine/privateCloud:PrivateCloud default projects/{{project}}/locations/{{location}}/privateClouds/{{name}}

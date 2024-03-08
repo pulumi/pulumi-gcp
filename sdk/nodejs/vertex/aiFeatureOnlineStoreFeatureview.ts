@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
+ *
  * ### Vertex Ai Featureonlinestore Featureview
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,8 +84,10 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featureonlinestore Featureview Feature Registry
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -169,8 +173,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -272,20 +278,21 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
+ * * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
  *
- *  * `{{region}}/{{feature_online_store}}/{{name}}`
+ * * `{{region}}/{{feature_online_store}}/{{name}}`
  *
- *  * `{{feature_online_store}}/{{name}}`
+ * * `{{feature_online_store}}/{{name}}`
  *
- *  When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}

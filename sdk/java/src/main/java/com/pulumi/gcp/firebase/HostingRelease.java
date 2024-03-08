@@ -16,7 +16,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Firebasehosting Release In Site
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,7 +71,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Release In Channel
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -128,7 +134,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Release Disable
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -166,20 +175,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Release can be imported using any of these accepted formats:
  * 
- *  * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
+ * * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
  * 
- *  * `sites/{{site_id}}/releases/{{release_id}}`
+ * * `sites/{{site_id}}/releases/{{release_id}}`
  * 
- *  * `{{site_id}}/{{channel_id}}/{{release_id}}`
+ * * `{{site_id}}/{{channel_id}}/{{release_id}}`
  * 
- *  * `{{site_id}}/{{release_id}}`
+ * * `{{site_id}}/{{release_id}}`
  * 
- *  When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}

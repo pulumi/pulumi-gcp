@@ -27,8 +27,10 @@ namespace Pulumi.Gcp.Compute
     /// The ACME account registered by using an EAB secret has no expiration.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Public Ca External Account Key
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,6 +46,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

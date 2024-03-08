@@ -394,8 +394,10 @@ class EnterpriseKey(pulumi.CustomResource):
         The RecaptchaEnterprise Key resource
 
         ## Example Usage
+
         ### Android_key
         A basic test of recaptcha enterprise key that can be used by Android apps
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -414,8 +416,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -434,8 +438,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal test of recaptcha enterprise key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,8 +455,10 @@ class EnterpriseKey(pulumi.CustomResource):
             ),
             labels={})
         ```
+        <!--End PulumiCodeChooser -->
         ### Waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,8 +484,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Web_key
         A basic test of recaptcha enterprise key that can be used by websites
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -499,8 +509,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,18 +533,19 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Key can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/keys/{{name}}`
+        * `projects/{{project}}/keys/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
@@ -574,8 +587,10 @@ class EnterpriseKey(pulumi.CustomResource):
         The RecaptchaEnterprise Key resource
 
         ## Example Usage
+
         ### Android_key
         A basic test of recaptcha enterprise key that can be used by Android apps
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -594,8 +609,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,8 +631,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Minimal_key
         A minimal test of recaptcha enterprise key
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -629,8 +648,10 @@ class EnterpriseKey(pulumi.CustomResource):
             ),
             labels={})
         ```
+        <!--End PulumiCodeChooser -->
         ### Waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,8 +677,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Web_key
         A basic test of recaptcha enterprise key that can be used by websites
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -679,8 +702,10 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -701,18 +726,19 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Key can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/keys/{{name}}`
+        * `projects/{{project}}/keys/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}

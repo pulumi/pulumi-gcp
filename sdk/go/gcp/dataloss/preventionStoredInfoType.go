@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 //
 // ## Example Usage
+//
 // ### Dlp Stored Info Type Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,8 +56,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dlp Stored Info Type Dictionary
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,8 +93,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dlp Stored Info Type Large Custom Dictionary
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -149,8 +155,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dlp Stored Info Type With Id
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -183,16 +191,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // StoredInfoType can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/storedInfoTypes/{{name}}`
+// * `{{parent}}/storedInfoTypes/{{name}}`
 //
-//   - `{{parent}}/{{name}}`
+// * `{{parent}}/{{name}}`
 //
-//     When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}

@@ -452,8 +452,10 @@ class BackupPolicy(pulumi.CustomResource):
             * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
 
         ## Example Usage
+
         ### Netapp Backup Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,18 +472,19 @@ class BackupPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         backupPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, backupPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, backupPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}
@@ -533,8 +536,10 @@ class BackupPolicy(pulumi.CustomResource):
             * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
 
         ## Example Usage
+
         ### Netapp Backup Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,18 +556,19 @@ class BackupPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         backupPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, backupPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, backupPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}

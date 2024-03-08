@@ -37,8 +37,10 @@ namespace Pulumi.Gcp.Compute
     /// In conclusion: Be extremely cautious.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Managed Ssl Certificate Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -132,129 +134,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Managed Ssl Certificate Recreation
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// 	
-    /// object NotImplemented(string errorMessage) 
-    /// {
-    ///     throw new System.NotImplementedException(errorMessage);
-    /// }
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var managedDomains = NotImplemented("tolist([\"test.example.com\"])");
-    /// 
-    ///     var certificate = new Random.RandomId("certificate", new()
-    ///     {
-    ///         ByteLength = 4,
-    ///         Prefix = "issue6147-cert-",
-    ///         Keepers = 
-    ///         {
-    ///             { "domains", Std.Join.Invoke(new()
-    ///             {
-    ///                 Separator = ",",
-    ///                 Input = managedDomains,
-    ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///         },
-    ///     });
-    /// 
-    ///     var cert = new Gcp.Compute.ManagedSslCertificate("cert", new()
-    ///     {
-    ///         Name = certificate.Hex,
-    ///         Managed = new Gcp.Compute.Inputs.ManagedSslCertificateManagedArgs
-    ///         {
-    ///             Domains = managedDomains,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
-    ///     {
-    ///         Name = "http-health-check",
-    ///         RequestPath = "/",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
-    ///     });
-    /// 
-    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
-    ///     {
-    ///         Name = "backend-service",
-    ///         PortName = "http",
-    ///         Protocol = "HTTP",
-    ///         TimeoutSec = 10,
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
-    ///     });
-    /// 
-    ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
-    ///     {
-    ///         Name = "url-map",
-    ///         Description = "a description",
-    ///         DefaultService = defaultBackendService.Id,
-    ///         HostRules = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
-    ///             {
-    ///                 Hosts = new[]
-    ///                 {
-    ///                     "mysite.com",
-    ///                 },
-    ///                 PathMatcher = "allpaths",
-    ///             },
-    ///         },
-    ///         PathMatchers = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
-    ///             {
-    ///                 Name = "allpaths",
-    ///                 DefaultService = defaultBackendService.Id,
-    ///                 PathRules = new[]
-    ///                 {
-    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
-    ///                     {
-    ///                         Paths = new[]
-    ///                         {
-    ///                             "/*",
-    ///                         },
-    ///                         Service = defaultBackendService.Id,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // This example allows the list of managed domains to be modified and will
-    ///     // recreate the ssl certificate and update the target https proxy correctly
-    ///     var @default = new Gcp.Compute.TargetHttpsProxy("default", new()
-    ///     {
-    ///         Name = "test-proxy",
-    ///         UrlMap = defaultURLMap.Id,
-    ///         SslCertificates = new[]
-    ///         {
-    ///             cert.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ## Import
     /// 
     /// ManagedSslCertificate can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/global/sslCertificates/{{name}}`
+    /// * `projects/{{project}}/global/sslCertificates/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}

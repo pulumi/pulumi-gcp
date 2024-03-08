@@ -325,8 +325,10 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
         ## Example Usage
+
         ### Dns Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -361,18 +363,19 @@ class Policy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Policy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/policies/{{name}}`
+        * `projects/{{project}}/policies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
@@ -425,8 +428,10 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
         ## Example Usage
+
         ### Dns Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,18 +466,19 @@ class Policy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Policy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/policies/{{name}}`
+        * `projects/{{project}}/policies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}

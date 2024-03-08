@@ -21,8 +21,10 @@ namespace Pulumi.Gcp.SecurityPosture
     ///     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Securityposture Posture Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -181,14 +183,15 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Posture can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/locations/{{location}}/postures/{{posture_id}}`
+    /// * `{{parent}}/locations/{{location}}/postures/{{posture_id}}`
     /// 
-    ///  When using the `pulumi import` command, Posture can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Posture can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}

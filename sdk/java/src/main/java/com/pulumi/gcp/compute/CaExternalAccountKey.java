@@ -33,7 +33,10 @@ import javax.annotation.Nullable;
  * The ACME account registered by using an EAB secret has no expiration.
  * 
  * ## Example Usage
+ * 
  * ### Public Ca External Account Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,6 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

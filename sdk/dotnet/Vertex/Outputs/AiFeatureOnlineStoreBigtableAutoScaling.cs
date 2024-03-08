@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiFeatureOnlineStoreBigtableAutoScaling
     {
         /// <summary>
-        /// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        /// A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+        /// (MISSING)
         /// </summary>
         public readonly int? CpuUtilizationTarget;
         /// <summary>

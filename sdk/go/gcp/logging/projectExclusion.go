@@ -22,6 +22,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,14 +48,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Project-level logging exclusions can be imported using their URI, e.g.
 //
-//   - `projects/{{project_id}}/exclusions/{{name}}`
+// * `projects/{{project_id}}/exclusions/{{name}}`
 //
-//     When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}

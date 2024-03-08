@@ -239,8 +239,10 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
         ## Example Usage
+
         ### Organization Security Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -249,16 +251,17 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             display_name="tf-test",
             parent="organizations/123456789")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OrganizationSecurityPolicy can be imported using any of these accepted formats:
 
-         * `locations/global/securityPolicies/{{policy_id}}`
+        * `locations/global/securityPolicies/{{policy_id}}`
 
-         * `{{policy_id}}`
+        * `{{policy_id}}`
 
-         When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
@@ -299,8 +302,10 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
         ## Example Usage
+
         ### Organization Security Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -309,16 +314,17 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             display_name="tf-test",
             parent="organizations/123456789")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OrganizationSecurityPolicy can be imported using any of these accepted formats:
 
-         * `locations/global/securityPolicies/{{policy_id}}`
+        * `locations/global/securityPolicies/{{policy_id}}`
 
-         * `{{policy_id}}`
+        * `{{policy_id}}`
 
-         When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}

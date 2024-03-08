@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     fhirStoreId: fhirStore.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFhirStoreIamPolicy(args: GetFhirStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFhirStoreIamPolicyResult> {
 
@@ -62,6 +64,7 @@ export interface GetFhirStoreIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,6 +73,7 @@ export interface GetFhirStoreIamPolicyResult {
  *     fhirStoreId: fhirStore.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFhirStoreIamPolicyOutput(args: GetFhirStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirStoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getFhirStoreIamPolicy(a, opts))

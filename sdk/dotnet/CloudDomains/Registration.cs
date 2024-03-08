@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.CloudDomains
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Clouddomains Registration Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,18 +117,19 @@ namespace Pulumi.Gcp.CloudDomains
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Registration can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
+    /// * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{domain_name}}`
+    /// * `{{project}}/{{location}}/{{domain_name}}`
     /// 
-    ///  * `{{location}}/{{domain_name}}`
+    /// * `{{location}}/{{domain_name}}`
     /// 
-    ///  When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}

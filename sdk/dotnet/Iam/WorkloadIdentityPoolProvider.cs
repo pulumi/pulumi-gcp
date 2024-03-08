@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Iam
     ///     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Iam Workload Identity Pool Provider Aws Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,8 +48,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Iam Workload Identity Pool Provider Aws Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -83,8 +87,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Iam Workload Identity Pool Provider Oidc Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -114,8 +120,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Iam Workload Identity Pool Provider Oidc Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -160,8 +168,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Iam Workload Identity Pool Provider Saml Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -197,8 +207,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Iam Workload Identity Pool Provider Saml Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -237,8 +249,10 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Iam Workload Identity Pool Provider Oidc Upload Key
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -284,18 +298,19 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
+    /// * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
     /// 
-    ///  * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+    /// * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
     /// 
-    ///  * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+    /// * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
     /// 
-    ///  When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
@@ -354,12 +369,6 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
-        /// - If any custom attribute mappings are defined, they must include a mapping to the
-        /// `google.subject` attribute.
-        /// For OIDC providers, the following rules apply:
-        /// - Custom attribute mappings must be defined, and must include a mapping to the
-        /// `google.subject` attribute. For example, the following maps the `sub` claim of the
-        /// incoming credential to the `subject` attribute on a Google token.
         /// </summary>
         [Output("attributeMapping")]
         public Output<ImmutableDictionary<string, string>?> AttributeMapping { get; private set; } = null!;
@@ -540,12 +549,6 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
-        /// - If any custom attribute mappings are defined, they must include a mapping to the
-        /// `google.subject` attribute.
-        /// For OIDC providers, the following rules apply:
-        /// - Custom attribute mappings must be defined, and must include a mapping to the
-        /// `google.subject` attribute. For example, the following maps the `sub` claim of the
-        /// incoming credential to the `subject` attribute on a Google token.
         /// </summary>
         public InputMap<string> AttributeMapping
         {
@@ -672,12 +675,6 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
-        /// - If any custom attribute mappings are defined, they must include a mapping to the
-        /// `google.subject` attribute.
-        /// For OIDC providers, the following rules apply:
-        /// - Custom attribute mappings must be defined, and must include a mapping to the
-        /// `google.subject` attribute. For example, the following maps the `sub` claim of the
-        /// incoming credential to the `subject` attribute on a Google token.
         /// </summary>
         public InputMap<string> AttributeMapping
         {

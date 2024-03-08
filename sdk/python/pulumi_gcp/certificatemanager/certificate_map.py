@@ -296,8 +296,10 @@ class CertificateMap(pulumi.CustomResource):
         which are usable by any associated target proxies
 
         ## Example Usage
+
         ### Certificate Manager Certificate Map Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,18 +312,19 @@ class CertificateMap(pulumi.CustomResource):
                 "acc-test": "true",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CertificateMap can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/certificateMaps/{{name}}`
+        * `projects/{{project}}/locations/global/certificateMaps/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
@@ -361,8 +364,10 @@ class CertificateMap(pulumi.CustomResource):
         which are usable by any associated target proxies
 
         ## Example Usage
+
         ### Certificate Manager Certificate Map Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -375,18 +380,19 @@ class CertificateMap(pulumi.CustomResource):
                 "acc-test": "true",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CertificateMap can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/certificateMaps/{{name}}`
+        * `projects/{{project}}/locations/global/certificateMaps/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}

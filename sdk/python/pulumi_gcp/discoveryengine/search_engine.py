@@ -410,8 +410,10 @@ class SearchEngine(pulumi.CustomResource):
             * [Create a Search Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-engine-es)
 
         ## Example Usage
+
         ### Discoveryengine Searchengine Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -432,18 +434,19 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[basic.data_store_id],
             search_engine_config=gcp.discoveryengine.SearchEngineSearchEngineConfigArgs())
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SearchEngine can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
+        * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
 
-         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
+        * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
 
-         * `{{location}}/{{collection_id}}/{{engine_id}}`
+        * `{{location}}/{{collection_id}}/{{engine_id}}`
 
-         When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
@@ -490,8 +493,10 @@ class SearchEngine(pulumi.CustomResource):
             * [Create a Search Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-engine-es)
 
         ## Example Usage
+
         ### Discoveryengine Searchengine Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -512,18 +517,19 @@ class SearchEngine(pulumi.CustomResource):
             data_store_ids=[basic.data_store_id],
             search_engine_config=gcp.discoveryengine.SearchEngineSearchEngineConfigArgs())
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SearchEngine can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
+        * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
 
-         * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
+        * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
 
-         * `{{location}}/{{collection_id}}/{{engine_id}}`
+        * `{{location}}/{{collection_id}}/{{engine_id}}`
 
-         When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SearchEngine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:discoveryengine/searchEngine:SearchEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}

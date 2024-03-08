@@ -99,6 +99,55 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
 
+    ## Example Usage
+
+    First, create a KMS KeyRing and CryptoKey using the resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.KeyRing("my_key_ring",
+        project="my-project",
+        name="my-key-ring",
+        location="us-central1")
+    my_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+        name="my-crypto-key",
+        key_ring=my_key_ring.id)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+    sensitive information:
+
+    Finally, reference the encrypted ciphertext in your resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_random as random
+
+    sql_user_password = gcp.kms.get_kms_secret(crypto_key=my_crypto_key["id"],
+        ciphertext="CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
+    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    main = gcp.sql.DatabaseInstance("main",
+        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        database_version="MYSQL_5_7",
+        settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            tier="db-f1-micro",
+        ))
+    users = gcp.sql.User("users",
+        name="me",
+        instance=main.name,
+        host="me.com",
+        password=sql_user_password.plaintext)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    This will result in a Cloud SQL user being created with password `my-secret-password`.
+
 
     :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64
@@ -137,6 +186,55 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
     resource definitions, but it does not take care of protecting that data in the
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
+
+    ## Example Usage
+
+    First, create a KMS KeyRing and CryptoKey using the resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.KeyRing("my_key_ring",
+        project="my-project",
+        name="my-key-ring",
+        location="us-central1")
+    my_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+        name="my-crypto-key",
+        key_ring=my_key_ring.id)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+    sensitive information:
+
+    Finally, reference the encrypted ciphertext in your resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_random as random
+
+    sql_user_password = gcp.kms.get_kms_secret(crypto_key=my_crypto_key["id"],
+        ciphertext="CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
+    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    main = gcp.sql.DatabaseInstance("main",
+        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        database_version="MYSQL_5_7",
+        settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            tier="db-f1-micro",
+        ))
+    users = gcp.sql.User("users",
+        name="me",
+        instance=main.name,
+        host="me.com",
+        password=sql_user_password.plaintext)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    This will result in a Cloud SQL user being created with password `my-secret-password`.
 
 
     :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.

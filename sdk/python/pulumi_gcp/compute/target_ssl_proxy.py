@@ -432,8 +432,10 @@ class TargetSSLProxy(pulumi.CustomResource):
             * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
         ## Example Usage
+
         ### Target Ssl Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -459,18 +461,19 @@ class TargetSSLProxy(pulumi.CustomResource):
             backend_service=default_backend_service.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TargetSslProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/targetSslProxies/{{name}}`
+        * `projects/{{project}}/global/targetSslProxies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
@@ -532,8 +535,10 @@ class TargetSSLProxy(pulumi.CustomResource):
             * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
         ## Example Usage
+
         ### Target Ssl Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -559,18 +564,19 @@ class TargetSSLProxy(pulumi.CustomResource):
             backend_service=default_backend_service.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TargetSslProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/targetSslProxies/{{name}}`
+        * `projects/{{project}}/global/targetSslProxies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}

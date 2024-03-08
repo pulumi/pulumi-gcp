@@ -262,6 +262,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
 
     Example file object  stored within a folder.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -270,6 +271,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
         bucket="keystore")
     pulumi.export("encrypted", key.content)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the containing bucket.
@@ -326,6 +328,7 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
 
     Example file object  stored within a folder.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -334,6 +337,7 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
         bucket="keystore")
     pulumi.export("encrypted", key.content)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the containing bucket.

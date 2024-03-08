@@ -310,6 +310,7 @@ class Policy(pulumi.CustomResource):
 
         To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,9 +322,11 @@ class Policy(pulumi.CustomResource):
                 enforced=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,9 +340,11 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         Or to deny some services, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,9 +359,11 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To restore the default organization policy, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,20 +375,21 @@ class Policy(pulumi.CustomResource):
                 default=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
 
-         * `{{org_id}}/constraints/{{constraint}}`
+        * `{{org_id}}/constraints/{{constraint}}`
 
-         When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:organizations/policy:Policy default {{org_id}}/constraints/{{constraint}}
         ```
 
-         It is all right if the constraint contains a slash, as in the example above.
+        It is all right if the constraint contains a slash, as in the example above.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -421,6 +429,7 @@ class Policy(pulumi.CustomResource):
 
         To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -432,9 +441,11 @@ class Policy(pulumi.CustomResource):
                 enforced=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,9 +459,11 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         Or to deny some services, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,9 +478,11 @@ class Policy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         To restore the default organization policy, use the following instead:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,20 +494,21 @@ class Policy(pulumi.CustomResource):
                 default=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
 
-         * `{{org_id}}/constraints/{{constraint}}`
+        * `{{org_id}}/constraints/{{constraint}}`
 
-         When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:organizations/policy:Policy default {{org_id}}/constraints/{{constraint}}
         ```
 
-         It is all right if the constraint contains a slash, as in the example above.
+        It is all right if the constraint contains a slash, as in the example above.
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

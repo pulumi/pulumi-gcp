@@ -22,8 +22,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 //
 // ## Example Usage
+//
 // ### Stateful Igm
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,20 +128,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // PerInstanceConfig can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}`
+// * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}`
 //
-//   - `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
+// * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
 //
-//   - `{{zone}}/{{instance_group_manager}}/{{name}}`
+// * `{{zone}}/{{instance_group_manager}}/{{name}}`
 //
-//   - `{{instance_group_manager}}/{{name}}`
+// * `{{instance_group_manager}}/{{name}}`
 //
-//     When using the `pulumi import` command, PerInstanceConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, PerInstanceConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}

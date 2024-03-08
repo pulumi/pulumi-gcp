@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
  * 
  * ## Example Usage
+ * 
  * ### Monitoring Service Custom
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,14 +72,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Service can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:monitoring/customService:CustomService default {{name}}

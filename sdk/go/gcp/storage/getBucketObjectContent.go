@@ -22,6 +22,7 @@ import (
 //
 // Example file object  stored within a folder.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetBucketObjectContent(ctx *pulumi.Context, args *GetBucketObjectContentArgs, opts ...pulumi.InvokeOption) (*GetBucketObjectContentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBucketObjectContentResult

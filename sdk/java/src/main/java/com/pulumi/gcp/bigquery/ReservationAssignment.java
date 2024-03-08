@@ -17,7 +17,9 @@ import javax.annotation.Nullable;
  * The BigqueryReservation Assignment resource
  * 
  * ## Example Usage
+ * 
  * ### Basic
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,18 +60,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Assignment can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{reservation}}/{{name}}`
+ * * `{{project}}/{{location}}/{{reservation}}/{{name}}`
  * 
- *  * `{{location}}/{{reservation}}/{{name}}`
+ * * `{{location}}/{{reservation}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Assignment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/reservationAssignment:ReservationAssignment default projects/{{project}}/locations/{{location}}/reservations/{{reservation}}/assignments/{{name}}

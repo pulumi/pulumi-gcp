@@ -64,6 +64,7 @@ def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -71,6 +72,7 @@ def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     ips = gcp.monitoring.get_uptime_check_i_ps()
     pulumi.export("ipList", ips.uptime_check_ips)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -89,6 +91,7 @@ def get_uptime_check_i_ps_output(opts: Optional[pulumi.InvokeOptions] = None) ->
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -96,5 +99,6 @@ def get_uptime_check_i_ps_output(opts: Optional[pulumi.InvokeOptions] = None) ->
     ips = gcp.monitoring.get_uptime_check_i_ps()
     pulumi.export("ipList", ips.uptime_check_ips)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

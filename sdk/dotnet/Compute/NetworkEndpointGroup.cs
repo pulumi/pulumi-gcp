@@ -32,8 +32,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Network Endpoint Group
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,8 +69,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Endpoint Group Non Gcp
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,20 +104,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// NetworkEndpointGroup can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
+    /// * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
     /// 
-    ///  * `{{project}}/{{zone}}/{{name}}`
+    /// * `{{project}}/{{zone}}/{{name}}`
     /// 
-    ///  * `{{zone}}/{{name}}`
+    /// * `{{zone}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}

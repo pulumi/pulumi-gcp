@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Pubsub Schema Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,8 +55,10 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Pubsub Schema Protobuf
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,18 +92,19 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Schema can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/schemas/{{name}}`
+    /// * `projects/{{project}}/schemas/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}

@@ -34,8 +34,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
+//
 // ### Network Endpoint Group
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,8 +81,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Endpoint Group Non Gcp
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,20 +126,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // NetworkEndpointGroup can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
+// * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
 //
-//   - `{{project}}/{{zone}}/{{name}}`
+// * `{{project}}/{{zone}}/{{name}}`
 //
-//   - `{{zone}}/{{name}}`
+// * `{{zone}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}

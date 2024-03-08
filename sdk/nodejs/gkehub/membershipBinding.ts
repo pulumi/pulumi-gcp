@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
+ *
  * ### Gkehub Membership Binding Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,18 +53,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * MembershipBinding can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
+ * * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}`
  *
- *  * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
+ * * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}`
  *
- *  * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
+ * * `{{location}}/{{membership_id}}/{{membership_binding_id}}`
  *
- *  When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}

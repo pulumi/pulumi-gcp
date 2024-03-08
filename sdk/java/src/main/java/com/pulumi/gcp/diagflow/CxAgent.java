@@ -30,7 +30,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
  * ## Example Usage
+ * 
  * ### Dialogflowcx Agent Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -123,18 +126,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Agent can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/agents/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/agents/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxAgent:CxAgent default projects/{{project}}/locations/{{location}}/agents/{{name}}

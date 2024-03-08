@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * the marketplace prior to using this resource.
  * 
  * ## Example Usage
+ * 
  * ### Identity Platform Tenant Default Supported Idp Config Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,18 +65,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
+ * * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
  * 
- *  * `{{project}}/{{tenant}}/{{idp_id}}`
+ * * `{{project}}/{{tenant}}/{{idp_id}}`
  * 
- *  * `{{tenant}}/{{idp_id}}`
+ * * `{{tenant}}/{{idp_id}}`
  * 
- *  When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}

@@ -39,35 +39,6 @@ public final class OrganizationsFunctions {
      * Get an active folder within GCP by `display_name` and `parent`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
-     *             .displayName(&#34;Department 1&#34;)
-     *             .parent(&#34;organizations/1234567&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetActiveFolderResult> getActiveFolder(GetActiveFolderArgs args) {
@@ -77,35 +48,6 @@ public final class OrganizationsFunctions {
      * Get an active folder within GCP by `display_name` and `parent`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
-     *             .displayName(&#34;Department 1&#34;)
-     *             .parent(&#34;organizations/1234567&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetActiveFolderResult> getActiveFolderPlain(GetActiveFolderPlainArgs args) {
@@ -115,35 +57,6 @@ public final class OrganizationsFunctions {
      * Get an active folder within GCP by `display_name` and `parent`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
-     *             .displayName(&#34;Department 1&#34;)
-     *             .parent(&#34;organizations/1234567&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetActiveFolderResult> getActiveFolder(GetActiveFolderArgs args, InvokeOptions options) {
@@ -153,35 +66,6 @@ public final class OrganizationsFunctions {
      * Get an active folder within GCP by `display_name` and `parent`.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
-     *             .displayName(&#34;Department 1&#34;)
-     *             .parent(&#34;organizations/1234567&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetActiveFolderResult> getActiveFolderPlain(GetActiveFolderPlainArgs args, InvokeOptions options) {
@@ -189,6 +73,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -227,6 +113,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBillingAccountResult> getBillingAccount() {
@@ -234,6 +121,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -272,6 +161,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBillingAccountResult> getBillingAccountPlain() {
@@ -279,6 +169,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -317,6 +209,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBillingAccountResult> getBillingAccount(GetBillingAccountArgs args) {
@@ -324,6 +217,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -362,6 +257,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBillingAccountResult> getBillingAccountPlain(GetBillingAccountPlainArgs args) {
@@ -369,6 +265,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -407,6 +305,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBillingAccountResult> getBillingAccount(GetBillingAccountArgs args, InvokeOptions options) {
@@ -414,6 +313,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -452,6 +353,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBillingAccountResult> getBillingAccountPlain(GetBillingAccountPlainArgs args, InvokeOptions options) {
@@ -459,66 +361,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * ### Configure Kubernetes Provider With OAuth2 Access Token
-     * 
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig() {
@@ -526,66 +370,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * ### Configure Kubernetes Provider With OAuth2 Access Token
-     * 
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
@@ -593,66 +379,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * ### Configure Kubernetes Provider With OAuth2 Access Token
-     * 
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
@@ -660,66 +388,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * ### Configure Kubernetes Provider With OAuth2 Access Token
-     * 
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
@@ -727,66 +397,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * ### Configure Kubernetes Provider With OAuth2 Access Token
-     * 
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
@@ -794,66 +406,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * ## Example Usage
-     * ```java
-     * package generated_program;
      * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
-     *     }
-     * }
-     * ```
      * ### Configure Kubernetes Provider With OAuth2 Access Token
-     * 
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .zone(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
@@ -873,7 +427,10 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * 
      * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -900,8 +457,11 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -952,6 +512,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo() {
@@ -971,7 +532,10 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * 
      * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -998,8 +562,11 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1050,6 +617,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain() {
@@ -1069,7 +637,10 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * 
      * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1096,8 +667,11 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1148,6 +722,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args) {
@@ -1167,7 +742,10 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * 
      * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1194,8 +772,11 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1246,6 +827,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args) {
@@ -1265,7 +847,10 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * 
      * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1292,8 +877,11 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1344,6 +932,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOptions options) {
@@ -1363,7 +952,10 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * 
      * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1390,8 +982,11 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1442,6 +1037,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args, InvokeOptions options) {
@@ -1449,6 +1045,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Cloud Folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1484,6 +1082,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args) {
@@ -1491,6 +1090,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Cloud Folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1526,6 +1127,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args) {
@@ -1533,6 +1135,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Cloud Folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1568,6 +1172,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args, InvokeOptions options) {
@@ -1575,6 +1180,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Use this data source to get information about a Google Cloud Folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1610,6 +1217,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args, InvokeOptions options) {
@@ -1621,7 +1229,10 @@ public final class OrganizationsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Folders At The Root Of An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1655,6 +1266,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFoldersResult> getFolders(GetFoldersArgs args) {
@@ -1666,7 +1278,10 @@ public final class OrganizationsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Folders At The Root Of An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1700,6 +1315,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args) {
@@ -1711,7 +1327,10 @@ public final class OrganizationsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Folders At The Root Of An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1745,6 +1364,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFoldersResult> getFolders(GetFoldersArgs args, InvokeOptions options) {
@@ -1756,7 +1376,10 @@ public final class OrganizationsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Folders At The Root Of An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1790,6 +1413,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args, InvokeOptions options) {
@@ -1801,10 +1425,6 @@ public final class OrganizationsFunctions {
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
      * 
-     * This data source is used to define IAM policies to apply to other resources.
-     * Currently, defining a policy through a datasource and referencing that policy
-     * from another resource is the only way to apply an IAM policy to a resource.
-     * 
      */
     public static Output<GetIAMPolicyResult> getIAMPolicy() {
         return getIAMPolicy(GetIAMPolicyArgs.Empty, InvokeOptions.Empty);
@@ -1814,10 +1434,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * 
-     * This data source is used to define IAM policies to apply to other resources.
-     * Currently, defining a policy through a datasource and referencing that policy
-     * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
     public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain() {
@@ -1829,10 +1445,6 @@ public final class OrganizationsFunctions {
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
      * 
-     * This data source is used to define IAM policies to apply to other resources.
-     * Currently, defining a policy through a datasource and referencing that policy
-     * from another resource is the only way to apply an IAM policy to a resource.
-     * 
      */
     public static Output<GetIAMPolicyResult> getIAMPolicy(GetIAMPolicyArgs args) {
         return getIAMPolicy(args, InvokeOptions.Empty);
@@ -1842,10 +1454,6 @@ public final class OrganizationsFunctions {
      * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-     * 
-     * This data source is used to define IAM policies to apply to other resources.
-     * Currently, defining a policy through a datasource and referencing that policy
-     * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
     public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain(GetIAMPolicyPlainArgs args) {
@@ -1857,10 +1465,6 @@ public final class OrganizationsFunctions {
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
      * 
-     * This data source is used to define IAM policies to apply to other resources.
-     * Currently, defining a policy through a datasource and referencing that policy
-     * from another resource is the only way to apply an IAM policy to a resource.
-     * 
      */
     public static Output<GetIAMPolicyResult> getIAMPolicy(GetIAMPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
@@ -1871,16 +1475,14 @@ public final class OrganizationsFunctions {
      * 
      * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
      * 
-     * This data source is used to define IAM policies to apply to other resources.
-     * Currently, defining a policy through a datasource and referencing that policy
-     * from another resource is the only way to apply an IAM policy to a resource.
-     * 
      */
     public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain(GetIAMPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1916,6 +1518,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization() {
@@ -1923,6 +1526,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1958,6 +1563,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
@@ -1965,6 +1571,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2000,6 +1608,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
@@ -2007,6 +1616,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2042,6 +1653,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
@@ -2049,6 +1661,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2084,6 +1698,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
@@ -2091,6 +1706,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2126,6 +1743,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
@@ -2137,6 +1755,8 @@ public final class OrganizationsFunctions {
      * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2164,6 +1784,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject() {
@@ -2175,6 +1796,8 @@ public final class OrganizationsFunctions {
      * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2202,6 +1825,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain() {
@@ -2213,6 +1837,8 @@ public final class OrganizationsFunctions {
      * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2240,6 +1866,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -2251,6 +1878,8 @@ public final class OrganizationsFunctions {
      * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2278,6 +1907,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -2289,6 +1919,8 @@ public final class OrganizationsFunctions {
      * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2316,6 +1948,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -2327,6 +1960,8 @@ public final class OrganizationsFunctions {
      * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2354,6 +1989,7 @@ public final class OrganizationsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {

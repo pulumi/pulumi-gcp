@@ -191,8 +191,10 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         if they would like to test it.
 
         ## Example Usage
+
         ### Iam Access Boundary Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -241,14 +243,15 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AccessBoundaryPolicy can be imported using any of these accepted formats:
 
-         * `{{parent}}/{{name}}`
+        * `{{parent}}/{{name}}`
 
-         When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}
@@ -274,8 +277,10 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
         if they would like to test it.
 
         ## Example Usage
+
         ### Iam Access Boundary Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,14 +329,15 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AccessBoundaryPolicy can be imported using any of these accepted formats:
 
-         * `{{parent}}/{{name}}`
+        * `{{parent}}/{{name}}`
 
-         When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}

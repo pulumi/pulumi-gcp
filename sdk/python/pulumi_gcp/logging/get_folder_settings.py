@@ -142,14 +142,17 @@ def get_folder_settings(folder: Optional[str] = None,
     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
 
     ## Example Usage
+
     ### Logging Folder Settings Basic
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     settings = gcp.logging.get_folder_settings(folder="my-folder-name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str folder: The ID of the folder for which to retrieve settings.
@@ -182,14 +185,17 @@ def get_folder_settings_output(folder: Optional[pulumi.Input[str]] = None,
     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
 
     ## Example Usage
+
     ### Logging Folder Settings Basic
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     settings = gcp.logging.get_folder_settings(folder="my-folder-name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str folder: The ID of the folder for which to retrieve settings.

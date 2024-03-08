@@ -122,7 +122,7 @@ class InstanceClusterArgs:
                `bigtable.Instance` resource. If these values are changing, use a new
                `cluster_id`.
         :param pulumi.Input[int] num_nodes: The number of nodes in the cluster.
-               If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+               If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
         :param pulumi.Input[str] state: The state of the cluster
         :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or
                `"HDD"`. Defaults to `"SSD"`.
@@ -194,7 +194,7 @@ class InstanceClusterArgs:
     def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
         The number of nodes in the cluster.
-        If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
         """
         return pulumi.get(self, "num_nodes")
 

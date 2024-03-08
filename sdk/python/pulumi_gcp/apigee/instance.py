@@ -450,8 +450,10 @@ class Instance(pulumi.CustomResource):
             * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
 
         ## Example Usage
+
         ### Apigee Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -477,8 +479,10 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             org_id=apigee_org.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Instance Cidr Range
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,8 +509,10 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             peering_cidr_range="SLASH_22")
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Instance Ip Range
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -533,8 +539,10 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             ip_range="10.87.8.0/22")
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -579,16 +587,17 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `{{org_id}}/instances/{{name}}`
+        * `{{org_id}}/instances/{{name}}`
 
-         * `{{org_id}}/{{name}}`
+        * `{{org_id}}/{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}
@@ -641,8 +650,10 @@ class Instance(pulumi.CustomResource):
             * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
 
         ## Example Usage
+
         ### Apigee Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -668,8 +679,10 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             org_id=apigee_org.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Instance Cidr Range
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -696,8 +709,10 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             peering_cidr_range="SLASH_22")
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Instance Ip Range
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -724,8 +739,10 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             ip_range="10.87.8.0/22")
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -770,16 +787,17 @@ class Instance(pulumi.CustomResource):
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `{{org_id}}/instances/{{name}}`
+        * `{{org_id}}/instances/{{name}}`
 
-         * `{{org_id}}/{{name}}`
+        * `{{org_id}}/{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}

@@ -409,8 +409,10 @@ class HttpRoute(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Services Http Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -432,8 +434,10 @@ class HttpRoute(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Http Route Matches And Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -532,8 +536,10 @@ class HttpRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Http Route Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -613,8 +619,10 @@ class HttpRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Http Route Mesh Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -643,18 +651,19 @@ class HttpRoute(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HttpRoute can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
+        * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}
@@ -694,8 +703,10 @@ class HttpRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Services Http Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -717,8 +728,10 @@ class HttpRoute(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Http Route Matches And Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -817,8 +830,10 @@ class HttpRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Http Route Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -898,8 +913,10 @@ class HttpRoute(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Http Route Mesh Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -928,18 +945,19 @@ class HttpRoute(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HttpRoute can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
+        * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}

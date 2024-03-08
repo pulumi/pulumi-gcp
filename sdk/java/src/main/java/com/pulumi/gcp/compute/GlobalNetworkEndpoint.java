@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  * 
  * ## Example Usage
+ * 
  * ### Global Network Endpoint
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,18 +69,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * GlobalNetworkEndpoint can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+ * * `projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
  * 
- *  * `{{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+ * * `{{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
  * 
- *  * `{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+ * * `{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
  * 
- *  When using the `pulumi import` command, GlobalNetworkEndpoint can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, GlobalNetworkEndpoint can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}

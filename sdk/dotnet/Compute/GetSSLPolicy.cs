@@ -15,27 +15,13 @@ namespace Pulumi.Gcp.Compute
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_ssl_policy = Gcp.Compute.GetSSLPolicy.Invoke(new()
-        ///     {
-        ///         Name = "production-ssl-policy",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_ssl_policy" "my-ssl-policy" {
+        ///   name = "production-ssl-policy"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSSLPolicyResult> InvokeAsync(GetSSLPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyArgs(), options.WithDefaults());
@@ -44,27 +30,13 @@ namespace Pulumi.Gcp.Compute
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         ///     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_ssl_policy = Gcp.Compute.GetSSLPolicy.Invoke(new()
-        ///     {
-        ///         Name = "production-ssl-policy",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_ssl_policy" "my-ssl-policy" {
+        ///   name = "production-ssl-policy"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSSLPolicyResult> Invoke(GetSSLPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyInvokeArgs(), options.WithDefaults());

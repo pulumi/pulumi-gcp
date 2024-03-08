@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
  *
  * ## Example Usage
+ *
  * ### Target Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,8 +49,10 @@ import * as utilities from "../utilities";
  *     instance: target_vm.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Target Instance Custom Network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,8 +83,10 @@ import * as utilities from "../utilities";
  *     network: target_vm.then(target_vm => target_vm.selfLink),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Target Instance With Security Policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -145,20 +151,21 @@ import * as utilities from "../utilities";
  *     securityPolicy: regionsecuritypolicy.selfLink,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * TargetInstance can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  *
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}

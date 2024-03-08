@@ -29,8 +29,10 @@ namespace Pulumi.Gcp.Netapp
     ///     * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Storage Pool Create
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -91,18 +93,19 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// storagePool can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}

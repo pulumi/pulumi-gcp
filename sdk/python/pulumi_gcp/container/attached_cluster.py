@@ -814,8 +814,10 @@ class AttachedCluster(pulumi.CustomResource):
             * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
         ## Example Usage
+
         ### Container Attached Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -837,8 +839,10 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -897,8 +901,10 @@ class AttachedCluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Ignore Errors
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -921,18 +927,19 @@ class AttachedCluster(pulumi.CustomResource):
             ),
             deletion_policy="DELETE_IGNORE_ERRORS")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
@@ -1007,8 +1014,10 @@ class AttachedCluster(pulumi.CustomResource):
             * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
         ## Example Usage
+
         ### Container Attached Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1030,8 +1039,10 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1090,8 +1101,10 @@ class AttachedCluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Ignore Errors
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1114,18 +1127,19 @@ class AttachedCluster(pulumi.CustomResource):
             ),
             deletion_policy="DELETE_IGNORE_ERRORS")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}

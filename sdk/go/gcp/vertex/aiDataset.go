@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
 // ## Example Usage
+//
 // ### Vertex Ai Dataset
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

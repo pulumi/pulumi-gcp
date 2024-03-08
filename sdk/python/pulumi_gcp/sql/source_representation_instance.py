@@ -467,8 +467,10 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         affect billing. You cannot update the source representation instance.
 
         ## Example Usage
+
         ### Sql Source Representation Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,8 +485,10 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
+        <!--End PulumiCodeChooser -->
         ### Sql Source Representation Instance Postgres
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -499,18 +503,19 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SourceRepresentationInstance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/instances/{{name}}`
+        * `projects/{{project}}/instances/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
@@ -561,8 +566,10 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         affect billing. You cannot update the source representation instance.
 
         ## Example Usage
+
         ### Sql Source Representation Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -577,8 +584,10 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
+        <!--End PulumiCodeChooser -->
         ### Sql Source Representation Instance Postgres
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -593,18 +602,19 @@ class SourceRepresentationInstance(pulumi.CustomResource):
             password="password-for-the-user",
             dump_file_path="gs://replica-bucket/source-database.sql.gz")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SourceRepresentationInstance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/instances/{{name}}`
+        * `projects/{{project}}/instances/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}

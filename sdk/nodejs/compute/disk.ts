@@ -30,8 +30,10 @@ import * as utilities from "../utilities";
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  *
  * ## Example Usage
+ *
  * ### Disk Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,8 +49,10 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Disk Async
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -69,8 +73,10 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Disk Features
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,20 +103,21 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Disk can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  *
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}

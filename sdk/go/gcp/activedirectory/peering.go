@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Active Directory Peering Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,6 +90,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

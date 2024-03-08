@@ -127,6 +127,7 @@ def get_backup_run(backup_id: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -134,6 +135,7 @@ def get_backup_run(backup_id: Optional[int] = None,
     backup = gcp.sql.get_backup_run(instance=main["name"],
         most_recent=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int backup_id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
@@ -174,6 +176,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -181,6 +184,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     backup = gcp.sql.get_backup_run(instance=main["name"],
         most_recent=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int backup_id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.

@@ -463,8 +463,10 @@ class PatchDeployment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 
         ## Example Usage
+
         ### Os Config Patch Deployment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -478,8 +480,10 @@ class PatchDeployment(pulumi.CustomResource):
                 execute_time="2999-10-10T10:10:10.045123456Z",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Daily
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,8 +505,10 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Daily Midnight
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,8 +530,10 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -579,8 +587,10 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -687,18 +697,19 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PatchDeployment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/patchDeployments/{{name}}`
+        * `projects/{{project}}/patchDeployments/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}
@@ -753,8 +764,10 @@ class PatchDeployment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 
         ## Example Usage
+
         ### Os Config Patch Deployment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -768,8 +781,10 @@ class PatchDeployment(pulumi.CustomResource):
                 execute_time="2999-10-10T10:10:10.045123456Z",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Daily
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -791,8 +806,10 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Daily Midnight
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -814,8 +831,10 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -869,8 +888,10 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Patch Deployment Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -977,18 +998,19 @@ class PatchDeployment(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PatchDeployment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/patchDeployments/{{name}}`
+        * `projects/{{project}}/patchDeployments/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}

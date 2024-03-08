@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,20 +79,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * -&gt; **Fields affected by import** The following fields can&#39;t be read and will show diffs if set in config when imported: `split_keys`
  * 
- *  Bigtable Tables can be imported using any of these accepted formats:
+ * Bigtable Tables can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
+ * * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
  * 
- *  * `{{project}}/{{instance_name}}/{{name}}`
+ * * `{{project}}/{{instance_name}}/{{name}}`
  * 
- *  * `{{instance_name}}/{{name}}`
+ * * `{{instance_name}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}

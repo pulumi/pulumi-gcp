@@ -25,8 +25,10 @@ import * as utilities from "../utilities";
  *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
  *
  * ## Example Usage
+ *
  * ### Kms Crypto Key Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,8 +43,10 @@ import * as utilities from "../utilities";
  *     rotationPeriod: "7776000s",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Kms Crypto Key Asymmetric Sign
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,16 +64,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * CryptoKey can be imported using any of these accepted formats:
  *
- *  * `{{key_ring}}/cryptoKeys/{{name}}`
+ * * `{{key_ring}}/cryptoKeys/{{name}}`
  *
- *  * `{{key_ring}}/{{name}}`
+ * * `{{key_ring}}/{{name}}`
  *
- *  When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}

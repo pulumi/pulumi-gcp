@@ -22,14 +22,17 @@ import * as utilities from "../utilities";
  * The ACME account registered by using an EAB secret has no expiration.
  *
  * ## Example Usage
+ *
  * ### Public Ca External Account Key
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const prod = new gcp.compute.CaExternalAccountKey("prod", {project: "my-project-name"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

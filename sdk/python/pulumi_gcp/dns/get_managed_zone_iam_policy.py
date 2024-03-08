@@ -95,6 +95,7 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,6 +103,7 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
     policy = gcp.dns.get_managed_zone_iam_policy(project=default["project"],
         managed_zone=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str managed_zone: Used to find the parent resource to bind the IAM policy to
@@ -131,6 +133,7 @@ def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]]
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -138,6 +141,7 @@ def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]]
     policy = gcp.dns.get_managed_zone_iam_policy(project=default["project"],
         managed_zone=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str managed_zone: Used to find the parent resource to bind the IAM policy to

@@ -133,13 +133,17 @@ def get_account(account_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     object_viewer = gcp.serviceaccount.get_account(account_id="object-viewer")
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Save Key In Kubernetes Secret
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -156,6 +160,7 @@ def get_account(account_id: Optional[str] = None,
             "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The Google service account ID. This be one of:
@@ -197,13 +202,17 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     object_viewer = gcp.serviceaccount.get_account(account_id="object-viewer")
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Save Key In Kubernetes Secret
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -220,6 +229,7 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
             "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The Google service account ID. This be one of:

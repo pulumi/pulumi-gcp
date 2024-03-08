@@ -215,6 +215,7 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         ## google\\_bigquery\\_dataset\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -228,9 +229,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
             dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -241,9 +244,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,28 +259,29 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
+        IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
 
-         * `projects/{{project_id}}/datasets/{{dataset_id}}`
+        * `projects/{{project_id}}/datasets/{{dataset_id}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = projects/{{project_id}}/datasets/{{dataset_id}}
+          id = projects/{{project_id}}/datasets/{{dataset_id}}
 
-         to = google_bigquery_dataset_iam_policy.default
+          to = google_bigquery_dataset_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy default projects/{{project_id}}/datasets/{{dataset_id}}
@@ -326,6 +332,7 @@ class DatasetIamPolicy(pulumi.CustomResource):
 
         ## google\\_bigquery\\_dataset\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,9 +346,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
             dataset_id=dataset_dataset.dataset_id,
             policy_data=owner.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,9 +361,11 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataViewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_bigquery\\_dataset\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,28 +376,29 @@ class DatasetIamPolicy(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
+        IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
 
-         * `projects/{{project_id}}/datasets/{{dataset_id}}`
+        * `projects/{{project_id}}/datasets/{{dataset_id}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = projects/{{project_id}}/datasets/{{dataset_id}}
+          id = projects/{{project_id}}/datasets/{{dataset_id}}
 
-         to = google_bigquery_dataset_iam_policy.default
+          to = google_bigquery_dataset_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:bigquery/datasetIamPolicy:DatasetIamPolicy default projects/{{project_id}}/datasets/{{dataset_id}}

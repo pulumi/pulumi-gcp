@@ -356,8 +356,10 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+
         ### Notebook Environment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -369,18 +371,19 @@ class Environment(pulumi.CustomResource):
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Environment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
@@ -429,8 +432,10 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+
         ### Notebook Environment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,18 +447,19 @@ class Environment(pulumi.CustomResource):
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Environment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/environments/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}

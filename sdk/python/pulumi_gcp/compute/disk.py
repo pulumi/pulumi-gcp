@@ -1354,8 +1354,10 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         ## Example Usage
+
         ### Disk Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1370,8 +1372,10 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
+        <!--End PulumiCodeChooser -->
         ### Disk Async
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1390,8 +1394,10 @@ class Disk(pulumi.CustomResource):
             ),
             physical_block_size_bytes=4096)
         ```
+        <!--End PulumiCodeChooser -->
         ### Disk Features
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1417,20 +1423,21 @@ class Disk(pulumi.CustomResource):
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
             physical_block_size_bytes=4096)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Disk can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
@@ -1580,8 +1587,10 @@ class Disk(pulumi.CustomResource):
             * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         ## Example Usage
+
         ### Disk Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1596,8 +1605,10 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
+        <!--End PulumiCodeChooser -->
         ### Disk Async
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1616,8 +1627,10 @@ class Disk(pulumi.CustomResource):
             ),
             physical_block_size_bytes=4096)
         ```
+        <!--End PulumiCodeChooser -->
         ### Disk Features
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1643,20 +1656,21 @@ class Disk(pulumi.CustomResource):
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
             physical_block_size_bytes=4096)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Disk can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}

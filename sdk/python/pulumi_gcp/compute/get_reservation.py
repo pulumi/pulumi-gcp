@@ -152,6 +152,7 @@ def get_reservation(name: Optional[str] = None,
     Provides access to available Google Compute Reservation Resources for a given project.
     See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -159,6 +160,7 @@ def get_reservation(name: Optional[str] = None,
     reservation = gcp.compute.get_reservation(name="gce-reservation",
         zone="us-central1-a")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Compute Reservation.
@@ -196,6 +198,7 @@ def get_reservation_output(name: Optional[pulumi.Input[str]] = None,
     Provides access to available Google Compute Reservation Resources for a given project.
     See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -203,6 +206,7 @@ def get_reservation_output(name: Optional[pulumi.Input[str]] = None,
     reservation = gcp.compute.get_reservation(name="gce-reservation",
         zone="us-central1-a")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Compute Reservation.

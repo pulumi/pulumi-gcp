@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/dns/api/v1/managedZones).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getManagedZones(args?: GetManagedZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZonesResult> {
     args = args || {};
@@ -64,6 +66,7 @@ export interface GetManagedZonesResult {
  * and
  * [API](https://cloud.google.com/dns/api/v1/managedZones).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -72,6 +75,7 @@ export interface GetManagedZonesResult {
  *     project: "my-project-id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getManagedZonesOutput(args?: GetManagedZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZonesResult> {
     return pulumi.output(args).apply((a: any) => getManagedZones(a, opts))

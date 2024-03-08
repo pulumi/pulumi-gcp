@@ -554,8 +554,10 @@ class EdgeCacheService(pulumi.CustomResource):
         > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 
         ## Example Usage
+
         ### Network Services Edge Cache Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,8 +608,10 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -801,8 +805,10 @@ class EdgeCacheService(pulumi.CustomResource):
                 sample_rate=0.01,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Dual Token
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -921,18 +927,19 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EdgeCacheService can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
+        * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}
@@ -986,8 +993,10 @@ class EdgeCacheService(pulumi.CustomResource):
         > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 
         ## Example Usage
+
         ### Network Services Edge Cache Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1038,8 +1047,10 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1233,8 +1244,10 @@ class EdgeCacheService(pulumi.CustomResource):
                 sample_rate=0.01,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Dual Token
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1353,18 +1366,19 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EdgeCacheService can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
+        * `projects/{{project}}/locations/global/edgeCacheServices/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}

@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * The Cloud Deploy `Target` resource
  *
  * ## Example Usage
+ *
  * ### Multi_target
  * tests creating and updating a multi-target
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,8 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Run_target
  * tests creating and updating a cloud run target
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,8 +83,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Target
  * Creates a basic Cloud Deploy target
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -107,18 +113,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Target can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/targets/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Target can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:clouddeploy/target:Target default projects/{{project}}/locations/{{location}}/targets/{{name}}

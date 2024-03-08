@@ -167,8 +167,10 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
         ## Example Usage
+
         ### Service Account IAM Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -184,8 +186,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -198,8 +203,11 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Binding With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -217,8 +225,11 @@ class IAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -237,8 +248,11 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Member With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -256,12 +270,13 @@ class IAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing with conditions:
 
-         Here are examples of importing IAM memberships and bindings that include conditions:
+        Here are examples of importing IAM memberships and bindings that include conditions:
 
         ```sh
         $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
@@ -306,8 +321,10 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
         ## Example Usage
+
         ### Service Account IAM Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -323,8 +340,11 @@ class IAMPolicy(pulumi.CustomResource):
             service_account_id=sa.name,
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,8 +357,11 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Binding With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -356,8 +379,11 @@ class IAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,8 +402,11 @@ class IAMPolicy(pulumi.CustomResource):
             role="roles/iam.serviceAccountUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Account IAM Member With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -395,12 +424,13 @@ class IAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing with conditions:
 
-         Here are examples of importing IAM memberships and bindings that include conditions:
+        Here are examples of importing IAM memberships and bindings that include conditions:
 
         ```sh
         $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"

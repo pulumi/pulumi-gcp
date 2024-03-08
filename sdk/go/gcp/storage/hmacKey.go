@@ -23,8 +23,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 //
 // ## Example Usage
+//
 // ### Storage Hmac Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,18 +59,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // HmacKey can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/hmacKeys/{{access_id}}`
+// * `projects/{{project}}/hmacKeys/{{access_id}}`
 //
-//   - `{{project}}/{{access_id}}`
+// * `{{project}}/{{access_id}}`
 //
-//   - `{{access_id}}`
+// * `{{access_id}}`
 //
-//     When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}

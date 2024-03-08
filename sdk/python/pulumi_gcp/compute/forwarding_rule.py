@@ -1706,8 +1706,10 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+
         ### Internal Http Lb With Mig Backend
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1861,8 +1863,10 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Internal Tcp Udp Lb With Mig Backend
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2013,8 +2017,10 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Externallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2039,8 +2045,10 @@ class ForwardingRule(pulumi.CustomResource):
             port_range="80",
             backend_service=backend.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Global Internallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2075,8 +2083,10 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2087,8 +2097,10 @@ class ForwardingRule(pulumi.CustomResource):
             target=default_target_pool.id,
             port_range="80")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule L3 Default
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2111,8 +2123,10 @@ class ForwardingRule(pulumi.CustomResource):
             ip_protocol="L3_DEFAULT",
             all_ports=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Internallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2147,8 +2161,10 @@ class ForwardingRule(pulumi.CustomResource):
             subnetwork=default_subnetwork.name,
             ip_version="IPV4")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Http Lb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2292,8 +2308,10 @@ class ForwardingRule(pulumi.CustomResource):
             purpose="REGIONAL_MANAGED_PROXY",
             role="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Regional Http Xlb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2441,8 +2459,10 @@ class ForwardingRule(pulumi.CustomResource):
             purpose="REGIONAL_MANAGED_PROXY",
             role="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Vpc Psc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2513,8 +2533,10 @@ class ForwardingRule(pulumi.CustomResource):
             ip_address=consumer_address.id,
             allow_psc_global_access=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Vpc Psc No Automate Dns
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2583,8 +2605,10 @@ class ForwardingRule(pulumi.CustomResource):
             allow_psc_global_access=True,
             no_automate_dns_zone=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Regional Steering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2613,8 +2637,10 @@ class ForwardingRule(pulumi.CustomResource):
             backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Internallb Ipv6
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -2652,20 +2678,21 @@ class ForwardingRule(pulumi.CustomResource):
             subnetwork=default_subnetwork.name,
             ip_version="IPV6")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ForwardingRule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
@@ -2900,8 +2927,10 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
+
         ### Internal Http Lb With Mig Backend
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3055,8 +3084,10 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Internal Tcp Udp Lb With Mig Backend
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3207,8 +3238,10 @@ class ForwardingRule(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Externallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3233,8 +3266,10 @@ class ForwardingRule(pulumi.CustomResource):
             port_range="80",
             backend_service=backend.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Global Internallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3269,8 +3304,10 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3281,8 +3318,10 @@ class ForwardingRule(pulumi.CustomResource):
             target=default_target_pool.id,
             port_range="80")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule L3 Default
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3305,8 +3344,10 @@ class ForwardingRule(pulumi.CustomResource):
             ip_protocol="L3_DEFAULT",
             all_ports=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Internallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3341,8 +3382,10 @@ class ForwardingRule(pulumi.CustomResource):
             subnetwork=default_subnetwork.name,
             ip_version="IPV4")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Http Lb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3486,8 +3529,10 @@ class ForwardingRule(pulumi.CustomResource):
             purpose="REGIONAL_MANAGED_PROXY",
             role="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Regional Http Xlb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3635,8 +3680,10 @@ class ForwardingRule(pulumi.CustomResource):
             purpose="REGIONAL_MANAGED_PROXY",
             role="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Vpc Psc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3707,8 +3754,10 @@ class ForwardingRule(pulumi.CustomResource):
             ip_address=consumer_address.id,
             allow_psc_global_access=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Vpc Psc No Automate Dns
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3777,8 +3826,10 @@ class ForwardingRule(pulumi.CustomResource):
             allow_psc_global_access=True,
             no_automate_dns_zone=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Regional Steering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3807,8 +3858,10 @@ class ForwardingRule(pulumi.CustomResource):
             backend_service=external.self_link,
             load_balancing_scheme="EXTERNAL")
         ```
+        <!--End PulumiCodeChooser -->
         ### Forwarding Rule Internallb Ipv6
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -3846,20 +3899,21 @@ class ForwardingRule(pulumi.CustomResource):
             subnetwork=default_subnetwork.name,
             ip_version="IPV6")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ForwardingRule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}

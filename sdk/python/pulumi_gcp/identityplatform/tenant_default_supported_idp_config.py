@@ -307,8 +307,10 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+
         ### Identity Platform Tenant Default Supported Idp Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,18 +323,19 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
             client_id="my-client-id",
             client_secret="secret")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
+        * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
 
-         * `{{project}}/{{tenant}}/{{idp_id}}`
+        * `{{project}}/{{tenant}}/{{idp_id}}`
 
-         * `{{tenant}}/{{idp_id}}`
+        * `{{tenant}}/{{idp_id}}`
 
-         When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
@@ -383,8 +386,10 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+
         ### Identity Platform Tenant Default Supported Idp Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,18 +402,19 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
             client_id="my-client-id",
             client_secret="secret")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
+        * `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}`
 
-         * `{{project}}/{{tenant}}/{{idp_id}}`
+        * `{{project}}/{{tenant}}/{{idp_id}}`
 
-         * `{{tenant}}/{{idp_id}}`
+        * `{{tenant}}/{{idp_id}}`
 
-         When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}

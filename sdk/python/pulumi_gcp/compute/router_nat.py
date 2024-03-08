@@ -892,8 +892,10 @@ class RouterNat(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+
         ### Router Nat Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -922,8 +924,10 @@ class RouterNat(pulumi.CustomResource):
                 filter="ERRORS_ONLY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Router Nat Manual Ips
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -955,8 +959,10 @@ class RouterNat(pulumi.CustomResource):
                 source_ip_ranges_to_nats=["ALL_IP_RANGES"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Router Nat Rules
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1006,8 +1012,10 @@ class RouterNat(pulumi.CustomResource):
             )],
             enable_endpoint_independent_mapping=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Router Nat Private
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1060,20 +1068,21 @@ class RouterNat(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RouterNat can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
 
-         * `{{project}}/{{region}}/{{router}}/{{name}}`
+        * `{{project}}/{{region}}/{{router}}/{{name}}`
 
-         * `{{region}}/{{router}}/{{name}}`
+        * `{{region}}/{{router}}/{{name}}`
 
-         * `{{router}}/{{name}}`
+        * `{{router}}/{{name}}`
 
-         When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
@@ -1170,8 +1179,10 @@ class RouterNat(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+
         ### Router Nat Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1200,8 +1211,10 @@ class RouterNat(pulumi.CustomResource):
                 filter="ERRORS_ONLY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Router Nat Manual Ips
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1233,8 +1246,10 @@ class RouterNat(pulumi.CustomResource):
                 source_ip_ranges_to_nats=["ALL_IP_RANGES"],
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Router Nat Rules
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1284,8 +1299,10 @@ class RouterNat(pulumi.CustomResource):
             )],
             enable_endpoint_independent_mapping=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Router Nat Private
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1338,20 +1355,21 @@ class RouterNat(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RouterNat can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
 
-         * `{{project}}/{{region}}/{{router}}/{{name}}`
+        * `{{project}}/{{region}}/{{router}}/{{name}}`
 
-         * `{{region}}/{{router}}/{{name}}`
+        * `{{region}}/{{router}}/{{name}}`
 
-         * `{{router}}/{{name}}`
+        * `{{router}}/{{name}}`
 
-         When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}

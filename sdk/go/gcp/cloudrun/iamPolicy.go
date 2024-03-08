@@ -28,6 +28,7 @@ import (
 //
 // ## google\_cloud\_run\_service\_iam\_policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,9 +69,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_cloud\_run\_service\_iam\_binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,9 +103,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_cloud\_run\_service\_iam\_member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,44 +135,45 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
 //
-//   - projects/{{project}}/locations/{{location}}/services/{{service}}
+// * projects/{{project}}/locations/{{location}}/services/{{service}}
 //
-//   - {{project}}/{{location}}/{{service}}
+// * {{project}}/{{location}}/{{service}}
 //
-//   - {{location}}/{{service}}
+// * {{location}}/{{service}}
 //
-//   - {{service}}
+// * {{service}}
 //
-//     Any variables not passed in the import command will be taken from the provider configuration.
+// Any variables not passed in the import command will be taken from the provider configuration.
 //
-//     Cloud Run service IAM resources can be imported using the resource identifiers, role, and member.
+// Cloud Run service IAM resources can be imported using the resource identifiers, role, and member.
 //
-//     IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //
 // ```sh
 // $ pulumi import gcp:cloudrun/iamPolicy:IamPolicy editor "projects/{{project}}/locations/{{location}}/services/{{service}} roles/viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 //
 // ```sh
 // $ pulumi import gcp:cloudrun/iamPolicy:IamPolicy editor "projects/{{project}}/locations/{{location}}/services/{{service}} roles/viewer"
 // ```
 //
-//	IAM policy imports use the identifier of the resource in question, e.g.
+// IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
 // $ pulumi import gcp:cloudrun/iamPolicy:IamPolicy editor projects/{{project}}/locations/{{location}}/services/{{service}}
 // ```
 //
-//	-> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 //
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IamPolicy struct {
 	pulumi.CustomResourceState
 

@@ -275,8 +275,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/folders)
 
         ## Example Usage
+
         ### Folder Access Approval Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -294,8 +296,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 cloud_product="all",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Folder Access Approval Active Key Version
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -331,16 +335,17 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 cloud_product="all",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FolderSettings can be imported using any of these accepted formats:
 
-         * `folders/{{folder_id}}/accessApprovalSettings`
+        * `folders/{{folder_id}}/accessApprovalSettings`
 
-         * `{{folder_id}}`
+        * `{{folder_id}}`
 
-         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
@@ -379,8 +384,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/folders)
 
         ## Example Usage
+
         ### Folder Access Approval Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -398,8 +405,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 cloud_product="all",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Folder Access Approval Active Key Version
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -435,16 +444,17 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 cloud_product="all",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FolderSettings can be imported using any of these accepted formats:
 
-         * `folders/{{folder_id}}/accessApprovalSettings`
+        * `folders/{{folder_id}}/accessApprovalSettings`
 
-         * `{{folder_id}}`
+        * `{{folder_id}}`
 
-         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings

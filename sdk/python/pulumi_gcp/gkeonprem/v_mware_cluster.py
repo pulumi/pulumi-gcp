@@ -1012,8 +1012,10 @@ class VMwareCluster(pulumi.CustomResource):
         A Google VMware User Cluster.
 
         ## Example Usage
+
         ### Gkeonprem Vmware Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1060,8 +1062,10 @@ class VMwareCluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster F5lb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1131,8 +1135,10 @@ class VMwareCluster(pulumi.CustomResource):
                 vsphere_csi_disabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster Manuallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1228,18 +1234,19 @@ class VMwareCluster(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         VmwareCluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
@@ -1311,8 +1318,10 @@ class VMwareCluster(pulumi.CustomResource):
         A Google VMware User Cluster.
 
         ## Example Usage
+
         ### Gkeonprem Vmware Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1359,8 +1368,10 @@ class VMwareCluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster F5lb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1430,8 +1441,10 @@ class VMwareCluster(pulumi.CustomResource):
                 vsphere_csi_disabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkeonprem Vmware Cluster Manuallb
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1527,18 +1540,19 @@ class VMwareCluster(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         VmwareCluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}

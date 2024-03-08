@@ -289,8 +289,10 @@ class MuteConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 
         ## Example Usage
+
         ### Scc Mute Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -301,14 +303,15 @@ class MuteConfig(pulumi.CustomResource):
             filter="category: \\"OS_VULNERABILITY\\"",
             description="My Mute Config")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MuteConfig can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/muteConfig:MuteConfig default {{name}}
@@ -347,8 +350,10 @@ class MuteConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.muteConfigs)
 
         ## Example Usage
+
         ### Scc Mute Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -359,14 +364,15 @@ class MuteConfig(pulumi.CustomResource):
             filter="category: \\"OS_VULNERABILITY\\"",
             description="My Mute Config")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MuteConfig can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:securitycenter/muteConfig:MuteConfig default {{name}}

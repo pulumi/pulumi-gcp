@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Region Security Policy Rule Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,8 +54,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Security Policy Rule Multiple Rules
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,8 +119,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Security Policy Rule With Network Match
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -196,20 +202,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// RegionSecurityPolicyRule can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
+    /// * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
+    /// * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
     /// 
-    ///  * `{{region}}/{{security_policy}}/{{priority}}`
+    /// * `{{region}}/{{security_policy}}/{{priority}}`
     /// 
-    ///  * `{{security_policy}}/{{priority}}`
+    /// * `{{security_policy}}/{{priority}}`
     /// 
-    ///  When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}

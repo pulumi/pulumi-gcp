@@ -302,8 +302,10 @@ class TagKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+
         ### Tag Key Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -313,16 +315,17 @@ class TagKey(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TagKey can be imported using any of these accepted formats:
 
-         * `tagKeys/{{name}}`
+        * `tagKeys/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
@@ -363,8 +366,10 @@ class TagKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
+
         ### Tag Key Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,16 +379,17 @@ class TagKey(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TagKey can be imported using any of these accepted formats:
 
-         * `tagKeys/{{name}}`
+        * `tagKeys/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}

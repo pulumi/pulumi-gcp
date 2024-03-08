@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Firebasehosting Site Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,8 +40,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Site Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,20 +76,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Site can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/sites/{{site_id}}`
+// * `projects/{{project}}/sites/{{site_id}}`
 //
-//   - `{{project}}/{{site_id}}`
+// * `{{project}}/{{site_id}}`
 //
-//   - `sites/{{site_id}}`
+// * `sites/{{site_id}}`
 //
-//   - `{{site_id}}`
+// * `{{site_id}}`
 //
-//     When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}

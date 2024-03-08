@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.CloudBuild
     ///     * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Cloudbuild Bitbucket Server Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,8 +48,10 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudbuild Bitbucket Server Config Repositories
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,8 +90,10 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudbuild Bitbucket Server Config Peered Network
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -163,18 +169,19 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// BitbucketServerConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{config_id}}`
+    /// * `{{project}}/{{location}}/{{config_id}}`
     /// 
-    ///  * `{{location}}/{{config_id}}`
+    /// * `{{location}}/{{config_id}}`
     /// 
-    ///  When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}

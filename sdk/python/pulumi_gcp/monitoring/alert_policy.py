@@ -540,8 +540,10 @@ class AlertPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
+
         ### Monitoring Alert Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -565,8 +567,10 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Alert Policy Evaluation Missing Data
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -591,8 +595,10 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Alert Policy Forecast Options
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -619,8 +625,10 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Alert Policy Promql Condition
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -642,14 +650,15 @@ class AlertPolicy(pulumi.CustomResource):
                 auto_close="1800s",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AlertPolicy can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
@@ -715,8 +724,10 @@ class AlertPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
+
         ### Monitoring Alert Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -740,8 +751,10 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Alert Policy Evaluation Missing Data
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -766,8 +779,10 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Alert Policy Forecast Options
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -794,8 +809,10 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Monitoring Alert Policy Promql Condition
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -817,14 +834,15 @@ class AlertPolicy(pulumi.CustomResource):
                 auto_close="1800s",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AlertPolicy can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

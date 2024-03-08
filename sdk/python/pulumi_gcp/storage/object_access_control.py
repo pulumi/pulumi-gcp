@@ -314,8 +314,10 @@ class ObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+
         ### Storage Object Access Control Public Object
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -333,14 +335,15 @@ class ObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ObjectAccessControl can be imported using any of these accepted formats:
 
-         * `{{bucket}}/{{object}}/{{entity}}`
+        * `{{bucket}}/{{object}}/{{entity}}`
 
-         When using the `pulumi import` command, ObjectAccessControl can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ObjectAccessControl can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}
@@ -392,8 +395,10 @@ class ObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+
         ### Storage Object Access Control Public Object
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -411,14 +416,15 @@ class ObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ObjectAccessControl can be imported using any of these accepted formats:
 
-         * `{{bucket}}/{{object}}/{{entity}}`
+        * `{{bucket}}/{{object}}/{{entity}}`
 
-         When using the `pulumi import` command, ObjectAccessControl can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ObjectAccessControl can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}

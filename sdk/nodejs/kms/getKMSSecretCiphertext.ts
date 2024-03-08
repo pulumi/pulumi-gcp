@@ -17,6 +17,61 @@ import * as utilities from "../utilities";
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
+ *
+ * ## Example Usage
+ *
+ * First, create a KMS KeyRing and CryptoKey using the resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
+ *     project: "my-project",
+ *     name: "my-key-ring",
+ *     location: "us-central1",
+ * });
+ * const myCryptoKey = new gcp.kms.CryptoKey("my_crypto_key", {
+ *     name: "my-crypto-key",
+ *     keyRing: myKeyRing.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myPassword = gcp.kms.getKMSSecretCiphertext({
+ *     cryptoKey: myCryptoKey.id,
+ *     plaintext: "my-secret-password",
+ * });
+ * const instance = new gcp.compute.Instance("instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "test",
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     metadata: {
+ *         password: myPassword.then(myPassword => myPassword.ciphertext),
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * The resulting instance can then access the encrypted password from its metadata
+ * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
  */
 export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretCiphertextResult> {
 
@@ -71,6 +126,61 @@ export interface GetKMSSecretCiphertextResult {
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
+ *
+ * ## Example Usage
+ *
+ * First, create a KMS KeyRing and CryptoKey using the resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
+ *     project: "my-project",
+ *     name: "my-key-ring",
+ *     location: "us-central1",
+ * });
+ * const myCryptoKey = new gcp.kms.CryptoKey("my_crypto_key", {
+ *     name: "my-crypto-key",
+ *     keyRing: myKeyRing.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myPassword = gcp.kms.getKMSSecretCiphertext({
+ *     cryptoKey: myCryptoKey.id,
+ *     plaintext: "my-secret-password",
+ * });
+ * const instance = new gcp.compute.Instance("instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "test",
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-11",
+ *         },
+ *     },
+ *     metadata: {
+ *         password: myPassword.then(myPassword => myPassword.ciphertext),
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * The resulting instance can then access the encrypted password from its metadata
+ * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
  */
 export function getKMSSecretCiphertextOutput(args: GetKMSSecretCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretCiphertextResult> {
     return pulumi.output(args).apply((a: any) => getKMSSecretCiphertext(a, opts))

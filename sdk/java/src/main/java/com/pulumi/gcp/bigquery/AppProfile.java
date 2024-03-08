@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
  * 
  * ## Example Usage
+ * 
  * ### Bigtable App Profile Anycluster
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -85,7 +88,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigtable App Profile Singlecluster
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -135,7 +141,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigtable App Profile Multicluster
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -197,7 +206,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigtable App Profile Priority
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -251,18 +263,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * AppProfile can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
+ * * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
  * 
- *  * `{{project}}/{{instance}}/{{app_profile_id}}`
+ * * `{{project}}/{{instance}}/{{app_profile_id}}`
  * 
- *  * `{{instance}}/{{app_profile_id}}`
+ * * `{{instance}}/{{app_profile_id}}`
  * 
- *  When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}

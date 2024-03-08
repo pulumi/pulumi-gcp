@@ -386,8 +386,10 @@ class MangedSslCertificate(pulumi.CustomResource):
         In conclusion: Be extremely cautious.
 
         ## Example Usage
+
         ### Managed Ssl Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -433,77 +435,18 @@ class MangedSslCertificate(pulumi.CustomResource):
             target=default_target_https_proxy.id,
             port_range="443")
         ```
-        ### Managed Ssl Certificate Recreation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-        import pulumi_std as std
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        managed_domains = not_implemented("tolist([\\"test.example.com\\"])")
-        certificate = random.RandomId("certificate",
-            byte_length=4,
-            prefix="issue6147-cert-",
-            keepers={
-                "domains": std.join(separator=",",
-                    input=managed_domains).result,
-            })
-        cert = gcp.compute.ManagedSslCertificate("cert",
-            name=certificate.hex,
-            managed=gcp.compute.ManagedSslCertificateManagedArgs(
-                domains=managed_domains,
-            ))
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
-            name="http-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
-        default_backend_service = gcp.compute.BackendService("default",
-            name="backend-service",
-            port_name="http",
-            protocol="HTTP",
-            timeout_sec=10,
-            health_checks=default_http_health_check.id)
-        default_url_map = gcp.compute.URLMap("default",
-            name="url-map",
-            description="a description",
-            default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
-        # This example allows the list of managed domains to be modified and will
-        # recreate the ssl certificate and update the target https proxy correctly
-        default = gcp.compute.TargetHttpsProxy("default",
-            name="test-proxy",
-            url_map=default_url_map.id,
-            ssl_certificates=[cert.id])
-        ```
-
+        <!--End PulumiCodeChooser -->
         ## Import
 
         ManagedSslCertificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/sslCertificates/{{name}}`
+        * `projects/{{project}}/global/sslCertificates/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
@@ -574,8 +517,10 @@ class MangedSslCertificate(pulumi.CustomResource):
         In conclusion: Be extremely cautious.
 
         ## Example Usage
+
         ### Managed Ssl Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -621,77 +566,18 @@ class MangedSslCertificate(pulumi.CustomResource):
             target=default_target_https_proxy.id,
             port_range="443")
         ```
-        ### Managed Ssl Certificate Recreation
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-        import pulumi_std as std
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        managed_domains = not_implemented("tolist([\\"test.example.com\\"])")
-        certificate = random.RandomId("certificate",
-            byte_length=4,
-            prefix="issue6147-cert-",
-            keepers={
-                "domains": std.join(separator=",",
-                    input=managed_domains).result,
-            })
-        cert = gcp.compute.ManagedSslCertificate("cert",
-            name=certificate.hex,
-            managed=gcp.compute.ManagedSslCertificateManagedArgs(
-                domains=managed_domains,
-            ))
-        default_http_health_check = gcp.compute.HttpHealthCheck("default",
-            name="http-health-check",
-            request_path="/",
-            check_interval_sec=1,
-            timeout_sec=1)
-        default_backend_service = gcp.compute.BackendService("default",
-            name="backend-service",
-            port_name="http",
-            protocol="HTTP",
-            timeout_sec=10,
-            health_checks=default_http_health_check.id)
-        default_url_map = gcp.compute.URLMap("default",
-            name="url-map",
-            description="a description",
-            default_service=default_backend_service.id,
-            host_rules=[gcp.compute.URLMapHostRuleArgs(
-                hosts=["mysite.com"],
-                path_matcher="allpaths",
-            )],
-            path_matchers=[gcp.compute.URLMapPathMatcherArgs(
-                name="allpaths",
-                default_service=default_backend_service.id,
-                path_rules=[gcp.compute.URLMapPathMatcherPathRuleArgs(
-                    paths=["/*"],
-                    service=default_backend_service.id,
-                )],
-            )])
-        # This example allows the list of managed domains to be modified and will
-        # recreate the ssl certificate and update the target https proxy correctly
-        default = gcp.compute.TargetHttpsProxy("default",
-            name="test-proxy",
-            url_map=default_url_map.id,
-            ssl_certificates=[cert.id])
-        ```
-
+        <!--End PulumiCodeChooser -->
         ## Import
 
         ManagedSslCertificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/sslCertificates/{{name}}`
+        * `projects/{{project}}/global/sslCertificates/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}

@@ -348,8 +348,10 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Gkehub Membership Rbac Role Binding Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -378,18 +380,19 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             ),
             location="global")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MembershipRBACRoleBinding can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
+        * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
 
-         * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
+        * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
 
-         * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
+        * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
 
-         When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}
@@ -425,8 +428,10 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Gkehub Membership Rbac Role Binding Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,18 +460,19 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             ),
             location="global")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MembershipRBACRoleBinding can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
+        * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
 
-         * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
+        * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
 
-         * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
+        * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
 
-         When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}

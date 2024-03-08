@@ -258,6 +258,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -270,9 +271,11 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,9 +285,11 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -294,28 +299,29 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
+        IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
 
-         * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
+        * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "projects/{{project_id}}/subscriptions/{{subscription}}"
+          id = "projects/{{project_id}}/subscriptions/{{subscription}}"
 
-         to = google_pubsub_subscription_iam_policy.default
+          to = google_pubsub_subscription_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}
@@ -358,6 +364,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,9 +377,11 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -382,9 +391,11 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_pubsub\\_subscription\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -394,28 +405,29 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
+        IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
 
-         * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
+        * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "projects/{{project_id}}/subscriptions/{{subscription}}"
+          id = "projects/{{project_id}}/subscriptions/{{subscription}}"
 
-         to = google_pubsub_subscription_iam_policy.default
+          to = google_pubsub_subscription_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}

@@ -284,6 +284,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         This snippet creates a customized IAM organization role.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,13 +300,14 @@ class IAMCustomRole(pulumi.CustomResource):
                 "iam.roles.delete",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Customized IAM organization role can be imported using their URI, e.g.
 
         ```sh
-         $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+        $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
         ```
 
         :param str resource_name: The name of the resource.
@@ -342,6 +344,7 @@ class IAMCustomRole(pulumi.CustomResource):
 
         This snippet creates a customized IAM organization role.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,13 +360,14 @@ class IAMCustomRole(pulumi.CustomResource):
                 "iam.roles.delete",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Customized IAM organization role can be imported using their URI, e.g.
 
         ```sh
-         $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+        $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
         ```
 
         :param str resource_name: The name of the resource.

@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
  *
  * ## Example Usage
+ *
  * ### Apigateway Gateway Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,20 +41,21 @@ import * as utilities from "../utilities";
  *     gatewayId: "my-gateway",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Gateway can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
+ * * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
  *
- *  * `{{project}}/{{region}}/{{gateway_id}}`
+ * * `{{project}}/{{region}}/{{gateway_id}}`
  *
- *  * `{{region}}/{{gateway_id}}`
+ * * `{{region}}/{{gateway_id}}`
  *
- *  * `{{gateway_id}}`
+ * * `{{gateway_id}}`
  *
- *  When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}

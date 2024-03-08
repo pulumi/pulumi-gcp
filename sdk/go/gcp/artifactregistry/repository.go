@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 //
 // ## Example Usage
+//
 // ### Artifact Registry Repository Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,8 +51,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Docker
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,8 +84,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Cmek
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,8 +131,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Virtual
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -186,8 +194,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -221,8 +231,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote Apt
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,8 +271,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote Yum
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -297,8 +311,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Cleanup
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -366,8 +382,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Artifact Registry Repository Remote Custom
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -439,20 +457,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Repository can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
+// * `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}`
 //
-//   - `{{project}}/{{location}}/{{repository_id}}`
+// * `{{project}}/{{location}}/{{repository_id}}`
 //
-//   - `{{location}}/{{repository_id}}`
+// * `{{location}}/{{repository_id}}`
 //
-//   - `{{repository_id}}`
+// * `{{repository_id}}`
 //
-//     When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}

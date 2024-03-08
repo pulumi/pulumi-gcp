@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * List all networks in a specified Google Cloud project.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-forwarding-rules = gcp.compute.getForwardingRules({
- *     project: "my-cloud-project",
- *     region: "us-central1",
- * });
- * ```
  */
 export function getForwardingRules(args?: GetForwardingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRulesResult> {
     args = args || {};
@@ -72,16 +62,6 @@ export interface GetForwardingRulesResult {
  * List all networks in a specified Google Cloud project.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-forwarding-rules = gcp.compute.getForwardingRules({
- *     project: "my-cloud-project",
- *     region: "us-central1",
- * });
- * ```
  */
 export function getForwardingRulesOutput(args?: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
     return pulumi.output(args).apply((a: any) => getForwardingRules(a, opts))

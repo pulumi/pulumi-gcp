@@ -15,6 +15,61 @@ import * as utilities from "../utilities";
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
+ *
+ * ## Example Usage
+ *
+ * First, create a KMS KeyRing and CryptoKey using the resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
+ *     project: "my-project",
+ *     name: "my-key-ring",
+ *     location: "us-central1",
+ * });
+ * const myCryptoKey = new gcp.kms.CryptoKey("my_crypto_key", {
+ *     name: "my-crypto-key",
+ *     keyRing: myKeyRing.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+ * sensitive information:
+ *
+ * Finally, reference the encrypted ciphertext in your resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const sqlUserPassword = gcp.kms.getKMSSecret({
+ *     cryptoKey: myCryptoKey.id,
+ *     ciphertext: "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
+ * });
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const users = new gcp.sql.User("users", {
+ *     name: "me",
+ *     instance: main.name,
+ *     host: "me.com",
+ *     password: sqlUserPassword.then(sqlUserPassword => sqlUserPassword.plaintext),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
 export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretResult> {
 
@@ -73,6 +128,61 @@ export interface GetKMSSecretResult {
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
+ *
+ * ## Example Usage
+ *
+ * First, create a KMS KeyRing and CryptoKey using the resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = new gcp.kms.KeyRing("my_key_ring", {
+ *     project: "my-project",
+ *     name: "my-key-ring",
+ *     location: "us-central1",
+ * });
+ * const myCryptoKey = new gcp.kms.CryptoKey("my_crypto_key", {
+ *     name: "my-crypto-key",
+ *     keyRing: myKeyRing.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+ * sensitive information:
+ *
+ * Finally, reference the encrypted ciphertext in your resource definitions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const sqlUserPassword = gcp.kms.getKMSSecret({
+ *     cryptoKey: myCryptoKey.id,
+ *     ciphertext: "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
+ * });
+ * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const users = new gcp.sql.User("users", {
+ *     name: "me",
+ *     instance: main.name,
+ *     host: "me.com",
+ *     password: sqlUserPassword.then(sqlUserPassword => sqlUserPassword.plaintext),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
 export function getKMSSecretOutput(args: GetKMSSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretResult> {
     return pulumi.output(args).apply((a: any) => getKMSSecret(a, opts))

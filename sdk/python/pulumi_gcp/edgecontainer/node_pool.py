@@ -493,8 +493,10 @@ class NodePool(pulumi.CustomResource):
             * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
 
         ## Example Usage
+
         ### Edgecontainer Node Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -526,8 +528,10 @@ class NodePool(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Edgecontainer Node Pool With Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -568,8 +572,10 @@ class NodePool(pulumi.CustomResource):
                 kms_key=crypto_key_crypto_key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Edgecontainer Local Control Plane Node Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,18 +612,19 @@ class NodePool(pulumi.CustomResource):
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NodePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+        * `{{project}}/{{location}}/{{cluster}}/{{name}}`
 
-         * `{{location}}/{{cluster}}/{{name}}`
+        * `{{location}}/{{cluster}}/{{name}}`
 
-         When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/nodePool:NodePool default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}
@@ -670,8 +677,10 @@ class NodePool(pulumi.CustomResource):
             * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
 
         ## Example Usage
+
         ### Edgecontainer Node Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -703,8 +712,10 @@ class NodePool(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Edgecontainer Node Pool With Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,8 +756,10 @@ class NodePool(pulumi.CustomResource):
                 kms_key=crypto_key_crypto_key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Edgecontainer Local Control Plane Node Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -783,18 +796,19 @@ class NodePool(pulumi.CustomResource):
             node_location="us-central1-edge-example-edgesite",
             node_count=3)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NodePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+        * `{{project}}/{{location}}/{{cluster}}/{{name}}`
 
-         * `{{location}}/{{cluster}}/{{name}}`
+        * `{{location}}/{{cluster}}/{{name}}`
 
-         When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/nodePool:NodePool default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}

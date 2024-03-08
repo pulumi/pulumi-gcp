@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Creating A New Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,8 +48,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Creating And Regularly Rotating A Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,8 +94,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Save Key In Kubernetes Secret - DEPRECATED
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,6 +149,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

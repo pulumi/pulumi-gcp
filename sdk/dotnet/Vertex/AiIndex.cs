@@ -17,8 +17,10 @@ namespace Pulumi.Gcp.Vertex
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Vertex Ai Index
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,8 +80,10 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Vertex Ai Index Streaming
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -135,20 +139,21 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Index can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{region}}/indexes/{{name}}`
+    /// * `projects/{{project}}/locations/{{region}}/indexes/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{name}}`
+    /// * `{{region}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:vertex/aiIndex:AiIndex default projects/{{project}}/locations/{{region}}/indexes/{{name}}

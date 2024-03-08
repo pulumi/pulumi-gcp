@@ -105,12 +105,14 @@ def get_entry_group_iam_policy(entry_group: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=basic_entry_group["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str entry_group: Used to find the parent resource to bind the IAM policy to
@@ -143,12 +145,14 @@ def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[str]] =
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.datacatalog.get_entry_group_iam_policy(entry_group=basic_entry_group["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str entry_group: Used to find the parent resource to bind the IAM policy to

@@ -831,8 +831,10 @@ class ActiveDirectory(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
 
         ## Example Usage
+
         ### Netapp Active Directory Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -866,18 +868,19 @@ class ActiveDirectory(pulumi.CustomResource):
             ],
             site="test-site")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         activeDirectory can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
@@ -943,8 +946,10 @@ class ActiveDirectory(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
 
         ## Example Usage
+
         ### Netapp Active Directory Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -978,18 +983,19 @@ class ActiveDirectory(pulumi.CustomResource):
             ],
             site="test-site")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         activeDirectory can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}

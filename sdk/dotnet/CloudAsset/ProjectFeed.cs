@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.CloudAsset
     ///     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Cloud Asset Project Feed
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,18 +75,19 @@ namespace Pulumi.Gcp.CloudAsset
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ProjectFeed can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/feeds/{{name}}`
+    /// * `projects/{{project}}/feeds/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}

@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTunnelInstanceIamPolicyResult> InvokeAsync(GetTunnelInstanceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTunnelInstanceIamPolicyResult>("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args ?? new GetTunnelInstanceIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTunnelInstanceIamPolicyResult> Invoke(GetTunnelInstanceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelInstanceIamPolicyResult>("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args ?? new GetTunnelInstanceIamPolicyInvokeArgs(), options.WithDefaults());

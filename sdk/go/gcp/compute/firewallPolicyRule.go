@@ -15,7 +15,9 @@ import (
 // The Compute FirewallPolicyRule resource
 //
 // ## Example Usage
+//
 // ### Basic_fir_sec_rule
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -109,16 +111,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // FirewallPolicyRule can be imported using any of these accepted formats:
 //
-//   - `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
+// * `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
 //
-//   - `{{firewall_policy}}/{{priority}}`
+// * `{{firewall_policy}}/{{priority}}`
 //
-//     When using the `pulumi import` command, FirewallPolicyRule can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, FirewallPolicyRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}

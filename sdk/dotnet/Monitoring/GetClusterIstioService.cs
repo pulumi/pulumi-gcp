@@ -27,12 +27,12 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Monitoring Cluster Istio Service
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +52,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClusterIstioServiceResult> InvokeAsync(GetClusterIstioServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceArgs(), options.WithDefaults());
@@ -74,12 +73,12 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Monitoring Cluster Istio Service
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +98,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClusterIstioServiceResult> Invoke(GetClusterIstioServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterIstioServiceResult>("gcp:monitoring/getClusterIstioService:getClusterIstioService", args ?? new GetClusterIstioServiceInvokeArgs(), options.WithDefaults());

@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways)
  *
  * ## Example Usage
+ *
  * ### External Vpn Gateway
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -111,18 +113,19 @@ import * as utilities from "../utilities";
  *     "interface": router1Interface2.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ExternalVpnGateway can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/global/externalVpnGateways/{{name}}`
+ * * `projects/{{project}}/global/externalVpnGateways/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}

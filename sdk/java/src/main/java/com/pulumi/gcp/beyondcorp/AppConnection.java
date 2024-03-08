@@ -30,7 +30,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  * 
  * ## Example Usage
+ * 
  * ### Beyondcorp App Connection Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -86,7 +89,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beyondcorp App Connection Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -159,20 +165,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * AppConnection can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{region}}/appConnections/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/appConnections/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}

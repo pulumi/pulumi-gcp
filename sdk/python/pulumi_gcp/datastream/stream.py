@@ -497,8 +497,10 @@ class Stream(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 
         ## Example Usage
+
         ### Datastream Stream Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -667,8 +669,10 @@ class Stream(pulumi.CustomResource):
             ),
             customer_managed_encryption_key="kms-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -749,8 +753,10 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Oracle
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -831,8 +837,10 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -918,8 +926,10 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Bigquery
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1008,18 +1018,19 @@ class Stream(pulumi.CustomResource):
             ),
             backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Stream can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
+        * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
 
-         * `{{project}}/{{location}}/{{stream_id}}`
+        * `{{project}}/{{location}}/{{stream_id}}`
 
-         * `{{location}}/{{stream_id}}`
+        * `{{location}}/{{stream_id}}`
 
-         When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
@@ -1070,8 +1081,10 @@ class Stream(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 
         ## Example Usage
+
         ### Datastream Stream Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1240,8 +1253,10 @@ class Stream(pulumi.CustomResource):
             ),
             customer_managed_encryption_key="kms-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1322,8 +1337,10 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Oracle
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1404,8 +1421,10 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1491,8 +1510,10 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Stream Bigquery
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1581,18 +1602,19 @@ class Stream(pulumi.CustomResource):
             ),
             backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Stream can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
+        * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
 
-         * `{{project}}/{{location}}/{{stream_id}}`
+        * `{{project}}/{{location}}/{{stream_id}}`
 
-         * `{{location}}/{{stream_id}}`
+        * `{{location}}/{{stream_id}}`
 
-         When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}

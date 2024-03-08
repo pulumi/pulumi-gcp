@@ -30,7 +30,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  * 
  * ## Example Usage
+ * 
  * ### Logging Metric Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -92,7 +95,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Counter Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -127,7 +133,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Counter Labels
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -168,7 +177,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Logging Bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -207,7 +219,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Logging Metric Disabled
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -243,16 +258,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Metric can be imported using any of these accepted formats:
  * 
- *  * `{{project}} {{name}}`
+ * * `{{project}} {{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
@@ -394,7 +410,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
     /**
      * The client-assigned metric identifier. Examples - &#34;error_count&#34;, &#34;nginx/requests&#34;.
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%/. The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%!/(MISSING). The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      * 
@@ -405,7 +421,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
     /**
      * @return The client-assigned metric identifier. Examples - &#34;error_count&#34;, &#34;nginx/requests&#34;.
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%/. The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%!/(MISSING). The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      * 

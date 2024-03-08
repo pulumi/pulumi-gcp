@@ -121,8 +121,10 @@ class StorageBucket(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Firebasestorage Bucket Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -135,18 +137,19 @@ class StorageBucket(pulumi.CustomResource):
             project="my-project-name",
             bucket_id=default.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Bucket can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/buckets/{{bucket_id}}`
+        * `projects/{{project}}/buckets/{{bucket_id}}`
 
-         * `{{project}}/{{bucket_id}}`
+        * `{{project}}/{{bucket_id}}`
 
-         * `{{bucket_id}}`
+        * `{{bucket_id}}`
 
-         When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
@@ -174,8 +177,10 @@ class StorageBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Firebasestorage Bucket Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -188,18 +193,19 @@ class StorageBucket(pulumi.CustomResource):
             project="my-project-name",
             bucket_id=default.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Bucket can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/buckets/{{bucket_id}}`
+        * `projects/{{project}}/buckets/{{bucket_id}}`
 
-         * `{{project}}/{{bucket_id}}`
+        * `{{project}}/{{bucket_id}}`
 
-         * `{{bucket_id}}`
+        * `{{bucket_id}}`
 
-         When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}

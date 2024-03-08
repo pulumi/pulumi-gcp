@@ -433,8 +433,10 @@ class GuestPolicies(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 
         ## Example Usage
+
         ### Os Config Guest Policies Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,8 +473,10 @@ class GuestPolicies(pulumi.CustomResource):
                 desired_state="UPDATED",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Guest Policies Packages
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -532,8 +536,10 @@ class GuestPolicies(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Guest Policies Recipes
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -564,18 +570,19 @@ class GuestPolicies(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GuestPolicies can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
+        * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
 
-         * `{{project}}/{{guest_policy_id}}`
+        * `{{project}}/{{guest_policy_id}}`
 
-         * `{{guest_policy_id}}`
+        * `{{guest_policy_id}}`
 
-         When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
@@ -636,8 +643,10 @@ class GuestPolicies(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 
         ## Example Usage
+
         ### Os Config Guest Policies Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,8 +683,10 @@ class GuestPolicies(pulumi.CustomResource):
                 desired_state="UPDATED",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Guest Policies Packages
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,8 +746,10 @@ class GuestPolicies(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Os Config Guest Policies Recipes
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -767,18 +780,19 @@ class GuestPolicies(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GuestPolicies can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
+        * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
 
-         * `{{project}}/{{guest_policy_id}}`
+        * `{{project}}/{{guest_policy_id}}`
 
-         * `{{guest_policy_id}}`
+        * `{{guest_policy_id}}`
 
-         When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}

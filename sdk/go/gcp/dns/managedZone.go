@@ -23,8 +23,10 @@ import (
 //   - [Managing Zones](https://cloud.google.com/dns/zones/)
 //
 // ## Example Usage
+//
 // ### Dns Managed Zone Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,8 +55,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -109,8 +113,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private Forwarding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -175,8 +181,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private Gke
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -274,8 +282,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private Peering
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -329,8 +339,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Service Directory
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -378,8 +390,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Cloud Logging
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -411,18 +425,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ManagedZone can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/managedZones/{{name}}`
+// * `projects/{{project}}/managedZones/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dns/managedZone:ManagedZone default projects/{{project}}/managedZones/{{name}}

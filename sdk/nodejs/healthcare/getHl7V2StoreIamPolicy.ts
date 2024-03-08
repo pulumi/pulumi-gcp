@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     hl7V2StoreId: hl7V2Store.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHl7V2StoreIamPolicy(args: GetHl7V2StoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetHl7V2StoreIamPolicyResult> {
 
@@ -62,6 +64,7 @@ export interface GetHl7V2StoreIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,6 +73,7 @@ export interface GetHl7V2StoreIamPolicyResult {
  *     hl7V2StoreId: hl7V2Store.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHl7V2StoreIamPolicyOutput(args: GetHl7V2StoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHl7V2StoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getHl7V2StoreIamPolicy(a, opts))

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  *     router: "my-router",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRouterNat(args: GetRouterNatArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterNatResult> {
 
@@ -101,6 +103,7 @@ export interface GetRouterNatResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -110,6 +113,7 @@ export interface GetRouterNatResult {
  *     router: "my-router",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRouterNatOutput(args: GetRouterNatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterNatResult> {
     return pulumi.output(args).apply((a: any) => getRouterNat(a, opts))

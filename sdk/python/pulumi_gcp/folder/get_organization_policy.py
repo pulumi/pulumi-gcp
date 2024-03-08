@@ -127,6 +127,7 @@ def get_organization_policy(constraint: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -135,6 +136,7 @@ def get_organization_policy(constraint: Optional[str] = None,
         constraint="constraints/compute.trustedImageProjects")
     pulumi.export("version", policy.version)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
@@ -169,6 +171,7 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -177,6 +180,7 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = Non
         constraint="constraints/compute.trustedImageProjects")
     pulumi.export("version", policy.version)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).

@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// ## google\_healthcare\_dataset\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,9 +54,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_healthcare\_dataset\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,9 +79,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_healthcare\_dataset\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,28 +101,29 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
     /// 
-    ///  IAM policy imports use the identifier of the Healthcase Dataset resource. For example:
+    /// IAM policy imports use the identifier of the Healthcase Dataset resource. For example:
     /// 
-    ///  * `"{{project_id}}/{{location}}/{{dataset}}"`
+    /// * `"{{project_id}}/{{location}}/{{dataset}}"`
     /// 
-    ///  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+    /// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
     /// 
-    ///  tf
+    /// tf
     /// 
-    ///  import {
+    /// import {
     /// 
-    ///  id = "{{project_id}}/{{location}}/{{dataset}}"
+    ///   id = "{{project_id}}/{{location}}/{{dataset}}"
     /// 
-    ///  to = google_healthcare_dataset_iam_policy.default
+    ///   to = google_healthcare_dataset_iam_policy.default
     /// 
-    ///  }
+    /// }
     /// 
-    ///  The `pulumi import` command can also be used:
+    /// The `pulumi import` command can also be used:
     /// 
     /// ```sh
     /// $ pulumi import gcp:healthcare/datasetIamBinding:DatasetIamBinding default {{project_id}}/{{location}}/{{dataset}}

@@ -17,14 +17,16 @@ public final class AiFeatureOnlineStoreBigtableAutoScalingArgs extends com.pulum
     public static final AiFeatureOnlineStoreBigtableAutoScalingArgs Empty = new AiFeatureOnlineStoreBigtableAutoScalingArgs();
 
     /**
-     * A percentage of the cluster&#39;s CPU capacity. Can be from 10% to 80%. When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+     * A percentage of the cluster&#39;s CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+     * (MISSING)
      * 
      */
     @Import(name="cpuUtilizationTarget")
     private @Nullable Output<Integer> cpuUtilizationTarget;
 
     /**
-     * @return A percentage of the cluster&#39;s CPU capacity. Can be from 10% to 80%. When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+     * @return A percentage of the cluster&#39;s CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+     * (MISSING)
      * 
      */
     public Optional<Output<Integer>> cpuUtilizationTarget() {
@@ -88,7 +90,8 @@ public final class AiFeatureOnlineStoreBigtableAutoScalingArgs extends com.pulum
         }
 
         /**
-         * @param cpuUtilizationTarget A percentage of the cluster&#39;s CPU capacity. Can be from 10% to 80%. When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+         * @param cpuUtilizationTarget A percentage of the cluster&#39;s CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+         * (MISSING)
          * 
          * @return builder
          * 
@@ -99,7 +102,8 @@ public final class AiFeatureOnlineStoreBigtableAutoScalingArgs extends com.pulum
         }
 
         /**
-         * @param cpuUtilizationTarget A percentage of the cluster&#39;s CPU capacity. Can be from 10% to 80%. When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+         * @param cpuUtilizationTarget A percentage of the cluster&#39;s CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+         * (MISSING)
          * 
          * @return builder
          * 

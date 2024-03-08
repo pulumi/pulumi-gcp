@@ -253,6 +253,7 @@ def get_dataset(dataset_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -260,6 +261,7 @@ def get_dataset(dataset_id: Optional[str] = None,
     dataset = gcp.bigquery.get_dataset(dataset_id="my-bq-dataset",
         project="my-project")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dataset_id: The dataset ID.
@@ -309,6 +311,7 @@ def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -316,6 +319,7 @@ def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
     dataset = gcp.bigquery.get_dataset(dataset_id="my-bq-dataset",
         project="my-project")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dataset_id: The dataset ID.

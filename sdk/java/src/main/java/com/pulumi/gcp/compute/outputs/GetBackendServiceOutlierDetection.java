@@ -63,7 +63,8 @@ public final class GetBackendServiceOutlierDetection {
     private List<GetBackendServiceOutlierDetectionInterval> intervals;
     /**
      * @return Maximum percentage of hosts in the load balancing pool for the backend service
-     * that can be ejected. Defaults to 10%.
+     * that can be ejected. Defaults to 10%!
+     * (MISSING)
      * 
      */
     private Integer maxEjectionPercent;
@@ -160,7 +161,8 @@ public final class GetBackendServiceOutlierDetection {
     }
     /**
      * @return Maximum percentage of hosts in the load balancing pool for the backend service
-     * that can be ejected. Defaults to 10%.
+     * that can be ejected. Defaults to 10%!
+     * (MISSING)
      * 
      */
     public Integer maxEjectionPercent() {

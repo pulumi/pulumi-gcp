@@ -30,6 +30,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for asset
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -62,6 +64,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAssetIamPolicyResult> getAssetIamPolicy(GetAssetIamPolicyArgs args) {
@@ -71,6 +74,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for asset
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -103,6 +108,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAssetIamPolicyResult> getAssetIamPolicyPlain(GetAssetIamPolicyPlainArgs args) {
@@ -112,6 +118,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for asset
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAssetIamPolicyResult> getAssetIamPolicy(GetAssetIamPolicyArgs args, InvokeOptions options) {
@@ -153,6 +162,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for asset
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -185,6 +196,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAssetIamPolicyResult> getAssetIamPolicyPlain(GetAssetIamPolicyPlainArgs args, InvokeOptions options) {
@@ -194,6 +206,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for datascan
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -224,6 +238,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatascanIamPolicyResult> getDatascanIamPolicy(GetDatascanIamPolicyArgs args) {
@@ -233,6 +248,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for datascan
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -263,6 +280,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatascanIamPolicyResult> getDatascanIamPolicyPlain(GetDatascanIamPolicyPlainArgs args) {
@@ -272,6 +290,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for datascan
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -302,6 +322,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatascanIamPolicyResult> getDatascanIamPolicy(GetDatascanIamPolicyArgs args, InvokeOptions options) {
@@ -311,6 +332,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for datascan
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -341,6 +364,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatascanIamPolicyResult> getDatascanIamPolicyPlain(GetDatascanIamPolicyPlainArgs args, InvokeOptions options) {
@@ -350,6 +374,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for lake
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -380,6 +406,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLakeIamPolicyResult> getLakeIamPolicy(GetLakeIamPolicyArgs args) {
@@ -389,6 +416,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for lake
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -419,6 +448,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLakeIamPolicyResult> getLakeIamPolicyPlain(GetLakeIamPolicyPlainArgs args) {
@@ -428,6 +458,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for lake
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -458,6 +490,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLakeIamPolicyResult> getLakeIamPolicy(GetLakeIamPolicyArgs args, InvokeOptions options) {
@@ -467,6 +500,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for lake
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -497,6 +532,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLakeIamPolicyResult> getLakeIamPolicyPlain(GetLakeIamPolicyPlainArgs args, InvokeOptions options) {
@@ -506,6 +542,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for task
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -537,6 +575,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTaskIamPolicyResult> getTaskIamPolicy(GetTaskIamPolicyArgs args) {
@@ -546,6 +585,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for task
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -577,6 +618,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTaskIamPolicyResult> getTaskIamPolicyPlain(GetTaskIamPolicyPlainArgs args) {
@@ -586,6 +628,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for task
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -617,6 +661,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTaskIamPolicyResult> getTaskIamPolicy(GetTaskIamPolicyArgs args, InvokeOptions options) {
@@ -626,6 +671,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for task
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -657,6 +704,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTaskIamPolicyResult> getTaskIamPolicyPlain(GetTaskIamPolicyPlainArgs args, InvokeOptions options) {
@@ -666,6 +714,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for zone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -697,6 +747,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneIamPolicyResult> getZoneIamPolicy(GetZoneIamPolicyArgs args) {
@@ -706,6 +757,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for zone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -737,6 +790,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneIamPolicyResult> getZoneIamPolicyPlain(GetZoneIamPolicyPlainArgs args) {
@@ -746,6 +800,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for zone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -777,6 +833,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneIamPolicyResult> getZoneIamPolicy(GetZoneIamPolicyArgs args, InvokeOptions options) {
@@ -786,6 +843,8 @@ public final class DataplexFunctions {
      * Retrieves the current IAM policy data for zone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -817,6 +876,7 @@ public final class DataplexFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneIamPolicyResult> getZoneIamPolicyPlain(GetZoneIamPolicyPlainArgs args, InvokeOptions options) {

@@ -19,10 +19,12 @@ namespace Pulumi.Gcp.Tags
     ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Cloud Run Service
     /// 
     /// To bind a tag to a Cloud Run service:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,8 +63,11 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Compute Instance
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -101,14 +106,15 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// LocationTagBinding can be imported using any of these accepted formats:
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}

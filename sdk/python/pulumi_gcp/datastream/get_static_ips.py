@@ -83,6 +83,7 @@ def get_static_ips(location: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -91,6 +92,7 @@ def get_static_ips(location: Optional[str] = None,
         project="my-project")
     pulumi.export("ipList", datastream_ips.static_ips)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location to list Datastream IPs for. For example: `us-east1`.
@@ -119,6 +121,7 @@ def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -127,6 +130,7 @@ def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
         project="my-project")
     pulumi.export("ipList", datastream_ips.static_ips)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location to list Datastream IPs for. For example: `us-east1`.

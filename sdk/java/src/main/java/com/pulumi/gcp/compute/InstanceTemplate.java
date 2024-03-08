@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -143,7 +145,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Automatic Envoy Deployment
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -243,6 +249,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Using with Instance Group Manager
  * 
  * Instance Templates cannot be updated after creation with the Google
@@ -252,6 +260,7 @@ import javax.annotation.Nullable;
  * Either omit the Instance Template `name` attribute, or specify a partial name
  * with `name_prefix`. Example:
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -296,6 +305,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With this setup, this provider generates a unique name for your Instance
  * Template and can then update the Instance Group manager without conflict before
@@ -317,97 +327,22 @@ import javax.annotation.Nullable;
  * You can achieve this by using the `gcp.compute.Image`
  * data source, which will retrieve the latest image on every `pulumi apply`, and will update
  * the template to use that specific image:
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetImageArgs;
- * import com.pulumi.gcp.compute.InstanceTemplate;
- * import com.pulumi.gcp.compute.InstanceTemplateArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
- *             .family(&#34;debian-11&#34;)
- *             .project(&#34;debian-cloud&#34;)
- *             .build());
- * 
- *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .namePrefix(&#34;instance-template-&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.applyValue(getImageResult -&gt; getImageResult.selfLink()))
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * To have instances update to the latest on every scaling event or instance re-creation,
  * use the family as the image for the disk, and it will use GCP&#39;s default behavior, setting
  * the image for the template to the family:
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.InstanceTemplate;
- * import com.pulumi.gcp.compute.InstanceTemplateArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
- *             .namePrefix(&#34;instance-template-&#34;)
- *             .machineType(&#34;e2-medium&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(&#34;debian-cloud/debian-11&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
  * Instance templates can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/global/instanceTemplates/{{name}}`
+ * * `projects/{{project}}/global/instanceTemplates/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}

@@ -248,8 +248,10 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
+
         ### Network Firewall Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -258,18 +260,19 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
             name="tf-test-policy",
             description="Terraform test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkFirewallPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/firewallPolicies/{{name}}`
+        * `projects/{{project}}/global/firewallPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default projects/{{project}}/global/firewallPolicies/{{name}}
@@ -303,8 +306,10 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
+
         ### Network Firewall Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -313,18 +318,19 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
             name="tf-test-policy",
             description="Terraform test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkFirewallPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/firewallPolicies/{{name}}`
+        * `projects/{{project}}/global/firewallPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default projects/{{project}}/global/firewallPolicies/{{name}}

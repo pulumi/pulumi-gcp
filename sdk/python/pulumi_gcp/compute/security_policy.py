@@ -364,6 +364,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -395,8 +396,11 @@ class SecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With ReCAPTCHA Configuration Options
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -420,8 +424,11 @@ class SecurityPolicy(pulumi.CustomResource):
                 redirect_site_key=primary.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With Header Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,9 +470,12 @@ class SecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With EnforceOnKey Value As Empty String
         A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,18 +511,19 @@ class SecurityPolicy(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Security policies can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/securityPolicies/{{name}}`
+        * `projects/{{project}}/global/securityPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
@@ -558,6 +569,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -589,8 +601,11 @@ class SecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With ReCAPTCHA Configuration Options
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,8 +629,11 @@ class SecurityPolicy(pulumi.CustomResource):
                 redirect_site_key=primary.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With Header Actions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -657,9 +675,12 @@ class SecurityPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### With EnforceOnKey Value As Empty String
         A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -695,18 +716,19 @@ class SecurityPolicy(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Security policies can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/securityPolicies/{{name}}`
+        * `projects/{{project}}/global/securityPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}

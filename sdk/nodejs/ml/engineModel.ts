@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
  *
  * ## Example Usage
+ *
  * ### Ml Model Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,8 +33,10 @@ import * as utilities from "../utilities";
  *     regions: "us-central1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Ml Model Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,18 +52,19 @@ import * as utilities from "../utilities";
  *     onlinePredictionConsoleLogging: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Model can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/models/{{name}}`
+ * * `projects/{{project}}/models/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}

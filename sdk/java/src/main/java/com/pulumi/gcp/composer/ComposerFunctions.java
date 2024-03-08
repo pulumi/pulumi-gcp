@@ -21,6 +21,8 @@ public final class ComposerFunctions {
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -56,6 +58,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args) {
@@ -65,6 +68,8 @@ public final class ComposerFunctions {
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args) {
@@ -109,6 +115,8 @@ public final class ComposerFunctions {
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args, InvokeOptions options) {
@@ -153,6 +162,8 @@ public final class ComposerFunctions {
      * Provides access to Cloud Composer environment configuration in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -188,6 +199,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnvironmentResult> getEnvironmentPlain(GetEnvironmentPlainArgs args, InvokeOptions options) {
@@ -197,6 +209,8 @@ public final class ComposerFunctions {
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +251,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageVersionsResult> getImageVersions() {
@@ -246,6 +261,8 @@ public final class ComposerFunctions {
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -286,6 +303,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageVersionsResult> getImageVersionsPlain() {
@@ -295,6 +313,8 @@ public final class ComposerFunctions {
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -335,6 +355,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageVersionsResult> getImageVersions(GetImageVersionsArgs args) {
@@ -344,6 +365,8 @@ public final class ComposerFunctions {
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -384,6 +407,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageVersionsResult> getImageVersionsPlain(GetImageVersionsPlainArgs args) {
@@ -393,6 +417,8 @@ public final class ComposerFunctions {
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -433,6 +459,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageVersionsResult> getImageVersions(GetImageVersionsArgs args, InvokeOptions options) {
@@ -442,6 +469,8 @@ public final class ComposerFunctions {
      * Provides access to available Cloud Composer versions in a region for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -482,6 +511,7 @@ public final class ComposerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageVersionsResult> getImageVersionsPlain(GetImageVersionsPlainArgs args, InvokeOptions options) {

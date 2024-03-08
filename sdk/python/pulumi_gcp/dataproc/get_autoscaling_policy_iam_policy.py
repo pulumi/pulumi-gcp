@@ -105,6 +105,7 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
         location=basic["location"],
         policy_id=basic["policyId"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The  location where the autoscaling policy should reside.
@@ -151,6 +153,7 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -159,6 +162,7 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
         location=basic["location"],
         policy_id=basic["policyId"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The  location where the autoscaling policy should reside.

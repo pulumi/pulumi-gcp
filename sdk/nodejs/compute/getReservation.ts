@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * Provides access to available Google Compute Reservation Resources for a given project.
  * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetReservationResult> {
 
@@ -72,6 +74,7 @@ export interface GetReservationResult {
  * Provides access to available Google Compute Reservation Resources for a given project.
  * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,6 +84,7 @@ export interface GetReservationResult {
  *     zone: "us-central1-a",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReservationOutput(args: GetReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservationResult> {
     return pulumi.output(args).apply((a: any) => getReservation(a, opts))

@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute
         /// Get a Compute Region Instance Group within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,6 +31,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
         /// </summary>
@@ -40,6 +42,7 @@ namespace Pulumi.Gcp.Compute
         /// Get a Compute Region Instance Group within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
         /// </summary>

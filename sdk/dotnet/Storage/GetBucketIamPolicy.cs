@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBucketIamPolicyResult> InvokeAsync(GetBucketIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketIamPolicyResult>("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args ?? new GetBucketIamPolicyArgs(), options.WithDefaults());
@@ -44,6 +46,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,6 +62,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBucketIamPolicyResult> Invoke(GetBucketIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketIamPolicyResult>("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args ?? new GetBucketIamPolicyInvokeArgs(), options.WithDefaults());

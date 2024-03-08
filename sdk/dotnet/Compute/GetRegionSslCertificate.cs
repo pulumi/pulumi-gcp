@@ -14,33 +14,25 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get info about a Region Google Compute SSL Certificate from its name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_compute_region_ssl_certificate" "my_cert" {
+        ///   name = "my-cert"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCert = Gcp.Compute.GetRegionSslCertificate.Invoke(new()
-        ///     {
-        ///         Name = "my-cert",
-        ///     });
+        /// output "certificate" {
+        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificate"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.Certificate),
-        ///         ["certificateId"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.CertificateId),
-        ///         ["selfLink"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.SelfLink),
-        ///     };
-        /// });
+        /// output "certificate_id" {
+        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate_id
+        /// }
+        /// 
+        /// output "self_link" {
+        ///   value = data.google_compute_region_ssl_certificate.my_cert.self_link
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionSslCertificateResult> InvokeAsync(GetRegionSslCertificateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithDefaults());
@@ -48,33 +40,25 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get info about a Region Google Compute SSL Certificate from its name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_compute_region_ssl_certificate" "my_cert" {
+        ///   name = "my-cert"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCert = Gcp.Compute.GetRegionSslCertificate.Invoke(new()
-        ///     {
-        ///         Name = "my-cert",
-        ///     });
+        /// output "certificate" {
+        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["certificate"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.Certificate),
-        ///         ["certificateId"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.CertificateId),
-        ///         ["selfLink"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.SelfLink),
-        ///     };
-        /// });
+        /// output "certificate_id" {
+        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate_id
+        /// }
+        /// 
+        /// output "self_link" {
+        ///   value = data.google_compute_region_ssl_certificate.my_cert.self_link
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegionSslCertificateResult> Invoke(GetRegionSslCertificateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateInvokeArgs(), options.WithDefaults());

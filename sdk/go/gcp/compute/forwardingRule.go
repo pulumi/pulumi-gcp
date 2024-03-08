@@ -22,8 +22,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 //
 // ## Example Usage
+//
 // ### Internal Http Lb With Mig Backend
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -265,8 +267,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Internal Tcp Udp Lb With Mig Backend
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -501,8 +505,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Externallb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -551,8 +557,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Global Internallb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -619,8 +627,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -652,8 +662,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule L3 Default
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -700,8 +712,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Internallb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -768,8 +782,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Http Lb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1018,8 +1034,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Regional Http Xlb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1276,8 +1294,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Vpc Psc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1406,8 +1426,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Vpc Psc No Automate Dns
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1534,8 +1556,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Regional Steering
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1592,8 +1616,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Forwarding Rule Internallb Ipv6
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1663,20 +1689,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ForwardingRule can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}

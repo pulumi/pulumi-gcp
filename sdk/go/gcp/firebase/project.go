@@ -23,8 +23,10 @@ import (
 //   - [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
+//
 // ### Firebase Project Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,16 +62,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Project can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}`
+// * `projects/{{project}}`
 //
-//   - `{{project}}`
+// * `{{project}}`
 //
-//     When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/project:Project default projects/{{project}}

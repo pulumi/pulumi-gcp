@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Apigee Env Keystore Alias Self Signed Cert
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,16 +125,17 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// KeystoresAliasesSelfSignedCert can be imported using any of these accepted formats:
     /// 
-    ///  * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
+    /// * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
     /// 
-    ///  * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
+    /// * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
     /// 
-    ///  When using the `pulumi import` command, KeystoresAliasesSelfSignedCert can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, KeystoresAliasesSelfSignedCert can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}

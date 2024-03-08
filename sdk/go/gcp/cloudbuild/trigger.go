@@ -22,8 +22,10 @@ import (
 // > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 //
 // ## Example Usage
+//
 // ### Cloudbuild Trigger Filename
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,8 +58,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Build
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -197,8 +201,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Service Account
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -262,8 +268,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Include Build Logs
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -297,8 +305,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Pubsub Config
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -349,8 +359,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Webhook Config
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -440,8 +452,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Manual
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -479,8 +493,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Manual Github Enterprise
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -517,8 +533,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Manual Bitbucket Server
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -555,8 +573,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Repo
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -609,8 +629,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Bitbucket Server Push
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -645,8 +667,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Bitbucket Server Pull Request
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -682,8 +706,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Github Enterprise
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -717,8 +743,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Allow Failure
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -827,8 +855,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Allow Exit Codes
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -940,8 +970,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Pubsub With Repo
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1009,20 +1041,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Trigger can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}`
+// * `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}`
 //
-//   - `projects/{{project}}/triggers/{{trigger_id}}`
+// * `projects/{{project}}/triggers/{{trigger_id}}`
 //
-//   - `{{project}}/{{trigger_id}}`
+// * `{{project}}/{{trigger_id}}`
 //
-//   - `{{trigger_id}}`
+// * `{{trigger_id}}`
 //
-//     When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}

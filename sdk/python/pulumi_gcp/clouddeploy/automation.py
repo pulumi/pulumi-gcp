@@ -547,8 +547,10 @@ class Automation(pulumi.CustomResource):
             * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
 
         ## Example Usage
+
         ### Clouddeploy Automation Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -580,8 +582,10 @@ class Automation(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Clouddeploy Automation Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,18 +640,19 @@ class Automation(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Automation can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
 
-         * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
+        * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
 
-         * `{{location}}/{{delivery_pipeline}}/{{name}}`
+        * `{{location}}/{{delivery_pipeline}}/{{name}}`
 
-         When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
@@ -698,8 +703,10 @@ class Automation(pulumi.CustomResource):
             * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
 
         ## Example Usage
+
         ### Clouddeploy Automation Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,8 +738,10 @@ class Automation(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Clouddeploy Automation Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -787,18 +796,19 @@ class Automation(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Automation can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
 
-         * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
+        * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
 
-         * `{{location}}/{{delivery_pipeline}}/{{name}}`
+        * `{{location}}/{{delivery_pipeline}}/{{name}}`
 
-         When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}

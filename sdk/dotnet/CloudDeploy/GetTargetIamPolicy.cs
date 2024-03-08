@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTargetIamPolicyResult> InvokeAsync(GetTargetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetIamPolicyResult>("gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy", args ?? new GetTargetIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTargetIamPolicyResult> Invoke(GetTargetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetIamPolicyResult>("gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy", args ?? new GetTargetIamPolicyInvokeArgs(), options.WithDefaults());

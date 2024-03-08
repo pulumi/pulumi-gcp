@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * A Lien represents an encumbrance on the actions that can be performed on a resource.
  *
  * ## Example Usage
+ *
  * ### Resource Manager Lien
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,14 +27,15 @@ import * as utilities from "../utilities";
  *     reason: "This project is an important environment",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Lien can be imported using any of these accepted formats:
  *
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  *
- *  When using the `pulumi import` command, Lien can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Lien can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}

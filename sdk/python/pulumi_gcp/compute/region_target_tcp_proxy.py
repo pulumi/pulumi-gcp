@@ -383,8 +383,10 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
 
         ## Example Usage
+
         ### Region Target Tcp Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,20 +411,21 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             backend_service=default_region_backend_service.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionTargetTcpProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}
@@ -483,8 +486,10 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
 
         ## Example Usage
+
         ### Region Target Tcp Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,20 +514,21 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
             region="europe-west4",
             backend_service=default_region_backend_service.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionTargetTcpProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}

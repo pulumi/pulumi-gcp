@@ -16,6 +16,7 @@ import (
 //
 // Example creating a RuntimeConfig variable.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,12 +49,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // You can also encode binary content using the `value` argument instead. The
 // value must be base64 encoded.
 //
 // Example of using the `value` argument.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,16 +96,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Runtime Config Variables can be imported using the `name` or full variable name, e.g.
 //
-//   - `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
+// * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
 //
-//   - `{{config_id}}/{{name}}`
+// * `{{config_id}}/{{name}}`
 //
-//     When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
@@ -112,7 +116,7 @@ import (
 // $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
 // ```
 //
-//	When importing using only the name, the provider project must be set.
+// When importing using only the name, the provider project must be set.
 type Variable struct {
 	pulumi.CustomResourceState
 

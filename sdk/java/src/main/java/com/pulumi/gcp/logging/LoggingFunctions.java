@@ -35,7 +35,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Folder Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -64,6 +67,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderSettingsResult> getFolderSettings(GetFolderSettingsArgs args) {
@@ -78,7 +82,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Folder Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -107,6 +114,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderSettingsResult> getFolderSettingsPlain(GetFolderSettingsPlainArgs args) {
@@ -121,7 +129,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Folder Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +161,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFolderSettingsResult> getFolderSettings(GetFolderSettingsArgs args, InvokeOptions options) {
@@ -164,7 +176,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Folder Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -193,6 +208,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFolderSettingsResult> getFolderSettingsPlain(GetFolderSettingsPlainArgs args, InvokeOptions options) {
@@ -207,7 +223,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Organization Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -236,6 +255,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationSettingsResult> getOrganizationSettings(GetOrganizationSettingsArgs args) {
@@ -250,7 +270,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Organization Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -279,6 +302,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationSettingsResult> getOrganizationSettingsPlain(GetOrganizationSettingsPlainArgs args) {
@@ -293,7 +317,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Organization Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -322,6 +349,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationSettingsResult> getOrganizationSettings(GetOrganizationSettingsArgs args, InvokeOptions options) {
@@ -336,7 +364,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Organization Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -365,6 +396,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationSettingsResult> getOrganizationSettingsPlain(GetOrganizationSettingsPlainArgs args, InvokeOptions options) {
@@ -379,7 +411,10 @@ public final class LoggingFunctions {
      * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Cmek Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -408,6 +443,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectCmekSettingsResult> getProjectCmekSettings(GetProjectCmekSettingsArgs args) {
@@ -422,7 +458,10 @@ public final class LoggingFunctions {
      * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Cmek Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -451,6 +490,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectCmekSettingsResult> getProjectCmekSettingsPlain(GetProjectCmekSettingsPlainArgs args) {
@@ -465,7 +505,10 @@ public final class LoggingFunctions {
      * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Cmek Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -494,6 +537,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectCmekSettingsResult> getProjectCmekSettings(GetProjectCmekSettingsArgs args, InvokeOptions options) {
@@ -508,7 +552,10 @@ public final class LoggingFunctions {
      * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Cmek Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -537,6 +584,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectCmekSettingsResult> getProjectCmekSettingsPlain(GetProjectCmekSettingsPlainArgs args, InvokeOptions options) {
@@ -551,7 +599,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -580,6 +631,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectSettingsResult> getProjectSettings(GetProjectSettingsArgs args) {
@@ -594,7 +646,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -623,6 +678,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectSettingsResult> getProjectSettingsPlain(GetProjectSettingsPlainArgs args) {
@@ -637,7 +693,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -666,6 +725,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectSettingsResult> getProjectSettings(GetProjectSettingsArgs args, InvokeOptions options) {
@@ -680,7 +740,10 @@ public final class LoggingFunctions {
      * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
      * 
      * ## Example Usage
+     * 
      * ### Logging Project Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -709,6 +772,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectSettingsResult> getProjectSettingsPlain(GetProjectSettingsPlainArgs args, InvokeOptions options) {
@@ -721,7 +785,10 @@ public final class LoggingFunctions {
      * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
      * 
      * ## Example Usage
+     * 
      * ### Retrieve Project Logging Sink Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -750,6 +817,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSinkResult> getSink(GetSinkArgs args) {
@@ -762,7 +830,10 @@ public final class LoggingFunctions {
      * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
      * 
      * ## Example Usage
+     * 
      * ### Retrieve Project Logging Sink Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -791,6 +862,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSinkResult> getSinkPlain(GetSinkPlainArgs args) {
@@ -803,7 +875,10 @@ public final class LoggingFunctions {
      * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
      * 
      * ## Example Usage
+     * 
      * ### Retrieve Project Logging Sink Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -832,6 +907,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSinkResult> getSink(GetSinkArgs args, InvokeOptions options) {
@@ -844,7 +920,10 @@ public final class LoggingFunctions {
      * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
      * 
      * ## Example Usage
+     * 
      * ### Retrieve Project Logging Sink Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -873,6 +952,7 @@ public final class LoggingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSinkResult> getSinkPlain(GetSinkPlainArgs args, InvokeOptions options) {

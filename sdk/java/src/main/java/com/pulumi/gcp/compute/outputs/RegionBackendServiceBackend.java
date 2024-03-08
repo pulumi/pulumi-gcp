@@ -32,7 +32,7 @@ public final class RegionBackendServiceBackend {
      * but is required for non-INTERNAL backend service. The total
      * capacity_scaler for all backends must be non-zero.
      * A setting of 0 means the group is completely drained, offering
-     * 0% of its available Capacity. Valid range is [0.0,1.0].
+     * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
      * 
      */
     private @Nullable Double capacityScaler;
@@ -156,7 +156,7 @@ public final class RegionBackendServiceBackend {
      * but is required for non-INTERNAL backend service. The total
      * capacity_scaler for all backends must be non-zero.
      * A setting of 0 means the group is completely drained, offering
-     * 0% of its available Capacity. Valid range is [0.0,1.0].
+     * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
      * 
      */
     public Optional<Double> capacityScaler() {

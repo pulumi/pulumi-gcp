@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Network Security Security Profile Group Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,14 +54,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // SecurityProfileGroup can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/locations/{{location}}/securityProfileGroups/{{name}}`
+// * `{{parent}}/locations/{{location}}/securityProfileGroups/{{name}}`
 //
-//     When using the `pulumi import` command, SecurityProfileGroup can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, SecurityProfileGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/securityProfileGroup:SecurityProfileGroup default {{parent}}/locations/{{location}}/securityProfileGroups/{{name}}

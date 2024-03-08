@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  *     rrdatas: test.then(test => test.addresses.map(__item => __item.address)),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAddresses(args?: GetAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressesResult> {
     args = args || {};
@@ -111,6 +113,7 @@ export interface GetAddressesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -130,6 +133,7 @@ export interface GetAddressesResult {
  *     rrdatas: test.then(test => test.addresses.map(__item => __item.address)),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAddressesOutput(args?: GetAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressesResult> {
     return pulumi.output(args).apply((a: any) => getAddresses(a, opts))

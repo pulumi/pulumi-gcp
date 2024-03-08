@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,14 +56,15 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Billing account logging sinks can be imported using this format:
     /// 
-    ///  * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
+    /// * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
     /// 
-    ///  When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}

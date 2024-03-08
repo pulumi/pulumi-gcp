@@ -284,6 +284,7 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,6 +300,7 @@ class Service(pulumi.CustomResource):
             grpc_config=std.file(input="service_spec.yml").result,
             protoc_output_base64=std.filebase64(input="compiled_descriptor_file.pb").result)
         ```
+        <!--End PulumiCodeChooser -->
 
         The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
 
@@ -329,6 +331,7 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,6 +347,7 @@ class Service(pulumi.CustomResource):
             grpc_config=std.file(input="service_spec.yml").result,
             protoc_output_base64=std.filebase64(input="compiled_descriptor_file.pb").result)
         ```
+        <!--End PulumiCodeChooser -->
 
         The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
 

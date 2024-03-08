@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 //
 // ## Example Usage
+//
 // ### Uptime Check Config Http
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,8 +81,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Uptime Check Config Status Code
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,8 +145,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Uptime Check Config Https
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -190,8 +196,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Uptime Check Tcp
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -233,8 +241,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Uptime Check Config Synthetic Monitor
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -304,14 +314,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // UptimeCheckConfig can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}

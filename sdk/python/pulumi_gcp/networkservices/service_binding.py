@@ -293,8 +293,10 @@ class ServiceBinding(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Services Service Binding Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -317,18 +319,19 @@ class ServiceBinding(pulumi.CustomResource):
             description="my description",
             service=default_service.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceBinding can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/serviceBindings/{{name}}`
+        * `projects/{{project}}/locations/global/serviceBindings/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default projects/{{project}}/locations/global/serviceBindings/{{name}}
@@ -365,8 +368,10 @@ class ServiceBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Services Service Binding Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,18 +394,19 @@ class ServiceBinding(pulumi.CustomResource):
             description="my description",
             service=default_service.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceBinding can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/serviceBindings/{{name}}`
+        * `projects/{{project}}/locations/global/serviceBindings/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default projects/{{project}}/locations/global/serviceBindings/{{name}}

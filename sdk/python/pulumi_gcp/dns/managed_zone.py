@@ -686,8 +686,10 @@ class ManagedZone(pulumi.CustomResource):
             * [Managing Zones](https://cloud.google.com/dns/zones/)
 
         ## Example Usage
+
         ### Dns Managed Zone Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -700,8 +702,10 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,8 +735,10 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Forwarding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -772,8 +778,10 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Gke
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -835,8 +843,10 @@ class ManagedZone(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Peering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -863,8 +873,10 @@ class ManagedZone(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Service Directory
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -886,8 +898,10 @@ class ManagedZone(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Cloud Logging
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -903,18 +917,19 @@ class ManagedZone(pulumi.CustomResource):
                 enable_logging=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ManagedZone can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/managedZones/{{name}}`
+        * `projects/{{project}}/managedZones/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default projects/{{project}}/managedZones/{{name}}
@@ -985,8 +1000,10 @@ class ManagedZone(pulumi.CustomResource):
             * [Managing Zones](https://cloud.google.com/dns/zones/)
 
         ## Example Usage
+
         ### Dns Managed Zone Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -999,8 +1016,10 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1030,8 +1049,10 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Forwarding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1071,8 +1092,10 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Gke
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1134,8 +1157,10 @@ class ManagedZone(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Peering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1162,8 +1187,10 @@ class ManagedZone(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Service Directory
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1185,8 +1212,10 @@ class ManagedZone(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Cloud Logging
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1202,18 +1231,19 @@ class ManagedZone(pulumi.CustomResource):
                 enable_logging=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ManagedZone can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/managedZones/{{name}}`
+        * `projects/{{project}}/managedZones/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/managedZone:ManagedZone default projects/{{project}}/managedZones/{{name}}

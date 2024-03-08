@@ -182,6 +182,7 @@ def get_external_access_rule(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -189,6 +190,7 @@ def get_external_access_rule(name: Optional[str] = None,
     my_external_access_rule = gcp.vmwareengine.get_external_access_rule(name="my-external-access-rule",
         parent="project/my-project/locations/us-west1-a/networkPolicies/my-network-policy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.
@@ -230,6 +232,7 @@ def get_external_access_rule_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -237,6 +240,7 @@ def get_external_access_rule_output(name: Optional[pulumi.Input[str]] = None,
     my_external_access_rule = gcp.vmwareengine.get_external_access_rule(name="my-external-access-rule",
         parent="project/my-project/locations/us-west1-a/networkPolicies/my-network-policy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.

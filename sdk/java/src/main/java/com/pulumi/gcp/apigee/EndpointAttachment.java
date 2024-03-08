@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Example Usage
+ * 
  * ### Apigee Endpoint Attachment Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,16 +93,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * EndpointAttachment can be imported using any of these accepted formats:
  * 
- *  * `{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}`
+ * * `{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}`
  * 
- *  * `{{org_id}}/{{endpoint_attachment_id}}`
+ * * `{{org_id}}/{{endpoint_attachment_id}}`
  * 
- *  When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/endpointAttachments/{{endpoint_attachment_id}}

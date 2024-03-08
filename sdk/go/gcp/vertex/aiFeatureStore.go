@@ -20,8 +20,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
 // ## Example Usage
+//
 // ### Vertex Ai Featurestore
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,8 +58,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featurestore With Beta Fields
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,8 +97,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featurestore Scaling
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,20 +138,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Featurestore can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/featurestores/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/featurestores/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Featurestore can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Featurestore can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}

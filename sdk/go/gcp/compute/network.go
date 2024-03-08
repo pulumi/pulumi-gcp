@@ -20,8 +20,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 //
 // ## Example Usage
+//
 // ### Network Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,8 +47,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Custom Mtu
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,8 +77,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Custom Firewall Enforcement Order
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,18 +107,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Network can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/networks/{{name}}`
+// * `projects/{{project}}/global/networks/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}

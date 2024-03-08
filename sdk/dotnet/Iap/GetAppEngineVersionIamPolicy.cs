@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,6 +37,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAppEngineVersionIamPolicyResult> InvokeAsync(GetAppEngineVersionIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineVersionIamPolicyResult>("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args ?? new GetAppEngineVersionIamPolicyArgs(), options.WithDefaults());
@@ -47,6 +49,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,6 +68,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAppEngineVersionIamPolicyResult> Invoke(GetAppEngineVersionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineVersionIamPolicyResult>("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args ?? new GetAppEngineVersionIamPolicyInvokeArgs(), options.WithDefaults());

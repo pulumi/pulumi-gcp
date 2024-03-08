@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
         public readonly string? KmsKeyName;
         /// <summary>
         /// The number of nodes in the cluster.
-        /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
         /// </summary>
         public readonly int? NumNodes;
         /// <summary>

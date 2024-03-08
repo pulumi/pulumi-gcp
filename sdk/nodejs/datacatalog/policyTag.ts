@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ *
  * ### Data Catalog Taxonomies Policy Tag Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,8 +33,10 @@ import * as utilities from "../utilities";
  *     description: "A policy tag normally associated with low security items",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Catalog Taxonomies Policy Tag Child Policies
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,14 +64,15 @@ import * as utilities from "../utilities";
  *     parentPolicyTag: parentPolicy.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * PolicyTag can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}

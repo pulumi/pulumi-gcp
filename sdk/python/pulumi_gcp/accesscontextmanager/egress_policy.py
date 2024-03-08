@@ -120,9 +120,9 @@ class EgressPolicy(pulumi.CustomResource):
 
         EgressPolicy can be imported using any of these accepted formats:
 
-         * `{{egress_policy_name}}/{{resource}}`
+        * `{{egress_policy_name}}/{{resource}}`
 
-         When using the `pulumi import` command, EgressPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EgressPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy default {{egress_policy_name}}/{{resource}}
@@ -153,9 +153,9 @@ class EgressPolicy(pulumi.CustomResource):
 
         EgressPolicy can be imported using any of these accepted formats:
 
-         * `{{egress_policy_name}}/{{resource}}`
+        * `{{egress_policy_name}}/{{resource}}`
 
-         When using the `pulumi import` command, EgressPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EgressPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy default {{egress_policy_name}}/{{resource}}

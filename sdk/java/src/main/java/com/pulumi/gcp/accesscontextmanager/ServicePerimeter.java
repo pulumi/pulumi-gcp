@@ -41,7 +41,10 @@ import javax.annotation.Nullable;
  * `billing_project` you defined.
  * 
  * ## Example Usage
+ * 
  * ### Access Context Manager Service Perimeter Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -106,7 +109,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Access Context Manager Service Perimeter Secure Data Exchange
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -246,7 +252,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Access Context Manager Service Perimeter Dry-Run
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -293,14 +302,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ServicePerimeter can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}

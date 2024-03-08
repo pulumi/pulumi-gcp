@@ -229,8 +229,10 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
         ## Example Usage
+
         ### Instance Group Named Port Gke
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -265,20 +267,21 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             name="https",
             port=4443)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InstanceGroupNamedPort can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
 
-         * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
+        * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
 
-         * `{{zone}}/{{group}}/{{port}}/{{name}}`
+        * `{{zone}}/{{group}}/{{port}}/{{name}}`
 
-         * `{{group}}/{{port}}/{{name}}`
+        * `{{group}}/{{port}}/{{name}}`
 
-         When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
@@ -328,8 +331,10 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
         ## Example Usage
+
         ### Instance Group Named Port Gke
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,20 +369,21 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             name="https",
             port=4443)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InstanceGroupNamedPort can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
 
-         * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
+        * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
 
-         * `{{zone}}/{{group}}/{{port}}/{{name}}`
+        * `{{zone}}/{{group}}/{{port}}/{{name}}`
 
-         * `{{group}}/{{port}}/{{name}}`
+        * `{{group}}/{{port}}/{{name}}`
 
-         When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}

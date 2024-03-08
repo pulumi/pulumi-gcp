@@ -25,8 +25,10 @@ import * as utilities from "../utilities";
  *     * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
  *
  * ## Example Usage
+ *
  * ### Instance Group Membership
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,20 +52,21 @@ import * as utilities from "../utilities";
  *     instanceGroup: default_instance_group.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * InstanceGroupMembership can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}`
+ * * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}`
  *
- *  * `{{project}}/{{zone}}/{{instance_group}}/{{instance}}`
+ * * `{{project}}/{{zone}}/{{instance_group}}/{{instance}}`
  *
- *  * `{{zone}}/{{instance_group}}/{{instance}}`
+ * * `{{zone}}/{{instance_group}}/{{instance}}`
  *
- *  * `{{instance_group}}/{{instance}}`
+ * * `{{instance_group}}/{{instance}}`
  *
- *  When using the `pulumi import` command, InstanceGroupMembership can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, InstanceGroupMembership can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}

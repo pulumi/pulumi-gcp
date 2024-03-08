@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionDiskIamPolicyResult> InvokeAsync(GetRegionDiskIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskIamPolicyResult>("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionDiskIamPolicyResult> Invoke(GetRegionDiskIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskIamPolicyResult>("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyInvokeArgs(), options.WithDefaults());

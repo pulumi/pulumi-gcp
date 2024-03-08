@@ -30,7 +30,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
  * ## Example Usage
+ * 
  * ### Dialogflowcx Page Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -680,16 +683,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Page can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/pages/{{name}}`
+ * * `{{parent}}/pages/{{name}}`
  * 
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Page can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Page can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}

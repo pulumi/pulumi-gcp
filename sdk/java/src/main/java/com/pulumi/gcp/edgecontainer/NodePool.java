@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  * 
  * ## Example Usage
+ * 
  * ### Edgecontainer Node Pool
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -93,7 +96,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgecontainer Node Pool With Cmek
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -179,7 +185,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Edgecontainer Local Control Plane Node Pool
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -250,18 +259,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * NodePool can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+ * * `{{project}}/{{location}}/{{cluster}}/{{name}}`
  * 
- *  * `{{location}}/{{cluster}}/{{name}}`
+ * * `{{location}}/{{cluster}}/{{name}}`
  * 
- *  When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:edgecontainer/nodePool:NodePool default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}

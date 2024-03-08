@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Network Security Server Tls Policy Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Security Server Tls Policy Advanced
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,8 +104,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Security Server Tls Policy Server Cert
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -136,8 +142,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Security Server Tls Policy Mtls
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -219,18 +227,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ServerTlsPolicy can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}

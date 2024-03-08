@@ -715,8 +715,10 @@ class Gateway(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
 
         ## Example Usage
+
         ### Network Services Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -727,8 +729,10 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -743,8 +747,10 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Secure Web Proxy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -799,8 +805,10 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Multiple Swp Same Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -867,18 +875,19 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Gateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}
@@ -951,8 +960,10 @@ class Gateway(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
 
         ## Example Usage
+
         ### Network Services Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -963,8 +974,10 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -979,8 +992,10 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Secure Web Proxy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1035,8 +1050,10 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Multiple Swp Same Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1103,18 +1120,19 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Gateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/gateways/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/gateway:Gateway default projects/{{project}}/locations/{{location}}/gateways/{{name}}

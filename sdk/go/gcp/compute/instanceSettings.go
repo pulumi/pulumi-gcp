@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Instance Settings Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,18 +45,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // InstanceSettings can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/zones/{{zone}}/instanceSettings`
+// * `projects/{{project}}/zones/{{zone}}/instanceSettings`
 //
-//   - `{{project}}/{{zone}}`
+// * `{{project}}/{{zone}}`
 //
-//   - `{{zone}}`
+// * `{{zone}}`
 //
-//     When using the `pulumi import` command, InstanceSettings can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, InstanceSettings can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/instanceSettings:InstanceSettings default projects/{{project}}/zones/{{zone}}/instanceSettings

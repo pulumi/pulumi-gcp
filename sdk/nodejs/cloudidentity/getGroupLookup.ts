@@ -12,17 +12,6 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/identity/docs/concepts/overview#groups
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const group = gcp.cloudidentity.getGroupLookup({
- *     groupKey: {
- *         id: "my-group@example.com",
- *     },
- * });
- * ```
  */
 export function getGroupLookup(args: GetGroupLookupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupLookupResult> {
 
@@ -64,17 +53,6 @@ export interface GetGroupLookupResult {
  * https://cloud.google.com/identity/docs/concepts/overview#groups
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const group = gcp.cloudidentity.getGroupLookup({
- *     groupKey: {
- *         id: "my-group@example.com",
- *     },
- * });
- * ```
  */
 export function getGroupLookupOutput(args: GetGroupLookupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupLookupResult> {
     return pulumi.output(args).apply((a: any) => getGroupLookup(a, opts))

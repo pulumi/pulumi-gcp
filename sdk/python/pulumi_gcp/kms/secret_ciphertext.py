@@ -185,8 +185,10 @@ class SecretCiphertext(pulumi.CustomResource):
             * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
         ## Example Usage
+
         ### Kms Secret Ciphertext Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -218,6 +220,7 @@ class SecretCiphertext(pulumi.CustomResource):
                 "password": my_password.ciphertext,
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -256,8 +259,10 @@ class SecretCiphertext(pulumi.CustomResource):
             * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
         ## Example Usage
+
         ### Kms Secret Ciphertext Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -289,6 +294,7 @@ class SecretCiphertext(pulumi.CustomResource):
                 "password": my_password.ciphertext,
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

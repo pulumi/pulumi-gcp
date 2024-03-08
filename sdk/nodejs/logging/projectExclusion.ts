@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,14 +26,15 @@ import * as utilities from "../utilities";
  *     filter: "resource.type = gce_instance AND severity <= DEBUG",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Project-level logging exclusions can be imported using their URI, e.g.
  *
- *  * `projects/{{project_id}}/exclusions/{{name}}`
+ * * `projects/{{project_id}}/exclusions/{{name}}`
  *
- *  When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}

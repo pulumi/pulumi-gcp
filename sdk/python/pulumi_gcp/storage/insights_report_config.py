@@ -277,8 +277,10 @@ class InsightsReportConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 
         ## Example Usage
+
         ### Storage Insights Report Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,18 +331,19 @@ class InsightsReportConfig(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ReportConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}
@@ -384,8 +387,10 @@ class InsightsReportConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 
         ## Example Usage
+
         ### Storage Insights Report Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -436,18 +441,19 @@ class InsightsReportConfig(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ReportConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}

@@ -14,33 +14,25 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Get info about a Google Cloud Redis instance.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_redis_instance" "my_instance" {
+        ///   name = "my-redis-instance"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myInstance = Gcp.Redis.GetInstance.Invoke(new()
-        ///     {
-        ///         Name = "my-redis-instance",
-        ///     });
+        /// output "instance_memory_size_gb" {
+        ///   value = data.google_redis_instance.my_instance.memory_size_gb
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["instanceMemorySizeGb"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.MemorySizeGb),
-        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.ConnectMode),
-        ///         ["instanceAuthorizedNetwork"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.AuthorizedNetwork),
-        ///     };
-        /// });
+        /// output "instance_connect_mode" {
+        ///   value = data.google_redis_instance.my_instance.connect_mode
+        /// }
+        /// 
+        /// output "instance_authorized_network" {
+        ///   value = data.google_redis_instance.my_instance.authorized_network
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
@@ -48,33 +40,25 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Get info about a Google Cloud Redis instance.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_redis_instance" "my_instance" {
+        ///   name = "my-redis-instance"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myInstance = Gcp.Redis.GetInstance.Invoke(new()
-        ///     {
-        ///         Name = "my-redis-instance",
-        ///     });
+        /// output "instance_memory_size_gb" {
+        ///   value = data.google_redis_instance.my_instance.memory_size_gb
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["instanceMemorySizeGb"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.MemorySizeGb),
-        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.ConnectMode),
-        ///         ["instanceAuthorizedNetwork"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.AuthorizedNetwork),
-        ///     };
-        /// });
+        /// output "instance_connect_mode" {
+        ///   value = data.google_redis_instance.my_instance.connect_mode
+        /// }
+        /// 
+        /// output "instance_authorized_network" {
+        ///   value = data.google_redis_instance.my_instance.authorized_network
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:redis/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());

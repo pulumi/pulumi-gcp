@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.FolderSink`
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,14 +65,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Folder-level logging exclusions can be imported using their URI, e.g.
  * 
- *  * `folders/{{folder}}/exclusions/{{name}}`
+ * * `folders/{{folder}}/exclusions/{{name}}`
  * 
- *  When using the `pulumi import` command, folder-level logging exclusions can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, folder-level logging exclusions can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/folderExclusion:FolderExclusion default folders/{{folder}}/exclusions/{{name}}

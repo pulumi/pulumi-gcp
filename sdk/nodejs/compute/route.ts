@@ -35,8 +35,10 @@ import * as utilities from "../utilities";
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  *
  * ## Example Usage
+ *
  * ### Route Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,8 +52,10 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Route Ilb
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -96,8 +100,10 @@ import * as utilities from "../utilities";
  *     priority: 2000,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Route Ilb Vip
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -166,18 +172,19 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Route can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/global/routes/{{name}}`
+ * * `projects/{{project}}/global/routes/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}

@@ -47,7 +47,10 @@ import javax.annotation.Nullable;
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
  * ## Example Usage
+ * 
  * ### Disk Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -81,7 +84,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Disk Async
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -124,7 +130,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Disk Features
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -169,20 +178,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Disk can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
  * 
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  * 
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}

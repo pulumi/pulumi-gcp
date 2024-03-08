@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Network Security Security Profile Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,8 +37,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Security Profile Overrides
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,14 +83,15 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// SecurityProfile can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/locations/{{location}}/securityProfiles/{{name}}`
+    /// * `{{parent}}/locations/{{location}}/securityProfiles/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, SecurityProfile can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, SecurityProfile can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}

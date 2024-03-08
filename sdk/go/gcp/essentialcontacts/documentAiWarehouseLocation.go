@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
 //
 // ## Example Usage
+//
 // ### Document Ai Warehouse Location
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,6 +58,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

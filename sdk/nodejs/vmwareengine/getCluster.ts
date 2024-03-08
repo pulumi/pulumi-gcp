@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     parent: "project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
 
@@ -70,6 +72,7 @@ export interface GetClusterResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,6 +82,7 @@ export interface GetClusterResult {
  *     parent: "project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     return pulumi.output(args).apply((a: any) => getCluster(a, opts))

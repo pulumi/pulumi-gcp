@@ -94,12 +94,14 @@ def get_subscription_iam_policy(project: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.pubsub.get_subscription_iam_policy(subscription=subscription["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project in which the resource belongs. If it
@@ -129,12 +131,14 @@ def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[s
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.pubsub.get_subscription_iam_policy(subscription=subscription["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project in which the resource belongs. If it

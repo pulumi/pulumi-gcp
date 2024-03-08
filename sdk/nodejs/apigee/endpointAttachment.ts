@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Example Usage
+ *
  * ### Apigee Endpoint Attachment Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,16 +48,17 @@ import * as utilities from "../utilities";
  *     serviceAttachment: "{google_compute_service_attachment id}",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * EndpointAttachment can be imported using any of these accepted formats:
  *
- *  * `{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}`
+ * * `{{org_id}}/endpointAttachments/{{endpoint_attachment_id}}`
  *
- *  * `{{org_id}}/{{endpoint_attachment_id}}`
+ * * `{{org_id}}/{{endpoint_attachment_id}}`
  *
- *  When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/endpointAttachment:EndpointAttachment default {{org_id}}/endpointAttachments/{{endpoint_attachment_id}}

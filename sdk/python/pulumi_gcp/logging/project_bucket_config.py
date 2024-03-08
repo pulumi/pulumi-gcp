@@ -370,6 +370,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -384,9 +385,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,9 +400,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with Log Analytics enabled
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -411,9 +416,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
             enable_analytics=True,
             bucket_id="custom-bucket")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId and cmekSettings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -439,9 +446,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 kms_key_name=key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with index configs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -456,14 +465,15 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 "type": "INDEX_TYPE_STRING",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported using the following format:
 
-         * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
+        * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
 
-         When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -496,6 +506,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -510,9 +521,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -523,9 +536,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with Log Analytics enabled
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -537,9 +552,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
             enable_analytics=True,
             bucket_id="custom-bucket")
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId and cmekSettings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -565,9 +582,11 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 kms_key_name=key.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         Create logging bucket with index configs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -582,14 +601,15 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 "type": "INDEX_TYPE_STRING",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported using the following format:
 
-         * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
+        * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
 
-         When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}

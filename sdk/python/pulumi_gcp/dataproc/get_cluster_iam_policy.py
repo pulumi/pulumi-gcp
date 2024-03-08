@@ -104,6 +104,7 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -111,6 +112,7 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
     policy = gcp.dataproc.get_cluster_iam_policy(cluster=cluster["name"],
         region="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster: The name or relative resource id of the cluster to manage IAM policies for.
@@ -141,6 +143,7 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -148,6 +151,7 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
     policy = gcp.dataproc.get_cluster_iam_policy(cluster=cluster["name"],
         region="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster: The name or relative resource id of the cluster to manage IAM policies for.

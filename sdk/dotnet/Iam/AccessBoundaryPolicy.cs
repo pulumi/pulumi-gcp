@@ -15,8 +15,10 @@ namespace Pulumi.Gcp.Iam
     /// if they would like to test it.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Iam Access Boundary Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,14 +112,15 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// AccessBoundaryPolicy can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/{{name}}`
+    /// * `{{parent}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}

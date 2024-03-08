@@ -108,15 +108,47 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     ### ServiceAccount JSON Credential File.
       `serviceaccount_get_account_id_token` will use the configured provider credentials
 
+      <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://foo.bar/")
+    pulumi.export("oidcToken", oidc.id_token)
+    ```
+    <!--End PulumiCodeChooser -->
+
     ### Service Account Impersonation.
       `serviceaccount_get_account_access_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
+
+      <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    impersonated = gcp.serviceaccount.get_account_access_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+        delegates=[],
+        scopes=[
+            "userinfo-email",
+            "cloud-platform",
+        ],
+        lifetime="300s")
+    oidc = gcp.serviceaccount.get_account_id_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+        delegates=[],
+        include_email=True,
+        target_audience="https://foo.bar/")
+    pulumi.export("oidcToken", oidc.id_token)
+    ```
+    <!--End PulumiCodeChooser -->
+
     ### Invoking Cloud Run Endpoint
 
       The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -129,6 +161,7 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
         })
     pulumi.export("cloudRunResponse", cloudrun.body)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.
@@ -170,15 +203,47 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     ### ServiceAccount JSON Credential File.
       `serviceaccount_get_account_id_token` will use the configured provider credentials
 
+      <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    oidc = gcp.serviceaccount.get_account_id_token(target_audience="https://foo.bar/")
+    pulumi.export("oidcToken", oidc.id_token)
+    ```
+    <!--End PulumiCodeChooser -->
+
     ### Service Account Impersonation.
       `serviceaccount_get_account_access_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
+
+      <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    impersonated = gcp.serviceaccount.get_account_access_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+        delegates=[],
+        scopes=[
+            "userinfo-email",
+            "cloud-platform",
+        ],
+        lifetime="300s")
+    oidc = gcp.serviceaccount.get_account_id_token(target_service_account="impersonated-account@project.iam.gserviceaccount.com",
+        delegates=[],
+        include_email=True,
+        target_audience="https://foo.bar/")
+    pulumi.export("oidcToken", oidc.id_token)
+    ```
+    <!--End PulumiCodeChooser -->
+
     ### Invoking Cloud Run Endpoint
 
       The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -191,6 +256,7 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
         })
     pulumi.export("cloudRunResponse", cloudrun.body)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.   Used only when using impersonation mode.

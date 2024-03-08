@@ -26,8 +26,10 @@ import (
 //   - [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 //
 // ## Example Usage
+//
 // ### Target Instance Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,8 +79,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Target Instance Custom Network
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,8 +139,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Target Instance With Security Policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -241,20 +247,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TargetInstance can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
+// * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
 //
-//   - `{{project}}/{{zone}}/{{name}}`
+// * `{{project}}/{{zone}}/{{name}}`
 //
-//   - `{{zone}}/{{name}}`
+// * `{{zone}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}

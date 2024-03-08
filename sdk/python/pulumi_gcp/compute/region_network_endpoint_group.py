@@ -561,8 +561,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+
         ### Region Network Endpoint Group Functions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -593,8 +595,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 function=function_neg_function.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Cloudrun
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -622,8 +626,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 service=cloudrun_neg_service.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Appengine
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -683,8 +689,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 version=appengine_neg_flexible_app_version.version_id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Psc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -695,8 +703,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service="asia-northeast3-cloudkms.googleapis.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Psc Service Attachment
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -748,8 +758,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Internet Ip Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -761,8 +773,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Internet Fqdn Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -774,20 +788,21 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionNetworkEndpointGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
@@ -863,8 +878,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+
         ### Region Network Endpoint Group Functions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -895,8 +912,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 function=function_neg_function.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Cloudrun
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -924,8 +943,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 service=cloudrun_neg_service.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Appengine
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -985,8 +1006,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 version=appengine_neg_flexible_app_version.version_id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Psc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -997,8 +1020,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service="asia-northeast3-cloudkms.googleapis.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Psc Service Attachment
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1050,8 +1075,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Internet Ip Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1063,8 +1090,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Internet Fqdn Port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1076,20 +1105,21 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionNetworkEndpointGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}

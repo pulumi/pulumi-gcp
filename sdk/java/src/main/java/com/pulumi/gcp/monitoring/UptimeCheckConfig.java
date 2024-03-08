@@ -32,7 +32,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
  * 
  * ## Example Usage
+ * 
  * ### Uptime Check Config Http
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -95,7 +98,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Status Code
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -162,7 +168,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Https
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -217,7 +226,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Tcp
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -267,7 +279,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Synthetic Monitor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -347,14 +362,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * UptimeCheckConfig can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}

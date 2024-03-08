@@ -262,8 +262,10 @@ class BackupSchedule(pulumi.CustomResource):
         with the database. The actual backups are not though.
 
         ## Example Usage
+
         ### Firestore Backup Schedule Daily
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -281,8 +283,10 @@ class BackupSchedule(pulumi.CustomResource):
             retention="604800s",
             daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs())
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Backup Schedule Weekly
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -302,18 +306,19 @@ class BackupSchedule(pulumi.CustomResource):
                 day="SUNDAY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackupSchedule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
+        * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
 
-         * `{{project}}/{{database}}/{{name}}`
+        * `{{project}}/{{database}}/{{name}}`
 
-         * `{{database}}/{{name}}`
+        * `{{database}}/{{name}}`
 
-         When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}
@@ -365,8 +370,10 @@ class BackupSchedule(pulumi.CustomResource):
         with the database. The actual backups are not though.
 
         ## Example Usage
+
         ### Firestore Backup Schedule Daily
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -384,8 +391,10 @@ class BackupSchedule(pulumi.CustomResource):
             retention="604800s",
             daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs())
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Backup Schedule Weekly
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -405,18 +414,19 @@ class BackupSchedule(pulumi.CustomResource):
                 day="SUNDAY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackupSchedule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
+        * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
 
-         * `{{project}}/{{database}}/{{name}}`
+        * `{{project}}/{{database}}/{{name}}`
 
-         * `{{database}}/{{name}}`
+        * `{{database}}/{{name}}`
 
-         When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}

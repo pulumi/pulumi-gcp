@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     secretId: secret_basic.secretId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretIamPolicyResult> {
 
@@ -65,6 +67,7 @@ export interface GetSecretIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,6 +77,7 @@ export interface GetSecretIamPolicyResult {
  *     secretId: secret_basic.secretId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSecretIamPolicy(a, opts))

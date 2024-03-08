@@ -20,8 +20,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/source-repositories/)
 //
 // ## Example Usage
+//
 // ### Sourcerepo Repository Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,8 +47,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Sourcerepo Repository Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,16 +96,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Repository can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/repos/{{name}}`
+// * `projects/{{project}}/repos/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}

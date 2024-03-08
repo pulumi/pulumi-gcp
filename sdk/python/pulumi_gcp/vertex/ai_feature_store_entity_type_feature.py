@@ -328,8 +328,10 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+
         ### Vertex Ai Featurestore Entitytype Feature
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,8 +359,10 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
+        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -398,14 +402,15 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
 
-         * `{{entitytype}}/features/{{name}}`
+        * `{{entitytype}}/features/{{name}}`
 
-         When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
@@ -441,8 +446,10 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+
         ### Vertex Ai Featurestore Entitytype Feature
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,8 +477,10 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
+        <!--End PulumiCodeChooser -->
         ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -511,14 +520,15 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
 
-         * `{{entitytype}}/features/{{name}}`
+        * `{{entitytype}}/features/{{name}}`
 
-         When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}

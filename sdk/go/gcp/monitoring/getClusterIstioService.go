@@ -26,8 +26,10 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+//
 // ### Monitoring Cluster Istio Service
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +57,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetClusterIstioService(ctx *pulumi.Context, args *GetClusterIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetClusterIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterIstioServiceResult

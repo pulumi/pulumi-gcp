@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dataplex/docs)
 //
 // ## Example Usage
+//
 // ### Dataplex Datascan Basic Profile
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,8 +59,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dataplex Datascan Full Profile
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,8 +133,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dataplex Datascan Basic Quality
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,8 +182,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dataplex Datascan Full Quality
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -291,20 +299,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Datascan can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
+// * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
 //
-//   - `{{project}}/{{location}}/{{data_scan_id}}`
+// * `{{project}}/{{location}}/{{data_scan_id}}`
 //
-//   - `{{location}}/{{data_scan_id}}`
+// * `{{location}}/{{data_scan_id}}`
 //
-//   - `{{data_scan_id}}`
+// * `{{data_scan_id}}`
 //
-//     When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}

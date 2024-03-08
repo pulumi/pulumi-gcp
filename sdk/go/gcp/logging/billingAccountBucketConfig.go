@@ -18,13 +18,53 @@ import (
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/logging"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+//				BillingAccount: pulumi.StringRef("00AA00-000AAA-00AA0A"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewBillingAccountBucketConfig(ctx, "basic", &logging.BillingAccountBucketConfigArgs{
+//				BillingAccount: *pulumi.String(_default.BillingAccount),
+//				Location:       pulumi.String("global"),
+//				RetentionDays:  pulumi.Int(30),
+//				BucketId:       pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// # Create logging bucket with index configs
+//
 // ## Import
 //
 // This resource can be imported using the following format:
 //
-//   - `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
+// * `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
 //
-//     When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}

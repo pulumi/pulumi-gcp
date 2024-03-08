@@ -3162,8 +3162,6 @@ class ClusterAddonsConfigArgs:
                
                
                This example `addons_config` disables two addons:
-               
-               <a name="nested_binary_authorization"></a>The `binary_authorization` block supports:
         :param pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs'] dns_cache_config: .
                The status of the NodeLocal DNSCache addon. It is disabled by default.
                Set `enabled = true` to enable.
@@ -3249,8 +3247,6 @@ class ClusterAddonsConfigArgs:
 
 
         This example `addons_config` disables two addons:
-
-        <a name="nested_binary_authorization"></a>The `binary_authorization` block supports:
         """
         return pulumi.get(self, "config_connector_config")
 
@@ -5236,9 +5232,6 @@ class ClusterMasterAuthArgs:
                  cluster_ca_certificate: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-               
-               
-               This block also contains several computed attributes, documented below.
         :param pulumi.Input[str] client_certificate: Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
         :param pulumi.Input[str] client_key: Base64 encoded private key used by clients to authenticate to the cluster endpoint.
         :param pulumi.Input[str] cluster_ca_certificate: Base64 encoded public certificate that is the root of trust for the cluster.
@@ -5256,9 +5249,6 @@ class ClusterMasterAuthArgs:
     def client_certificate_config(self) -> pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']:
         """
         Whether client certificate authorization is enabled for this cluster.  For example:
-
-
-        This block also contains several computed attributes, documented below.
         """
         return pulumi.get(self, "client_certificate_config")
 

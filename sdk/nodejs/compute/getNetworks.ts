@@ -8,15 +8,6 @@ import * as utilities from "../utilities";
  * List all networks in a specified Google Cloud project.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-networks = gcp.compute.getNetworks({
- *     project: "my-cloud-project",
- * });
- * ```
  */
 export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
@@ -62,15 +53,6 @@ export interface GetNetworksResult {
  * List all networks in a specified Google Cloud project.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-networks = gcp.compute.getNetworks({
- *     project: "my-cloud-project",
- * });
- * ```
  */
 export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
     return pulumi.output(args).apply((a: any) => getNetworks(a, opts))

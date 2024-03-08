@@ -20,39 +20,39 @@ import javax.annotation.Nullable;
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
  * 
- *  * projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
+ * * projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
  * 
- *  * {{project}}/{{location}}/{{federation_id}}
+ * * {{project}}/{{location}}/{{federation_id}}
  * 
- *  * {{location}}/{{federation_id}}
+ * * {{location}}/{{federation_id}}
  * 
- *  * {{federation_id}}
+ * * {{federation_id}}
  * 
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  * 
- *  Dataproc metastore federation IAM resources can be imported using the resource identifiers, role, and member.
+ * Dataproc metastore federation IAM resources can be imported using the resource identifiers, role, and member.
  * 
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember editor &#34;projects/{{project}}/locations/{{location}}/federations/{{federation_id}} roles/viewer user:jane@example.com&#34;
  * ```
  * 
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember editor &#34;projects/{{project}}/locations/{{location}}/federations/{{federation_id}} roles/viewer&#34;
  * ```
  * 
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember editor projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
  * ```
  * 
- *  -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember")

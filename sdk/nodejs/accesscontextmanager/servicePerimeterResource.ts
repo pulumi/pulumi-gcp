@@ -27,8 +27,10 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ *
  * ### Access Context Manager Service Perimeter Resource Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,14 +52,15 @@ import * as utilities from "../utilities";
  *     resource: "projects/987654321",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ServicePerimeterResource can be imported using any of these accepted formats:
  *
- *  * `{{perimeter_name}}/{{resource}}`
+ * * `{{perimeter_name}}/{{resource}}`
  *
- *  When using the `pulumi import` command, ServicePerimeterResource can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ServicePerimeterResource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}

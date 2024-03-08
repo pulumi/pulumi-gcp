@@ -323,8 +323,10 @@ class HostingChannel(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Firebasehosting Channel Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,8 +338,10 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Channel Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,16 +358,17 @@ class HostingChannel(pulumi.CustomResource):
                 "some-key": "some-value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Channel can be imported using any of these accepted formats:
 
-         * `sites/{{site_id}}/channels/{{channel_id}}`
+        * `sites/{{site_id}}/channels/{{channel_id}}`
 
-         * `{{site_id}}/{{channel_id}}`
+        * `{{site_id}}/{{channel_id}}`
 
-         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
@@ -400,8 +405,10 @@ class HostingChannel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Firebasehosting Channel Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -413,8 +420,10 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebasehosting Channel Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -431,16 +440,17 @@ class HostingChannel(pulumi.CustomResource):
                 "some-key": "some-value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Channel can be imported using any of these accepted formats:
 
-         * `sites/{{site_id}}/channels/{{channel_id}}`
+        * `sites/{{site_id}}/channels/{{channel_id}}`
 
-         * `{{site_id}}/{{channel_id}}`
+        * `{{site_id}}/{{channel_id}}`
 
-         When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}

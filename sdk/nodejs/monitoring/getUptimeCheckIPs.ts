@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * const ips = gcp.monitoring.getUptimeCheckIPs({});
  * export const ipList = ips.then(ips => ips.uptimeCheckIps);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptimeCheckIPsResult> {
 
@@ -46,6 +48,7 @@ export interface GetUptimeCheckIPsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,6 +56,7 @@ export interface GetUptimeCheckIPsResult {
  * const ips = gcp.monitoring.getUptimeCheckIPs({});
  * export const ipList = ips.then(ips => ips.uptimeCheckIps);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUptimeCheckIPsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUptimeCheckIPsResult> {
     return pulumi.output(getUptimeCheckIPs(opts))

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupRegionNetworkEndpointGroup(ctx *pulumi.Context, args *LookupRegionNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupRegionNetworkEndpointGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionNetworkEndpointGroupResult

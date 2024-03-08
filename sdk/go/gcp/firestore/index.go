@@ -33,8 +33,10 @@ import (
 // will be the same as the App Engine location specified.
 //
 // ## Example Usage
+//
 // ### Firestore Index Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,8 +116,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Firestore Index Datastore Mode
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,14 +157,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Index can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firestore/index:Index default {{name}}

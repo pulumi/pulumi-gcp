@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Dataproc Metastore Federation Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,8 +36,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Federation Bigquery
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,18 +72,19 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Federation can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
+ * * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
  *
- *  * `{{project}}/{{location}}/{{federation_id}}`
+ * * `{{project}}/{{location}}/{{federation_id}}`
  *
- *  * `{{location}}/{{federation_id}}`
+ * * `{{location}}/{{federation_id}}`
  *
- *  When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}

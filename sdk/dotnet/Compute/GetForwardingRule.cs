@@ -14,27 +14,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get a forwarding rule within GCE from its name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
-        ///     {
-        ///         Name = "forwarding-rule-us-east1",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_forwarding_rule" "my-forwarding-rule" {
+        ///   name = "forwarding-rule-us-east1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithDefaults());
@@ -42,27 +28,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get a forwarding rule within GCE from its name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
-        ///     {
-        ///         Name = "forwarding-rule-us-east1",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_forwarding_rule" "my-forwarding-rule" {
+        ///   name = "forwarding-rule-us-east1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithDefaults());

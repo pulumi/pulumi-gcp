@@ -197,8 +197,10 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 
         ## Example Usage
+
         ### Backend Service Signed Url Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -246,6 +248,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             key_value=url_signature.b64_url,
             backend_service=example_backend.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,8 +283,10 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 
         ## Example Usage
+
         ### Backend Service Signed Url Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,6 +334,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             key_value=url_signature.b64_url,
             backend_service=example_backend.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

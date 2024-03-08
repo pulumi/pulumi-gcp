@@ -38,8 +38,10 @@ import (
 // In conclusion: Be extremely cautious.
 //
 // ## Example Usage
+//
 // ### Managed Ssl Certificate Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,131 +137,18 @@ import (
 //	}
 //
 // ```
-// ### Managed Ssl Certificate Recreation
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func notImplemented(message string) pulumi.AnyOutput {
-//		panic(message)
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			managedDomains := notImplemented("tolist([\"test.example.com\"])")
-//			invokeJoin, err := std.Join(ctx, &std.JoinArgs{
-//				Separator: ",",
-//				Input:     managedDomains,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			certificate, err := random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//				Prefix:     pulumi.String("issue6147-cert-"),
-//				Keepers: pulumi.StringMap{
-//					"domains": invokeJoin.Result,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cert, err := compute.NewManagedSslCertificate(ctx, "cert", &compute.ManagedSslCertificateArgs{
-//				Name: certificate.Hex,
-//				Managed: &compute.ManagedSslCertificateManagedArgs{
-//					Domains: pulumi.Any(managedDomains),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-//				Name:             pulumi.String("http-health-check"),
-//				RequestPath:      pulumi.String("/"),
-//				CheckIntervalSec: pulumi.Int(1),
-//				TimeoutSec:       pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("backend-service"),
-//				PortName:     pulumi.String("http"),
-//				Protocol:     pulumi.String("HTTP"),
-//				TimeoutSec:   pulumi.Int(10),
-//				HealthChecks: defaultHttpHealthCheck.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-//				Name:           pulumi.String("url-map"),
-//				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
-//				HostRules: compute.URLMapHostRuleArray{
-//					&compute.URLMapHostRuleArgs{
-//						Hosts: pulumi.StringArray{
-//							pulumi.String("mysite.com"),
-//						},
-//						PathMatcher: pulumi.String("allpaths"),
-//					},
-//				},
-//				PathMatchers: compute.URLMapPathMatcherArray{
-//					&compute.URLMapPathMatcherArgs{
-//						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
-//						PathRules: compute.URLMapPathMatcherPathRuleArray{
-//							&compute.URLMapPathMatcherPathRuleArgs{
-//								Paths: pulumi.StringArray{
-//									pulumi.String("/*"),
-//								},
-//								Service: defaultBackendService.ID(),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// This example allows the list of managed domains to be modified and will
-//			// recreate the ssl certificate and update the target https proxy correctly
-//			_, err = compute.NewTargetHttpsProxy(ctx, "default", &compute.TargetHttpsProxyArgs{
-//				Name:   pulumi.String("test-proxy"),
-//				UrlMap: defaultURLMap.ID(),
-//				SslCertificates: pulumi.StringArray{
-//					cert.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
+// <!--End PulumiCodeChooser -->
 // ## Import
 //
 // ManagedSslCertificate can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/sslCertificates/{{name}}`
+// * `projects/{{project}}/global/sslCertificates/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/mangedSslCertificate:MangedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}

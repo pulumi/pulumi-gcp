@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Allows creation and management of a Google Cloud Billing Subaccount.
  * 
  * !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,14 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Billing Subaccounts can be imported using any of these accepted formats:
  * 
- *  * `billingAccounts/{billing_account_id}`
+ * * `billingAccounts/{billing_account_id}`
  * 
- *  When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}

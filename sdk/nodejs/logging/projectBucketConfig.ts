@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,9 +32,11 @@ import * as utilities from "../utilities";
  *     bucketId: "_Default",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with customId
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,9 +48,11 @@ import * as utilities from "../utilities";
  *     bucketId: "custom-bucket",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with Log Analytics enabled
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,9 +65,11 @@ import * as utilities from "../utilities";
  *     bucketId: "custom-bucket",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with customId and cmekSettings
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,9 +101,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Create logging bucket with index configs
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -112,14 +121,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported using the following format:
  *
- *  * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
+ * * `projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}`
  *
- *  When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}

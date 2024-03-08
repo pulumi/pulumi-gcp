@@ -21,6 +21,110 @@ import (
 // resource definitions, but it does not take care of protecting that data in the
 // logging output, plan output, or state output.  Please take care to secure your secret
 // data outside of resource definitions.
+//
+// ## Example Usage
+//
+// First, create a KMS KeyRing and CryptoKey using the resource definitions:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myKeyRing, err := kms.NewKeyRing(ctx, "my_key_ring", &kms.KeyRingArgs{
+//				Project:  pulumi.String("my-project"),
+//				Name:     pulumi.String("my-key-ring"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("my-crypto-key"),
+//				KeyRing: myKeyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+// sensitive information:
+//
+// Finally, reference the encrypted ciphertext in your resource definitions:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sqlUserPassword, err := kms.GetKMSSecret(ctx, &kms.GetKMSSecretArgs{
+//				CryptoKey:  myCryptoKey.Id,
+//				Ciphertext: "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("main-instance-%v", hex), nil
+//				}).(pulumi.StringOutput),
+//				DatabaseVersion: pulumi.String("MYSQL_5_7"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+//				Name:     pulumi.String("me"),
+//				Instance: main.Name,
+//				Host:     pulumi.String("me.com"),
+//				Password: *pulumi.String(sqlUserPassword.Plaintext),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// This will result in a Cloud SQL user being created with password `my-secret-password`.
 func GetKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSSecretResult

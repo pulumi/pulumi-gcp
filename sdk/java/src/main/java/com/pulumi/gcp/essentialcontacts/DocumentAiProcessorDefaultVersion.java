@@ -17,7 +17,10 @@ import javax.annotation.Nullable;
  * The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
  * 
  * ## Example Usage
+ * 
  * ### Documentai Default Version
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,14 +58,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ProcessorDefaultVersion can be imported using any of these accepted formats:
  * 
- *  * `{{processor}}`
+ * * `{{processor}}`
  * 
- *  When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}

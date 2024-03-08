@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
  *
  * ## Example Usage
+ *
  * ### Cloudbuild Bitbucket Server Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,8 +37,10 @@ import * as utilities from "../utilities";
  *     apiKey: "<api-key>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Bitbucket Server Config Repositories
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,8 +68,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Bitbucket Server Config Peered Network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -112,18 +118,19 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * BitbucketServerConfig can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
+ * * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
  *
- *  * `{{project}}/{{location}}/{{config_id}}`
+ * * `{{project}}/{{location}}/{{config_id}}`
  *
- *  * `{{location}}/{{config_id}}`
+ * * `{{location}}/{{config_id}}`
  *
- *  When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}

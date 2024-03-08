@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.EdgeContainer
     ///     * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Edgecontainer Cluster
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,8 +68,10 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgecontainer Cluster With Maintenance Window
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,8 +127,10 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Edgecontainer Local Control Plane Cluster
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -179,18 +185,19 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Cluster can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:edgecontainer/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{name}}

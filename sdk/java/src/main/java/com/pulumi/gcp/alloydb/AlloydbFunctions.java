@@ -21,6 +21,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -47,6 +49,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLocationsResult> getLocations() {
@@ -56,6 +59,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -82,6 +87,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain() {
@@ -91,6 +97,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +125,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLocationsResult> getLocations(GetLocationsArgs args) {
@@ -126,6 +135,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -152,6 +163,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args) {
@@ -161,6 +173,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -187,6 +201,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLocationsResult> getLocations(GetLocationsArgs args, InvokeOptions options) {
@@ -196,6 +211,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -222,6 +239,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args, InvokeOptions options) {
@@ -231,6 +249,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the supported alloydb database flags in a location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -259,6 +279,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlags(GetSupportedDatabaseFlagsArgs args) {
@@ -268,6 +289,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the supported alloydb database flags in a location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -296,6 +319,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlagsPlain(GetSupportedDatabaseFlagsPlainArgs args) {
@@ -305,6 +329,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the supported alloydb database flags in a location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -333,6 +359,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlags(GetSupportedDatabaseFlagsArgs args, InvokeOptions options) {
@@ -342,6 +369,8 @@ public final class AlloydbFunctions {
      * Use this data source to get information about the supported alloydb database flags in a location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -370,6 +399,7 @@ public final class AlloydbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlagsPlain(GetSupportedDatabaseFlagsPlainArgs args, InvokeOptions options) {

@@ -191,8 +191,10 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
 
         ## Example Usage
+
         ### Region Disk Resource Policy Attachment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -235,20 +237,21 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
 
-         * `{{project}}/{{region}}/{{disk}}/{{name}}`
+        * `{{project}}/{{region}}/{{disk}}/{{name}}`
 
-         * `{{region}}/{{disk}}/{{name}}`
+        * `{{region}}/{{disk}}/{{name}}`
 
-         * `{{disk}}/{{name}}`
+        * `{{disk}}/{{name}}`
 
-         When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
@@ -291,8 +294,10 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
 
         ## Example Usage
+
         ### Region Disk Resource Policy Attachment Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -335,20 +340,21 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
 
-         * `{{project}}/{{region}}/{{disk}}/{{name}}`
+        * `{{project}}/{{region}}/{{disk}}/{{name}}`
 
-         * `{{region}}/{{disk}}/{{name}}`
+        * `{{region}}/{{disk}}/{{name}}`
 
-         * `{{disk}}/{{name}}`
+        * `{{disk}}/{{name}}`
 
-         When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}

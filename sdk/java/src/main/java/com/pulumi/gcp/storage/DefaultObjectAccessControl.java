@@ -39,7 +39,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  * 
  * ## Example Usage
+ * 
  * ### Storage Default Object Access Control Public
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,14 +80,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * DefaultObjectAccessControl can be imported using any of these accepted formats:
  * 
- *  * `{{bucket}}/{{entity}}`
+ * * `{{bucket}}/{{entity}}`
  * 
- *  When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
