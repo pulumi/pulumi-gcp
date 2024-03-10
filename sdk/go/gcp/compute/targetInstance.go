@@ -53,7 +53,7 @@ import (
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(vmimage.SelfLink),
+//						Image: pulumi.String(vmimage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -110,7 +110,7 @@ import (
 //				Zone:        pulumi.String("us-central1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(vmimage.SelfLink),
+//						Image: pulumi.String(vmimage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -125,7 +125,7 @@ import (
 //			_, err = compute.NewTargetInstance(ctx, "custom_network", &compute.TargetInstanceArgs{
 //				Name:     pulumi.String("custom-network"),
 //				Instance: target_vmInstance.ID(),
-//				Network:  *pulumi.String(target_vm.SelfLink),
+//				Network:  pulumi.String(target_vm.SelfLink),
 //			})
 //			if err != nil {
 //				return err
@@ -191,7 +191,7 @@ import (
 //				Zone:        pulumi.String("southamerica-west1-a"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(vmimage.SelfLink),
+//						Image: pulumi.String(vmimage.SelfLink),
 //					},
 //				},
 //			})

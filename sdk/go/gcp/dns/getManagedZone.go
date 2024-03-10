@@ -41,7 +41,7 @@ import (
 //				Name:        pulumi.String(fmt.Sprintf("my-address.%v", envDnsZone.DnsName)),
 //				Type:        pulumi.String("TXT"),
 //				Ttl:         pulumi.Int(300),
-//				ManagedZone: *pulumi.String(envDnsZone.Name),
+//				ManagedZone: pulumi.String(envDnsZone.Name),
 //				Rrdatas: pulumi.StringArray{
 //					pulumi.String("test"),
 //				},

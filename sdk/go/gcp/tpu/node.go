@@ -43,7 +43,7 @@ import (
 //				Name:              pulumi.String("test-tpu"),
 //				Zone:              pulumi.String("us-central1-b"),
 //				AcceleratorType:   pulumi.String("v3-8"),
-//				TensorflowVersion: *pulumi.String(available.Versions[0]),
+//				TensorflowVersion: pulumi.String(available.Versions[0]),
 //				CidrBlock:         pulumi.String("10.2.0.0/29"),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //				Name:                 pulumi.String("test-tpu"),
 //				Zone:                 pulumi.String("us-central1-b"),
 //				AcceleratorType:      pulumi.String("v3-8"),
-//				TensorflowVersion:    *pulumi.String(available.Versions[0]),
+//				TensorflowVersion:    pulumi.String(available.Versions[0]),
 //				Description:          pulumi.String("Google Provider test TPU"),
 //				UseServiceNetworking: pulumi.Bool(true),
 //				Network:              privateServiceConnection.Network,

@@ -502,7 +502,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "encrypt_role", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number)),
 //			})

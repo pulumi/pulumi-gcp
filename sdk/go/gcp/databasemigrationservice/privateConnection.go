@@ -50,7 +50,7 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				VpcPeeringConfig: &databasemigrationservice.PrivateConnectionVpcPeeringConfigArgs{
-//					VpcName: *pulumi.String(_default.Id),
+//					VpcName: pulumi.String(_default.Id),
 //					Subnet:  pulumi.String("10.0.0.0/29"),
 //				},
 //			})

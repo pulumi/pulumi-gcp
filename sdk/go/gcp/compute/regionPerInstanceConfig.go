@@ -54,7 +54,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: *pulumi.String(myImage.SelfLink),
+//						SourceImage: pulumi.String(myImage.SelfLink),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //					},

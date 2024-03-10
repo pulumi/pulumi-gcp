@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = monitoring.NewSlo(ctx, "appeng_slo", &monitoring.SloArgs{
-//				Service:        *pulumi.String(_default.ServiceId),
+//				Service:        pulumi.String(_default.ServiceId),
 //				SloId:          pulumi.String("ae-slo"),
 //				DisplayName:    pulumi.String("Test SLO for App Engine"),
 //				Goal:           pulumi.Float64(0.9),

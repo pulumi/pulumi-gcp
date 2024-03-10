@@ -70,7 +70,7 @@ import (
 //			}
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         *pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(current.Project),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //			})
 //			if err != nil {
