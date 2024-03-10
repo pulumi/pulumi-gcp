@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseLocation(ctx, "example", &essentialcontacts.DocumentAiWarehouseLocationArgs{
 //				Location:                   pulumi.String("us"),
-//				ProjectNumber:              *pulumi.String(project.Number),
+//				ProjectNumber:              pulumi.String(project.Number),
 //				AccessControlMode:          pulumi.String("ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"),
 //				DatabaseType:               pulumi.String("DB_INFRA_SPANNER"),
 //				KmsKey:                     pulumi.String("dummy_key"),

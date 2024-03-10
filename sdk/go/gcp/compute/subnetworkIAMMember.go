@@ -60,7 +60,7 @@ import (
 //				Project:    pulumi.Any(network_with_private_secondary_ip_ranges.Project),
 //				Region:     pulumi.Any(network_with_private_secondary_ip_ranges.Region),
 //				Subnetwork: pulumi.Any(network_with_private_secondary_ip_ranges.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //				Project:    pulumi.Any(network_with_private_secondary_ip_ranges.Project),
 //				Region:     pulumi.Any(network_with_private_secondary_ip_ranges.Region),
 //				Subnetwork: pulumi.Any(network_with_private_secondary_ip_ranges.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

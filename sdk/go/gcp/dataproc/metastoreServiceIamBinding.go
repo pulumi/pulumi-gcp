@@ -58,7 +58,7 @@ import (
 //				Project:    pulumi.Any(_default.Project),
 //				Location:   pulumi.Any(_default.Location),
 //				ServiceId:  pulumi.Any(_default.ServiceId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

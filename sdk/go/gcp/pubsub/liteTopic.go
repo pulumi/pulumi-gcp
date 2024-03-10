@@ -41,7 +41,7 @@ import (
 //			}
 //			example, err := pubsub.NewLiteReservation(ctx, "example", &pubsub.LiteReservationArgs{
 //				Name:               pulumi.String("example-reservation"),
-//				Project:            *pulumi.String(project.Number),
+//				Project:            pulumi.String(project.Number),
 //				ThroughputCapacity: pulumi.Int(2),
 //			})
 //			if err != nil {
@@ -49,7 +49,7 @@ import (
 //			}
 //			_, err = pubsub.NewLiteTopic(ctx, "example", &pubsub.LiteTopicArgs{
 //				Name:    pulumi.String("example-topic"),
-//				Project: *pulumi.String(project.Number),
+//				Project: pulumi.String(project.Number),
 //				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
 //					Count: pulumi.Int(1),
 //					Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{

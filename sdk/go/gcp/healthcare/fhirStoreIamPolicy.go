@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhir_store", &healthcare.FhirStoreIamPolicyArgs{
 //				FhirStoreId: pulumi.String("your-fhir-store-id"),
-//				PolicyData:  *pulumi.String(admin.PolicyData),
+//				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -57,7 +57,7 @@ import (
 //			_, err = compute.NewSnapshotIamPolicy(ctx, "policy", &compute.SnapshotIamPolicyArgs{
 //				Project:    pulumi.Any(snapshot.Project),
 //				Name:       pulumi.Any(snapshot.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

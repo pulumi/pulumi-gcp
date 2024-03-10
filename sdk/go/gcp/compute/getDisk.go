@@ -38,7 +38,7 @@ import (
 //			}
 //			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
 //				BootDisk: &compute.InstanceBootDiskArgs{
-//					Source:     *pulumi.String(persistent_boot_disk.SelfLink),
+//					Source:     pulumi.String(persistent_boot_disk.SelfLink),
 //					AutoDelete: pulumi.Bool(false),
 //				},
 //			})
