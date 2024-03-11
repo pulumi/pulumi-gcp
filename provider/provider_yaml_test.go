@@ -19,7 +19,9 @@ package gcp
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -563,4 +565,31 @@ func TestRegress1488(t *testing.T) {
 	  }
 	}
 	]`, proj, proj))
+}
+
+func TestEnvTokenNotInState(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	output, err := exec.Command("gcloud", "auth", "print-access-token").Output()
+	outputStr := strings.TrimSpace(string(output))
+	if err != nil {
+		errMsg := err.(*exec.ExitError).Stderr
+		t.Fatal(string(errMsg))
+	}
+	log.Printf("GOOGLE_OAUTH_ACCESS_TOKEN: %s\n", outputStr)
+	t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", outputStr)
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "storage-bucket"),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+	test.SetConfig("gcp:config:project", testProject)
+
+	test.Up()
+	stack := test.ExportStack()
+	data, err := stack.Deployment.MarshalJSON()
+	require.NoError(t, err)
+	require.NotContains(t, string(data), "accessToken")
 }
