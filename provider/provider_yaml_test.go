@@ -583,7 +583,11 @@ func TestEnvTokenNotInState(t *testing.T) {
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "storage-bucket"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
-	test.SetConfig("gcp:config:project", testProject)
+	googleProj := os.Getenv("GOOGLE_PROJECT")
+	if googleProj == "" {
+        googleProj = testProject
+    }
+	test.SetConfig("gcp:config:project", googleProj)
 
 	test.Up()
 	stack := test.ExportStack()
