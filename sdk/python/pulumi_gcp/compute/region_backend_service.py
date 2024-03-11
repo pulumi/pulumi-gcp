@@ -1198,8 +1198,10 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         ## Example Usage
+
         ### Region Backend Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1218,8 +1220,10 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service External Iap
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1234,8 +1238,10 @@ class RegionBackendService(pulumi.CustomResource):
                 oauth2_client_secret="xyz",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Cache
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1262,8 +1268,10 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Ilb Round Robin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1281,8 +1289,10 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service External
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1300,8 +1310,10 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service External Weighted
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1320,8 +1332,10 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             locality_lb_policy="WEIGHTED_MAGLEV")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Ilb Ring Hash
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1355,8 +1369,10 @@ class RegionBackendService(pulumi.CustomResource):
                 consecutive_errors=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Balancing Mode
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1416,8 +1432,10 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Connection Tracking
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1443,20 +1461,21 @@ class RegionBackendService(pulumi.CustomResource):
                 enable_strong_affinity=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionBackendService can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
@@ -1581,8 +1600,10 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         ## Example Usage
+
         ### Region Backend Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1601,8 +1622,10 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service External Iap
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1617,8 +1640,10 @@ class RegionBackendService(pulumi.CustomResource):
                 oauth2_client_secret="xyz",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Cache
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1645,8 +1670,10 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Ilb Round Robin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1664,8 +1691,10 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service External
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1683,8 +1712,10 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service External Weighted
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1703,8 +1734,10 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             locality_lb_policy="WEIGHTED_MAGLEV")
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Ilb Ring Hash
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1738,8 +1771,10 @@ class RegionBackendService(pulumi.CustomResource):
                 consecutive_errors=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Balancing Mode
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1799,8 +1834,10 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Backend Service Connection Tracking
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1826,20 +1863,21 @@ class RegionBackendService(pulumi.CustomResource):
                 enable_strong_affinity=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionBackendService can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}

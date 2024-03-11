@@ -18,10 +18,9 @@ namespace Pulumi.Gcp.Compute
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/router/docs/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRouterNatResult> InvokeAsync(GetRouterNatArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.Gcp.Compute
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/router/docs/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRouterNatResult> Invoke(GetRouterNatInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatInvokeArgs(), options.WithDefaults());

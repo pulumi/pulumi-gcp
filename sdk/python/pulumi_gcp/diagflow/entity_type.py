@@ -266,8 +266,10 @@ class EntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
+
         ### Dialogflow Entity Type Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -296,14 +298,15 @@ class EntityType(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EntityType can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
@@ -343,8 +346,10 @@ class EntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
+
         ### Dialogflow Entity Type Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,14 +378,15 @@ class EntityType(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EntityType can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}

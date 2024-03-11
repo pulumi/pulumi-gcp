@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Alloydb
     ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Alloydb Backup Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,8 +78,10 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Alloydb Backup Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -139,18 +143,19 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Backup can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{backup_id}}`
+    /// * `{{project}}/{{location}}/{{backup_id}}`
     /// 
-    ///  * `{{location}}/{{backup_id}}`
+    /// * `{{location}}/{{backup_id}}`
     /// 
-    ///  When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}

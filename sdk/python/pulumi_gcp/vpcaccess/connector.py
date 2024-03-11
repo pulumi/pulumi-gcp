@@ -476,8 +476,10 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
+
         ### Vpc Access Connector
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -487,8 +489,10 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
+        <!--End PulumiCodeChooser -->
         ### Vpc Access Connector Shared Vpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -508,20 +512,21 @@ class Connector(pulumi.CustomResource):
             ),
             machine_type="e2-standard-4")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Connector can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}
@@ -574,8 +579,10 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
+
         ### Vpc Access Connector
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -585,8 +592,10 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
+        <!--End PulumiCodeChooser -->
         ### Vpc Access Connector Shared Vpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,20 +615,21 @@ class Connector(pulumi.CustomResource):
             ),
             machine_type="e2-standard-4")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Connector can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}

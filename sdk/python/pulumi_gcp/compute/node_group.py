@@ -508,8 +508,10 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
+
         ### Node Group Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -525,8 +527,10 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Node Group Maintenance Interval
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -543,8 +547,10 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
+        <!--End PulumiCodeChooser -->
         ### Node Group Autoscaling Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -569,8 +575,10 @@ class NodeGroup(pulumi.CustomResource):
                 max_nodes=10,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Node Group Share Settings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -597,20 +605,21 @@ class NodeGroup(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NodeGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -675,8 +684,10 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
+
         ### Node Group Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -692,8 +703,10 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Node Group Maintenance Interval
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,8 +723,10 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
+        <!--End PulumiCodeChooser -->
         ### Node Group Autoscaling Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -736,8 +751,10 @@ class NodeGroup(pulumi.CustomResource):
                 max_nodes=10,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Node Group Share Settings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -764,20 +781,21 @@ class NodeGroup(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NodeGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}

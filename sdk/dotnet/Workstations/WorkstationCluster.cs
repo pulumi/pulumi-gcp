@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Workstations
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Workstation Cluster Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,8 +57,10 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workstation Cluster Private
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,8 +107,10 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workstation Cluster Custom Domain
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -155,18 +161,19 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// WorkstationCluster can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{workstation_cluster_id}}`
+    /// * `{{project}}/{{location}}/{{workstation_cluster_id}}`
     /// 
-    ///  * `{{location}}/{{workstation_cluster_id}}`
+    /// * `{{location}}/{{workstation_cluster_id}}`
     /// 
-    ///  When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}

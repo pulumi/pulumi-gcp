@@ -15,15 +15,53 @@ import * as utilities from "../utilities";
  * ### ServiceAccount JSON Credential File.
  *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
  *
+ *   <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const oidc = gcp.serviceaccount.getAccountIdToken({
+ *     targetAudience: "https://foo.bar/",
+ * });
+ * export const oidcToken = oidc.then(oidc => oidc.idToken);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Account Impersonation.
  *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
  *
  *   Note: to use the following, you must grant `targetServiceAccount` the
  *   `roles/iam.serviceAccountTokenCreator` role on itself.
+ *
+ *   <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const impersonated = gcp.serviceaccount.getAccountAccessToken({
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     scopes: [
+ *         "userinfo-email",
+ *         "cloud-platform",
+ *     ],
+ *     lifetime: "300s",
+ * });
+ * const oidc = gcp.serviceaccount.getAccountIdToken({
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     includeEmail: true,
+ *     targetAudience: "https://foo.bar/",
+ * });
+ * export const oidcToken = oidc.then(oidc => oidc.idToken);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Invoking Cloud Run Endpoint
  *
  *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,6 +78,7 @@ import * as utilities from "../utilities";
  * }));
  * export const cloudRunResponse = cloudrun.then(cloudrun => cloudrun.body);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountIdToken(args: GetAccountIdTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountIdTokenResult> {
 
@@ -102,15 +141,53 @@ export interface GetAccountIdTokenResult {
  * ### ServiceAccount JSON Credential File.
  *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
  *
+ *   <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const oidc = gcp.serviceaccount.getAccountIdToken({
+ *     targetAudience: "https://foo.bar/",
+ * });
+ * export const oidcToken = oidc.then(oidc => oidc.idToken);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Account Impersonation.
  *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
  *
  *   Note: to use the following, you must grant `targetServiceAccount` the
  *   `roles/iam.serviceAccountTokenCreator` role on itself.
+ *
+ *   <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const impersonated = gcp.serviceaccount.getAccountAccessToken({
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     scopes: [
+ *         "userinfo-email",
+ *         "cloud-platform",
+ *     ],
+ *     lifetime: "300s",
+ * });
+ * const oidc = gcp.serviceaccount.getAccountIdToken({
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     includeEmail: true,
+ *     targetAudience: "https://foo.bar/",
+ * });
+ * export const oidcToken = oidc.then(oidc => oidc.idToken);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Invoking Cloud Run Endpoint
  *
  *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -127,6 +204,7 @@ export interface GetAccountIdTokenResult {
  * }));
  * export const cloudRunResponse = cloudrun.then(cloudrun => cloudrun.body);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountIdTokenOutput(args: GetAccountIdTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIdTokenResult> {
     return pulumi.output(args).apply((a: any) => getAccountIdToken(a, opts))

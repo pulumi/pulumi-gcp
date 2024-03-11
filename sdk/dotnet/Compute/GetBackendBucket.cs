@@ -14,27 +14,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get information about a BackendBucket.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
-        ///     {
-        ///         Name = "my-backend",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_backend_bucket" "my-backend-bucket" {
+        ///   name = "my-backend"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendBucketResult> InvokeAsync(GetBackendBucketArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? new GetBackendBucketArgs(), options.WithDefaults());
@@ -42,27 +28,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get information about a BackendBucket.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
-        ///     {
-        ///         Name = "my-backend",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_backend_bucket" "my-backend-bucket" {
+        ///   name = "my-backend"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetBackendBucketResult> Invoke(GetBackendBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? new GetBackendBucketInvokeArgs(), options.WithDefaults());

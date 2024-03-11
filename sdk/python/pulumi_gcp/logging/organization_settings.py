@@ -234,8 +234,10 @@ class OrganizationSettings(pulumi.CustomResource):
             * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
 
         ## Example Usage
+
         ### Logging Organization Settings All
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,16 +253,17 @@ class OrganizationSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{settings.kms_service_account_id}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OrganizationSettings can be imported using any of these accepted formats:
 
-         * `organizations/{{organization}}/settings`
+        * `organizations/{{organization}}/settings`
 
-         * `{{organization}}`
+        * `{{organization}}`
 
-         When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default organizations/{{organization}}/settings
@@ -296,8 +299,10 @@ class OrganizationSettings(pulumi.CustomResource):
             * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
 
         ## Example Usage
+
         ### Logging Organization Settings All
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -313,16 +318,17 @@ class OrganizationSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{settings.kms_service_account_id}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         OrganizationSettings can be imported using any of these accepted formats:
 
-         * `organizations/{{organization}}/settings`
+        * `organizations/{{organization}}/settings`
 
-         * `{{organization}}`
+        * `{{organization}}`
 
-         When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/organizationSettings:OrganizationSettings default organizations/{{organization}}/settings

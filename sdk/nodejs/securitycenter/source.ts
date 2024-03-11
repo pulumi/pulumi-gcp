@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  *
  * ## Example Usage
+ *
  * ### Scc Source Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,16 +31,17 @@ import * as utilities from "../utilities";
  *     description: "My custom Cloud Security Command Center Finding Source",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Source can be imported using any of these accepted formats:
  *
- *  * `organizations/{{organization}}/sources/{{name}}`
+ * * `organizations/{{organization}}/sources/{{name}}`
  *
- *  * `{{organization}}/{{name}}`
+ * * `{{organization}}/{{name}}`
  *
- *  When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}

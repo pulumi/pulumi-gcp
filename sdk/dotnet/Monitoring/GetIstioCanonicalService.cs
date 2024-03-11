@@ -27,12 +27,12 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Monitoring Istio Canonical Service
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,8 +51,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIstioCanonicalServiceResult> InvokeAsync(GetIstioCanonicalServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceArgs(), options.WithDefaults());
@@ -73,12 +72,12 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Monitoring Istio Canonical Service
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,8 +96,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIstioCanonicalServiceResult> Invoke(GetIstioCanonicalServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceInvokeArgs(), options.WithDefaults());

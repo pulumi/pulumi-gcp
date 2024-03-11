@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Organization Security Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,16 +39,17 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// OrganizationSecurityPolicy can be imported using any of these accepted formats:
     /// 
-    ///  * `locations/global/securityPolicies/{{policy_id}}`
+    /// * `locations/global/securityPolicies/{{policy_id}}`
     /// 
-    ///  * `{{policy_id}}`
+    /// * `{{policy_id}}`
     /// 
-    ///  When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}

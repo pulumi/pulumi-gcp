@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
  *
  * ## Example Usage
+ *
  * ### Bigquery Biglake Catalog
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,18 +27,19 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Catalog can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/catalogs/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/catalogs/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, Catalog can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Catalog can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:biglake/catalog:Catalog default projects/{{project}}/locations/{{location}}/catalogs/{{name}}

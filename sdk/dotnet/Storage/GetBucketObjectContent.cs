@@ -19,12 +19,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Example file object  stored within a folder.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.Gcp.Storage
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBucketObjectContentResult> InvokeAsync(GetBucketObjectContentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectContentResult>("gcp:storage/getBucketObjectContent:getBucketObjectContent", args ?? new GetBucketObjectContentArgs(), options.WithDefaults());
@@ -59,12 +57,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Example file object  stored within a folder.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.Gcp.Storage
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBucketObjectContentResult> Invoke(GetBucketObjectContentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectContentResult>("gcp:storage/getBucketObjectContent:getBucketObjectContent", args ?? new GetBucketObjectContentInvokeArgs(), options.WithDefaults());

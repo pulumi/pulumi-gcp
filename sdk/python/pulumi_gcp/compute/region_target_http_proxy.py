@@ -304,8 +304,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+
         ### Region Target Http Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,8 +346,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Target Http Proxy Https Redirect
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -362,20 +366,21 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_region_url_map.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionTargetHttpProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionTargetHttpProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionTargetHttpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}
@@ -430,8 +435,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+
         ### Region Target Http Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,8 +477,10 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Target Http Proxy Https Redirect
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -488,20 +497,21 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_region_url_map.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionTargetHttpProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionTargetHttpProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionTargetHttpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}

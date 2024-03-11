@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,11 +29,12 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Configure Basic TPU VM With Available Type
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,8 +57,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetV2AcceleratorTypesResult> InvokeAsync(GetV2AcceleratorTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetV2AcceleratorTypesResult>("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args ?? new GetV2AcceleratorTypesArgs(), options.WithDefaults());
@@ -66,10 +65,9 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,11 +80,12 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Configure Basic TPU VM With Available Type
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -109,8 +108,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetV2AcceleratorTypesResult> Invoke(GetV2AcceleratorTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetV2AcceleratorTypesResult>("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args ?? new GetV2AcceleratorTypesInvokeArgs(), options.WithDefaults());

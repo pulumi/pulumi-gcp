@@ -14,8 +14,10 @@ namespace Pulumi.Gcp.Sql
     /// Google's cloud.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Sql Database Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,8 +47,10 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Sql Database Deletion Policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,22 +81,23 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Database can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
+    /// * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
     /// 
-    ///  * `instances/{{instance}}/databases/{{name}}`
+    /// * `instances/{{instance}}/databases/{{name}}`
     /// 
-    ///  * `{{project}}/{{instance}}/{{name}}`
+    /// * `{{project}}/{{instance}}/{{name}}`
     /// 
-    ///  * `{{instance}}/{{name}}`
+    /// * `{{instance}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}

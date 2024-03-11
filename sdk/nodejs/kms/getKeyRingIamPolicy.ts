@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     keyRingId: "{project_id}/{location_name}/{key_ring_name}",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeyRingIamPolicy(args: GetKeyRingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingIamPolicyResult> {
 
@@ -62,6 +64,7 @@ export interface GetKeyRingIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,6 +73,7 @@ export interface GetKeyRingIamPolicyResult {
  *     keyRingId: "{project_id}/{location_name}/{key_ring_name}",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeyRingIamPolicyOutput(args: GetKeyRingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getKeyRingIamPolicy(a, opts))

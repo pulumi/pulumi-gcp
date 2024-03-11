@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAzureVersionsResult> InvokeAsync(GetAzureVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAzureVersionsResult> Invoke(GetAzureVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsInvokeArgs(), options.WithDefaults());

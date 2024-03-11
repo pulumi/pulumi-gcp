@@ -350,8 +350,10 @@ class HaVpnGateway(pulumi.CustomResource):
             * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 
         ## Example Usage
+
         ### Ha Vpn Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,8 +366,10 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Ha Vpn Gateway Ipv6
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,8 +383,10 @@ class HaVpnGateway(pulumi.CustomResource):
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,20 +443,21 @@ class HaVpnGateway(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HaVpnGateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
@@ -511,8 +518,10 @@ class HaVpnGateway(pulumi.CustomResource):
             * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 
         ## Example Usage
+
         ### Ha Vpn Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -525,8 +534,10 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Ha Vpn Gateway Ipv6
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,8 +551,10 @@ class HaVpnGateway(pulumi.CustomResource):
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -598,20 +611,21 @@ class HaVpnGateway(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HaVpnGateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}

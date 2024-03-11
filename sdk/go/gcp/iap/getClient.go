@@ -14,40 +14,6 @@ import (
 // Get info about a Google Cloud IAP Client.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/iap"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-//				ProjectId: pulumi.StringRef("foobar"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iap.LookupClient(ctx, &iap.LookupClientArgs{
-//				Brand:    fmt.Sprintf("projects/%v/brands/[BRAND_NUMBER]", project.Number),
-//				ClientId: apps.Googleusercontent.Com,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientResult

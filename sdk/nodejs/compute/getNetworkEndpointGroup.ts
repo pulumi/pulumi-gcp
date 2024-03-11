@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
     args = args || {};
@@ -104,6 +106,7 @@ export interface GetNetworkEndpointGroupResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -116,6 +119,7 @@ export interface GetNetworkEndpointGroupResult {
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkEndpointGroupOutput(args?: GetNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkEndpointGroupResult> {
     return pulumi.output(args).apply((a: any) => getNetworkEndpointGroup(a, opts))

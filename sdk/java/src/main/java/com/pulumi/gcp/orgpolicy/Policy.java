@@ -24,8 +24,10 @@ import javax.annotation.Nullable;
  * * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
  * * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
  * ## Example Usage
+ * 
  * ### Enforce_policy
  * A test of an enforce orgpolicy policy for a project
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,8 +71,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Folder_policy
  * A test of an orgpolicy policy for a folder
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -114,8 +118,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Organization_policy
  * A test of an orgpolicy policy for an organization
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -149,8 +155,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Project_policy
  * A test of an orgpolicy policy for a project
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -207,7 +215,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dry_run_spec
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -264,15 +274,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Policy can be imported using any of these accepted formats: * `{{parent}}/policies/{{name}}`
+ * Policy can be imported using any of these accepted formats:
+ * * `{{parent}}/policies/{{name}}`
  * 
  * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
+ * $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
  * ```
  * 
  */

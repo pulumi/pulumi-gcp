@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Example creating an ACL on a bucket with one owner, and one reader.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,6 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

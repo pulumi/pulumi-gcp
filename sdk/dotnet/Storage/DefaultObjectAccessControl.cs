@@ -31,8 +31,10 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Storage Default Object Access Control Public
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,14 +58,15 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// DefaultObjectAccessControl can be imported using any of these accepted formats:
     /// 
-    ///  * `{{bucket}}/{{entity}}`
+    /// * `{{bucket}}/{{entity}}`
     /// 
-    ///  When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}

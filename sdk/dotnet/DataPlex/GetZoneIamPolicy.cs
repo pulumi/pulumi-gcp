@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,6 +37,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZoneIamPolicyResult> InvokeAsync(GetZoneIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneIamPolicyResult>("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args ?? new GetZoneIamPolicyArgs(), options.WithDefaults());
@@ -47,6 +49,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,6 +68,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZoneIamPolicyResult> Invoke(GetZoneIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneIamPolicyResult>("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args ?? new GetZoneIamPolicyInvokeArgs(), options.WithDefaults());

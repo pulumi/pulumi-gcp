@@ -13,8 +13,10 @@ import * as utilities from "../utilities";
  * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
  *
  * ## Example Usage
+ *
  * ### Logging Folder Settings Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,6 +25,7 @@ import * as utilities from "../utilities";
  *     folder: "my-folder-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFolderSettings(args: GetFolderSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderSettingsResult> {
 
@@ -91,8 +94,10 @@ export interface GetFolderSettingsResult {
  * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
  *
  * ## Example Usage
+ *
  * ### Logging Folder Settings Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,6 +106,7 @@ export interface GetFolderSettingsResult {
  *     folder: "my-folder-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFolderSettingsOutput(args: GetFolderSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderSettingsResult> {
     return pulumi.output(args).apply((a: any) => getFolderSettings(a, opts))

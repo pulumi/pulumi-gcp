@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  *
  * ## Example Usage
+ *
  * ### Edgecontainer Node Pool
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,8 +53,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Edgecontainer Node Pool With Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,8 +102,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Edgecontainer Local Control Plane Node Pool
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -138,18 +144,19 @@ import * as utilities from "../utilities";
  *     nodeCount: 3,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NodePool can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+ * * `{{project}}/{{location}}/{{cluster}}/{{name}}`
  *
- *  * `{{location}}/{{cluster}}/{{name}}`
+ * * `{{location}}/{{cluster}}/{{name}}`
  *
- *  When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:edgecontainer/nodePool:NodePool default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/nodePools/{{name}}

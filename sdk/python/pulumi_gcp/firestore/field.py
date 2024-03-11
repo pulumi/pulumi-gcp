@@ -302,8 +302,10 @@ class Field(pulumi.CustomResource):
         chosen location.
 
         ## Example Usage
+
         ### Firestore Field Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -332,8 +334,10 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Field Timestamp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,8 +357,10 @@ class Field(pulumi.CustomResource):
             ttl_config=gcp.firestore.FieldTtlConfigArgs(),
             index_config=gcp.firestore.FieldIndexConfigArgs())
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Field Match Override
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,14 +391,15 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Field can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/field:Field default {{name}}
@@ -439,8 +446,10 @@ class Field(pulumi.CustomResource):
         chosen location.
 
         ## Example Usage
+
         ### Firestore Field Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -469,8 +478,10 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Field Timestamp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -490,8 +501,10 @@ class Field(pulumi.CustomResource):
             ttl_config=gcp.firestore.FieldTtlConfigArgs(),
             index_config=gcp.firestore.FieldIndexConfigArgs())
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Field Match Override
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,14 +535,15 @@ class Field(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Field can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/field:Field default {{name}}

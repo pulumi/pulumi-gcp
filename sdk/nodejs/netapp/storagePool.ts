@@ -24,8 +24,10 @@ import * as utilities from "../utilities";
  *     * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
  *
  * ## Example Usage
+ *
  * ### Storage Pool Create
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,18 +68,19 @@ import * as utilities from "../utilities";
  *     network: peeringNetwork.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * storagePool can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}

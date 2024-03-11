@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  * 
  * ## Example Usage
+ * 
  * ### Scc Source Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,16 +62,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Source can be imported using any of these accepted formats:
  * 
- *  * `organizations/{{organization}}/sources/{{name}}`
+ * * `organizations/{{organization}}/sources/{{name}}`
  * 
- *  * `{{organization}}/{{name}}`
+ * * `{{organization}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember default organizations/{{organization}}/sources/{{name}}

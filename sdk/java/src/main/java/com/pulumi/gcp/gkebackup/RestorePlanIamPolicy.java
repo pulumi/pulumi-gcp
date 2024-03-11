@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  * 
  * ## Example Usage
+ * 
  * ### Gkebackup Restoreplan All Namespaces
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,7 +105,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Rollback Namespace
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -192,7 +198,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Protected Application
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -276,7 +285,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan All Cluster Resources
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -354,7 +366,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Rename Namespace
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -461,7 +476,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkebackup Restoreplan Second Transformation
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -563,18 +581,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * RestorePlan can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}

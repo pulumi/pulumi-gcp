@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRepositoryIamPolicyResult> InvokeAsync(GetRepositoryIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryIamPolicyResult>("gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());

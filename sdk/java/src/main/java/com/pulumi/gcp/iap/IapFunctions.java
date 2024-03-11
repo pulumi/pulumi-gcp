@@ -45,6 +45,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -75,6 +77,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs args) {
@@ -84,6 +87,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -114,6 +119,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicyPlain(GetAppEngineServiceIamPolicyPlainArgs args) {
@@ -123,6 +129,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +161,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs args, InvokeOptions options) {
@@ -162,6 +171,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -192,6 +203,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicyPlain(GetAppEngineServiceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -201,6 +213,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineversion
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -232,6 +246,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs args) {
@@ -241,6 +256,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineversion
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -272,6 +289,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicyPlain(GetAppEngineVersionIamPolicyPlainArgs args) {
@@ -281,6 +299,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineversion
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -312,6 +332,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs args, InvokeOptions options) {
@@ -321,6 +342,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for appengineversion
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -352,6 +375,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicyPlain(GetAppEngineVersionIamPolicyPlainArgs args, InvokeOptions options) {
@@ -361,41 +385,6 @@ public final class IapFunctions {
      * Get info about a Google Cloud IAP Client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-     * import com.pulumi.gcp.iap.IapFunctions;
-     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId(&#34;foobar&#34;)
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(apps.googleusercontent().com())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientResult> getClient(GetClientArgs args) {
@@ -405,41 +394,6 @@ public final class IapFunctions {
      * Get info about a Google Cloud IAP Client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-     * import com.pulumi.gcp.iap.IapFunctions;
-     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId(&#34;foobar&#34;)
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(apps.googleusercontent().com())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args) {
@@ -449,41 +403,6 @@ public final class IapFunctions {
      * Get info about a Google Cloud IAP Client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-     * import com.pulumi.gcp.iap.IapFunctions;
-     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId(&#34;foobar&#34;)
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(apps.googleusercontent().com())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientResult> getClient(GetClientArgs args, InvokeOptions options) {
@@ -493,41 +412,6 @@ public final class IapFunctions {
      * Get info about a Google Cloud IAP Client.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-     * import com.pulumi.gcp.iap.IapFunctions;
-     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId(&#34;foobar&#34;)
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format(&#34;projects/%s/brands/[BRAND_NUMBER]&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
-     *             .clientId(apps.googleusercontent().com())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
@@ -537,6 +421,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnel
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -565,6 +451,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelIamPolicyResult> getTunnelIamPolicy() {
@@ -574,6 +461,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnel
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -602,6 +491,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelIamPolicyResult> getTunnelIamPolicyPlain() {
@@ -611,6 +501,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnel
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -639,6 +531,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelIamPolicyResult> getTunnelIamPolicy(GetTunnelIamPolicyArgs args) {
@@ -648,6 +541,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnel
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -676,6 +571,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelIamPolicyResult> getTunnelIamPolicyPlain(GetTunnelIamPolicyPlainArgs args) {
@@ -685,6 +581,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnel
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -713,6 +611,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelIamPolicyResult> getTunnelIamPolicy(GetTunnelIamPolicyArgs args, InvokeOptions options) {
@@ -722,6 +621,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnel
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -750,6 +651,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelIamPolicyResult> getTunnelIamPolicyPlain(GetTunnelIamPolicyPlainArgs args, InvokeOptions options) {
@@ -759,6 +661,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnelinstance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -789,6 +693,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs args) {
@@ -798,6 +703,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnelinstance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -828,6 +735,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicyPlain(GetTunnelInstanceIamPolicyPlainArgs args) {
@@ -837,6 +745,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnelinstance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -867,6 +777,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs args, InvokeOptions options) {
@@ -876,6 +787,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for tunnelinstance
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -906,6 +819,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicyPlain(GetTunnelInstanceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -915,6 +829,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -944,6 +860,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs args) {
@@ -953,6 +870,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -982,6 +901,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicyPlain(GetWebBackendServiceIamPolicyPlainArgs args) {
@@ -991,6 +911,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1020,6 +942,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs args, InvokeOptions options) {
@@ -1029,6 +952,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1058,6 +983,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicyPlain(GetWebBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -1067,6 +993,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for web
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1095,6 +1023,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebIamPolicyResult> getWebIamPolicy() {
@@ -1104,6 +1033,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for web
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1132,6 +1063,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebIamPolicyResult> getWebIamPolicyPlain() {
@@ -1141,6 +1073,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for web
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1169,6 +1103,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebIamPolicyResult> getWebIamPolicy(GetWebIamPolicyArgs args) {
@@ -1178,6 +1113,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for web
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1206,6 +1143,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebIamPolicyResult> getWebIamPolicyPlain(GetWebIamPolicyPlainArgs args) {
@@ -1215,6 +1153,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for web
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1243,6 +1183,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebIamPolicyResult> getWebIamPolicy(GetWebIamPolicyArgs args, InvokeOptions options) {
@@ -1252,6 +1193,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for web
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1280,6 +1223,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebIamPolicyResult> getWebIamPolicyPlain(GetWebIamPolicyPlainArgs args, InvokeOptions options) {
@@ -1289,6 +1233,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webregionbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1319,6 +1265,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs args) {
@@ -1328,6 +1275,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webregionbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1358,6 +1307,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicyPlain(GetWebRegionBackendServiceIamPolicyPlainArgs args) {
@@ -1367,6 +1317,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webregionbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1397,6 +1349,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs args, InvokeOptions options) {
@@ -1406,6 +1359,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webregionbackendservice
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1436,6 +1391,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicyPlain(GetWebRegionBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -1445,6 +1401,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypeappengine
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1474,6 +1432,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs args) {
@@ -1483,6 +1442,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypeappengine
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1512,6 +1473,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicyPlain(GetWebTypeAppEngineIamPolicyPlainArgs args) {
@@ -1521,6 +1483,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypeappengine
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1550,6 +1514,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs args, InvokeOptions options) {
@@ -1559,6 +1524,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypeappengine
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1588,6 +1555,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicyPlain(GetWebTypeAppEngineIamPolicyPlainArgs args, InvokeOptions options) {
@@ -1597,6 +1565,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypecompute
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1625,6 +1595,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicy() {
@@ -1634,6 +1605,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypecompute
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1662,6 +1635,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicyPlain() {
@@ -1671,6 +1645,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypecompute
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1699,6 +1675,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs args) {
@@ -1708,6 +1685,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypecompute
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1736,6 +1715,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicyPlain(GetWebTypeComputeIamPolicyPlainArgs args) {
@@ -1745,6 +1725,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypecompute
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1773,6 +1755,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs args, InvokeOptions options) {
@@ -1782,6 +1765,8 @@ public final class IapFunctions {
      * Retrieves the current IAM policy data for webtypecompute
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1810,6 +1795,7 @@ public final class IapFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicyPlain(GetWebTypeComputeIamPolicyPlainArgs args, InvokeOptions options) {

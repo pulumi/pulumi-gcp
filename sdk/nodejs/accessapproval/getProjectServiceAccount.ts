@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectServiceAccount(args: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
 
@@ -77,6 +79,7 @@ export interface GetProjectServiceAccountResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,6 +93,7 @@ export interface GetProjectServiceAccountResult {
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectServiceAccountOutput(args: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getProjectServiceAccount(a, opts))

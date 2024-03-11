@@ -22,8 +22,10 @@ import (
 // whole cluster!
 //
 // ## Example Usage
+//
 // ### Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,8 +50,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Advanced
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,8 +136,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Using A GPU Accelerator
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -170,6 +178,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

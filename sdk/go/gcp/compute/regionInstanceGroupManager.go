@@ -25,8 +25,10 @@ import (
 // > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
 //
 // ## Example Usage
+//
 // ### With Top Level Instance Template (`Google` Provider)
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,7 +99,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### With Multiple Versions
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,14 +140,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Instance group managers can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}

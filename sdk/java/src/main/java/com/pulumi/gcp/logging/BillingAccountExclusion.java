@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,14 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Billing account logging exclusions can be imported using their URI, e.g.
  * 
- *  * `billingAccounts/{{billing_account}}/exclusions/{{name}}`
+ * * `billingAccounts/{{billing_account}}/exclusions/{{name}}`
  * 
- *  When using the `pulumi import` command, billing account logging exclusions can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, billing account logging exclusions can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion default billingAccounts/{{billing_account}}/exclusions/{{name}}

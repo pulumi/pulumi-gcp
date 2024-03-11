@@ -21,8 +21,10 @@ import (
 //   - [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 //
 // ## Example Usage
+//
 // ### Bigquery Routine Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,8 +58,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Json
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,8 +106,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Tvf
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -168,8 +174,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Pyspark
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -239,8 +247,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Pyspark Mainfile
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -296,8 +306,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Spark Jar
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -352,8 +364,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Remote Function
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -403,18 +417,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Routine can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
+// * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
 //
-//   - `{{project}}/{{dataset_id}}/{{routine_id}}`
+// * `{{project}}/{{dataset_id}}/{{routine_id}}`
 //
-//   - `{{dataset_id}}/{{routine_id}}`
+// * `{{dataset_id}}/{{routine_id}}`
 //
-//     When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}

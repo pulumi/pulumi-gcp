@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Healthcare Consent Store Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,8 +45,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Consent Store Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,8 +77,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Consent Store Iam
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -111,14 +117,15 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ConsentStore can be imported using any of these accepted formats:
     /// 
-    ///  * `{{dataset}}/consentStores/{{name}}`
+    /// * `{{dataset}}/consentStores/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}

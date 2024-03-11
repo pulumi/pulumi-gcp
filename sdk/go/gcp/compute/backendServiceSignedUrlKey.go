@@ -21,8 +21,10 @@ import (
 //   - [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
 //
 // ## Example Usage
+//
 // ### Backend Service Signed Url Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -115,6 +117,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     datasetId: dataset.datasetId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatasetIamPolicy(args: GetDatasetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetIamPolicyResult> {
 
@@ -66,6 +68,7 @@ export interface GetDatasetIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,6 +77,7 @@ export interface GetDatasetIamPolicyResult {
  *     datasetId: dataset.datasetId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatasetIamPolicyOutput(args: GetDatasetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDatasetIamPolicy(a, opts))

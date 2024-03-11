@@ -25,8 +25,10 @@ namespace Pulumi.Gcp.Container
     /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// 
     /// ### With A Separately Managed Node Pool (Recommended)
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,12 +71,15 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
     /// This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
     /// `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
+    /// 
     /// ### With The Default Node Pool
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,8 +120,11 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Autopilot
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -140,20 +148,21 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
     /// 
-    ///  provider value will be used. Examples:
+    /// provider value will be used. Examples:
     /// 
-    ///  * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+    /// * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
     /// 
-    ///  * `{{project_id}}/{{location}}/{{cluster_id}}`
+    /// * `{{project_id}}/{{location}}/{{cluster_id}}`
     /// 
-    ///  * `{{location}}/{{cluster_id}}`
+    /// * `{{location}}/{{cluster_id}}`
     /// 
-    ///  When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -167,11 +176,11 @@ namespace Pulumi.Gcp.Container
     /// $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
     /// ```
     /// 
-    ///  For example, the following fields will show diffs if set in config:
+    /// For example, the following fields will show diffs if set in config:
     /// 
-    ///  - `min_master_version`
+    /// - `min_master_version`
     /// 
-    ///  - `remove_default_node_pool`
+    /// - `remove_default_node_pool`
     /// </summary>
     [GcpResourceType("gcp:container/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource

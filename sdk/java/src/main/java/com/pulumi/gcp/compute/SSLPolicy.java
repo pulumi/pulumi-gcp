@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
  * 
  * ## Example Usage
+ * 
  * ### Ssl Policy Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,18 +74,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * SslPolicy can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/global/sslPolicies/{{name}}`
+ * * `projects/{{project}}/global/sslPolicies/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}

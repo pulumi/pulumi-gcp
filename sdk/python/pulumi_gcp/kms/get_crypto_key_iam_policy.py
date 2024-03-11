@@ -84,12 +84,14 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=crypto_key["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str crypto_key_id: The crypto key ID, in the form
@@ -114,12 +116,14 @@ def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] 
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=crypto_key["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str crypto_key_id: The crypto key ID, in the form

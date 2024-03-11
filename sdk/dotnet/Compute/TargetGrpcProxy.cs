@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using Target gRPC Proxies](https://cloud.google.com/traffic-director/docs/proxyless-overview)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Target Grpc Proxy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -183,18 +185,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// TargetGrpcProxy can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/global/targetGrpcProxies/{{name}}`
+    /// * `projects/{{project}}/global/targetGrpcProxies/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}

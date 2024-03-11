@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const jwt = foo.then(foo => foo.jwt);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountJwt(args: GetAccountJwtArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountJwtResult> {
 
@@ -83,6 +85,7 @@ export interface GetAccountJwtResult {
  *
  * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,6 +100,7 @@ export interface GetAccountJwtResult {
  * });
  * export const jwt = foo.then(foo => foo.jwt);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountJwtOutput(args: GetAccountJwtOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountJwtResult> {
     return pulumi.output(args).apply((a: any) => getAccountJwt(a, opts))

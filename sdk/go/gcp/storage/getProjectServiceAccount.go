@@ -46,8 +46,10 @@ import (
 // [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 //
 // ## Example Usage
+//
 // ### Pub/Sub Notifications
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,8 +84,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Cloud KMS Keys
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,6 +133,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectServiceAccountResult

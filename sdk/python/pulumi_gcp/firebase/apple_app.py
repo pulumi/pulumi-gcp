@@ -332,8 +332,10 @@ class AppleApp(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Firebase Apple App Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,8 +345,10 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Basic",
             bundle_id="apple.app.12345")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase Apple App Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,22 +370,23 @@ class AppleApp(pulumi.CustomResource):
             team_id="9987654321",
             api_key_id=apple.uid)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AppleApp can be imported using any of these accepted formats:
 
-         * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
+        * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
 
-         * `projects/{{project}}/iosApps/{{app_id}}`
+        * `projects/{{project}}/iosApps/{{app_id}}`
 
-         * `{{project}}/{{project}}/{{app_id}}`
+        * `{{project}}/{{project}}/{{app_id}}`
 
-         * `iosApps/{{app_id}}`
+        * `iosApps/{{app_id}}`
 
-         * `{{app_id}}`
+        * `{{app_id}}`
 
-         When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}
@@ -429,8 +434,10 @@ class AppleApp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Firebase Apple App Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,8 +447,10 @@ class AppleApp(pulumi.CustomResource):
             display_name="Display Name Basic",
             bundle_id="apple.app.12345")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase Apple App Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,22 +472,23 @@ class AppleApp(pulumi.CustomResource):
             team_id="9987654321",
             api_key_id=apple.uid)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AppleApp can be imported using any of these accepted formats:
 
-         * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
+        * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
 
-         * `projects/{{project}}/iosApps/{{app_id}}`
+        * `projects/{{project}}/iosApps/{{app_id}}`
 
-         * `{{project}}/{{project}}/{{app_id}}`
+        * `{{project}}/{{project}}/{{app_id}}`
 
-         * `iosApps/{{app_id}}`
+        * `iosApps/{{app_id}}`
 
-         * `{{app_id}}`
+        * `{{app_id}}`
 
-         When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}

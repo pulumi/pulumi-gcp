@@ -95,12 +95,14 @@ def get_source_iam_policy(organization: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.securitycenter.get_source_iam_policy(source=custom_source["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str source: Used to find the parent resource to bind the IAM policy to
@@ -128,12 +130,14 @@ def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = Non
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.securitycenter.get_source_iam_policy(source=custom_source["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str source: Used to find the parent resource to bind the IAM policy to

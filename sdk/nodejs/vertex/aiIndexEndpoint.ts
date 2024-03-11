@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
  *
  * ## Example Usage
+ *
  * ### Vertex Ai Index Endpoint
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,8 +46,10 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [vertexRange.name],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Index Endpoint With Psc
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,8 +68,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Vertex Ai Index Endpoint With Public Endpoint
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,20 +86,21 @@ import * as utilities from "../utilities";
  *     publicEndpointEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * IndexEndpoint can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}

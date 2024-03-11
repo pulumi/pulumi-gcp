@@ -105,6 +105,7 @@ def get_tunnel_instance_iam_policy(instance: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_tunnel_instance_iam_policy(instance: Optional[str] = None,
         zone=tunnelvm["zone"],
         instance=tunnelvm["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance: Used to find the parent resource to bind the IAM policy to
@@ -145,6 +147,7 @@ def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] 
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -153,6 +156,7 @@ def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] 
         zone=tunnelvm["zone"],
         instance=tunnelvm["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str instance: Used to find the parent resource to bind the IAM policy to

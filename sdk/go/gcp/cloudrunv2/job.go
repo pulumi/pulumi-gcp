@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/run/docs/)
 //
 // ## Example Usage
+//
 // ### Cloudrunv2 Job Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,8 +58,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Job Limits
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,8 +101,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Job Sql
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -208,8 +214,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Job Vpcaccess
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -278,8 +286,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Job Directvpc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -328,8 +338,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Job Secret
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -417,8 +429,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Job Emptydir
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -468,18 +482,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Job can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}

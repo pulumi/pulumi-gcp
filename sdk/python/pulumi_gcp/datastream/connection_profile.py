@@ -536,8 +536,10 @@ class ConnectionProfile(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
 
         ## Example Usage
+
         ### Datastream Connection Profile Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,8 +553,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 root_path="/path",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgresql Private Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -621,8 +625,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 private_connection=private_connection.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -645,8 +651,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 "key": "value",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgres
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -700,18 +708,19 @@ class ConnectionProfile(pulumi.CustomResource):
                 database=db.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
+        * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
 
-         * `{{project}}/{{location}}/{{connection_profile_id}}`
+        * `{{project}}/{{location}}/{{connection_profile_id}}`
 
-         * `{{location}}/{{connection_profile_id}}`
+        * `{{location}}/{{connection_profile_id}}`
 
-         When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
@@ -768,8 +777,10 @@ class ConnectionProfile(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
 
         ## Example Usage
+
         ### Datastream Connection Profile Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -783,8 +794,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 root_path="/path",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgresql Private Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -853,8 +866,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 private_connection=private_connection.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -877,8 +892,10 @@ class ConnectionProfile(pulumi.CustomResource):
                 "key": "value",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Datastream Connection Profile Postgres
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -932,18 +949,19 @@ class ConnectionProfile(pulumi.CustomResource):
                 database=db.name,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
+        * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
 
-         * `{{project}}/{{location}}/{{connection_profile_id}}`
+        * `{{project}}/{{location}}/{{connection_profile_id}}`
 
-         * `{{location}}/{{connection_profile_id}}`
+        * `{{location}}/{{connection_profile_id}}`
 
-         When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}

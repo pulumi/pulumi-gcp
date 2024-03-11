@@ -28,6 +28,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,16 +62,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Folders can be imported using the folder's id, e.g.
 //
-//   - `folders/{{folder_id}}`
+// * `folders/{{folder_id}}`
 //
-//   - `{{folder_id}}`
+// * `{{folder_id}}`
 //
-//     When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}

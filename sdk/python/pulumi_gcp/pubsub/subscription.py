@@ -886,8 +886,10 @@ class Subscription(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+
         ### Pubsub Subscription Push
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -907,8 +909,10 @@ class Subscription(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Pull
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -931,8 +935,10 @@ class Subscription(pulumi.CustomResource):
             ),
             enable_message_ordering=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Dead Letter
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -947,8 +953,10 @@ class Subscription(pulumi.CustomResource):
                 max_delivery_attempts=10,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -984,8 +992,10 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq Table Schema
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1022,8 +1032,10 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1049,8 +1061,10 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage Avro
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1079,18 +1093,19 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subscription can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/subscriptions/{{name}}`
+        * `projects/{{project}}/subscriptions/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
@@ -1212,8 +1227,10 @@ class Subscription(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+
         ### Pubsub Subscription Push
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1233,8 +1250,10 @@ class Subscription(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Pull
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1257,8 +1276,10 @@ class Subscription(pulumi.CustomResource):
             ),
             enable_message_ordering=False)
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Dead Letter
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1273,8 +1294,10 @@ class Subscription(pulumi.CustomResource):
                 max_delivery_attempts=10,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1310,8 +1333,10 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Bq Table Schema
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1348,8 +1373,10 @@ class Subscription(pulumi.CustomResource):
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1375,8 +1402,10 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Subscription Push Cloudstorage Avro
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1405,18 +1434,19 @@ class Subscription(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subscription can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/subscriptions/{{name}}`
+        * `projects/{{project}}/subscriptions/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}

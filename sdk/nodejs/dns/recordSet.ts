@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Binding a DNS name to the ephemeral IP of a new instance:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,8 +42,11 @@ import * as utilities from "../utilities";
  *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfigs?.[0]?.natIp)],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Adding an A record
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,8 +63,11 @@ import * as utilities from "../utilities";
  *     rrdatas: ["8.8.8.8"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Adding an MX record
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,10 +90,13 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Adding an SPF record
  *
  * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -102,10 +113,13 @@ import * as utilities from "../utilities";
  *     rrdatas: ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Adding a CNAME record
  *
  *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -122,9 +136,12 @@ import * as utilities from "../utilities";
  *     rrdatas: ["frontend.mydomain.com."],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Setting Routing Policy instead of using rrdatas
  * ### Geolocation
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -148,8 +165,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Primary-Backup
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -205,18 +225,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * DNS record sets can be imported using either of these accepted formats:
  *
- *  * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
+ * * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}/{{type}}`
+ * * `{{project}}/{{zone}}/{{name}}/{{type}}`
  *
- *  * `{{zone}}/{{name}}/{{type}}`
+ * * `{{zone}}/{{name}}/{{type}}`
  *
- *  When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
@@ -230,7 +251,7 @@ import * as utilities from "../utilities";
  * $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
  * ```
  *
- *  Note: The record name must include the trailing dot at the end.
+ * Note: The record name must include the trailing dot at the end.
  */
 export class RecordSet extends pulumi.CustomResource {
     /**

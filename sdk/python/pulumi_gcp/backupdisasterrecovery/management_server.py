@@ -250,8 +250,10 @@ class ManagementServer(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Backup Dr Management Server
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -276,18 +278,19 @@ class ManagementServer(pulumi.CustomResource):
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ManagementServer can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default projects/{{project}}/locations/{{location}}/managementServers/{{name}}
@@ -321,8 +324,10 @@ class ManagementServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Backup Dr Management Server
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,18 +352,19 @@ class ManagementServer(pulumi.CustomResource):
                 peering_mode="PRIVATE_SERVICE_ACCESS",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ManagementServer can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default projects/{{project}}/locations/{{location}}/managementServers/{{name}}

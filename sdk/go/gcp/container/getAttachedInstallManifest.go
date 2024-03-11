@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAttachedInstallManifest(ctx *pulumi.Context, args *GetAttachedInstallManifestArgs, opts ...pulumi.InvokeOption) (*GetAttachedInstallManifestResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachedInstallManifestResult

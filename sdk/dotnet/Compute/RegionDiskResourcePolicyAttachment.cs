@@ -16,8 +16,10 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** This resource does not support zonal disks (`gcp.compute.Disk`). For zonal disks, please refer to the `gcp.compute.DiskResourcePolicyAttachment` resource.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Region Disk Resource Policy Attachment Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,20 +90,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
+    /// * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{disk}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{disk}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{disk}}/{{name}}`
+    /// * `{{region}}/{{disk}}/{{name}}`
     /// 
-    ///  * `{{disk}}/{{name}}`
+    /// * `{{disk}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}

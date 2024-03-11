@@ -15,8 +15,10 @@ import (
 // For more information, see:
 // * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
 // ## Example Usage
+//
 // ### Basic_ruleset
 // Creates a basic Firestore ruleset
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,8 +52,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Minimal_ruleset
 // Creates a minimal Firestore ruleset
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,18 +87,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Ruleset can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/rulesets/{{name}}`
+// * `projects/{{project}}/rulesets/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Ruleset can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Ruleset can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebaserules/ruleset:Ruleset default projects/{{project}}/rulesets/{{name}}

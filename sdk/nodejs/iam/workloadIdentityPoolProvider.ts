@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
  *
  * ## Example Usage
+ *
  * ### Iam Workload Identity Pool Provider Aws Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,8 +33,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Provider Aws Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,8 +59,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Provider Oidc Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,8 +79,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Provider Oidc Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -105,8 +113,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Provider Saml Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -128,8 +138,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Provider Saml Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -154,8 +166,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -187,18 +201,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
+ * * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
  *
- *  * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+ * * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
  *
- *  * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+ * * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
  *
- *  When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
@@ -280,12 +295,6 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * the total size of all mapped attributes must not exceed 8KB.
      * For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * - If any custom attribute mappings are defined, they must include a mapping to the
-     * `google.subject` attribute.
-     * For OIDC providers, the following rules apply:
-     * - Custom attribute mappings must be defined, and must include a mapping to the
-     * `google.subject` attribute. For example, the following maps the `sub` claim of the
-     * incoming credential to the `subject` attribute on a Google token.
      */
     public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -449,12 +458,6 @@ export interface WorkloadIdentityPoolProviderState {
      * the total size of all mapped attributes must not exceed 8KB.
      * For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * - If any custom attribute mappings are defined, they must include a mapping to the
-     * `google.subject` attribute.
-     * For OIDC providers, the following rules apply:
-     * - Custom attribute mappings must be defined, and must include a mapping to the
-     * `google.subject` attribute. For example, the following maps the `sub` claim of the
-     * incoming credential to the `subject` attribute on a Google token.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -566,12 +569,6 @@ export interface WorkloadIdentityPoolProviderArgs {
      * the total size of all mapped attributes must not exceed 8KB.
      * For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * - If any custom attribute mappings are defined, they must include a mapping to the
-     * `google.subject` attribute.
-     * For OIDC providers, the following rules apply:
-     * - Custom attribute mappings must be defined, and must include a mapping to the
-     * `google.subject` attribute. For example, the following maps the `sub` claim of the
-     * incoming credential to the `subject` attribute on a Google token.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -104,6 +104,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
 
     Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import json
@@ -117,6 +118,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
         expires_in=60)
     pulumi.export("jwt", foo.jwt)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
@@ -154,6 +156,7 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
 
     Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import json
@@ -167,6 +170,7 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
         expires_in=60)
     pulumi.export("jwt", foo.jwt)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.

@@ -71,7 +71,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Maximum percentage of hosts in the load balancing pool for the backend service
-        /// that can be ejected. Defaults to 10%.
+        /// that can be ejected. Defaults to 10%!
+        /// (MISSING)
         /// </summary>
         [Input("maxEjectionPercent")]
         public Input<int>? MaxEjectionPercent { get; set; }

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: "my-beyondcorp-app-gateway",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppGateway(args: GetAppGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGatewayResult> {
 
@@ -78,6 +80,7 @@ export interface GetAppGatewayResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,6 +89,7 @@ export interface GetAppGatewayResult {
  *     name: "my-beyondcorp-app-gateway",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppGatewayOutput(args: GetAppGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGatewayResult> {
     return pulumi.output(args).apply((a: any) => getAppGateway(a, opts))

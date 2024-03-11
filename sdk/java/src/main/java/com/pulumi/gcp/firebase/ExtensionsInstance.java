@@ -19,7 +19,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Firebase Extentions Instance Resize Image
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -82,18 +85,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Instance can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/instances/{{instance_id}}`
+ * * `projects/{{project}}/instances/{{instance_id}}`
  * 
- *  * `{{project}}/{{instance_id}}`
+ * * `{{project}}/{{instance_id}}`
  * 
- *  * `{{instance_id}}`
+ * * `{{instance_id}}`
  * 
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}

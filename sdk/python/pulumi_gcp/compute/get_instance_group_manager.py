@@ -282,6 +282,7 @@ def get_instance_group_manager(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -290,6 +291,7 @@ def get_instance_group_manager(name: Optional[str] = None,
         zone="us-central1-a")
     igm2 = gcp.compute.get_instance_group_manager(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
@@ -347,6 +349,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -355,6 +358,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]
         zone="us-central1-a")
     igm2 = gcp.compute.get_instance_group_manager(self_link="https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/instanceGroupManagers/my-igm")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.

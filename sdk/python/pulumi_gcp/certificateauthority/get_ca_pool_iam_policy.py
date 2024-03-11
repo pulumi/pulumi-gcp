@@ -105,12 +105,14 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=default["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ca_pool: Used to find the parent resource to bind the IAM policy to
@@ -146,12 +148,14 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=default["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ca_pool: Used to find the parent resource to bind the IAM policy to

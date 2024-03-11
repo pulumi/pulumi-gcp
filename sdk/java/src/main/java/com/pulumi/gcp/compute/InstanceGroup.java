@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  * 
  * ## Example Usage
+ * 
  * ### Empty Instance Group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,7 +58,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Example Usage - With instances and named ports
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -99,10 +106,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Example Usage - Recreating an instance group in use
  * Recreating an instance group that&#39;s in use by another resource will give a
  * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
  * as shown in this example to avoid this type of error.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -189,18 +200,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g.
  * 
- *  * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}`
+ * * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}`
  * 
- *  * `{{project_id}}/{{zone}}/{{instance_group_id}}`
+ * * `{{project_id}}/{{zone}}/{{instance_group_id}}`
  * 
- *  * `{{zone}}/{{instance_group_id}}`
+ * * `{{zone}}/{{instance_group_id}}`
  * 
- *  When using the `pulumi import` command, instance groups can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, instance groups can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{zone}}/{{instance_group_id}}

@@ -188,6 +188,7 @@ class BucketACL(pulumi.CustomResource):
 
         Example creating an ACL on a bucket with one owner, and one reader.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -202,6 +203,7 @@ class BucketACL(pulumi.CustomResource):
                 "READER:group-mygroup",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -238,6 +240,7 @@ class BucketACL(pulumi.CustomResource):
 
         Example creating an ACL on a bucket with one owner, and one reader.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -252,6 +255,7 @@ class BucketACL(pulumi.CustomResource):
                 "READER:group-mygroup",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

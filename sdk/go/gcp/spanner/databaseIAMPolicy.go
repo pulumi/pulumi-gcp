@@ -27,6 +27,7 @@ import (
 //
 // ## google\_spanner\_database\_iam\_policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,9 +67,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,9 +116,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_spanner\_database\_iam\_binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -144,9 +149,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -180,9 +187,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_spanner\_database\_iam\_member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -209,9 +218,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -243,28 +254,29 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ### Importing IAM policies
 //
-//	IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+// IAM policy imports use the identifier of the Spanner Database resource in question. For example:
 //
-//	* `{{project}}/{{instance}}/{{database}}`
+// * `{{project}}/{{instance}}/{{database}}`
 //
-//	An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 //
-//	tf
+// tf
 //
-//	import {
+// import {
 //
 //	id = {{project}}/{{instance}}/{{database}}
 //
 //	to = google_spanner_database_iam_policy.default
 //
-//	}
+// }
 //
-//	The `pulumi import` command can also be used:
+// The `pulumi import` command can also be used:
 //
 // ```sh
 // $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy default {{project}}/{{instance}}/{{database}}

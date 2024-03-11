@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -69,18 +70,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * BigQuery tables can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
+ * * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
  *
- *  * `{{project}}/{{dataset_id}}/{{table_id}}`
+ * * `{{project}}/{{dataset_id}}/{{table_id}}`
  *
- *  * `{{dataset_id}}/{{table_id}}`
+ * * `{{dataset_id}}/{{table_id}}`
  *
- *  When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}

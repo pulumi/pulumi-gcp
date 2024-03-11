@@ -1234,8 +1234,9 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
         """
         :param int fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
-               For example, specify 80 for 80%.
+        :param int percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+               For example, specify 80 for 80%!
+               (MISSING)
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -1255,8 +1256,9 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
     @pulumi.getter
     def percent(self) -> Optional[int]:
         """
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
+        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+        For example, specify 80 for 80%!
+        (MISSING)
         """
         return pulumi.get(self, "percent")
 
@@ -1323,8 +1325,9 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
         """
         :param int fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
-               For example, specify 80 for 80%.
+        :param int percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+               For example, specify 80 for 80%!
+               (MISSING)
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -1344,8 +1347,9 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
     @pulumi.getter
     def percent(self) -> Optional[int]:
         """
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
+        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+        For example, specify 80 for 80%!
+        (MISSING)
         """
         return pulumi.get(self, "percent")
 
@@ -1915,10 +1919,10 @@ class BackendServiceBackend(dict):
                Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
-               Default value is 1, which means the group will serve up to 100%
-               of its configured capacity (depending on balancingMode). A
+               Default value is 1, which means the group will serve up to 100%!
+               (MISSING)of its configured capacity (depending on balancingMode). A
                setting of 0 means the group is completely drained, offering
-               0% of its available Capacity. Valid range is [0.0,1.0].
+               0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
         :param str description: An optional description of this resource.
                Provide this property when you create the resource.
         :param int max_connections: The max number of simultaneous connections for the group. Can
@@ -2018,10 +2022,10 @@ class BackendServiceBackend(dict):
         """
         A multiplier applied to the group's maximum servicing capacity
         (based on UTILIZATION, RATE or CONNECTION).
-        Default value is 1, which means the group will serve up to 100%
-        of its configured capacity (depending on balancingMode). A
+        Default value is 1, which means the group will serve up to 100%!
+        (MISSING)of its configured capacity (depending on balancingMode). A
         setting of 0 means the group is completely drained, offering
-        0% of its available Capacity. Valid range is [0.0,1.0].
+        0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -3254,7 +3258,8 @@ class BackendServiceOutlierDetection(dict):
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
-               that can be ejected. Defaults to 10%.
+               that can be ejected. Defaults to 10%!
+               (MISSING)
         :param int success_rate_minimum_hosts: The number of hosts in a cluster that must have enough request volume to detect
                success rate outliers. If the number of hosts is less than this setting, outlier
                detection via success rate statistics is not performed for any host in the
@@ -3370,7 +3375,8 @@ class BackendServiceOutlierDetection(dict):
     def max_ejection_percent(self) -> Optional[int]:
         """
         Maximum percentage of hosts in the load balancing pool for the backend service
-        that can be ejected. Defaults to 10%.
+        that can be ejected. Defaults to 10%!
+        (MISSING)
         """
         return pulumi.get(self, "max_ejection_percent")
 
@@ -15384,8 +15390,9 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dic
         """
         :param int fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
-               For example, specify 80 for 80%.
+        :param int percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+               For example, specify 80 for 80%!
+               (MISSING)
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -15405,8 +15412,9 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dic
     @pulumi.getter
     def percent(self) -> Optional[int]:
         """
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
+        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+        For example, specify 80 for 80%!
+        (MISSING)
         """
         return pulumi.get(self, "percent")
 
@@ -15473,8 +15481,9 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
         """
         :param int fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
-               For example, specify 80 for 80%.
+        :param int percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+               For example, specify 80 for 80%!
+               (MISSING)
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -15494,8 +15503,9 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
     @pulumi.getter
     def percent(self) -> Optional[int]:
         """
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
+        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+        For example, specify 80 for 80%!
+        (MISSING)
         """
         return pulumi.get(self, "percent")
 
@@ -15685,7 +15695,7 @@ class RegionBackendServiceBackend(dict):
                but is required for non-INTERNAL backend service. The total
                capacity_scaler for all backends must be non-zero.
                A setting of 0 means the group is completely drained, offering
-               0% of its available Capacity. Valid range is [0.0,1.0].
+               0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
         :param str description: An optional description of this resource.
                Provide this property when you create the resource.
         :param bool failover: This field designates whether this is a failover backend. More
@@ -15800,7 +15810,7 @@ class RegionBackendServiceBackend(dict):
         but is required for non-INTERNAL backend service. The total
         capacity_scaler for all backends must be non-zero.
         A setting of 0 means the group is completely drained, offering
-        0% of its available Capacity. Valid range is [0.0,1.0].
+        0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -17072,7 +17082,8 @@ class RegionBackendServiceOutlierDetection(dict):
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
-               that can be ejected. Defaults to 10%.
+               that can be ejected. Defaults to 10%!
+               (MISSING)
         :param int success_rate_minimum_hosts: The number of hosts in a cluster that must have enough request volume to detect
                success rate outliers. If the number of hosts is less than this setting, outlier
                detection via success rate statistics is not performed for any host in the
@@ -17188,7 +17199,8 @@ class RegionBackendServiceOutlierDetection(dict):
     def max_ejection_percent(self) -> Optional[int]:
         """
         Maximum percentage of hosts in the load balancing pool for the backend service
-        that can be ejected. Defaults to 10%.
+        that can be ejected. Defaults to 10%!
+        (MISSING)
         """
         return pulumi.get(self, "max_ejection_percent")
 
@@ -38332,10 +38344,10 @@ class GetBackendServiceBackendResult(dict):
         :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                
-               Default value is 1, which means the group will serve up to 100%
-               of its configured capacity (depending on balancingMode). A
+               Default value is 1, which means the group will serve up to 100%!
+               (MISSING)of its configured capacity (depending on balancingMode). A
                setting of 0 means the group is completely drained, offering
-               0% of its available Capacity. Valid range is [0.0,1.0].
+               0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
         :param str description: Textual description for the Backend Service.
         :param str group: The fully-qualified URL of an Instance Group or Network Endpoint
                Group resource. In case of instance group this defines the list
@@ -38425,10 +38437,10 @@ class GetBackendServiceBackendResult(dict):
         A multiplier applied to the group's maximum servicing capacity
         (based on UTILIZATION, RATE or CONNECTION).
 
-        Default value is 1, which means the group will serve up to 100%
-        of its configured capacity (depending on balancingMode). A
+        Default value is 1, which means the group will serve up to 100%!
+        (MISSING)of its configured capacity (depending on balancingMode). A
         setting of 0 means the group is completely drained, offering
-        0% of its available Capacity. Valid range is [0.0,1.0].
+        0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -39324,7 +39336,8 @@ class GetBackendServiceOutlierDetectionResult(dict):
         :param Sequence['GetBackendServiceOutlierDetectionIntervalArgs'] intervals: Time interval between ejection sweep analysis. This can result in both new
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
         :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
-               that can be ejected. Defaults to 10%.
+               that can be ejected. Defaults to 10%!
+               (MISSING)
         :param int success_rate_minimum_hosts: The number of hosts in a cluster that must have enough request volume to detect
                success rate outliers. If the number of hosts is less than this setting, outlier
                detection via success rate statistics is not performed for any host in the
@@ -39427,7 +39440,8 @@ class GetBackendServiceOutlierDetectionResult(dict):
     def max_ejection_percent(self) -> int:
         """
         Maximum percentage of hosts in the load balancing pool for the backend service
-        that can be ejected. Defaults to 10%.
+        that can be ejected. Defaults to 10%!
+        (MISSING)
         """
         return pulumi.get(self, "max_ejection_percent")
 

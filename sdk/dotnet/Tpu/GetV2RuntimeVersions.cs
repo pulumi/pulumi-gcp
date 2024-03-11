@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,11 +29,12 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Configure Basic TPU VM With Available Version
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,8 +54,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetV2RuntimeVersionsResult> InvokeAsync(GetV2RuntimeVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetV2RuntimeVersionsResult>("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args ?? new GetV2RuntimeVersionsArgs(), options.WithDefaults());
@@ -63,10 +62,9 @@ namespace Pulumi.Gcp.Tpu
         /// <summary>
         /// Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,11 +77,12 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Configure Basic TPU VM With Available Version
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -103,8 +102,7 @@ namespace Pulumi.Gcp.Tpu
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetV2RuntimeVersionsResult> Invoke(GetV2RuntimeVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetV2RuntimeVersionsResult>("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args ?? new GetV2RuntimeVersionsInvokeArgs(), options.WithDefaults());

@@ -416,12 +416,14 @@ def get_function(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_function = gcp.cloudfunctions.get_function(name="function")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of a Cloud Function.
@@ -489,12 +491,14 @@ def get_function_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_function = gcp.cloudfunctions.get_function(name="function")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of a Cloud Function.

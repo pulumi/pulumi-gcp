@@ -20,10 +20,9 @@ namespace Pulumi.Gcp.Compute
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<RouterStatusResult> InvokeAsync(RouterStatusArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.Gcp.Compute
         /// and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,8 +69,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<RouterStatusResult> Invoke(RouterStatusInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusInvokeArgs(), options.WithDefaults());

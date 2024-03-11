@@ -3727,7 +3727,7 @@ class UptimeCheckConfigHttpCheckArgs:
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigHttpCheckAuthInfoArgs'] auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
                Structure is documented below.
-        :param pulumi.Input[str] body: The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+        :param pulumi.Input[str] body: The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         :param pulumi.Input[str] content_type: The content type to use for the check.
                Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
         :param pulumi.Input[str] custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
@@ -3800,7 +3800,7 @@ class UptimeCheckConfigHttpCheckArgs:
     @pulumi.getter
     def body(self) -> Optional[pulumi.Input[str]]:
         """
-        The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+        The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         """
         return pulumi.get(self, "body")
 

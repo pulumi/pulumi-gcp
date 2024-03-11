@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * !&gt; **Note:** This resource does not support &#39;update&#39; and changing any attributes will cause the resource to be recreated.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -101,6 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
  * 
  * ## Example Usage
+ * 
  * ### Active Directory Domain Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,14 +60,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Domain can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:activedirectory/domain:Domain default {{name}}

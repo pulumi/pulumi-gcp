@@ -538,8 +538,10 @@ class PolicyBasedRoute(pulumi.CustomResource):
             * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
 
         ## Example Usage
+
         ### Network Connectivity Policy Based Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -555,8 +557,10 @@ class PolicyBasedRoute(pulumi.CustomResource):
             ),
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Connectivity Policy Based Route Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -587,18 +591,19 @@ class PolicyBasedRoute(pulumi.CustomResource):
                 "env": "default",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PolicyBasedRoute can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
+        * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
@@ -650,8 +655,10 @@ class PolicyBasedRoute(pulumi.CustomResource):
             * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
 
         ## Example Usage
+
         ### Network Connectivity Policy Based Route Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -667,8 +674,10 @@ class PolicyBasedRoute(pulumi.CustomResource):
             ),
             next_hop_other_routes="DEFAULT_ROUTING")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Connectivity Policy Based Route Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -699,18 +708,19 @@ class PolicyBasedRoute(pulumi.CustomResource):
                 "env": "default",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PolicyBasedRoute can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
+        * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}

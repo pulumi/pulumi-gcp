@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,14 +52,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Compute Engine Default Network Tier can be imported using any of these accepted formats:
  * 
- *  * `{{project_id}}`
+ * * `{{project_id}}`
  * 
- *  When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}

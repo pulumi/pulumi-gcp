@@ -21,8 +21,10 @@ import * as utilities from "../utilities";
  * the provider to delete and recreate the node group.
  *
  * ## Example Usage
+ *
  * ### Node Group Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,8 +42,10 @@ import * as utilities from "../utilities";
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Node Group Maintenance Interval
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,8 +64,10 @@ import * as utilities from "../utilities";
  *     maintenanceInterval: "RECURRENT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Node Group Autoscaling Policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,8 +94,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Node Group Share Settings
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -119,20 +127,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NodeGroup can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  *
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}

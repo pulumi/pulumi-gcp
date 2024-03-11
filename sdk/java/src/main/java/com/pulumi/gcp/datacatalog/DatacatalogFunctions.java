@@ -27,6 +27,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -55,6 +57,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs args) {
@@ -64,6 +67,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -92,6 +97,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyPlain(GetEntryGroupIamPolicyPlainArgs args) {
@@ -101,6 +107,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs args, InvokeOptions options) {
@@ -138,6 +147,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for entrygroup
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -166,6 +177,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyPlain(GetEntryGroupIamPolicyPlainArgs args, InvokeOptions options) {
@@ -175,6 +187,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for policytag
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -203,6 +217,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs args) {
@@ -212,6 +227,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for policytag
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -240,6 +257,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyPlain(GetPolicyTagIamPolicyPlainArgs args) {
@@ -249,6 +267,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for policytag
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -277,6 +297,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs args, InvokeOptions options) {
@@ -286,6 +307,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for policytag
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -314,6 +337,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyPlain(GetPolicyTagIamPolicyPlainArgs args, InvokeOptions options) {
@@ -323,6 +347,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -351,6 +377,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs args) {
@@ -360,6 +387,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -388,6 +417,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyPlain(GetTagTemplateIamPolicyPlainArgs args) {
@@ -397,6 +427,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -425,6 +457,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs args, InvokeOptions options) {
@@ -434,6 +467,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for tagtemplate
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -462,6 +497,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyPlain(GetTagTemplateIamPolicyPlainArgs args, InvokeOptions options) {
@@ -471,6 +507,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for taxonomy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -499,6 +537,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs args) {
@@ -508,6 +547,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for taxonomy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -536,6 +577,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicyPlain(GetTaxonomyIamPolicyPlainArgs args) {
@@ -545,6 +587,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for taxonomy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -573,6 +617,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs args, InvokeOptions options) {
@@ -582,6 +627,8 @@ public final class DatacatalogFunctions {
      * Retrieves the current IAM policy data for taxonomy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +657,7 @@ public final class DatacatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicyPlain(GetTaxonomyIamPolicyPlainArgs args, InvokeOptions options) {

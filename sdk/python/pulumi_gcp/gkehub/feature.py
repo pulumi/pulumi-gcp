@@ -396,8 +396,10 @@ class Feature(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+
         ### Gkehub Feature Multi Cluster Ingress
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,8 +425,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Feature Multi Cluster Service Discovery
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -436,8 +440,10 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Feature Anthos Service Mesh
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,8 +452,10 @@ class Feature(pulumi.CustomResource):
             name="servicemesh",
             location="global")
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Observability For Default Logs With Copy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,8 +473,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Observability For Scope Logs With Move
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,8 +494,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Observability For Both Default And Scope Logs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,8 +518,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Service Mesh
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,8 +535,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Configmanagement
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,8 +556,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Policycontroller
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -572,8 +590,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Policycontroller Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -640,8 +660,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -666,8 +688,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Feature Clusterupgrade
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -684,18 +708,19 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Feature can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/features/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/features/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Feature can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Feature can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}
@@ -742,8 +767,10 @@ class Feature(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+
         ### Gkehub Feature Multi Cluster Ingress
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -769,8 +796,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Feature Multi Cluster Service Discovery
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -782,8 +811,10 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Feature Anthos Service Mesh
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -792,8 +823,10 @@ class Feature(pulumi.CustomResource):
             name="servicemesh",
             location="global")
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Observability For Default Logs With Copy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -811,8 +844,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Observability For Scope Logs With Move
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -830,8 +865,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Observability For Both Default And Scope Logs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -852,8 +889,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Service Mesh
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -867,8 +906,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Configmanagement
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -886,8 +927,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Policycontroller
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -918,8 +961,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Policycontroller Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -986,8 +1031,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1012,8 +1059,10 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Feature Clusterupgrade
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1030,18 +1079,19 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Feature can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/features/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/features/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Feature can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Feature can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/feature:Feature default projects/{{project}}/locations/{{location}}/features/{{name}}

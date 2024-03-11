@@ -267,8 +267,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 
         ## Example Usage
+
         ### Dlp Inspect Template Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -381,8 +383,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -444,8 +448,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type Surrogate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,16 +511,17 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InspectTemplate can be imported using any of these accepted formats:
 
-         * `{{parent}}/inspectTemplates/{{name}}`
+        * `{{parent}}/inspectTemplates/{{name}}`
 
-         * `{{parent}}/{{name}}`
+        * `{{parent}}/{{name}}`
 
-         When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
@@ -558,8 +565,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 
         ## Example Usage
+
         ### Dlp Inspect Template Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -672,8 +681,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,8 +746,10 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Dlp Inspect Template Custom Type Surrogate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -796,16 +809,17 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         InspectTemplate can be imported using any of these accepted formats:
 
-         * `{{parent}}/inspectTemplates/{{name}}`
+        * `{{parent}}/inspectTemplates/{{name}}`
 
-         * `{{parent}}/{{name}}`
+        * `{{parent}}/{{name}}`
 
-         When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}

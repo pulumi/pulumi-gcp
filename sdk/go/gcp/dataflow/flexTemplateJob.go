@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Note on "destroy" / "apply"
 //
 // There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -70,6 +73,7 @@ import (
 // randomId
 // resource, for example:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,6 +124,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

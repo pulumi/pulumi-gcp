@@ -15,8 +15,10 @@ import (
 // A secret version resource.
 //
 // ## Example Usage
+//
 // ### Secret Version Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,8 +55,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Secret Version Deletion Policy Abandon
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,8 +99,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Secret Version Deletion Policy Disable
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -137,8 +143,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Secret Version With Base64 String Secret Data
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -186,14 +194,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // SecretVersion can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+// * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 //
-//     When using the `pulumi import` command, SecretVersion can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, SecretVersion can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}

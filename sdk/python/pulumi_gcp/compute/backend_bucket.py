@@ -431,8 +431,10 @@ class BackendBucket(pulumi.CustomResource):
             * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
         ## Example Usage
+
         ### Backend Bucket Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,8 +448,10 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Bucket Security Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -466,8 +470,10 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Bucket Query String Whitelist
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -486,8 +492,10 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Bucket Include Http Headers
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,18 +514,19 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackendBucket can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/backendBuckets/{{name}}`
+        * `projects/{{project}}/global/backendBuckets/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, BackendBucket can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackendBucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
@@ -578,8 +587,10 @@ class BackendBucket(pulumi.CustomResource):
             * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
         ## Example Usage
+
         ### Backend Bucket Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -593,8 +604,10 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Bucket Security Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -613,8 +626,10 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Bucket Query String Whitelist
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -633,8 +648,10 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Bucket Include Http Headers
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -653,18 +670,19 @@ class BackendBucket(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackendBucket can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/backendBuckets/{{name}}`
+        * `projects/{{project}}/global/backendBuckets/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, BackendBucket can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackendBucket can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}

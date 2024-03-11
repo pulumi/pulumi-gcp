@@ -14,73 +14,50 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Cloud Ranges
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_netblock_ip_ranges" "netblock" {
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
+        /// output "cidr_blocks" {
+        ///   value = data.google_netblock_ip_ranges.netblock.cidr_blocks
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
-        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
-        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
-        ///     };
-        /// });
+        /// output "cidr_blocks_ipv4" {
+        ///   value = data.google_netblock_ip_ranges.netblock.cidr_blocks_ipv4
+        /// }
+        /// 
+        /// output "cidr_blocks_ipv6" {
+        ///   value = data.google_netblock_ip_ranges.netblock.cidr_blocks_ipv6
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Allow Health Checks
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_netblock_ip_ranges" "legacy-hcs" {
+        ///   range_type = "legacy-health-checkers"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
-        ///     {
-        ///         RangeType = "legacy-health-checkers",
-        ///     });
+        /// resource "google_compute_firewall" "allow-hcs" {
+        ///   name    = "allow-hcs"
+        ///   network = google_compute_network.default.name
         /// 
-        ///     var @default = new Gcp.Compute.Network("default", new()
-        ///     {
-        ///         Name = "test-network",
-        ///     });
+        ///   allow {
+        ///     protocol = "tcp"
+        ///     ports    = ["80"]
+        ///   }
         /// 
-        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
-        ///     {
-        ///         Name = "allow-hcs",
-        ///         Network = @default.Name,
-        ///         Allows = new[]
-        ///         {
-        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
-        ///             {
-        ///                 Protocol = "tcp",
-        ///                 Ports = new[]
-        ///                 {
-        ///                     "80",
-        ///                 },
-        ///             },
-        ///         },
-        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
-        ///     });
+        ///   source_ranges = data.google_netblock_ip_ranges.legacy-hcs.cidr_blocks_ipv4
+        /// }
         /// 
-        /// });
+        /// resource "google_compute_network" "default" {
+        ///   name = "test-network"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetblockIPRangesResult> InvokeAsync(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesArgs(), options.WithDefaults());
@@ -88,73 +65,50 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Cloud Ranges
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_netblock_ip_ranges" "netblock" {
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
+        /// output "cidr_blocks" {
+        ///   value = data.google_netblock_ip_ranges.netblock.cidr_blocks
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
-        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
-        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
-        ///     };
-        /// });
+        /// output "cidr_blocks_ipv4" {
+        ///   value = data.google_netblock_ip_ranges.netblock.cidr_blocks_ipv4
+        /// }
+        /// 
+        /// output "cidr_blocks_ipv6" {
+        ///   value = data.google_netblock_ip_ranges.netblock.cidr_blocks_ipv6
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Allow Health Checks
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_netblock_ip_ranges" "legacy-hcs" {
+        ///   range_type = "legacy-health-checkers"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
-        ///     {
-        ///         RangeType = "legacy-health-checkers",
-        ///     });
+        /// resource "google_compute_firewall" "allow-hcs" {
+        ///   name    = "allow-hcs"
+        ///   network = google_compute_network.default.name
         /// 
-        ///     var @default = new Gcp.Compute.Network("default", new()
-        ///     {
-        ///         Name = "test-network",
-        ///     });
+        ///   allow {
+        ///     protocol = "tcp"
+        ///     ports    = ["80"]
+        ///   }
         /// 
-        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
-        ///     {
-        ///         Name = "allow-hcs",
-        ///         Network = @default.Name,
-        ///         Allows = new[]
-        ///         {
-        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
-        ///             {
-        ///                 Protocol = "tcp",
-        ///                 Ports = new[]
-        ///                 {
-        ///                     "80",
-        ///                 },
-        ///             },
-        ///         },
-        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
-        ///     });
+        ///   source_ranges = data.google_netblock_ip_ranges.legacy-hcs.cidr_blocks_ipv4
+        /// }
         /// 
-        /// });
+        /// resource "google_compute_network" "default" {
+        ///   name = "test-network"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetblockIPRangesResult> Invoke(GetNetblockIPRangesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesInvokeArgs(), options.WithDefaults());

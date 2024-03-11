@@ -16,7 +16,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Firebasehosting Site Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -46,7 +49,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Site Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -84,20 +90,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Site can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/sites/{{site_id}}`
+ * * `projects/{{project}}/sites/{{site_id}}`
  * 
- *  * `{{project}}/{{site_id}}`
+ * * `{{project}}/{{site_id}}`
  * 
- *  * `sites/{{site_id}}`
+ * * `sites/{{site_id}}`
  * 
- *  * `{{site_id}}`
+ * * `{{site_id}}`
  * 
- *  When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}

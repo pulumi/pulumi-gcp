@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * Get info about a GKE cluster from its name and location.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myCluster = gcp.container.getCluster({
- *     name: "my-cluster",
- *     location: "us-east1-a",
- * });
- * export const endpoint = myCluster.then(myCluster => myCluster.endpoint);
- * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.nodePools?.[0]?.instanceGroupUrls);
- * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
- * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
- * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
 
@@ -144,20 +130,6 @@ export interface GetClusterResult {
  * Get info about a GKE cluster from its name and location.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myCluster = gcp.container.getCluster({
- *     name: "my-cluster",
- *     location: "us-east1-a",
- * });
- * export const endpoint = myCluster.then(myCluster => myCluster.endpoint);
- * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.nodePools?.[0]?.instanceGroupUrls);
- * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
- * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
- * ```
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     return pulumi.output(args).apply((a: any) => getCluster(a, opts))

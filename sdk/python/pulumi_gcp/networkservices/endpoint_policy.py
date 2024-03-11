@@ -455,8 +455,10 @@ class EndpointPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Services Endpoint Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -481,8 +483,10 @@ class EndpointPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Endpoint Policy Empty Match
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,18 +507,19 @@ class EndpointPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EndpointPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
+        * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
@@ -555,8 +560,10 @@ class EndpointPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Services Endpoint Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -581,8 +588,10 @@ class EndpointPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Services Endpoint Policy Empty Match
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -603,18 +612,19 @@ class EndpointPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EndpointPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
+        * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}

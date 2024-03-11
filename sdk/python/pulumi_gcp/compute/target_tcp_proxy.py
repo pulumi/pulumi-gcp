@@ -346,8 +346,10 @@ class TargetTCPProxy(pulumi.CustomResource):
             * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 
         ## Example Usage
+
         ### Target Tcp Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,18 +370,19 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             backend_service=default_backend_service.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TargetTcpProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/targetTcpProxies/{{name}}`
+        * `projects/{{project}}/global/targetTcpProxies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TargetTcpProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TargetTcpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default projects/{{project}}/global/targetTcpProxies/{{name}}
@@ -434,8 +437,10 @@ class TargetTCPProxy(pulumi.CustomResource):
             * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 
         ## Example Usage
+
         ### Target Tcp Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -456,18 +461,19 @@ class TargetTCPProxy(pulumi.CustomResource):
             name="test-proxy",
             backend_service=default_backend_service.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TargetTcpProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/targetTcpProxies/{{name}}`
+        * `projects/{{project}}/global/targetTcpProxies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TargetTcpProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TargetTcpProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default projects/{{project}}/global/targetTcpProxies/{{name}}

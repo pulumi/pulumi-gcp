@@ -16,6 +16,8 @@ import java.util.concurrent.CompletableFuture;
 public final class BackupdisasterrecoveryFunctions {
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -44,6 +46,7 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagementServerResult> getManagementServer(GetManagementServerArgs args) {
@@ -51,6 +54,8 @@ public final class BackupdisasterrecoveryFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -79,6 +84,7 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagementServerResult> getManagementServerPlain(GetManagementServerPlainArgs args) {
@@ -86,6 +92,8 @@ public final class BackupdisasterrecoveryFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -114,6 +122,7 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagementServerResult> getManagementServer(GetManagementServerArgs args, InvokeOptions options) {
@@ -121,6 +130,8 @@ public final class BackupdisasterrecoveryFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -149,6 +160,7 @@ public final class BackupdisasterrecoveryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagementServerResult> getManagementServerPlain(GetManagementServerPlainArgs args, InvokeOptions options) {

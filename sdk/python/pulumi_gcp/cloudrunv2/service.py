@@ -63,7 +63,7 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -271,7 +271,7 @@ class ServiceArgs:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
-        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
         Structure is documented below.
         """
         return pulumi.get(self, "traffics")
@@ -376,7 +376,7 @@ class _ServiceState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
@@ -842,7 +842,7 @@ class _ServiceState:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
-        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
         Structure is documented below.
         """
         return pulumi.get(self, "traffics")
@@ -919,8 +919,10 @@ class Service(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
+
         ### Cloudrunv2 Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -935,8 +937,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Limits
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -957,8 +961,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Sql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1026,8 +1032,10 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Vpcaccess
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1062,8 +1070,10 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Directvpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1090,8 +1100,10 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Probes
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1119,8 +1131,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Secret
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1163,8 +1177,10 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Multicontainer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1211,8 +1227,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Gcs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1242,8 +1260,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Nfs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1290,18 +1310,19 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Service can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/services/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/services/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -1348,7 +1369,7 @@ class Service(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
                Structure is documented below.
         """
         ...
@@ -1367,8 +1388,10 @@ class Service(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
+
         ### Cloudrunv2 Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1383,8 +1406,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Limits
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1405,8 +1430,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Sql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1474,8 +1501,10 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Vpcaccess
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1510,8 +1539,10 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Directvpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1538,8 +1569,10 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Probes
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1567,8 +1600,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Secret
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1611,8 +1646,10 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Multicontainer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1659,8 +1696,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Gcs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1690,8 +1729,10 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Nfs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1738,18 +1779,19 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Service can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/services/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/services/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -1948,7 +1990,7 @@ class Service(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
@@ -2265,7 +2307,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def traffics(self) -> pulumi.Output[Sequence['outputs.ServiceTraffic']]:
         """
-        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
         Structure is documented below.
         """
         return pulumi.get(self, "traffics")

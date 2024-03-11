@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  *
  * ## Example Usage
+ *
  * ### Backend Service Signed Url Key
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,6 +70,7 @@ import * as utilities from "../utilities";
  *     backendService: exampleBackend.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

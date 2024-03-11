@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *
  * ## Example Usage
+ *
  * ### Ha Vpn Gateway Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,8 +37,10 @@ import * as utilities from "../utilities";
  *     network: network1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Ha Vpn Gateway Ipv6
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,8 +56,10 @@ import * as utilities from "../utilities";
  *     stackType: "IPV4_IPV6",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -117,20 +123,21 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * HaVpnGateway can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}

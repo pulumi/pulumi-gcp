@@ -805,8 +805,10 @@ class NodePool(pulumi.CustomResource):
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 
         ## Example Usage
+
         ### Using A Separately Managed Node Pool (Recommended)
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -830,8 +832,11 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -861,18 +866,19 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Node pools can be imported using the `project`, `location`, `cluster` and `name`. If
 
-         the project is omitted, the project value in the provider configuration will be used. Examples:
+        the project is omitted, the project value in the provider configuration will be used. Examples:
 
-         * `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}`
+        * `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}`
 
-         * `{{location}}/{{cluster_id}}/{{pool_id}}`
+        * `{{location}}/{{cluster_id}}/{{pool_id}}`
 
-         When using the `pulumi import` command, node pools can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, node pools can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/nodePool:NodePool default {{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}
@@ -954,8 +960,10 @@ class NodePool(pulumi.CustomResource):
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 
         ## Example Usage
+
         ### Using A Separately Managed Node Pool (Recommended)
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -979,8 +987,11 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1010,18 +1021,19 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Node pools can be imported using the `project`, `location`, `cluster` and `name`. If
 
-         the project is omitted, the project value in the provider configuration will be used. Examples:
+        the project is omitted, the project value in the provider configuration will be used. Examples:
 
-         * `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}`
+        * `{{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}`
 
-         * `{{location}}/{{cluster_id}}/{{pool_id}}`
+        * `{{location}}/{{cluster_id}}/{{pool_id}}`
 
-         When using the `pulumi import` command, node pools can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, node pools can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/nodePool:NodePool default {{project_id}}/{{location}}/{{cluster_id}}/{{pool_id}}

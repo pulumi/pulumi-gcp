@@ -14,8 +14,10 @@ namespace Pulumi.Gcp.CertificateManager
     /// that have been issued for a particular hostname
     /// 
     /// ## Example Usage
+    /// 
     /// ### Certificate Manager Certificate Map Entry Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,18 +90,19 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// CertificateMapEntry can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
+    /// * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
     /// 
-    ///  * `{{project}}/{{map}}/{{name}}`
+    /// * `{{project}}/{{map}}/{{name}}`
     /// 
-    ///  * `{{map}}/{{name}}`
+    /// * `{{map}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}

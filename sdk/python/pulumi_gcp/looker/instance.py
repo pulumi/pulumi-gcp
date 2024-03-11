@@ -785,8 +785,10 @@ class Instance(pulumi.CustomResource):
             * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 
         ## Example Usage
+
         ### Looker Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -800,8 +802,10 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Looker Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -851,8 +855,10 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Looker Instance Enterprise Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -919,8 +925,10 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Looker Instance Custom Domain
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -937,20 +945,21 @@ class Instance(pulumi.CustomResource):
                 domain="my-custom-domain.com",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:looker/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
@@ -1035,8 +1044,10 @@ class Instance(pulumi.CustomResource):
             * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 
         ## Example Usage
+
         ### Looker Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1050,8 +1061,10 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Looker Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1101,8 +1114,10 @@ class Instance(pulumi.CustomResource):
                 client_secret="my-client-secret",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Looker Instance Enterprise Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1169,8 +1184,10 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Looker Instance Custom Domain
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1187,20 +1204,21 @@ class Instance(pulumi.CustomResource):
                 domain="my-custom-domain.com",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:looker/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
+ *
  * ### Firestore Default Database
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,8 +35,10 @@ import * as utilities from "../utilities";
  *     type: "FIRESTORE_NATIVE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firestore Database
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,8 +55,10 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firestore Default Database In Datastore Mode
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,8 +70,10 @@ import * as utilities from "../utilities";
  *     type: "DATASTORE_MODE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firestore Database In Datastore Mode
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,18 +90,19 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/databases/{{name}}`
+ * * `projects/{{project}}/databases/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}

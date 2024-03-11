@@ -18,7 +18,10 @@ import javax.annotation.Nullable;
  * A Lien represents an encumbrance on the actions that can be performed on a resource.
  * 
  * ## Example Usage
+ * 
  * ### Resource Manager Lien
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,14 +60,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Lien can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Lien can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Lien can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}

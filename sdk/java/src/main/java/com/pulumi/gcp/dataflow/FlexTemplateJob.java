@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,6 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Note on &#34;destroy&#34; / &#34;apply&#34;
  * 
  * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -79,6 +83,8 @@ import javax.annotation.Nullable;
  * of the new job will fail. One way to do this is with a
  * random_id
  * resource, for example:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -123,6 +129,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -81,8 +81,6 @@ class WorkforcePoolProviderArgs:
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               An object containing a list of `"key": value` pairs.
-               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -211,8 +209,6 @@ class WorkforcePoolProviderArgs:
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
-        An object containing a list of `"key": value` pairs.
-        Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -343,8 +339,6 @@ class _WorkforcePoolProviderState:
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               An object containing a list of `"key": value` pairs.
-               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -455,8 +449,6 @@ class _WorkforcePoolProviderState:
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
-        An object containing a list of `"key": value` pairs.
-        Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -631,8 +623,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         billing/quota project. The account team notifies you when the project is granted access.
 
         ## Example Usage
+
         ### Iam Workforce Pool Provider Saml Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -652,8 +646,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 idp_metadata_xml="<?xml version=\\"1.0\\"?><md:EntityDescriptor xmlns:md=\\"urn:oasis:names:tc:SAML:2.0:metadata\\" entityID=\\"https://test.com\\"><md:IDPSSODescriptor protocolSupportEnumeration=\\"urn:oasis:names:tc:SAML:2.0:protocol\\"> <md:KeyDescriptor use=\\"signing\\"><ds:KeyInfo xmlns:ds=\\"http://www.w3.org/2000/09/xmldsig#\\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\\" Location=\\"https://test.com/sso\\"/></md:IDPSSODescriptor></md:EntityDescriptor>",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Provider Saml Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,8 +673,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Provider Oidc Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,8 +706,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Provider Oidc Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -747,16 +747,17 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkforcePoolProvider can be imported using any of these accepted formats:
 
-         * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
+        * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
 
-         * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
+        * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 
-         When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
@@ -810,8 +811,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               An object containing a list of `"key": value` pairs.
-               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -851,8 +850,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         billing/quota project. The account team notifies you when the project is granted access.
 
         ## Example Usage
+
         ### Iam Workforce Pool Provider Saml Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -872,8 +873,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 idp_metadata_xml="<?xml version=\\"1.0\\"?><md:EntityDescriptor xmlns:md=\\"urn:oasis:names:tc:SAML:2.0:metadata\\" entityID=\\"https://test.com\\"><md:IDPSSODescriptor protocolSupportEnumeration=\\"urn:oasis:names:tc:SAML:2.0:protocol\\"> <md:KeyDescriptor use=\\"signing\\"><ds:KeyInfo xmlns:ds=\\"http://www.w3.org/2000/09/xmldsig#\\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\\" Location=\\"https://test.com/sso\\"/></md:IDPSSODescriptor></md:EntityDescriptor>",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Provider Saml Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -897,8 +900,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Provider Oidc Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -928,8 +933,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Provider Oidc Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -967,16 +974,17 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkforcePoolProvider can be imported using any of these accepted formats:
 
-         * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
+        * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
 
-         * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
+        * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
 
-         When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
@@ -1109,8 +1117,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
-               An object containing a list of `"key": value` pairs.
-               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -1210,8 +1216,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
-        An object containing a list of `"key": value` pairs.
-        Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "attribute_mapping")
 

@@ -341,8 +341,10 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
+
         ### Apigateway Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -362,20 +364,21 @@ class Gateway(pulumi.CustomResource):
             api_config=api_gw_api_config.id,
             gateway_id="my-gateway")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Gateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
+        * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
 
-         * `{{project}}/{{region}}/{{gateway_id}}`
+        * `{{project}}/{{region}}/{{gateway_id}}`
 
-         * `{{region}}/{{gateway_id}}`
+        * `{{region}}/{{gateway_id}}`
 
-         * `{{gateway_id}}`
+        * `{{gateway_id}}`
 
-         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
@@ -427,8 +430,10 @@ class Gateway(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
         ## Example Usage
+
         ### Apigateway Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,20 +453,21 @@ class Gateway(pulumi.CustomResource):
             api_config=api_gw_api_config.id,
             gateway_id="my-gateway")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Gateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
+        * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
 
-         * `{{project}}/{{region}}/{{gateway_id}}`
+        * `{{project}}/{{region}}/{{gateway_id}}`
 
-         * `{{region}}/{{gateway_id}}`
+        * `{{region}}/{{gateway_id}}`
 
-         * `{{gateway_id}}`
+        * `{{gateway_id}}`
 
-         When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}

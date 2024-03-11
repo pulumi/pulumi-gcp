@@ -23,8 +23,10 @@ import (
 //   - [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 //
 // ## Example Usage
+//
 // ### Container Analysis Note Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,8 +55,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Container Analysis Note Attestation Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,18 +99,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Note can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/notes/{{name}}`
+// * `projects/{{project}}/notes/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Note can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}

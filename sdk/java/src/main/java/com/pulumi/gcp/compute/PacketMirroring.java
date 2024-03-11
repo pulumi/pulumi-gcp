@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
  * 
  * ## Example Usage
+ * 
  * ### Compute Packet Mirroring Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -148,20 +151,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * PacketMirroring can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}

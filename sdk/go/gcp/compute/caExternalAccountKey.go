@@ -28,8 +28,10 @@ import (
 // The ACME account registered by using an EAB secret has no expiration.
 //
 // ## Example Usage
+//
 // ### Public Ca External Account Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,6 +55,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

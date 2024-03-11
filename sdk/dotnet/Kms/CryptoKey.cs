@@ -28,8 +28,10 @@ namespace Pulumi.Gcp.Kms
     ///     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Kms Crypto Key Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,8 +55,10 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Kms Crypto Key Asymmetric Sign
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -82,16 +86,17 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// CryptoKey can be imported using any of these accepted formats:
     /// 
-    ///  * `{{key_ring}}/cryptoKeys/{{name}}`
+    /// * `{{key_ring}}/cryptoKeys/{{name}}`
     /// 
-    ///  * `{{key_ring}}/{{name}}`
+    /// * `{{key_ring}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}

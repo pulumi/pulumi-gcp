@@ -13,28 +13,7 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("project", current.Project)
-//			return nil
-//		})
-//	}
-//
-// ```
+// ### Configure Kubernetes Provider With OAuth2 Access Token
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientConfigResult

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_bigtable\_table\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,9 +37,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigtable\_table\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,9 +53,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigtable\_table\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,28 +69,29 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ### Importing IAM policies
  *
- *  IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example:
+ * IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example:
  *
- *  * `"projects/{project}/instances/{instance}/tables/{table}"`
+ * * `"projects/{project}/instances/{instance}/tables/{table}"`
  *
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  *
- *  tf
+ * tf
  *
- *  import {
+ * import {
  *
- *  id = "projects/{project}/instances/{instance}/tables/{table}"
+ *   id = "projects/{project}/instances/{instance}/tables/{table}"
  *
- *  to = google_bigtable_table_iam_policy.default
+ *   to = google_bigtable_table_iam_policy.default
  *
- *  }
+ * }
  *
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  *
  * ```sh
  * $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/instances/{instance}/tables/{table}

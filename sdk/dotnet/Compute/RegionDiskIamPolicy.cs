@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## google\_compute\_disk\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,9 +60,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_compute\_disk\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -84,9 +87,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_compute\_disk\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,44 +111,45 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    ///  * projects/{{project}}/zones/{{zone}}/disks/{{name}}
+    /// * projects/{{project}}/zones/{{zone}}/disks/{{name}}
     /// 
-    ///  * {{project}}/{{zone}}/{{name}}
+    /// * {{project}}/{{zone}}/{{name}}
     /// 
-    ///  * {{zone}}/{{name}}
+    /// * {{zone}}/{{name}}
     /// 
-    ///  * {{name}}
+    /// * {{name}}
     /// 
-    ///  Any variables not passed in the import command will be taken from the provider configuration.
+    /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    ///  Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member.
+    /// Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member.
     /// 
-    ///  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+    /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane@example.com"
     /// ```
     /// 
-    ///  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+    /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer"
     /// ```
     /// 
-    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy editor projects/{{project}}/zones/{{zone}}/disks/{{disk}}
     /// ```
     /// 
-    ///  -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy")]
     public partial class RegionDiskIamPolicy : global::Pulumi.CustomResource

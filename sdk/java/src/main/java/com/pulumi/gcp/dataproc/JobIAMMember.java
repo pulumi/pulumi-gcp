@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_dataproc\_job\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,8 +69,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_job\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -99,8 +104,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_dataproc\_job\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -131,28 +139,29 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Importing IAM policies
  * 
- *  IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
+ * IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
  * 
- *  * `projects/{project}/regions/{region}/jobs/{job_id}`
+ * * `projects/{project}/regions/{region}/jobs/{job_id}`
  * 
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  * 
- *  tf
+ * tf
  * 
- *  import {
+ * import {
  * 
- *  id = &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
+ *   id = &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
  * 
- *  to = google_dataproc_job_iam_policy.default
+ *   to = google_dataproc_job_iam_policy.default
  * 
- *  }
+ * }
  * 
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember default &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;

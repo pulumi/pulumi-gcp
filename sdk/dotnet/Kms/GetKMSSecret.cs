@@ -22,6 +22,98 @@ namespace Pulumi.Gcp.Kms
         /// resource definitions, but it does not take care of protecting that data in the
         /// logging output, plan output, or state output.  Please take care to secure your secret
         /// data outside of resource definitions.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = new Gcp.Kms.KeyRing("my_key_ring", new()
+        ///     {
+        ///         Project = "my-project",
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKey = new Gcp.Kms.CryptoKey("my_crypto_key", new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+        /// sensitive information:
+        /// 
+        /// ```bash
+        /// $ echo -n my-secret-password | gcloud kms encrypt \
+        /// &gt; --project my-project \
+        /// &gt; --location us-central1 \
+        /// &gt; --keyring my-key-ring \
+        /// &gt; --key my-crypto-key \
+        /// &gt; --plaintext-file - \
+        /// &gt; --ciphertext-file - \
+        /// &gt; | base64
+        /// CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=
+        /// ```
+        /// 
+        /// Finally, reference the encrypted ciphertext in your resource definitions:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Random = Pulumi.Random;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sqlUserPassword = Gcp.Kms.GetKMSSecret.Invoke(new()
+        ///     {
+        ///         CryptoKey = myCryptoKey.Id,
+        ///         Ciphertext = "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
+        ///     });
+        /// 
+        ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+        ///     {
+        ///         ByteLength = 4,
+        ///     });
+        /// 
+        ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+        ///     {
+        ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+        ///         DatabaseVersion = "MYSQL_5_7",
+        ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+        ///         {
+        ///             Tier = "db-f1-micro",
+        ///         },
+        ///     });
+        /// 
+        ///     var users = new Gcp.Sql.User("users", new()
+        ///     {
+        ///         Name = "me",
+        ///         Instance = main.Name,
+        ///         Host = "me.com",
+        ///         Password = sqlUserPassword.Apply(getKMSSecretResult =&gt; getKMSSecretResult.Plaintext),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// This will result in a Cloud SQL user being created with password `my-secret-password`.
         /// </summary>
         public static Task<GetKMSSecretResult> InvokeAsync(GetKMSSecretArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithDefaults());
@@ -37,6 +129,98 @@ namespace Pulumi.Gcp.Kms
         /// resource definitions, but it does not take care of protecting that data in the
         /// logging output, plan output, or state output.  Please take care to secure your secret
         /// data outside of resource definitions.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = new Gcp.Kms.KeyRing("my_key_ring", new()
+        ///     {
+        ///         Project = "my-project",
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKey = new Gcp.Kms.CryptoKey("my_crypto_key", new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/encrypt) to encrypt some
+        /// sensitive information:
+        /// 
+        /// ```bash
+        /// $ echo -n my-secret-password | gcloud kms encrypt \
+        /// &gt; --project my-project \
+        /// &gt; --location us-central1 \
+        /// &gt; --keyring my-key-ring \
+        /// &gt; --key my-crypto-key \
+        /// &gt; --plaintext-file - \
+        /// &gt; --ciphertext-file - \
+        /// &gt; | base64
+        /// CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=
+        /// ```
+        /// 
+        /// Finally, reference the encrypted ciphertext in your resource definitions:
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Random = Pulumi.Random;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sqlUserPassword = Gcp.Kms.GetKMSSecret.Invoke(new()
+        ///     {
+        ///         CryptoKey = myCryptoKey.Id,
+        ///         Ciphertext = "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
+        ///     });
+        /// 
+        ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+        ///     {
+        ///         ByteLength = 4,
+        ///     });
+        /// 
+        ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+        ///     {
+        ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+        ///         DatabaseVersion = "MYSQL_5_7",
+        ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+        ///         {
+        ///             Tier = "db-f1-micro",
+        ///         },
+        ///     });
+        /// 
+        ///     var users = new Gcp.Sql.User("users", new()
+        ///     {
+        ///         Name = "me",
+        ///         Instance = main.Name,
+        ///         Host = "me.com",
+        ///         Password = sqlUserPassword.Apply(getKMSSecretResult =&gt; getKMSSecretResult.Plaintext),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// This will result in a Cloud SQL user being created with password `my-secret-password`.
         /// </summary>
         public static Output<GetKMSSecretResult> Invoke(GetKMSSecretInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretInvokeArgs(), options.WithDefaults());

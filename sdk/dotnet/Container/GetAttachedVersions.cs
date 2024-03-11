@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAttachedVersionsResult> InvokeAsync(GetAttachedVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAttachedVersionsResult> Invoke(GetAttachedVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsInvokeArgs(), options.WithDefaults());

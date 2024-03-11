@@ -77,12 +77,14 @@ def get_config(name: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     run_service = gcp.runtimeconfig.get_config(name="my-service")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Runtime Configurator configuration.
@@ -111,12 +113,14 @@ def get_config_output(name: Optional[pulumi.Input[str]] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     run_service = gcp.runtimeconfig.get_config(name="my-service")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Runtime Configurator configuration.

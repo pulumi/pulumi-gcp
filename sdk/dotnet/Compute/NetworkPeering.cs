@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,14 +59,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// VPC network peerings can be imported using the name and project of the primary network the peering exists in and the name of the network peering
     /// 
-    ///  * `{{project_id}}/{{network_id}}/{{peering_id}}`
+    /// * `{{project_id}}/{{network_id}}/{{peering_id}}`
     /// 
-    ///  When using the `pulumi import` command, VPC network peerings can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, VPC network peerings can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/networkPeering:NetworkPeering default {{project_id}}/{{network_id}}/{{peering_id}}

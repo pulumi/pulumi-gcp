@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * ## Example Usage
+ *
  * ### Access Context Manager Service Perimeters Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,16 +70,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ServicePerimeters can be imported using any of these accepted formats:
  *
- *  * `{{parent}}/servicePerimeters`
+ * * `{{parent}}/servicePerimeters`
  *
- *  * `{{parent}}`
+ * * `{{parent}}`
  *
- *  When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters

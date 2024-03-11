@@ -297,8 +297,10 @@ class VPNGateway(pulumi.CustomResource):
         see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
 
         ## Example Usage
+
         ### Target Vpn Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,20 +339,21 @@ class VPNGateway(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         VpnGateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}
@@ -404,8 +407,10 @@ class VPNGateway(pulumi.CustomResource):
         see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
 
         ## Example Usage
+
         ### Target Vpn Gateway Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -444,20 +449,21 @@ class VPNGateway(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         VpnGateway can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VpnGateway can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/vPNGateway:VPNGateway default projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}

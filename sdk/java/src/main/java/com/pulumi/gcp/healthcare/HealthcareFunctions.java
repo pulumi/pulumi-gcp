@@ -30,6 +30,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for consentstore
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -59,6 +61,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs args) {
@@ -68,6 +71,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for consentstore
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -97,6 +102,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicyPlain(GetConsentStoreIamPolicyPlainArgs args) {
@@ -106,6 +112,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for consentstore
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -135,6 +143,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs args, InvokeOptions options) {
@@ -144,6 +153,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for consentstore
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -173,6 +184,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicyPlain(GetConsentStoreIamPolicyPlainArgs args, InvokeOptions options) {
@@ -182,6 +194,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -210,6 +224,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args) {
@@ -219,6 +234,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -247,6 +264,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatasetIamPolicyResult> getDatasetIamPolicyPlain(GetDatasetIamPolicyPlainArgs args) {
@@ -256,6 +274,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -284,6 +304,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args, InvokeOptions options) {
@@ -293,6 +314,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -321,6 +344,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatasetIamPolicyResult> getDatasetIamPolicyPlain(GetDatasetIamPolicyPlainArgs args, InvokeOptions options) {
@@ -330,6 +354,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -358,6 +384,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs args) {
@@ -367,6 +394,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -395,6 +424,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicyPlain(GetDicomStoreIamPolicyPlainArgs args) {
@@ -404,6 +434,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -432,6 +464,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs args, InvokeOptions options) {
@@ -441,6 +474,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -469,6 +504,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicyPlain(GetDicomStoreIamPolicyPlainArgs args, InvokeOptions options) {
@@ -478,6 +514,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -506,6 +544,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs args) {
@@ -515,6 +554,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -543,6 +584,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyPlain(GetFhirStoreIamPolicyPlainArgs args) {
@@ -552,6 +594,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -580,6 +624,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs args, InvokeOptions options) {
@@ -589,6 +634,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -617,6 +664,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyPlain(GetFhirStoreIamPolicyPlainArgs args, InvokeOptions options) {
@@ -626,6 +674,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -654,6 +704,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs args) {
@@ -663,6 +714,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -691,6 +744,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicyPlain(GetHl7V2StoreIamPolicyPlainArgs args) {
@@ -700,6 +754,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -728,6 +784,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs args, InvokeOptions options) {
@@ -737,6 +794,8 @@ public final class HealthcareFunctions {
      * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -765,6 +824,7 @@ public final class HealthcareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicyPlain(GetHl7V2StoreIamPolicyPlainArgs args, InvokeOptions options) {

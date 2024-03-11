@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     name: "my-bucket",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
 
@@ -83,6 +85,7 @@ export interface GetBucketResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,6 +94,7 @@ export interface GetBucketResult {
  *     name: "my-bucket",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
     return pulumi.output(args).apply((a: any) => getBucket(a, opts))

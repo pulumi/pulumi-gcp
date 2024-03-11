@@ -17,21 +17,32 @@ namespace Pulumi.Gcp.ServiceAccount
         /// For more information see
         /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
         /// 
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```hcl
-        ///   data "google_service_account_id_token" "oidc" {
-        ///     target_audience = "https://foo.bar/"
-        ///   }
+        ///   &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        ///   output "oidc_token" {
-        ///     value = data.google_service_account_id_token.oidc.id_token
-        ///   }
-        ///   ```
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetAudience = "https://foo.bar/",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
@@ -39,37 +50,48 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `target_service_account` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```hcl
-        ///   data "google_service_account_access_token" "impersonated" {
-        ///     provider = google
-        ///     target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
-        ///     delegates = []
-        ///     scopes = ["userinfo-email", "cloud-platform"]
-        ///     lifetime = "300s"
-        ///   }
+        ///   &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        ///   provider "google" {
-        ///     alias  = "impersonated"
-        ///     access_token = data.google_service_account_access_token.impersonated.access_token
-        ///   }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Delegates = new() { },
+        ///         Scopes = new[]
+        ///         {
+        ///             "userinfo-email",
+        ///             "cloud-platform",
+        ///         },
+        ///         Lifetime = "300s",
+        ///     });
         /// 
-        ///   data "google_service_account_id_token" "oidc" {
-        ///     provider = google.impersonated
-        ///     target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
-        ///     delegates = []
-        ///     include_email = true
-        ///     target_audience = "https://foo.bar/"
-        ///   }
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Delegates = new() { },
+        ///         IncludeEmail = true,
+        ///         TargetAudience = "https://foo.bar/",
+        ///     });
         /// 
-        ///   output "oidc_token" {
-        ///     value = data.google_service_account_id_token.oidc.id_token
-        ///   }
-        ///   ```
-        /// {{% example %}}
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ### Invoking Cloud Run Endpoint
         /// 
         ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +121,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountIdTokenResult> InvokeAsync(GetAccountIdTokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithDefaults());
@@ -111,21 +132,32 @@ namespace Pulumi.Gcp.ServiceAccount
         /// For more information see
         /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
         /// 
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```hcl
-        ///   data "google_service_account_id_token" "oidc" {
-        ///     target_audience = "https://foo.bar/"
-        ///   }
+        ///   &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        ///   output "oidc_token" {
-        ///     value = data.google_service_account_id_token.oidc.id_token
-        ///   }
-        ///   ```
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetAudience = "https://foo.bar/",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
@@ -133,37 +165,48 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `target_service_account` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```hcl
-        ///   data "google_service_account_access_token" "impersonated" {
-        ///     provider = google
-        ///     target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
-        ///     delegates = []
-        ///     scopes = ["userinfo-email", "cloud-platform"]
-        ///     lifetime = "300s"
-        ///   }
+        ///   &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        ///   provider "google" {
-        ///     alias  = "impersonated"
-        ///     access_token = data.google_service_account_access_token.impersonated.access_token
-        ///   }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Delegates = new() { },
+        ///         Scopes = new[]
+        ///         {
+        ///             "userinfo-email",
+        ///             "cloud-platform",
+        ///         },
+        ///         Lifetime = "300s",
+        ///     });
         /// 
-        ///   data "google_service_account_id_token" "oidc" {
-        ///     provider = google.impersonated
-        ///     target_service_account = "impersonated-account@project.iam.gserviceaccount.com"
-        ///     delegates = []
-        ///     include_email = true
-        ///     target_audience = "https://foo.bar/"
-        ///   }
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Delegates = new() { },
+        ///         IncludeEmail = true,
+        ///         TargetAudience = "https://foo.bar/",
+        ///     });
         /// 
-        ///   output "oidc_token" {
-        ///     value = data.google_service_account_id_token.oidc.id_token
-        ///   }
-        ///   ```
-        /// {{% example %}}
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ### Invoking Cloud Run Endpoint
         /// 
         ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -193,8 +236,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());

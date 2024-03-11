@@ -30,6 +30,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for schema
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -59,6 +61,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSchemaIamPolicyResult> getSchemaIamPolicy(GetSchemaIamPolicyArgs args) {
@@ -68,6 +71,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for schema
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -97,6 +102,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSchemaIamPolicyResult> getSchemaIamPolicyPlain(GetSchemaIamPolicyPlainArgs args) {
@@ -106,6 +112,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for schema
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -135,6 +143,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSchemaIamPolicyResult> getSchemaIamPolicy(GetSchemaIamPolicyArgs args, InvokeOptions options) {
@@ -144,6 +153,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for schema
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -173,6 +184,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSchemaIamPolicyResult> getSchemaIamPolicyPlain(GetSchemaIamPolicyPlainArgs args, InvokeOptions options) {
@@ -184,6 +196,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -212,6 +226,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionResult> getSubscription(GetSubscriptionArgs args) {
@@ -223,6 +238,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -251,6 +268,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionResult> getSubscriptionPlain(GetSubscriptionPlainArgs args) {
@@ -262,6 +280,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -290,6 +310,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionResult> getSubscription(GetSubscriptionArgs args, InvokeOptions options) {
@@ -301,6 +322,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -329,6 +352,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionResult> getSubscriptionPlain(GetSubscriptionPlainArgs args, InvokeOptions options) {
@@ -338,6 +362,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for a Pubsub subscription.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -366,6 +392,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs args) {
@@ -375,6 +402,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for a Pubsub subscription.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -403,6 +432,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyPlain(GetSubscriptionIamPolicyPlainArgs args) {
@@ -412,6 +442,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for a Pubsub subscription.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -440,6 +472,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs args, InvokeOptions options) {
@@ -449,6 +482,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for a Pubsub subscription.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -477,6 +512,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyPlain(GetSubscriptionIamPolicyPlainArgs args, InvokeOptions options) {
@@ -488,6 +524,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -516,6 +554,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicResult> getTopic(GetTopicArgs args) {
@@ -527,6 +566,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -555,6 +596,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicResult> getTopicPlain(GetTopicPlainArgs args) {
@@ -566,6 +608,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -594,6 +638,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicResult> getTopic(GetTopicArgs args, InvokeOptions options) {
@@ -605,6 +650,8 @@ public final class PubsubFunctions {
      * and [API](https://cloud.google.com/pubsub/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -633,6 +680,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicResult> getTopicPlain(GetTopicPlainArgs args, InvokeOptions options) {
@@ -642,6 +690,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for topic
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -671,6 +721,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicIamPolicyResult> getTopicIamPolicy(GetTopicIamPolicyArgs args) {
@@ -680,6 +731,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for topic
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -709,6 +762,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicIamPolicyResult> getTopicIamPolicyPlain(GetTopicIamPolicyPlainArgs args) {
@@ -718,6 +772,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for topic
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -747,6 +803,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicIamPolicyResult> getTopicIamPolicy(GetTopicIamPolicyArgs args, InvokeOptions options) {
@@ -756,6 +813,8 @@ public final class PubsubFunctions {
      * Retrieves the current IAM policy data for topic
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -785,6 +844,7 @@ public final class PubsubFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicIamPolicyResult> getTopicIamPolicyPlain(GetTopicIamPolicyPlainArgs args, InvokeOptions options) {

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * When using Google Cloud DNS to manage internal DNS, create peered DNS domains to make your DNS available to services like Google Cloud Build.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,22 +54,23 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where:
  * 
- *  - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
+ * - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
  * 
- *  - `project` is the producer project name.
+ * - `project` is the producer project name.
  * 
- *  - `network` is the consumer network name.
+ * - `network` is the consumer network name.
  * 
- *  - `name` is the name of your peered DNS domain.
+ * - `name` is the name of your peered DNS domain.
  * 
- *  * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`
+ * * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`
  * 
- *  When using the `pulumi import` command, project peered DNS domains can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, project peered DNS domains can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}

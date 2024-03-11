@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  *
  * ## Example Usage
+ *
  * ### Consumer Quota Override
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,8 +43,10 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Region Consumer Quota Override
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -69,8 +73,10 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Consumer Quota Override Custom Dimension
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,18 +103,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ConsumerQuotaOverride can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+ * * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
  *
- *  * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+ * * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
  *
- *  * `{{service}}/{{metric}}/{{limit}}/{{name}}`
+ * * `{{service}}/{{metric}}/{{limit}}/{{name}}`
  *
- *  When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
@@ -155,7 +162,7 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
@@ -248,7 +255,7 @@ export interface ConsumerQuotaOverrideState {
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
     force?: pulumi.Input<boolean>;
@@ -293,7 +300,7 @@ export interface ConsumerQuotaOverrideArgs {
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
     force?: pulumi.Input<boolean>;

@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.SourceRepo
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Sourcerepo Repository Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,8 +38,10 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Sourcerepo Repository Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,16 +77,17 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Repository can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/repos/{{name}}`
+    /// * `projects/{{project}}/repos/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}

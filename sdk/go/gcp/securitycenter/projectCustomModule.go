@@ -25,8 +25,10 @@ import (
 //   - [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 //
 // ## Example Usage
+//
 // ### Scc Project Custom Module Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,8 +66,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Scc Project Custom Module Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -119,18 +123,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ProjectCustomModule can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}`
+// * `projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, ProjectCustomModule can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ProjectCustomModule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}

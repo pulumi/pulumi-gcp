@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
  * 
  * ## Example Usage
+ * 
  * ### Iam Workload Identity Pool Provider Aws Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,7 +72,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Aws Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -118,7 +124,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -159,7 +168,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -216,7 +228,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Saml Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -263,7 +278,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Saml Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -313,7 +331,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -371,18 +392,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
+ * * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
  * 
- *  * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+ * * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
  * 
- *  * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+ * * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
  * 
- *  When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
@@ -453,12 +475,6 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      *   the total size of all mapped attributes must not exceed 8KB.
      *   For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * - If any custom attribute mappings are defined, they must include a mapping to the
-     *   `google.subject` attribute.
-     *   For OIDC providers, the following rules apply:
-     * - Custom attribute mappings must be defined, and must include a mapping to the
-     *   `google.subject` attribute. For example, the following maps the `sub` claim of the
-     *   incoming credential to the `subject` attribute on a Google token.
      * 
      */
     @Export(name="attributeMapping", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -496,12 +512,6 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      *   the total size of all mapped attributes must not exceed 8KB.
      *   For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
-     * - If any custom attribute mappings are defined, they must include a mapping to the
-     *   `google.subject` attribute.
-     *   For OIDC providers, the following rules apply:
-     * - Custom attribute mappings must be defined, and must include a mapping to the
-     *   `google.subject` attribute. For example, the following maps the `sub` claim of the
-     *   incoming credential to the `subject` attribute on a Google token.
      * 
      */
     public Output<Optional<Map<String,String>>> attributeMapping() {

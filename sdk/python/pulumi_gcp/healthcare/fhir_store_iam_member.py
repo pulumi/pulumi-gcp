@@ -233,6 +233,7 @@ class FhirStoreIamMember(pulumi.CustomResource):
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -245,9 +246,11 @@ class FhirStoreIamMember(pulumi.CustomResource):
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -257,9 +260,11 @@ class FhirStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -269,28 +274,29 @@ class FhirStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
+        IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
 
-         * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
+        * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
+          id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
 
-         to = google_healthcare_fhir_store_iam_policy.default
+          to = google_healthcare_fhir_store_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
@@ -334,6 +340,7 @@ class FhirStoreIamMember(pulumi.CustomResource):
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -346,9 +353,11 @@ class FhirStoreIamMember(pulumi.CustomResource):
             fhir_store_id="your-fhir-store-id",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,9 +367,11 @@ class FhirStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_fhir\\_store\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,28 +381,29 @@ class FhirStoreIamMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
+        IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
 
-         * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
+        * `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
+          id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
 
-         to = google_healthcare_fhir_store_iam_policy.default
+          to = google_healthcare_fhir_store_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}

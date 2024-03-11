@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     ///     * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Blockchain Nodes Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,8 +61,10 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Blockchain Nodes Geth Details
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,18 +107,19 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// BlockchainNodes can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{blockchain_node_id}}`
+    /// * `{{project}}/{{location}}/{{blockchain_node_id}}`
     /// 
-    ///  * `{{location}}/{{blockchain_node_id}}`
+    /// * `{{location}}/{{blockchain_node_id}}`
     /// 
-    ///  When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, BlockchainNodes can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes default projects/{{project}}/locations/{{location}}/blockchainNodes/{{blockchain_node_id}}

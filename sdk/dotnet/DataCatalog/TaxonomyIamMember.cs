@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// ## google\_data\_catalog\_taxonomy\_iam\_policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,9 +58,11 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_data\_catalog\_taxonomy\_iam\_binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,9 +83,11 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## google\_data\_catalog\_taxonomy\_iam\_member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,44 +105,45 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
     /// 
-    ///  * projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}}
+    /// * projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}}
     /// 
-    ///  * {{project}}/{{region}}/{{taxonomy}}
+    /// * {{project}}/{{region}}/{{taxonomy}}
     /// 
-    ///  * {{region}}/{{taxonomy}}
+    /// * {{region}}/{{taxonomy}}
     /// 
-    ///  * {{taxonomy}}
+    /// * {{taxonomy}}
     /// 
-    ///  Any variables not passed in the import command will be taken from the provider configuration.
+    /// Any variables not passed in the import command will be taken from the provider configuration.
     /// 
-    ///  Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member.
+    /// Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member.
     /// 
-    ///  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+    /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember editor "projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} roles/viewer user:jane@example.com"
     /// ```
     /// 
-    ///  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+    /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember editor "projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} roles/viewer"
     /// ```
     /// 
-    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember editor projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}}
     /// ```
     /// 
-    ///  -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember")]
     public partial class TaxonomyIamMember : global::Pulumi.CustomResource

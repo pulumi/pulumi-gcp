@@ -18,7 +18,9 @@ import javax.annotation.Nullable;
  * The Eventarc GoogleChannelConfig resource
  * 
  * ## Example Usage
+ * 
  * ### Basic
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,18 +79,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * GoogleChannelConfig can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
+ * * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
  * 
- *  * `{{project}}/{{location}}`
+ * * `{{project}}/{{location}}`
  * 
- *  * `{{location}}`
+ * * `{{location}}`
  * 
- *  When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default projects/{{project}}/locations/{{location}}/googleChannelConfig

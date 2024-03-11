@@ -74,12 +74,6 @@ class WorkloadIdentityPoolProviderArgs:
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               - If any custom attribute mappings are defined, they must include a mapping to the
-               `google.subject` attribute.
-               For OIDC providers, the following rules apply:
-               - Custom attribute mappings must be defined, and must include a mapping to the
-               `google.subject` attribute. For example, the following maps the `sub` claim of the
-               incoming credential to the `subject` attribute on a Google token.
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -196,12 +190,6 @@ class WorkloadIdentityPoolProviderArgs:
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
-        - If any custom attribute mappings are defined, they must include a mapping to the
-        `google.subject` attribute.
-        For OIDC providers, the following rules apply:
-        - Custom attribute mappings must be defined, and must include a mapping to the
-        `google.subject` attribute. For example, the following maps the `sub` claim of the
-        incoming credential to the `subject` attribute on a Google token.
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -353,12 +341,6 @@ class _WorkloadIdentityPoolProviderState:
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               - If any custom attribute mappings are defined, they must include a mapping to the
-               `google.subject` attribute.
-               For OIDC providers, the following rules apply:
-               - Custom attribute mappings must be defined, and must include a mapping to the
-               `google.subject` attribute. For example, the following maps the `sub` claim of the
-               incoming credential to the `subject` attribute on a Google token.
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -468,12 +450,6 @@ class _WorkloadIdentityPoolProviderState:
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
-        - If any custom attribute mappings are defined, they must include a mapping to the
-        `google.subject` attribute.
-        For OIDC providers, the following rules apply:
-        - Custom attribute mappings must be defined, and must include a mapping to the
-        `google.subject` attribute. For example, the following maps the `sub` claim of the
-        incoming credential to the `subject` attribute on a Google token.
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -660,8 +636,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 
         ## Example Usage
+
         ### Iam Workload Identity Pool Provider Aws Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,8 +652,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Aws Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -697,8 +677,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -714,8 +696,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,8 +729,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -765,8 +751,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -788,8 +776,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -820,18 +810,19 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
+        * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
 
-         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+        * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 
-         * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+        * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 
-         When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
@@ -883,12 +874,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               - If any custom attribute mappings are defined, they must include a mapping to the
-               `google.subject` attribute.
-               For OIDC providers, the following rules apply:
-               - Custom attribute mappings must be defined, and must include a mapping to the
-               `google.subject` attribute. For example, the following maps the `sub` claim of the
-               incoming credential to the `subject` attribute on a Google token.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -927,8 +912,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 
         ## Example Usage
+
         ### Iam Workload Identity Pool Provider Aws Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -941,8 +928,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Aws Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -964,8 +953,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 account_id="999999999999",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -981,8 +972,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1012,8 +1005,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1032,8 +1027,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Saml Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1055,8 +1052,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 idp_metadata_xml=std.file(input="test-fixtures/metadata.xml").result,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1087,18 +1086,19 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
+        * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
 
-         * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+        * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 
-         * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+        * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 
-         When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
@@ -1230,12 +1230,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
-               - If any custom attribute mappings are defined, they must include a mapping to the
-               `google.subject` attribute.
-               For OIDC providers, the following rules apply:
-               - Custom attribute mappings must be defined, and must include a mapping to the
-               `google.subject` attribute. For example, the following maps the `sub` claim of the
-               incoming credential to the `subject` attribute on a Google token.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -1333,12 +1327,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
-        - If any custom attribute mappings are defined, they must include a mapping to the
-        `google.subject` attribute.
-        For OIDC providers, the following rules apply:
-        - Custom attribute mappings must be defined, and must include a mapping to the
-        `google.subject` attribute. For example, the following maps the `sub` claim of the
-        incoming credential to the `subject` attribute on a Google token.
         """
         return pulumi.get(self, "attribute_mapping")
 

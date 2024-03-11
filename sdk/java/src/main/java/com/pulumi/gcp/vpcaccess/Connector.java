@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  * 
  * ## Example Usage
+ * 
  * ### Vpc Access Connector
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,7 +61,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vpc Access Connector Shared Vpc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -108,20 +114,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Connector can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}

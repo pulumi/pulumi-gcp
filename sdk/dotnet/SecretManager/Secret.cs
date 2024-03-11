@@ -17,8 +17,10 @@ namespace Pulumi.Gcp.SecretManager
     /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Secret Config Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,8 +57,10 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Secret With Annotations
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,8 +92,10 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Secret With Automatic Cmek
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,18 +130,19 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Secret can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/secrets/{{secret_id}}`
+    /// * `projects/{{project}}/secrets/{{secret_id}}`
     /// 
-    ///  * `{{project}}/{{secret_id}}`
+    /// * `{{project}}/{{secret_id}}`
     /// 
-    ///  * `{{secret_id}}`
+    /// * `{{secret_id}}`
     /// 
-    ///  When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}

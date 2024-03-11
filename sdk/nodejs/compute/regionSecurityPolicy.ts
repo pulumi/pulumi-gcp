@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Region Security Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,8 +22,10 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_ARMOR",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Region Security Policy With Ddos Protection Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,8 +39,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Region Security Policy With User Defined Fields
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -63,20 +69,21 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RegionSecurityPolicy can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RegionSecurityPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionSecurityPolicy:RegionSecurityPolicy default projects/{{project}}/regions/{{region}}/securityPolicies/{{name}}

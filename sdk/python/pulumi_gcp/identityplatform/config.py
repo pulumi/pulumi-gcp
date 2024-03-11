@@ -466,8 +466,10 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
+
         ### Identity Platform Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,18 +536,19 @@ class Config(pulumi.CustomResource):
                 "my-project.web.app",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Config can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/config`
+        * `projects/{{project}}/config`
 
-         * `projects/{{project}}`
+        * `projects/{{project}}`
 
-         * `{{project}}`
+        * `{{project}}`
 
-         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
@@ -604,8 +607,10 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
+
         ### Identity Platform Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -672,18 +677,19 @@ class Config(pulumi.CustomResource):
                 "my-project.web.app",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Config can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/config`
+        * `projects/{{project}}/config`
 
-         * `projects/{{project}}`
+        * `projects/{{project}}`
 
-         * `{{project}}`
+        * `{{project}}`
 
-         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config

@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,14 +31,15 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Billing Subaccounts can be imported using any of these accepted formats:
     /// 
-    ///  * `billingAccounts/{billing_account_id}`
+    /// * `billingAccounts/{billing_account_id}`
     /// 
-    ///  When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}

@@ -280,12 +280,14 @@ def get_bucket(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_bucket = gcp.storage.get_bucket(name="my-bucket")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the bucket.
@@ -335,12 +337,14 @@ def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_bucket = gcp.storage.get_bucket(name="my-bucket")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the bucket.

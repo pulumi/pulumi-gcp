@@ -23,6 +23,8 @@ public final class ArtifactregistryFunctions {
      * and [API](https://cloud.google.com/artifact-registry/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryResult> getRepository(GetRepositoryArgs args) {
@@ -63,6 +66,8 @@ public final class ArtifactregistryFunctions {
      * and [API](https://cloud.google.com/artifact-registry/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -92,6 +97,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryResult> getRepositoryPlain(GetRepositoryPlainArgs args) {
@@ -103,6 +109,8 @@ public final class ArtifactregistryFunctions {
      * and [API](https://cloud.google.com/artifact-registry/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +140,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryResult> getRepository(GetRepositoryArgs args, InvokeOptions options) {
@@ -143,6 +152,8 @@ public final class ArtifactregistryFunctions {
      * and [API](https://cloud.google.com/artifact-registry/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -172,6 +183,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryResult> getRepositoryPlain(GetRepositoryPlainArgs args, InvokeOptions options) {
@@ -181,6 +193,8 @@ public final class ArtifactregistryFunctions {
      * Retrieves the current IAM policy data for repository
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -211,6 +225,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args) {
@@ -220,6 +235,8 @@ public final class ArtifactregistryFunctions {
      * Retrieves the current IAM policy data for repository
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -250,6 +267,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args) {
@@ -259,6 +277,8 @@ public final class ArtifactregistryFunctions {
      * Retrieves the current IAM policy data for repository
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -289,6 +309,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args, InvokeOptions options) {
@@ -298,6 +319,8 @@ public final class ArtifactregistryFunctions {
      * Retrieves the current IAM policy data for repository
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -328,6 +351,7 @@ public final class ArtifactregistryFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args, InvokeOptions options) {

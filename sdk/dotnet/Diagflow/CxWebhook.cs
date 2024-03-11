@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Dialogflowcx Webhook Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,16 +65,17 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Webhook can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/webhooks/{{name}}`
+    /// * `{{parent}}/webhooks/{{name}}`
     /// 
-    ///  * `{{parent}}/{{name}}`
+    /// * `{{parent}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Webhook can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:diagflow/cxWebhook:CxWebhook default {{parent}}/webhooks/{{name}}

@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Gcp.Storage
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransferProjectServiceAccountResult> InvokeAsync(GetTransferProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServiceAccountResult>("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args ?? new GetTransferProjectServiceAccountArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Gcp.Storage
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransferProjectServiceAccountResult> Invoke(GetTransferProjectServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransferProjectServiceAccountResult>("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args ?? new GetTransferProjectServiceAccountInvokeArgs(), options.WithDefaults());

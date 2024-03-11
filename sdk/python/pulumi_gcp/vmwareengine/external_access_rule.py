@@ -465,8 +465,10 @@ class ExternalAccessRule(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
 
         ## Example Usage
+
         ### Vmware Engine External Access Rule Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,8 +498,10 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine External Access Rule Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -547,14 +551,15 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ExternalAccessRule can be imported using any of these accepted formats:
 
-         * `{{parent}}/externalAccessRules/{{name}}`
+        * `{{parent}}/externalAccessRules/{{name}}`
 
-         When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
@@ -594,8 +599,10 @@ class ExternalAccessRule(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
 
         ## Example Usage
+
         ### Vmware Engine External Access Rule Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -625,8 +632,10 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine External Access Rule Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -676,14 +685,15 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ExternalAccessRule can be imported using any of these accepted formats:
 
-         * `{{parent}}/externalAccessRules/{{name}}`
+        * `{{parent}}/externalAccessRules/{{name}}`
 
-         When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}

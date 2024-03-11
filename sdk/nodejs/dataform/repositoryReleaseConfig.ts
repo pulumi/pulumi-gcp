@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Dataform Repository Release Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,20 +63,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RepositoryReleaseConfig can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{repository}}/{{name}}`
+ * * `{{project}}/{{region}}/{{repository}}/{{name}}`
  *
- *  * `{{region}}/{{repository}}/{{name}}`
+ * * `{{region}}/{{repository}}/{{name}}`
  *
- *  * `{{repository}}/{{name}}`
+ * * `{{repository}}/{{name}}`
  *
- *  When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}

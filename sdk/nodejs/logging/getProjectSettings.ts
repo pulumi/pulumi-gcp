@@ -13,8 +13,10 @@ import * as utilities from "../utilities";
  * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
  *
  * ## Example Usage
+ *
  * ### Logging Project Settings Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,6 +25,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectSettings(args: GetProjectSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectSettingsResult> {
 
@@ -91,8 +94,10 @@ export interface GetProjectSettingsResult {
  * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
  *
  * ## Example Usage
+ *
  * ### Logging Project Settings Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,6 +106,7 @@ export interface GetProjectSettingsResult {
  *     project: "my-project-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectSettingsOutput(args: GetProjectSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSettingsResult> {
     return pulumi.output(args).apply((a: any) => getProjectSettings(a, opts))

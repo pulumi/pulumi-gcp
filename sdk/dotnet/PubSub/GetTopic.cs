@@ -16,10 +16,9 @@ namespace Pulumi.Gcp.PubSub
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Gcp.PubSub
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Gcp.PubSub
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Gcp.PubSub
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());

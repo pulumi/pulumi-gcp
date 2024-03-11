@@ -33,16 +33,18 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDow
     }
 
     /**
-     * Specifies a percentage of instances between 0 to 100%, inclusive.
-     * For example, specify 80 for 80%.
+     * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+     * For example, specify 80 for 80%!
+     * (MISSING)
      * 
      */
     @Import(name="percent")
     private @Nullable Output<Integer> percent;
 
     /**
-     * @return Specifies a percentage of instances between 0 to 100%, inclusive.
-     * For example, specify 80 for 80%.
+     * @return Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+     * For example, specify 80 for 80%!
+     * (MISSING)
      * 
      */
     public Optional<Output<Integer>> percent() {
@@ -98,8 +100,9 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDow
         }
 
         /**
-         * @param percent Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
+         * @param percent Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+         * For example, specify 80 for 80%!
+         * (MISSING)
          * 
          * @return builder
          * 
@@ -110,8 +113,9 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDow
         }
 
         /**
-         * @param percent Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
+         * @param percent Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+         * For example, specify 80 for 80%!
+         * (MISSING)
          * 
          * @return builder
          * 

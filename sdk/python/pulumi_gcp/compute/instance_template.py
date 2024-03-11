@@ -1143,6 +1143,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1210,8 +1211,11 @@ class InstanceTemplate(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Automatic Envoy Deployment
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1280,6 +1284,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "gce-service-proxy": "on",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Deploying the Latest Image
 
         A common way to use instance templates and managed instance groups is to deploy the
@@ -1297,49 +1303,21 @@ class InstanceTemplate(pulumi.CustomResource):
         data source, which will retrieve the latest image on every `pulumi apply`, and will update
         the template to use that specific image:
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-            )])
-        ```
-
         To have instances update to the latest on every scaling event or instance re-creation,
         use the family as the image for the disk, and it will use GCP's default behavior, setting
         the image for the template to the family:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-            )])
-        ```
 
         ## Import
 
         Instance templates can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/instanceTemplates/{{name}}`
+        * `projects/{{project}}/global/instanceTemplates/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
@@ -1434,6 +1412,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1501,8 +1480,11 @@ class InstanceTemplate(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Automatic Envoy Deployment
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1571,6 +1553,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "gce-service-proxy": "on",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Deploying the Latest Image
 
         A common way to use instance templates and managed instance groups is to deploy the
@@ -1588,49 +1572,21 @@ class InstanceTemplate(pulumi.CustomResource):
         data source, which will retrieve the latest image on every `pulumi apply`, and will update
         the template to use that specific image:
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_image = gcp.compute.get_image(family="debian-11",
-            project="debian-cloud")
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image=my_image.self_link,
-            )])
-        ```
-
         To have instances update to the latest on every scaling event or instance re-creation,
         use the family as the image for the disk, and it will use GCP's default behavior, setting
         the image for the template to the family:
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name_prefix="instance-template-",
-            machine_type="e2-medium",
-            region="us-central1",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
-                source_image="debian-cloud/debian-11",
-            )])
-        ```
 
         ## Import
 
         Instance templates can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/instanceTemplates/{{name}}`
+        * `projects/{{project}}/global/instanceTemplates/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}

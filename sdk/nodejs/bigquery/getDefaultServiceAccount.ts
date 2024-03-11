@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
@@ -80,6 +82,7 @@ export interface GetDefaultServiceAccountResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,6 +94,7 @@ export interface GetDefaultServiceAccountResult {
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getDefaultServiceAccount(a, opts))

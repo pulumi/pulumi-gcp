@@ -918,8 +918,10 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         A Google Bare Metal Admin Cluster.
 
         ## Example Usage
+
         ### Gkeonprem Bare Metal Admin Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -984,8 +986,10 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 login_user="root",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkeonprem Bare Metal Admin Cluster Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1086,18 +1090,19 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 no_proxies=["127.0.0.1"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BareMetalAdminCluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}
@@ -1164,8 +1169,10 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         A Google Bare Metal Admin Cluster.
 
         ## Example Usage
+
         ### Gkeonprem Bare Metal Admin Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1230,8 +1237,10 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 login_user="root",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkeonprem Bare Metal Admin Cluster Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1332,18 +1341,19 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                 no_proxies=["127.0.0.1"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BareMetalAdminCluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BareMetalAdminCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster default projects/{{project}}/locations/{{location}}/bareMetalAdminClusters/{{name}}

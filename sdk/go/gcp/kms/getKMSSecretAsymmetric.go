@@ -11,41 +11,130 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## get the public key to encrypt the secret with
+// ## Example Usage
 //
-//	$ gcloud kms keys versions get-public-key 1\
-//	  --project my-project\
-//	  --location us-central1\
-//	  --keyring my-key-ring\
-//	  --key my-crypto-key\
-//	  --output-file public-key.pem
+// First, create a KMS KeyRing and CryptoKey using the resource definitions:
 //
-// ## encrypt secret with the public key
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
 //
-//	$ echo -n my-secret-password |\
-//	  openssl pkeyutl -in -\
-//	    -encrypt\
-//	    -pubin\
-//	    -inkey public-key.pem\
-//	    -pkeyopt rsa_padding_mode:oaep\
-//	    -pkeyopt rsa_oaep_md:sha256\
-//	    -pkeyopt rsa_mgf1_md:sha256 >\
-//	  my-secret-password.enc
+// import (
 //
-// ## base64 encode the ciphertext
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
-// $ openssl base64 -in my-secret-password.enc
-// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
-// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
-// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
-// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
-// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
-// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
-// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
-// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
-// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
-// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
-// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myKeyRing, err := kms.NewKeyRing(ctx, "my_key_ring", &kms.KeyRingArgs{
+//				Project:  pulumi.String("my-project"),
+//				Name:     pulumi.String("my-key-ring"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myCryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("my-crypto-key"),
+//				KeyRing: myKeyRing.ID(),
+//				Purpose: pulumi.String("ASYMMETRIC_DECRYPT"),
+//				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
+//					Algorithm: pulumi.String("RSA_DECRYPT_OAEP_4096_SHA256"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
+//				CryptoKey: myCryptoKeyCryptoKey.ID(),
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
+// some sensitive information:
+//
+// Finally, reference the encrypted ciphertext in your resource definitions:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kms.GetKMSSecretAsymmetric(ctx, &kms.GetKMSSecretAsymmetricArgs{
+//				CryptoKeyVersion: myCryptoKey.Id,
+//				Crc32:            pulumi.StringRef("12c59e54"),
+//				Ciphertext: `    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+//	    ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+//	    4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+//	    eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+//	    wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+//	    LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+//	    yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+//	    J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+//	    IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+//	    mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+//	    A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+//
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
+//				ByteLength: pulumi.Int(4),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
+//					return fmt.Sprintf("main-instance-%v", hex), nil
+//				}).(pulumi.StringOutput),
+//				DatabaseVersion: pulumi.String("MYSQL_5_7"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+//				Name:     pulumi.String("me"),
+//				Instance: main.Name,
+//				Host:     pulumi.String("me.com"),
+//				Password: pulumi.Any(sqlUserPasswordGoogleKmsSecret.Plaintext),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// This will result in a Cloud SQL user being created with password `my-secret-password`.
 func GetKMSSecretAsymmetric(ctx *pulumi.Context, args *GetKMSSecretAsymmetricArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretAsymmetricResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSSecretAsymmetricResult

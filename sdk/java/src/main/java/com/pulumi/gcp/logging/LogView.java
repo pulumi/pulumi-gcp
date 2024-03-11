@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  * 
  * ## Example Usage
+ * 
  * ### Logging Log View Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,14 +68,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * LogView can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}`
+ * * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}`
  * 
- *  When using the `pulumi import` command, LogView can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, LogView can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}

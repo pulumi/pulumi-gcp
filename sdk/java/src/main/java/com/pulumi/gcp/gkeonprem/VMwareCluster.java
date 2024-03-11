@@ -34,7 +34,10 @@ import javax.annotation.Nullable;
  * A Google VMware User Cluster.
  * 
  * ## Example Usage
+ * 
  * ### Gkeonprem Vmware Cluster Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -107,7 +110,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkeonprem Vmware Cluster F5lb
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -212,7 +218,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Gkeonprem Vmware Cluster Manuallb
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -342,18 +351,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * VmwareCluster can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}

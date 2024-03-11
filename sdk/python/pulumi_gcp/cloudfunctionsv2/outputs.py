@@ -699,7 +699,7 @@ class FunctionServiceConfig(dict):
                  vpc_connector: Optional[str] = None,
                  vpc_connector_egress_settings: Optional[str] = None):
         """
-        :param bool all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        :param bool all_traffic_on_latest_revision: Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
         :param str available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
         :param str available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
@@ -769,7 +769,7 @@ class FunctionServiceConfig(dict):
     @pulumi.getter(name="allTrafficOnLatestRevision")
     def all_traffic_on_latest_revision(self) -> Optional[bool]:
         """
-        Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
 
@@ -1513,7 +1513,7 @@ class GetFunctionServiceConfigResult(dict):
                  vpc_connector: str,
                  vpc_connector_egress_settings: str):
         """
-        :param bool all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        :param bool all_traffic_on_latest_revision: Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
         :param str available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
         :param str available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
@@ -1559,7 +1559,7 @@ class GetFunctionServiceConfigResult(dict):
     @pulumi.getter(name="allTrafficOnLatestRevision")
     def all_traffic_on_latest_revision(self) -> bool:
         """
-        Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
 

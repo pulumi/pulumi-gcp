@@ -30,6 +30,8 @@ public final class CloudrunFunctions {
      *     * [Official Documentation](https://cloud.google.com/run/docs/)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -56,6 +58,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLocationsResult> getLocations() {
@@ -71,6 +74,8 @@ public final class CloudrunFunctions {
      *     * [Official Documentation](https://cloud.google.com/run/docs/)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -97,6 +102,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain() {
@@ -112,6 +118,8 @@ public final class CloudrunFunctions {
      *     * [Official Documentation](https://cloud.google.com/run/docs/)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -138,6 +146,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLocationsResult> getLocations(GetLocationsArgs args) {
@@ -153,6 +162,8 @@ public final class CloudrunFunctions {
      *     * [Official Documentation](https://cloud.google.com/run/docs/)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -179,6 +190,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args) {
@@ -194,6 +206,8 @@ public final class CloudrunFunctions {
      *     * [Official Documentation](https://cloud.google.com/run/docs/)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -220,6 +234,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLocationsResult> getLocations(GetLocationsArgs args, InvokeOptions options) {
@@ -235,6 +250,8 @@ public final class CloudrunFunctions {
      *     * [Official Documentation](https://cloud.google.com/run/docs/)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -261,6 +278,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args, InvokeOptions options) {
@@ -272,6 +290,8 @@ public final class CloudrunFunctions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -301,6 +321,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -312,6 +333,8 @@ public final class CloudrunFunctions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -341,6 +364,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -352,6 +376,8 @@ public final class CloudrunFunctions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +407,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -392,6 +419,8 @@ public final class CloudrunFunctions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -421,6 +450,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -430,6 +460,8 @@ public final class CloudrunFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -460,6 +492,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args) {
@@ -469,6 +502,8 @@ public final class CloudrunFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -499,6 +534,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args) {
@@ -508,6 +544,8 @@ public final class CloudrunFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -538,6 +576,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOptions options) {
@@ -547,6 +586,8 @@ public final class CloudrunFunctions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -577,6 +618,7 @@ public final class CloudrunFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args, InvokeOptions options) {

@@ -24,8 +24,10 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ *
  * ### Access Context Manager Access Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,8 +37,10 @@ import * as utilities from "../utilities";
  *     title: "Org Access Policy",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Access Context Manager Access Policy Scoped
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,14 +56,15 @@ import * as utilities from "../utilities";
  *     scopes: pulumi.interpolate`projects/${project.number}`,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AccessPolicy can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}

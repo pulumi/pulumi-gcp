@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
  *
  * ## Example Usage
+ *
  * ### Dataplex Datascan Basic Profile
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,8 +39,10 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dataplex Datascan Full Profile
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,8 +90,10 @@ import * as utilities from "../utilities";
  *     deleteContentsOnDestroy: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dataplex Datascan Basic Quality
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -116,8 +122,10 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dataplex Datascan Full Quality
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -216,20 +224,21 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Datascan can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
+ * * `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}`
  *
- *  * `{{project}}/{{location}}/{{data_scan_id}}`
+ * * `{{project}}/{{location}}/{{data_scan_id}}`
  *
- *  * `{{location}}/{{data_scan_id}}`
+ * * `{{location}}/{{data_scan_id}}`
  *
- *  * `{{data_scan_id}}`
+ * * `{{data_scan_id}}`
  *
- *  When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}

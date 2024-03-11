@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttachedVersions(args: GetAttachedVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedVersionsResult> {
 
@@ -64,6 +66,7 @@ export interface GetAttachedVersionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,6 +77,7 @@ export interface GetAttachedVersionsResult {
  * });
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttachedVersionsOutput(args: GetAttachedVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedVersionsResult> {
     return pulumi.output(args).apply((a: any) => getAttachedVersions(a, opts))

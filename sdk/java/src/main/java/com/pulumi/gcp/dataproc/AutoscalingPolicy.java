@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  * Describes an autoscaling policy for Dataproc cluster autoscaler.
  * 
  * ## Example Usage
+ * 
  * ### Dataproc Autoscaling Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -78,18 +81,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * AutoscalingPolicy can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}`
+ * * `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}`
  * 
- *  * `{{project}}/{{location}}/{{policy_id}}`
+ * * `{{project}}/{{location}}/{{policy_id}}`
  * 
- *  * `{{location}}/{{policy_id}}`
+ * * `{{location}}/{{policy_id}}`
  * 
- *  When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}

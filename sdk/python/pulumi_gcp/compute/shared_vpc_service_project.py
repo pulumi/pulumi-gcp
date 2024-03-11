@@ -144,6 +144,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -152,6 +153,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
             host_project="host-project-id",
             service_project="service-project-id-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         For a complete Shared VPC example with both host and service projects, see
         [`compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
@@ -160,9 +162,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
 
-         * `{{host_project}/{{service_project}}`
+        * `{{host_project}/{{service_project}}`
 
-         When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
@@ -194,6 +196,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -202,6 +205,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
             host_project="host-project-id",
             service_project="service-project-id-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         For a complete Shared VPC example with both host and service projects, see
         [`compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
@@ -210,9 +214,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
 
-         * `{{host_project}/{{service_project}}`
+        * `{{host_project}/{{service_project}}`
 
-         When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}

@@ -12,23 +12,6 @@ import * as utilities from "../utilities";
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const baz = gcp.compute.getBackendService({
- *     name: "foobar",
- * });
- * const _default = new gcp.compute.BackendService("default", {
- *     name: "backend-service",
- *     healthChecks: notImplemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0],
- * });
- * ```
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
 
@@ -137,23 +120,6 @@ export interface GetBackendServiceResult {
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const baz = gcp.compute.getBackendService({
- *     name: "foobar",
- * });
- * const _default = new gcp.compute.BackendService("default", {
- *     name: "backend-service",
- *     healthChecks: notImplemented("tolist(data.google_compute_backend_service.baz.health_checks)")[0],
- * });
- * ```
  */
 export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
     return pulumi.output(args).apply((a: any) => getBackendService(a, opts))

@@ -243,16 +243,20 @@ class EntryGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+
         ### Data Catalog Entry Group Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Group Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -262,14 +266,15 @@ class EntryGroup(pulumi.CustomResource):
             display_name="entry group",
             description="example entry group")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EntryGroup can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
@@ -304,16 +309,20 @@ class EntryGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+
         ### Data Catalog Entry Group Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Group Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -323,14 +332,15 @@ class EntryGroup(pulumi.CustomResource):
             display_name="entry group",
             description="example entry group")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         EntryGroup can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}

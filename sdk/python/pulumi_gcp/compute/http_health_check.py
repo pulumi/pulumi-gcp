@@ -492,8 +492,10 @@ class HttpHealthCheck(pulumi.CustomResource):
             * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
         ## Example Usage
+
         ### Http Health Check Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -504,18 +506,19 @@ class HttpHealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HttpHealthCheck can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/httpHealthChecks/{{name}}`
+        * `projects/{{project}}/global/httpHealthChecks/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HttpHealthCheck can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HttpHealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default projects/{{project}}/global/httpHealthChecks/{{name}}
@@ -585,8 +588,10 @@ class HttpHealthCheck(pulumi.CustomResource):
             * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
         ## Example Usage
+
         ### Http Health Check Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -597,18 +602,19 @@ class HttpHealthCheck(pulumi.CustomResource):
             timeout_sec=1,
             check_interval_sec=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HttpHealthCheck can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/httpHealthChecks/{{name}}`
+        * `projects/{{project}}/global/httpHealthChecks/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HttpHealthCheck can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HttpHealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default projects/{{project}}/global/httpHealthChecks/{{name}}

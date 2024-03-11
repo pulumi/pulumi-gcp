@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  * `tier = &#34;ENTERPRISE&#34;`
  * 
  * ## Example Usage
+ * 
  * ### Privateca Certificate Generated Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -180,7 +183,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate With Template
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -355,7 +361,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate Csr
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -448,7 +457,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Privateca Certificate No Authority
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -581,18 +593,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Certificate can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{pool}}/{{name}}`
+ * * `{{project}}/{{location}}/{{pool}}/{{name}}`
  * 
- *  * `{{location}}/{{pool}}/{{name}}`
+ * * `{{location}}/{{pool}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}

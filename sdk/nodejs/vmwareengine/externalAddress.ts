@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
  *
  * ## Example Usage
+ *
  * ### Vmware Engine External Address Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,14 +55,15 @@ import * as utilities from "../utilities";
  *     description: "Sample description.",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ExternalAddress can be imported using any of these accepted formats:
  *
- *  * `{{parent}}/externalAddresses/{{name}}`
+ * * `{{parent}}/externalAddresses/{{name}}`
  *
- *  When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}

@@ -13,8 +13,10 @@ import * as utilities from "../utilities";
  * `tier = "ENTERPRISE"`
  *
  * ## Example Usage
+ *
  * ### Privateca Certificate Generated Key
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -120,8 +122,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Privateca Certificate With Template
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -254,8 +258,10 @@ import * as utilities from "../utilities";
  *     certificateTemplate: defaultCertificateTemplate.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Privateca Certificate Csr
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -313,8 +319,10 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Privateca Certificate No Authority
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -403,18 +411,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Certificate can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{pool}}/{{name}}`
+ * * `{{project}}/{{location}}/{{pool}}/{{name}}`
  *
- *  * `{{location}}/{{pool}}/{{name}}`
+ * * `{{location}}/{{pool}}/{{name}}`
  *
- *  When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}

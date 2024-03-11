@@ -82,14 +82,18 @@ def get_v2_runtime_versions(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.tpu.get_v2_runtime_versions()
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Configure Basic TPU VM With Available Version
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -100,6 +104,7 @@ def get_v2_runtime_versions(project: Optional[str] = None,
         zone="us-central1-b",
         runtime_version=available.versions[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list versions for. If it
@@ -129,14 +134,18 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.tpu.get_v2_runtime_versions()
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Configure Basic TPU VM With Available Version
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -147,6 +156,7 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
         zone="us-central1-b",
         runtime_version=available.versions[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list versions for. If it

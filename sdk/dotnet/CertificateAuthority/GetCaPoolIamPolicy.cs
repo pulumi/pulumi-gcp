@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCaPoolIamPolicyResult> InvokeAsync(GetCaPoolIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolIamPolicyResult>("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyArgs(), options.WithDefaults());
@@ -44,6 +46,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,6 +62,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCaPoolIamPolicyResult> Invoke(GetCaPoolIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCaPoolIamPolicyResult>("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyInvokeArgs(), options.WithDefaults());

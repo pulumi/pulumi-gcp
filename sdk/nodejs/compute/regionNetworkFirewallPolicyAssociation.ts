@@ -8,7 +8,9 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicyAssociation resource
  *
  * ## Example Usage
+ *
  * ### Regional
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,16 +30,17 @@ import * as utilities from "../utilities";
  *     region: "us-west1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
+ * * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
  *
- *  When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}

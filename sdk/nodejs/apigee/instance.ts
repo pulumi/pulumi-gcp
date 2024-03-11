@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
  *
  * ## Example Usage
+ *
  * ### Apigee Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,8 +47,10 @@ import * as utilities from "../utilities";
  *     orgId: apigeeOrg.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Instance Cidr Range
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,8 +81,10 @@ import * as utilities from "../utilities";
  *     peeringCidrRange: "SLASH_22",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Instance Ip Range
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -109,8 +115,10 @@ import * as utilities from "../utilities";
  *     ipRange: "10.87.8.0/22",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Instance Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -163,16 +171,17 @@ import * as utilities from "../utilities";
  *     diskEncryptionKeyName: apigeeKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
  *
- *  * `{{org_id}}/instances/{{name}}`
+ * * `{{org_id}}/instances/{{name}}`
  *
- *  * `{{org_id}}/{{name}}`
+ * * `{{org_id}}/{{name}}`
  *
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}

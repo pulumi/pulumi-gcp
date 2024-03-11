@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicy resource
  *
  * ## Example Usage
+ *
  * ### Region Network Firewall Policy Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,20 +21,21 @@ import * as utilities from "../utilities";
  *     description: "Terraform test",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RegionNetworkFirewallPolicy can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}

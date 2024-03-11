@@ -86,6 +86,7 @@ def get_kms_key_ring(location: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -93,6 +94,7 @@ def get_kms_key_ring(location: Optional[str] = None,
     my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
         location="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The Google Cloud Platform location for the KeyRing.
@@ -134,6 +136,7 @@ def get_kms_key_ring_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -141,6 +144,7 @@ def get_kms_key_ring_output(location: Optional[pulumi.Input[str]] = None,
     my_key_ring = gcp.kms.get_kms_key_ring(name="my-key-ring",
         location="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The Google Cloud Platform location for the KeyRing.

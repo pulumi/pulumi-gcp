@@ -12,15 +12,6 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/identity/docs/concepts/overview#groups
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const groups = gcp.cloudidentity.getGroups({
- *     parent: "customers/A01b123xz",
- * });
- * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
 
@@ -60,15 +51,6 @@ export interface GetGroupsResult {
  * https://cloud.google.com/identity/docs/concepts/overview#groups
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const groups = gcp.cloudidentity.getGroups({
- *     parent: "customers/A01b123xz",
- * });
- * ```
  */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

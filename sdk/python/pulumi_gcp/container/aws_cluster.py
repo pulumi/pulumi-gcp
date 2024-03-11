@@ -589,8 +589,10 @@ class AwsCluster(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+
         ### Basic_aws_cluster
         A basic example of a containeraws cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -662,8 +664,10 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -732,8 +736,10 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums (beta)
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -813,18 +819,19 @@ class AwsCluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
@@ -868,8 +875,10 @@ class AwsCluster(pulumi.CustomResource):
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
         ## Example Usage
+
         ### Basic_aws_cluster
         A basic example of a containeraws cluster
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -941,8 +950,10 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1011,8 +1022,10 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
         ### Beta_basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums (beta)
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1092,18 +1105,19 @@ class AwsCluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}

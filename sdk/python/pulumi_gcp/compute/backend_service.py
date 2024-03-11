@@ -1275,8 +1275,10 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+
         ### Backend Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1290,8 +1292,10 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             health_checks=default_http_health_check.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service External Iap
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1305,8 +1309,10 @@ class BackendService(pulumi.CustomResource):
                 oauth2_client_secret="xyz",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Simple
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1324,8 +1330,10 @@ class BackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Include Http Headers
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1343,8 +1351,10 @@ class BackendService(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Include Named Cookies
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1368,8 +1378,10 @@ class BackendService(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1392,8 +1404,10 @@ class BackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Bypass Cache On Request Headers
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1424,8 +1438,10 @@ class BackendService(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Traffic Director Round Robin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1441,8 +1457,10 @@ class BackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Traffic Director Ring Hash
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1474,8 +1492,10 @@ class BackendService(pulumi.CustomResource):
                 consecutive_errors=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Network Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1499,8 +1519,10 @@ class BackendService(pulumi.CustomResource):
                 group=external_proxy.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service External Managed
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1515,18 +1537,19 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_health_check.id,
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackendService can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/backendServices/{{name}}`
+        * `projects/{{project}}/global/backendServices/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
@@ -1658,8 +1681,10 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+
         ### Backend Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1673,8 +1698,10 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             health_checks=default_http_health_check.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service External Iap
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1688,8 +1715,10 @@ class BackendService(pulumi.CustomResource):
                 oauth2_client_secret="xyz",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Simple
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1707,8 +1736,10 @@ class BackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Include Http Headers
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1726,8 +1757,10 @@ class BackendService(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Include Named Cookies
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1751,8 +1784,10 @@ class BackendService(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1775,8 +1810,10 @@ class BackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Cache Bypass Cache On Request Headers
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1807,8 +1844,10 @@ class BackendService(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Traffic Director Round Robin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1824,8 +1863,10 @@ class BackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Traffic Director Ring Hash
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1857,8 +1898,10 @@ class BackendService(pulumi.CustomResource):
                 consecutive_errors=2,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service Network Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1882,8 +1925,10 @@ class BackendService(pulumi.CustomResource):
                 group=external_proxy.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Backend Service External Managed
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1898,18 +1943,19 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_health_check.id,
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BackendService can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/backendServices/{{name}}`
+        * `projects/{{project}}/global/backendServices/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}

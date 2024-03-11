@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,6 +38,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAssetIamPolicyResult> InvokeAsync(GetAssetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssetIamPolicyResult>("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args ?? new GetAssetIamPolicyArgs(), options.WithDefaults());
@@ -48,6 +50,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,6 +70,7 @@ namespace Pulumi.Gcp.DataPlex
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAssetIamPolicyResult> Invoke(GetAssetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAssetIamPolicyResult>("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args ?? new GetAssetIamPolicyInvokeArgs(), options.WithDefaults());

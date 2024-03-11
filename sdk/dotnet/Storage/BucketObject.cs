@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// Example creating a public object in an existing `image-store` bucket.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,9 +39,11 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Example creating an empty folder in an existing `image-store` bucket.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,6 +61,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

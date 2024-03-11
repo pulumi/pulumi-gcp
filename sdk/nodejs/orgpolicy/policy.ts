@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * * [The resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)
  * * [All valid constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints)
  * ## Example Usage
+ *
  * ### Enforce_policy
  * A test of an enforce orgpolicy policy for a project
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,8 +37,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Folder_policy
  * A test of an orgpolicy policy for a folder
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,8 +60,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Organization_policy
  * A test of an orgpolicy policy for an organization
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,8 +76,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Project_policy
  * A test of an orgpolicy policy for a project
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -105,7 +113,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dry_run_spec
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -137,15 +147,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Policy can be imported using any of these accepted formats: * `{{parent}}/policies/{{name}}`
+ * Policy can be imported using any of these accepted formats:
+ * * `{{parent}}/policies/{{name}}`
  *
  * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
+ * $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
  * ```
  */
 export class Policy extends pulumi.CustomResource {

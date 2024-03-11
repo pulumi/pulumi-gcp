@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *    the best way to be sure that you are not making dangerous changes is to start
  *    by **importing** your existing policy, and examining the diff very closely.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,9 +48,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,11 +73,13 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_organization\_iam\_binding
  *
  * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,9 +90,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -103,9 +110,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_organization\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -116,9 +125,11 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -134,9 +145,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_organization\_iam\_audit\_config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -155,28 +168,29 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ### Importing Audit Configs
  *
- *  An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
+ * An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource's `org_id` and the `service`, e.g:
  *
- *  * `"{{org_id}} foo.googleapis.com"`
+ * * `"{{org_id}} foo.googleapis.com"`
  *
- *  An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
  *
- *  tf
+ * tf
  *
- *  import {
+ * import {
  *
- *  id = "{{org_id}} foo.googleapis.com"
+ *   id = "{{org_id}} foo.googleapis.com"
  *
- *  to = google_organization_iam_audit_config.default
+ *   to = google_organization_iam_audit_config.default
  *
- *  }
+ * }
  *
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  *
  * ```sh
  * $ pulumi import gcp:organizations/iAMMember:IAMMember default "{{org_id}} foo.googleapis.com"

@@ -388,6 +388,7 @@ class WorkerPool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -401,8 +402,11 @@ class WorkerPool(pulumi.CustomResource):
                 no_external_ip=False,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Network Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -436,18 +440,19 @@ class WorkerPool(pulumi.CustomResource):
                 peered_network_ip_range="/29",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkerPool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}
@@ -487,6 +492,7 @@ class WorkerPool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -500,8 +506,11 @@ class WorkerPool(pulumi.CustomResource):
                 no_external_ip=False,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Network Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,18 +544,19 @@ class WorkerPool(pulumi.CustomResource):
                 peered_network_ip_range="/29",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkerPool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}

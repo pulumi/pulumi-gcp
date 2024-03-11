@@ -27,12 +27,12 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Monitoring Mesh Istio Service
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,8 +51,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMeshIstioServiceResult> InvokeAsync(GetMeshIstioServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceArgs(), options.WithDefaults());
@@ -73,12 +72,12 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Monitoring Mesh Istio Service
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,8 +96,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMeshIstioServiceResult> Invoke(GetMeshIstioServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMeshIstioServiceResult>("gcp:monitoring/getMeshIstioService:getMeshIstioService", args ?? new GetMeshIstioServiceInvokeArgs(), options.WithDefaults());

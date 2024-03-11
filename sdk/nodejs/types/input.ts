@@ -5758,7 +5758,7 @@ export namespace bigtable {
         kmsKeyName?: pulumi.Input<string>;
         /**
          * The number of nodes in the cluster.
-         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
          */
         numNodes?: pulumi.Input<number>;
         /**
@@ -5876,7 +5876,7 @@ export namespace billing {
 
     export interface BudgetAmount {
         /**
-         * Configures a budget amount that is automatically set to 100% of
+         * Configures a budget amount that is automatically set to 100%!o(MISSING)f
          * last period's spend.
          * Boolean. Set value to true to use. Do not set to false, instead
          * use the `specifiedAmount` block.
@@ -6040,7 +6040,7 @@ export namespace billing {
         spendBasis?: pulumi.Input<string>;
         /**
          * Send an alert when this threshold is exceeded. This is a
-         * 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
+         * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
          */
         thresholdPercent: pulumi.Input<number>;
     }
@@ -10656,7 +10656,7 @@ export namespace cloudfunctionsv2 {
 
     export interface FunctionServiceConfig {
         /**
-         * Whether 100% of traffic is routed to the latest revision. Defaults to true.
+         * Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
          */
         allTrafficOnLatestRevision?: pulumi.Input<boolean>;
         /**
@@ -13997,8 +13997,9 @@ export namespace compute {
          */
         fixed?: pulumi.Input<number>;
         /**
-         * Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
+         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+         * For example, specify 80 for 80%!
+         * (MISSING)
          */
         percent?: pulumi.Input<number>;
     }
@@ -14023,8 +14024,9 @@ export namespace compute {
          */
         fixed?: pulumi.Input<number>;
         /**
-         * Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
+         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+         * For example, specify 80 for 80%!
+         * (MISSING)
          */
         percent?: pulumi.Input<number>;
     }
@@ -14182,10 +14184,10 @@ export namespace compute {
         /**
          * A multiplier applied to the group's maximum servicing capacity
          * (based on UTILIZATION, RATE or CONNECTION).
-         * Default value is 1, which means the group will serve up to 100%
-         * of its configured capacity (depending on balancingMode). A
+         * Default value is 1, which means the group will serve up to 100%!
+         * (MISSING)of its configured capacity (depending on balancingMode). A
          * setting of 0 means the group is completely drained, offering
-         * 0% of its available Capacity. Valid range is [0.0,1.0].
+         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: pulumi.Input<number>;
         /**
@@ -14643,7 +14645,8 @@ export namespace compute {
         interval?: pulumi.Input<inputs.compute.BackendServiceOutlierDetectionInterval>;
         /**
          * Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%.
+         * that can be ejected. Defaults to 10%!
+         * (MISSING)
          */
         maxEjectionPercent?: pulumi.Input<number>;
         /**
@@ -18223,8 +18226,9 @@ export namespace compute {
          */
         fixed?: pulumi.Input<number>;
         /**
-         * Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
+         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+         * For example, specify 80 for 80%!
+         * (MISSING)
          */
         percent?: pulumi.Input<number>;
     }
@@ -18249,8 +18253,9 @@ export namespace compute {
          */
         fixed?: pulumi.Input<number>;
         /**
-         * Specifies a percentage of instances between 0 to 100%, inclusive.
-         * For example, specify 80 for 80%.
+         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+         * For example, specify 80 for 80%!
+         * (MISSING)
          */
         percent?: pulumi.Input<number>;
     }
@@ -18303,7 +18308,7 @@ export namespace compute {
          * but is required for non-INTERNAL backend service. The total
          * capacityScaler for all backends must be non-zero.
          * A setting of 0 means the group is completely drained, offering
-         * 0% of its available Capacity. Valid range is [0.0,1.0].
+         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: pulumi.Input<number>;
         /**
@@ -18785,7 +18790,8 @@ export namespace compute {
         interval?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetectionInterval>;
         /**
          * Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%.
+         * that can be ejected. Defaults to 10%!
+         * (MISSING)
          */
         maxEjectionPercent?: pulumi.Input<number>;
         /**
@@ -25707,8 +25713,6 @@ export namespace container {
          *
          *
          * This example `addonsConfig` disables two addons:
-         *
-         * <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
          */
         configConnectorConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigConfigConnectorConfig>;
         /**
@@ -26326,9 +26330,6 @@ export namespace container {
         clientCertificate?: pulumi.Input<string>;
         /**
          * Whether client certificate authorization is enabled for this cluster.  For example:
-         *
-         *
-         * This block also contains several computed attributes, documented below.
          */
         clientCertificateConfig: pulumi.Input<inputs.container.ClusterMasterAuthClientCertificateConfig>;
         /**
@@ -30575,7 +30576,7 @@ export namespace dataloss {
         cryptoKey?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey>;
         /**
          * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          */
         customAlphabet?: pulumi.Input<string>;
         /**
@@ -31670,7 +31671,7 @@ export namespace dataloss {
         cryptoKey: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey>;
         /**
          * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          */
         customAlphabet?: pulumi.Input<string>;
         /**
@@ -32550,7 +32551,7 @@ export namespace dataloss {
         cryptoKey?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey>;
         /**
          * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          */
         customAlphabet?: pulumi.Input<string>;
         /**
@@ -49355,7 +49356,7 @@ export namespace logging {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
@@ -49428,7 +49429,7 @@ export namespace logging {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
@@ -49623,7 +49624,7 @@ export namespace logging {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
@@ -49696,7 +49697,7 @@ export namespace logging {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
@@ -51506,7 +51507,7 @@ export namespace monitoring {
          */
         authInfo?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo>;
         /**
-         * The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+         * The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
          */
         body?: pulumi.Input<string>;
         /**
@@ -53432,7 +53433,7 @@ export namespace networkservices {
         serviceName?: pulumi.Input<string>;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+         * If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          */
@@ -53535,7 +53536,7 @@ export namespace networkservices {
         serviceName?: pulumi.Input<string>;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+         * If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          */
@@ -53711,7 +53712,7 @@ export namespace networkservices {
         serviceName?: pulumi.Input<string>;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+         * If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          *
@@ -60143,7 +60144,7 @@ export namespace vertex {
         metricName?: pulumi.Input<string>;
         /**
          * (Output)
-         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         * The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
          */
         target?: pulumi.Input<number>;
     }
@@ -60237,7 +60238,8 @@ export namespace vertex {
 
     export interface AiFeatureOnlineStoreBigtableAutoScaling {
         /**
-         * A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+         * A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+         * (MISSING)
          */
         cpuUtilizationTarget?: pulumi.Input<number>;
         /**
@@ -60628,7 +60630,7 @@ export namespace vertex {
         leafNodeEmbeddingCount?: pulumi.Input<number>;
         /**
          * The default percentage of leaf nodes that any query may be searched. Must be in
-         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
          */
         leafNodesToSearchPercent?: pulumi.Input<number>;
     }

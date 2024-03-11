@@ -105,6 +105,7 @@ def get_lake_iam_policy(lake: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_lake_iam_policy(lake: Optional[str] = None,
         location=example["location"],
         lake=example["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str lake: Used to find the parent resource to bind the IAM policy to
@@ -145,6 +147,7 @@ def get_lake_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -153,6 +156,7 @@ def get_lake_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
         location=example["location"],
         lake=example["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str lake: Used to find the parent resource to bind the IAM policy to

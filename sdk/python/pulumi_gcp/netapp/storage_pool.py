@@ -538,8 +538,10 @@ class StoragePool(pulumi.CustomResource):
             * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
 
         ## Example Usage
+
         ### Storage Pool Create
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -576,18 +578,19 @@ class StoragePool(pulumi.CustomResource):
             capacity_gib="2048",
             network=peering_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         storagePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}
@@ -652,8 +655,10 @@ class StoragePool(pulumi.CustomResource):
             * [QUICKSTART_TITLE](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
 
         ## Example Usage
+
         ### Storage Pool Create
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -690,18 +695,19 @@ class StoragePool(pulumi.CustomResource):
             capacity_gib="2048",
             network=peering_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         storagePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}

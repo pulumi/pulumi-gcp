@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
  *
  * ## Example Usage
+ *
  * ### Iam Deny Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,14 +69,15 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * DenyPolicy can be imported using any of these accepted formats:
  *
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  *
- *  When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}

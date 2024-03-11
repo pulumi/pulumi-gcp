@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Tpu V2 Vm Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,7 +65,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Tpu V2 Vm Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -174,20 +180,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Vm can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+ * * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
  * 
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  * 
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

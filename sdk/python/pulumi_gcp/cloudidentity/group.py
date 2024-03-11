@@ -370,8 +370,10 @@ class Group(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Cloud Identity Groups Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -387,14 +389,15 @@ class Group(pulumi.CustomResource):
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Group can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudidentity/group:Group default {{name}}
@@ -445,8 +448,10 @@ class Group(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Cloud Identity Groups Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -462,14 +467,15 @@ class Group(pulumi.CustomResource):
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Group can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudidentity/group:Group default {{name}}

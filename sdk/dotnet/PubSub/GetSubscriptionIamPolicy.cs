@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.PubSub
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.Gcp.PubSub
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSubscriptionIamPolicyResult> InvokeAsync(GetSubscriptionIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionIamPolicyResult>("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyArgs(), options.WithDefaults());
@@ -40,6 +42,7 @@ namespace Pulumi.Gcp.PubSub
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.PubSub
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSubscriptionIamPolicyResult> Invoke(GetSubscriptionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionIamPolicyResult>("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyInvokeArgs(), options.WithDefaults());

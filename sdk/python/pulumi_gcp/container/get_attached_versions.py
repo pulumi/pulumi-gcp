@@ -82,6 +82,7 @@ def get_attached_versions(location: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -90,6 +91,7 @@ def get_attached_versions(location: Optional[str] = None,
         project="my-project")
     pulumi.export("firstAvailableVersion", versions["validVersions"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location to list versions for.
@@ -118,6 +120,7 @@ def get_attached_versions_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -126,6 +129,7 @@ def get_attached_versions_output(location: Optional[pulumi.Input[str]] = None,
         project="my-project")
     pulumi.export("firstAvailableVersion", versions["validVersions"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location to list versions for.

@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  * 
  * ## Example Usage
+ * 
  * ### Vertex Ai Endpoint Network
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,18 +106,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Endpoint can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}

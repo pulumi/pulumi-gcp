@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Pubsub Lite Reservation Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,20 +42,21 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Reservation can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
+    /// * `projects/{{project}}/locations/{{region}}/reservations/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{name}}`
+    /// * `{{region}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:pubsub/liteReservation:LiteReservation default projects/{{project}}/locations/{{region}}/reservations/{{name}}

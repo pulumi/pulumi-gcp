@@ -15,10 +15,9 @@ namespace Pulumi.Gcp.Datastream
         /// Returns the list of IP addresses that Datastream connects from. For more information see
         /// the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.Gcp.Datastream
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetStaticIpsResult> InvokeAsync(GetStaticIpsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStaticIpsResult>("gcp:datastream/getStaticIps:getStaticIps", args ?? new GetStaticIpsArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.Gcp.Datastream
         /// Returns the list of IP addresses that Datastream connects from. For more information see
         /// the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.Gcp.Datastream
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetStaticIpsResult> Invoke(GetStaticIpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStaticIpsResult>("gcp:datastream/getStaticIps:getStaticIps", args ?? new GetStaticIpsInvokeArgs(), options.WithDefaults());

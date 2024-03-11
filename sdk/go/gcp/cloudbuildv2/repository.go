@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/build/docs)
 //
 // ## Example Usage
+//
 // ### Cloudbuildv2 Repository Ghe Doc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,8 +134,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudbuildv2 Repository Github Doc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,18 +222,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Repository can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
+// * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
 //
-//   - `{{location}}/{{parent_connection}}/{{name}}`
+// * `{{location}}/{{parent_connection}}/{{name}}`
 //
-//     When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}

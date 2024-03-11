@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,8 +71,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### With ReCAPTCHA Configuration Options
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,8 +122,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### With Header Actions
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -179,9 +186,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### With EnforceOnKey Value As Empty String
 // A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -239,18 +249,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Security policies can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/securityPolicies/{{name}}`
+// * `projects/{{project}}/global/securityPolicies/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}

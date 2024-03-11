@@ -286,8 +286,10 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
 
         ## Example Usage
+
         ### Network Security Gateway Security Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,8 +299,10 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,18 +378,19 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             description="my description",
             tls_inspection_policy=default_tls_inspection_policy.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GatewaySecurityPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
@@ -427,8 +432,10 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
 
         ## Example Usage
+
         ### Network Security Gateway Security Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -438,8 +445,10 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -515,18 +524,19 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             description="my description",
             tls_inspection_policy=default_tls_inspection_policy.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GatewaySecurityPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}

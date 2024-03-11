@@ -380,8 +380,10 @@ class Service(pulumi.CustomResource):
         developer experience and broader support of Cloud Run features.
 
         ## Example Usage
+
         ### Cloud Run Service Pubsub
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,8 +427,11 @@ class Service(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Cloud Run Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,8 +451,10 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Sql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,8 +486,10 @@ class Service(pulumi.CustomResource):
             ),
             autogenerate_revision_name=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Noauth
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,8 +514,10 @@ class Service(pulumi.CustomResource):
             service=default.name,
             policy_data=noauth.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Probes
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,8 +551,10 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Multicontainer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -604,18 +617,19 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Service can be imported using any of these accepted formats:
 
-         * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
+        * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
 
-         * `{{location}}/{{project}}/{{name}}`
+        * `{{location}}/{{project}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}
@@ -679,8 +693,10 @@ class Service(pulumi.CustomResource):
         developer experience and broader support of Cloud Run features.
 
         ## Example Usage
+
         ### Cloud Run Service Pubsub
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -724,8 +740,11 @@ class Service(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Cloud Run Service Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,8 +764,10 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Sql
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -778,8 +799,10 @@ class Service(pulumi.CustomResource):
             ),
             autogenerate_revision_name=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Noauth
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -804,8 +827,10 @@ class Service(pulumi.CustomResource):
             service=default.name,
             policy_data=noauth.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Probes
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -839,8 +864,10 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Cloud Run Service Multicontainer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -903,18 +930,19 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Service can be imported using any of these accepted formats:
 
-         * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
+        * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
 
-         * `{{location}}/{{project}}/{{name}}`
+        * `{{location}}/{{project}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}

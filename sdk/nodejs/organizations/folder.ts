@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,16 +37,17 @@ import * as utilities from "../utilities";
  *     parent: department1.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Folders can be imported using the folder's id, e.g.
  *
- *  * `folders/{{folder_id}}`
+ * * `folders/{{folder_id}}`
  *
- *  * `{{folder_id}}`
+ * * `{{folder_id}}`
  *
- *  When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}

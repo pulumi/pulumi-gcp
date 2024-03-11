@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  * 
  * ## Example Usage
+ * 
  * ### Apigee Organization Cloud Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -84,7 +87,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -119,7 +125,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Organization Cloud Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -209,7 +218,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Organization Cloud Full Disable Vpc Peering
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -275,16 +287,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Organization can be imported using any of these accepted formats:
  * 
- *  * `organizations/{{name}}`
+ * * `organizations/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}

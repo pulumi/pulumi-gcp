@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
  *
  * ## Example Usage
+ *
  * ### Healthcare Fhir Store Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,8 +48,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Healthcare Fhir Store Streaming Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,8 +94,10 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Healthcare Fhir Store Notification Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -117,8 +123,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Healthcare Fhir Store Notification Configs
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -147,16 +155,17 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FhirStore can be imported using any of these accepted formats:
  *
- *  * `{{dataset}}/fhirStores/{{name}}`
+ * * `{{dataset}}/fhirStores/{{name}}`
  *
- *  * `{{dataset}}/{{name}}`
+ * * `{{dataset}}/{{name}}`
  *
- *  When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}

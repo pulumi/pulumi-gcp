@@ -95,6 +95,7 @@ def get_schema_iam_policy(project: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,6 +103,7 @@ def get_schema_iam_policy(project: Optional[str] = None,
     policy = gcp.pubsub.get_schema_iam_policy(project=example["project"],
         schema=example["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -131,6 +133,7 @@ def get_schema_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -138,6 +141,7 @@ def get_schema_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     policy = gcp.pubsub.get_schema_iam_policy(project=example["project"],
         schema=example["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

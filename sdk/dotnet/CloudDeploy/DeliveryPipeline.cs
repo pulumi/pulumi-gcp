@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// The Cloud Deploy `DeliveryPipeline` resource
     /// 
     /// ## Example Usage
+    /// 
     /// ### Canary_delivery_pipeline
     /// Creates a basic Cloud Deploy delivery pipeline
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,8 +76,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Canary_service_networking_delivery_pipeline
     /// Creates a basic Cloud Deploy delivery pipeline
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -135,8 +139,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Canaryrun_delivery_pipeline
     /// Creates a basic Cloud Deploy delivery pipeline
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -196,8 +202,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Delivery_pipeline
     /// Creates a basic Cloud Deploy delivery pipeline
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -257,8 +265,10 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Verify_delivery_pipeline
     /// tests creating and updating a delivery pipeline with deployment verification strategy
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -318,18 +328,19 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// DeliveryPipeline can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}

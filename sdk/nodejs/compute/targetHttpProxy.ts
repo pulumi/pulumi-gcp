@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
+ *
  * ### Target Http Proxy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,8 +57,10 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Target Http Proxy Http Keep Alive Timeout
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,8 +101,10 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Target Http Proxy Https Redirect
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,18 +121,19 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * TargetHttpProxy can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/global/targetHttpProxies/{{name}}`
+ * * `projects/{{project}}/global/targetHttpProxies/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, TargetHttpProxy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, TargetHttpProxy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}

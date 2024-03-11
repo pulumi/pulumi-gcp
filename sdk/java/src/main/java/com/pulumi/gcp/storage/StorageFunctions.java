@@ -42,6 +42,8 @@ public final class StorageFunctions {
      * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -70,6 +72,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketResult> getBucket(GetBucketArgs args) {
@@ -82,6 +85,8 @@ public final class StorageFunctions {
      * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -110,6 +115,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketResult> getBucketPlain(GetBucketPlainArgs args) {
@@ -122,6 +128,8 @@ public final class StorageFunctions {
      * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketResult> getBucket(GetBucketArgs args, InvokeOptions options) {
@@ -162,6 +171,8 @@ public final class StorageFunctions {
      * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -190,6 +201,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketResult> getBucketPlain(GetBucketPlainArgs args, InvokeOptions options) {
@@ -199,6 +211,8 @@ public final class StorageFunctions {
      * Retrieves the current IAM policy data for bucket
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -227,6 +241,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketIamPolicyResult> getBucketIamPolicy(GetBucketIamPolicyArgs args) {
@@ -236,6 +251,8 @@ public final class StorageFunctions {
      * Retrieves the current IAM policy data for bucket
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -264,6 +281,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketIamPolicyResult> getBucketIamPolicyPlain(GetBucketIamPolicyPlainArgs args) {
@@ -273,6 +291,8 @@ public final class StorageFunctions {
      * Retrieves the current IAM policy data for bucket
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -301,6 +321,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketIamPolicyResult> getBucketIamPolicy(GetBucketIamPolicyArgs args, InvokeOptions options) {
@@ -310,6 +331,8 @@ public final class StorageFunctions {
      * Retrieves the current IAM policy data for bucket
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -338,6 +361,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketIamPolicyResult> getBucketIamPolicyPlain(GetBucketIamPolicyPlainArgs args, InvokeOptions options) {
@@ -352,6 +376,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +407,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectResult> getBucketObject() {
@@ -395,6 +422,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -424,6 +453,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectResult> getBucketObjectPlain() {
@@ -438,6 +468,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -467,6 +499,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectResult> getBucketObject(GetBucketObjectArgs args) {
@@ -481,6 +514,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -510,6 +545,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectResult> getBucketObjectPlain(GetBucketObjectPlainArgs args) {
@@ -524,6 +560,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -553,6 +591,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectResult> getBucketObject(GetBucketObjectArgs args, InvokeOptions options) {
@@ -567,6 +606,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -596,6 +637,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectResult> getBucketObjectPlain(GetBucketObjectPlainArgs args, InvokeOptions options) {
@@ -612,6 +654,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example file object  stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -642,6 +686,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectContentResult> getBucketObjectContent(GetBucketObjectContentArgs args) {
@@ -658,6 +703,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example file object  stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -688,6 +735,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectContentResult> getBucketObjectContentPlain(GetBucketObjectContentPlainArgs args) {
@@ -704,6 +752,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example file object  stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -734,6 +784,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBucketObjectContentResult> getBucketObjectContent(GetBucketObjectContentArgs args, InvokeOptions options) {
@@ -750,6 +801,8 @@ public final class StorageFunctions {
      * ## Example Usage
      * 
      * Example file object  stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -780,6 +833,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBucketObjectContentResult> getBucketObjectContentPlain(GetBucketObjectContentPlainArgs args, InvokeOptions options) {
@@ -791,6 +845,8 @@ public final class StorageFunctions {
      * For more info about signed URL&#39;s is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -826,7 +882,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Full Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -863,6 +923,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetObjectSignedUrlResult> getObjectSignedUrl(GetObjectSignedUrlArgs args) {
@@ -874,6 +935,8 @@ public final class StorageFunctions {
      * For more info about signed URL&#39;s is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -909,7 +972,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Full Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -946,6 +1013,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetObjectSignedUrlResult> getObjectSignedUrlPlain(GetObjectSignedUrlPlainArgs args) {
@@ -957,6 +1025,8 @@ public final class StorageFunctions {
      * For more info about signed URL&#39;s is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -992,7 +1062,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Full Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1029,6 +1103,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetObjectSignedUrlResult> getObjectSignedUrl(GetObjectSignedUrlArgs args, InvokeOptions options) {
@@ -1040,6 +1115,8 @@ public final class StorageFunctions {
      * For more info about signed URL&#39;s is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1075,7 +1152,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Full Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1112,6 +1193,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetObjectSignedUrlResult> getObjectSignedUrlPlain(GetObjectSignedUrlPlainArgs args, InvokeOptions options) {
@@ -1152,7 +1234,10 @@ public final class StorageFunctions {
      * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
      * 
      * ## Example Usage
+     * 
      * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1187,7 +1272,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1233,6 +1322,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceAccountResult> getProjectServiceAccount() {
@@ -1273,7 +1363,10 @@ public final class StorageFunctions {
      * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
      * 
      * ## Example Usage
+     * 
      * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1308,7 +1401,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1354,6 +1451,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain() {
@@ -1394,7 +1492,10 @@ public final class StorageFunctions {
      * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
      * 
      * ## Example Usage
+     * 
      * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1429,7 +1530,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1475,6 +1580,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args) {
@@ -1515,7 +1621,10 @@ public final class StorageFunctions {
      * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
      * 
      * ## Example Usage
+     * 
      * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1550,7 +1659,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1596,6 +1709,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args) {
@@ -1636,7 +1750,10 @@ public final class StorageFunctions {
      * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
      * 
      * ## Example Usage
+     * 
      * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1671,7 +1788,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1717,6 +1838,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOptions options) {
@@ -1757,7 +1879,10 @@ public final class StorageFunctions {
      * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
      * 
      * ## Example Usage
+     * 
      * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1792,7 +1917,11 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1838,6 +1967,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args, InvokeOptions options) {
@@ -1847,6 +1977,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1874,6 +2006,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount() {
@@ -1883,6 +2016,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1910,6 +2045,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountPlain() {
@@ -1919,6 +2055,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1946,6 +2084,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs args) {
@@ -1955,6 +2094,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1982,6 +2123,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountPlain(GetTransferProjectServiceAccountPlainArgs args) {
@@ -1991,6 +2133,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2018,6 +2162,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs args, InvokeOptions options) {
@@ -2027,6 +2172,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2054,6 +2201,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountPlain(GetTransferProjectServiceAccountPlainArgs args, InvokeOptions options) {
@@ -2063,6 +2211,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2090,6 +2240,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
@@ -2103,6 +2254,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2130,6 +2283,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
@@ -2143,6 +2297,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2170,6 +2326,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
@@ -2183,6 +2340,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2210,6 +2369,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
@@ -2223,6 +2383,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2250,6 +2412,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
@@ -2263,6 +2426,8 @@ public final class StorageFunctions {
      * Use this data source to retrieve Storage Transfer service account for this project
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2290,6 +2455,7 @@ public final class StorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount

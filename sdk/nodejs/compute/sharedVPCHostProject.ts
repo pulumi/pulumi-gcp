@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,14 +33,15 @@ import * as utilities from "../utilities";
  *     serviceProject: "service-project-id-2",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g.
  *
- *  * `{{project_id}}`
+ * * `{{project_id}}`
  *
- *  When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}

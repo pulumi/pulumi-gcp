@@ -21,8 +21,10 @@ import (
 //   - [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 //
 // ## Example Usage
+//
 // ### Iam Workload Identity Pool Provider Aws Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,8 +58,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Aws Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,8 +104,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Oidc Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,8 +144,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Oidc Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -186,8 +194,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Saml Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -233,8 +243,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Saml Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -283,8 +295,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Oidc Upload Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -332,18 +346,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
+// * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
 //
-//   - `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+// * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 //
-//   - `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+// * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
 //
-//     When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
@@ -396,12 +411,6 @@ type WorkloadIdentityPoolProvider struct {
 	//   the total size of all mapped attributes must not exceed 8KB.
 	//   For AWS providers, the following rules apply:
 	// - If no attribute mapping is defined, the following default mapping applies:
-	// - If any custom attribute mappings are defined, they must include a mapping to the
-	//   `google.subject` attribute.
-	//   For OIDC providers, the following rules apply:
-	// - Custom attribute mappings must be defined, and must include a mapping to the
-	//   `google.subject` attribute. For example, the following maps the `sub` claim of the
-	//   incoming credential to the `subject` attribute on a Google token.
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
@@ -518,12 +527,6 @@ type workloadIdentityPoolProviderState struct {
 	//   the total size of all mapped attributes must not exceed 8KB.
 	//   For AWS providers, the following rules apply:
 	// - If no attribute mapping is defined, the following default mapping applies:
-	// - If any custom attribute mappings are defined, they must include a mapping to the
-	//   `google.subject` attribute.
-	//   For OIDC providers, the following rules apply:
-	// - Custom attribute mappings must be defined, and must include a mapping to the
-	//   `google.subject` attribute. For example, the following maps the `sub` claim of the
-	//   incoming credential to the `subject` attribute on a Google token.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
@@ -605,12 +608,6 @@ type WorkloadIdentityPoolProviderState struct {
 	//   the total size of all mapped attributes must not exceed 8KB.
 	//   For AWS providers, the following rules apply:
 	// - If no attribute mapping is defined, the following default mapping applies:
-	// - If any custom attribute mappings are defined, they must include a mapping to the
-	//   `google.subject` attribute.
-	//   For OIDC providers, the following rules apply:
-	// - Custom attribute mappings must be defined, and must include a mapping to the
-	//   `google.subject` attribute. For example, the following maps the `sub` claim of the
-	//   incoming credential to the `subject` attribute on a Google token.
 	AttributeMapping pulumi.StringMapInput
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
@@ -696,12 +693,6 @@ type workloadIdentityPoolProviderArgs struct {
 	//   the total size of all mapped attributes must not exceed 8KB.
 	//   For AWS providers, the following rules apply:
 	// - If no attribute mapping is defined, the following default mapping applies:
-	// - If any custom attribute mappings are defined, they must include a mapping to the
-	//   `google.subject` attribute.
-	//   For OIDC providers, the following rules apply:
-	// - Custom attribute mappings must be defined, and must include a mapping to the
-	//   `google.subject` attribute. For example, the following maps the `sub` claim of the
-	//   incoming credential to the `subject` attribute on a Google token.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
@@ -773,12 +764,6 @@ type WorkloadIdentityPoolProviderArgs struct {
 	//   the total size of all mapped attributes must not exceed 8KB.
 	//   For AWS providers, the following rules apply:
 	// - If no attribute mapping is defined, the following default mapping applies:
-	// - If any custom attribute mappings are defined, they must include a mapping to the
-	//   `google.subject` attribute.
-	//   For OIDC providers, the following rules apply:
-	// - Custom attribute mappings must be defined, and must include a mapping to the
-	//   `google.subject` attribute. For example, the following maps the `sub` claim of the
-	//   incoming credential to the `subject` attribute on a Google token.
 	AttributeMapping pulumi.StringMapInput
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
@@ -938,12 +923,6 @@ func (o WorkloadIdentityPoolProviderOutput) AttributeCondition() pulumi.StringPt
 //     the total size of all mapped attributes must not exceed 8KB.
 //     For AWS providers, the following rules apply:
 //   - If no attribute mapping is defined, the following default mapping applies:
-//   - If any custom attribute mappings are defined, they must include a mapping to the
-//     `google.subject` attribute.
-//     For OIDC providers, the following rules apply:
-//   - Custom attribute mappings must be defined, and must include a mapping to the
-//     `google.subject` attribute. For example, the following maps the `sub` claim of the
-//     incoming credential to the `subject` attribute on a Google token.
 func (o WorkloadIdentityPoolProviderOutput) AttributeMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)
 }

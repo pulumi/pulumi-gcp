@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
  * 
  * ## Example Usage
+ * 
  * ### Document Ai Warehouse Document Schema Text
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -80,7 +83,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Integer
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -132,7 +138,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Float
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -184,7 +193,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Property
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -253,7 +265,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Property Enum
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -328,7 +343,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Enum
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -386,7 +404,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Map
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -438,7 +459,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Datetime
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -490,7 +514,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Document Ai Warehouse Document Schema Timestamp
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -542,16 +569,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * DocumentSchema can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
+ * * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
  * 
- *  * `{{project_number}}/{{location}}/{{name}}`
+ * * `{{project_number}}/{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}

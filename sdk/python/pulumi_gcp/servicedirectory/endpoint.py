@@ -289,8 +289,10 @@ class Endpoint(pulumi.CustomResource):
             * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
         ## Example Usage
+
         ### Service Directory Endpoint Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -311,8 +313,10 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
+        <!--End PulumiCodeChooser -->
         ### Service Directory Endpoint With Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,18 +340,19 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
+        * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
 
-         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+        * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
 
-         * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+        * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
 
-         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
@@ -394,8 +399,10 @@ class Endpoint(pulumi.CustomResource):
             * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
         ## Example Usage
+
         ### Service Directory Endpoint Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,8 +423,10 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
+        <!--End PulumiCodeChooser -->
         ### Service Directory Endpoint With Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,18 +450,19 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
+        * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
 
-         * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+        * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
 
-         * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+        * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
 
-         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}

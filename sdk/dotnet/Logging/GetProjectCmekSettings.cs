@@ -19,12 +19,12 @@ namespace Pulumi.Gcp.Logging
         /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getCmekSettings)
         /// * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Logging Project Cmek Settings Basic
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +40,7 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectCmekSettingsResult> InvokeAsync(GetProjectCmekSettingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectCmekSettingsResult>("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args ?? new GetProjectCmekSettingsArgs(), options.WithDefaults());
@@ -54,12 +53,12 @@ namespace Pulumi.Gcp.Logging
         /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getCmekSettings)
         /// * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Logging Project Cmek Settings Basic
         /// 
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +74,7 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectCmekSettingsResult> Invoke(GetProjectCmekSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectCmekSettingsResult>("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args ?? new GetProjectCmekSettingsInvokeArgs(), options.WithDefaults());

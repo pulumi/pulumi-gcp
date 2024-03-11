@@ -19,8 +19,10 @@ import (
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 //
 // ## Example Usage
+//
 // ### Bigtable App Profile Anycluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,8 +77,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigtable App Profile Singlecluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,8 +126,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigtable App Profile Multicluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -182,8 +188,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigtable App Profile Priority
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -232,18 +240,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // AppProfile can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
+// * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
 //
-//   - `{{project}}/{{instance}}/{{app_profile_id}}`
+// * `{{project}}/{{instance}}/{{app_profile_id}}`
 //
-//   - `{{instance}}/{{app_profile_id}}`
+// * `{{instance}}/{{app_profile_id}}`
 //
-//     When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}

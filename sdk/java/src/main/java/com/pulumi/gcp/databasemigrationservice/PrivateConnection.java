@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/database-migration/docs/oracle-to-postgresql/create-private-connectivity-configuration)
  * 
  * ## Example Usage
+ * 
  * ### Database Migration Service Private Connection
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,18 +74,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * PrivateConnection can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
+ * * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
  * 
- *  * `{{project}}/{{location}}/{{private_connection_id}}`
+ * * `{{project}}/{{location}}/{{private_connection_id}}`
  * 
- *  * `{{location}}/{{private_connection_id}}`
+ * * `{{location}}/{{private_connection_id}}`
  * 
- *  When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}

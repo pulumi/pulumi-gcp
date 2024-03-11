@@ -101,12 +101,14 @@ def get_repository(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_repo = gcp.sourcerepo.get_repository(name="my-repository")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
@@ -139,12 +141,14 @@ def get_repository_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_repo = gcp.sourcerepo.get_repository(name="my-repository")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`

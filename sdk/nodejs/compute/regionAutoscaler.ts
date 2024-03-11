@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  *
  * ## Example Usage
+ *
  * ### Region Autoscaler Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,20 +82,21 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RegionAutoscaler can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
@@ -144,8 +147,8 @@ export class RegionAutoscaler extends pulumi.CustomResource {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.
-     * Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%!
+     * (MISSING)Structure is documented below.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.RegionAutoscalerAutoscalingPolicy>;
     /**
@@ -234,8 +237,8 @@ export interface RegionAutoscalerState {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.
-     * Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%!
+     * (MISSING)Structure is documented below.
      */
     autoscalingPolicy?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     /**
@@ -282,8 +285,8 @@ export interface RegionAutoscalerArgs {
      * define one or more of the policies for an autoscaler: cpuUtilization,
      * customMetricUtilizations, and loadBalancingUtilization.
      * If none of these are specified, the default will be to autoscale based
-     * on cpuUtilization to 0.6 or 60%.
-     * Structure is documented below.
+     * on cpuUtilization to 0.6 or 60%!
+     * (MISSING)Structure is documented below.
      */
     autoscalingPolicy: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicy>;
     /**

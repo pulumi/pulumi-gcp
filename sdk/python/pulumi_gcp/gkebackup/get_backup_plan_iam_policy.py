@@ -105,6 +105,7 @@ def get_backup_plan_iam_policy(location: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_backup_plan_iam_policy(location: Optional[str] = None,
         location=basic["location"],
         name=basic["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The region of the Backup Plan.
@@ -147,6 +149,7 @@ def get_backup_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[s
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -155,6 +158,7 @@ def get_backup_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[s
         location=basic["location"],
         name=basic["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The region of the Backup Plan.

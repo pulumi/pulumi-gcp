@@ -16,11 +16,6 @@ namespace Pulumi.Gcp.Organizations
         /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
         /// 
         /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-        /// 
-        /// 
-        /// This data source is used to define IAM policies to apply to other resources.
-        /// Currently, defining a policy through a datasource and referencing that policy
-        /// from another resource is the only way to apply an IAM policy to a resource.
         /// </summary>
         public static Task<GetIAMPolicyResult> InvokeAsync(GetIAMPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyArgs(), options.WithDefaults());
@@ -30,11 +25,6 @@ namespace Pulumi.Gcp.Organizations
         /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
         /// 
         /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-        /// 
-        /// 
-        /// This data source is used to define IAM policies to apply to other resources.
-        /// Currently, defining a policy through a datasource and referencing that policy
-        /// from another resource is the only way to apply an IAM policy to a resource.
         /// </summary>
         public static Output<GetIAMPolicyResult> Invoke(GetIAMPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithDefaults());

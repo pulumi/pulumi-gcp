@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * Certificate represents a HTTP-reachable backend for a Certificate.
  *
  * ## Example Usage
+ *
  * ### Certificate Manager Google Managed Certificate Dns
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,8 +47,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Certificate Manager Google Managed Certificate Issuance Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,8 +119,10 @@ import * as utilities from "../utilities";
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Certificate Manager Certificate Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -147,8 +153,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Certificate Manager Self Managed Certificate Regional
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,8 +176,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -238,8 +248,10 @@ import * as utilities from "../utilities";
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Certificate Manager Google Managed Certificate Dns All Regions
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -270,18 +282,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Certificate can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}

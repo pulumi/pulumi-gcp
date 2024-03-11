@@ -22,8 +22,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  *
  * ## Example Usage
+ *
  * ### Scc Notification Config Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,16 +41,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NotificationConfig can be imported using any of these accepted formats:
  *
- *  * `organizations/{{organization}}/notificationConfigs/{{name}}`
+ * * `organizations/{{organization}}/notificationConfigs/{{name}}`
  *
- *  * `{{organization}}/{{name}}`
+ * * `{{organization}}/{{name}}`
  *
- *  When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}

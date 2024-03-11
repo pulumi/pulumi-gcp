@@ -15,10 +15,9 @@ namespace Pulumi.Gcp.Compute
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +51,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithDefaults());
@@ -62,10 +60,9 @@ namespace Pulumi.Gcp.Compute
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +96,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGlobalAddressResult> Invoke(GetGlobalAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithDefaults());

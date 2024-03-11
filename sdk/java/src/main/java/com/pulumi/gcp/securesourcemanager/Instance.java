@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
  * 
  * ## Example Usage
+ * 
  * ### Secure Source Manager Instance Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,7 +62,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secure Source Manager Instance Cmek
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -116,7 +122,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Secure Source Manager Instance Private
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -227,20 +236,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Instance can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
+ * * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
  * 
- *  * `{{project}}/{{location}}/{{instance_id}}`
+ * * `{{project}}/{{location}}/{{instance_id}}`
  * 
- *  * `{{location}}/{{instance_id}}`
+ * * `{{location}}/{{instance_id}}`
  * 
- *  * `{{instance_id}}`
+ * * `{{instance_id}}`
  * 
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}

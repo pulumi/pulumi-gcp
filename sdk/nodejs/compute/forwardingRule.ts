@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  *
  * ## Example Usage
+ *
  * ### Internal Http Lb With Mig Backend
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -186,8 +188,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Internal Tcp Udp Lb With Mig Backend
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -349,8 +353,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Externallb
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -378,8 +384,10 @@ import * as utilities from "../utilities";
  *     backendService: backend.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Global Internallb
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -419,8 +427,10 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -432,8 +442,10 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule L3 Default
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -459,8 +471,10 @@ import * as utilities from "../utilities";
  *     allPorts: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Internallb
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -500,8 +514,10 @@ import * as utilities from "../utilities";
  *     ipVersion: "IPV4",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Http Lb
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -661,8 +677,10 @@ import * as utilities from "../utilities";
  *     role: "ACTIVE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Regional Http Xlb
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -827,8 +845,10 @@ import * as utilities from "../utilities";
  *     role: "ACTIVE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Vpc Psc
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -910,8 +930,10 @@ import * as utilities from "../utilities";
  *     allowPscGlobalAccess: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Vpc Psc No Automate Dns
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -991,8 +1013,10 @@ import * as utilities from "../utilities";
  *     noAutomateDnsZone: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Regional Steering
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -1025,8 +1049,10 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Forwarding Rule Internallb Ipv6
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -1069,20 +1095,21 @@ import * as utilities from "../utilities";
  *     ipVersion: "IPV6",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ForwardingRule can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}

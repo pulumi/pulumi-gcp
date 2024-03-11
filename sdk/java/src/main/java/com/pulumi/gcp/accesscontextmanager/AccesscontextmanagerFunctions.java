@@ -18,6 +18,8 @@ public final class AccesscontextmanagerFunctions {
      * Retrieves the current IAM policy data for accesspolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,6 +48,7 @@ public final class AccesscontextmanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs args) {
@@ -55,6 +58,8 @@ public final class AccesscontextmanagerFunctions {
      * Retrieves the current IAM policy data for accesspolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -83,6 +88,7 @@ public final class AccesscontextmanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyPlain(GetAccessPolicyIamPolicyPlainArgs args) {
@@ -92,6 +98,8 @@ public final class AccesscontextmanagerFunctions {
      * Retrieves the current IAM policy data for accesspolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -120,6 +128,7 @@ public final class AccesscontextmanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs args, InvokeOptions options) {
@@ -129,6 +138,8 @@ public final class AccesscontextmanagerFunctions {
      * Retrieves the current IAM policy data for accesspolicy
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -157,6 +168,7 @@ public final class AccesscontextmanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyPlain(GetAccessPolicyIamPolicyPlainArgs args, InvokeOptions options) {

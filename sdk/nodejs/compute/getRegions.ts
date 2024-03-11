@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * Provides access to available Google Compute regions for a given project.
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  *     }
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -70,6 +72,7 @@ export interface GetRegionsResult {
  * Provides access to available Google Compute regions for a given project.
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,6 +90,7 @@ export interface GetRegionsResult {
  *     }
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

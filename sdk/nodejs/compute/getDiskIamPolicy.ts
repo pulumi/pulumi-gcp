@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: _default.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDiskIamPolicy(args: GetDiskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskIamPolicyResult> {
 
@@ -77,6 +79,7 @@ export interface GetDiskIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,6 +90,7 @@ export interface GetDiskIamPolicyResult {
  *     name: _default.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getDiskIamPolicy(a, opts))

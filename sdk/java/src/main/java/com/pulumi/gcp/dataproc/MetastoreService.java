@@ -34,7 +34,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
  * 
  * ## Example Usage
+ * 
  * ### Dataproc Metastore Service Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -76,7 +79,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Cmek Example
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -129,7 +135,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Private Service Connect
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -186,7 +195,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Private Service Connect Custom Routes
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -244,7 +256,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Dpms2
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -283,7 +298,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Service Dpms2 Scaling Factor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -322,18 +340,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Service can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
+ * * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
  * 
- *  * `{{project}}/{{location}}/{{service_id}}`
+ * * `{{project}}/{{location}}/{{service_id}}`
  * 
- *  * `{{location}}/{{service_id}}`
+ * * `{{location}}/{{service_id}}`
  * 
- *  When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}

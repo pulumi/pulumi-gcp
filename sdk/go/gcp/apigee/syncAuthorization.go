@@ -21,8 +21,10 @@ import (
 //   - [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
 //
 // ## Example Usage
+//
 // ### Apigee Sync Authorization Basic Test
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,16 +101,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // SyncAuthorization can be imported using any of these accepted formats:
 //
-//   - `organizations/{{name}}/syncAuthorization`
+// * `organizations/{{name}}/syncAuthorization`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization

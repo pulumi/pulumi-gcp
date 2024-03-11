@@ -14,28 +14,14 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List all networks in a specified Google Cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_forwarding_rules = Gcp.Compute.GetForwardingRules.Invoke(new()
-        ///     {
-        ///         Project = "my-cloud-project",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_forwarding_rules" "my-forwarding-rules" {
+        ///   project = "my-cloud-project"
+        ///   region  = "us-central1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRulesResult> InvokeAsync(GetForwardingRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRulesResult>("gcp:compute/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesArgs(), options.WithDefaults());
@@ -43,28 +29,14 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// List all networks in a specified Google Cloud project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_forwarding_rules = Gcp.Compute.GetForwardingRules.Invoke(new()
-        ///     {
-        ///         Project = "my-cloud-project",
-        ///         Region = "us-central1",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_forwarding_rules" "my-forwarding-rules" {
+        ///   project = "my-cloud-project"
+        ///   region  = "us-central1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("gcp:compute/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithDefaults());

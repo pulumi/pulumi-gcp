@@ -403,8 +403,10 @@ class CapacityCommitment(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+
         ### Bigquery Reservation Capacity Commitment Docs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,18 +418,19 @@ class CapacityCommitment(pulumi.CustomResource):
             plan="FLEX_FLAT_RATE",
             edition="ENTERPRISE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CapacityCommitment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}`
+        * `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}`
 
-         * `{{project}}/{{location}}/{{capacity_commitment_id}}`
+        * `{{project}}/{{location}}/{{capacity_commitment_id}}`
 
-         * `{{location}}/{{capacity_commitment_id}}`
+        * `{{location}}/{{capacity_commitment_id}}`
 
-         When using the `pulumi import` command, CapacityCommitment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CapacityCommitment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
@@ -478,8 +481,10 @@ class CapacityCommitment(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
+
         ### Bigquery Reservation Capacity Commitment Docs
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,18 +496,19 @@ class CapacityCommitment(pulumi.CustomResource):
             plan="FLEX_FLAT_RATE",
             edition="ENTERPRISE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CapacityCommitment can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}`
+        * `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}`
 
-         * `{{project}}/{{location}}/{{capacity_commitment_id}}`
+        * `{{project}}/{{location}}/{{capacity_commitment_id}}`
 
-         * `{{location}}/{{capacity_commitment_id}}`
+        * `{{location}}/{{capacity_commitment_id}}`
 
-         When using the `pulumi import` command, CapacityCommitment can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CapacityCommitment can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}

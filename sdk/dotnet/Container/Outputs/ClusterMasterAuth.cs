@@ -19,9 +19,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? ClientCertificate;
         /// <summary>
         /// Whether client certificate authorization is enabled for this cluster.  For example:
-        /// 
-        /// 
-        /// This block also contains several computed attributes, documented below.
         /// </summary>
         public readonly Outputs.ClusterMasterAuthClientCertificateConfig ClientCertificateConfig;
         /// <summary>

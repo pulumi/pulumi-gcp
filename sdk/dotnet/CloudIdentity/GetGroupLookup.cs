@@ -16,30 +16,15 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#groups
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @group = Gcp.CloudIdentity.GetGroupLookup.Invoke(new()
-        ///     {
-        ///         GroupKey = new Gcp.CloudIdentity.Inputs.GetGroupLookupGroupKeyInputArgs
-        ///         {
-        ///             Id = "my-group@example.com",
-        ///         },
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_cloud_identity_group_lookup" "group" {
+        ///   group_key {
+        ///     id = "my-group@example.com"
+        ///   }
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupLookupResult> InvokeAsync(GetGroupLookupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupLookupResult>("gcp:cloudidentity/getGroupLookup:getGroupLookup", args ?? new GetGroupLookupArgs(), options.WithDefaults());
@@ -49,30 +34,15 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#groups
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @group = Gcp.CloudIdentity.GetGroupLookup.Invoke(new()
-        ///     {
-        ///         GroupKey = new Gcp.CloudIdentity.Inputs.GetGroupLookupGroupKeyInputArgs
-        ///         {
-        ///             Id = "my-group@example.com",
-        ///         },
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_cloud_identity_group_lookup" "group" {
+        ///   group_key {
+        ///     id = "my-group@example.com"
+        ///   }
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupLookupResult> Invoke(GetGroupLookupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupLookupResult>("gcp:cloudidentity/getGroupLookup:getGroupLookup", args ?? new GetGroupLookupInvokeArgs(), options.WithDefaults());

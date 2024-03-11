@@ -104,6 +104,7 @@ def get_keys(managed_zone: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -118,6 +119,7 @@ def get_keys(managed_zone: Optional[str] = None,
     foo_dns_keys = gcp.dns.get_keys_output(managed_zone=foo.id)
     pulumi.export("fooDnsDsRecord", foo_dns_keys.key_signing_keys[0].ds_record)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str managed_zone: The name or id of the Cloud DNS managed zone.
@@ -155,6 +157,7 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -169,6 +172,7 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
     foo_dns_keys = gcp.dns.get_keys_output(managed_zone=foo.id)
     pulumi.export("fooDnsDsRecord", foo_dns_keys.key_signing_keys[0].ds_record)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str managed_zone: The name or id of the Cloud DNS managed zone.

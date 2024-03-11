@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.BigLake
     ///     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Biglake Table
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -112,14 +114,15 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Table can be imported using any of these accepted formats:
     /// 
-    ///  * `{{database}}/tables/{{name}}`
+    /// * `{{database}}/tables/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Table can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Table can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:biglake/table:Table default {{database}}/tables/{{name}}

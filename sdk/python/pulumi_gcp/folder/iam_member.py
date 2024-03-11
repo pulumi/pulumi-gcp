@@ -209,6 +209,7 @@ class IAMMember(pulumi.CustomResource):
            fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -221,9 +222,11 @@ class IAMMember(pulumi.CustomResource):
             folder="folders/1234567",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -241,9 +244,11 @@ class IAMMember(pulumi.CustomResource):
             folder="folders/1234567",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_folder\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -253,9 +258,11 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -270,9 +277,11 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_folder\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,9 +291,11 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,9 +310,11 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_folder\\_iam\\_audit\\_config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,28 +332,29 @@ class IAMMember(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing Audit Configs
 
-         An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
+        An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
 
-         * `"folder/{{folder_id}} foo.googleapis.com"`
+        * `"folder/{{folder_id}} foo.googleapis.com"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "folder/{{folder_id}} foo.googleapis.com"
+          id = "folder/{{folder_id}} foo.googleapis.com"
 
-         to = google_folder_iam_audit_config.default
+          to = google_folder_iam_audit_config.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:folder/iAMMember:IAMMember default "folder/{{folder_id}} foo.googleapis.com"
@@ -386,6 +400,7 @@ class IAMMember(pulumi.CustomResource):
            fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -398,9 +413,11 @@ class IAMMember(pulumi.CustomResource):
             folder="folders/1234567",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -418,9 +435,11 @@ class IAMMember(pulumi.CustomResource):
             folder="folders/1234567",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_folder\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,9 +449,11 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,9 +468,11 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_folder\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -459,9 +482,11 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,9 +501,11 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_folder\\_iam\\_audit\\_config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,28 +523,29 @@ class IAMMember(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing Audit Configs
 
-         An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
+        An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g:
 
-         * `"folder/{{folder_id}} foo.googleapis.com"`
+        * `"folder/{{folder_id}} foo.googleapis.com"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "folder/{{folder_id}} foo.googleapis.com"
+          id = "folder/{{folder_id}} foo.googleapis.com"
 
-         to = google_folder_iam_audit_config.default
+          to = google_folder_iam_audit_config.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:folder/iAMMember:IAMMember default "folder/{{folder_id}} foo.googleapis.com"

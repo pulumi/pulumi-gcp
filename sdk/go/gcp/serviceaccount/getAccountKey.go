@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs, opts ...pulumi.InvokeOption) (*GetAccountKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountKeyResult

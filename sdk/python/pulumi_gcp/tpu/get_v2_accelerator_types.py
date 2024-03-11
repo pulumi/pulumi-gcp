@@ -82,14 +82,18 @@ def get_v2_accelerator_types(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.tpu.get_v2_accelerator_types()
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Configure Basic TPU VM With Available Type
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -102,6 +106,7 @@ def get_v2_accelerator_types(project: Optional[str] = None,
         runtime_version=available_get_v2_runtime_versions.versions[0],
         accelerator_type=available.types[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list types for. If it
@@ -131,14 +136,18 @@ def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     available = gcp.tpu.get_v2_accelerator_types()
     ```
+    <!--End PulumiCodeChooser -->
+
     ### Configure Basic TPU VM With Available Type
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -151,6 +160,7 @@ def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[str]
         runtime_version=available_get_v2_runtime_versions.versions[0],
         accelerator_type=available.types[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to list types for. If it

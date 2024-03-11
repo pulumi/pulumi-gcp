@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Datastream
     ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Datastream Private Connection Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,18 +54,19 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// PrivateConnection can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{private_connection_id}}`
+    /// * `{{project}}/{{location}}/{{private_connection_id}}`
     /// 
-    ///  * `{{location}}/{{private_connection_id}}`
+    /// * `{{location}}/{{private_connection_id}}`
     /// 
-    ///  When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:datastream/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}

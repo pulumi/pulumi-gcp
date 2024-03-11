@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
  *
  * ## Example Usage
+ *
  * ### Billing Project Info Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,16 +32,17 @@ import * as utilities from "../utilities";
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ProjectInfo can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}`
+ * * `projects/{{project}}`
  *
- *  * `{{project}}`
+ * * `{{project}}`
  *
- *  When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}

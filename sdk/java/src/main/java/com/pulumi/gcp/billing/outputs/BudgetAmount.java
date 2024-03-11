@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BudgetAmount {
     /**
-     * @return Configures a budget amount that is automatically set to 100% of
+     * @return Configures a budget amount that is automatically set to 100%!o(MISSING)f
      * last period&#39;s spend.
      * Boolean. Set value to true to use. Do not set to false, instead
      * use the `specified_amount` block.
@@ -31,7 +31,7 @@ public final class BudgetAmount {
 
     private BudgetAmount() {}
     /**
-     * @return Configures a budget amount that is automatically set to 100% of
+     * @return Configures a budget amount that is automatically set to 100%!o(MISSING)f
      * last period&#39;s spend.
      * Boolean. Set value to true to use. Do not set to false, instead
      * use the `specified_amount` block.

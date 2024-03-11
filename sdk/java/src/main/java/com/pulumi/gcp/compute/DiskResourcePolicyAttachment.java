@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to the `gcp.compute.RegionDiskResourcePolicyAttachment` resource.
  * 
  * ## Example Usage
+ * 
  * ### Disk Resource Policy Attachment Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -86,20 +89,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * DiskResourcePolicyAttachment can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}`
  * 
- *  * `{{project}}/{{zone}}/{{disk}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{disk}}/{{name}}`
  * 
- *  * `{{zone}}/{{disk}}/{{name}}`
+ * * `{{zone}}/{{disk}}/{{name}}`
  * 
- *  * `{{disk}}/{{name}}`
+ * * `{{disk}}/{{name}}`
  * 
- *  When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}

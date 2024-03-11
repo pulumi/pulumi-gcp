@@ -15,16 +15,20 @@ import * as utilities from "../utilities";
  *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  *
  * ## Example Usage
+ *
  * ### Iam Workload Identity Pool Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workload Identity Pool Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,18 +40,19 @@ import * as utilities from "../utilities";
  *     disabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * WorkloadIdentityPool can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
+ * * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
  *
- *  * `{{project}}/{{workload_identity_pool_id}}`
+ * * `{{project}}/{{workload_identity_pool_id}}`
  *
- *  * `{{workload_identity_pool_id}}`
+ * * `{{workload_identity_pool_id}}`
  *
- *  When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}

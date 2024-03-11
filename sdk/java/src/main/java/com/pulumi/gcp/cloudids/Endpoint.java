@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
  * 
  * ## Example Usage
+ * 
  * ### Cloudids Endpoint
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -79,18 +82,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Endpoint can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}

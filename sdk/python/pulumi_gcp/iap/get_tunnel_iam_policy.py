@@ -85,12 +85,14 @@ def get_tunnel_iam_policy(project: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.iap.get_tunnel_iam_policy(project=project_service["project"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -116,12 +118,14 @@ def get_tunnel_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.iap.get_tunnel_iam_policy(project=project_service["project"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

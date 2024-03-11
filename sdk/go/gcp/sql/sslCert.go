@@ -18,6 +18,7 @@ import (
 //
 // Example creating a SQL Client Certificate.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,6 +64,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

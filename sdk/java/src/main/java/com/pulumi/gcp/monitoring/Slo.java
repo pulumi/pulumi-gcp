@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * service. It consists of a service-level indicator (SLI), a performance
  * goal, and a period over which the objective is to be evaluated against
  * that goal. The SLO can use SLIs defined in a number of different manners.
- * Typical SLOs might include &#34;99% of requests in each rolling week have
- * latency below 200 milliseconds&#34; or &#34;99.5% of requests in each calendar
+ * Typical SLOs might include &#34;99%!o(MISSING)f requests in each rolling week have
+ * latency below 200 milliseconds&#34; or &#34;99.5%!o(MISSING)f requests in each calendar
  * month return successfully.&#34;
  * 
  * To get more information about Slo, see:
@@ -37,7 +37,10 @@ import javax.annotation.Nullable;
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  * 
  * ## Example Usage
+ * 
  * ### Monitoring Slo Appengine
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -87,7 +90,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Request Based
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -138,7 +144,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Good Bad Metric Filter
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -187,7 +196,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Metric Mean
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -243,7 +255,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Metric Sum
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -299,7 +314,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Monitoring Slo Windows Based Ratio Threshold
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -363,14 +381,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Slo can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Slo can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Slo can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:monitoring/slo:Slo default {{name}}

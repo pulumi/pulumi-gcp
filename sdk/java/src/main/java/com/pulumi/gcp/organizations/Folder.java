@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * doc for more information.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,16 +65,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Folders can be imported using the folder&#39;s id, e.g.
  * 
- *  * `folders/{{folder_id}}`
+ * * `folders/{{folder_id}}`
  * 
- *  * `{{folder_id}}`
+ * * `{{folder_id}}`
  * 
- *  When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}

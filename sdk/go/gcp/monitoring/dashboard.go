@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 //
 // ## Example Usage
+//
 // ### Monitoring Dashboard Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,8 +60,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Monitoring Dashboard GridLayout
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -143,16 +148,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Dashboard can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/dashboards/{{dashboard_id}}`
+// * `projects/{{project}}/dashboards/{{dashboard_id}}`
 //
-//   - `{{dashboard_id}}`
+// * `{{dashboard_id}}`
 //
-//     When using the `pulumi import` command, Dashboard can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Dashboard can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}

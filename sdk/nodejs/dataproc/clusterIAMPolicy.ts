@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_dataproc\_cluster\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,9 +35,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_dataproc\_cluster\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,9 +50,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_dataproc\_cluster\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,28 +65,29 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ### Importing IAM policies
  *
- *  IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
+ * IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
  *
- *  * `projects/{project}/regions/{region}/clusters/{cluster}`
+ * * `projects/{project}/regions/{region}/clusters/{cluster}`
  *
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  *
- *  tf
+ * tf
  *
- *  import {
+ * import {
  *
- *  id = projects/{project}/regions/{region}/clusters/{cluster}
+ *   id = projects/{project}/regions/{region}/clusters/{cluster}
  *
- *  to = google_dataproc_cluster_iam_policy.default
+ *   to = google_dataproc_cluster_iam_policy.default
  *
- *  }
+ * }
  *
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  *
  * ```sh
  * $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}

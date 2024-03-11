@@ -101,6 +101,7 @@ def get_account_key(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -110,6 +111,7 @@ def get_account_key(name: Optional[str] = None,
     mykey = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
         public_key_type="TYPE_X509_PEM_FILE")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the service account key. This must have format
@@ -145,6 +147,7 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -154,6 +157,7 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
     mykey = gcp.serviceaccount.get_account_key_output(name=mykey_key.name,
         public_key_type="TYPE_X509_PEM_FILE")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the service account key. This must have format

@@ -812,8 +812,10 @@ class V2Vm(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Tpu V2 Vm Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -824,8 +826,10 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             runtime_version="tpu-vm-tf-2.13.0")
         ```
+        <!--End PulumiCodeChooser -->
         ### Tpu V2 Vm Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -890,20 +894,21 @@ class V2Vm(pulumi.CustomResource):
         # Wait after service account creation to limit eventual consistency errors.
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Vm can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+        * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
@@ -968,8 +973,10 @@ class V2Vm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Tpu V2 Vm Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -980,8 +987,10 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             runtime_version="tpu-vm-tf-2.13.0")
         ```
+        <!--End PulumiCodeChooser -->
         ### Tpu V2 Vm Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1046,20 +1055,21 @@ class V2Vm(pulumi.CustomResource):
         # Wait after service account creation to limit eventual consistency errors.
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Vm can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+        * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

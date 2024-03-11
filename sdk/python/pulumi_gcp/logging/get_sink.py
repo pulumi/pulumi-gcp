@@ -147,14 +147,17 @@ def get_sink(id: Optional[str] = None,
     [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
 
     ## Example Usage
+
     ### Retrieve Project Logging Sink Basic
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     project_sink = gcp.logging.get_sink(id="projects/0123456789/sinks/my-sink-name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The identifier for the resource. 
@@ -192,14 +195,17 @@ def get_sink_output(id: Optional[pulumi.Input[str]] = None,
     [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
 
     ## Example Usage
+
     ### Retrieve Project Logging Sink Basic
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     project_sink = gcp.logging.get_sink(id="projects/0123456789/sinks/my-sink-name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str id: The identifier for the resource. 

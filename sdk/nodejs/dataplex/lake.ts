@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * The Dataplex Lake resource
  *
  * ## Example Usage
+ *
  * ### Basic_lake
  * A basic example of a dataplex lake
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,18 +29,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Lake can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/lakes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/lakes/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, Lake can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Lake can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}

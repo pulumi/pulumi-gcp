@@ -323,6 +323,7 @@ class ZoneIamBinding(pulumi.CustomResource):
 
         ## google\\_dataplex\\_zone\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,9 +339,11 @@ class ZoneIamBinding(pulumi.CustomResource):
             dataplex_zone=example["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_zone\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,9 +356,11 @@ class ZoneIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_zone\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -368,44 +373,45 @@ class ZoneIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
+        * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
 
-         * {{project}}/{{location}}/{{lake}}/{{name}}
+        * {{project}}/{{location}}/{{lake}}/{{name}}
 
-         * {{location}}/{{lake}}/{{name}}
+        * {{location}}/{{lake}}/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Dataplex zone IAM resources can be imported using the resource identifiers, role, and member.
+        Dataplex zone IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:dataplex/zoneIamBinding:ZoneIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}} roles/viewer user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:dataplex/zoneIamBinding:ZoneIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}} roles/viewer"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:dataplex/zoneIamBinding:ZoneIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -451,6 +457,7 @@ class ZoneIamBinding(pulumi.CustomResource):
 
         ## google\\_dataplex\\_zone\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -466,9 +473,11 @@ class ZoneIamBinding(pulumi.CustomResource):
             dataplex_zone=example["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_zone\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -481,9 +490,11 @@ class ZoneIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_zone\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,44 +507,45 @@ class ZoneIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
+        * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
 
-         * {{project}}/{{location}}/{{lake}}/{{name}}
+        * {{project}}/{{location}}/{{lake}}/{{name}}
 
-         * {{location}}/{{lake}}/{{name}}
+        * {{location}}/{{lake}}/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Dataplex zone IAM resources can be imported using the resource identifiers, role, and member.
+        Dataplex zone IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:dataplex/zoneIamBinding:ZoneIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}} roles/viewer user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:dataplex/zoneIamBinding:ZoneIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}} roles/viewer"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:dataplex/zoneIamBinding:ZoneIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param ZoneIamBindingArgs args: The arguments to use to populate this resource's properties.

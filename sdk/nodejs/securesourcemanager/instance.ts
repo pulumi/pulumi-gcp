@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
  *
  * ## Example Usage
+ *
  * ### Secure Source Manager Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,8 +32,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Secure Source Manager Instance Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,8 +60,10 @@ import * as utilities from "../utilities";
  *     kmsKey: cryptoKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Secure Source Manager Instance Private
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -122,20 +128,21 @@ import * as utilities from "../utilities";
  * // ca pool IAM permissions can take time to propagate
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
+ * * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
  *
- *  * `{{project}}/{{location}}/{{instance_id}}`
+ * * `{{project}}/{{location}}/{{instance_id}}`
  *
- *  * `{{location}}/{{instance_id}}`
+ * * `{{location}}/{{instance_id}}`
  *
- *  * `{{instance_id}}`
+ * * `{{instance_id}}`
  *
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}

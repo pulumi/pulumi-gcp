@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,14 +40,15 @@ import * as utilities from "../utilities";
  *     members: [my_sink.writerIdentity],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Folder-level logging sinks can be imported using this format:
  *
- *  * `folders/{{folder_id}}/sinks/{{name}}`
+ * * `folders/{{folder_id}}/sinks/{{name}}`
  *
- *  When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}

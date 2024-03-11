@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCryptoKeyIamPolicyResult> InvokeAsync(GetCryptoKeyIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCryptoKeyIamPolicyResult>("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args ?? new GetCryptoKeyIamPolicyArgs(), options.WithDefaults());
@@ -40,6 +42,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCryptoKeyIamPolicyResult> Invoke(GetCryptoKeyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeyIamPolicyResult>("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args ?? new GetCryptoKeyIamPolicyInvokeArgs(), options.WithDefaults());

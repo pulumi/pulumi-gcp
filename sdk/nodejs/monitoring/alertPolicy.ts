@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
  *
  * ## Example Usage
+ *
  * ### Monitoring Alert Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,8 +46,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Monitoring Alert Policy Evaluation Missing Data
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,8 +75,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Monitoring Alert Policy Forecast Options
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -100,8 +106,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Monitoring Alert Policy Promql Condition
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -124,14 +132,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AlertPolicy can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

@@ -29,7 +29,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
  * ## Example Usage
+ * 
  * ### Dialogflowcx Entity Type Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -96,16 +99,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * EntityType can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/entityTypes/{{name}}`
+ * * `{{parent}}/entityTypes/{{name}}`
  * 
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  * 
- *  When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}

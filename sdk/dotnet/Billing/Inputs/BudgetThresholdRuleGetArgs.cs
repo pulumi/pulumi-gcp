@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Billing.Inputs
 
         /// <summary>
         /// Send an alert when this threshold is exceeded. This is a
-        /// 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
+        /// 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
         /// </summary>
         [Input("thresholdPercent", required: true)]
         public Input<double> ThresholdPercent { get; set; } = null!;

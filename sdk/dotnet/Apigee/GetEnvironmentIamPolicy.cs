@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Apigee
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumi.Gcp.Apigee
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEnvironmentIamPolicyResult> InvokeAsync(GetEnvironmentIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentIamPolicyResult>("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args ?? new GetEnvironmentIamPolicyArgs(), options.WithDefaults());
@@ -45,6 +47,7 @@ namespace Pulumi.Gcp.Apigee
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,6 +64,7 @@ namespace Pulumi.Gcp.Apigee
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEnvironmentIamPolicyResult> Invoke(GetEnvironmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentIamPolicyResult>("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args ?? new GetEnvironmentIamPolicyInvokeArgs(), options.WithDefaults());

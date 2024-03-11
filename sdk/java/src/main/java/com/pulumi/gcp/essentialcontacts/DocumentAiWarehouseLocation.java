@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
  * 
  * ## Example Usage
+ * 
  * ### Document Ai Warehouse Location
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,6 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

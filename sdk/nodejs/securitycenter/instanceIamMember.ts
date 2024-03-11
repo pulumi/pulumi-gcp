@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
  * ## Example Usage
+ *
  * ### Data Fusion Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,8 +30,10 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,8 +70,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,8 +101,10 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Enterprise
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,8 +116,10 @@ import * as utilities from "../utilities";
  *     enableRbac: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Event
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -125,8 +135,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Fusion Instance Zone
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -138,20 +150,21 @@ import * as utilities from "../utilities";
  *     type: "DEVELOPER",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:securitycenter/instanceIamMember:InstanceIamMember default projects/{{project}}/locations/{{region}}/instances/{{name}}

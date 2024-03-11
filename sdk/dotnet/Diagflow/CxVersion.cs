@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Dialogflowcx Version Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,16 +63,17 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Version can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/versions/{{name}}`
+    /// * `{{parent}}/versions/{{name}}`
     /// 
-    ///  * `{{parent}}/{{name}}`
+    /// * `{{parent}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:diagflow/cxVersion:CxVersion default {{parent}}/versions/{{name}}

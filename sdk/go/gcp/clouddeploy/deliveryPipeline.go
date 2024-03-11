@@ -15,8 +15,10 @@ import (
 // The Cloud Deploy `DeliveryPipeline` resource
 //
 // ## Example Usage
+//
 // ### Canary_delivery_pipeline
 // Creates a basic Cloud Deploy delivery pipeline
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,8 +76,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Canary_service_networking_delivery_pipeline
 // Creates a basic Cloud Deploy delivery pipeline
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,8 +137,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Canaryrun_delivery_pipeline
 // Creates a basic Cloud Deploy delivery pipeline
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -192,8 +198,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Delivery_pipeline
 // Creates a basic Cloud Deploy delivery pipeline
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -251,8 +259,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Verify_delivery_pipeline
 // tests creating and updating a delivery pipeline with deployment verification strategy
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -310,18 +320,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // DeliveryPipeline can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}

@@ -22,6 +22,34 @@ import (
 //
 //	`serviceaccount.getAccountIdToken` will use the configured provider credentials
 //
+//	<!--Start PulumiCodeChooser -->
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			oidc, err := serviceaccount.GetAccountIdToken(ctx, &serviceaccount.GetAccountIdTokenArgs{
+//				TargetAudience: "https://foo.bar/",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oidcToken", oidc.IdToken)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Service Account Impersonation.
 //
 //	`serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceaccount.getAccountAccessToken`.
@@ -29,10 +57,54 @@ import (
 //	Note: to use the following, you must grant `targetServiceAccount` the
 //	`roles/iam.serviceAccountTokenCreator` role on itself.
 //
+//	<!--Start PulumiCodeChooser -->
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.GetAccountAccessToken(ctx, &serviceaccount.GetAccountAccessTokenArgs{
+//				TargetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+//				Delegates:            []interface{}{},
+//				Scopes: []string{
+//					"userinfo-email",
+//					"cloud-platform",
+//				},
+//				Lifetime: pulumi.StringRef("300s"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			oidc, err := serviceaccount.GetAccountIdToken(ctx, &serviceaccount.GetAccountIdTokenArgs{
+//				TargetServiceAccount: pulumi.StringRef("impersonated-account@project.iam.gserviceaccount.com"),
+//				Delegates:            []interface{}{},
+//				IncludeEmail:         pulumi.BoolRef(true),
+//				TargetAudience:       "https://foo.bar/",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("oidcToken", oidc.IdToken)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Invoking Cloud Run Endpoint
 //
 //	The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,6 +141,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAccountIdToken(ctx *pulumi.Context, args *GetAccountIdTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountIdTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountIdTokenResult

@@ -142,14 +142,17 @@ def get_project_settings(project: Optional[str] = None,
     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
 
     ## Example Usage
+
     ### Logging Project Settings Basic
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     settings = gcp.logging.get_project_settings(project="my-project-name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project for which to retrieve settings.
@@ -182,14 +185,17 @@ def get_project_settings_output(project: Optional[pulumi.Input[str]] = None,
     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
 
     ## Example Usage
+
     ### Logging Project Settings Basic
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     settings = gcp.logging.get_project_settings(project="my-project-name")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project for which to retrieve settings.

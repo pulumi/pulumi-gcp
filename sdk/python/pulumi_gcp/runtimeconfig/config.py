@@ -153,6 +153,7 @@ class Config(pulumi.CustomResource):
 
         Example creating a RuntimeConfig resource.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -161,16 +162,17 @@ class Config(pulumi.CustomResource):
             name="my-service-runtime-config",
             description="Runtime configuration values for my service")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.
 
-         * `projects/{{project_id}}/configs/{{name}}`
+        * `projects/{{project_id}}/configs/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
@@ -180,7 +182,7 @@ class Config(pulumi.CustomResource):
         $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
         ```
 
-         When importing using only the name, the provider project must be set.
+        When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,6 +205,7 @@ class Config(pulumi.CustomResource):
 
         Example creating a RuntimeConfig resource.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -211,16 +214,17 @@ class Config(pulumi.CustomResource):
             name="my-service-runtime-config",
             description="Runtime configuration values for my service")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Runtime Configs can be imported using the `name` or full config name, e.g.
 
-         * `projects/{{project_id}}/configs/{{name}}`
+        * `projects/{{project_id}}/configs/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
@@ -230,7 +234,7 @@ class Config(pulumi.CustomResource):
         $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
         ```
 
-         When importing using only the name, the provider project must be set.
+        When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
         :param ConfigArgs args: The arguments to use to populate this resource's properties.

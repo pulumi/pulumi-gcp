@@ -16,32 +16,6 @@ import (
 // https://cloud.google.com/identity/docs/concepts/overview#groups
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudidentity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudidentity.GetGroupLookup(ctx, &cloudidentity.GetGroupLookupArgs{
-//				GroupKey: cloudidentity.GetGroupLookupGroupKey{
-//					Id: "my-group@example.com",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetGroupLookup(ctx *pulumi.Context, args *GetGroupLookupArgs, opts ...pulumi.InvokeOption) (*GetGroupLookupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupLookupResult

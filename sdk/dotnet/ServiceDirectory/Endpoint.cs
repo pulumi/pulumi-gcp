@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Service Directory Endpoint Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,8 +58,10 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Service Directory Endpoint With Network
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,18 +110,19 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Endpoint can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+    /// * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
     /// 
-    ///  * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+    /// * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
     /// 
-    ///  When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}

@@ -25,8 +25,10 @@ namespace Pulumi.Gcp.Billing
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Billing Budget Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,8 +65,10 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Billing Budget Lastperiod
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,8 +110,10 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Billing Budget Filter
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -172,8 +178,10 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Billing Budget Notify
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -242,8 +250,10 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Billing Budget Customperiod
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -313,18 +323,19 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Budget can be imported using any of these accepted formats:
     /// 
-    ///  * `billingAccounts/{{billing_account}}/budgets/{{name}}`
+    /// * `billingAccounts/{{billing_account}}/budgets/{{name}}`
     /// 
-    ///  * `{{billing_account}}/{{name}}`
+    /// * `{{billing_account}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}

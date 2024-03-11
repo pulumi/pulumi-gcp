@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  *    This provider is not able to delete App Engine applications.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,14 +65,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Applications can be imported using the ID of the project the application belongs to, e.g.
  * 
- *  * `{{project-id}}`
+ * * `{{project-id}}`
  * 
- *  When using the `pulumi import` command, Applications can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Applications can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:appengine/application:Application default {{project-id}}

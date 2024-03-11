@@ -18,6 +18,8 @@ public final class ApigeeFunctions {
      * Retrieves the current IAM policy data for environment
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -47,6 +49,7 @@ public final class ApigeeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs args) {
@@ -56,6 +59,8 @@ public final class ApigeeFunctions {
      * Retrieves the current IAM policy data for environment
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -85,6 +90,7 @@ public final class ApigeeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyPlain(GetEnvironmentIamPolicyPlainArgs args) {
@@ -94,6 +100,8 @@ public final class ApigeeFunctions {
      * Retrieves the current IAM policy data for environment
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +131,7 @@ public final class ApigeeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs args, InvokeOptions options) {
@@ -132,6 +141,8 @@ public final class ApigeeFunctions {
      * Retrieves the current IAM policy data for environment
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -161,6 +172,7 @@ public final class ApigeeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnvironmentIamPolicyResult> getEnvironmentIamPolicyPlain(GetEnvironmentIamPolicyPlainArgs args, InvokeOptions options) {

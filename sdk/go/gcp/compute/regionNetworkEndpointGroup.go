@@ -22,8 +22,10 @@ import (
 //   - [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 //
 // ## Example Usage
+//
 // ### Region Network Endpoint Group Functions
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,8 +86,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Cloudrun
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,8 +142,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Appengine
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -237,8 +243,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Psc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -265,8 +273,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Psc Service Attachment
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -365,8 +375,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Internet Ip Port
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -399,8 +411,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Internet Fqdn Port
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -433,20 +447,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // RegionNetworkEndpointGroup can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}

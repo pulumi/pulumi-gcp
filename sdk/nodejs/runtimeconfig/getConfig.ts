@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -15,6 +16,7 @@ import * as utilities from "../utilities";
  *     name: "my-service",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigResult> {
 
@@ -57,6 +59,7 @@ export interface GetConfigResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,6 +68,7 @@ export interface GetConfigResult {
  *     name: "my-service",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigResult> {
     return pulumi.output(args).apply((a: any) => getConfig(a, opts))

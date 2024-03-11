@@ -7,13 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const current = gcp.organizations.getClientConfig({});
- * export const project = current.then(current => current.project);
- * ```
+ * ### Configure Kubernetes Provider With OAuth2 Access Token
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
 
@@ -47,13 +41,7 @@ export interface GetClientConfigResult {
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const current = gcp.organizations.getClientConfig({});
- * export const project = current.then(current => current.project);
- * ```
+ * ### Configure Kubernetes Provider With OAuth2 Access Token
  */
 export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
     return pulumi.output(getClientConfig(opts))

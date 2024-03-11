@@ -19,8 +19,10 @@ import (
 // * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
 //
 // ## Example Usage
+//
 // ### Logging Project Cmek Settings Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProjectCmekSettings(ctx *pulumi.Context, args *GetProjectCmekSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectCmekSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCmekSettingsResult

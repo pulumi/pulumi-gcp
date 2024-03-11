@@ -437,6 +437,7 @@ def get_disk(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -448,6 +449,7 @@ def get_disk(name: Optional[str] = None,
         auto_delete=False,
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of a specific disk.
@@ -515,6 +517,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -526,6 +529,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
         auto_delete=False,
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of a specific disk.

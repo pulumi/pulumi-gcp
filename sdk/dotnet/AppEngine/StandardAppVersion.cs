@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
     /// 
     /// ## Example Usage
+    /// 
     /// ### App Engine Standard App Version
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -145,18 +147,19 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// StandardAppVersion can be imported using any of these accepted formats:
     /// 
-    ///  * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
+    /// * `apps/{{project}}/services/{{service}}/versions/{{version_id}}`
     /// 
-    ///  * `{{project}}/{{service}}/{{version_id}}`
+    /// * `{{project}}/{{service}}/{{version_id}}`
     /// 
-    ///  * `{{service}}/{{version_id}}`
+    /// * `{{service}}/{{version_id}}`
     /// 
-    ///  When using the `pulumi import` command, StandardAppVersion can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, StandardAppVersion can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}

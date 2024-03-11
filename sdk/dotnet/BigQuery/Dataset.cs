@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Bigquery Dataset Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,8 +56,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset Cmek
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -91,8 +95,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset Authorized Dataset
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -175,8 +181,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset Authorized Routine
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -253,8 +261,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset External Reference Aws Docs
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -278,18 +288,19 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Dataset can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/datasets/{{dataset_id}}`
+    /// * `projects/{{project}}/datasets/{{dataset_id}}`
     /// 
-    ///  * `{{project}}/{{dataset_id}}`
+    /// * `{{project}}/{{dataset_id}}`
     /// 
-    ///  * `{{dataset_id}}`
+    /// * `{{dataset_id}}`
     /// 
-    ///  When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}

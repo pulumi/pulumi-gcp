@@ -31,8 +31,10 @@ namespace Pulumi.Gcp.Firestore
     /// is allowed for the database parameter.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Firestore Document Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,8 +81,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Document Nested Document
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -145,14 +149,15 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Document can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firestore/document:Document default {{name}}

@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
  * 
  * ## Example Usage
+ * 
  * ### Service Directory Namespace Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,18 +64,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Namespace can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}`
+ * * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}`
  * 
- *  * `{{project}}/{{location}}/{{namespace_id}}`
+ * * `{{project}}/{{location}}/{{namespace_id}}`
  * 
- *  * `{{location}}/{{namespace_id}}`
+ * * `{{location}}/{{namespace_id}}`
  * 
- *  When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}

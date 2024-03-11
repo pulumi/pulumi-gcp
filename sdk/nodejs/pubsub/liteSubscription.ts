@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
  *
  * ## Example Usage
+ *
  * ### Pubsub Lite Subscription Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,20 +48,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Subscription can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
+ * * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  *
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}

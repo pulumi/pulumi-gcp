@@ -176,6 +176,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -195,9 +196,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -212,7 +215,9 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             ),
         )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -222,9 +227,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -239,7 +246,9 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -249,9 +258,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,28 +277,29 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the KMS crypto key only. For example:
+        IAM policy imports use the identifier of the KMS crypto key only. For example:
 
-         * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
+        * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
+          id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
 
-         to = google_kms_crypto_key_iam_policy.default
+          to = google_kms_crypto_key_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
@@ -328,6 +340,7 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,9 +360,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             crypto_key_id=key.id,
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,7 +379,9 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             ),
         )])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,9 +391,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -391,7 +410,9 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -401,9 +422,11 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypter",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -418,28 +441,29 @@ class CryptoKeyIAMPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the KMS crypto key only. For example:
+        IAM policy imports use the identifier of the KMS crypto key only. For example:
 
-         * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
+        * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
+          id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
 
-         to = google_kms_crypto_key_iam_policy.default
+          to = google_kms_crypto_key_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}

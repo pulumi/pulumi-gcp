@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Composer
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.Gcp.Composer
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace Pulumi.Gcp.Composer
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.Gcp.Composer
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageVersionsResult> Invoke(GetImageVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithDefaults());

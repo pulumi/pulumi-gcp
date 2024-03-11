@@ -22,6 +22,8 @@ public final class CloudbuildFunctions {
      *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class CloudbuildFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args) {
@@ -65,6 +68,8 @@ public final class CloudbuildFunctions {
      *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -95,6 +100,7 @@ public final class CloudbuildFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args) {
@@ -108,6 +114,8 @@ public final class CloudbuildFunctions {
      *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -138,6 +146,7 @@ public final class CloudbuildFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args, InvokeOptions options) {
@@ -151,6 +160,8 @@ public final class CloudbuildFunctions {
      *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -181,6 +192,7 @@ public final class CloudbuildFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args, InvokeOptions options) {

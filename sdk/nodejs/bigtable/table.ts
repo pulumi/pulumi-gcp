@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,20 +46,21 @@ import * as utilities from "../utilities";
  *     changeStreamRetention: "24h0m0s",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
  *
- *  Bigtable Tables can be imported using any of these accepted formats:
+ * Bigtable Tables can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
+ * * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
  *
- *  * `{{project}}/{{instance_name}}/{{name}}`
+ * * `{{project}}/{{instance_name}}/{{name}}`
  *
- *  * `{{instance_name}}/{{name}}`
+ * * `{{instance_name}}/{{name}}`
  *
- *  When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}

@@ -226,8 +226,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
 
         ## Example Usage
+
         ### Document Ai Warehouse Document Schema Text
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,8 +256,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Integer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -281,8 +285,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Float
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,8 +314,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,8 +360,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property Enum
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -403,8 +413,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Enum
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,8 +449,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Map
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -464,8 +478,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Datetime
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,8 +507,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Timestamp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -518,16 +536,17 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DocumentSchema can be imported using any of these accepted formats:
 
-         * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
+        * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
 
-         * `{{project_number}}/{{location}}/{{name}}`
+        * `{{project_number}}/{{location}}/{{name}}`
 
-         When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}
@@ -562,8 +581,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
 
         ## Example Usage
+
         ### Document Ai Warehouse Document Schema Text
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -590,8 +611,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 text_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Integer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -617,8 +640,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 integer_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Float
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -644,8 +669,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 float_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -688,8 +715,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Property Enum
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -739,8 +768,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Enum
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -773,8 +804,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Map
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -800,8 +833,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 map_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Datetime
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -827,8 +862,10 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 date_time_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Document Ai Warehouse Document Schema Timestamp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -854,16 +891,17 @@ class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
                 timestamp_type_options=gcp.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs(),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DocumentSchema can be imported using any of these accepted formats:
 
-         * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
+        * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
 
-         * `{{project_number}}/{{location}}/{{name}}`
+        * `{{project_number}}/{{location}}/{{name}}`
 
-         When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}

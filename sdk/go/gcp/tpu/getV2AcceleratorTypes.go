@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,8 +37,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Configure Basic TPU VM With Available Type
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,6 +76,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetV2AcceleratorTypes(ctx *pulumi.Context, args *GetV2AcceleratorTypesArgs, opts ...pulumi.InvokeOption) (*GetV2AcceleratorTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetV2AcceleratorTypesResult

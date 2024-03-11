@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
  *
  * ## Example Usage
+ *
  * ### Network Connectivity Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,18 +46,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ServiceConnectionPolicy can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}

@@ -200,7 +200,9 @@ class GoogleChannelConfig(pulumi.CustomResource):
         The Eventarc GoogleChannelConfig resource
 
         ## Example Usage
+
         ### Basic
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -220,18 +222,19 @@ class GoogleChannelConfig(pulumi.CustomResource):
             project=test_project.project_id,
             crypto_key_name=key1["id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GoogleChannelConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
+        * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
 
-         * `{{project}}/{{location}}`
+        * `{{project}}/{{location}}`
 
-         * `{{location}}`
+        * `{{location}}`
 
-         When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default projects/{{project}}/locations/{{location}}/googleChannelConfig
@@ -266,7 +269,9 @@ class GoogleChannelConfig(pulumi.CustomResource):
         The Eventarc GoogleChannelConfig resource
 
         ## Example Usage
+
         ### Basic
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,18 +291,19 @@ class GoogleChannelConfig(pulumi.CustomResource):
             project=test_project.project_id,
             crypto_key_name=key1["id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GoogleChannelConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
+        * `projects/{{project}}/locations/{{location}}/googleChannelConfig`
 
-         * `{{project}}/{{location}}`
+        * `{{project}}/{{location}}`
 
-         * `{{location}}`
+        * `{{location}}`
 
-         When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GoogleChannelConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/googleChannelConfig:GoogleChannelConfig default projects/{{project}}/locations/{{location}}/googleChannelConfig

@@ -105,6 +105,7 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
         location=connection["location"],
         connection_id=connection["connectionId"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_id: Optional connection id that should be assigned to the created connection.
@@ -153,6 +155,7 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -161,6 +164,7 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
         location=connection["location"],
         connection_id=connection["connectionId"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connection_id: Optional connection id that should be assigned to the created connection.

@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
+//
 // ### Tag Binding Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,16 +82,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TagBinding can be imported using any of these accepted formats:
 //
-//   - `tagBindings/{{name}}`
+// * `tagBindings/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:tags/tagBinding:TagBinding default tagBindings/{{name}}

@@ -16,8 +16,10 @@ import (
 // for more details.
 //
 // ## Example Usage
+//
 // ### Searching For Projects About To Be Deleted In An Org
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.InvokeOption) (*GetProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectResult

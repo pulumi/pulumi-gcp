@@ -373,8 +373,10 @@ class SSLCertificate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
         ## Example Usage
+
         ### Ssl Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -386,8 +388,10 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Random Provider
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,8 +411,10 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Target Https Proxies
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,18 +461,19 @@ class SSLCertificate(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SslCertificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/sslCertificates/{{name}}`
+        * `projects/{{project}}/global/sslCertificates/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
@@ -524,8 +531,10 @@ class SSLCertificate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
         ## Example Usage
+
         ### Ssl Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -537,8 +546,10 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Random Provider
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -558,8 +569,10 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=std.file(input="path/to/private.key").result,
             certificate=std.file(input="path/to/certificate.crt").result)
         ```
+        <!--End PulumiCodeChooser -->
         ### Ssl Certificate Target Https Proxies
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,18 +619,19 @@ class SSLCertificate(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SslCertificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/sslCertificates/{{name}}`
+        * `projects/{{project}}/global/sslCertificates/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SslCertificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}

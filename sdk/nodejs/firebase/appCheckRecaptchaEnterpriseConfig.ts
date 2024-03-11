@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
+ *
  * ### Firebase App Check Recaptcha Enterprise Config Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,18 +37,19 @@ import * as utilities from "../utilities";
  *     tokenTtl: "7200s",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * RecaptchaEnterpriseConfig can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig`
+ * * `projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig`
  *
- *  * `{{project}}/{{app_id}}`
+ * * `{{project}}/{{app_id}}`
  *
- *  * `{{app_id}}`
+ * * `{{app_id}}`
  *
- *  When using the `pulumi import` command, RecaptchaEnterpriseConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, RecaptchaEnterpriseConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig

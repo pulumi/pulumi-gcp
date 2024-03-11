@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// A Google Bare Metal User Cluster.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Gkeonprem Bare Metal Cluster Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -132,8 +134,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkeonprem Bare Metal Cluster Manuallb
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -239,8 +243,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkeonprem Bare Metal Cluster Bgplb
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -458,18 +464,19 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// BareMetalCluster can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}

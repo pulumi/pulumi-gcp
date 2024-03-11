@@ -16,7 +16,10 @@ import java.util.concurrent.CompletableFuture;
 public final class CloudassetFunctions {
     /**
      * ## Example Usage
+     * 
      * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,7 +49,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -77,7 +84,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -107,6 +118,7 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourcesSearchAllInvokeResult> getResourcesSearchAll(GetResourcesSearchAllArgs args) {
@@ -114,7 +126,10 @@ public final class CloudassetFunctions {
     }
     /**
      * ## Example Usage
+     * 
      * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,7 +159,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -175,7 +194,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -205,6 +228,7 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourcesSearchAllInvokeResult> getResourcesSearchAllPlain(GetResourcesSearchAllPlainArgs args) {
@@ -212,7 +236,10 @@ public final class CloudassetFunctions {
     }
     /**
      * ## Example Usage
+     * 
      * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -242,7 +269,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -273,7 +304,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -303,6 +338,7 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResourcesSearchAllInvokeResult> getResourcesSearchAll(GetResourcesSearchAllArgs args, InvokeOptions options) {
@@ -310,7 +346,10 @@ public final class CloudassetFunctions {
     }
     /**
      * ## Example Usage
+     * 
      * ### Searching For All Projects In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -340,7 +379,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Projects With CloudBuild API Enabled
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -371,7 +414,11 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Searching For All Service Accounts In A Project
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -401,6 +448,7 @@ public final class CloudassetFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResourcesSearchAllInvokeResult> getResourcesSearchAllPlain(GetResourcesSearchAllPlainArgs args, InvokeOptions options) {

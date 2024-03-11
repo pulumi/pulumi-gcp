@@ -91,41 +91,71 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
                               crypto_key_version: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKMSSecretAsymmetricResult:
     """
-    ## get the public key to encrypt the secret with
+    ## Example Usage
 
-    $ gcloud kms keys versions get-public-key 1\\
-      --project my-project\\
-      --location us-central1\\
-      --keyring my-key-ring\\
-      --key my-crypto-key\\
-      --output-file public-key.pem
+    First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    ## encrypt secret with the public key
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
 
-    $ echo -n my-secret-password |\\
-      openssl pkeyutl -in -\\
-        -encrypt\\
-        -pubin\\
-        -inkey public-key.pem\\
-        -pkeyopt rsa_padding_mode:oaep\\
-        -pkeyopt rsa_oaep_md:sha256\\
-        -pkeyopt rsa_mgf1_md:sha256 >\\
-      my-secret-password.enc
+    my_key_ring = gcp.kms.KeyRing("my_key_ring",
+        project="my-project",
+        name="my-key-ring",
+        location="us-central1")
+    my_crypto_key_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+        name="my-crypto-key",
+        key_ring=my_key_ring.id,
+        purpose="ASYMMETRIC_DECRYPT",
+        version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            algorithm="RSA_DECRYPT_OAEP_4096_SHA256",
+        ))
+    my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
+    ```
+    <!--End PulumiCodeChooser -->
 
-    ## base64 encode the ciphertext
+    Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
+    some sensitive information:
 
-    $ openssl base64 -in my-secret-password.enc
-    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
-    ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
-    4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
-    eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
-    wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
-    LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
-    yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
-    J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
-    IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
-    mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
-    A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+    Finally, reference the encrypted ciphertext in your resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_random as random
+
+    sql_user_password = gcp.kms.get_kms_secret_asymmetric(crypto_key_version=my_crypto_key["id"],
+        crc32="12c59e54",
+        ciphertext=\"\"\"    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+        ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+        4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+        eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+        wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+        LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+        yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+        J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+        IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+        mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+        A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+    \"\"\")
+    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    main = gcp.sql.DatabaseInstance("main",
+        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        database_version="MYSQL_5_7",
+        settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            tier="db-f1-micro",
+        ))
+    users = gcp.sql.User("users",
+        name="me",
+        instance=main.name,
+        host="me.com",
+        password=sql_user_password_google_kms_secret["plaintext"])
+    ```
+    <!--End PulumiCodeChooser -->
+
+    This will result in a Cloud SQL user being created with password `my-secret-password`.
 
 
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64
@@ -155,41 +185,71 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
                                      crypto_key_version: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretAsymmetricResult]:
     """
-    ## get the public key to encrypt the secret with
+    ## Example Usage
 
-    $ gcloud kms keys versions get-public-key 1\\
-      --project my-project\\
-      --location us-central1\\
-      --keyring my-key-ring\\
-      --key my-crypto-key\\
-      --output-file public-key.pem
+    First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    ## encrypt secret with the public key
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
 
-    $ echo -n my-secret-password |\\
-      openssl pkeyutl -in -\\
-        -encrypt\\
-        -pubin\\
-        -inkey public-key.pem\\
-        -pkeyopt rsa_padding_mode:oaep\\
-        -pkeyopt rsa_oaep_md:sha256\\
-        -pkeyopt rsa_mgf1_md:sha256 >\\
-      my-secret-password.enc
+    my_key_ring = gcp.kms.KeyRing("my_key_ring",
+        project="my-project",
+        name="my-key-ring",
+        location="us-central1")
+    my_crypto_key_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+        name="my-crypto-key",
+        key_ring=my_key_ring.id,
+        purpose="ASYMMETRIC_DECRYPT",
+        version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+            algorithm="RSA_DECRYPT_OAEP_4096_SHA256",
+        ))
+    my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
+    ```
+    <!--End PulumiCodeChooser -->
 
-    ## base64 encode the ciphertext
+    Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
+    some sensitive information:
 
-    $ openssl base64 -in my-secret-password.enc
-    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
-    ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
-    4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
-    eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
-    wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
-    LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
-    yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
-    J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
-    IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
-    mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
-    A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+    Finally, reference the encrypted ciphertext in your resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_random as random
+
+    sql_user_password = gcp.kms.get_kms_secret_asymmetric(crypto_key_version=my_crypto_key["id"],
+        crc32="12c59e54",
+        ciphertext=\"\"\"    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+        ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+        4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+        eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+        wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+        LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+        yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+        J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+        IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+        mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+        A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+    \"\"\")
+    db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+    main = gcp.sql.DatabaseInstance("main",
+        name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+        database_version="MYSQL_5_7",
+        settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            tier="db-f1-micro",
+        ))
+    users = gcp.sql.User("users",
+        name="me",
+        instance=main.name,
+        host="me.com",
+        password=sql_user_password_google_kms_secret["plaintext"])
+    ```
+    <!--End PulumiCodeChooser -->
+
+    This will result in a Cloud SQL user being created with password `my-secret-password`.
 
 
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64

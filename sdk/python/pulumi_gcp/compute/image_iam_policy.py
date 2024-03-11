@@ -221,6 +221,7 @@ class ImageIamPolicy(pulumi.CustomResource):
 
         ## google\\_compute\\_image\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -234,9 +235,11 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -255,8 +258,10 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_image\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -267,9 +272,11 @@ class ImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.imageUser",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -285,8 +292,10 @@ class ImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_image\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,9 +306,11 @@ class ImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.imageUser",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -315,42 +326,43 @@ class ImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/global/images/{{name}}
+        * projects/{{project}}/global/images/{{name}}
 
-         * {{project}}/{{name}}
+        * {{project}}/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
+        Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor projects/{{project}}/global/images/{{image}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -397,6 +409,7 @@ class ImageIamPolicy(pulumi.CustomResource):
 
         ## google\\_compute\\_image\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,9 +423,11 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -431,8 +446,10 @@ class ImageIamPolicy(pulumi.CustomResource):
             image=example["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_image\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -443,9 +460,11 @@ class ImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.imageUser",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,8 +480,10 @@ class ImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_image\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -473,9 +494,11 @@ class ImageIamPolicy(pulumi.CustomResource):
             role="roles/compute.imageUser",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,42 +514,43 @@ class ImageIamPolicy(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/global/images/{{name}}
+        * projects/{{project}}/global/images/{{name}}
 
-         * {{project}}/{{name}}
+        * {{project}}/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
+        Compute Engine image IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor "projects/{{project}}/global/images/{{image}} roles/compute.imageUser"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:compute/imageIamPolicy:ImageIamPolicy editor projects/{{project}}/global/images/{{image}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param ImageIamPolicyArgs args: The arguments to use to populate this resource's properties.

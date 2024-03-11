@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
  *
  * ## Example Usage
+ *
  * ### Public Delegated Prefixes Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,20 +36,21 @@ import * as utilities from "../utilities";
  *     parentPrefix: advertised.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * PublicDelegatedPrefix can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}

@@ -180,16 +180,6 @@ def get_instance(location: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_instance = gcp.filestore.get_instance(name="my-filestore-instance")
-    pulumi.export("instanceIpAddresses", my_instance.networks.ip_addresses)
-    pulumi.export("instanceConnectMode", my_instance.networks.connect_mode)
-    pulumi.export("instanceFileShareName", my_instance.file_shares.name)
-    ```
-
 
     :param str location: The name of the location of the instance. This 
            can be a region for ENTERPRISE tier instances. If it is not provided,
@@ -234,16 +224,6 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
     Get info about a Google Cloud Filestore instance.
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-
-    my_instance = gcp.filestore.get_instance(name="my-filestore-instance")
-    pulumi.export("instanceIpAddresses", my_instance.networks.ip_addresses)
-    pulumi.export("instanceConnectMode", my_instance.networks.connect_mode)
-    pulumi.export("instanceFileShareName", my_instance.file_shares.name)
-    ```
 
 
     :param str location: The name of the location of the instance. This 

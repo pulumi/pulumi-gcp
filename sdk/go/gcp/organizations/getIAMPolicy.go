@@ -15,10 +15,6 @@ import (
 // other Google Cloud Platform IAM resources, such as the `projects.IAMPolicy` resource.
 //
 // **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
-//
-// This data source is used to define IAM policies to apply to other resources.
-// Currently, defining a policy through a datasource and referencing that policy
-// from another resource is the only way to apply an IAM policy to a resource.
 func LookupIAMPolicy(ctx *pulumi.Context, args *LookupIAMPolicyArgs, opts ...pulumi.InvokeOption) (*LookupIAMPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIAMPolicyResult

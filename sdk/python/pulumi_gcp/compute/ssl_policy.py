@@ -424,8 +424,10 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
+
         ### Ssl Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,18 +448,19 @@ class SSLPolicy(pulumi.CustomResource):
                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SslPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/sslPolicies/{{name}}`
+        * `projects/{{project}}/global/sslPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
@@ -526,8 +529,10 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
+
         ### Ssl Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -548,18 +553,19 @@ class SSLPolicy(pulumi.CustomResource):
                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SslPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/sslPolicies/{{name}}`
+        * `projects/{{project}}/global/sslPolicies/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}

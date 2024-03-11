@@ -27,16 +27,20 @@ import * as utilities from "../utilities";
  *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
  *
  * ## Example Usage
+ *
  * ### Address Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const ipAddress = new gcp.compute.Address("ip_address", {name: "my-address"});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Address With Subnetwork
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,8 +60,10 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Address With Gce Endpoint
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,8 +74,10 @@ import * as utilities from "../utilities";
  *     purpose: "GCE_ENDPOINT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Instance With Ip
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -96,8 +104,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Compute Address Ipsec Interconnect
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,20 +125,21 @@ import * as utilities from "../utilities";
  *     network: network.selfLink,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Address can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}

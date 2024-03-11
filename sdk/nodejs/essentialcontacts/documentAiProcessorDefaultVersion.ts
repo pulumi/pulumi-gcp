@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
  *
  * ## Example Usage
+ *
  * ### Documentai Default Version
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,14 +26,15 @@ import * as utilities from "../utilities";
  *     version: pulumi.interpolate`${processor.id}/processorVersions/stable`,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ProcessorDefaultVersion can be imported using any of these accepted formats:
  *
- *  * `{{processor}}`
+ * * `{{processor}}`
  *
- *  When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}

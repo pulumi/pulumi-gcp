@@ -17,6 +17,7 @@ import (
 //
 // Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTestablePermissions(ctx *pulumi.Context, args *GetTestablePermissionsArgs, opts ...pulumi.InvokeOption) (*GetTestablePermissionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTestablePermissionsResult

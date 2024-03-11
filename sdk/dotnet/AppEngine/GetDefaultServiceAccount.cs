@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// Use this data source to retrieve the default App Engine service account for the specified project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Gcp.AppEngine
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// Use this data source to retrieve the default App Engine service account for the specified project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Gcp.AppEngine
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDefaultServiceAccountResult> Invoke(GetDefaultServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithDefaults());

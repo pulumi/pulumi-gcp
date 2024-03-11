@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,8 +28,11 @@ import * as utilities from "../utilities";
  *     "13": "42",
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Adding An SSH Key
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,14 +46,15 @@ import * as utilities from "../utilities";
  * `,
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Project metadata can be imported using the project ID:
  *
- *  * `{{project_id}}`
+ * * `{{project_id}}`
  *
- *  When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}

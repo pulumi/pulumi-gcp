@@ -125,12 +125,14 @@ def router_status(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_router = gcp.compute.get_router_status(name="myrouter")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the router.
@@ -172,12 +174,14 @@ def router_status_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_router = gcp.compute.get_router_status(name="myrouter")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the router.

@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Network Services Service Binding Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,18 +53,19 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ServiceBinding can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/serviceBindings/{{name}}`
+    /// * `projects/{{project}}/locations/global/serviceBindings/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default projects/{{project}}/locations/global/serviceBindings/{{name}}

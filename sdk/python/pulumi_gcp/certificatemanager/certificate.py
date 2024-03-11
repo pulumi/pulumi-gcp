@@ -417,8 +417,10 @@ class Certificate(pulumi.CustomResource):
         Certificate represents a HTTP-reachable backend for a Certificate.
 
         ## Example Usage
+
         ### Certificate Manager Google Managed Certificate Dns
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,8 +451,10 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -515,8 +519,10 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -544,8 +550,10 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Self Managed Certificate Regional
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -560,8 +568,10 @@ class Certificate(pulumi.CustomResource):
                 pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -626,8 +636,10 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -655,18 +667,19 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Certificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
@@ -721,8 +734,10 @@ class Certificate(pulumi.CustomResource):
         Certificate represents a HTTP-reachable backend for a Certificate.
 
         ## Example Usage
+
         ### Certificate Manager Google Managed Certificate Dns
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -753,8 +768,10 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -819,8 +836,10 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Certificate Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -848,8 +867,10 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Self Managed Certificate Regional
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -864,8 +885,10 @@ class Certificate(pulumi.CustomResource):
                 pem_private_key=std.file(input="test-fixtures/private-key.pem").result,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -930,8 +953,10 @@ class Certificate(pulumi.CustomResource):
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Certificate Manager Google Managed Certificate Dns All Regions
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -959,18 +984,19 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Certificate can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}

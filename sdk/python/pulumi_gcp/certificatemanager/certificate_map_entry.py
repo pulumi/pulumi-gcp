@@ -450,8 +450,10 @@ class CertificateMapEntry(pulumi.CustomResource):
         that have been issued for a particular hostname
 
         ## Example Usage
+
         ### Certificate Manager Certificate Map Entry Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,18 +498,19 @@ class CertificateMapEntry(pulumi.CustomResource):
             certificates=[certificate.id],
             matcher="PRIMARY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CertificateMapEntry can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
+        * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
 
-         * `{{project}}/{{map}}/{{name}}`
+        * `{{project}}/{{map}}/{{name}}`
 
-         * `{{map}}/{{name}}`
+        * `{{map}}/{{name}}`
 
-         When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
@@ -558,8 +561,10 @@ class CertificateMapEntry(pulumi.CustomResource):
         that have been issued for a particular hostname
 
         ## Example Usage
+
         ### Certificate Manager Certificate Map Entry Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,18 +609,19 @@ class CertificateMapEntry(pulumi.CustomResource):
             certificates=[certificate.id],
             matcher="PRIMARY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CertificateMapEntry can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
+        * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
 
-         * `{{project}}/{{map}}/{{name}}`
+        * `{{project}}/{{map}}/{{name}}`
 
-         * `{{map}}/{{name}}`
+        * `{{map}}/{{name}}`
 
-         When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}

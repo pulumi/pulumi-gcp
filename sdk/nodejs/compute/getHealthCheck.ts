@@ -10,15 +10,6 @@ import * as utilities from "../utilities";
  * Get information about a HealthCheck.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const healthCheck = gcp.compute.getHealthCheck({
- *     name: "my-hc",
- * });
- * ```
  */
 export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckResult> {
 
@@ -76,15 +67,6 @@ export interface GetHealthCheckResult {
  * Get information about a HealthCheck.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const healthCheck = gcp.compute.getHealthCheck({
- *     name: "my-hc",
- * });
- * ```
  */
 export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckResult> {
     return pulumi.output(args).apply((a: any) => getHealthCheck(a, opts))

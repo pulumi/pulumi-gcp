@@ -200,6 +200,7 @@ class JobIAMPolicy(pulumi.CustomResource):
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -214,9 +215,11 @@ class JobIAMPolicy(pulumi.CustomResource):
             job_id="your-dataproc-job",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -226,9 +229,11 @@ class JobIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -238,28 +243,29 @@ class JobIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
+        IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
 
-         * `projects/{project}/regions/{region}/jobs/{job_id}`
+        * `projects/{project}/regions/{region}/jobs/{job_id}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "projects/{project}/regions/{region}/jobs/{job_id}"
+          id = "projects/{project}/regions/{region}/jobs/{job_id}"
 
-         to = google_dataproc_job_iam_policy.default
+          to = google_dataproc_job_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy default "projects/{project}/regions/{region}/jobs/{job_id}"
@@ -294,6 +300,7 @@ class JobIAMPolicy(pulumi.CustomResource):
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,9 +315,11 @@ class JobIAMPolicy(pulumi.CustomResource):
             job_id="your-dataproc-job",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -320,9 +329,11 @@ class JobIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -332,28 +343,29 @@ class JobIAMPolicy(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
+        IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
 
-         * `projects/{project}/regions/{region}/jobs/{job_id}`
+        * `projects/{project}/regions/{region}/jobs/{job_id}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "projects/{project}/regions/{region}/jobs/{job_id}"
+          id = "projects/{project}/regions/{region}/jobs/{job_id}"
 
-         to = google_dataproc_job_iam_policy.default
+          to = google_dataproc_job_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy default "projects/{project}/regions/{region}/jobs/{job_id}"

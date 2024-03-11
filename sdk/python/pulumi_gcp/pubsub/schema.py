@@ -224,8 +224,10 @@ class Schema(pulumi.CustomResource):
             * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
 
         ## Example Usage
+
         ### Pubsub Schema Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -249,8 +251,10 @@ class Schema(pulumi.CustomResource):
         }
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Schema Protobuf
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -272,18 +276,19 @@ class Schema(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Schema can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/schemas/{{name}}`
+        * `projects/{{project}}/schemas/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
@@ -333,8 +338,10 @@ class Schema(pulumi.CustomResource):
             * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
 
         ## Example Usage
+
         ### Pubsub Schema Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,8 +365,10 @@ class Schema(pulumi.CustomResource):
         }
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Schema Protobuf
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -381,18 +390,19 @@ class Schema(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Schema can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/schemas/{{name}}`
+        * `projects/{{project}}/schemas/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}

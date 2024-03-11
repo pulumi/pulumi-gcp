@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Vertex
     ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Vertex Ai Dataset
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,6 +44,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
