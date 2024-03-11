@@ -23,8 +23,10 @@ import (
 //   - [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 //
 // ## Example Usage
+//
 // ### Consumer Quota Override
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,8 +77,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Region Consumer Quota Override
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,8 +134,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Consumer Quota Override Custom Dimension
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -185,18 +191,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ConsumerQuotaOverride can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+// * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
 //
-//   - `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+// * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
 //
-//   - `{{service}}/{{metric}}/{{limit}}/{{name}}`
+// * `{{service}}/{{metric}}/{{limit}}/{{name}}`
 //
-//     When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
@@ -214,7 +221,7 @@ type ConsumerQuotaOverride struct {
 
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapOutput `pulumi:"dimensions"`
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
 	// If `force` is `true`, that safety check is ignored.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The limit on the metric, e.g. `/project/region`.
@@ -280,7 +287,7 @@ func GetConsumerQuotaOverride(ctx *pulumi.Context,
 type consumerQuotaOverrideState struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions map[string]string `pulumi:"dimensions"`
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
 	// If `force` is `true`, that safety check is ignored.
 	Force *bool `pulumi:"force"`
 	// The limit on the metric, e.g. `/project/region`.
@@ -305,7 +312,7 @@ type consumerQuotaOverrideState struct {
 type ConsumerQuotaOverrideState struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapInput
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
 	// If `force` is `true`, that safety check is ignored.
 	Force pulumi.BoolPtrInput
 	// The limit on the metric, e.g. `/project/region`.
@@ -334,7 +341,7 @@ func (ConsumerQuotaOverrideState) ElementType() reflect.Type {
 type consumerQuotaOverrideArgs struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions map[string]string `pulumi:"dimensions"`
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
 	// If `force` is `true`, that safety check is ignored.
 	Force *bool `pulumi:"force"`
 	// The limit on the metric, e.g. `/project/region`.
@@ -358,7 +365,7 @@ type consumerQuotaOverrideArgs struct {
 type ConsumerQuotaOverrideArgs struct {
 	// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
 	Dimensions pulumi.StringMapInput
-	// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+	// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
 	// If `force` is `true`, that safety check is ignored.
 	Force pulumi.BoolPtrInput
 	// The limit on the metric, e.g. `/project/region`.
@@ -470,7 +477,7 @@ func (o ConsumerQuotaOverrideOutput) Dimensions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConsumerQuotaOverride) pulumi.StringMapOutput { return v.Dimensions }).(pulumi.StringMapOutput)
 }
 
-// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
 // If `force` is `true`, that safety check is ignored.
 func (o ConsumerQuotaOverrideOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConsumerQuotaOverride) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)

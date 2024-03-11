@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,9 +48,11 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// To create a project under a specific folder
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,14 +76,15 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Projects can be imported using the `project_id`, e.g.
     /// 
-    ///  * `{{project_id}}`
+    /// * `{{project_id}}`
     /// 
-    ///  When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:organizations/project:Project default {{project_id}}

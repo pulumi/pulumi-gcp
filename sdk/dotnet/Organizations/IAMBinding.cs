@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,20 +44,19 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
-    /// 
-    /// These bindings can be imported using the `org_id` and role, e.g.
+    /// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.  These bindings can be imported using the `org_id` and role, e.g.
     /// 
     /// ```sh
     /// $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
     /// ```
     /// 
-    ///  -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
     public partial class IAMBinding : global::Pulumi.CustomResource

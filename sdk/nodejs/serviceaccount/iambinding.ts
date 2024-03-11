@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## Example Usage
+ *
  * ### Service Account IAM Policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,8 +43,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Account IAM Binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,8 +62,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Account IAM Binding With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -78,8 +86,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Account IAM Member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,8 +112,11 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Account IAM Member With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -122,12 +136,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ### Importing with conditions:
  *
- *  Here are examples of importing IAM memberships and bindings that include conditions:
+ * Here are examples of importing IAM memberships and bindings that include conditions:
  *
  * ```sh
  * $ pulumi import gcp:serviceaccount/iAMBinding:IAMBinding admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"

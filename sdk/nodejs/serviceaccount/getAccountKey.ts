@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
 
@@ -74,6 +76,7 @@ export interface GetAccountKeyResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,6 +88,7 @@ export interface GetAccountKeyResult {
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountKeyResult> {
     return pulumi.output(args).apply((a: any) => getAccountKey(a, opts))

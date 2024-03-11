@@ -18,34 +18,19 @@ namespace Pulumi.Gcp.Dns
         /// and
         /// [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_dns_managed_zone" "sample" {
+        ///   name = "sample-zone"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
-        ///     {
-        ///         Name = "sample-zone",
-        ///     });
-        /// 
-        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
-        ///     {
-        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
-        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
-        ///         Type = "A",
-        ///     });
-        /// 
-        /// });
+        /// data "google_dns_record_set" "rs" {
+        ///   managed_zone = data.google_dns_managed_zone.sample.name
+        ///   name = "my-record.${data.google_dns_managed_zone.sample.dns_name}"
+        ///   type = "A"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordSetResult> InvokeAsync(GetRecordSetArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetArgs(), options.WithDefaults());
@@ -57,34 +42,19 @@ namespace Pulumi.Gcp.Dns
         /// and
         /// [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_dns_managed_zone" "sample" {
+        ///   name = "sample-zone"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
-        ///     {
-        ///         Name = "sample-zone",
-        ///     });
-        /// 
-        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
-        ///     {
-        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
-        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
-        ///         Type = "A",
-        ///     });
-        /// 
-        /// });
+        /// data "google_dns_record_set" "rs" {
+        ///   managed_zone = data.google_dns_managed_zone.sample.name
+        ///   name = "my-record.${data.google_dns_managed_zone.sample.dns_name}"
+        ///   type = "A"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRecordSetResult> Invoke(GetRecordSetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetInvokeArgs(), options.WithDefaults());

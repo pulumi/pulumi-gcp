@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
  *
  * ## Example Usage
+ *
  * ### Apigateway Api Config Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,8 +39,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigateway Api Config Grpc
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,18 +84,19 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ApiConfig can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
+ * * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
  *
- *  * `{{project}}/{{api}}/{{api_config_id}}`
+ * * `{{project}}/{{api}}/{{api_config_id}}`
  *
- *  * `{{api}}/{{api_config_id}}`
+ * * `{{api}}/{{api_config_id}}`
  *
- *  When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}

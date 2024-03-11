@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_pubsub\_schema\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,9 +40,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_pubsub\_schema\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,9 +56,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_pubsub\_schema\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,42 +72,43 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
- *  * projects/{{project}}/schemas/{{name}}
+ * * projects/{{project}}/schemas/{{name}}
  *
- *  * {{project}}/{{name}}
+ * * {{project}}/{{name}}
  *
- *  * {{name}}
+ * * {{name}}
  *
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  *
- *  Cloud Pub/Sub schema IAM resources can be imported using the resource identifiers, role, and member.
+ * Cloud Pub/Sub schema IAM resources can be imported using the resource identifiers, role, and member.
  *
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *
  * ```sh
  * $ pulumi import gcp:pubsub/schemaIamMember:SchemaIamMember editor "projects/{{project}}/schemas/{{schema}} roles/viewer user:jane@example.com"
  * ```
  *
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  *
  * ```sh
  * $ pulumi import gcp:pubsub/schemaIamMember:SchemaIamMember editor "projects/{{project}}/schemas/{{schema}} roles/viewer"
  * ```
  *
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
  * $ pulumi import gcp:pubsub/schemaIamMember:SchemaIamMember editor projects/{{project}}/schemas/{{schema}}
  * ```
  *
- *  -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class SchemaIamMember extends pulumi.CustomResource {
     /**

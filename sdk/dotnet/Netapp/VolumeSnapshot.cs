@@ -24,8 +24,10 @@ namespace Pulumi.Gcp.Netapp
     ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Volume Snapshot Create
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -70,18 +72,19 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// VolumeSnapshot can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{volume_name}}/{{name}}`
+    /// * `{{location}}/{{volume_name}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, VolumeSnapshot can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, VolumeSnapshot can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}

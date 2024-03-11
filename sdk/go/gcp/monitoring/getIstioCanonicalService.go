@@ -26,8 +26,10 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+//
 // ### Monitoring Istio Canonical Service
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIstioCanonicalService(ctx *pulumi.Context, args *GetIstioCanonicalServiceArgs, opts ...pulumi.InvokeOption) (*GetIstioCanonicalServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIstioCanonicalServiceResult

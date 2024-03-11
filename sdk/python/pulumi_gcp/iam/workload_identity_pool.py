@@ -290,16 +290,20 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
 
         ## Example Usage
+
         ### Iam Workload Identity Pool Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool")
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,18 +314,19 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             description="Identity pool for automated test",
             disabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkloadIdentityPool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
+        * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
 
-         * `{{project}}/{{workload_identity_pool_id}}`
+        * `{{project}}/{{workload_identity_pool_id}}`
 
-         * `{{workload_identity_pool_id}}`
+        * `{{workload_identity_pool_id}}`
 
-         When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
@@ -368,16 +373,20 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
 
         ## Example Usage
+
         ### Iam Workload Identity Pool Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool")
         ```
+        <!--End PulumiCodeChooser -->
         ### Iam Workload Identity Pool Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -388,18 +397,19 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             description="Identity pool for automated test",
             disabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkloadIdentityPool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
+        * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
 
-         * `{{project}}/{{workload_identity_pool_id}}`
+        * `{{project}}/{{workload_identity_pool_id}}`
 
-         * `{{workload_identity_pool_id}}`
+        * `{{workload_identity_pool_id}}`
 
-         When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}

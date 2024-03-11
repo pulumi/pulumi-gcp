@@ -105,6 +105,7 @@ def get_job_iam_policy(location: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_job_iam_policy(location: Optional[str] = None,
         location=default["location"],
         name=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the cloud run job Used to find the parent resource to bind the IAM policy to
@@ -146,6 +148,7 @@ def get_job_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = 
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -154,6 +157,7 @@ def get_job_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = 
         location=default["location"],
         name=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the cloud run job Used to find the parent resource to bind the IAM policy to

@@ -24,8 +24,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
+//
 // ### Dialogflow Agent Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,14 +65,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Agent can be imported using any of these accepted formats:
 //
-//   - `{{project}}`
+// * `{{project}}`
 //
-//     When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:diagflow/agent:Agent default {{project}}

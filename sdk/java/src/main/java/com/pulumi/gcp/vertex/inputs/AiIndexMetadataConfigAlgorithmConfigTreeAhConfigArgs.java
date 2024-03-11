@@ -32,7 +32,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
 
     /**
      * The default percentage of leaf nodes that any query may be searched. Must be in
-     * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+     * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
      * 
      */
     @Import(name="leafNodesToSearchPercent")
@@ -40,7 +40,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
 
     /**
      * @return The default percentage of leaf nodes that any query may be searched. Must be in
-     * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+     * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
      * 
      */
     public Optional<Output<Integer>> leafNodesToSearchPercent() {
@@ -95,7 +95,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
 
         /**
          * @param leafNodesToSearchPercent The default percentage of leaf nodes that any query may be searched. Must be in
-         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs extends 
 
         /**
          * @param leafNodesToSearchPercent The default percentage of leaf nodes that any query may be searched. Must be in
-         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
          * 
          * @return builder
          * 

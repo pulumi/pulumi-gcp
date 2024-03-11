@@ -395,8 +395,10 @@ class ProjectFeed(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
+
         ### Cloud Asset Project Feed
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,18 +432,19 @@ class ProjectFeed(pulumi.CustomResource):
         # the asset change notifications.
         project = gcp.organizations.get_project(project_id="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ProjectFeed can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/feeds/{{name}}`
+        * `projects/{{project}}/feeds/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
@@ -500,8 +503,10 @@ class ProjectFeed(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
+
         ### Cloud Asset Project Feed
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,18 +540,19 @@ class ProjectFeed(pulumi.CustomResource):
         # the asset change notifications.
         project = gcp.organizations.get_project(project_id="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ProjectFeed can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/feeds/{{name}}`
+        * `projects/{{project}}/feeds/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}

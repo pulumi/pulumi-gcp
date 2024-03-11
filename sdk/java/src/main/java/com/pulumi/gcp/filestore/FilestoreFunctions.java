@@ -18,37 +18,6 @@ public final class FilestoreFunctions {
      * Get info about a Google Cloud Filestore instance.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.filestore.FilestoreFunctions;
-     * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myInstance = FilestoreFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;my-filestore-instance&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instanceIpAddresses&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().ipAddresses()));
-     *         ctx.export(&#34;instanceConnectMode&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().connectMode()));
-     *         ctx.export(&#34;instanceFileShareName&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.fileShares().name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args) {
@@ -58,37 +27,6 @@ public final class FilestoreFunctions {
      * Get info about a Google Cloud Filestore instance.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.filestore.FilestoreFunctions;
-     * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myInstance = FilestoreFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;my-filestore-instance&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instanceIpAddresses&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().ipAddresses()));
-     *         ctx.export(&#34;instanceConnectMode&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().connectMode()));
-     *         ctx.export(&#34;instanceFileShareName&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.fileShares().name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args) {
@@ -98,37 +36,6 @@ public final class FilestoreFunctions {
      * Get info about a Google Cloud Filestore instance.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.filestore.FilestoreFunctions;
-     * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myInstance = FilestoreFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;my-filestore-instance&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instanceIpAddresses&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().ipAddresses()));
-     *         ctx.export(&#34;instanceConnectMode&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().connectMode()));
-     *         ctx.export(&#34;instanceFileShareName&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.fileShares().name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
@@ -138,37 +45,6 @@ public final class FilestoreFunctions {
      * Get info about a Google Cloud Filestore instance.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.filestore.FilestoreFunctions;
-     * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myInstance = FilestoreFunctions.getInstance(GetInstanceArgs.builder()
-     *             .name(&#34;my-filestore-instance&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instanceIpAddresses&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().ipAddresses()));
-     *         ctx.export(&#34;instanceConnectMode&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.networks().connectMode()));
-     *         ctx.export(&#34;instanceFileShareName&#34;, myInstance.applyValue(getInstanceResult -&gt; getInstanceResult.fileShares().name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {

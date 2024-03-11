@@ -33,7 +33,10 @@ import javax.annotation.Nullable;
  * the provider to delete and recreate the node group.
  * 
  * ## Example Usage
+ * 
  * ### Node Group Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,7 +77,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Node Group Maintenance Interval
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -116,7 +122,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Node Group Autoscaling Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -168,7 +177,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Node Group Share Settings
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -225,20 +237,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * NodeGroup can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
+ * * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
  * 
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  * 
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}

@@ -21,6 +21,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args) {
@@ -58,6 +61,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +91,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args) {
@@ -95,6 +101,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +131,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
@@ -132,6 +141,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable instance.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -160,6 +171,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {
@@ -169,6 +181,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable Table.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -198,6 +212,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args) {
@@ -207,6 +222,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable Table.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -236,6 +253,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTableIamPolicyResult> getTableIamPolicyPlain(GetTableIamPolicyPlainArgs args) {
@@ -245,6 +263,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable Table.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -274,6 +294,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args, InvokeOptions options) {
@@ -283,6 +304,8 @@ public final class BigtableFunctions {
      * Retrieves the current IAM policy data for a Bigtable Table.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -312,6 +335,7 @@ public final class BigtableFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTableIamPolicyResult> getTableIamPolicyPlain(GetTableIamPolicyPlainArgs args, InvokeOptions options) {

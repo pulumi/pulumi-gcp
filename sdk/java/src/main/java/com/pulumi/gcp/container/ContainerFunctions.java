@@ -39,6 +39,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +73,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttachedInstallManifestResult> getAttachedInstallManifest(GetAttachedInstallManifestArgs args) {
@@ -80,6 +83,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -112,6 +117,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttachedInstallManifestResult> getAttachedInstallManifestPlain(GetAttachedInstallManifestPlainArgs args) {
@@ -121,6 +127,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +161,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttachedInstallManifestResult> getAttachedInstallManifest(GetAttachedInstallManifestArgs args, InvokeOptions options) {
@@ -162,6 +171,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -194,6 +205,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttachedInstallManifestResult> getAttachedInstallManifestPlain(GetAttachedInstallManifestPlainArgs args, InvokeOptions options) {
@@ -203,6 +215,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -233,6 +247,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttachedVersionsResult> getAttachedVersions(GetAttachedVersionsArgs args) {
@@ -242,6 +257,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -272,6 +289,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttachedVersionsResult> getAttachedVersionsPlain(GetAttachedVersionsPlainArgs args) {
@@ -281,6 +299,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -311,6 +331,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttachedVersionsResult> getAttachedVersions(GetAttachedVersionsArgs args, InvokeOptions options) {
@@ -320,6 +341,8 @@ public final class ContainerFunctions {
      * Provides access to available platform versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -350,6 +373,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttachedVersionsResult> getAttachedVersionsPlain(GetAttachedVersionsPlainArgs args, InvokeOptions options) {
@@ -359,6 +383,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -389,6 +415,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsVersionsResult> getAwsVersions() {
@@ -398,6 +425,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -428,6 +457,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsVersionsResult> getAwsVersionsPlain() {
@@ -437,6 +467,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -467,6 +499,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsVersionsResult> getAwsVersions(GetAwsVersionsArgs args) {
@@ -476,6 +509,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -506,6 +541,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsVersionsResult> getAwsVersionsPlain(GetAwsVersionsPlainArgs args) {
@@ -515,6 +551,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -545,6 +583,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsVersionsResult> getAwsVersions(GetAwsVersionsArgs args, InvokeOptions options) {
@@ -554,6 +593,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -584,6 +625,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsVersionsResult> getAwsVersionsPlain(GetAwsVersionsPlainArgs args, InvokeOptions options) {
@@ -593,6 +635,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -623,6 +667,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAzureVersionsResult> getAzureVersions() {
@@ -632,6 +677,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -662,6 +709,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAzureVersionsResult> getAzureVersionsPlain() {
@@ -671,6 +719,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -701,6 +751,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAzureVersionsResult> getAzureVersions(GetAzureVersionsArgs args) {
@@ -710,6 +761,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -740,6 +793,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAzureVersionsResult> getAzureVersionsPlain(GetAzureVersionsPlainArgs args) {
@@ -749,6 +803,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -779,6 +835,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAzureVersionsResult> getAzureVersions(GetAzureVersionsArgs args, InvokeOptions options) {
@@ -788,6 +845,8 @@ public final class ContainerFunctions {
      * Provides access to available Kubernetes versions in a location for a given project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -818,6 +877,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAzureVersionsResult> getAzureVersionsPlain(GetAzureVersionsPlainArgs args, InvokeOptions options) {
@@ -827,39 +887,6 @@ public final class ContainerFunctions {
      * Get info about a GKE cluster from its name and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .location(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
@@ -869,39 +896,6 @@ public final class ContainerFunctions {
      * Get info about a GKE cluster from its name and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .location(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -911,39 +905,6 @@ public final class ContainerFunctions {
      * Get info about a GKE cluster from its name and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .location(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
@@ -953,39 +914,6 @@ public final class ContainerFunctions {
      * Get info about a GKE cluster from its name and location.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;my-cluster&#34;)
-     *             .location(&#34;us-east1-a&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;endpoint&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.endpoint()));
-     *         ctx.export(&#34;instanceGroupUrls&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export(&#34;nodeConfig&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodeConfigs()));
-     *         ctx.export(&#34;nodePools&#34;, myCluster.applyValue(getClusterResult -&gt; getClusterResult.nodePools()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -1001,6 +929,8 @@ public final class ContainerFunctions {
      * support the same version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1041,6 +971,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEngineVersionsResult> getEngineVersions() {
@@ -1056,6 +987,8 @@ public final class ContainerFunctions {
      * support the same version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1096,6 +1029,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEngineVersionsResult> getEngineVersionsPlain() {
@@ -1111,6 +1045,8 @@ public final class ContainerFunctions {
      * support the same version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1151,6 +1087,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEngineVersionsResult> getEngineVersions(GetEngineVersionsArgs args) {
@@ -1166,6 +1103,8 @@ public final class ContainerFunctions {
      * support the same version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1206,6 +1145,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEngineVersionsResult> getEngineVersionsPlain(GetEngineVersionsPlainArgs args) {
@@ -1221,6 +1161,8 @@ public final class ContainerFunctions {
      * support the same version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1261,6 +1203,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEngineVersionsResult> getEngineVersions(GetEngineVersionsArgs args, InvokeOptions options) {
@@ -1276,6 +1219,8 @@ public final class ContainerFunctions {
      * support the same version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1316,6 +1261,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEngineVersionsResult> getEngineVersionsPlain(GetEngineVersionsPlainArgs args, InvokeOptions options) {
@@ -1327,6 +1273,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1356,6 +1304,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryImageResult> getRegistryImage(GetRegistryImageArgs args) {
@@ -1367,6 +1316,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1396,6 +1347,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryImageResult> getRegistryImagePlain(GetRegistryImagePlainArgs args) {
@@ -1407,6 +1359,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1436,6 +1390,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryImageResult> getRegistryImage(GetRegistryImageArgs args, InvokeOptions options) {
@@ -1447,6 +1402,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1476,6 +1433,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryImageResult> getRegistryImagePlain(GetRegistryImagePlainArgs args, InvokeOptions options) {
@@ -1487,6 +1445,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1514,6 +1474,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryRepositoryResult> getRegistryRepository() {
@@ -1525,6 +1486,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1552,6 +1515,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryRepositoryResult> getRegistryRepositoryPlain() {
@@ -1563,6 +1527,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1590,6 +1556,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryRepositoryResult> getRegistryRepository(GetRegistryRepositoryArgs args) {
@@ -1601,6 +1568,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1628,6 +1597,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryRepositoryResult> getRegistryRepositoryPlain(GetRegistryRepositoryPlainArgs args) {
@@ -1639,6 +1609,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1666,6 +1638,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryRepositoryResult> getRegistryRepository(GetRegistryRepositoryArgs args, InvokeOptions options) {
@@ -1677,6 +1650,8 @@ public final class ContainerFunctions {
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1704,6 +1679,7 @@ public final class ContainerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryRepositoryResult> getRegistryRepositoryPlain(GetRegistryRepositoryPlainArgs args, InvokeOptions options) {

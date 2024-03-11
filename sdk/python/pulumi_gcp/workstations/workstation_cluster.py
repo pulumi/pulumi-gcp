@@ -566,8 +566,10 @@ class WorkstationCluster(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Workstation Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -593,8 +595,10 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Private
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -623,8 +627,10 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Custom Domain
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,18 +662,19 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkstationCluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
+        * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
 
-         * `{{project}}/{{location}}/{{workstation_cluster_id}}`
+        * `{{project}}/{{location}}/{{workstation_cluster_id}}`
 
-         * `{{location}}/{{workstation_cluster_id}}`
+        * `{{location}}/{{workstation_cluster_id}}`
 
-         When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
@@ -714,8 +721,10 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Workstation Cluster Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -741,8 +750,10 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Private
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -771,8 +782,10 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
         ### Workstation Cluster Custom Domain
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -804,18 +817,19 @@ class WorkstationCluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WorkstationCluster can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
+        * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
 
-         * `{{project}}/{{location}}/{{workstation_cluster_id}}`
+        * `{{project}}/{{location}}/{{workstation_cluster_id}}`
 
-         * `{{location}}/{{workstation_cluster_id}}`
+        * `{{location}}/{{workstation_cluster_id}}`
 
-         When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}

@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const latestRecoveryTime = _default;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseInstanceLatestRecoveryTime(args: GetDatabaseInstanceLatestRecoveryTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceLatestRecoveryTimeResult> {
 
@@ -74,6 +76,7 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,6 +86,7 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
  * });
  * export const latestRecoveryTime = _default;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseInstanceLatestRecoveryTimeOutput(args: GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstanceLatestRecoveryTime(a, opts))

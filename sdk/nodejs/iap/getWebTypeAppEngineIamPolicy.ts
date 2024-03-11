@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     appId: app.appId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWebTypeAppEngineIamPolicy(args: GetWebTypeAppEngineIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebTypeAppEngineIamPolicyResult> {
 
@@ -68,6 +70,7 @@ export interface GetWebTypeAppEngineIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,6 +80,7 @@ export interface GetWebTypeAppEngineIamPolicyResult {
  *     appId: app.appId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWebTypeAppEngineIamPolicyOutput(args: GetWebTypeAppEngineIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebTypeAppEngineIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getWebTypeAppEngineIamPolicy(a, opts))

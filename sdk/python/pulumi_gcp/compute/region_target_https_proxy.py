@@ -431,8 +431,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+
         ### Region Target Https Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,8 +481,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Target Https Proxy Certificate Manager Certificate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -508,20 +512,21 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionTargetHttpsProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionTargetHttpsProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionTargetHttpsProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}
@@ -586,8 +591,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+
         ### Region Target Https Proxy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -634,8 +641,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Target Https Proxy Certificate Manager Certificate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -663,20 +672,21 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionTargetHttpsProxy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, RegionTargetHttpsProxy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionTargetHttpsProxy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}

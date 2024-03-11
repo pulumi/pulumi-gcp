@@ -206,6 +206,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
 
         ## google\\_apigee\\_environment\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -219,9 +220,11 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             env_id=apigee_environment["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_apigee\\_environment\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -232,9 +235,11 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_apigee\\_environment\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -245,40 +250,41 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * {{org_id}}/environments/{{name}}
+        * {{org_id}}/environments/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Apigee environment IAM resources can be imported using the resource identifiers, role, and member.
+        Apigee environment IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy editor "{{org_id}}/environments/{{environment}} roles/viewer user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy editor "{{org_id}}/environments/{{environment}} roles/viewer"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy editor {{org_id}}/environments/{{environment}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -321,6 +327,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
 
         ## google\\_apigee\\_environment\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -334,9 +341,11 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             env_id=apigee_environment["name"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_apigee\\_environment\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,9 +356,11 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_apigee\\_environment\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -360,40 +371,41 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * {{org_id}}/environments/{{name}}
+        * {{org_id}}/environments/{{name}}
 
-         * {{name}}
+        * {{name}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Apigee environment IAM resources can be imported using the resource identifiers, role, and member.
+        Apigee environment IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy editor "{{org_id}}/environments/{{environment}} roles/viewer user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy editor "{{org_id}}/environments/{{environment}} roles/viewer"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy editor {{org_id}}/environments/{{environment}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param EnvironmentIamPolicyArgs args: The arguments to use to populate this resource's properties.

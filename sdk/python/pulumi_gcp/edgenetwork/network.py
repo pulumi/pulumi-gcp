@@ -345,8 +345,10 @@ class Network(pulumi.CustomResource):
             * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
 
         ## Example Usage
+
         ### Edgenetwork Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -361,22 +363,23 @@ class Network(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Network can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
+        * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
 
-         * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
+        * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
 
-         * `{{location}}/{{zone}}/{{network_id}}`
+        * `{{location}}/{{zone}}/{{network_id}}`
 
-         * `{{location}}/{{network_id}}`
+        * `{{location}}/{{network_id}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
@@ -428,8 +431,10 @@ class Network(pulumi.CustomResource):
             * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
 
         ## Example Usage
+
         ### Edgenetwork Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -444,22 +449,23 @@ class Network(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Network can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
+        * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
 
-         * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
+        * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
 
-         * `{{location}}/{{zone}}/{{network_id}}`
+        * `{{location}}/{{zone}}/{{network_id}}`
 
-         * `{{location}}/{{network_id}}`
+        * `{{location}}/{{network_id}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}

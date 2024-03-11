@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ *
  * ### Essential Contact
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,14 +36,15 @@ import * as utilities from "../utilities";
  *     notificationCategorySubscriptions: ["ALL"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Contact can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Contact can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Contact can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}

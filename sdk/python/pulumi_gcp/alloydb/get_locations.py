@@ -73,12 +73,14 @@ def get_locations(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.alloydb.get_locations()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project.
@@ -102,12 +104,14 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.alloydb.get_locations()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project.

@@ -24,8 +24,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 //
 // ## Example Usage
+//
 // ### Network Peering Routes Config Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,8 +86,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Peering Routes Config Gke
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,18 +171,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
+// * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
 //
-//   - `{{project}}/{{network}}/{{peering}}`
+// * `{{project}}/{{network}}/{{peering}}`
 //
-//   - `{{network}}/{{peering}}`
+// * `{{network}}/{{peering}}`
 //
-//     When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}

@@ -19,7 +19,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Network Security Firewall Endpoint Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,14 +54,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * FirewallEndpoint can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/locations/{{location}}/firewallEndpoints/{{name}}`
+ * * `{{parent}}/locations/{{location}}/firewallEndpoints/{{name}}`
  * 
- *  When using the `pulumi import` command, FirewallEndpoint can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FirewallEndpoint can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networksecurity/firewallEndpoint:FirewallEndpoint default {{parent}}/locations/{{location}}/firewallEndpoints/{{name}}

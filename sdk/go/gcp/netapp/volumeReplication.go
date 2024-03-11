@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Netapp Volume Replication Create
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,18 +93,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // VolumeReplication can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{volume_name}}/{{name}}`
+// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
 //
-//   - `{{location}}/{{volume_name}}/{{name}}`
+// * `{{location}}/{{volume_name}}/{{name}}`
 //
-//     When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}

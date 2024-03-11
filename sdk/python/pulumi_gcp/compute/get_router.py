@@ -136,6 +136,7 @@ def get_router(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -143,6 +144,7 @@ def get_router(name: Optional[str] = None,
     my_router = gcp.compute.get_router(name="myrouter-us-east1",
         network="my-network")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the router.
@@ -184,6 +186,7 @@ def get_router_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -191,6 +194,7 @@ def get_router_output(name: Optional[pulumi.Input[str]] = None,
     my_router = gcp.compute.get_router(name="myrouter-us-east1",
         network="my-network")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the router.

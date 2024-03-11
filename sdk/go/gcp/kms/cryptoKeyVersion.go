@@ -23,8 +23,10 @@ import (
 //   - [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
 //
 // ## Example Usage
+//
 // ### Kms Crypto Key Version Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,14 +65,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // CryptoKeyVersion can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, CryptoKeyVersion can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, CryptoKeyVersion can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:kms/cryptoKeyVersion:CryptoKeyVersion default {{name}}

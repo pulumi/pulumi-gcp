@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * for more details.
  *
  * ## Example Usage
+ *
  * ### Searching For Projects About To Be Deleted In An Org
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,6 +27,7 @@ import * as utilities from "../utilities";
  *     projectId: my_org_projects.projects?.[0]?.projectId,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
 
@@ -64,8 +67,10 @@ export interface GetProjectResult {
  * for more details.
  *
  * ## Example Usage
+ *
  * ### Searching For Projects About To Be Deleted In An Org
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,6 +82,7 @@ export interface GetProjectResult {
  *     projectId: my_org_projects.projects?.[0]?.projectId,
  * }));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

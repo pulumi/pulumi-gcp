@@ -29,6 +29,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -58,6 +60,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetJobResult> getJob(GetJobArgs args) {
@@ -69,6 +72,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +103,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetJobResult> getJobPlain(GetJobPlainArgs args) {
@@ -109,6 +115,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -138,6 +146,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetJobResult> getJob(GetJobArgs args, InvokeOptions options) {
@@ -149,6 +158,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -178,6 +189,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetJobResult> getJobPlain(GetJobPlainArgs args, InvokeOptions options) {
@@ -187,6 +199,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for job
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -217,6 +231,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetJobIamPolicyResult> getJobIamPolicy(GetJobIamPolicyArgs args) {
@@ -226,6 +241,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for job
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -256,6 +273,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args) {
@@ -265,6 +283,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for job
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -295,6 +315,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetJobIamPolicyResult> getJobIamPolicy(GetJobIamPolicyArgs args, InvokeOptions options) {
@@ -304,6 +325,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for job
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -334,6 +357,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args, InvokeOptions options) {
@@ -345,6 +369,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -374,6 +400,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -385,6 +412,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -414,6 +443,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -425,6 +455,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -454,6 +486,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -465,6 +498,8 @@ public final class Cloudrunv2Functions {
      * and [API](https://cloud.google.com/run/docs/apis).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -494,6 +529,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -503,6 +539,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -533,6 +571,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args) {
@@ -542,6 +581,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -572,6 +613,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args) {
@@ -581,6 +623,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -611,6 +655,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOptions options) {
@@ -620,6 +665,8 @@ public final class Cloudrunv2Functions {
      * Retrieves the current IAM policy data for service
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -650,6 +697,7 @@ public final class Cloudrunv2Functions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args, InvokeOptions options) {

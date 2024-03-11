@@ -246,6 +246,7 @@ class Variable(pulumi.CustomResource):
 
         Example creating a RuntimeConfig variable.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -258,12 +259,14 @@ class Variable(pulumi.CustomResource):
             name="prod-variables/hostname",
             text="example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         You can also encode binary content using the `value` argument instead. The
         value must be base64 encoded.
 
         Example of using the `value` argument.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,16 +280,17 @@ class Variable(pulumi.CustomResource):
             name="secret",
             value=std.filebase64(input="my-encrypted-secret.dat").result)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Runtime Config Variables can be imported using the `name` or full variable name, e.g.
 
-         * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
+        * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
 
-         * `{{config_id}}/{{name}}`
+        * `{{config_id}}/{{name}}`
 
-         When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
@@ -296,7 +300,7 @@ class Variable(pulumi.CustomResource):
         $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
         ```
 
-         When importing using only the name, the provider project must be set.
+        When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -324,6 +328,7 @@ class Variable(pulumi.CustomResource):
 
         Example creating a RuntimeConfig variable.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,12 +341,14 @@ class Variable(pulumi.CustomResource):
             name="prod-variables/hostname",
             text="example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         You can also encode binary content using the `value` argument instead. The
         value must be base64 encoded.
 
         Example of using the `value` argument.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -355,16 +362,17 @@ class Variable(pulumi.CustomResource):
             name="secret",
             value=std.filebase64(input="my-encrypted-secret.dat").result)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Runtime Config Variables can be imported using the `name` or full variable name, e.g.
 
-         * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
+        * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
 
-         * `{{config_id}}/{{name}}`
+        * `{{config_id}}/{{name}}`
 
-         When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
@@ -374,7 +382,7 @@ class Variable(pulumi.CustomResource):
         $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
         ```
 
-         When importing using only the name, the provider project must be set.
+        When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
         :param VariableArgs args: The arguments to use to populate this resource's properties.

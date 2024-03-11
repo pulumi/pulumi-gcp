@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ *
  * ### Data Catalog Entry Tag Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,8 +84,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Catalog Entry Group Tag
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -152,8 +156,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Data Catalog Entry Tag Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -279,14 +285,15 @@ import * as utilities from "../utilities";
  *     column: "first_name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Tag can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Tag can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Tag can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:datacatalog/tag:Tag default {{name}}

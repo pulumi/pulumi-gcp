@@ -663,8 +663,10 @@ class Snapshot(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
         ## Example Usage
+
         ### Snapshot Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -686,8 +688,10 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Snapshot Chainname
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,18 +714,19 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Snapshot can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/snapshots/{{name}}`
+        * `projects/{{project}}/global/snapshots/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
@@ -805,8 +810,10 @@ class Snapshot(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
         ## Example Usage
+
         ### Snapshot Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -828,8 +835,10 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Snapshot Chainname
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -852,18 +861,19 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Snapshot can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/snapshots/{{name}}`
+        * `projects/{{project}}/global/snapshots/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}

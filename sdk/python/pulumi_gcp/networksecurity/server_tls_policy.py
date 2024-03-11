@@ -415,8 +415,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Network Security Server Tls Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,8 +455,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,8 +475,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Server Cert
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,8 +497,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Mtls
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -527,18 +535,19 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServerTlsPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
@@ -583,8 +592,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Network Security Server Tls Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -621,8 +632,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -639,8 +652,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 client_validation_mode="ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Server Cert
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -659,8 +674,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Server Tls Policy Mtls
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -695,18 +712,19 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServerTlsPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}

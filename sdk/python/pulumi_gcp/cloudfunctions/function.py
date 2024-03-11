@@ -1136,8 +1136,10 @@ class Function(pulumi.CustomResource):
         for Cloud Functions.
 
         ## Example Usage
+
         ### Public Function
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1166,8 +1168,11 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="allUsers")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Single User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1204,16 +1209,17 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="user:myFunctionInvoker@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
@@ -1284,8 +1290,10 @@ class Function(pulumi.CustomResource):
         for Cloud Functions.
 
         ## Example Usage
+
         ### Public Function
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1314,8 +1322,11 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="allUsers")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Single User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1352,16 +1363,17 @@ class Function(pulumi.CustomResource):
             role="roles/cloudfunctions.invoker",
             member="user:myFunctionInvoker@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}

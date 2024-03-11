@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Dns
         /// and
         /// [API](https://cloud.google.com/dns/api/v1/managedZones).
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,6 +46,7 @@ namespace Pulumi.Gcp.Dns
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithDefaults());
@@ -56,6 +58,7 @@ namespace Pulumi.Gcp.Dns
         /// and
         /// [API](https://cloud.google.com/dns/api/v1/managedZones).
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,6 +86,7 @@ namespace Pulumi.Gcp.Dns
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithDefaults());

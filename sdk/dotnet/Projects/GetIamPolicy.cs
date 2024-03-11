@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIamPolicyResult> InvokeAsync(GetIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyResult>("gcp:projects/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyArgs(), options.WithDefaults());
@@ -40,6 +42,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIamPolicyResult> Invoke(GetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:projects/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());

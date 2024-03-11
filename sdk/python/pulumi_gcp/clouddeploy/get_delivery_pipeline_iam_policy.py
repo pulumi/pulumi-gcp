@@ -105,6 +105,7 @@ def get_delivery_pipeline_iam_policy(location: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,6 +114,7 @@ def get_delivery_pipeline_iam_policy(location: Optional[str] = None,
         location=default["location"],
         name=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to
@@ -145,6 +147,7 @@ def get_delivery_pipeline_iam_policy_output(location: Optional[pulumi.Input[Opti
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -153,6 +156,7 @@ def get_delivery_pipeline_iam_policy_output(location: Optional[pulumi.Input[Opti
         location=default["location"],
         name=default["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Used to find the parent resource to bind the IAM policy to

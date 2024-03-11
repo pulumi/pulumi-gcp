@@ -14,35 +14,30 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Get info about a GKE cluster from its name and location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_container_cluster" "my_cluster" {
+        ///   name     = "my-cluster"
+        ///   location = "us-east1-a"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
-        ///     {
-        ///         Name = "my-cluster",
-        ///         Location = "us-east1-a",
-        ///     });
+        /// output "endpoint" {
+        ///   value = data.google_container_cluster.my_cluster.endpoint
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
-        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
-        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
-        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
-        ///     };
-        /// });
+        /// output "instance_group_urls" {
+        ///   value = data.google_container_cluster.my_cluster.node_pool[0].instance_group_urls
+        /// }
+        /// 
+        /// output "node_config" {
+        ///   value = data.google_container_cluster.my_cluster.node_config
+        /// }
+        /// 
+        /// output "node_pools" {
+        ///   value = data.google_container_cluster.my_cluster.node_pool
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
@@ -50,35 +45,30 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Get info about a GKE cluster from its name and location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// ```tf
+        /// data "google_container_cluster" "my_cluster" {
+        ///   name     = "my-cluster"
+        ///   location = "us-east1-a"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
-        ///     {
-        ///         Name = "my-cluster",
-        ///         Location = "us-east1-a",
-        ///     });
+        /// output "endpoint" {
+        ///   value = data.google_container_cluster.my_cluster.endpoint
+        /// }
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
-        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
-        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
-        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
-        ///     };
-        /// });
+        /// output "instance_group_urls" {
+        ///   value = data.google_container_cluster.my_cluster.node_pool[0].instance_group_urls
+        /// }
+        /// 
+        /// output "node_config" {
+        ///   value = data.google_container_cluster.my_cluster.node_config
+        /// }
+        /// 
+        /// output "node_pools" {
+        ///   value = data.google_container_cluster.my_cluster.node_pool
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());

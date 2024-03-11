@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/organizations.gcpUserAccessBindings)
  *
  * ## Example Usage
+ *
  * ### Access Context Manager Gcp User Access Binding Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,14 +60,15 @@ import * as utilities from "../utilities";
  *     accessLevels: accessLevelIdForUserAccessBinding.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * GcpUserAccessBinding can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, GcpUserAccessBinding can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, GcpUserAccessBinding can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}

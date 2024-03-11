@@ -19,60 +19,10 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/)
     /// 
     /// ## Example Usage
-    /// ### Firebase Web App Basic
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// 	
-    /// object NotImplemented(string errorMessage) 
-    /// {
-    ///     throw new System.NotImplementedException(errorMessage);
-    /// }
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basicWebApp = new Gcp.Firebase.WebApp("basic", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         DisplayName = "Display Name Basic",
-    ///     });
-    /// 
-    ///     var basic = Gcp.Firebase.GetWebAppConfig.Invoke(new()
-    ///     {
-    ///         WebAppId = basicWebApp.AppId,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Storage.Bucket("default", new()
-    ///     {
-    ///         Name = "fb-webapp-",
-    ///         Location = "US",
-    ///     });
-    /// 
-    ///     var defaultBucketObject = new Gcp.Storage.BucketObject("default", new()
-    ///     {
-    ///         Bucket = @default.Name,
-    ///         Name = "firebase-config.json",
-    ///         Content = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["appId"] = basicWebApp.AppId,
-    ///             ["apiKey"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
-    ///             ["authDomain"] = basic.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.AuthDomain),
-    ///             ["databaseURL"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"database_url\",\"\")"),
-    ///             ["storageBucket"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"storage_bucket\",\"\")"),
-    ///             ["messagingSenderId"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"messaging_sender_id\",\"\")"),
-    ///             ["measurementId"] = NotImplemented("lookup(data.google_firebase_web_app_config.basic,\"measurement_id\",\"\")"),
-    ///         })),
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Firebase Web App Custom Api Key
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -108,22 +58,23 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// WebApp can be imported using any of these accepted formats:
     /// 
-    ///  * `{{project}} projects/{{project}}/webApps/{{app_id}}`
+    /// * `{{project}} projects/{{project}}/webApps/{{app_id}}`
     /// 
-    ///  * `projects/{{project}}/webApps/{{app_id}}`
+    /// * `projects/{{project}}/webApps/{{app_id}}`
     /// 
-    ///  * `{{project}}/{{project}}/{{app_id}}`
+    /// * `{{project}}/{{project}}/{{app_id}}`
     /// 
-    ///  * `webApps/{{app_id}}`
+    /// * `webApps/{{app_id}}`
     /// 
-    ///  * `{{app_id}}`
+    /// * `{{app_id}}`
     /// 
-    ///  When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}

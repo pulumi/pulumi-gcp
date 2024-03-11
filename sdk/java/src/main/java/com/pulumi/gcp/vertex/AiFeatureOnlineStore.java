@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  * 
  * ## Example Usage
+ * 
  * ### Vertex Ai Feature Online Store
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,7 +74,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore With Beta Fields Optimized
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -116,7 +122,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -165,20 +174,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * FeatureOnlineStore can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}`
+ * * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}`
  * 
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  * 
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, FeatureOnlineStore can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FeatureOnlineStore can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}

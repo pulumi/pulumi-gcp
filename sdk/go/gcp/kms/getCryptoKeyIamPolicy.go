@@ -15,6 +15,7 @@ import (
 //
 // ## example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCryptoKeyIamPolicy(ctx *pulumi.Context, args *GetCryptoKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCryptoKeyIamPolicyResult

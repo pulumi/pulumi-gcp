@@ -35,16 +35,12 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
     /**
      * Whether client certificate authorization is enabled for this cluster.  For example:
      * 
-     * This block also contains several computed attributes, documented below.
-     * 
      */
     @Import(name="clientCertificateConfig", required=true)
     private Output<ClusterMasterAuthClientCertificateConfigArgs> clientCertificateConfig;
 
     /**
      * @return Whether client certificate authorization is enabled for this cluster.  For example:
-     * 
-     * This block also contains several computed attributes, documented below.
      * 
      */
     public Output<ClusterMasterAuthClientCertificateConfigArgs> clientCertificateConfig() {
@@ -132,8 +128,6 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param clientCertificateConfig Whether client certificate authorization is enabled for this cluster.  For example:
          * 
-         * This block also contains several computed attributes, documented below.
-         * 
          * @return builder
          * 
          */
@@ -144,8 +138,6 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param clientCertificateConfig Whether client certificate authorization is enabled for this cluster.  For example:
-         * 
-         * This block also contains several computed attributes, documented below.
          * 
          * @return builder
          * 

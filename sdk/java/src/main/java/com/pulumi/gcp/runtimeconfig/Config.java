@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Example creating a RuntimeConfig resource.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -47,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Runtime Configs can be imported using the `name` or full config name, e.g.
  * 
- *  * `projects/{{project_id}}/configs/{{name}}`
+ * * `projects/{{project_id}}/configs/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
@@ -66,7 +69,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
  * ```
  * 
- *  When importing using only the name, the provider project must be set.
+ * When importing using only the name, the provider project must be set.
  * 
  */
 @ResourceType(type="gcp:runtimeconfig/config:Config")

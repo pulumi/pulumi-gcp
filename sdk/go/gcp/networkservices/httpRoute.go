@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Network Services Http Route Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,8 +62,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Http Route Matches And Actions
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -196,8 +200,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Http Route Actions
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -305,8 +311,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Network Services Http Route Mesh Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -365,18 +373,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // HttpRoute can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/global/httpRoutes/{{name}}`
+// * `projects/{{project}}/locations/global/httpRoutes/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, HttpRoute can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:networkservices/httpRoute:HttpRoute default projects/{{project}}/locations/global/httpRoutes/{{name}}

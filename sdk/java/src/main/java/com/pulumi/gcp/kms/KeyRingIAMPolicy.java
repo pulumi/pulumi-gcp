@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_kms\_key\_ring\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,8 +72,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -122,8 +127,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -154,8 +162,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -192,8 +203,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_kms\_key\_ring\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -224,8 +238,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -262,28 +279,29 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Importing IAM policies
  * 
- *  IAM policy imports use the identifier of the Cloud KMS key ring only. For example:
+ * IAM policy imports use the identifier of the Cloud KMS key ring only. For example:
  * 
- *  * `{{project_id}}/{{location}}/{{key_ring_name}}`
+ * * `{{project_id}}/{{location}}/{{key_ring_name}}`
  * 
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  * 
- *  tf
+ * tf
  * 
- *  import {
+ * import {
  * 
- *  id = &#34;{{project_id}}/{{location}}/{{key_ring_name}}&#34;
+ *   id = &#34;{{project_id}}/{{location}}/{{key_ring_name}}&#34;
  * 
- *  to = google_kms_key_ring_iam_policy.default
+ *   to = google_kms_key_ring_iam_policy.default
  * 
- *  }
+ * }
  * 
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  * 
  * ```sh
  * $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy default {{project_id}}/{{location}}/{{key_ring_name}}

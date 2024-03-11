@@ -211,8 +211,10 @@ class NetworkEndpointList(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+
         ### Network Endpoints
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -272,20 +274,21 @@ class NetworkEndpointList(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkEndpoints can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
+        * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
 
-         * `{{project}}/{{zone}}/{{network_endpoint_group}}`
+        * `{{project}}/{{zone}}/{{network_endpoint_group}}`
 
-         * `{{zone}}/{{network_endpoint_group}}`
+        * `{{zone}}/{{network_endpoint_group}}`
 
-         * `{{network_endpoint_group}}`
+        * `{{network_endpoint_group}}`
 
-         When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
@@ -340,8 +343,10 @@ class NetworkEndpointList(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+
         ### Network Endpoints
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -401,20 +406,21 @@ class NetworkEndpointList(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkEndpoints can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
+        * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
 
-         * `{{project}}/{{zone}}/{{network_endpoint_group}}`
+        * `{{project}}/{{zone}}/{{network_endpoint_group}}`
 
-         * `{{zone}}/{{network_endpoint_group}}`
+        * `{{zone}}/{{network_endpoint_group}}`
 
-         * `{{network_endpoint_group}}`
+        * `{{network_endpoint_group}}`
 
-         When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}

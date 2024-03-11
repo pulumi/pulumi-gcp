@@ -367,6 +367,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -384,14 +385,15 @@ class BillingAccountSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Billing account logging sinks can be imported using this format:
 
-         * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
+        * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
 
-         When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
@@ -436,6 +438,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,14 +456,15 @@ class BillingAccountSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Billing account logging sinks can be imported using this format:
 
-         * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
+        * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
 
-         When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}

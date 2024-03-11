@@ -26,8 +26,10 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+//
 // ### Monitoring Mesh Istio Service
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetMeshIstioService(ctx *pulumi.Context, args *GetMeshIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetMeshIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMeshIstioServiceResult

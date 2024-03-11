@@ -253,8 +253,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
+
         ### Firebase App Check Service Config Off
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -267,8 +269,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             project="my-project-name",
             service_id="firestore.googleapis.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Enforced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,8 +286,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="firebasestorage.googleapis.com",
             enforcement_mode="ENFORCED")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Unenforced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,18 +303,19 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="firebasedatabase.googleapis.com",
             enforcement_mode="UNENFORCED")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/services/{{service_id}}`
+        * `projects/{{project}}/services/{{service_id}}`
 
-         * `{{project}}/{{service_id}}`
+        * `{{project}}/{{service_id}}`
 
-         * `{{service_id}}`
+        * `{{service_id}}`
 
-         When using the `pulumi import` command, ServiceConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig default projects/{{project}}/services/{{service_id}}
@@ -368,8 +375,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
+
         ### Firebase App Check Service Config Off
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -382,8 +391,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             project="my-project-name",
             service_id="firestore.googleapis.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Enforced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -397,8 +408,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="firebasestorage.googleapis.com",
             enforcement_mode="ENFORCED")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Unenforced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -412,18 +425,19 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="firebasedatabase.googleapis.com",
             enforcement_mode="UNENFORCED")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/services/{{service_id}}`
+        * `projects/{{project}}/services/{{service_id}}`
 
-         * `{{project}}/{{service_id}}`
+        * `{{project}}/{{service_id}}`
 
-         * `{{service_id}}`
+        * `{{service_id}}`
 
-         When using the `pulumi import` command, ServiceConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig default projects/{{project}}/services/{{service_id}}

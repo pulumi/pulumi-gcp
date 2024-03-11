@@ -48,6 +48,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -77,6 +79,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
@@ -89,6 +92,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -118,6 +123,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -130,6 +136,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -159,6 +167,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
@@ -171,6 +180,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -200,6 +211,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -212,6 +224,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -241,6 +255,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExternalAccessRuleResult> getExternalAccessRule(GetExternalAccessRuleArgs args) {
@@ -253,6 +268,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -282,6 +299,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExternalAccessRuleResult> getExternalAccessRulePlain(GetExternalAccessRulePlainArgs args) {
@@ -294,6 +312,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -323,6 +343,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExternalAccessRuleResult> getExternalAccessRule(GetExternalAccessRuleArgs args, InvokeOptions options) {
@@ -335,6 +356,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -364,6 +387,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExternalAccessRuleResult> getExternalAccessRulePlain(GetExternalAccessRulePlainArgs args, InvokeOptions options) {
@@ -376,6 +400,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -405,6 +431,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExternalAddressResult> getExternalAddress(GetExternalAddressArgs args) {
@@ -417,6 +444,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -446,6 +475,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExternalAddressResult> getExternalAddressPlain(GetExternalAddressPlainArgs args) {
@@ -458,6 +488,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -487,6 +519,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExternalAddressResult> getExternalAddress(GetExternalAddressArgs args, InvokeOptions options) {
@@ -499,6 +532,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -528,6 +563,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExternalAddressResult> getExternalAddressPlain(GetExternalAddressPlainArgs args, InvokeOptions options) {
@@ -540,6 +576,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -569,6 +607,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
@@ -581,6 +620,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +651,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args) {
@@ -622,6 +664,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -651,6 +695,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
@@ -663,6 +708,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -692,6 +739,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
@@ -704,6 +752,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -732,6 +782,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkPeeringResult> getNetworkPeering(GetNetworkPeeringArgs args) {
@@ -744,6 +795,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -772,6 +825,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args) {
@@ -784,6 +838,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -812,6 +868,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkPeeringResult> getNetworkPeering(GetNetworkPeeringArgs args, InvokeOptions options) {
@@ -824,6 +881,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -852,6 +911,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args, InvokeOptions options) {
@@ -864,6 +924,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -893,6 +955,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkPolicyResult> getNetworkPolicy(GetNetworkPolicyArgs args) {
@@ -905,6 +968,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -934,6 +999,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkPolicyResult> getNetworkPolicyPlain(GetNetworkPolicyPlainArgs args) {
@@ -946,6 +1012,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -975,6 +1043,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkPolicyResult> getNetworkPolicy(GetNetworkPolicyArgs args, InvokeOptions options) {
@@ -987,6 +1056,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1016,6 +1087,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkPolicyResult> getNetworkPolicyPlain(GetNetworkPolicyPlainArgs args, InvokeOptions options) {
@@ -1028,6 +1100,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1056,6 +1130,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNsxCredentialsResult> getNsxCredentials(GetNsxCredentialsArgs args) {
@@ -1068,6 +1143,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1096,6 +1173,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNsxCredentialsResult> getNsxCredentialsPlain(GetNsxCredentialsPlainArgs args) {
@@ -1108,6 +1186,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1136,6 +1216,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNsxCredentialsResult> getNsxCredentials(GetNsxCredentialsArgs args, InvokeOptions options) {
@@ -1148,6 +1229,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1176,6 +1259,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNsxCredentialsResult> getNsxCredentialsPlain(GetNsxCredentialsPlainArgs args, InvokeOptions options) {
@@ -1188,6 +1272,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1217,6 +1303,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateCloudResult> getPrivateCloud(GetPrivateCloudArgs args) {
@@ -1229,6 +1316,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1258,6 +1347,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateCloudResult> getPrivateCloudPlain(GetPrivateCloudPlainArgs args) {
@@ -1270,6 +1360,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1299,6 +1391,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateCloudResult> getPrivateCloud(GetPrivateCloudArgs args, InvokeOptions options) {
@@ -1311,6 +1404,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1340,6 +1435,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateCloudResult> getPrivateCloudPlain(GetPrivateCloudPlainArgs args, InvokeOptions options) {
@@ -1352,6 +1448,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1381,6 +1479,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args) {
@@ -1393,6 +1492,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1422,6 +1523,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args) {
@@ -1434,6 +1536,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1463,6 +1567,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOptions options) {
@@ -1475,6 +1580,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1504,6 +1611,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args, InvokeOptions options) {
@@ -1516,6 +1624,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1544,6 +1654,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVcenterCredentialsResult> getVcenterCredentials(GetVcenterCredentialsArgs args) {
@@ -1556,6 +1667,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1584,6 +1697,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVcenterCredentialsResult> getVcenterCredentialsPlain(GetVcenterCredentialsPlainArgs args) {
@@ -1596,6 +1710,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1624,6 +1740,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVcenterCredentialsResult> getVcenterCredentials(GetVcenterCredentialsArgs args, InvokeOptions options) {
@@ -1636,6 +1753,8 @@ public final class VmwareengineFunctions {
      * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1664,6 +1783,7 @@ public final class VmwareengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVcenterCredentialsResult> getVcenterCredentialsPlain(GetVcenterCredentialsPlainArgs args, InvokeOptions options) {

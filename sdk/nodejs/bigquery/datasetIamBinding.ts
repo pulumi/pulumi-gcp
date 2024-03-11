@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_bigquery\_dataset\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,9 +44,11 @@ import * as utilities from "../utilities";
  *     policyData: owner.then(owner => owner.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,9 +60,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## google\_bigquery\_dataset\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,28 +76,29 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ### Importing IAM policies
  *
- *  IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
+ * IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
  *
- *  * `projects/{{project_id}}/datasets/{{dataset_id}}`
+ * * `projects/{{project_id}}/datasets/{{dataset_id}}`
  *
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  *
- *  tf
+ * tf
  *
- *  import {
+ * import {
  *
- *  id = projects/{{project_id}}/datasets/{{dataset_id}}
+ *   id = projects/{{project_id}}/datasets/{{dataset_id}}
  *
- *  to = google_bigquery_dataset_iam_policy.default
+ *   to = google_bigquery_dataset_iam_policy.default
  *
- *  }
+ * }
  *
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  *
  * ```sh
  * $ pulumi import gcp:bigquery/datasetIamBinding:DatasetIamBinding default projects/{{project_id}}/datasets/{{dataset_id}}

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     cryptoKeyId: cryptoKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCryptoKeyIamPolicy(args: GetCryptoKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCryptoKeyIamPolicyResult> {
 
@@ -59,6 +61,7 @@ export interface GetCryptoKeyIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,6 +70,7 @@ export interface GetCryptoKeyIamPolicyResult {
  *     cryptoKeyId: cryptoKey.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCryptoKeyIamPolicyOutput(args: GetCryptoKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCryptoKeyIamPolicy(a, opts))

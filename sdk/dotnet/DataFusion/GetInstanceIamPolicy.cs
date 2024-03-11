@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.DataFusion
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.DataFusion
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceIamPolicyResult> InvokeAsync(GetInstanceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceIamPolicyResult>("gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.DataFusion
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.DataFusion
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceIamPolicyResult> Invoke(GetInstanceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceIamPolicyResult>("gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy", args ?? new GetInstanceIamPolicyInvokeArgs(), options.WithDefaults());

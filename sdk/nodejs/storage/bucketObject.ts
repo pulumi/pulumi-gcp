@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *
  * Example creating a public object in an existing `image-store` bucket.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,9 +29,11 @@ import * as utilities from "../utilities";
  *     bucket: "image-store",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Example creating an empty folder in an existing `image-store` bucket.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,6 +44,7 @@ import * as utilities from "../utilities";
  *     bucket: "image-store",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

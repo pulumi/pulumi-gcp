@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Router Nat Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,8 +71,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Router Nat Manual Ips
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -132,8 +136,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Router Nat Rules
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -225,8 +231,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Router Nat Private
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -320,20 +328,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// RouterNat can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+    /// * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{router}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{router}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{router}}/{{name}}`
+    /// * `{{region}}/{{router}}/{{name}}`
     /// 
-    ///  * `{{router}}/{{name}}`
+    /// * `{{router}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}

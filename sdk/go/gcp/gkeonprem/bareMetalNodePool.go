@@ -15,8 +15,10 @@ import (
 // A Google Bare Metal Node Pool.
 //
 // ## Example Usage
+//
 // ### Gkeonprem Bare Metal Node Pool Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,8 +134,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Gkeonprem Bare Metal Node Pool Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -260,18 +264,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // BareMetalNodePool can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}`
+// * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}`
 //
-//   - `{{location}}/{{bare_metal_cluster}}/{{name}}`
+// * `{{location}}/{{bare_metal_cluster}}/{{name}}`
 //
-//     When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}

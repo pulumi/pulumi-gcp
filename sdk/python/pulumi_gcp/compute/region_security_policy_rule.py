@@ -414,8 +414,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Region Security Policy Rule Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -439,8 +441,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule Multiple Rules
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -480,8 +484,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule With Network Match
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -528,20 +534,21 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionSecurityPolicyRule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
+        * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
 
-         * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
+        * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
 
-         * `{{region}}/{{security_policy}}/{{priority}}`
+        * `{{region}}/{{security_policy}}/{{priority}}`
 
-         * `{{security_policy}}/{{priority}}`
+        * `{{security_policy}}/{{priority}}`
 
-         When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}
@@ -600,8 +607,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Region Security Policy Rule Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -625,8 +634,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule Multiple Rules
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -666,8 +677,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Region Security Policy Rule With Network Match
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -714,20 +727,21 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RegionSecurityPolicyRule can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
+        * `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}`
 
-         * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
+        * `{{project}}/{{region}}/{{security_policy}}/{{priority}}`
 
-         * `{{region}}/{{security_policy}}/{{priority}}`
+        * `{{region}}/{{security_policy}}/{{priority}}`
 
-         * `{{security_policy}}/{{priority}}`
+        * `{{security_policy}}/{{priority}}`
 
-         When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}

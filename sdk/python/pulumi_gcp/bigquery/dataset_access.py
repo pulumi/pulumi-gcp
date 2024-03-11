@@ -517,8 +517,10 @@ class DatasetAccess(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Bigquery Dataset Access Basic User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,8 +532,10 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Access View
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -554,8 +558,10 @@ class DatasetAccess(pulumi.CustomResource):
                 table_id=public_table.table_id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Access Authorized Dataset
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -572,8 +578,10 @@ class DatasetAccess(pulumi.CustomResource):
                 target_types=["VIEWS"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Access Authorized Routine
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -614,6 +622,7 @@ class DatasetAccess(pulumi.CustomResource):
                 routine_id=public_routine.routine_id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -666,8 +675,10 @@ class DatasetAccess(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Bigquery Dataset Access Basic User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -679,8 +690,10 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Access View
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -703,8 +716,10 @@ class DatasetAccess(pulumi.CustomResource):
                 table_id=public_table.table_id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Access Authorized Dataset
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -721,8 +736,10 @@ class DatasetAccess(pulumi.CustomResource):
                 target_types=["VIEWS"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Dataset Access Authorized Routine
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -763,6 +780,7 @@ class DatasetAccess(pulumi.CustomResource):
                 routine_id=public_routine.routine_id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

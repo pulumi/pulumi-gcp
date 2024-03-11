@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
  *
  * ## Example Usage
+ *
  * ### Cloud Asset Folder Feed
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -62,16 +64,17 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FolderFeed can be imported using any of these accepted formats:
  *
- *  * `folders/{{folder_id}}/feeds/{{name}}`
+ * * `folders/{{folder_id}}/feeds/{{name}}`
  *
- *  * `{{folder_id}}/{{name}}`
+ * * `{{folder_id}}/{{name}}`
  *
- *  When using the `pulumi import` command, FolderFeed can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FolderFeed can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}

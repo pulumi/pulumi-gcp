@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
  *
  * ## Example Usage
+ *
  * ### Workflow Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,6 +67,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

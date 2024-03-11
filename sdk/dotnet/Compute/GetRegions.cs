@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute
         /// Provides access to available Google Compute regions for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,6 +41,7 @@ namespace Pulumi.Gcp.Compute
         ///     }
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -48,6 +50,7 @@ namespace Pulumi.Gcp.Compute
         /// Provides access to available Google Compute regions for a given project.
         /// See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,6 +76,7 @@ namespace Pulumi.Gcp.Compute
         ///     }
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("gcp:compute/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());

@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Bigquery Dataset Access Basic User
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,8 +55,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset Access View
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,8 +111,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset Access Authorized Dataset
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,8 +159,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset Access Authorized Routine
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -238,6 +246,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

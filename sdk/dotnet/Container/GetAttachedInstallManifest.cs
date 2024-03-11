@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAttachedInstallManifestResult> InvokeAsync(GetAttachedInstallManifestArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAttachedInstallManifestResult>("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args ?? new GetAttachedInstallManifestArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Provides access to available platform versions in a location for a given project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAttachedInstallManifestResult> Invoke(GetAttachedInstallManifestInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachedInstallManifestResult>("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args ?? new GetAttachedInstallManifestInvokeArgs(), options.WithDefaults());

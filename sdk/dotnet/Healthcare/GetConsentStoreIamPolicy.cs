@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConsentStoreIamPolicyResult> InvokeAsync(GetConsentStoreIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConsentStoreIamPolicyResult>("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args ?? new GetConsentStoreIamPolicyArgs(), options.WithDefaults());
@@ -45,6 +47,7 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,6 +64,7 @@ namespace Pulumi.Gcp.Healthcare
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConsentStoreIamPolicyResult> Invoke(GetConsentStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConsentStoreIamPolicyResult>("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args ?? new GetConsentStoreIamPolicyInvokeArgs(), options.WithDefaults());

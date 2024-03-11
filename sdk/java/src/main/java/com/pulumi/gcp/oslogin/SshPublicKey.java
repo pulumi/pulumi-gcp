@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  * 
  * ## Example Usage
+ * 
  * ### Os Login Ssh Key Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,16 +62,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * SSHPublicKey can be imported using any of these accepted formats:
  * 
- *  * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
+ * * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
  * 
- *  * `{{user}}/{{fingerprint}}`
+ * * `{{user}}/{{fingerprint}}`
  * 
- *  When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}

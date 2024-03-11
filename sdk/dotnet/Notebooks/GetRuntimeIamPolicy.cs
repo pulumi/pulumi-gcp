@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Notebooks
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Notebooks
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRuntimeIamPolicyResult> InvokeAsync(GetRuntimeIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuntimeIamPolicyResult>("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.Notebooks
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.Notebooks
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRuntimeIamPolicyResult> Invoke(GetRuntimeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuntimeIamPolicyResult>("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyInvokeArgs(), options.WithDefaults());

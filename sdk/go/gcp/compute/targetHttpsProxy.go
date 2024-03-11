@@ -22,8 +22,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
+//
 // ### Target Https Proxy Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,8 +123,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Target Https Proxy Http Keep Alive Timeout
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,8 +226,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Target Https Proxy Mtls
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -383,8 +389,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Target Https Proxy Certificate Manager Certificate
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -481,18 +489,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TargetHttpsProxy can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/targetHttpsProxies/{{name}}`
+// * `projects/{{project}}/global/targetHttpsProxies/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TargetHttpsProxy can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}

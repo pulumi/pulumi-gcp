@@ -1076,6 +1076,7 @@ class Table(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1125,18 +1126,19 @@ class Table(pulumi.CustomResource):
                 source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BigQuery tables can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
+        * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
 
-         * `{{project}}/{{dataset_id}}/{{table_id}}`
+        * `{{project}}/{{dataset_id}}/{{table_id}}`
 
-         * `{{dataset_id}}/{{table_id}}`
+        * `{{dataset_id}}/{{table_id}}`
 
-         When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
@@ -1231,6 +1233,7 @@ class Table(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1280,18 +1283,19 @@ class Table(pulumi.CustomResource):
                 source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         BigQuery tables can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
+        * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
 
-         * `{{project}}/{{dataset_id}}/{{table_id}}`
+        * `{{project}}/{{dataset_id}}/{{table_id}}`
 
-         * `{{dataset_id}}/{{table_id}}`
+        * `{{dataset_id}}/{{table_id}}`
 
-         When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}

@@ -233,8 +233,10 @@ class HmacKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 
         ## Example Usage
+
         ### Storage Hmac Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -244,18 +246,19 @@ class HmacKey(pulumi.CustomResource):
         #Create the HMAC key for the associated service account
         key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HmacKey can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/hmacKeys/{{access_id}}`
+        * `projects/{{project}}/hmacKeys/{{access_id}}`
 
-         * `{{project}}/{{access_id}}`
+        * `{{project}}/{{access_id}}`
 
-         * `{{access_id}}`
+        * `{{access_id}}`
 
-         When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
@@ -299,8 +302,10 @@ class HmacKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 
         ## Example Usage
+
         ### Storage Hmac Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,18 +315,19 @@ class HmacKey(pulumi.CustomResource):
         #Create the HMAC key for the associated service account
         key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HmacKey can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/hmacKeys/{{access_id}}`
+        * `projects/{{project}}/hmacKeys/{{access_id}}`
 
-         * `{{project}}/{{access_id}}`
+        * `{{project}}/{{access_id}}`
 
-         * `{{access_id}}`
+        * `{{access_id}}`
 
-         When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}

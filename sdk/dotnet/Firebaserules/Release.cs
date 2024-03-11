@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.Firebaserules
     /// For more information, see:
     /// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
     /// ## Example Usage
+    /// 
     /// ### Firestore_release
     /// Creates a Firebase Rules Release to Cloud Firestore
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,8 +50,10 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Storage_release
     /// Creates a Firebase Rules Release for a Storage bucket
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,15 +103,17 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// Release can be imported using any of these accepted formats: * `projects/{{project}}/releases/{{name}}`
+    /// Release can be imported using any of these accepted formats:
+    /// * `projects/{{project}}/releases/{{name}}`
     /// 
     /// When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}
+    /// $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebaserules/release:Release")]

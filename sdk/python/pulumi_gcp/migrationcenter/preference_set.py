@@ -309,8 +309,10 @@ class PreferenceSet(pulumi.CustomResource):
             * [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
 
         ## Example Usage
+
         ### Preference Set Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -328,8 +330,10 @@ class PreferenceSet(pulumi.CustomResource):
                 target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Preference Set Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -369,18 +373,19 @@ class PreferenceSet(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PreferenceSet can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
+        * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
 
-         * `{{project}}/{{location}}/{{preference_set_id}}`
+        * `{{project}}/{{location}}/{{preference_set_id}}`
 
-         * `{{location}}/{{preference_set_id}}`
+        * `{{location}}/{{preference_set_id}}`
 
-         When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}
@@ -424,8 +429,10 @@ class PreferenceSet(pulumi.CustomResource):
             * [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
 
         ## Example Usage
+
         ### Preference Set Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -443,8 +450,10 @@ class PreferenceSet(pulumi.CustomResource):
                 target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Preference Set Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,18 +493,19 @@ class PreferenceSet(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PreferenceSet can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
+        * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
 
-         * `{{project}}/{{location}}/{{preference_set_id}}`
+        * `{{project}}/{{location}}/{{preference_set_id}}`
 
-         * `{{location}}/{{preference_set_id}}`
+        * `{{location}}/{{preference_set_id}}`
 
-         When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}

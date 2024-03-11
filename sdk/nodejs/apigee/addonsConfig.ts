@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  *
  * ## Example Usage
+ *
  * ### Apigee Addons Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,8 +36,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Apigee Addons Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,16 +101,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AddonsConfig can be imported using any of these accepted formats:
  *
- *  * `organizations/{{name}}`
+ * * `organizations/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}

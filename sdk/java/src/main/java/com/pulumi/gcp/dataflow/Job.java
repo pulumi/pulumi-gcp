@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,7 +61,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Streaming Job
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -120,6 +126,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Note on &#34;destroy&#34; / &#34;apply&#34;
  * 
  * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
@@ -129,6 +137,8 @@ import javax.annotation.Nullable;
  * A Dataflow job which is &#39;destroyed&#39; may be &#34;cancelled&#34; or &#34;drained&#34;.  If &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is &#34;drain&#34;. When `on_delete` is set to `&#34;drain&#34;` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
  * 
  * You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -173,14 +183,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Dataflow jobs can be imported using the job `id` e.g.
  * 
- *  * `{{id}}`
+ * * `{{id}}`
  * 
- *  When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataflow/job:Job default {{id}}

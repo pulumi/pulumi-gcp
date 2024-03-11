@@ -165,8 +165,10 @@ class Client(pulumi.CustomResource):
             * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
 
         ## Example Usage
+
         ### Iap Client
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -186,16 +188,17 @@ class Client(pulumi.CustomResource):
             display_name="Test Client",
             brand=project_brand.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Client can be imported using any of these accepted formats:
 
-         * `{{brand}}/identityAwareProxyClients/{{client_id}}`
+        * `{{brand}}/identityAwareProxyClients/{{client_id}}`
 
-         * `{{brand}}/{{client_id}}`
+        * `{{brand}}/{{client_id}}`
 
-         When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
@@ -235,8 +238,10 @@ class Client(pulumi.CustomResource):
             * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
 
         ## Example Usage
+
         ### Iap Client
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -256,16 +261,17 @@ class Client(pulumi.CustomResource):
             display_name="Test Client",
             brand=project_brand.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Client can be imported using any of these accepted formats:
 
-         * `{{brand}}/identityAwareProxyClients/{{client_id}}`
+        * `{{brand}}/identityAwareProxyClients/{{client_id}}`
 
-         * `{{brand}}/{{client_id}}`
+        * `{{brand}}/{{client_id}}`
 
-         When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}

@@ -37,7 +37,10 @@ import javax.annotation.Nullable;
  *     * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  * 
  * ## Example Usage
+ * 
  * ### Container Attached Cluster Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,7 +93,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Container Attached Cluster Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -184,7 +190,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Container Attached Cluster Ignore Errors
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -238,18 +247,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}

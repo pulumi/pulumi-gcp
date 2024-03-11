@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  *
  * ## Example Usage
+ *
  * ### Monitoring Group Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,8 +30,10 @@ import * as utilities from "../utilities";
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Monitoring Group Subgroup
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,14 +48,15 @@ import * as utilities from "../utilities";
  *     parentName: parent.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Group can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:monitoring/group:Group default {{name}}

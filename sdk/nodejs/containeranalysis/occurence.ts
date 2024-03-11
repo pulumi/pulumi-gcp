@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * Occurrence can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/occurrences/{{name}}`
+ * * `projects/{{project}}/occurrences/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Occurrence can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Occurrence can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}

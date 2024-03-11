@@ -553,8 +553,10 @@ class Instance(pulumi.CustomResource):
         A Workbench instance.
 
         ## Example Usage
+
         ### Workbench Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -563,8 +565,10 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Container
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -579,8 +583,10 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Gpu
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -600,8 +606,10 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Labels Stopped
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -629,8 +637,10 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -694,18 +704,19 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
@@ -752,8 +763,10 @@ class Instance(pulumi.CustomResource):
         A Workbench instance.
 
         ## Example Usage
+
         ### Workbench Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -762,8 +775,10 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Container
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -778,8 +793,10 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Gpu
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -799,8 +816,10 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Labels Stopped
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -828,8 +847,10 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
+        <!--End PulumiCodeChooser -->
         ### Workbench Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -893,18 +914,19 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="ACTIVE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}

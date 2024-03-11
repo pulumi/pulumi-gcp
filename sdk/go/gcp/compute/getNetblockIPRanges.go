@@ -14,79 +14,10 @@ import (
 // Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
 //
 // ## Example Usage
+//
 // ### Cloud Ranges
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			netblock, err := compute.GetNetblockIPRanges(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("cidrBlocks", netblock.CidrBlocks)
-//			ctx.Export("cidrBlocksIpv4", netblock.CidrBlocksIpv4s)
-//			ctx.Export("cidrBlocksIpv6", netblock.CidrBlocksIpv6s)
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Allow Health Checks
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			legacy_hcs, err := compute.GetNetblockIPRanges(ctx, &compute.GetNetblockIPRangesArgs{
-//				RangeType: pulumi.StringRef("legacy-health-checkers"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("test-network"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewFirewall(ctx, "allow-hcs", &compute.FirewallArgs{
-//				Name:    pulumi.String("allow-hcs"),
-//				Network: _default.Name,
-//				Allows: compute.FirewallAllowArray{
-//					&compute.FirewallAllowArgs{
-//						Protocol: pulumi.String("tcp"),
-//						Ports: pulumi.StringArray{
-//							pulumi.String("80"),
-//						},
-//					},
-//				},
-//				SourceRanges: interface{}(legacy_hcs.CidrBlocksIpv4s),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetNetblockIPRanges(ctx *pulumi.Context, args *GetNetblockIPRangesArgs, opts ...pulumi.InvokeOption) (*GetNetblockIPRangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetblockIPRangesResult

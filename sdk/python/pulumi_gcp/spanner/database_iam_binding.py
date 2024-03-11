@@ -305,6 +305,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -318,9 +319,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,9 +342,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,9 +357,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -370,9 +377,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,9 +392,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -401,28 +412,29 @@ class DatabaseIAMBinding(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+        IAM policy imports use the identifier of the Spanner Database resource in question. For example:
 
-         * `{{project}}/{{instance}}/{{database}}`
+        * `{{project}}/{{instance}}/{{database}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = {{project}}/{{instance}}/{{database}}
+          id = {{project}}/{{instance}}/{{database}}
 
-         to = google_spanner_database_iam_policy.default
+          to = google_spanner_database_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding default {{project}}/{{instance}}/{{database}}
@@ -471,6 +483,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,9 +497,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,9 +520,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             database="your-database-name",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -518,9 +535,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             role="roles/compute.networkUser",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,9 +555,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -549,9 +570,11 @@ class DatabaseIAMBinding(pulumi.CustomResource):
             role="roles/compute.networkUser",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -567,28 +590,29 @@ class DatabaseIAMBinding(pulumi.CustomResource):
                 expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+        IAM policy imports use the identifier of the Spanner Database resource in question. For example:
 
-         * `{{project}}/{{instance}}/{{database}}`
+        * `{{project}}/{{instance}}/{{database}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = {{project}}/{{instance}}/{{database}}
+          id = {{project}}/{{instance}}/{{database}}
 
-         to = google_spanner_database_iam_policy.default
+          to = google_spanner_database_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding default {{project}}/{{instance}}/{{database}}

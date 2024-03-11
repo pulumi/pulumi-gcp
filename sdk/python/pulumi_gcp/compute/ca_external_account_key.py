@@ -175,14 +175,17 @@ class CaExternalAccountKey(pulumi.CustomResource):
         The ACME account registered by using an EAB secret has no expiration.
 
         ## Example Usage
+
         ### Public Ca External Account Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,14 +221,17 @@ class CaExternalAccountKey(pulumi.CustomResource):
         The ACME account registered by using an EAB secret has no expiration.
 
         ## Example Usage
+
         ### Public Ca External Account Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

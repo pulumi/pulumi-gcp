@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
+ *
  * ### Firebase App Check App Attest Config Minimal
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,8 +38,10 @@ import * as utilities from "../utilities";
  *     appId: _default.appId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firebase App Check App Attest Config Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,18 +62,19 @@ import * as utilities from "../utilities";
  *     tokenTtl: "7200s",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AppAttestConfig can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/apps/{{app_id}}/appAttestConfig`
+ * * `projects/{{project}}/apps/{{app_id}}/appAttestConfig`
  *
- *  * `{{project}}/{{app_id}}`
+ * * `{{project}}/{{app_id}}`
  *
- *  * `{{app_id}}`
+ * * `{{app_id}}`
  *
- *  When using the `pulumi import` command, AppAttestConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AppAttestConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig default projects/{{project}}/apps/{{app_id}}/appAttestConfig

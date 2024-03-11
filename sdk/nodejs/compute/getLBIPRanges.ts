@@ -10,23 +10,6 @@ import * as utilities from "../utilities";
  * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const ranges = gcp.compute.getLBIPRanges({});
- * const lb = new gcp.compute.Firewall("lb", {
- *     name: "lb-firewall",
- *     network: main.name,
- *     allows: [{
- *         protocol: "tcp",
- *         ports: ["80"],
- *     }],
- *     sourceRanges: ranges.then(ranges => ranges.networks),
- *     targetTags: ["InstanceBehindLoadBalancer"],
- * });
- * ```
  */
 export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
 
@@ -58,23 +41,6 @@ export interface GetLBIPRangesResult {
  * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const ranges = gcp.compute.getLBIPRanges({});
- * const lb = new gcp.compute.Firewall("lb", {
- *     name: "lb-firewall",
- *     network: main.name,
- *     allows: [{
- *         protocol: "tcp",
- *         ports: ["80"],
- *     }],
- *     sourceRanges: ranges.then(ranges => ranges.networks),
- *     targetTags: ["InstanceBehindLoadBalancer"],
- * });
- * ```
  */
 export function getLBIPRangesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLBIPRangesResult> {
     return pulumi.output(getLBIPRanges(opts))

@@ -27,6 +27,7 @@ import (
 //
 // ## google\_spanner\_instance\_iam\_policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,9 +66,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_spanner\_instance\_iam\_binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,9 +98,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_spanner\_instance\_iam\_member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,28 +128,29 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ### Importing IAM policies
 //
-//	IAM policy imports use the identifier of the Spanner Instances resource . For example:
+// IAM policy imports use the identifier of the Spanner Instances resource . For example:
 //
-//	* `{{project}}/{{instance}}`
+// * `{{project}}/{{instance}}`
 //
-//	An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 //
-//	tf
+// tf
 //
-//	import {
+// import {
 //
 //	id = {{project}}/{{instance}}
 //
 //	to = google_spanner_instance_iam_policy.default
 //
-//	}
+// }
 //
-//	The `pulumi import` command can also be used:
+// The `pulumi import` command can also be used:
 //
 // ```sh
 // $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}

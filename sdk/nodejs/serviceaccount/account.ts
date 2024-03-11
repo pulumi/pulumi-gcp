@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * This snippet creates a service account in a project.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,14 +31,15 @@ import * as utilities from "../utilities";
  *     displayName: "Service Account",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Service accounts can be imported using their URI, e.g.
  *
- *  * `projects/{{project_id}}/serviceAccounts/{{email}}`
+ * * `projects/{{project_id}}/serviceAccounts/{{email}}`
  *
- *  When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}

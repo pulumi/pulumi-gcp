@@ -441,8 +441,10 @@ class AccessLevelCondition(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Access Context Manager Access Level Condition Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -492,6 +494,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                 "US",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -567,8 +570,10 @@ class AccessLevelCondition(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Access Context Manager Access Level Condition Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -618,6 +623,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                 "US",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -201,8 +201,10 @@ class SshPublicKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 
         ## Example Usage
+
         ### Os Login Ssh Key Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -213,16 +215,17 @@ class SshPublicKey(pulumi.CustomResource):
             user=me.email,
             key=std.file(input="path/to/id_rsa.pub").result)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SSHPublicKey can be imported using any of these accepted formats:
 
-         * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
+        * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
 
-         * `{{user}}/{{fingerprint}}`
+        * `{{user}}/{{fingerprint}}`
 
-         When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
@@ -258,8 +261,10 @@ class SshPublicKey(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 
         ## Example Usage
+
         ### Os Login Ssh Key Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -270,16 +275,17 @@ class SshPublicKey(pulumi.CustomResource):
             user=me.email,
             key=std.file(input="path/to/id_rsa.pub").result)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         SSHPublicKey can be imported using any of these accepted formats:
 
-         * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
+        * `users/{{user}}/sshPublicKeys/{{fingerprint}}`
 
-         * `{{user}}/{{fingerprint}}`
+        * `{{user}}/{{fingerprint}}`
 
-         When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}

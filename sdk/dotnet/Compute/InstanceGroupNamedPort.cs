@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Instance Group Named Port Gke
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,20 +81,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// InstanceGroupNamedPort can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
+    /// * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}`
     /// 
-    ///  * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
+    /// * `{{project}}/{{zone}}/{{group}}/{{port}}/{{name}}`
     /// 
-    ///  * `{{zone}}/{{group}}/{{port}}/{{name}}`
+    /// * `{{zone}}/{{group}}/{{port}}/{{name}}`
     /// 
-    ///  * `{{group}}/{{port}}/{{name}}`
+    /// * `{{group}}/{{port}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, InstanceGroupNamedPort can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}

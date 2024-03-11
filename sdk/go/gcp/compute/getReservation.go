@@ -14,6 +14,7 @@ import (
 // Provides access to available Google Compute Reservation Resources for a given project.
 // See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupReservation(ctx *pulumi.Context, args *LookupReservationArgs, opts ...pulumi.InvokeOption) (*LookupReservationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReservationResult

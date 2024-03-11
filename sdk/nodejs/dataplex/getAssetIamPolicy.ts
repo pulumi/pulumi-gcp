@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     asset: example.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAssetIamPolicy(args: GetAssetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetIamPolicyResult> {
 
@@ -80,6 +82,7 @@ export interface GetAssetIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,6 +95,7 @@ export interface GetAssetIamPolicyResult {
  *     asset: example.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAssetIamPolicyOutput(args: GetAssetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAssetIamPolicy(a, opts))

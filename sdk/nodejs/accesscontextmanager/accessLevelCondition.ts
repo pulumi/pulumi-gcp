@@ -29,8 +29,10 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ *
  * ### Access Context Manager Access Level Condition Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

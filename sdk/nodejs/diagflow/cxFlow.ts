@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
+ *
  * ### Dialogflowcx Flow Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,8 +87,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dialogflowcx Flow Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -370,16 +374,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Flow can be imported using any of these accepted formats:
  *
- *  * `{{parent}}/flows/{{name}}`
+ * * `{{parent}}/flows/{{name}}`
  *
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  *
- *  When using the `pulumi import` command, Flow can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Flow can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}

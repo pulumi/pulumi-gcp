@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/integration-connectors/docs/createconnection)
 //
 // ## Example Usage
+//
 // ### Integration Connectors Connection Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Integration Connectors Connection Advanced
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -342,18 +346,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Connection can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/connections/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}

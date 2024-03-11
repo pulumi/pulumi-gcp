@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Alloydb Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,8 +47,10 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Alloydb Secondary Instance Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -100,18 +104,19 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
+ * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
  *
- *  * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
+ * * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
  *
- *  * `{{location}}/{{cluster}}/{{instance_id}}`
+ * * `{{location}}/{{cluster}}/{{instance_id}}`
  *
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}

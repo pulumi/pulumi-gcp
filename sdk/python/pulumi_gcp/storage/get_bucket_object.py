@@ -295,6 +295,7 @@ def get_bucket_object(bucket: Optional[str] = None,
 
     Example picture stored within a folder.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -302,6 +303,7 @@ def get_bucket_object(bucket: Optional[str] = None,
     picture = gcp.storage.get_bucket_object(name="folder/butterfly01.jpg",
         bucket="image-store")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the containing bucket.
@@ -353,6 +355,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[str]]] = Non
 
     Example picture stored within a folder.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -360,6 +363,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[str]]] = Non
     picture = gcp.storage.get_bucket_object(name="folder/butterfly01.jpg",
         bucket="image-store")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the containing bucket.

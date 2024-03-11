@@ -229,6 +229,7 @@ class AccountIamMember(pulumi.CustomResource):
 
         ## google\\_billing\\_account\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -241,9 +242,11 @@ class AccountIamMember(pulumi.CustomResource):
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_billing\\_account\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -253,9 +256,11 @@ class AccountIamMember(pulumi.CustomResource):
             role="roles/billing.viewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_billing\\_account\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -265,28 +270,29 @@ class AccountIamMember(pulumi.CustomResource):
             role="roles/billing.viewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
+        IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
 
-         * `{{billing_account_id}}`
+        * `{{billing_account_id}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = {{billing_account_id}}
+          id = {{billing_account_id}}
 
-         to = google_billing_account_iam_policy.default
+          to = google_billing_account_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:billing/accountIamMember:AccountIamMember default {{billing_account_id}}
@@ -329,6 +335,7 @@ class AccountIamMember(pulumi.CustomResource):
 
         ## google\\_billing\\_account\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,9 +348,11 @@ class AccountIamMember(pulumi.CustomResource):
             billing_account_id="00AA00-000AAA-00AA0A",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_billing\\_account\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,9 +362,11 @@ class AccountIamMember(pulumi.CustomResource):
             role="roles/billing.viewer",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_billing\\_account\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,28 +376,29 @@ class AccountIamMember(pulumi.CustomResource):
             role="roles/billing.viewer",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing IAM policies
 
-         IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
+        IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
 
-         * `{{billing_account_id}}`
+        * `{{billing_account_id}}`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+        An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = {{billing_account_id}}
+          id = {{billing_account_id}}
 
-         to = google_billing_account_iam_policy.default
+          to = google_billing_account_iam_policy.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:billing/accountIamMember:AccountIamMember default {{billing_account_id}}

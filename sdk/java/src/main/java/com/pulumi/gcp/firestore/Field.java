@@ -33,7 +33,10 @@ import javax.annotation.Nullable;
  * chosen location.
  * 
  * ## Example Usage
+ * 
  * ### Firestore Field Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -87,7 +90,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Field Timestamp
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -134,7 +140,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Field Match Override
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -190,14 +199,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Field can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:firestore/field:Field default {{name}}

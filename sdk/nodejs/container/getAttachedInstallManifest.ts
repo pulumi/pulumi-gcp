@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const installManifest = manifest;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttachedInstallManifest(args: GetAttachedInstallManifestArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedInstallManifestResult> {
 
@@ -78,6 +80,7 @@ export interface GetAttachedInstallManifestResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,6 +93,7 @@ export interface GetAttachedInstallManifestResult {
  * });
  * export const installManifest = manifest;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttachedInstallManifestOutput(args: GetAttachedInstallManifestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedInstallManifestResult> {
     return pulumi.output(args).apply((a: any) => getAttachedInstallManifest(a, opts))

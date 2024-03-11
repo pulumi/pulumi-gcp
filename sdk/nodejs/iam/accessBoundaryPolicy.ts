@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * if they would like to test it.
  *
  * ## Example Usage
+ *
  * ### Iam Access Boundary Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,14 +70,15 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AccessBoundaryPolicy can be imported using any of these accepted formats:
  *
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  *
- *  When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}

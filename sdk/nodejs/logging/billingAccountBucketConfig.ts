@@ -13,13 +13,34 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.organizations.getBillingAccount({
+ *     billingAccount: "00AA00-000AAA-00AA0A",
+ * });
+ * const basic = new gcp.logging.BillingAccountBucketConfig("basic", {
+ *     billingAccount: _default.then(_default => _default.billingAccount),
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "_Default",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Create logging bucket with index configs
+ *
  * ## Import
  *
  * This resource can be imported using the following format:
  *
- *  * `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
+ * * `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
  *
- *  When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}

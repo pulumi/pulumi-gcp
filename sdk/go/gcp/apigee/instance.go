@@ -21,8 +21,10 @@ import (
 //   - [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
 //
 // ## Example Usage
+//
 // ### Apigee Instance Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,8 +91,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Apigee Instance Cidr Range
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -158,8 +162,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Apigee Instance Ip Range
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -227,8 +233,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Apigee Instance Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -336,16 +344,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Instance can be imported using any of these accepted formats:
 //
-//   - `{{org_id}}/instances/{{name}}`
+// * `{{org_id}}/instances/{{name}}`
 //
-//   - `{{org_id}}/{{name}}`
+// * `{{org_id}}/{{name}}`
 //
-//     When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}

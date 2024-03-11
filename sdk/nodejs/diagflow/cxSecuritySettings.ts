@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
  * ## Example Usage
+ *
  * ### Dialogflowcx Security Settings Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,8 +32,10 @@ import * as utilities from "../utilities";
  *     retentionWindowDays: 7,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Dialogflowcx Security Settings Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,18 +91,19 @@ import * as utilities from "../utilities";
  *     retentionStrategy: "REMOVE_AFTER_CONVERSATION",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * SecuritySettings can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default projects/{{project}}/locations/{{location}}/securitySettings/{{name}}

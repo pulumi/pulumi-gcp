@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,8 +46,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Network Config
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -117,18 +121,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // WorkerPool can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/workerPools/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, WorkerPool can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudbuild/workerPool:WorkerPool default projects/{{project}}/locations/{{location}}/workerPools/{{name}}

@@ -11,10 +11,6 @@ import * as utilities from "../utilities";
  * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
  *
  * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
- *
- * This data source is used to define IAM policies to apply to other resources.
- * Currently, defining a policy through a datasource and referencing that policy
- * from another resource is the only way to apply an IAM policy to a resource.
  */
 export function getIAMPolicy(args?: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
     args = args || {};
@@ -66,10 +62,6 @@ export interface GetIAMPolicyResult {
  * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
  *
  * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
- *
- * This data source is used to define IAM policies to apply to other resources.
- * Currently, defining a policy through a datasource and referencing that policy
- * from another resource is the only way to apply an IAM policy to a resource.
  */
 export function getIAMPolicyOutput(args?: GetIAMPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIAMPolicyResult> {
     return pulumi.output(args).apply((a: any) => getIAMPolicy(a, opts))

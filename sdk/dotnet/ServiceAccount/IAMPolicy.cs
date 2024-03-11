@@ -23,8 +23,10 @@ namespace Pulumi.Gcp.ServiceAccount
     /// &gt; **Note:** `gcp.serviceaccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Service Account IAM Policy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -62,8 +64,11 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Service Account IAM Binding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,8 +95,11 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Service Account IAM Binding With IAM Conditions:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,8 +132,11 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Service Account IAM Member
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -159,8 +170,11 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Service Account IAM Member With IAM Conditions:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -190,12 +204,13 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ### Importing with conditions:
     /// 
-    ///  Here are examples of importing IAM memberships and bindings that include conditions:
+    /// Here are examples of importing IAM memberships and bindings that include conditions:
     /// 
     /// ```sh
     /// $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"

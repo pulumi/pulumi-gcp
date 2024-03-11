@@ -430,8 +430,10 @@ class NetworkPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
 
         ## Example Usage
+
         ### Vmware Engine Network Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,8 +449,10 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,18 +475,19 @@ class NetworkPolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}
@@ -534,8 +539,10 @@ class NetworkPolicy(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
 
         ## Example Usage
+
         ### Vmware Engine Network Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,8 +558,10 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Policy Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -575,18 +584,19 @@ class NetworkPolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}

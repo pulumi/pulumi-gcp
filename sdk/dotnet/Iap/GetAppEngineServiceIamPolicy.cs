@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAppEngineServiceIamPolicyResult> InvokeAsync(GetAppEngineServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceIamPolicyResult>("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args ?? new GetAppEngineServiceIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAppEngineServiceIamPolicyResult> Invoke(GetAppEngineServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceIamPolicyResult>("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args ?? new GetAppEngineServiceIamPolicyInvokeArgs(), options.WithDefaults());

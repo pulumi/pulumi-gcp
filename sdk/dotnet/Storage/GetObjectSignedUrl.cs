@@ -16,10 +16,9 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,10 +40,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Full Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetObjectSignedUrlResult> InvokeAsync(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlArgs(), options.WithDefaults());
@@ -82,10 +83,9 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// For more info about signed URL's is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -107,10 +107,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Full Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -139,6 +140,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetObjectSignedUrlResult> Invoke(GetObjectSignedUrlInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlInvokeArgs(), options.WithDefaults());

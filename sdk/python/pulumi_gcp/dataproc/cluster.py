@@ -354,8 +354,10 @@ class Cluster(pulumi.CustomResource):
         whole cluster!
 
         ## Example Usage
+
         ### Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,8 +366,11 @@ class Cluster(pulumi.CustomResource):
             name="simplecluster",
             region="us-central1")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -422,8 +427,11 @@ class Cluster(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Using A GPU Accelerator
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -443,6 +451,7 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -486,8 +495,10 @@ class Cluster(pulumi.CustomResource):
         whole cluster!
 
         ## Example Usage
+
         ### Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,8 +507,11 @@ class Cluster(pulumi.CustomResource):
             name="simplecluster",
             region="us-central1")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -554,8 +568,11 @@ class Cluster(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Using A GPU Accelerator
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -575,6 +592,7 @@ class Cluster(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

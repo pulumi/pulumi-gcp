@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
  *
  * ## Example Usage
+ *
  * ### Network Services Edge Cache Origin Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,8 +28,10 @@ import * as utilities from "../utilities";
  *     description: "The default bucket for media edge test",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Network Services Edge Cache Origin Advanced
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,8 +91,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Network Services Edge Cache Origin V4auth
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -114,18 +120,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * EdgeCacheOrigin can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
+ * * `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}

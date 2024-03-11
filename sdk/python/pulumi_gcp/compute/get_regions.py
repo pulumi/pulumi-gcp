@@ -81,6 +81,7 @@ def get_regions(project: Optional[str] = None,
     Provides access to available Google Compute regions for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -94,6 +95,7 @@ def get_regions(project: Optional[str] = None,
             network="my-network",
             region=available.names[range["value"]]))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Project from which to list available regions. Defaults to project declared in the provider.
@@ -121,6 +123,7 @@ def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     Provides access to available Google Compute regions for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -134,6 +137,7 @@ def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
             network="my-network",
             region=available.names[range["value"]]))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Project from which to list available regions. Defaults to project declared in the provider.

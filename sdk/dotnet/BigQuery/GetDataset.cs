@@ -16,10 +16,9 @@ namespace Pulumi.Gcp.BigQuery
         /// the [official documentation](https://cloud.google.com/bigquery/docs)
         /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Gcp.BigQuery
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatasetResult> InvokeAsync(GetDatasetArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("gcp:bigquery/getDataset:getDataset", args ?? new GetDatasetArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Gcp.BigQuery
         /// the [official documentation](https://cloud.google.com/bigquery/docs)
         /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Gcp.BigQuery
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("gcp:bigquery/getDataset:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());

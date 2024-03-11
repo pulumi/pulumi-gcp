@@ -447,8 +447,10 @@ class SecurityScanConfig(pulumi.CustomResource):
             * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 
         ## Example Usage
+
         ### Scan Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -459,18 +461,19 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ScanConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/scanConfigs/{{name}}`
+        * `projects/{{project}}/scanConfigs/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
@@ -527,8 +530,10 @@ class SecurityScanConfig(pulumi.CustomResource):
             * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 
         ## Example Usage
+
         ### Scan Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -539,18 +544,19 @@ class SecurityScanConfig(pulumi.CustomResource):
             starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
             target_platforms=["COMPUTE"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ScanConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/scanConfigs/{{name}}`
+        * `projects/{{project}}/scanConfigs/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}

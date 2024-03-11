@@ -555,8 +555,10 @@ class Organization(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
+
         ### Apigee Organization Cloud Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -578,8 +580,10 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -591,8 +595,10 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,8 +636,10 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -658,16 +666,17 @@ class Organization(pulumi.CustomResource):
             disable_vpc_peering=True,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Organization can be imported using any of these accepted formats:
 
-         * `organizations/{{name}}`
+        * `organizations/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}
@@ -727,8 +736,10 @@ class Organization(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
+
         ### Apigee Organization Cloud Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -750,8 +761,10 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             authorized_network=apigee_network.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -763,8 +776,10 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -802,8 +817,10 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -830,16 +847,17 @@ class Organization(pulumi.CustomResource):
             disable_vpc_peering=True,
             runtime_database_encryption_key_name=apigee_key.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Organization can be imported using any of these accepted formats:
 
-         * `organizations/{{name}}`
+        * `organizations/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Organization can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigee/organization:Organization default organizations/{{name}}

@@ -22,8 +22,10 @@ import (
 //   - [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 //
 // ## Example Usage
+//
 // ### Node Template Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,8 +51,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Node Template Server Binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,20 +92,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // NodeTemplate can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}

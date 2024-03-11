@@ -19,8 +19,10 @@ import (
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
 //
 // ## Example Usage
+//
 // ### App Engine Application Url Dispatch Rules Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,14 +99,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ApplicationUrlDispatchRules can be imported using any of these accepted formats:
 //
-//   - `{{project}}`
+// * `{{project}}`
 //
-//     When using the `pulumi import` command, ApplicationUrlDispatchRules can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ApplicationUrlDispatchRules can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}

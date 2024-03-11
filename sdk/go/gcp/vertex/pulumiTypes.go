@@ -659,7 +659,7 @@ type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec struct {
 	// The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
 	MetricName *string `pulumi:"metricName"`
 	// (Output)
-	// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+	// The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
 	Target *int `pulumi:"target"`
 }
 
@@ -679,7 +679,7 @@ type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs struct {
 	// The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
 	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
 	// (Output)
-	// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+	// The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
 	Target pulumi.IntPtrInput `pulumi:"target"`
 }
 
@@ -741,7 +741,7 @@ func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) Met
 }
 
 // (Output)
-// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+// The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
 func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) Target() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec) *int { return v.Target }).(pulumi.IntPtrOutput)
 }
@@ -1928,7 +1928,8 @@ func (o AiFeatureOnlineStoreBigtablePtrOutput) AutoScaling() AiFeatureOnlineStor
 }
 
 type AiFeatureOnlineStoreBigtableAutoScaling struct {
-	// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+	// A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+	// (MISSING)
 	CpuUtilizationTarget *int `pulumi:"cpuUtilizationTarget"`
 	// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
@@ -1948,7 +1949,8 @@ type AiFeatureOnlineStoreBigtableAutoScalingInput interface {
 }
 
 type AiFeatureOnlineStoreBigtableAutoScalingArgs struct {
-	// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+	// A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+	// (MISSING)
 	CpuUtilizationTarget pulumi.IntPtrInput `pulumi:"cpuUtilizationTarget"`
 	// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
 	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
@@ -2033,7 +2035,8 @@ func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) ToAiFeatureOnlineStoreBig
 	}).(AiFeatureOnlineStoreBigtableAutoScalingPtrOutput)
 }
 
-// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+// A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+// (MISSING)
 func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) CpuUtilizationTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiFeatureOnlineStoreBigtableAutoScaling) *int { return v.CpuUtilizationTarget }).(pulumi.IntPtrOutput)
 }
@@ -2072,7 +2075,8 @@ func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) Elem() AiFeatureOnline
 	}).(AiFeatureOnlineStoreBigtableAutoScalingOutput)
 }
 
-// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+// A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+// (MISSING)
 func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) CpuUtilizationTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtableAutoScaling) *int {
 		if v == nil {
@@ -6940,7 +6944,7 @@ type AiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount *int `pulumi:"leafNodeEmbeddingCount"`
 	// The default percentage of leaf nodes that any query may be searched. Must be in
-	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 	LeafNodesToSearchPercent *int `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -6959,7 +6963,7 @@ type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount pulumi.IntPtrInput `pulumi:"leafNodeEmbeddingCount"`
 	// The default percentage of leaf nodes that any query may be searched. Must be in
-	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 	LeafNodesToSearchPercent pulumi.IntPtrInput `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -7046,7 +7050,7 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddin
 }
 
 // The default percentage of leaf nodes that any query may be searched. Must be in
-// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodesToSearchPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int { return v.LeafNodesToSearchPercent }).(pulumi.IntPtrOutput)
 }
@@ -7086,7 +7090,7 @@ func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodeEmbed
 }
 
 // The default percentage of leaf nodes that any query may be searched. Must be in
-// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodesToSearchPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int {
 		if v == nil {
@@ -8212,7 +8216,7 @@ type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount int `pulumi:"leafNodeEmbeddingCount"`
 	// The default percentage of leaf nodes that any query may be searched. Must be in
-	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 	LeafNodesToSearchPercent int `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -8231,7 +8235,7 @@ type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
 	// Number of embeddings on each leaf node. The default value is 1000 if not set.
 	LeafNodeEmbeddingCount pulumi.IntInput `pulumi:"leafNodeEmbeddingCount"`
 	// The default percentage of leaf nodes that any query may be searched. Must be in
-	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 	LeafNodesToSearchPercent pulumi.IntInput `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -8292,7 +8296,7 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbed
 }
 
 // The default percentage of leaf nodes that any query may be searched. Must be in
-// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodesToSearchPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) int { return v.LeafNodesToSearchPercent }).(pulumi.IntOutput)
 }

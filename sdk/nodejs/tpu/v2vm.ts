@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Tpu V2 Vm Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,8 +23,10 @@ import * as utilities from "../utilities";
  *     runtimeVersion: "tpu-vm-tf-2.13.0",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Tpu V2 Vm Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,20 +96,21 @@ import * as utilities from "../utilities";
  * // Wait after service account creation to limit eventual consistency errors.
  * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Vm can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+ * * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
  *
- *  * `{{project}}/{{zone}}/{{name}}`
+ * * `{{project}}/{{zone}}/{{name}}`
  *
- *  * `{{zone}}/{{name}}`
+ * * `{{zone}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

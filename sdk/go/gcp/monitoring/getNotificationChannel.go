@@ -24,8 +24,10 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+//
 // ### Notification Channel Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,6 +77,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationChannelResult

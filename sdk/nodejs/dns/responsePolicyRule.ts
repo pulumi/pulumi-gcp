@@ -13,8 +13,10 @@ import * as utilities from "../utilities";
  * as identified by the dnsName field with the longest matching suffix.
  *
  * ## Example Usage
+ *
  * ### Dns Response Policy Rule Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,18 +54,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ResponsePolicyRule can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}`
+ * * `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}`
  *
- *  * `{{project}}/{{response_policy}}/{{rule_name}}`
+ * * `{{project}}/{{response_policy}}/{{rule_name}}`
  *
- *  * `{{response_policy}}/{{rule_name}}`
+ * * `{{response_policy}}/{{rule_name}}`
  *
- *  When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}

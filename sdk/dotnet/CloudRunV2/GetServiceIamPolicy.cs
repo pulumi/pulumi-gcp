@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceIamPolicyResult> InvokeAsync(GetServiceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIamPolicyResult>("gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy", args ?? new GetServiceIamPolicyArgs(), options.WithDefaults());
@@ -46,6 +48,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());

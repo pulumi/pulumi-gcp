@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * Example creating a SQL User.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,9 +34,11 @@ import * as utilities from "../utilities";
  *     password: "changeme",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,9 +71,11 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_IAM_SERVICE_ACCOUNT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,26 +99,27 @@ import * as utilities from "../utilities";
  *     type: "CLOUD_IAM_GROUP",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
  *
- *  * `{{project_id}}/{{instance}}/{{host}}/{{name}}`
+ * * `{{project_id}}/{{instance}}/{{host}}/{{name}}`
  *
- *  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
+ * SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
  *
- *  * `{{project_id}}/{{instance}}/{{name}}`
+ * * `{{project_id}}/{{instance}}/{{name}}`
  *
- *  When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
  *
- *  MySQL database
+ * MySQL database
  *
  * ```sh
  * $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{host}}/{{name}}
  * ```
  *
- *  PostgreSQL database
+ * PostgreSQL database
  *
  * ```sh
  * $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}

@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  *     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
  *
  * ## Example Usage
+ *
  * ### Pubsub Schema Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,8 +43,10 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Pubsub Schema Protobuf
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,18 +70,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Schema can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/schemas/{{name}}`
+ * * `projects/{{project}}/schemas/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}

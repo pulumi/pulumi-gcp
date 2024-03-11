@@ -460,8 +460,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 
         ## Example Usage
+
         ### Vertex Ai Index Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -487,8 +489,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
         ```
+        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Psc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,8 +510,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 project_allowlists=[project.number],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Public Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,20 +527,21 @@ class AiIndexEndpoint(pulumi.CustomResource):
             },
             public_endpoint_enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         IndexEndpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
@@ -587,8 +594,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints/)
 
         ## Example Usage
+
         ### Vertex Ai Index Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,8 +623,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
         ```
+        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Psc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -633,8 +644,10 @@ class AiIndexEndpoint(pulumi.CustomResource):
                 project_allowlists=[project.number],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Vertex Ai Index Endpoint With Public Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -648,20 +661,21 @@ class AiIndexEndpoint(pulumi.CustomResource):
             },
             public_endpoint_enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         IndexEndpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}

@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.NetworkServices
     ///     * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Network Services Edge Cache Keyset Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,8 +52,10 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Edge Cache Keyset Dual Token
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,18 +102,19 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// EdgeCacheKeyset can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
+    /// * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}

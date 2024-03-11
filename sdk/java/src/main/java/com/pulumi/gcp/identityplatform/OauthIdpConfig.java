@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * the marketplace prior to using this resource.
  * 
  * ## Example Usage
+ * 
  * ### Identity Platform Oauth Idp Config Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,18 +60,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * OauthIdpConfig can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/oauthIdpConfigs/{{name}}`
+ * * `projects/{{project}}/oauthIdpConfigs/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}

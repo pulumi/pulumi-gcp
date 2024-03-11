@@ -26,8 +26,10 @@ import (
 //   - [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
 //
 // ## Example Usage
+//
 // ### Monitoring Service Example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,18 +64,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // GenericService can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/services/{{service_id}}`
+// * `projects/{{project}}/services/{{service_id}}`
 //
-//   - `{{project}}/{{service_id}}`
+// * `{{project}}/{{service_id}}`
 //
-//   - `{{service_id}}`
+// * `{{service_id}}`
 //
-//     When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}

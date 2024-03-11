@@ -115,6 +115,7 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -124,6 +125,7 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
         lake=example["lake"],
         dataplex_zone=example["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dataplex_zone: Used to find the parent resource to bind the IAM policy to
@@ -159,6 +161,7 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -168,6 +171,7 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
         lake=example["lake"],
         dataplex_zone=example["name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dataplex_zone: Used to find the parent resource to bind the IAM policy to

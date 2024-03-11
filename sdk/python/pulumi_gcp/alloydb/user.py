@@ -241,8 +241,10 @@ class User(pulumi.CustomResource):
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
+
         ### Alloydb User Builtin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,8 +279,10 @@ class User(pulumi.CustomResource):
             password="user_secret",
             database_roles=["alloydbsuperuser"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb User Iam
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -312,18 +316,19 @@ class User(pulumi.CustomResource):
             user_type="ALLOYDB_IAM_USER",
             database_roles=["alloydbiamuser"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         User can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
+        * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
 
-         * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
+        * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
 
-         * `{{location}}/{{cluster}}/{{user_id}}`
+        * `{{location}}/{{cluster}}/{{user_id}}`
 
-         When using the `pulumi import` command, User can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, User can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/user:User default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}
@@ -366,8 +371,10 @@ class User(pulumi.CustomResource):
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
+
         ### Alloydb User Builtin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -402,8 +409,10 @@ class User(pulumi.CustomResource):
             password="user_secret",
             database_roles=["alloydbsuperuser"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb User Iam
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,18 +446,19 @@ class User(pulumi.CustomResource):
             user_type="ALLOYDB_IAM_USER",
             database_roles=["alloydbiamuser"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         User can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
+        * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
 
-         * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
+        * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
 
-         * `{{location}}/{{cluster}}/{{user_id}}`
+        * `{{location}}/{{cluster}}/{{user_id}}`
 
-         When using the `pulumi import` command, User can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, User can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/user:User default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}

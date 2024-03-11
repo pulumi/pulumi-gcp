@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
     ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Binary Authorization Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -81,8 +83,10 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Binary Authorization Policy Global Evaluation
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -128,16 +132,17 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Policy can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}`
+    /// * `projects/{{project}}`
     /// 
-    ///  * `{{project}}`
+    /// * `{{project}}`
     /// 
-    ///  When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}

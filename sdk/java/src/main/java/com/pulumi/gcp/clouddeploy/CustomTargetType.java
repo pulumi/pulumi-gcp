@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
  * 
  * ## Example Usage
+ * 
  * ### Clouddeploy Custom Target Type Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,7 +75,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Clouddeploy Custom Target Type Git Skaffold Modules
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -116,7 +122,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -159,18 +168,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * CustomTargetType can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, CustomTargetType can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:clouddeploy/customTargetType:CustomTargetType default projects/{{project}}/locations/{{location}}/customTargetTypes/{{name}}

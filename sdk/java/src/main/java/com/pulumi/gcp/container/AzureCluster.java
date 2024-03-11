@@ -31,8 +31,10 @@ import javax.annotation.Nullable;
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  * ## Example Usage
+ * 
  * ### Basic_azure_cluster
  * A basic example of a containerazure azure cluster
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -111,8 +113,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Beta_basic_enum_azure_cluster
  * A basic example of a containerazure azure cluster with lowercase enums (beta)
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -197,18 +201,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}

@@ -15,10 +15,9 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Gcp.Storage
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransferProjectServieAccountResult> InvokeAsync(GetTransferProjectServieAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// Use this data source to retrieve Storage Transfer service account for this project
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,8 +61,7 @@ namespace Pulumi.Gcp.Storage
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransferProjectServieAccountResult> Invoke(GetTransferProjectServieAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransferProjectServieAccountResult>("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args ?? new GetTransferProjectServieAccountInvokeArgs(), options.WithDefaults());

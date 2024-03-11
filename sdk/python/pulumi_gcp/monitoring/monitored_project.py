@@ -136,8 +136,10 @@ class MonitoredProject(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
 
         ## Example Usage
+
         ### Monitoring Monitored Project Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -150,16 +152,17 @@ class MonitoredProject(pulumi.CustomResource):
             metrics_scope="my-project-name",
             name=basic.project_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MonitoredProject can be imported using any of these accepted formats:
 
-         * `v1/locations/global/metricsScopes/{{name}}`
+        * `v1/locations/global/metricsScopes/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
@@ -193,8 +196,10 @@ class MonitoredProject(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
 
         ## Example Usage
+
         ### Monitoring Monitored Project Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,16 +212,17 @@ class MonitoredProject(pulumi.CustomResource):
             metrics_scope="my-project-name",
             name=basic.project_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         MonitoredProject can be imported using any of these accepted formats:
 
-         * `v1/locations/global/metricsScopes/{{name}}`
+        * `v1/locations/global/metricsScopes/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}

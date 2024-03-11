@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupRouterNat(ctx *pulumi.Context, args *LookupRouterNatArgs, opts ...pulumi.InvokeOption) (*LookupRouterNatResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouterNatResult

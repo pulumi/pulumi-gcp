@@ -19,7 +19,10 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ### Dataproc Metastore Federation Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,7 +72,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dataproc Metastore Federation Bigquery
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -129,18 +135,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Federation can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
+ * * `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
  * 
- *  * `{{project}}/{{location}}/{{federation_id}}`
+ * * `{{project}}/{{location}}/{{federation_id}}`
  * 
- *  * `{{location}}/{{federation_id}}`
+ * * `{{location}}/{{federation_id}}`
  * 
- *  When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}

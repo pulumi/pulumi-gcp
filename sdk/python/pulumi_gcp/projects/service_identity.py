@@ -141,8 +141,10 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
+
         ### Service Identity Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -156,6 +158,7 @@ class ServiceIdentity(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -190,8 +193,10 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
+
         ### Service Identity Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -205,6 +210,7 @@ class ServiceIdentity(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

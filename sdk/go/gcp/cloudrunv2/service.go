@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/run/docs/)
 //
 // ## Example Usage
+//
 // ### Cloudrunv2 Service Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,8 +57,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Limits
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,8 +99,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Sql
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -214,8 +220,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Vpcaccess
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -282,8 +290,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Directvpc
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -330,8 +340,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Probes
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -377,8 +389,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Secret
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -464,8 +478,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Multicontainer
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -538,8 +554,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Mount Gcs
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -596,8 +614,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloudrunv2 Service Mount Nfs
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -679,18 +699,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Service can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/services/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/services/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
@@ -792,7 +813,7 @@ type Service struct {
 	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	TrafficStatuses ServiceTrafficStatusArrayOutput `pulumi:"trafficStatuses"`
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -931,7 +952,7 @@ type serviceState struct {
 	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	TrafficStatuses []ServiceTrafficStatus `pulumi:"trafficStatuses"`
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -1030,7 +1051,7 @@ type ServiceState struct {
 	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	TrafficStatuses ServiceTrafficStatusArrayInput
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -1091,7 +1112,7 @@ type serviceArgs struct {
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplate `pulumi:"template"`
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
@@ -1142,7 +1163,7 @@ type ServiceArgs struct {
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateInput
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
@@ -1410,7 +1431,7 @@ func (o ServiceOutput) TrafficStatuses() ServiceTrafficStatusArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficStatusArrayOutput { return v.TrafficStatuses }).(ServiceTrafficStatusArrayOutput)
 }
 
-// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
 // Structure is documented below.
 func (o ServiceOutput) Traffics() ServiceTrafficArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficArrayOutput { return v.Traffics }).(ServiceTrafficArrayOutput)

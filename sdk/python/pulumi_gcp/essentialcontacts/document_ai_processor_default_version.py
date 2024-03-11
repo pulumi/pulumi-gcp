@@ -117,8 +117,10 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
 
         ## Example Usage
+
         ### Documentai Default Version
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -131,14 +133,15 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
             processor=processor.id,
             version=processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ProcessorDefaultVersion can be imported using any of these accepted formats:
 
-         * `{{processor}}`
+        * `{{processor}}`
 
-         When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
@@ -163,8 +166,10 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
 
         ## Example Usage
+
         ### Documentai Default Version
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -177,14 +182,15 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
             processor=processor.id,
             version=processor.id.apply(lambda id: f"{id}/processorVersions/stable"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ProcessorDefaultVersion can be imported using any of these accepted formats:
 
-         * `{{processor}}`
+        * `{{processor}}`
 
-         When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ProcessorDefaultVersion can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}

@@ -234,8 +234,10 @@ class FolderSettings(pulumi.CustomResource):
             * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
 
         ## Example Usage
+
         ### Logging Folder Settings All
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -254,16 +256,17 @@ class FolderSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=settings.apply(lambda settings: f"serviceAccount:{settings.kms_service_account_id}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FolderSettings can be imported using any of these accepted formats:
 
-         * `folders/{{folder}}/settings`
+        * `folders/{{folder}}/settings`
 
-         * `{{folder}}`
+        * `{{folder}}`
 
-         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
@@ -299,8 +302,10 @@ class FolderSettings(pulumi.CustomResource):
             * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
 
         ## Example Usage
+
         ### Logging Folder Settings All
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,16 +324,17 @@ class FolderSettings(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=settings.apply(lambda settings: f"serviceAccount:{settings.kms_service_account_id}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FolderSettings can be imported using any of these accepted formats:
 
-         * `folders/{{folder}}/settings`
+        * `folders/{{folder}}/settings`
 
-         * `{{folder}}`
+        * `{{folder}}`
 
-         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings

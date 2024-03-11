@@ -26,7 +26,10 @@ import javax.annotation.Nullable;
  *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
  * 
  * ## Example Usage
+ * 
  * ### Active Directory Domain Trust Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,18 +63,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * DomainTrust can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}`
+ * * `projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}`
  * 
- *  * `{{project}}/{{domain}}/{{target_domain_name}}`
+ * * `{{project}}/{{domain}}/{{target_domain_name}}`
  * 
- *  * `{{domain}}/{{target_domain_name}}`
+ * * `{{domain}}/{{target_domain_name}}`
  * 
- *  When using the `pulumi import` command, DomainTrust can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DomainTrust can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}

@@ -45,11 +45,11 @@ namespace Pulumi.Gcp.Storage
         /// For more information see
         /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Pub/Sub Notifications
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,11 +72,12 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Cloud KMS Keys
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -109,8 +110,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountArgs(), options.WithDefaults());
@@ -149,11 +149,11 @@ namespace Pulumi.Gcp.Storage
         /// For more information see
         /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Pub/Sub Notifications
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -176,11 +176,12 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Cloud KMS Keys
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -213,8 +214,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectServiceAccountResult> Invoke(GetProjectServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithDefaults());

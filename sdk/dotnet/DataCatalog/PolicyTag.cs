@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Data Catalog Taxonomies Policy Tag Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,8 +50,10 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Data Catalog Taxonomies Policy Tag Child Policies
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -93,14 +97,15 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// PolicyTag can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}

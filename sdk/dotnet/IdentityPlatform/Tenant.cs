@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the Cloud Console prior to creating tenants.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Identity Platform Tenant Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,18 +40,19 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Tenant can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/tenants/{{name}}`
+    /// * `projects/{{project}}/tenants/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}

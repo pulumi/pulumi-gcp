@@ -496,8 +496,10 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
+
         ### Apigateway Api Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,8 +516,10 @@ class ApiConfig(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigateway Api Config Grpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -552,18 +556,19 @@ class ApiConfig(pulumi.CustomResource):
         \"\"\")).apply(lambda invoke: invoke.result),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ApiConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
+        * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
 
-         * `{{project}}/{{api}}/{{api_config_id}}`
+        * `{{project}}/{{api}}/{{api_config_id}}`
 
-         * `{{api}}/{{api_config_id}}`
+        * `{{api}}/{{api_config_id}}`
 
-         When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
@@ -620,8 +625,10 @@ class ApiConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Example Usage
+
         ### Apigateway Api Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -638,8 +645,10 @@ class ApiConfig(pulumi.CustomResource):
                 ),
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Apigateway Api Config Grpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -676,18 +685,19 @@ class ApiConfig(pulumi.CustomResource):
         \"\"\")).apply(lambda invoke: invoke.result),
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ApiConfig can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
+        * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
 
-         * `{{project}}/{{api}}/{{api_config_id}}`
+        * `{{project}}/{{api}}/{{api_config_id}}`
 
-         * `{{api}}/{{api_config_id}}`
+        * `{{api}}/{{api_config_id}}`
 
-         When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}

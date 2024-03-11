@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** If Shared VPC Admin role is set at the folder level, use the google-beta provider. The google provider only supports this permission at project or organizational level currently. [[0]](https://cloud.google.com/vpc/docs/provisioning-shared-vpc#enable-shared-vpc-host)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -56,6 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * For a complete Shared VPC example with both host and service projects, see
  * [`gcp.compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
@@ -64,9 +67,9 @@ import javax.annotation.Nullable;
  * 
  * Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
  * 
- *  * `{{host_project}/{{service_project}}`
+ * * `{{host_project}/{{service_project}}`
  * 
- *  When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}

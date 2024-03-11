@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * See Example.
  *
  * ## Example Usage
+ *
  * ### Alloydb Cluster Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,8 +36,10 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Alloydb Cluster Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,8 +84,10 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Alloydb Cluster Restore
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -141,8 +147,10 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Alloydb Secondary Cluster Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -187,20 +195,21 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Cluster can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
+ * * `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}`
  *
- *  * `{{project}}/{{location}}/{{cluster_id}}`
+ * * `{{project}}/{{location}}/{{cluster_id}}`
  *
- *  * `{{location}}/{{cluster_id}}`
+ * * `{{location}}/{{cluster_id}}`
  *
- *  * `{{cluster_id}}`
+ * * `{{cluster_id}}`
  *
- *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}

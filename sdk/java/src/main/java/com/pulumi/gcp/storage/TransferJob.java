@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -154,14 +156,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Storage Transfer Jobs can be imported using the Transfer Job&#39;s `project` and `name` (without the `transferJob/` prefix), e.g.
  * 
- *  * `{{project_id}}/{{name}}`, where `name` is a numeric value.
+ * * `{{project_id}}/{{name}}`, where `name` is a numeric value.
  * 
- *  When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789

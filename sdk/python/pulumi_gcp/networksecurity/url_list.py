@@ -266,8 +266,10 @@ class UrlList(pulumi.CustomResource):
             * Use UrlLists
 
         ## Example Usage
+
         ### Network Security Url Lists Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -277,8 +279,10 @@ class UrlList(pulumi.CustomResource):
             location="us-central1",
             values=["www.example.com"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Url Lists Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -293,18 +297,19 @@ class UrlList(pulumi.CustomResource):
                 "github.com/example-org/*",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         UrlLists can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/urlList:UrlList default projects/{{project}}/locations/{{location}}/urlLists/{{name}}
@@ -347,8 +352,10 @@ class UrlList(pulumi.CustomResource):
             * Use UrlLists
 
         ## Example Usage
+
         ### Network Security Url Lists Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,8 +365,10 @@ class UrlList(pulumi.CustomResource):
             location="us-central1",
             values=["www.example.com"])
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Security Url Lists Advanced
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,18 +383,19 @@ class UrlList(pulumi.CustomResource):
                 "github.com/example-org/*",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         UrlLists can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networksecurity/urlList:UrlList default projects/{{project}}/locations/{{location}}/urlLists/{{name}}

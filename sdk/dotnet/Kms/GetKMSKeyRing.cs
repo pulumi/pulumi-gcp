@@ -20,10 +20,9 @@ namespace Pulumi.Gcp.Kms
         /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
         /// and resides in a specific location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKMSKeyRingResult> InvokeAsync(GetKMSKeyRingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? new GetKMSKeyRingArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumi.Gcp.Kms
         /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
         /// and resides in a specific location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKMSKeyRingResult> Invoke(GetKMSKeyRingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? new GetKMSKeyRingInvokeArgs(), options.WithDefaults());

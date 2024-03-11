@@ -300,8 +300,10 @@ class FeatureMembership(pulumi.CustomResource):
         Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The google_gke_hub is the Fleet API.
 
         ## Example Usage
+
         ### Config Management
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,8 +338,10 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Config Management With OCI
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,8 +380,11 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Multi Cluster Service Discovery
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,8 +396,11 @@ class FeatureMembership(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Mesh
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -417,8 +427,11 @@ class FeatureMembership(pulumi.CustomResource):
                 management="MANAGEMENT_AUTOMATIC",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Config Management With Regional Membership
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,8 +468,11 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Policy Controller With Minimal Configuration
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,8 +501,11 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Policy Controller With Custom Configurations
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -526,18 +545,19 @@ class FeatureMembership(pulumi.CustomResource):
                 version="1.17.0",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FeatureMembership can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
+        * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
 
-         * `{{project}}/{{location}}/{{feature}}/{{membership}}`
+        * `{{project}}/{{location}}/{{feature}}/{{membership}}`
 
-         * `{{location}}/{{feature}}/{{membership}}`
+        * `{{location}}/{{feature}}/{{membership}}`
 
-         When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}
@@ -572,8 +592,10 @@ class FeatureMembership(pulumi.CustomResource):
         Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The google_gke_hub is the Fleet API.
 
         ## Example Usage
+
         ### Config Management
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -608,8 +630,10 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Config Management With OCI
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -648,8 +672,11 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Multi Cluster Service Discovery
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -661,8 +688,11 @@ class FeatureMembership(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Service Mesh
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -689,8 +719,11 @@ class FeatureMembership(pulumi.CustomResource):
                 management="MANAGEMENT_AUTOMATIC",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Config Management With Regional Membership
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -727,8 +760,11 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Policy Controller With Minimal Configuration
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -757,8 +793,11 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Policy Controller With Custom Configurations
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -798,18 +837,19 @@ class FeatureMembership(pulumi.CustomResource):
                 version="1.17.0",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         FeatureMembership can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
+        * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
 
-         * `{{project}}/{{location}}/{{feature}}/{{membership}}`
+        * `{{project}}/{{location}}/{{feature}}/{{membership}}`
 
-         * `{{location}}/{{feature}}/{{membership}}`
+        * `{{location}}/{{feature}}/{{membership}}`
 
-         When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}

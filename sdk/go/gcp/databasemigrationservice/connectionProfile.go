@@ -21,8 +21,10 @@ import (
 //   - [Database Migration](https://cloud.google.com/database-migration/docs/)
 //
 // ## Example Usage
+//
 // ### Database Migration Service Connection Profile Cloudsql
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,8 +135,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Database Migration Service Connection Profile Postgres
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -204,8 +208,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Database Migration Service Connection Profile Oracle
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -242,8 +248,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Database Migration Service Connection Profile Alloydb
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -328,18 +336,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ConnectionProfile can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
+// * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
 //
-//   - `{{project}}/{{location}}/{{connection_profile_id}}`
+// * `{{project}}/{{location}}/{{connection_profile_id}}`
 //
-//   - `{{location}}/{{connection_profile_id}}`
+// * `{{location}}/{{connection_profile_id}}`
 //
-//     When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}

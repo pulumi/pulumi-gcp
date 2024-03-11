@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiFeatureOnlineStoreBigtableAutoScaling {
     /**
-     * @return A percentage of the cluster&#39;s CPU capacity. Can be from 10% to 80%. When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+     * @return A percentage of the cluster&#39;s CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+     * (MISSING)
      * 
      */
     private @Nullable Integer cpuUtilizationTarget;
@@ -30,7 +31,8 @@ public final class AiFeatureOnlineStoreBigtableAutoScaling {
 
     private AiFeatureOnlineStoreBigtableAutoScaling() {}
     /**
-     * @return A percentage of the cluster&#39;s CPU capacity. Can be from 10% to 80%. When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+     * @return A percentage of the cluster&#39;s CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster&#39;s CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
+     * (MISSING)
      * 
      */
     public Optional<Integer> cpuUtilizationTarget() {

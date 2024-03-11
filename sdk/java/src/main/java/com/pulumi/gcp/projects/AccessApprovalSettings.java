@@ -25,7 +25,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/projects)
  * 
  * ## Example Usage
+ * 
  * ### Project Access Approval Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,7 +65,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Project Access Approval Active Key Version
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -136,16 +142,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ProjectSettings can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project_id}}/accessApprovalSettings`
+ * * `projects/{{project_id}}/accessApprovalSettings`
  * 
- *  * `{{project_id}}`
+ * * `{{project_id}}`
  * 
- *  When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings

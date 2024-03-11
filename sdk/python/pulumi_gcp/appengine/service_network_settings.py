@@ -148,8 +148,10 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
+
         ### App Engine Service Network Settings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -183,18 +185,19 @@ class ServiceNetworkSettings(pulumi.CustomResource):
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceNetworkSettings can be imported using any of these accepted formats:
 
-         * `apps/{{project}}/services/{{service}}`
+        * `apps/{{project}}/services/{{service}}`
 
-         * `{{project}}/{{service}}`
+        * `{{project}}/{{service}}`
 
-         * `{{service}}`
+        * `{{service}}`
 
-         When using the `pulumi import` command, ServiceNetworkSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceNetworkSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}
@@ -230,8 +233,10 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
+
         ### App Engine Service Network Settings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -265,18 +270,19 @@ class ServiceNetworkSettings(pulumi.CustomResource):
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceNetworkSettings can be imported using any of these accepted formats:
 
-         * `apps/{{project}}/services/{{service}}`
+        * `apps/{{project}}/services/{{service}}`
 
-         * `{{project}}/{{service}}`
+        * `{{project}}/{{service}}`
 
-         * `{{service}}`
+        * `{{service}}`
 
-         When using the `pulumi import` command, ServiceNetworkSettings can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceNetworkSettings can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}

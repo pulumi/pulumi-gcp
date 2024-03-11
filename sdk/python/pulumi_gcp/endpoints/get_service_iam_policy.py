@@ -85,12 +85,14 @@ def get_service_iam_policy(service_name: Optional[str] = None,
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['serviceName'] = service_name
@@ -112,11 +114,13 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = No
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Firebasehosting Version Redirect
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -34,8 +36,10 @@ import * as utilities from "../utilities";
  *     message: "Redirect to Google",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Version Cloud Run
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,8 +77,10 @@ import * as utilities from "../utilities";
  *     message: "Cloud Run Integration",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Version Cloud Functions
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -120,16 +126,17 @@ import * as utilities from "../utilities";
  *     message: "Cloud Functions Integration",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Version can be imported using any of these accepted formats:
  *
- *  * `sites/{{site_id}}/versions/{{version_id}}`
+ * * `sites/{{site_id}}/versions/{{version_id}}`
  *
- *  * `{{site_id}}/{{version_id}}`
+ * * `{{site_id}}/{{version_id}}`
  *
- *  When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}

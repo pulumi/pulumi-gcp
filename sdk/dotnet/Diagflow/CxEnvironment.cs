@@ -21,8 +21,10 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Dialogflowcx Environment Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -76,16 +78,17 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Environment can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/environments/{{name}}`
+    /// * `{{parent}}/environments/{{name}}`
     /// 
-    ///  * `{{parent}}/{{name}}`
+    /// * `{{parent}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:diagflow/cxEnvironment:CxEnvironment default {{parent}}/environments/{{name}}

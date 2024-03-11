@@ -22,8 +22,10 @@ namespace Pulumi.Gcp.PubSub
     /// by using the `gcp.projects.ServiceIdentity` resource.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Pubsub Topic Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,8 +46,10 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Pubsub Topic Cmek
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,8 +78,10 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Pubsub Topic Geo Restricted
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,8 +104,10 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Pubsub Topic Schema Settings
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -141,18 +149,19 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Topic can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/topics/{{name}}`
+    /// * `projects/{{project}}/topics/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}

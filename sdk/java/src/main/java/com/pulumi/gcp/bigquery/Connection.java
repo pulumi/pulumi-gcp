@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  * 
  * ## Example Usage
+ * 
  * ### Bigquery Connection Cloud Resource
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,7 +68,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -142,7 +148,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -220,7 +229,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Aws
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -259,7 +271,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Azure
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -296,7 +311,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Cloudspanner
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -333,7 +351,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Cloudspanner Databoost
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -372,7 +393,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Connection Spark
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -434,18 +458,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Connection can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
+ * * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
  * 
- *  * `{{project}}/{{location}}/{{connection_id}}`
+ * * `{{project}}/{{location}}/{{connection_id}}`
  * 
- *  * `{{location}}/{{connection_id}}`
+ * * `{{location}}/{{connection_id}}`
  * 
- *  When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}

@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Dataform Repository
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,8 +78,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Dataform Repository Ssh
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -139,20 +143,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Repository can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
+// * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}

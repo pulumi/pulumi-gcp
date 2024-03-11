@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
  *
  * ## Example Usage
+ *
  * ### Dialogflow Fulfillment Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -40,14 +42,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Fulfillment can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Fulfillment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Fulfillment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}

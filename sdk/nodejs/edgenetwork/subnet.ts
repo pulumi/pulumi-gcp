@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
  *
  * ## Example Usage
+ *
  * ### Edgenetwork Subnet
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,8 +41,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Edgenetwork Subnet With Vlan Id
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,22 +69,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Subnet can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
+ * * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
  *
- *  * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
+ * * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
  *
- *  * `{{location}}/{{zone}}/{{subnet_id}}`
+ * * `{{location}}/{{zone}}/{{subnet_id}}`
  *
- *  * `{{location}}/{{subnet_id}}`
+ * * `{{location}}/{{subnet_id}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}

@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Bigquery Dataset Access Basic User
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,8 +42,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset Access View
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -85,8 +89,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset Access Authorized Dataset
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,8 +130,10 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Dataset Access Authorized Routine
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -196,6 +204,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

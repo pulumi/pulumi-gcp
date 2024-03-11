@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  *     * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
  *
  * ## Example Usage
+ *
  * ### Network Services Edge Cache Keyset Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,8 +39,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Network Services Edge Cache Keyset Dual Token
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -65,18 +69,19 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * EdgeCacheKeyset can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
+ * * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}

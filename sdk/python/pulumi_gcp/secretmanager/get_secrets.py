@@ -86,12 +86,14 @@ def get_secrets(filter: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     secrets = gcp.secretmanager.get_secrets()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str filter: Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.
@@ -119,12 +121,14 @@ def get_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     secrets = gcp.secretmanager.get_secrets()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str filter: Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.

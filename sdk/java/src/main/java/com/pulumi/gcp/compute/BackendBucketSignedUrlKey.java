@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  * 
  * ## Example Usage
+ * 
  * ### Backend Bucket Signed Url Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,6 +80,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

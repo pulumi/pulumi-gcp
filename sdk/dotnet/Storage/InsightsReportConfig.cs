@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Storage Insights Report Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,18 +97,19 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ReportConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}

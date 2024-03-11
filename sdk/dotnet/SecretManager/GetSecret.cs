@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// Use this data source to get information about a Secret Manager Secret
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("gcp:secretmanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// Use this data source to get information about a Secret Manager Secret
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("gcp:secretmanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());

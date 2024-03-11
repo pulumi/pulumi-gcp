@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,14 +48,15 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported using the following format:
     /// 
-    ///  * `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}`
+    /// * `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}`
     /// 
-    ///  When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}

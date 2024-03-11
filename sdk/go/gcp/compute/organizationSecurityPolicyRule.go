@@ -21,8 +21,10 @@ import (
 //   - [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 //
 // ## Example Usage
+//
 // ### Organization Security Policy Rule Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,14 +78,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
 //
-//   - `{{policy_id}}/priority/{{priority}}`
+// * `{{policy_id}}/priority/{{priority}}`
 //
-//     When using the `pulumi import` command, OrganizationSecurityPolicyRule can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, OrganizationSecurityPolicyRule can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}

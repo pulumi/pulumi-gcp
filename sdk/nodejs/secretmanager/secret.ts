@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
  *
  * ## Example Usage
+ *
  * ### Secret Config Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,8 +41,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Secret With Annotations
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -62,8 +66,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Secret With Automatic Cmek
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,18 +91,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Secret can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/secrets/{{secret_id}}`
+ * * `projects/{{project}}/secrets/{{secret_id}}`
  *
- *  * `{{project}}/{{secret_id}}`
+ * * `{{project}}/{{secret_id}}`
  *
- *  * `{{secret_id}}`
+ * * `{{secret_id}}`
  *
- *  When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}

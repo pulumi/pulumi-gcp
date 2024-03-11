@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Workflows
     ///     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Workflow Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -81,6 +83,7 @@ namespace Pulumi.Gcp.Workflows
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

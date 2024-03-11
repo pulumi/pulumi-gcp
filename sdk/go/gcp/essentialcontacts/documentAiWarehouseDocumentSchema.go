@@ -21,8 +21,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
 //
 // ## Example Usage
+//
 // ### Document Ai Warehouse Document Schema Text
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,8 +75,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Integer
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,8 +128,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Float
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -175,8 +181,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Property
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -247,8 +255,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Property Enum
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -326,8 +336,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Enum
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -384,8 +396,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Map
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -435,8 +449,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Datetime
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -486,8 +502,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Document Ai Warehouse Document Schema Timestamp
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -537,16 +555,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // DocumentSchema can be imported using any of these accepted formats:
 //
-//   - `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
+// * `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
 //
-//   - `{{project_number}}/{{location}}/{{name}}`
+// * `{{project_number}}/{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}

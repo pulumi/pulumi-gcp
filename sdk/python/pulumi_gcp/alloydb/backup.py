@@ -700,8 +700,10 @@ class Backup(pulumi.CustomResource):
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
+
         ### Alloydb Backup Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -730,8 +732,10 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Backup Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -765,18 +769,19 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Backup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
+        * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
 
-         * `{{project}}/{{location}}/{{backup_id}}`
+        * `{{project}}/{{location}}/{{backup_id}}`
 
-         * `{{location}}/{{backup_id}}`
+        * `{{location}}/{{backup_id}}`
 
-         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
@@ -832,8 +837,10 @@ class Backup(pulumi.CustomResource):
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
+
         ### Alloydb Backup Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -862,8 +869,10 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
         ### Alloydb Backup Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -897,18 +906,19 @@ class Backup(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Backup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
+        * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
 
-         * `{{project}}/{{location}}/{{backup_id}}`
+        * `{{project}}/{{location}}/{{backup_id}}`
 
-         * `{{location}}/{{backup_id}}`
+        * `{{location}}/{{backup_id}}`
 
-         When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}

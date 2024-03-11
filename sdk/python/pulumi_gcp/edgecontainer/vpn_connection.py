@@ -489,8 +489,10 @@ class VpnConnection(pulumi.CustomResource):
             * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
 
         ## Example Usage
+
         ### Edgecontainer Vpn Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -529,18 +531,19 @@ class VpnConnection(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         VpnConnection can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
@@ -591,8 +594,10 @@ class VpnConnection(pulumi.CustomResource):
             * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
 
         ## Example Usage
+
         ### Edgecontainer Vpn Connection
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,18 +636,19 @@ class VpnConnection(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         VpnConnection can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}

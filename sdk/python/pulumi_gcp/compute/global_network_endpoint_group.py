@@ -280,8 +280,10 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+
         ### Global Network Endpoint Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,8 +293,10 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+        <!--End PulumiCodeChooser -->
         ### Global Network Endpoint Group Ip Address
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -302,18 +306,19 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="INTERNET_IP_PORT",
             default_port=90)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
+        * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
@@ -369,8 +374,10 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+
         ### Global Network Endpoint Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -380,8 +387,10 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
+        <!--End PulumiCodeChooser -->
         ### Global Network Endpoint Group Ip Address
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -391,18 +400,19 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="INTERNET_IP_PORT",
             default_port=90)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
+        * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}

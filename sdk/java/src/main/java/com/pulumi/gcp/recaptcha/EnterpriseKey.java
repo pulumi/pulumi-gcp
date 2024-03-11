@@ -26,8 +26,10 @@ import javax.annotation.Nullable;
  * The RecaptchaEnterprise Key resource
  * 
  * ## Example Usage
+ * 
  * ### Android_key
  * A basic test of recaptcha enterprise key that can be used by Android apps
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,8 +69,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Ios_key
  * A basic test of recaptcha enterprise key that can be used by iOS apps
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -108,8 +112,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Minimal_key
  * A minimal test of recaptcha enterprise key
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -145,8 +151,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Waf_key
  * A basic test of recaptcha enterprise key that includes WAF settings
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -194,8 +202,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Web_key
  * A basic test of recaptcha enterprise key that can be used by websites
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -238,8 +248,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Web_score_key
  * A basic test of recaptcha enterprise key with score integration type that can be used by websites
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -281,18 +293,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Key can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/keys/{{name}}`
+ * * `projects/{{project}}/keys/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}

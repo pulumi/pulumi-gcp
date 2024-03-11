@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/access-approval/docs/reference/rest/v1/organizations)
  *
  * ## Example Usage
+ *
  * ### Organization Access Approval Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,8 +39,10 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Organization Access Approval Active Key Version
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,16 +84,17 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OrganizationSettings can be imported using any of these accepted formats:
  *
- *  * `organizations/{{organization_id}}/accessApprovalSettings`
+ * * `organizations/{{organization_id}}/accessApprovalSettings`
  *
- *  * `{{organization_id}}`
+ * * `{{organization_id}}`
  *
- *  When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings

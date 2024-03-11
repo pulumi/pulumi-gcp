@@ -35,7 +35,10 @@ import javax.annotation.Nullable;
  * `billing_project` you defined.
  * 
  * ## Example Usage
+ * 
  * ### Access Context Manager Authorized Orgs Desc Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -78,14 +81,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * AuthorizedOrgsDesc can be imported using any of these accepted formats:
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}

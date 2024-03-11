@@ -25,8 +25,10 @@ import (
 // by using the `projects.ServiceIdentity` resource.
 //
 // ## Example Usage
+//
 // ### Pubsub Subscription Push
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,8 +69,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Pull
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,8 +116,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Dead Letter
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -154,8 +160,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Bq
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -244,8 +252,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Bq Table Schema
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -335,8 +345,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Cloudstorage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -398,8 +410,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Pubsub Subscription Push Cloudstorage Avro
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -464,18 +478,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Subscription can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/subscriptions/{{name}}`
+// * `projects/{{project}}/subscriptions/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}

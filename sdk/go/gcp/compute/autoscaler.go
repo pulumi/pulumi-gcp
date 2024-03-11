@@ -25,8 +25,10 @@ import (
 //   - [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 //
 // ## Example Usage
+//
 // ### Autoscaler Single Instance
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,8 +128,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Autoscaler Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -223,20 +227,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Autoscaler can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
+// * `projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}`
 //
-//   - `{{project}}/{{zone}}/{{name}}`
+// * `{{project}}/{{zone}}/{{name}}`
 //
-//   - `{{zone}}/{{name}}`
+// * `{{zone}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Autoscaler can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/autoscaler:Autoscaler default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
@@ -260,8 +265,8 @@ type Autoscaler struct {
 	// define one or more of the policies for an autoscaler: cpuUtilization,
 	// customMetricUtilizations, and loadBalancingUtilization.
 	// If none of these are specified, the default will be to autoscale based
-	// on cpuUtilization to 0.6 or 60%.
-	// Structure is documented below.
+	// on cpuUtilization to 0.6 or 60%!
+	// (MISSING)Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -330,8 +335,8 @@ type autoscalerState struct {
 	// define one or more of the policies for an autoscaler: cpuUtilization,
 	// customMetricUtilizations, and loadBalancingUtilization.
 	// If none of these are specified, the default will be to autoscale based
-	// on cpuUtilization to 0.6 or 60%.
-	// Structure is documented below.
+	// on cpuUtilization to 0.6 or 60%!
+	// (MISSING)Structure is documented below.
 	AutoscalingPolicy *AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -359,8 +364,8 @@ type AutoscalerState struct {
 	// define one or more of the policies for an autoscaler: cpuUtilization,
 	// customMetricUtilizations, and loadBalancingUtilization.
 	// If none of these are specified, the default will be to autoscale based
-	// on cpuUtilization to 0.6 or 60%.
-	// Structure is documented below.
+	// on cpuUtilization to 0.6 or 60%!
+	// (MISSING)Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -392,8 +397,8 @@ type autoscalerArgs struct {
 	// define one or more of the policies for an autoscaler: cpuUtilization,
 	// customMetricUtilizations, and loadBalancingUtilization.
 	// If none of these are specified, the default will be to autoscale based
-	// on cpuUtilization to 0.6 or 60%.
-	// Structure is documented below.
+	// on cpuUtilization to 0.6 or 60%!
+	// (MISSING)Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -418,8 +423,8 @@ type AutoscalerArgs struct {
 	// define one or more of the policies for an autoscaler: cpuUtilization,
 	// customMetricUtilizations, and loadBalancingUtilization.
 	// If none of these are specified, the default will be to autoscale based
-	// on cpuUtilization to 0.6 or 60%.
-	// Structure is documented below.
+	// on cpuUtilization to 0.6 or 60%!
+	// (MISSING)Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicyInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -529,8 +534,8 @@ func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) Aut
 // define one or more of the policies for an autoscaler: cpuUtilization,
 // customMetricUtilizations, and loadBalancingUtilization.
 // If none of these are specified, the default will be to autoscale based
-// on cpuUtilization to 0.6 or 60%.
-// Structure is documented below.
+// on cpuUtilization to 0.6 or 60%!
+// (MISSING)Structure is documented below.
 func (o AutoscalerOutput) AutoscalingPolicy() AutoscalerAutoscalingPolicyOutput {
 	return o.ApplyT(func(v *Autoscaler) AutoscalerAutoscalingPolicyOutput { return v.AutoscalingPolicy }).(AutoscalerAutoscalingPolicyOutput)
 }

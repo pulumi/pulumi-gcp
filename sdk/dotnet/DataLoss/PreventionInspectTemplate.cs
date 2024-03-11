@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Dlp Inspect Template Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -197,8 +199,10 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Inspect Template Custom Type
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -305,8 +309,10 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Inspect Template Custom Type Surrogate
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -410,16 +416,17 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// InspectTemplate can be imported using any of these accepted formats:
     /// 
-    ///  * `{{parent}}/inspectTemplates/{{name}}`
+    /// * `{{parent}}/inspectTemplates/{{name}}`
     /// 
-    ///  * `{{parent}}/{{name}}`
+    /// * `{{parent}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}

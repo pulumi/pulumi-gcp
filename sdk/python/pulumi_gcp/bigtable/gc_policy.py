@@ -363,9 +363,117 @@ class GCPolicy(pulumi.CustomResource):
         The workaround is unreplicating the instance first by updating the instance to have one
         cluster.
 
-        ## Import
+        ## Example Usage
 
-        This resource does not support import.
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            name="tf-instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="tf-instance-cluster",
+                num_nodes=3,
+                storage_type="HDD",
+            )])
+        table = gcp.bigtable.Table("table",
+            name="tf-table",
+            instance_name=instance.name,
+            column_families=[gcp.bigtable.TableColumnFamilyArgs(
+                family="name",
+            )])
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance.name,
+            table=table.name,
+            column_family="name",
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "rules": [
+              {
+                "max_age": "168h"
+              }
+            ]
+          }
+        \"\"\")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance["name"],
+            table=table["name"],
+            column_family="name",
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "168h"
+              },
+              {
+                "max_version": 10
+              }
+            ]
+          }
+        \"\"\")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        An example of more complex GC policy:
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            name="instance_name",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="cid",
+                zone="us-central1-b",
+            )],
+            instance_type="DEVELOPMENT",
+            deletion_protection=False)
+        table = gcp.bigtable.Table("table",
+            name="your-table",
+            instance_name=instance.id,
+            column_families=[gcp.bigtable.TableColumnFamilyArgs(
+                family="cf1",
+            )])
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance.id,
+            table=table.name,
+            column_family="cf1",
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "10h"
+              },
+              {
+                "mode": "intersection",
+                "rules": [
+                  {
+                    "max_age": "2h"
+                  },
+                  {
+                    "max_version": 2
+                  }
+                ]
+              }
+            ]
+          }
+        \"\"\")
+        ```
+        <!--End PulumiCodeChooser -->
+        This is equivalent to running the following `cbt` command:
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -404,9 +512,117 @@ class GCPolicy(pulumi.CustomResource):
         The workaround is unreplicating the instance first by updating the instance to have one
         cluster.
 
-        ## Import
+        ## Example Usage
 
-        This resource does not support import.
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            name="tf-instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="tf-instance-cluster",
+                num_nodes=3,
+                storage_type="HDD",
+            )])
+        table = gcp.bigtable.Table("table",
+            name="tf-table",
+            instance_name=instance.name,
+            column_families=[gcp.bigtable.TableColumnFamilyArgs(
+                family="name",
+            )])
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance.name,
+            table=table.name,
+            column_family="name",
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "rules": [
+              {
+                "max_age": "168h"
+              }
+            ]
+          }
+        \"\"\")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance["name"],
+            table=table["name"],
+            column_family="name",
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "168h"
+              },
+              {
+                "max_version": 10
+              }
+            ]
+          }
+        \"\"\")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        An example of more complex GC policy:
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            name="instance_name",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="cid",
+                zone="us-central1-b",
+            )],
+            instance_type="DEVELOPMENT",
+            deletion_protection=False)
+        table = gcp.bigtable.Table("table",
+            name="your-table",
+            instance_name=instance.id,
+            column_families=[gcp.bigtable.TableColumnFamilyArgs(
+                family="cf1",
+            )])
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance.id,
+            table=table.name,
+            column_family="cf1",
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "10h"
+              },
+              {
+                "mode": "intersection",
+                "rules": [
+                  {
+                    "max_age": "2h"
+                  },
+                  {
+                    "max_version": 2
+                  }
+                ]
+              }
+            ]
+          }
+        \"\"\")
+        ```
+        <!--End PulumiCodeChooser -->
+        This is equivalent to running the following `cbt` command:
 
         :param str resource_name: The name of the resource.
         :param GCPolicyArgs args: The arguments to use to populate this resource's properties.

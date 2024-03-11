@@ -22,8 +22,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 //
 // ## Example Usage
+//
 // ### Os Config Patch Deployment Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,8 +55,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Daily
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,8 +96,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Daily Midnight
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,8 +137,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Instance
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,8 +226,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Os Config Patch Deployment Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -354,18 +364,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // PatchDeployment can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/patchDeployments/{{name}}`
+// * `projects/{{project}}/patchDeployments/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}

@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * the marketplace prior to using this resource.
  *
  * ## Example Usage
+ *
  * ### Identity Platform Oauth Idp Config Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,18 +29,19 @@ import * as utilities from "../utilities";
  *     clientSecret: "secret",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * OauthIdpConfig can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/oauthIdpConfigs/{{name}}`
+ * * `projects/{{project}}/oauthIdpConfigs/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, OauthIdpConfig can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}

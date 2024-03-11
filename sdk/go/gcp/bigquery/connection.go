@@ -20,8 +20,10 @@ import (
 //   - [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 //
 // ## Example Usage
+//
 // ### Bigquery Connection Cloud Resource
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,8 +51,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,8 +125,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,8 +200,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Aws
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -227,8 +235,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Azure
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,8 +269,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Cloudspanner
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -291,8 +303,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Cloudspanner Databoost
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -325,8 +339,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Spark
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -380,18 +396,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Connection can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
+// * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
 //
-//   - `{{project}}/{{location}}/{{connection_id}}`
+// * `{{project}}/{{location}}/{{connection_id}}`
 //
-//   - `{{location}}/{{connection_id}}`
+// * `{{location}}/{{connection_id}}`
 //
-//     When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}

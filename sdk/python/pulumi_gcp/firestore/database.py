@@ -584,8 +584,10 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+
         ### Firestore Default Database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,8 +598,10 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -613,8 +617,10 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Default Database In Datastore Mode
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -625,8 +631,10 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="DATASTORE_MODE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Database In Datastore Mode
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -642,18 +650,19 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/databases/{{name}}`
+        * `projects/{{project}}/databases/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
@@ -728,8 +737,10 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+
         ### Firestore Default Database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -740,8 +751,10 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -757,8 +770,10 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Default Database In Datastore Mode
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -769,8 +784,10 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="DATASTORE_MODE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Database In Datastore Mode
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -786,18 +803,19 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Database can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/databases/{{name}}`
+        * `projects/{{project}}/databases/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}

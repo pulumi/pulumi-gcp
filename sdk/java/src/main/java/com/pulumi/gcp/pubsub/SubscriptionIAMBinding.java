@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_pubsub\_subscription\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,8 +68,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_pubsub\_subscription\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -98,8 +103,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_pubsub\_subscription\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -130,28 +138,29 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Importing IAM policies
  * 
- *  IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
+ * IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
  * 
- *  * `&#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;`
+ * * `&#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;`
  * 
- *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  * 
- *  tf
+ * tf
  * 
- *  import {
+ * import {
  * 
- *  id = &#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;
+ *   id = &#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;
  * 
- *  to = google_pubsub_subscription_iam_policy.default
+ *   to = google_pubsub_subscription_iam_policy.default
  * 
- *  }
+ * }
  * 
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  * 
  * ```sh
  * $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding default projects/{{project_id}}/subscriptions/{{subscription}}

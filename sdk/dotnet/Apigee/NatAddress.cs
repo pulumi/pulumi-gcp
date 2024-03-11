@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Apigee Nat Address Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -109,16 +111,17 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// NatAddress can be imported using any of these accepted formats:
     /// 
-    ///  * `{{instance_id}}/natAddresses/{{name}}`
+    /// * `{{instance_id}}/natAddresses/{{name}}`
     /// 
-    ///  * `{{instance_id}}/{{name}}`
+    /// * `{{instance_id}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, NatAddress can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, NatAddress can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/natAddress:NatAddress default {{instance_id}}/natAddresses/{{name}}

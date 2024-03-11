@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// Example creating a RuntimeConfig variable.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,12 +38,14 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// You can also encode binary content using the `value` argument instead. The
     /// value must be base64 encoded.
     /// 
     /// Example of using the `value` argument.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -70,16 +73,17 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Runtime Config Variables can be imported using the `name` or full variable name, e.g.
     /// 
-    ///  * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
+    /// * `projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}`
     /// 
-    ///  * `{{config_id}}/{{name}}`
+    /// * `{{config_id}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Runtime Config Variables can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:runtimeconfig/variable:Variable default projects/my-gcp-project/configs/{{config_id}}/variables/{{name}}
@@ -89,7 +93,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// $ pulumi import gcp:runtimeconfig/variable:Variable default {{config_id}}/{{name}}
     /// ```
     /// 
-    ///  When importing using only the name, the provider project must be set.
+    /// When importing using only the name, the provider project must be set.
     /// </summary>
     [GcpResourceType("gcp:runtimeconfig/variable:Variable")]
     public partial class Variable : global::Pulumi.CustomResource

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         public readonly int? LeafNodeEmbeddingCount;
         /// <summary>
         /// The default percentage of leaf nodes that any query may be searched. Must be in
-        /// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+        /// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
         /// </summary>
         public readonly int? LeafNodesToSearchPercent;
 

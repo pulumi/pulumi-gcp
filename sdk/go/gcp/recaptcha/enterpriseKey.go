@@ -15,8 +15,10 @@ import (
 // The RecaptchaEnterprise Key resource
 //
 // ## Example Usage
+//
 // ### Android_key
 // A basic test of recaptcha enterprise key that can be used by Android apps
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,8 +53,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Ios_key
 // A basic test of recaptcha enterprise key that can be used by iOS apps
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -87,8 +91,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Minimal_key
 // A minimal test of recaptcha enterprise key
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,8 +124,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Waf_key
 // A basic test of recaptcha enterprise key that includes WAF settings
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,8 +169,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Web_key
 // A basic test of recaptcha enterprise key that can be used by websites
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -200,8 +210,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Web_score_key
 // A basic test of recaptcha enterprise key with score integration type that can be used by websites
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -238,18 +250,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Key can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/keys/{{name}}`
+// * `projects/{{project}}/keys/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}

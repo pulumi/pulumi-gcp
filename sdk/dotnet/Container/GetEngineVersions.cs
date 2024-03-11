@@ -20,10 +20,9 @@ namespace Pulumi.Gcp.Container
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,8 +52,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEngineVersionsResult> InvokeAsync(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsArgs(), options.WithDefaults());
@@ -68,10 +66,9 @@ namespace Pulumi.Gcp.Container
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -101,8 +98,7 @@ namespace Pulumi.Gcp.Container
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEngineVersionsResult> Invoke(GetEngineVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsInvokeArgs(), options.WithDefaults());

@@ -24,6 +24,8 @@ public final class VpcaccessFunctions {
      *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -61,6 +63,7 @@ public final class VpcaccessFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectorResult> getConnector(GetConnectorArgs args) {
@@ -76,6 +79,8 @@ public final class VpcaccessFunctions {
      *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -113,6 +118,7 @@ public final class VpcaccessFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectorResult> getConnectorPlain(GetConnectorPlainArgs args) {
@@ -128,6 +134,8 @@ public final class VpcaccessFunctions {
      *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -165,6 +173,7 @@ public final class VpcaccessFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectorResult> getConnector(GetConnectorArgs args, InvokeOptions options) {
@@ -180,6 +189,8 @@ public final class VpcaccessFunctions {
      *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -217,6 +228,7 @@ public final class VpcaccessFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectorResult> getConnectorPlain(GetConnectorPlainArgs args, InvokeOptions options) {

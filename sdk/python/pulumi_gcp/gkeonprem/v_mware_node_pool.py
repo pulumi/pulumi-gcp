@@ -526,8 +526,10 @@ class VMwareNodePool(pulumi.CustomResource):
         A Google Vmware Node Pool.
 
         ## Example Usage
+
         ### Gkeonprem Vmware Node Pool Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -580,18 +582,18 @@ class VMwareNodePool(pulumi.CustomResource):
                 enable_load_balancer=True,
             ))
         ```
-
+        <!--End PulumiCodeChooser -->
         ## Import
 
         VmwareNodePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
+        * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
 
-         * `{{location}}/{{vmware_cluster}}/{{name}}`
+        * `{{location}}/{{vmware_cluster}}/{{name}}`
 
-         When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}
@@ -639,8 +641,10 @@ class VMwareNodePool(pulumi.CustomResource):
         A Google Vmware Node Pool.
 
         ## Example Usage
+
         ### Gkeonprem Vmware Node Pool Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -693,18 +697,18 @@ class VMwareNodePool(pulumi.CustomResource):
                 enable_load_balancer=True,
             ))
         ```
-
+        <!--End PulumiCodeChooser -->
         ## Import
 
         VmwareNodePool can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
 
-         * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
+        * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
 
-         * `{{location}}/{{vmware_cluster}}/{{name}}`
+        * `{{location}}/{{vmware_cluster}}/{{name}}`
 
-         When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}

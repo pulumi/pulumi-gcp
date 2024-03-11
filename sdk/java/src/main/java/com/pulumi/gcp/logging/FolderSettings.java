@@ -24,7 +24,10 @@ import javax.annotation.Nullable;
  *     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
  * 
  * ## Example Usage
+ * 
  * ### Logging Folder Settings All
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,16 +80,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * FolderSettings can be imported using any of these accepted formats:
  * 
- *  * `folders/{{folder}}/settings`
+ * * `folders/{{folder}}/settings`
  * 
- *  * `{{folder}}`
+ * * `{{folder}}`
  * 
- *  When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings

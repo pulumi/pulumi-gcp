@@ -27,6 +27,8 @@ public final class ProjectsFunctions {
      * Retrieves the current IAM policy data for a project.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -55,6 +57,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args) {
@@ -64,6 +67,8 @@ public final class ProjectsFunctions {
      * Retrieves the current IAM policy data for a project.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -92,6 +97,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args) {
@@ -101,6 +107,8 @@ public final class ProjectsFunctions {
      * Retrieves the current IAM policy data for a project.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
@@ -138,6 +147,8 @@ public final class ProjectsFunctions {
      * Retrieves the current IAM policy data for a project.
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -166,6 +177,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
@@ -177,6 +189,8 @@ public final class ProjectsFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,6 +221,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args) {
@@ -218,6 +233,8 @@ public final class ProjectsFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -248,6 +265,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationPolicyResult> getOrganizationPolicyPlain(GetOrganizationPolicyPlainArgs args) {
@@ -259,6 +277,8 @@ public final class ProjectsFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -289,6 +309,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOptions options) {
@@ -300,6 +321,8 @@ public final class ProjectsFunctions {
      * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -330,6 +353,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationPolicyResult> getOrganizationPolicyPlain(GetOrganizationPolicyPlainArgs args, InvokeOptions options) {
@@ -341,7 +365,10 @@ public final class ProjectsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Projects About To Be Deleted In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -376,6 +403,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -387,7 +415,10 @@ public final class ProjectsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Projects About To Be Deleted In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -422,6 +453,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -433,7 +465,10 @@ public final class ProjectsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Projects About To Be Deleted In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -468,6 +503,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -479,7 +515,10 @@ public final class ProjectsFunctions {
      * for more details.
      * 
      * ## Example Usage
+     * 
      * ### Searching For Projects About To Be Deleted In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -514,6 +553,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -535,6 +575,8 @@ public final class ProjectsFunctions {
      *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -563,6 +605,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceResult> getProjectService(GetProjectServiceArgs args) {
@@ -584,6 +627,8 @@ public final class ProjectsFunctions {
      *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -612,6 +657,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceResult> getProjectServicePlain(GetProjectServicePlainArgs args) {
@@ -633,6 +679,8 @@ public final class ProjectsFunctions {
      *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -661,6 +709,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectServiceResult> getProjectService(GetProjectServiceArgs args, InvokeOptions options) {
@@ -682,6 +731,8 @@ public final class ProjectsFunctions {
      *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -710,6 +761,7 @@ public final class ProjectsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectServiceResult> getProjectServicePlain(GetProjectServicePlainArgs args, InvokeOptions options) {

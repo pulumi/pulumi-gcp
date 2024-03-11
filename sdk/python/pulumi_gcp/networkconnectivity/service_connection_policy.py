@@ -458,8 +458,10 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
 
         ## Example Usage
+
         ### Network Connectivity Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,18 +485,19 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                 limit="2",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceConnectionPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}
@@ -544,8 +547,10 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
 
         ## Example Usage
+
         ### Network Connectivity Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -569,18 +574,19 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                 limit="2",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ServiceConnectionPolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ServiceConnectionPolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy default projects/{{project}}/locations/{{location}}/serviceConnectionPolicies/{{name}}

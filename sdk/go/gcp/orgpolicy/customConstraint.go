@@ -22,8 +22,10 @@ import (
 //   - [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
 //
 // ## Example Usage
+//
 // ### Org Policy Custom Constraint Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,8 +59,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Org Policy Custom Constraint Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,14 +116,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // CustomConstraint can be imported using any of these accepted formats:
 //
-//   - `{{parent}}/customConstraints/{{name}}`
+// * `{{parent}}/customConstraints/{{name}}`
 //
-//     When using the `pulumi import` command, CustomConstraint can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, CustomConstraint can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}

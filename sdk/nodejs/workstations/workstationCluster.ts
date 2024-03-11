@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Workstation Cluster Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,8 +40,10 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Workstation Cluster Private
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,8 +75,10 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Workstation Cluster Custom Domain
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -107,18 +113,19 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * WorkstationCluster can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
+ * * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
  *
- *  * `{{project}}/{{location}}/{{workstation_cluster_id}}`
+ * * `{{project}}/{{location}}/{{workstation_cluster_id}}`
  *
- *  * `{{location}}/{{workstation_cluster_id}}`
+ * * `{{location}}/{{workstation_cluster_id}}`
  *
- *  When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}

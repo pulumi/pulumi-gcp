@@ -39,6 +39,8 @@ public final class DnsFunctions {
      * not exist in the DNS API.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -80,6 +82,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeysResult> getKeys(GetKeysArgs args) {
@@ -98,6 +101,8 @@ public final class DnsFunctions {
      * not exist in the DNS API.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -139,6 +144,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args) {
@@ -157,6 +163,8 @@ public final class DnsFunctions {
      * not exist in the DNS API.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -198,6 +206,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeysResult> getKeys(GetKeysArgs args, InvokeOptions options) {
@@ -216,6 +225,8 @@ public final class DnsFunctions {
      * not exist in the DNS API.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -257,6 +268,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args, InvokeOptions options) {
@@ -268,6 +280,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -306,6 +320,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZoneResult> getManagedZone(GetManagedZoneArgs args) {
@@ -317,6 +332,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -355,6 +372,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZoneResult> getManagedZonePlain(GetManagedZonePlainArgs args) {
@@ -366,6 +384,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -404,6 +424,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZoneResult> getManagedZone(GetManagedZoneArgs args, InvokeOptions options) {
@@ -415,6 +436,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -453,6 +476,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZoneResult> getManagedZonePlain(GetManagedZonePlainArgs args, InvokeOptions options) {
@@ -462,6 +486,8 @@ public final class DnsFunctions {
      * Retrieves the current IAM policy data for managedzone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -491,6 +517,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs args) {
@@ -500,6 +527,8 @@ public final class DnsFunctions {
      * Retrieves the current IAM policy data for managedzone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -529,6 +558,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyPlain(GetManagedZoneIamPolicyPlainArgs args) {
@@ -538,6 +568,8 @@ public final class DnsFunctions {
      * Retrieves the current IAM policy data for managedzone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -567,6 +599,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs args, InvokeOptions options) {
@@ -576,6 +609,8 @@ public final class DnsFunctions {
      * Retrieves the current IAM policy data for managedzone
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -605,6 +640,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyPlain(GetManagedZoneIamPolicyPlainArgs args, InvokeOptions options) {
@@ -616,6 +652,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -644,6 +682,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZonesResult> getManagedZones() {
@@ -655,6 +694,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -683,6 +724,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain() {
@@ -694,6 +736,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -722,6 +766,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZonesResult> getManagedZones(GetManagedZonesArgs args) {
@@ -733,6 +778,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -761,6 +808,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain(GetManagedZonesPlainArgs args) {
@@ -772,6 +820,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -800,6 +850,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedZonesResult> getManagedZones(GetManagedZonesArgs args, InvokeOptions options) {
@@ -811,6 +862,8 @@ public final class DnsFunctions {
      * [the official documentation](https://cloud.google.com/dns/zones/)
      * and
      * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -839,6 +892,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain(GetManagedZonesPlainArgs args, InvokeOptions options) {
@@ -852,41 +906,6 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dns.DnsFunctions;
-     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
-     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;sample-zone&#34;)
-     *             .build());
-     * 
-     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetRecordSetResult> getRecordSet(GetRecordSetArgs args) {
@@ -900,41 +919,6 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dns.DnsFunctions;
-     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
-     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;sample-zone&#34;)
-     *             .build());
-     * 
-     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetRecordSetResult> getRecordSetPlain(GetRecordSetPlainArgs args) {
@@ -948,41 +932,6 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dns.DnsFunctions;
-     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
-     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;sample-zone&#34;)
-     *             .build());
-     * 
-     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetRecordSetResult> getRecordSet(GetRecordSetArgs args, InvokeOptions options) {
@@ -996,41 +945,6 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.dns.DnsFunctions;
-     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
-     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
-     *             .name(&#34;sample-zone&#34;)
-     *             .build());
-     * 
-     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.name()))
-     *             .name(String.format(&#34;my-record.%s&#34;, sample.applyValue(getManagedZoneResult -&gt; getManagedZoneResult.dnsName())))
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetRecordSetResult> getRecordSetPlain(GetRecordSetPlainArgs args, InvokeOptions options) {

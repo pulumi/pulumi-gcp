@@ -833,8 +833,10 @@ class Authority(pulumi.CustomResource):
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         ## Example Usage
+
         ### Privateca Certificate Authority Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -885,8 +887,10 @@ class Authority(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Subordinate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -976,8 +980,10 @@ class Authority(pulumi.CustomResource):
             ),
             type="SUBORDINATE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Byo Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1034,18 +1040,19 @@ class Authority(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CertificateAuthority can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
+        * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
 
-         * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
+        * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
 
-         * `{{location}}/{{pool}}/{{certificate_authority_id}}`
+        * `{{location}}/{{pool}}/{{certificate_authority_id}}`
 
-         When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
@@ -1127,8 +1134,10 @@ class Authority(pulumi.CustomResource):
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
         ## Example Usage
+
         ### Privateca Certificate Authority Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1179,8 +1188,10 @@ class Authority(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Subordinate
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1270,8 +1281,10 @@ class Authority(pulumi.CustomResource):
             ),
             type="SUBORDINATE")
         ```
+        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Byo Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1328,18 +1341,19 @@ class Authority(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CertificateAuthority can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
+        * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
 
-         * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
+        * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
 
-         * `{{location}}/{{pool}}/{{certificate_authority_id}}`
+        * `{{location}}/{{pool}}/{{certificate_authority_id}}`
 
-         When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}

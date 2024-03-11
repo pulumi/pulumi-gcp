@@ -314,8 +314,10 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+
         ### Binary Authorization Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -347,8 +349,10 @@ class Policy(pulumi.CustomResource):
                 require_attestations_bies=[attestor.name],
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Binary Authorization Policy Global Evaluation
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,16 +377,17 @@ class Policy(pulumi.CustomResource):
             ),
             global_policy_evaluation_mode="ENABLE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Policy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}`
+        * `projects/{{project}}`
 
-         * `{{project}}`
+        * `{{project}}`
 
-         When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}
@@ -435,8 +440,10 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+
         ### Binary Authorization Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -468,8 +475,10 @@ class Policy(pulumi.CustomResource):
                 require_attestations_bies=[attestor.name],
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Binary Authorization Policy Global Evaluation
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -494,16 +503,17 @@ class Policy(pulumi.CustomResource):
             ),
             global_policy_evaluation_mode="ENABLE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Policy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}`
+        * `projects/{{project}}`
 
-         * `{{project}}`
+        * `{{project}}`
 
-         When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}

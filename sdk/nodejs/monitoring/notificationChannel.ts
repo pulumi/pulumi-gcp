@@ -32,8 +32,10 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ *
  * ### Notification Channel Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,8 +49,10 @@ import * as utilities from "../utilities";
  *     forceDelete: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Notification Channel Sensitive
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,14 +68,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * NotificationChannel can be imported using any of these accepted formats:
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}

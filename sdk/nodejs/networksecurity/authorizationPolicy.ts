@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Network Security Authorization Policy Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,8 +31,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Network Security Authorization Policy Destinations
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -59,18 +63,19 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AuthorizationPolicy can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}

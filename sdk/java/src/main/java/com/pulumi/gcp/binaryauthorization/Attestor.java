@@ -25,7 +25,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  * 
  * ## Example Usage
+ * 
  * ### Binary Authorization Attestor Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,7 +93,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Binary Authorization Attestor Kms
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -168,18 +174,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Attestor can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/attestors/{{name}}`
+ * * `projects/{{project}}/attestors/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Attestor can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Attestor can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}

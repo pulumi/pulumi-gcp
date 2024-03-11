@@ -303,8 +303,10 @@ class Budget(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Billing Budget Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -323,8 +325,10 @@ class Budget(pulumi.CustomResource):
                 threshold_percent=0.5,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Lastperiod
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,8 +348,10 @@ class Budget(pulumi.CustomResource):
                 threshold_percent=10,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Filter
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -381,8 +387,10 @@ class Budget(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Notify
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -421,8 +429,10 @@ class Budget(pulumi.CustomResource):
                 disable_default_iam_recipients=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Customperiod
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -464,18 +474,19 @@ class Budget(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Budget can be imported using any of these accepted formats:
 
-         * `billingAccounts/{{billing_account}}/budgets/{{name}}`
+        * `billingAccounts/{{billing_account}}/budgets/{{name}}`
 
-         * `{{billing_account}}/{{name}}`
+        * `{{billing_account}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
@@ -529,8 +540,10 @@ class Budget(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+
         ### Billing Budget Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -549,8 +562,10 @@ class Budget(pulumi.CustomResource):
                 threshold_percent=0.5,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Lastperiod
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -570,8 +585,10 @@ class Budget(pulumi.CustomResource):
                 threshold_percent=10,
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Filter
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -607,8 +624,10 @@ class Budget(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Notify
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -647,8 +666,10 @@ class Budget(pulumi.CustomResource):
                 disable_default_iam_recipients=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Billing Budget Customperiod
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -690,18 +711,19 @@ class Budget(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Budget can be imported using any of these accepted formats:
 
-         * `billingAccounts/{{billing_account}}/budgets/{{name}}`
+        * `billingAccounts/{{billing_account}}/budgets/{{name}}`
 
-         * `{{billing_account}}/{{name}}`
+        * `{{billing_account}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}

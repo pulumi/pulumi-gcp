@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDatabaseInstanceLatestRecoveryTime(ctx *pulumi.Context, args *GetDatabaseInstanceLatestRecoveryTimeArgs, opts ...pulumi.InvokeOption) (*GetDatabaseInstanceLatestRecoveryTimeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseInstanceLatestRecoveryTimeResult

@@ -25,7 +25,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
  * 
  * ## Example Usage
+ * 
  * ### Vmware Engine Cluster Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,7 +93,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Cluster Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -157,14 +163,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cluster can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/clusters/{{name}}`
+ * * `{{parent}}/clusters/{{name}}`
  * 
- *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}

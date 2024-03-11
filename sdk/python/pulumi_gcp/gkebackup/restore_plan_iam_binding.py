@@ -233,8 +233,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
+
         ### Gkebackup Restoreplan All Namespaces
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -278,8 +280,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rollback Namespace
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -334,8 +338,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Protected Application
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,8 +389,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan All Cluster Resources
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -427,8 +435,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rename Namespace
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -500,8 +510,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Second Transformation
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -569,18 +581,19 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RestorePlan can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
@@ -617,8 +630,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
+
         ### Gkebackup Restoreplan All Namespaces
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -662,8 +677,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rollback Namespace
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -718,8 +735,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Protected Application
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -767,8 +786,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan All Cluster Resources
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -811,8 +832,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rename Namespace
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -884,8 +907,10 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Second Transformation
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -953,18 +978,19 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RestorePlan can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}

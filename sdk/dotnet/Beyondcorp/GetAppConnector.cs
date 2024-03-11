@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// Get information about a Google BeyondCorp App Connector.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAppConnectorResult> InvokeAsync(GetAppConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppConnectorResult>("gcp:beyondcorp/getAppConnector:getAppConnector", args ?? new GetAppConnectorArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// Get information about a Google BeyondCorp App Connector.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAppConnectorResult> Invoke(GetAppConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectorResult>("gcp:beyondcorp/getAppConnector:getAppConnector", args ?? new GetAppConnectorInvokeArgs(), options.WithDefaults());

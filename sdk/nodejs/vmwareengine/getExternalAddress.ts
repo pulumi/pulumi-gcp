@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     parent: "project/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getExternalAddress(args: GetExternalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalAddressResult> {
 
@@ -71,6 +73,7 @@ export interface GetExternalAddressResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -80,6 +83,7 @@ export interface GetExternalAddressResult {
  *     parent: "project/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getExternalAddressOutput(args: GetExternalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalAddressResult> {
     return pulumi.output(args).apply((a: any) => getExternalAddress(a, opts))

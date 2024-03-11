@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     attestor: attestor.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttestorIamPolicy(args: GetAttestorIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestorIamPolicyResult> {
 
@@ -68,6 +70,7 @@ export interface GetAttestorIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,6 +80,7 @@ export interface GetAttestorIamPolicyResult {
  *     attestor: attestor.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAttestorIamPolicy(a, opts))

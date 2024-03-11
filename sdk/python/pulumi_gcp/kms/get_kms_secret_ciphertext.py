@@ -91,6 +91,56 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
 
+    ## Example Usage
+
+    First, create a KMS KeyRing and CryptoKey using the resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.KeyRing("my_key_ring",
+        project="my-project",
+        name="my-key-ring",
+        location="us-central1")
+    my_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+        name="my-crypto-key",
+        key_ring=my_key_ring.id)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_password = gcp.kms.get_kms_secret_ciphertext(crypto_key=my_crypto_key["id"],
+        plaintext="my-secret-password")
+    instance = gcp.compute.Instance("instance",
+        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            network="default",
+        )],
+        name="test",
+        machine_type="e2-medium",
+        zone="us-central1-a",
+        boot_disk=gcp.compute.InstanceBootDiskArgs(
+            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                image="debian-cloud/debian-11",
+            ),
+        ),
+        metadata={
+            "password": my_password.ciphertext,
+        })
+    ```
+    <!--End PulumiCodeChooser -->
+
+    The resulting instance can then access the encrypted password from its metadata
+    and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
+
 
     :param str crypto_key: The id of the CryptoKey that will be used to
            encrypt the provided plaintext. This is represented by the format
@@ -127,6 +177,56 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
     resource definitions, but it does not take care of protecting that data in the
     logging output, plan output, or state output.  Please take care to secure your secret
     data outside of resource definitions.
+
+    ## Example Usage
+
+    First, create a KMS KeyRing and CryptoKey using the resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_key_ring = gcp.kms.KeyRing("my_key_ring",
+        project="my-project",
+        name="my-key-ring",
+        location="us-central1")
+    my_crypto_key = gcp.kms.CryptoKey("my_crypto_key",
+        name="my-crypto-key",
+        key_ring=my_key_ring.id)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_password = gcp.kms.get_kms_secret_ciphertext(crypto_key=my_crypto_key["id"],
+        plaintext="my-secret-password")
+    instance = gcp.compute.Instance("instance",
+        network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            network="default",
+        )],
+        name="test",
+        machine_type="e2-medium",
+        zone="us-central1-a",
+        boot_disk=gcp.compute.InstanceBootDiskArgs(
+            initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                image="debian-cloud/debian-11",
+            ),
+        ),
+        metadata={
+            "password": my_password.ciphertext,
+        })
+    ```
+    <!--End PulumiCodeChooser -->
+
+    The resulting instance can then access the encrypted password from its metadata
+    and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
 
 
     :param str crypto_key: The id of the CryptoKey that will be used to

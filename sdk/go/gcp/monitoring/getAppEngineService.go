@@ -26,8 +26,10 @@ import (
 //   - [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+//
 // ### Monitoring App Engine Service
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,6 +94,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAppEngineService(ctx *pulumi.Context, args *GetAppEngineServiceArgs, opts ...pulumi.InvokeOption) (*GetAppEngineServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppEngineServiceResult

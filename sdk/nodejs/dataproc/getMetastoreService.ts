@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * Get a Dataproc Metastore service from Google Cloud by its id and location.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.dataproc.getMetastoreService({
- *     serviceId: "foo-bar",
- *     location: "global",
- * });
- * ```
  */
 export function getMetastoreService(args: GetMetastoreServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreServiceResult> {
 
@@ -89,16 +79,6 @@ export interface GetMetastoreServiceResult {
  * Get a Dataproc Metastore service from Google Cloud by its id and location.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = gcp.dataproc.getMetastoreService({
- *     serviceId: "foo-bar",
- *     location: "global",
- * });
- * ```
  */
 export function getMetastoreServiceOutput(args: GetMetastoreServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceResult> {
     return pulumi.output(args).apply((a: any) => getMetastoreService(a, opts))

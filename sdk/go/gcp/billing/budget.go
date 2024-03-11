@@ -27,8 +27,10 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+//
 // ### Billing Budget Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,8 +73,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Billing Budget Lastperiod
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,8 +127,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Billing Budget Filter
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -193,8 +199,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Billing Budget Notify
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -269,8 +277,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Billing Budget Customperiod
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -343,18 +353,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Budget can be imported using any of these accepted formats:
 //
-//   - `billingAccounts/{{billing_account}}/budgets/{{name}}`
+// * `billingAccounts/{{billing_account}}/budgets/{{name}}`
 //
-//   - `{{billing_account}}/{{name}}`
+// * `{{billing_account}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}

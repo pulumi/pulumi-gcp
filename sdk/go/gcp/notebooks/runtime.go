@@ -25,8 +25,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
+//
 // ### Notebook Runtime Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Basic Gpu
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,8 +118,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Basic Container
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,8 +171,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Kernels
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -217,8 +225,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Notebook Runtime Script
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -264,18 +274,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Runtime can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/runtimes/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/runtimes/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:notebooks/runtime:Runtime default projects/{{project}}/locations/{{location}}/runtimes/{{name}}

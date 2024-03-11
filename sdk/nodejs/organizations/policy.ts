@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,9 +34,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,9 +53,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Or to deny some services, use the following instead:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,9 +73,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * To restore the default organization policy, use the following instead:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,20 +90,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
  *
- *  * `{{org_id}}/constraints/{{constraint}}`
+ * * `{{org_id}}/constraints/{{constraint}}`
  *
- *  When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:organizations/policy:Policy default {{org_id}}/constraints/{{constraint}}
  * ```
  *
- *  It is all right if the constraint contains a slash, as in the example above.
+ * It is all right if the constraint contains a slash, as in the example above.
  */
 export class Policy extends pulumi.CustomResource {
     /**

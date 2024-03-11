@@ -21,8 +21,10 @@ import (
 //   - [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 //
 // ## Example Usage
+//
 // ### Biglake Database
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,14 +87,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Database can be imported using any of these accepted formats:
 //
-//   - `{{catalog}}/databases/{{name}}`
+// * `{{catalog}}/databases/{{name}}`
 //
-//     When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}

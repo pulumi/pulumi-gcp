@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,8 +48,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Streaming Job
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,6 +116,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Note on "destroy" / "apply"
 //
 // There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
@@ -122,6 +128,7 @@ import (
 //
 // You can potentially short-circuit the wait by setting `skipWaitOnJobTermination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a randomId resource, for example:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -172,14 +179,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Dataflow jobs can be imported using the job `id` e.g.
 //
-//   - `{{id}}`
+// * `{{id}}`
 //
-//     When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dataflow/job:Job default {{id}}

@@ -113,6 +113,7 @@ def get_billing_account(billing_account: Optional[str] = None,
     """
     Use this data source to get information about a Google Billing Account.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -125,6 +126,7 @@ def get_billing_account(billing_account: Optional[str] = None,
         org_id="1234567",
         billing_account=acct.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -162,6 +164,7 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
     """
     Use this data source to get information about a Google Billing Account.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -174,6 +177,7 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
         org_id="1234567",
         billing_account=acct.id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.

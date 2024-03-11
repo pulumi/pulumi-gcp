@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  * the Cloud Console prior to creating tenants.
  *
  * ## Example Usage
+ *
  * ### Identity Platform Tenant Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,18 +28,19 @@ import * as utilities from "../utilities";
  *     allowPasswordSignup: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Tenant can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/tenants/{{name}}`
+ * * `projects/{{project}}/tenants/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}

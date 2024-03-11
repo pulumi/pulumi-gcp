@@ -1410,6 +1410,7 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1449,18 +1450,19 @@ class Instance(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instances can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
@@ -1580,6 +1582,7 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1619,18 +1622,19 @@ class Instance(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instances can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}

@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Compute Network Edge Security Service Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,20 +41,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // NetworkEdgeSecurityService can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}`
+// * `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}`
 //
-//   - `{{project}}/{{region}}/{{name}}`
+// * `{{project}}/{{region}}/{{name}}`
 //
-//   - `{{region}}/{{name}}`
+// * `{{region}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}

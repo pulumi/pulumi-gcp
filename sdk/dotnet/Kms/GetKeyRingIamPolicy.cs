@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKeyRingIamPolicyResult> InvokeAsync(GetKeyRingIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingIamPolicyResult>("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args ?? new GetKeyRingIamPolicyArgs(), options.WithDefaults());
@@ -40,6 +42,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// ## example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,6 +58,7 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKeyRingIamPolicyResult> Invoke(GetKeyRingIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingIamPolicyResult>("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args ?? new GetKeyRingIamPolicyInvokeArgs(), options.WithDefaults());

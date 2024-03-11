@@ -401,8 +401,10 @@ class Topic(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+
         ### Pubsub Topic Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -414,8 +416,10 @@ class Topic(pulumi.CustomResource):
             },
             message_retention_duration="86600s")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,8 +434,10 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             kms_key_name=crypto_key.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Geo Restricted
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,8 +448,10 @@ class Topic(pulumi.CustomResource):
                 allowed_persistence_regions=["europe-west3"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Schema Settings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -473,18 +481,19 @@ class Topic(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Topic can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/topics/{{name}}`
+        * `projects/{{project}}/topics/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
@@ -549,8 +558,10 @@ class Topic(pulumi.CustomResource):
         by using the `projects.ServiceIdentity` resource.
 
         ## Example Usage
+
         ### Pubsub Topic Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,8 +573,10 @@ class Topic(pulumi.CustomResource):
             },
             message_retention_duration="86600s")
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -578,8 +591,10 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             kms_key_name=crypto_key.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Geo Restricted
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -590,8 +605,10 @@ class Topic(pulumi.CustomResource):
                 allowed_persistence_regions=["europe-west3"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Schema Settings
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -621,18 +638,19 @@ class Topic(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Topic can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/topics/{{name}}`
+        * `projects/{{project}}/topics/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}

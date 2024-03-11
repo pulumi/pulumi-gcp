@@ -25,7 +25,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
  * 
  * ## Example Usage
+ * 
  * ### Bigquery Datapolicy Data Policy Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,18 +77,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * DataPolicy can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
+ * * `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}`
  * 
- *  * `{{project}}/{{location}}/{{data_policy_id}}`
+ * * `{{project}}/{{location}}/{{data_policy_id}}`
  * 
- *  * `{{location}}/{{data_policy_id}}`
+ * * `{{location}}/{{data_policy_id}}`
  * 
- *  When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}

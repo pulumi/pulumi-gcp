@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,6 +58,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetKMSCryptoKeyVersion(ctx *pulumi.Context, args *GetKMSCryptoKeyVersionArgs, opts ...pulumi.InvokeOption) (*GetKMSCryptoKeyVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSCryptoKeyVersionResult

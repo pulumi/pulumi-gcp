@@ -18,8 +18,10 @@ import (
 // * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
 // * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
 // ## Example Usage
+//
 // ### Basic_certificate_template
 // An example of a basic privateca certificate template
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,18 +132,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // CertificateTemplate can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}`
+// * `projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}`
 //
-//   - `{{project}}/{{location}}/{{name}}`
+// * `{{project}}/{{location}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, CertificateTemplate can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, CertificateTemplate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:certificateauthority/certificateTemplate:CertificateTemplate default projects/{{project}}/locations/{{location}}/certificateTemplates/{{name}}

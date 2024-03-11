@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
  * 
  * ## Example Usage
+ * 
  * ### Dlp Stored Info Type Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,7 +66,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Stored Info Type Dictionary
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,7 +109,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Stored Info Type Large Custom Dictionary
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -166,7 +175,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Dlp Stored Info Type With Id
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -203,16 +215,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * StoredInfoType can be imported using any of these accepted formats:
  * 
- *  * `{{parent}}/storedInfoTypes/{{name}}`
+ * * `{{parent}}/storedInfoTypes/{{name}}`
  * 
- *  * `{{parent}}/{{name}}`
+ * * `{{parent}}/{{name}}`
  * 
- *  When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, StoredInfoType can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}

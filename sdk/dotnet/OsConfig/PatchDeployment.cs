@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.OsConfig
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Os Config Patch Deployment Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,8 +47,10 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Os Config Patch Deployment Daily
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,8 +84,10 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Os Config Patch Deployment Daily Midnight
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,8 +121,10 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Os Config Patch Deployment Instance
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -206,8 +214,10 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Os Config Patch Deployment Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -368,18 +378,19 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// PatchDeployment can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/patchDeployments/{{name}}`
+    /// * `projects/{{project}}/patchDeployments/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}

@@ -284,39 +284,39 @@ class WorkstationIamPolicy(pulumi.CustomResource):
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
+        * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
 
-         * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
+        * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
 
-         * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
+        * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
 
-         * {{workstation_id}}
+        * {{workstation_id}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Cloud Workstations workstation IAM resources can be imported using the resource identifiers, role, and member.
+        Cloud Workstations workstation IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:workstations/workstationIamPolicy:WorkstationIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:workstations/workstationIamPolicy:WorkstationIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:workstations/workstationIamPolicy:WorkstationIamPolicy editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -350,39 +350,39 @@ class WorkstationIamPolicy(pulumi.CustomResource):
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
+        * projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
 
-         * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
+        * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
 
-         * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
+        * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
 
-         * {{workstation_id}}
+        * {{workstation_id}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Cloud Workstations workstation IAM resources can be imported using the resource identifiers, role, and member.
+        Cloud Workstations workstation IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:workstations/workstationIamPolicy:WorkstationIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:workstations/workstationIamPolicy:WorkstationIamPolicy editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:workstations/workstationIamPolicy:WorkstationIamPolicy editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param WorkstationIamPolicyArgs args: The arguments to use to populate this resource's properties.

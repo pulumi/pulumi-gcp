@@ -15,6 +15,7 @@ import (
 //
 // ## example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupRegionDiskIamPolicy(ctx *pulumi.Context, args *LookupRegionDiskIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionDiskIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionDiskIamPolicyResult

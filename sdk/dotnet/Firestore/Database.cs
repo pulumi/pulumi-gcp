@@ -25,8 +25,10 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Firestore Default Database
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,8 +47,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Database
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -70,8 +74,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Default Database In Datastore Mode
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,8 +96,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Database In Datastore Mode
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,18 +123,19 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Database can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/databases/{{name}}`
+    /// * `projects/{{project}}/databases/{{name}}`
     /// 
-    ///  * `{{project}}/{{name}}`
+    /// * `{{project}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}

@@ -14,26 +14,29 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
  *
  * ## Example Usage
+ *
  * ### Apigateway Api Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const api = new gcp.apigateway.Api("api", {apiId: "my-api"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Api can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/global/apis/{{api_id}}`
+ * * `projects/{{project}}/locations/global/apis/{{api_id}}`
  *
- *  * `{{project}}/{{api_id}}`
+ * * `{{project}}/{{api_id}}`
  *
- *  * `{{api_id}}`
+ * * `{{api_id}}`
  *
- *  When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}

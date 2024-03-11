@@ -24,6 +24,7 @@ import (
 //
 // ## google\_dataproc\_cluster\_iam\_policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,9 +65,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataproc\_cluster\_iam\_binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,9 +97,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataproc\_cluster\_iam\_member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,28 +127,29 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ### Importing IAM policies
 //
-//	IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
+// IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
 //
-//	* `projects/{project}/regions/{region}/clusters/{cluster}`
+// * `projects/{project}/regions/{region}/clusters/{cluster}`
 //
-//	An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 //
-//	tf
+// tf
 //
-//	import {
+// import {
 //
 //	id = projects/{project}/regions/{region}/clusters/{cluster}
 //
 //	to = google_dataproc_cluster_iam_policy.default
 //
-//	}
+// }
 //
-//	The `pulumi import` command can also be used:
+// The `pulumi import` command can also be used:
 //
 // ```sh
 // $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}

@@ -780,8 +780,10 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
+
         ### Image Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -792,8 +794,10 @@ class Image(pulumi.CustomResource):
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Image Guest Os
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -812,8 +816,10 @@ class Image(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Image Basic Storage Location
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -825,18 +831,19 @@ class Image(pulumi.CustomResource):
             ),
             storage_locations=["us-central1"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Image can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/images/{{name}}`
+        * `projects/{{project}}/global/images/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
@@ -937,8 +944,10 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
+
         ### Image Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -949,8 +958,10 @@ class Image(pulumi.CustomResource):
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Image Guest Os
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -969,8 +980,10 @@ class Image(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
         ### Image Basic Storage Location
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -982,18 +995,19 @@ class Image(pulumi.CustomResource):
             ),
             storage_locations=["us-central1"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Image can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/images/{{name}}`
+        * `projects/{{project}}/global/images/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}

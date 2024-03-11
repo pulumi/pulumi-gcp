@@ -56,7 +56,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.GetBackendServiceOutlierDetectionIntervalResult> Intervals;
         /// <summary>
         /// Maximum percentage of hosts in the load balancing pool for the backend service
-        /// that can be ejected. Defaults to 10%.
+        /// that can be ejected. Defaults to 10%!
+        /// (MISSING)
         /// </summary>
         public readonly int MaxEjectionPercent;
         /// <summary>

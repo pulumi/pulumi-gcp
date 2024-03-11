@@ -52,7 +52,7 @@ class MetricArgs:
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -190,7 +190,7 @@ class MetricArgs:
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
-        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
         character (/) denotes a hierarchy of name pieces, and it cannot be the first character
         of the name.
         """
@@ -271,7 +271,7 @@ class _MetricState:
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -410,7 +410,7 @@ class _MetricState:
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
-        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
         character (/) denotes a hierarchy of name pieces, and it cannot be the first character
         of the name.
         """
@@ -480,8 +480,10 @@ class Metric(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
+
         ### Logging Metric Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -520,8 +522,10 @@ class Metric(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,8 +538,10 @@ class Metric(pulumi.CustomResource):
                 value_type="INT64",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Labels
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -556,8 +562,10 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Logging Bucket
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -571,8 +579,10 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Disabled
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -586,16 +596,17 @@ class Metric(pulumi.CustomResource):
             ),
             disabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Metric can be imported using any of these accepted formats:
 
-         * `{{project}} {{name}}`
+        * `{{project}} {{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
@@ -631,7 +642,7 @@ class Metric(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -662,8 +673,10 @@ class Metric(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
+
         ### Logging Metric Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,8 +715,10 @@ class Metric(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -716,8 +731,10 @@ class Metric(pulumi.CustomResource):
                 value_type="INT64",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Counter Labels
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -738,8 +755,10 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Logging Bucket
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -753,8 +772,10 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Logging Metric Disabled
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -768,16 +789,17 @@ class Metric(pulumi.CustomResource):
             ),
             disabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Metric can be imported using any of these accepted formats:
 
-         * `{{project}} {{name}}`
+        * `{{project}} {{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
@@ -884,7 +906,7 @@ class Metric(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -990,7 +1012,7 @@ class Metric(pulumi.CustomResource):
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
-        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
         character (/) denotes a hierarchy of name pieces, and it cannot be the first character
         of the name.
         """

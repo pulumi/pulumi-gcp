@@ -144,6 +144,7 @@ def get_object_signed_url(bucket: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -152,8 +153,11 @@ def get_object_signed_url(bucket: Optional[str] = None,
         path="path/to/install_file.bin")
     vm = gcp.compute.Instance("vm", name="vm")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Full Example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -169,6 +173,7 @@ def get_object_signed_url(bucket: Optional[str] = None,
             "x-goog-if-generation-match": "1",
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the bucket to read the object from
@@ -229,6 +234,7 @@ def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -237,8 +243,11 @@ def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
         path="path/to/install_file.bin")
     vm = gcp.compute.Instance("vm", name="vm")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Full Example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -254,6 +263,7 @@ def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
             "x-goog-if-generation-match": "1",
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of the bucket to read the object from

@@ -258,8 +258,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
+
         ### Public Advertised Prefixes Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -270,18 +272,19 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PublicAdvertisedPrefix can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
+        * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}
@@ -328,8 +331,10 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
 
         ## Example Usage
+
         ### Public Advertised Prefixes Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -340,18 +345,19 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         PublicAdvertisedPrefix can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
+        * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}

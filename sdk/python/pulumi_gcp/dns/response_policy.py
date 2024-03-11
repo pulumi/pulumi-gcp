@@ -228,8 +228,10 @@ class ResponsePolicy(pulumi.CustomResource):
         made against one or more Virtual Private Cloud networks.
 
         ## Example Usage
+
         ### Dns Response Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -294,18 +296,19 @@ class ResponsePolicy(pulumi.CustomResource):
                 gke_cluster_name=cluster_1.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ResponsePolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
+        * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
 
-         * `{{project}}/{{response_policy_name}}`
+        * `{{project}}/{{response_policy_name}}`
 
-         * `{{response_policy_name}}`
+        * `{{response_policy_name}}`
 
-         When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}
@@ -344,8 +347,10 @@ class ResponsePolicy(pulumi.CustomResource):
         made against one or more Virtual Private Cloud networks.
 
         ## Example Usage
+
         ### Dns Response Policy Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,18 +415,19 @@ class ResponsePolicy(pulumi.CustomResource):
                 gke_cluster_name=cluster_1.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ResponsePolicy can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
+        * `projects/{{project}}/responsePolicies/{{response_policy_name}}`
 
-         * `{{project}}/{{response_policy_name}}`
+        * `{{project}}/{{response_policy_name}}`
 
-         * `{{response_policy_name}}`
+        * `{{response_policy_name}}`
 
-         When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ResponsePolicy can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:dns/responsePolicy:ResponsePolicy default projects/{{project}}/responsePolicies/{{response_policy_name}}

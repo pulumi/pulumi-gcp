@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * ## google\_iap\_web\_region\_backend\_service\_iam\_policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,9 +43,11 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -67,8 +70,10 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ## google\_iap\_web\_region\_backend\_service\_iam\_binding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,9 +86,11 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,8 +108,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ## google\_iap\_web\_region\_backend\_service\_iam\_member
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,9 +124,11 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * With IAM Conditions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -135,44 +146,45 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
  *
- *  * projects/{{project}}/iap_web/compute-{{region}}/services/{{name}}
+ * * projects/{{project}}/iap_web/compute-{{region}}/services/{{name}}
  *
- *  * {{project}}/{{region}}/{{name}}
+ * * {{project}}/{{region}}/{{name}}
  *
- *  * {{region}}/{{name}}
+ * * {{region}}/{{name}}
  *
- *  * {{name}}
+ * * {{name}}
  *
- *  Any variables not passed in the import command will be taken from the provider configuration.
+ * Any variables not passed in the import command will be taken from the provider configuration.
  *
- *  Identity-Aware Proxy webregionbackendservice IAM resources can be imported using the resource identifiers, role, and member.
+ * Identity-Aware Proxy webregionbackendservice IAM resources can be imported using the resource identifiers, role, and member.
  *
- *  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+ * IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
  *
  * ```sh
  * $ pulumi import gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding editor "projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
  * ```
  *
- *  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+ * IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
  *
  * ```sh
  * $ pulumi import gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding editor "projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}} roles/iap.httpsResourceAccessor"
  * ```
  *
- *  IAM policy imports use the identifier of the resource in question, e.g.
+ * IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
  * $ pulumi import gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding editor projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}}
  * ```
  *
- *  -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class WebRegionBackendServiceIamBinding extends pulumi.CustomResource {
     /**

@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Use this data source to get information about the supported alloydb database flags in a location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Gcp.Alloydb
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSupportedDatabaseFlagsResult> InvokeAsync(GetSupportedDatabaseFlagsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSupportedDatabaseFlagsResult>("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args ?? new GetSupportedDatabaseFlagsArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// Use this data source to get information about the supported alloydb database flags in a location.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Gcp.Alloydb
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSupportedDatabaseFlagsResult> Invoke(GetSupportedDatabaseFlagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSupportedDatabaseFlagsResult>("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args ?? new GetSupportedDatabaseFlagsInvokeArgs(), options.WithDefaults());

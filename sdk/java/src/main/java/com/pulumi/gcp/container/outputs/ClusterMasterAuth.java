@@ -21,8 +21,6 @@ public final class ClusterMasterAuth {
     /**
      * @return Whether client certificate authorization is enabled for this cluster.  For example:
      * 
-     * This block also contains several computed attributes, documented below.
-     * 
      */
     private ClusterMasterAuthClientCertificateConfig clientCertificateConfig;
     /**
@@ -46,8 +44,6 @@ public final class ClusterMasterAuth {
     }
     /**
      * @return Whether client certificate authorization is enabled for this cluster.  For example:
-     * 
-     * This block also contains several computed attributes, documented below.
      * 
      */
     public ClusterMasterAuthClientCertificateConfig clientCertificateConfig() {

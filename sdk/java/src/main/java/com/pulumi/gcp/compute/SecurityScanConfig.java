@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
  * 
  * ## Example Usage
+ * 
  * ### Scan Config Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,18 +68,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ScanConfig can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/scanConfigs/{{name}}`
+ * * `projects/{{project}}/scanConfigs/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}

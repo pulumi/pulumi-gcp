@@ -19,8 +19,10 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
+//
 // ### Identity Platform Tenant Oauth Idp Config Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,18 +58,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TenantOauthIdpConfig can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}`
+// * `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}`
 //
-//   - `{{project}}/{{tenant}}/{{name}}`
+// * `{{project}}/{{tenant}}/{{name}}`
 //
-//   - `{{tenant}}/{{name}}`
+// * `{{tenant}}/{{name}}`
 //
-//     When using the `pulumi import` command, TenantOauthIdpConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TenantOauthIdpConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}

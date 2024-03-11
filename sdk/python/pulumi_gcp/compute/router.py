@@ -351,8 +351,10 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+
         ### Router Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,8 +379,10 @@ class Router(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Router Encrypted Interconnect
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -394,20 +398,21 @@ class Router(pulumi.CustomResource):
                 asn=64514,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Router can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
@@ -462,8 +467,10 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+
         ### Router Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -488,8 +495,10 @@ class Router(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Compute Router Encrypted Interconnect
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,20 +514,21 @@ class Router(pulumi.CustomResource):
                 asn=64514,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Router can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
+        * `projects/{{project}}/regions/{{region}}/routers/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Router can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}

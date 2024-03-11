@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  *     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,8 +66,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * To create a project under a specific folder
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,14 +108,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Projects can be imported using the `project_id`, e.g.
  * 
- *  * `{{project_id}}`
+ * * `{{project_id}}`
  * 
- *  When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}

@@ -20,6 +20,7 @@ import (
 //
 // Example picture stored within a folder.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupBucketObject(ctx *pulumi.Context, args *LookupBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupBucketObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBucketObjectResult

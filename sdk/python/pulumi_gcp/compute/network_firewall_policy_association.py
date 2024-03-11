@@ -199,7 +199,9 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
+
         ### Global
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -215,16 +217,17 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=network_firewall_policy.name,
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+        * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
 
-         * `{{project}}/{{firewall_policy}}/{{name}}`
+        * `{{project}}/{{firewall_policy}}/{{name}}`
 
-         When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
@@ -255,7 +258,9 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyAssociation resource
 
         ## Example Usage
+
         ### Global
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -271,16 +276,17 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=network_firewall_policy.name,
             project="my-project-name")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+        * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
 
-         * `{{project}}/{{firewall_policy}}/{{name}}`
+        * `{{project}}/{{firewall_policy}}/{{name}}`
 
-         When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}

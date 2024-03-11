@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,8 +43,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Adding An SSH Key
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,14 +71,15 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Project metadata can be imported using the project ID:
     /// 
-    ///  * `{{project_id}}`
+    /// * `{{project_id}}`
     /// 
-    ///  When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}

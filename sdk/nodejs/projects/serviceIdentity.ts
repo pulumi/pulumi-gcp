@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
  *
  * ## Example Usage
+ *
  * ### Service Identity Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,6 +38,7 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${hcSa.email}`,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -278,12 +278,14 @@ def get_database_instance(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_database_instance(name="test-sql-instance")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance.
@@ -333,12 +335,14 @@ def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_database_instance(name="test-sql-instance")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance.

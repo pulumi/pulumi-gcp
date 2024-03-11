@@ -579,8 +579,10 @@ class Intent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
+
         ### Dialogflow Intent Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -591,8 +593,10 @@ class Intent(pulumi.CustomResource):
             time_zone="America/New_York")
         basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
         ```
+        <!--End PulumiCodeChooser -->
         ### Dialogflow Intent Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,14 +635,15 @@ class Intent(pulumi.CustomResource):
                 "SLACK",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Intent can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/intent:Intent default {{name}}
@@ -696,8 +701,10 @@ class Intent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
+
         ### Dialogflow Intent Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,8 +715,10 @@ class Intent(pulumi.CustomResource):
             time_zone="America/New_York")
         basic_intent = gcp.diagflow.Intent("basic_intent", display_name="basic-intent")
         ```
+        <!--End PulumiCodeChooser -->
         ### Dialogflow Intent Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -748,14 +757,15 @@ class Intent(pulumi.CustomResource):
                 "SLACK",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Intent can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:diagflow/intent:Intent default {{name}}

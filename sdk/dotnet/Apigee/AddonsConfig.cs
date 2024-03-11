@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Apigee Addons Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,8 +49,10 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apigee Addons Full
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -141,16 +145,17 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// AddonsConfig can be imported using any of these accepted formats:
     /// 
-    ///  * `organizations/{{name}}`
+    /// * `organizations/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:apigee/addonsConfig:AddonsConfig default organizations/{{name}}

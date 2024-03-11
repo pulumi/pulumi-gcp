@@ -631,8 +631,10 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
+
         ### Bigquery Routine Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -645,8 +647,10 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Json
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -670,8 +674,10 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Tvf
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -700,8 +706,10 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -741,8 +749,10 @@ class Routine(pulumi.CustomResource):
                 runtime_version="2.1",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark Mainfile
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -767,8 +777,10 @@ class Routine(pulumi.CustomResource):
                 archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Spark Jar
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -796,8 +808,10 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Remote Function
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -822,18 +836,19 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Routine can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
+        * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
 
-         * `{{project}}/{{dataset_id}}/{{routine_id}}`
+        * `{{project}}/{{dataset_id}}/{{routine_id}}`
 
-         * `{{dataset_id}}/{{routine_id}}`
+        * `{{dataset_id}}/{{routine_id}}`
 
-         When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}
@@ -903,8 +918,10 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
+
         ### Bigquery Routine Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -917,8 +934,10 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Json
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -942,8 +961,10 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Tvf
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -972,8 +993,10 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1013,8 +1036,10 @@ class Routine(pulumi.CustomResource):
                 runtime_version="2.1",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark Mainfile
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1039,8 +1064,10 @@ class Routine(pulumi.CustomResource):
                 archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Spark Jar
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1068,8 +1095,10 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Remote Function
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1094,18 +1123,19 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Routine can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
+        * `projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}`
 
-         * `{{project}}/{{dataset_id}}/{{routine_id}}`
+        * `{{project}}/{{dataset_id}}/{{routine_id}}`
 
-         * `{{dataset_id}}/{{routine_id}}`
+        * `{{dataset_id}}/{{routine_id}}`
 
-         When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Routine can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}

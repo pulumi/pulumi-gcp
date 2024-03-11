@@ -27,6 +27,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,6 +51,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProjectService(ctx *pulumi.Context, args *GetProjectServiceArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectServiceResult

@@ -256,6 +256,7 @@ class TunnelIamBinding(pulumi.CustomResource):
 
         ## google\\_iap\\_tunnel\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -268,9 +269,11 @@ class TunnelIamBinding(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -288,8 +291,10 @@ class TunnelIamBinding(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_tunnel\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -299,9 +304,11 @@ class TunnelIamBinding(pulumi.CustomResource):
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -316,8 +323,10 @@ class TunnelIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_tunnel\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,9 +336,11 @@ class TunnelIamBinding(pulumi.CustomResource):
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,40 +355,41 @@ class TunnelIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/iap_tunnel
+        * projects/{{project}}/iap_tunnel
 
-         * {{project}}
+        * {{project}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member.
+        Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor projects/{{project}}/iap_tunnel
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -426,6 +438,7 @@ class TunnelIamBinding(pulumi.CustomResource):
 
         ## google\\_iap\\_tunnel\\_iam\\_policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -438,9 +451,11 @@ class TunnelIamBinding(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -458,8 +473,10 @@ class TunnelIamBinding(pulumi.CustomResource):
             project=project_service["project"],
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_tunnel\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -469,9 +486,11 @@ class TunnelIamBinding(pulumi.CustomResource):
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -486,8 +505,10 @@ class TunnelIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ## google\\_iap\\_tunnel\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -497,9 +518,11 @@ class TunnelIamBinding(pulumi.CustomResource):
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,40 +537,41 @@ class TunnelIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
 
-         * projects/{{project}}/iap_tunnel
+        * projects/{{project}}/iap_tunnel
 
-         * {{project}}
+        * {{project}}
 
-         Any variables not passed in the import command will be taken from the provider configuration.
+        Any variables not passed in the import command will be taken from the provider configuration.
 
-         Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member.
+        Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member.
 
-         IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+        IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
         ```
 
-         IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+        IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
         ```
 
-         IAM policy imports use the identifier of the resource in question, e.g.
+        IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
         $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor projects/{{project}}/iap_tunnel
         ```
 
-         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param TunnelIamBindingArgs args: The arguments to use to populate this resource's properties.

@@ -316,8 +316,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+
         ### Storage Default Object Access Control Public
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -330,14 +332,15 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DefaultObjectAccessControl can be imported using any of these accepted formats:
 
-         * `{{bucket}}/{{entity}}`
+        * `{{bucket}}/{{entity}}`
 
-         When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
@@ -390,8 +393,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+
         ### Storage Default Object Access Control Public
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -404,14 +409,15 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             role="READER",
             entity="allUsers")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         DefaultObjectAccessControl can be imported using any of these accepted formats:
 
-         * `{{bucket}}/{{entity}}`
+        * `{{bucket}}/{{entity}}`
 
-         When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}

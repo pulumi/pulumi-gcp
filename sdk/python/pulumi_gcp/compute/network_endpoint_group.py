@@ -439,8 +439,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+
         ### Network Endpoint Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -460,8 +462,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Endpoint Group Non Gcp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -478,20 +482,21 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             port=neg.default_port,
             ip_address="127.0.0.1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkEndpointGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
@@ -571,8 +576,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+
         ### Network Endpoint Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -592,8 +599,10 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             default_port=90,
             zone="us-central1-a")
         ```
+        <!--End PulumiCodeChooser -->
         ### Network Endpoint Group Non Gcp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -610,20 +619,21 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             port=neg.default_port,
             ip_address="127.0.0.1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         NetworkEndpointGroup can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}

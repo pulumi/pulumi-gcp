@@ -415,8 +415,10 @@ class TargetInstance(pulumi.CustomResource):
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
         ## Example Usage
+
         ### Target Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -439,8 +441,10 @@ class TargetInstance(pulumi.CustomResource):
             name="target",
             instance=target_vm.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Target Instance Custom Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,8 +469,10 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
+        <!--End PulumiCodeChooser -->
         ### Target Instance With Security Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,20 +528,21 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm.id,
             security_policy=regionsecuritypolicy.self_link)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TargetInstance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
@@ -603,8 +610,10 @@ class TargetInstance(pulumi.CustomResource):
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
         ## Example Usage
+
         ### Target Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -627,8 +636,10 @@ class TargetInstance(pulumi.CustomResource):
             name="target",
             instance=target_vm.id)
         ```
+        <!--End PulumiCodeChooser -->
         ### Target Instance Custom Network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -653,8 +664,10 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
+        <!--End PulumiCodeChooser -->
         ### Target Instance With Security Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,20 +723,21 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm.id,
             security_policy=regionsecuritypolicy.self_link)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         TargetInstance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
+        * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
 
-         * `{{project}}/{{zone}}/{{name}}`
+        * `{{project}}/{{zone}}/{{name}}`
 
-         * `{{zone}}/{{name}}`
+        * `{{zone}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}

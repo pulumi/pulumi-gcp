@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupRunResult> {
 
@@ -86,6 +88,7 @@ export interface GetBackupRunResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -95,6 +98,7 @@ export interface GetBackupRunResult {
  *     mostRecent: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBackupRunOutput(args: GetBackupRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupRunResult> {
     return pulumi.output(args).apply((a: any) => getBackupRun(a, opts))

@@ -13,7 +13,9 @@ namespace Pulumi.Gcp.DataPlex
     /// The Dataplex Asset resource
     /// 
     /// ## Example Usage
+    /// 
     /// ### Basic_asset
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,18 +81,19 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Asset can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
+    /// * `{{location}}/{{lake}}/{{dataplex_zone}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Asset can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:dataplex/asset:Asset default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}}

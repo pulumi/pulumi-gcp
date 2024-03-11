@@ -13,6 +13,7 @@ import (
 
 // Use this data source to get information about a Google IAM Role.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,6 +38,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRule(ctx *pulumi.Context, args *GetRuleArgs, opts ...pulumi.InvokeOption) (*GetRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRuleResult

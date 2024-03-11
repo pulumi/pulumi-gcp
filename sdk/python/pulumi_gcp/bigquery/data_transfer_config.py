@@ -653,8 +653,10 @@ class DataTransferConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 
         ## Example Usage
+
         ### Bigquerydatatransfer Config Scheduled Query
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -681,14 +683,15 @@ class DataTransferConfig(pulumi.CustomResource):
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Config can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
@@ -759,8 +762,10 @@ class DataTransferConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 
         ## Example Usage
+
         ### Bigquerydatatransfer Config Scheduled Query
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -787,14 +792,15 @@ class DataTransferConfig(pulumi.CustomResource):
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Config can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}

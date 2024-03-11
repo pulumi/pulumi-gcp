@@ -19,11 +19,11 @@ namespace Pulumi.Gcp.Logging
         /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders/getSettings)
         /// * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Logging Folder Settings Basic
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +39,7 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFolderSettingsResult> InvokeAsync(GetFolderSettingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderSettingsResult>("gcp:logging/getFolderSettings:getFolderSettings", args ?? new GetFolderSettingsArgs(), options.WithDefaults());
@@ -53,11 +52,11 @@ namespace Pulumi.Gcp.Logging
         /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders/getSettings)
         /// * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### Logging Folder Settings Basic
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +72,7 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFolderSettingsResult> Invoke(GetFolderSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderSettingsResult>("gcp:logging/getFolderSettings:getFolderSettings", args ?? new GetFolderSettingsInvokeArgs(), options.WithDefaults());

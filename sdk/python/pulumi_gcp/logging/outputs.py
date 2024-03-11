@@ -234,7 +234,7 @@ class BillingAccountSinkExclusion(dict):
                  description: Optional[str] = None,
                  disabled: Optional[bool] = None):
         """
-        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param str description: A description of this exclusion.
@@ -251,7 +251,7 @@ class BillingAccountSinkExclusion(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")
@@ -477,7 +477,7 @@ class FolderSinkExclusion(dict):
                  description: Optional[str] = None,
                  disabled: Optional[bool] = None):
         """
-        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param str description: A description of this exclusion.
@@ -494,7 +494,7 @@ class FolderSinkExclusion(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")
@@ -1149,7 +1149,7 @@ class OrganizationSinkExclusion(dict):
                  description: Optional[str] = None,
                  disabled: Optional[bool] = None):
         """
-        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param str description: A description of this exclusion.
@@ -1166,7 +1166,7 @@ class OrganizationSinkExclusion(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")
@@ -1392,7 +1392,7 @@ class ProjectSinkExclusion(dict):
                  description: Optional[str] = None,
                  disabled: Optional[bool] = None):
         """
-        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param str filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param str description: A description of this exclusion.
@@ -1409,7 +1409,7 @@ class ProjectSinkExclusion(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")

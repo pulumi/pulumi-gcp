@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.Netapp
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Netapp Volume Replication Create
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,18 +80,19 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// VolumeReplication can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{volume_name}}/{{name}}`
+    /// * `{{location}}/{{volume_name}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}

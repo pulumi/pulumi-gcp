@@ -353,8 +353,10 @@ class Endpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
 
         ## Example Usage
+
         ### Cloudids Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,18 +378,19 @@ class Endpoint(pulumi.CustomResource):
             network=default.id,
             severity="INFORMATIONAL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
@@ -430,8 +433,10 @@ class Endpoint(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/intrusion-detection-system/docs/configuring-ids)
 
         ## Example Usage
+
         ### Cloudids Endpoint
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,18 +458,19 @@ class Endpoint(pulumi.CustomResource):
             network=default.id,
             severity="INFORMATIONAL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoint can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}

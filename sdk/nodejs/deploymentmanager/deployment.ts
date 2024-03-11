@@ -22,8 +22,10 @@ import * as utilities from "../utilities";
  * `preview=false`).
  *
  * ## Example Usage
+ *
  * ### Deployment Manager Deployment Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,18 +46,18 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * <!--End PulumiCodeChooser -->
  * ## Import
  *
  * Deployment can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/deployments/{{name}}`
+ * * `projects/{{project}}/deployments/{{name}}`
  *
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}

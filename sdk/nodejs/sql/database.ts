@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
  * Google's cloud.
  *
  * ## Example Usage
+ *
  * ### Sql Database Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,8 +32,10 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Sql Database Deletion Policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -52,22 +56,23 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "ABANDON",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Database can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
+ * * `projects/{{project}}/instances/{{instance}}/databases/{{name}}`
  *
- *  * `instances/{{instance}}/databases/{{name}}`
+ * * `instances/{{instance}}/databases/{{name}}`
  *
- *  * `{{project}}/{{instance}}/{{name}}`
+ * * `{{project}}/{{instance}}/{{name}}`
  *
- *  * `{{instance}}/{{name}}`
+ * * `{{instance}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}

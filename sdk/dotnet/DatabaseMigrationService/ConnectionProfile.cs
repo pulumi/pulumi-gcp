@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     * [Database Migration](https://cloud.google.com/database-migration/docs/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Database Migration Service Connection Profile Cloudsql
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -120,8 +122,10 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Database Migration Service Connection Profile Postgres
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -181,8 +185,10 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Database Migration Service Connection Profile Oracle
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -213,8 +219,10 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Database Migration Service Connection Profile Alloydb
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -292,18 +300,19 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ConnectionProfile can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
+    /// * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{connection_profile_id}}`
+    /// * `{{project}}/{{location}}/{{connection_profile_id}}`
     /// 
-    ///  * `{{location}}/{{connection_profile_id}}`
+    /// * `{{location}}/{{connection_profile_id}}`
     /// 
-    ///  When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:databasemigrationservice/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}

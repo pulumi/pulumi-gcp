@@ -22,8 +22,10 @@ import (
 //   - [Official Documentation](https://firebase.google.com/docs/app-check)
 //
 // ## Example Usage
+//
 // ### Firebase App Check Play Integrity Config Minimal
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,8 +73,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Firebase App Check Play Integrity Config Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,18 +125,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // PlayIntegrityConfig can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/apps/{{app_id}}/playIntegrityConfig`
+// * `projects/{{project}}/apps/{{app_id}}/playIntegrityConfig`
 //
-//   - `{{project}}/{{app_id}}`
+// * `{{project}}/{{app_id}}`
 //
-//   - `{{app_id}}`
+// * `{{app_id}}`
 //
-//     When using the `pulumi import` command, PlayIntegrityConfig can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, PlayIntegrityConfig can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default projects/{{project}}/apps/{{app_id}}/playIntegrityConfig

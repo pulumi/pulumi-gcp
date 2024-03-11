@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Tpu V2 Vm Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,8 +46,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Tpu V2 Vm Full
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,20 +165,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Vm can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+// * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
 //
-//   - `{{project}}/{{zone}}/{{name}}`
+// * `{{project}}/{{zone}}/{{name}}`
 //
-//   - `{{zone}}/{{name}}`
+// * `{{zone}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}

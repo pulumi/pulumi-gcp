@@ -13,8 +13,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Binding a DNS name to the ephemeral IP of a new instance:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,8 +81,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Adding an A record
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,8 +126,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Adding an MX record
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -163,10 +171,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Adding an SPF record
 //
 // Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -207,10 +218,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Adding a CNAME record
 //
 //	The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -251,9 +265,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Setting Routing Policy instead of using rrdatas
 // ### Geolocation
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -298,8 +315,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Primary-Backup
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -395,18 +415,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // DNS record sets can be imported using either of these accepted formats:
 //
-//   - `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
+// * `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
 //
-//   - `{{project}}/{{zone}}/{{name}}/{{type}}`
+// * `{{project}}/{{zone}}/{{name}}/{{type}}`
 //
-//   - `{{zone}}/{{name}}/{{type}}`
+// * `{{zone}}/{{name}}/{{type}}`
 //
-//     When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
@@ -420,7 +441,7 @@ import (
 // $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
 // ```
 //
-//	Note: The record name must include the trailing dot at the end.
+// Note: The record name must include the trailing dot at the end.
 type RecordSet struct {
 	pulumi.CustomResourceState
 

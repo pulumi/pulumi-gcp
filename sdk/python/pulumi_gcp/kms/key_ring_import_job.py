@@ -303,9 +303,9 @@ class KeyRingImportJob(pulumi.CustomResource):
 
         KeyRingImportJob can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, KeyRingImportJob can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, KeyRingImportJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
@@ -353,9 +353,9 @@ class KeyRingImportJob(pulumi.CustomResource):
 
         KeyRingImportJob can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, KeyRingImportJob can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, KeyRingImportJob can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}

@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Healthcare Hl7 V2 Store Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,8 +63,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Hl7 V2 Store Parser Config
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -169,8 +173,10 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Hl7 V2 Store Unschematized
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -199,16 +205,17 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Hl7V2Store can be imported using any of these accepted formats:
     /// 
-    ///  * `{{dataset}}/hl7V2Stores/{{name}}`
+    /// * `{{dataset}}/hl7V2Stores/{{name}}`
     /// 
-    ///  * `{{dataset}}/{{name}}`
+    /// * `{{dataset}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Hl7V2Store can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Hl7V2Store can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}

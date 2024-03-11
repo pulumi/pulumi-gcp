@@ -3367,10 +3367,10 @@ type GetBackendServiceBackend struct {
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
 	//
-	// Default value is 1, which means the group will serve up to 100%
-	// of its configured capacity (depending on balancingMode). A
+	// Default value is 1, which means the group will serve up to 100%!
+	// (MISSING)of its configured capacity (depending on balancingMode). A
 	// setting of 0 means the group is completely drained, offering
-	// 0% of its available Capacity. Valid range is [0.0,1.0].
+	// 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
 	CapacityScaler float64 `pulumi:"capacityScaler"`
 	// Textual description for the Backend Service.
 	Description string `pulumi:"description"`
@@ -3461,10 +3461,10 @@ type GetBackendServiceBackendArgs struct {
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
 	//
-	// Default value is 1, which means the group will serve up to 100%
-	// of its configured capacity (depending on balancingMode). A
+	// Default value is 1, which means the group will serve up to 100%!
+	// (MISSING)of its configured capacity (depending on balancingMode). A
 	// setting of 0 means the group is completely drained, offering
-	// 0% of its available Capacity. Valid range is [0.0,1.0].
+	// 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
 	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
 	// Textual description for the Backend Service.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -3597,10 +3597,10 @@ func (o GetBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
 // A multiplier applied to the group's maximum servicing capacity
 // (based on UTILIZATION, RATE or CONNECTION).
 //
-// Default value is 1, which means the group will serve up to 100%
-// of its configured capacity (depending on balancingMode). A
+// Default value is 1, which means the group will serve up to 100%!
+// (MISSING)of its configured capacity (depending on balancingMode). A
 // setting of 0 means the group is completely drained, offering
-// 0% of its available Capacity. Valid range is [0.0,1.0].
+// 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
 func (o GetBackendServiceBackendOutput) CapacityScaler() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceBackend) float64 { return v.CapacityScaler }).(pulumi.Float64Output)
 }
@@ -5605,7 +5605,8 @@ type GetBackendServiceOutlierDetection struct {
 	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
 	Intervals []GetBackendServiceOutlierDetectionInterval `pulumi:"intervals"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
-	// that can be ejected. Defaults to 10%.
+	// that can be ejected. Defaults to 10%!
+	// (MISSING)
 	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
 	// The number of hosts in a cluster that must have enough request volume to detect
 	// success rate outliers. If the number of hosts is less than this setting, outlier
@@ -5667,7 +5668,8 @@ type GetBackendServiceOutlierDetectionArgs struct {
 	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
 	Intervals GetBackendServiceOutlierDetectionIntervalArrayInput `pulumi:"intervals"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
-	// that can be ejected. Defaults to 10%.
+	// that can be ejected. Defaults to 10%!
+	// (MISSING)
 	MaxEjectionPercent pulumi.IntInput `pulumi:"maxEjectionPercent"`
 	// The number of hosts in a cluster that must have enough request volume to detect
 	// success rate outliers. If the number of hosts is less than this setting, outlier
@@ -5793,7 +5795,8 @@ func (o GetBackendServiceOutlierDetectionOutput) Intervals() GetBackendServiceOu
 }
 
 // Maximum percentage of hosts in the load balancing pool for the backend service
-// that can be ejected. Defaults to 10%.
+// that can be ejected. Defaults to 10%!
+// (MISSING)
 func (o GetBackendServiceOutlierDetectionOutput) MaxEjectionPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
 }

@@ -14,8 +14,10 @@ namespace Pulumi.Gcp.Compute
     /// information, see Creating VLAN Attachments.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Interconnect Attachment Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,8 +53,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Compute Interconnect Attachment Ipsec Encryption
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,20 +107,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// InterconnectAttachment can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
+    /// * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
     /// 
-    ///  * `{{project}}/{{region}}/{{name}}`
+    /// * `{{project}}/{{region}}/{{name}}`
     /// 
-    ///  * `{{region}}/{{name}}`
+    /// * `{{region}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}

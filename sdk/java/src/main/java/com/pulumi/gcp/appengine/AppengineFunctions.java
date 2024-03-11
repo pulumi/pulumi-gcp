@@ -18,6 +18,8 @@ public final class AppengineFunctions {
      * Use this data source to retrieve the default App Engine service account for the specified project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -45,6 +47,7 @@ public final class AppengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount() {
@@ -54,6 +57,8 @@ public final class AppengineFunctions {
      * Use this data source to retrieve the default App Engine service account for the specified project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -81,6 +86,7 @@ public final class AppengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain() {
@@ -90,6 +96,8 @@ public final class AppengineFunctions {
      * Use this data source to retrieve the default App Engine service account for the specified project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +125,7 @@ public final class AppengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount(GetDefaultServiceAccountArgs args) {
@@ -126,6 +135,8 @@ public final class AppengineFunctions {
      * Use this data source to retrieve the default App Engine service account for the specified project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -153,6 +164,7 @@ public final class AppengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain(GetDefaultServiceAccountPlainArgs args) {
@@ -162,6 +174,8 @@ public final class AppengineFunctions {
      * Use this data source to retrieve the default App Engine service account for the specified project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -189,6 +203,7 @@ public final class AppengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount(GetDefaultServiceAccountArgs args, InvokeOptions options) {
@@ -198,6 +213,8 @@ public final class AppengineFunctions {
      * Use this data source to retrieve the default App Engine service account for the specified project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -225,6 +242,7 @@ public final class AppengineFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain(GetDefaultServiceAccountPlainArgs args, InvokeOptions options) {

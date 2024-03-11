@@ -355,8 +355,10 @@ class AiDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+
         ### Vertex Ai Dataset
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -369,6 +371,7 @@ class AiDataset(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -407,8 +410,10 @@ class AiDataset(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
+
         ### Vertex Ai Dataset
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -421,6 +426,7 @@ class AiDataset(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

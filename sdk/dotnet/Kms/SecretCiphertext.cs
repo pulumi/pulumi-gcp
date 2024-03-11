@@ -24,8 +24,10 @@ namespace Pulumi.Gcp.Kms
     ///     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Kms Secret Ciphertext Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -84,6 +86,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

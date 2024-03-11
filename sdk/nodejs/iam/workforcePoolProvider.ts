@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  * billing/quota project. The account team notifies you when the project is granted access.
  *
  * ## Example Usage
+ *
  * ### Iam Workforce Pool Provider Saml Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,8 +44,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Provider Saml Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -69,8 +73,10 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Provider Oidc Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -102,8 +108,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Iam Workforce Pool Provider Oidc Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -143,16 +151,17 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * WorkforcePoolProvider can be imported using any of these accepted formats:
  *
- *  * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
+ * * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}`
  *
- *  * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
+ * * `{{location}}/{{workforce_pool_id}}/{{provider_id}}`
  *
- *  When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, WorkforcePoolProvider can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:iam/workforcePoolProvider:WorkforcePoolProvider default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}
@@ -236,8 +245,6 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      * For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      * on a Google token:
-     * An object containing a list of `"key": value` pairs.
-     * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -402,8 +409,6 @@ export interface WorkforcePoolProviderState {
      * For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      * For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      * on a Google token:
-     * An object containing a list of `"key": value` pairs.
-     * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -515,8 +520,6 @@ export interface WorkforcePoolProviderArgs {
      * For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      * For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      * on a Google token:
-     * An object containing a list of `"key": value` pairs.
-     * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

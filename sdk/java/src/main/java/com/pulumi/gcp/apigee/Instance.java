@@ -25,7 +25,10 @@ import javax.annotation.Nullable;
  *     * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
  * 
  * ## Example Usage
+ * 
  * ### Apigee Instance Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,7 +94,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Instance Cidr Range
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -158,7 +164,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Instance Ip Range
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -225,7 +234,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Apigee Instance Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -326,16 +338,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Instance can be imported using any of these accepted formats:
  * 
- *  * `{{org_id}}/instances/{{name}}`
+ * * `{{org_id}}/instances/{{name}}`
  * 
- *  * `{{org_id}}/{{name}}`
+ * * `{{org_id}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:apigee/instance:Instance default {{org_id}}/instances/{{name}}

@@ -27,7 +27,10 @@ import javax.annotation.Nullable;
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  * 
  * ## Example Usage
+ * 
  * ### Bigquery Reservation Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,18 +68,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Reservation can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/reservations/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/reservations/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:bigquery/reservation:Reservation default projects/{{project}}/locations/{{location}}/reservations/{{name}}

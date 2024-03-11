@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? Fixed;
         /// <summary>
-        /// Specifies a percentage of instances between 0 to 100%, inclusive.
-        /// For example, specify 80 for 80%.
+        /// Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
+        /// For example, specify 80 for 80%!
+        /// (MISSING)
         /// </summary>
         public readonly int? Percent;
 

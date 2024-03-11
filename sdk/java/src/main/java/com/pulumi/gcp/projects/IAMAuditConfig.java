@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  *    to avoid locking yourself out, and it should generally only be used with projects
  *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,8 +79,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -122,8 +127,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_project\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -154,8 +162,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -192,8 +203,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_project\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -224,8 +238,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -262,8 +279,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## google\_project\_iam\_audit\_config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -302,28 +322,29 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ### Importing Audit Configs
  * 
- *  An audit config can be imported into a `google_project_iam_audit_config` resource using the resource&#39;s `project_id` and the `service`, e.g:
+ * An audit config can be imported into a `google_project_iam_audit_config` resource using the resource&#39;s `project_id` and the `service`, e.g:
  * 
- *  * `&#34;{{project_id}} foo.googleapis.com&#34;`
+ * * `&#34;{{project_id}} foo.googleapis.com&#34;`
  * 
- *  An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+ * An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
  * 
- *  tf
+ * tf
  * 
- *  import {
+ * import {
  * 
- *  id = &#34;{{project_id}} foo.googleapis.com&#34;
+ *   id = &#34;{{project_id}} foo.googleapis.com&#34;
  * 
- *  to = google_project_iam_audit_config.default
+ *   to = google_project_iam_audit_config.default
  * 
- *  }
+ * }
  * 
- *  The `pulumi import` command can also be used:
+ * The `pulumi import` command can also be used:
  * 
  * ```sh
  * $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig default &#34;{{project_id}} foo.googleapis.com&#34;

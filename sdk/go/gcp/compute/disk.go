@@ -34,8 +34,10 @@ import (
 //   - [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 //
 // ## Example Usage
+//
 // ### Disk Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Disk Async
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,8 +110,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Disk Features
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -151,20 +157,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Disk can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+// * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
 //
-//   - `{{project}}/{{zone}}/{{name}}`
+// * `{{project}}/{{zone}}/{{name}}`
 //
-//   - `{{zone}}/{{name}}`
+// * `{{zone}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}

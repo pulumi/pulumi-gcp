@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
  * 
  * &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
- * default &#39;root&#39;@&#39;%&#39; user with no password. This user will be deleted by the provider on
+ * default &#39;root&#39;@&#39;%!&#39;(MISSING) user with no password. This user will be deleted by the provider on
  * instance creation. You should use `gcp.sql.User` to define a custom user with
  * a restricted host and strong password.
  * 
@@ -36,7 +36,10 @@ import javax.annotation.Nullable;
  * It is recommended to not set this field (or set it to true) until you&#39;re ready to destroy the instance and its databases.
  * 
  * ## Example Usage
+ * 
  * ### SQL Second Generation Instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,8 +74,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Private IP Instance
  * &gt; **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -143,7 +150,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### ENTERPRISE_PLUS Instance with data_cache_config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -182,7 +193,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloud SQL Instance with PSC connectivity
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -230,18 +245,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Database instances can be imported using one of any of these accepted formats:
  * 
- *  * `projects/{{project}}/instances/{{name}}`
+ * * `projects/{{project}}/instances/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
@@ -255,11 +271,11 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
  * ```
  * 
- *  config and set on the server.
+ * config and set on the server.
  * 
- *  When importing, double-check that your config has all the fields set that you expect- just seeing
+ * When importing, double-check that your config has all the fields set that you expect- just seeing
  * 
- *  no diff isn&#39;t sufficient to know that your config could reproduce the imported resource.
+ * no diff isn&#39;t sufficient to know that your config could reproduce the imported resource.
  * 
  */
 @ResourceType(type="gcp:sql/databaseInstance:DatabaseInstance")

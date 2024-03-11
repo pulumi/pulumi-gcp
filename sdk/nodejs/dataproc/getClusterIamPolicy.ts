@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterIamPolicy(args: GetClusterIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIamPolicyResult> {
 
@@ -66,6 +68,7 @@ export interface GetClusterIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,6 +78,7 @@ export interface GetClusterIamPolicyResult {
  *     region: "us-central1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterIamPolicyOutput(args: GetClusterIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getClusterIamPolicy(a, opts))

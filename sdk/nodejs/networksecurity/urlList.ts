@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  *     * Use UrlLists
  *
  * ## Example Usage
+ *
  * ### Network Security Url Lists Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,8 +28,10 @@ import * as utilities from "../utilities";
  *     values: ["www.example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Network Security Url Lists Advanced
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,18 +47,19 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * UrlLists can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:networksecurity/urlList:UrlList default projects/{{project}}/locations/{{location}}/urlLists/{{name}}

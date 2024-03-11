@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     parent: "project/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSubnet(args: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
 
@@ -79,6 +81,7 @@ export interface GetSubnetResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,6 +91,7 @@ export interface GetSubnetResult {
  *     parent: "project/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSubnetOutput(args: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
     return pulumi.output(args).apply((a: any) => getSubnet(a, opts))

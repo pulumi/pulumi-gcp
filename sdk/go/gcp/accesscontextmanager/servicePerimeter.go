@@ -35,8 +35,10 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+//
 // ### Access Context Manager Service Perimeter Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,8 +113,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Access Context Manager Service Perimeter Secure Data Exchange
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -281,8 +285,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Access Context Manager Service Perimeter Dry-Run
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -332,14 +338,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ServicePerimeter can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}

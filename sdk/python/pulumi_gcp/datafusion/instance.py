@@ -977,8 +977,10 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
+
         ### Data Fusion Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -988,8 +990,10 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1024,8 +1028,10 @@ class Instance(pulumi.CustomResource):
                 state="ENABLED",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1049,8 +1055,10 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Enterprise
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1061,8 +1069,10 @@ class Instance(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Event
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1077,8 +1087,10 @@ class Instance(pulumi.CustomResource):
                 topic=event_topic.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1089,20 +1101,21 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
@@ -1184,8 +1197,10 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
+
         ### Data Fusion Instance Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1195,8 +1210,10 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1231,8 +1248,10 @@ class Instance(pulumi.CustomResource):
                 state="ENABLED",
             )])
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1256,8 +1275,10 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Enterprise
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1268,8 +1289,10 @@ class Instance(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Event
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1284,8 +1307,10 @@ class Instance(pulumi.CustomResource):
                 topic=event_topic.id,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Data Fusion Instance Zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1296,20 +1321,21 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Instance can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
 
-         * `{{project}}/{{region}}/{{name}}`
+        * `{{project}}/{{region}}/{{name}}`
 
-         * `{{region}}/{{name}}`
+        * `{{region}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}

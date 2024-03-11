@@ -661,8 +661,10 @@ class HealthCheck(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
         ## Example Usage
+
         ### Health Check Tcp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -675,8 +677,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Tcp Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -696,8 +700,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Ssl
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,8 +716,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Ssl Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,8 +739,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,8 +755,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -767,8 +779,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Https
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -781,8 +795,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Https Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -803,8 +819,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http2
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -817,8 +835,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http2 Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -839,8 +859,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Grpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -853,8 +875,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Grpc Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -869,8 +893,10 @@ class HealthCheck(pulumi.CustomResource):
                 grpc_service_name="testservice",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check With Logging
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -886,18 +912,19 @@ class HealthCheck(pulumi.CustomResource):
                 enable=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HealthCheck can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/healthChecks/{{name}}`
+        * `projects/{{project}}/global/healthChecks/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}
@@ -981,8 +1008,10 @@ class HealthCheck(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
         ## Example Usage
+
         ### Health Check Tcp
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -995,8 +1024,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Tcp Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1016,8 +1047,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Ssl
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1030,8 +1063,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Ssl Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1051,8 +1086,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1065,8 +1102,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1087,8 +1126,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Https
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1101,8 +1142,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Https Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1123,8 +1166,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http2
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1137,8 +1182,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Http2 Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1159,8 +1206,10 @@ class HealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Grpc
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1173,8 +1222,10 @@ class HealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check Grpc Full
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1189,8 +1240,10 @@ class HealthCheck(pulumi.CustomResource):
                 grpc_service_name="testservice",
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Health Check With Logging
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1206,18 +1259,19 @@ class HealthCheck(pulumi.CustomResource):
                 enable=True,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         HealthCheck can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/global/healthChecks/{{name}}`
+        * `projects/{{project}}/global/healthChecks/{{name}}`
 
-         * `{{project}}/{{name}}`
+        * `{{project}}/{{name}}`
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}

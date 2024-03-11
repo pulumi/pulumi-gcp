@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Monitoring Monitored Project Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,16 +46,17 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// MonitoredProject can be imported using any of these accepted formats:
     /// 
-    ///  * `v1/locations/global/metricsScopes/{{name}}`
+    /// * `v1/locations/global/metricsScopes/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, MonitoredProject can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}

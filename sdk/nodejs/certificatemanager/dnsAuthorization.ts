@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  *
  * ## Example Usage
+ *
  * ### Certificate Manager Dns Authorization Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,18 +28,19 @@ import * as utilities from "../utilities";
  * export const recordTypeToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].type);
  * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * DnsAuthorization can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}`
  *
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  *
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  *
- *  When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/{{location}}/dnsAuthorizations/{{name}}

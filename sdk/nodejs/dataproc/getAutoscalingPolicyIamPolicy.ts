@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     policyId: basic.policyId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAutoscalingPolicyIamPolicy(args: GetAutoscalingPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalingPolicyIamPolicyResult> {
 
@@ -80,6 +82,7 @@ export interface GetAutoscalingPolicyIamPolicyResult {
  *
  * ## example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,6 +93,7 @@ export interface GetAutoscalingPolicyIamPolicyResult {
  *     policyId: basic.policyId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAutoscalingPolicyIamPolicy(a, opts))

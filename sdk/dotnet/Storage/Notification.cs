@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,14 +81,15 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Storage notifications can be imported using any of these accepted formats:
     /// 
-    ///  * `{{bucket_name}}/notificationConfigs/{{id}}`
+    /// * `{{bucket_name}}/notificationConfigs/{{id}}`
     /// 
-    ///  When using the `pulumi import` command, Storage notifications can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Storage notifications can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:storage/notification:Notification default {{bucket_name}}/notificationConfigs/{{id}}

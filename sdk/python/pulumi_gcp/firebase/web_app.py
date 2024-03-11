@@ -254,39 +254,10 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Web App Basic
 
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        basic_web_app = gcp.firebase.WebApp("basic",
-            project="my-project-name",
-            display_name="Display Name Basic")
-        basic = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default = gcp.storage.Bucket("default",
-            name="fb-webapp-",
-            location="US")
-        default_bucket_object = gcp.storage.BucketObject("default",
-            bucket=default.name,
-            name="firebase-config.json",
-            content=pulumi.Output.json_dumps({
-                "appId": basic_web_app.app_id,
-                "apiKey": basic.api_key,
-                "authDomain": basic.auth_domain,
-                "databaseURL": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"database_url\\",\\"\\")"),
-                "storageBucket": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"storage_bucket\\",\\"\\")"),
-                "messagingSenderId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"messaging_sender_id\\",\\"\\")"),
-                "measurementId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"measurement_id\\",\\"\\")"),
-            }))
-        ```
         ### Firebase Web App Custom Api Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -306,22 +277,23 @@ class WebApp(pulumi.CustomResource):
             api_key_id=web.uid,
             deletion_policy="DELETE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WebApp can be imported using any of these accepted formats:
 
-         * `{{project}} projects/{{project}}/webApps/{{app_id}}`
+        * `{{project}} projects/{{project}}/webApps/{{app_id}}`
 
-         * `projects/{{project}}/webApps/{{app_id}}`
+        * `projects/{{project}}/webApps/{{app_id}}`
 
-         * `{{project}}/{{project}}/{{app_id}}`
+        * `{{project}}/{{project}}/{{app_id}}`
 
-         * `webApps/{{app_id}}`
+        * `webApps/{{app_id}}`
 
-         * `{{app_id}}`
+        * `{{app_id}}`
 
-         When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}
@@ -373,39 +345,10 @@ class WebApp(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
-        ### Firebase Web App Basic
 
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        basic_web_app = gcp.firebase.WebApp("basic",
-            project="my-project-name",
-            display_name="Display Name Basic")
-        basic = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
-        default = gcp.storage.Bucket("default",
-            name="fb-webapp-",
-            location="US")
-        default_bucket_object = gcp.storage.BucketObject("default",
-            bucket=default.name,
-            name="firebase-config.json",
-            content=pulumi.Output.json_dumps({
-                "appId": basic_web_app.app_id,
-                "apiKey": basic.api_key,
-                "authDomain": basic.auth_domain,
-                "databaseURL": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"database_url\\",\\"\\")"),
-                "storageBucket": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"storage_bucket\\",\\"\\")"),
-                "messagingSenderId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"messaging_sender_id\\",\\"\\")"),
-                "measurementId": not_implemented("lookup(data.google_firebase_web_app_config.basic,\\"measurement_id\\",\\"\\")"),
-            }))
-        ```
         ### Firebase Web App Custom Api Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,22 +368,23 @@ class WebApp(pulumi.CustomResource):
             api_key_id=web.uid,
             deletion_policy="DELETE")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         WebApp can be imported using any of these accepted formats:
 
-         * `{{project}} projects/{{project}}/webApps/{{app_id}}`
+        * `{{project}} projects/{{project}}/webApps/{{app_id}}`
 
-         * `projects/{{project}}/webApps/{{app_id}}`
+        * `projects/{{project}}/webApps/{{app_id}}`
 
-         * `{{project}}/{{project}}/{{app_id}}`
+        * `{{project}}/{{project}}/{{app_id}}`
 
-         * `webApps/{{app_id}}`
+        * `webApps/{{app_id}}`
 
-         * `{{app_id}}`
+        * `{{app_id}}`
 
-         When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}

@@ -123,6 +123,7 @@ class ProjectMetadata(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -133,8 +134,11 @@ class ProjectMetadata(pulumi.CustomResource):
             "13": "42",
         })
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding An SSH Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -148,14 +152,15 @@ class ProjectMetadata(pulumi.CustomResource):
         \"\"\",
         })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project metadata can be imported using the project ID:
 
-         * `{{project_id}}`
+        * `{{project_id}}`
 
-         When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
@@ -188,6 +193,7 @@ class ProjectMetadata(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -198,8 +204,11 @@ class ProjectMetadata(pulumi.CustomResource):
             "13": "42",
         })
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Adding An SSH Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -213,14 +222,15 @@ class ProjectMetadata(pulumi.CustomResource):
         \"\"\",
         })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Project metadata can be imported using the project ID:
 
-         * `{{project_id}}`
+        * `{{project_id}}`
 
-         When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}

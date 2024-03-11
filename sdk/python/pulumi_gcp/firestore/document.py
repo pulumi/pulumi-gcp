@@ -299,8 +299,10 @@ class Document(pulumi.CustomResource):
         is allowed for the database parameter.
 
         ## Example Usage
+
         ### Firestore Document Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -326,8 +328,10 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Document Nested Document
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -365,14 +369,15 @@ class Document(pulumi.CustomResource):
             document_id="asecret",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Document can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/document:Document default {{name}}
@@ -418,8 +423,10 @@ class Document(pulumi.CustomResource):
         is allowed for the database parameter.
 
         ## Example Usage
+
         ### Firestore Document Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -445,8 +452,10 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Document Nested Document
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -484,14 +493,15 @@ class Document(pulumi.CustomResource):
             document_id="asecret",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Document can be imported using any of these accepted formats:
 
-         * `{{name}}`
+        * `{{name}}`
 
-         When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:firestore/document:Document default {{name}}

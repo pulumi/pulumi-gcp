@@ -214,8 +214,10 @@ class Dataset(pulumi.CustomResource):
             * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 
         ## Example Usage
+
         ### Healthcare Dataset Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -225,18 +227,19 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Dataset can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
@@ -279,8 +282,10 @@ class Dataset(pulumi.CustomResource):
             * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 
         ## Example Usage
+
         ### Healthcare Dataset Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -290,18 +295,19 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Dataset can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}

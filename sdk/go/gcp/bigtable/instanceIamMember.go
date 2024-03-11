@@ -24,6 +24,7 @@ import (
 //
 // ## google\_bigtable\_instance\_iam\_policy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,9 +64,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_bigtable\_instance\_iam\_binding
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,9 +96,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## google\_bigtable\_instance\_iam\_member
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,28 +126,29 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ### Importing IAM policies
 //
-//	IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
+// IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
 //
-//	* `"projects/{project}/instances/{instance}"`
+// * `"projects/{project}/instances/{instance}"`
 //
-//	An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 //
-//	tf
+// tf
 //
-//	import {
+// import {
 //
 //	id = "projects/{project}/instances/{instance}"
 //
 //	to = google_bigtable_instance_iam_policy.default
 //
-//	}
+// }
 //
-//	The `pulumi import` command can also be used:
+// The `pulumi import` command can also be used:
 //
 // ```sh
 // $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember default projects/{project}/instances/{instance}

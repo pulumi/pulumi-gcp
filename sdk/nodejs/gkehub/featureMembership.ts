@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The googleGkeHub is the Fleet API.
  *
  * ## Example Usage
+ *
  * ### Config Management
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,8 +52,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Config Management With OCI
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,8 +98,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Multi Cluster Service Discovery
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,8 +115,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Service Mesh
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -140,8 +150,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Config Management With Regional Membership
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -182,8 +195,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Policy Controller With Minimal Configuration
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -216,8 +232,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Policy Controller With Custom Configurations
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -261,18 +280,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * FeatureMembership can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
+ * * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
  *
- *  * `{{project}}/{{location}}/{{feature}}/{{membership}}`
+ * * `{{project}}/{{location}}/{{feature}}/{{membership}}`
  *
- *  * `{{location}}/{{feature}}/{{membership}}`
+ * * `{{location}}/{{feature}}/{{membership}}`
  *
- *  When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}

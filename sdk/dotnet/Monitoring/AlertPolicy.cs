@@ -21,8 +21,10 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Monitoring Alert Policy Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,8 +66,10 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Monitoring Alert Policy Evaluation Missing Data
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -108,8 +112,10 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Monitoring Alert Policy Forecast Options
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -155,8 +161,10 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Monitoring Alert Policy Promql Condition
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -192,14 +200,15 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// AlertPolicy can be imported using any of these accepted formats:
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

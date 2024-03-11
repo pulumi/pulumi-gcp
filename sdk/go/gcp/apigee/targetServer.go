@@ -21,8 +21,10 @@ import (
 //   - [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
 //
 // ## Example Usage
+//
 // ### Apigee Target Server Test Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,16 +132,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TargetServer can be imported using any of these accepted formats:
 //
-//   - `{{env_id}}/targetservers/{{name}}`
+// * `{{env_id}}/targetservers/{{name}}`
 //
-//   - `{{env_id}}/{{name}}`
+// * `{{env_id}}/{{name}}`
 //
-//     When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/targetservers/{{name}}

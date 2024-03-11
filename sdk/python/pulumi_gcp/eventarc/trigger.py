@@ -490,7 +490,9 @@ class Trigger(pulumi.CustomResource):
         The Eventarc Trigger resource
 
         ## Example Usage
+
         ### Basic
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -535,18 +537,19 @@ class Trigger(pulumi.CustomResource):
             })
         foo = gcp.pubsub.Topic("foo", name="topic")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Trigger can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}
@@ -586,7 +589,9 @@ class Trigger(pulumi.CustomResource):
         The Eventarc Trigger resource
 
         ## Example Usage
+
         ### Basic
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,18 +636,19 @@ class Trigger(pulumi.CustomResource):
             })
         foo = gcp.pubsub.Topic("foo", name="topic")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Trigger can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
+        * `projects/{{project}}/locations/{{location}}/triggers/{{name}}`
 
-         * `{{project}}/{{location}}/{{name}}`
+        * `{{project}}/{{location}}/{{name}}`
 
-         * `{{location}}/{{name}}`
+        * `{{location}}/{{name}}`
 
-         When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:eventarc/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{name}}

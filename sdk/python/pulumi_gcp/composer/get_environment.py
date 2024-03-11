@@ -129,6 +129,7 @@ def get_environment(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -137,6 +138,7 @@ def get_environment(name: Optional[str] = None,
     composer_env = gcp.composer.get_environment(name=test["name"])
     pulumi.export("debug", composer_env.configs)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the environment.
@@ -173,6 +175,7 @@ def get_environment_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -181,6 +184,7 @@ def get_environment_output(name: Optional[pulumi.Input[str]] = None,
     composer_env = gcp.composer.get_environment(name=test["name"])
     pulumi.export("debug", composer_env.configs)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the environment.

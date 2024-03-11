@@ -176,6 +176,7 @@ class IAMAuditConfig(pulumi.CustomResource):
            fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -188,9 +189,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -208,9 +211,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -220,9 +225,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -237,9 +244,11 @@ class IAMAuditConfig(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -249,9 +258,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,9 +277,11 @@ class IAMAuditConfig(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_audit\\_config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,28 +299,29 @@ class IAMAuditConfig(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing Audit Configs
 
-         An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g:
+        An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g:
 
-         * `"{{project_id}} foo.googleapis.com"`
+        * `"{{project_id}} foo.googleapis.com"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "{{project_id}} foo.googleapis.com"
+          id = "{{project_id}} foo.googleapis.com"
 
-         to = google_project_iam_audit_config.default
+          to = google_project_iam_audit_config.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig default "{{project_id}} foo.googleapis.com"
@@ -351,6 +365,7 @@ class IAMAuditConfig(pulumi.CustomResource):
            fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
            applying the change.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,9 +378,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,9 +400,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             project="your-project-id",
             policy_data=admin.policy_data)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_binding
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -395,9 +414,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -412,9 +433,11 @@ class IAMAuditConfig(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_member
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -424,9 +447,11 @@ class IAMAuditConfig(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,9 +466,11 @@ class IAMAuditConfig(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_audit\\_config
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,28 +488,29 @@ class IAMAuditConfig(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Importing Audit Configs
 
-         An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g:
+        An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g:
 
-         * `"{{project_id}} foo.googleapis.com"`
+        * `"{{project_id}} foo.googleapis.com"`
 
-         An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+        An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
 
-         tf
+        tf
 
-         import {
+        import {
 
-         id = "{{project_id}} foo.googleapis.com"
+          id = "{{project_id}} foo.googleapis.com"
 
-         to = google_project_iam_audit_config.default
+          to = google_project_iam_audit_config.default
 
-         }
+        }
 
-         The `pulumi import` command can also be used:
+        The `pulumi import` command can also be used:
 
         ```sh
         $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig default "{{project_id}} foo.googleapis.com"

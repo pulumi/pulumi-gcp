@@ -25,7 +25,9 @@ import javax.annotation.Nullable;
  * The NetworkConnectivity Spoke resource
  * 
  * ## Example Usage
+ * 
  * ### Linked_vpc_network
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -80,7 +82,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router_appliance
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -169,18 +173,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Spoke can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/spokes/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Spoke can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:networkconnectivity/spoke:Spoke default projects/{{project}}/locations/{{location}}/spokes/{{name}}

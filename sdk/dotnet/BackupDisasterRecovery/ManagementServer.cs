@@ -11,8 +11,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Backup Dr Management Server
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -62,18 +64,19 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ManagementServer can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default projects/{{project}}/locations/{{location}}/managementServers/{{name}}

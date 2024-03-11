@@ -6,8 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Firebasestorage Bucket Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,18 +24,19 @@ import * as utilities from "../utilities";
  *     bucketId: _default.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Bucket can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/buckets/{{bucket_id}}`
+ * * `projects/{{project}}/buckets/{{bucket_id}}`
  *
- *  * `{{project}}/{{bucket_id}}`
+ * * `{{project}}/{{bucket_id}}`
  *
- *  * `{{bucket_id}}`
+ * * `{{bucket_id}}`
  *
- *  When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}

@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.EssentialContacts
     ///     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Documentai Processor
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,18 +40,19 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Processor can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{location}}/processors/{{name}}`
+    /// * `projects/{{project}}/locations/{{location}}/processors/{{name}}`
     /// 
-    ///  * `{{project}}/{{location}}/{{name}}`
+    /// * `{{project}}/{{location}}/{{name}}`
     /// 
-    ///  * `{{location}}/{{name}}`
+    /// * `{{location}}/{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Processor can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Processor can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor default projects/{{project}}/locations/{{location}}/processors/{{name}}

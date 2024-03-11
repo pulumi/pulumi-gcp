@@ -22,8 +22,10 @@ import (
 //   - [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 //
 // ## Example Usage
+//
 // ### Bigquery Job Query
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,8 +82,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Job Query Table Reference
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -139,8 +143,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Job Load
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -201,8 +207,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Job Load Geojson
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -284,8 +292,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Job Load Parquet
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -373,8 +383,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Job Copy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -542,8 +554,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Bigquery Job Extract
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -629,24 +643,25 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Job can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
+// * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
 //
-//   - `projects/{{project}}/jobs/{{job_id}}`
+// * `projects/{{project}}/jobs/{{job_id}}`
 //
-//   - `{{project}}/{{job_id}}/{{location}}`
+// * `{{project}}/{{job_id}}/{{location}}`
 //
-//   - `{{job_id}}/{{location}}`
+// * `{{job_id}}/{{location}}`
 //
-//   - `{{project}}/{{job_id}}`
+// * `{{project}}/{{job_id}}`
 //
-//   - `{{job_id}}`
+// * `{{job_id}}`
 //
-//     When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}

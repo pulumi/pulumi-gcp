@@ -22,6 +22,8 @@ import java.util.concurrent.CompletableFuture;
 public final class RuntimeconfigFunctions {
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -50,6 +52,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigResult> getConfig(GetConfigArgs args) {
@@ -57,6 +60,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -85,6 +90,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigResult> getConfigPlain(GetConfigPlainArgs args) {
@@ -92,6 +98,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -120,6 +128,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConfigResult> getConfig(GetConfigArgs args, InvokeOptions options) {
@@ -127,6 +136,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -155,6 +166,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConfigResult> getConfigPlain(GetConfigPlainArgs args, InvokeOptions options) {
@@ -174,6 +186,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -203,6 +217,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVariableResult> getVariable(GetVariableArgs args) {
@@ -210,6 +225,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -239,6 +256,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVariableResult> getVariablePlain(GetVariablePlainArgs args) {
@@ -246,6 +264,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -275,6 +295,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVariableResult> getVariable(GetVariableArgs args, InvokeOptions options) {
@@ -282,6 +303,8 @@ public final class RuntimeconfigFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -311,6 +334,7 @@ public final class RuntimeconfigFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVariableResult> getVariablePlain(GetVariablePlainArgs args, InvokeOptions options) {

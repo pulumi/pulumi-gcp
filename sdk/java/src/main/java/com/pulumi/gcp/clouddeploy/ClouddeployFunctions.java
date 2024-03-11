@@ -21,6 +21,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for deliverypipeline
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -51,6 +53,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs args) {
@@ -60,6 +63,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for deliverypipeline
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyPlain(GetDeliveryPipelineIamPolicyPlainArgs args) {
@@ -99,6 +105,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for deliverypipeline
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs args, InvokeOptions options) {
@@ -138,6 +147,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for deliverypipeline
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +179,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyPlain(GetDeliveryPipelineIamPolicyPlainArgs args, InvokeOptions options) {
@@ -177,6 +189,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for target
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,6 +221,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTargetIamPolicyResult> getTargetIamPolicy(GetTargetIamPolicyArgs args) {
@@ -216,6 +231,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for target
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -246,6 +263,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTargetIamPolicyResult> getTargetIamPolicyPlain(GetTargetIamPolicyPlainArgs args) {
@@ -255,6 +273,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for target
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -285,6 +305,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTargetIamPolicyResult> getTargetIamPolicy(GetTargetIamPolicyArgs args, InvokeOptions options) {
@@ -294,6 +315,8 @@ public final class ClouddeployFunctions {
      * Retrieves the current IAM policy data for target
      * 
      * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -324,6 +347,7 @@ public final class ClouddeployFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTargetIamPolicyResult> getTargetIamPolicyPlain(GetTargetIamPolicyPlainArgs args, InvokeOptions options) {

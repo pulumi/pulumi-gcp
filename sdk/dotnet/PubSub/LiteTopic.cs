@@ -19,8 +19,10 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
     /// 
     /// ## Example Usage
+    /// 
     /// ### Pubsub Lite Topic Basic
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,20 +65,21 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Topic can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/locations/{{zone}}/topics/{{name}}`
+    /// * `projects/{{project}}/locations/{{zone}}/topics/{{name}}`
     /// 
-    ///  * `{{project}}/{{zone}}/{{name}}`
+    /// * `{{project}}/{{zone}}/{{name}}`
     /// 
-    ///  * `{{zone}}/{{name}}`
+    /// * `{{zone}}/{{name}}`
     /// 
-    ///  * `{{name}}`
+    /// * `{{name}}`
     /// 
-    ///  When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}

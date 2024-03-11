@@ -21,8 +21,10 @@ import * as utilities from "../utilities";
  * It is recommended to not set this field (or set it to true) until you're ready to destroy.
  *
  * ## Example Usage
+ *
  * ### Privateca Certificate Authority Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,8 +76,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Privateca Certificate Authority Subordinate
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -167,8 +171,10 @@ import * as utilities from "../utilities";
  *     type: "SUBORDINATE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Privateca Certificate Authority Byo Key
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -228,18 +234,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * CertificateAuthority can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
+ * * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
  *
- *  * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
+ * * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
  *
- *  * `{{location}}/{{pool}}/{{certificate_authority_id}}`
+ * * `{{location}}/{{pool}}/{{certificate_authority_id}}`
  *
- *  When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}

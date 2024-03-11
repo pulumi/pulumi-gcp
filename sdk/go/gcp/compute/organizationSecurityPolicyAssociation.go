@@ -21,8 +21,10 @@ import (
 //   - [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 //
 // ## Example Usage
+//
 // ### Organization Security Policy Association Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,14 +94,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats:
 //
-//   - `{{policy_id}}/association/{{name}}`
+// * `{{policy_id}}/association/{{name}}`
 //
-//     When using the `pulumi import` command, OrganizationSecurityPolicyAssociation can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, OrganizationSecurityPolicyAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}

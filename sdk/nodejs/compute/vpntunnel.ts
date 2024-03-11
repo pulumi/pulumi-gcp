@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
  *
  * ## Example Usage
+ *
  * ### Vpn Tunnel Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,20 +66,21 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * VpnTunnel can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
+ * * `projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}`
  *
- *  * `{{project}}/{{region}}/{{name}}`
+ * * `{{project}}/{{region}}/{{name}}`
  *
- *  * `{{region}}/{{name}}`
+ * * `{{region}}/{{name}}`
  *
- *  * `{{name}}`
+ * * `{{name}}`
  *
- *  When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, VpnTunnel can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}

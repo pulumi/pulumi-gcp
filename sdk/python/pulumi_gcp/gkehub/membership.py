@@ -393,8 +393,10 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+
         ### Gkehub Membership Regional
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -415,8 +417,10 @@ class Membership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -439,8 +443,10 @@ class Membership(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Issuer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -466,18 +472,19 @@ class Membership(pulumi.CustomResource):
                 issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Membership can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
+        * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
 
-         * `{{project}}/{{location}}/{{membership_id}}`
+        * `{{project}}/{{location}}/{{membership_id}}`
 
-         * `{{location}}/{{membership_id}}`
+        * `{{location}}/{{membership_id}}`
 
-         When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
@@ -531,8 +538,10 @@ class Membership(pulumi.CustomResource):
             * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
+
         ### Gkehub Membership Regional
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -553,8 +562,10 @@ class Membership(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -577,8 +588,10 @@ class Membership(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Issuer
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -604,18 +617,19 @@ class Membership(pulumi.CustomResource):
                 issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Membership can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
+        * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
 
-         * `{{project}}/{{location}}/{{membership_id}}`
+        * `{{project}}/{{location}}/{{membership_id}}`
 
-         * `{{location}}/{{membership_id}}`
+        * `{{location}}/{{membership_id}}`
 
-         When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}

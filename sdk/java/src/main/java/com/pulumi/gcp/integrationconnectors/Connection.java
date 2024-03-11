@@ -38,7 +38,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/integration-connectors/docs/createconnection)
  * 
  * ## Example Usage
+ * 
  * ### Integration Connectors Connection Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -84,7 +87,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Integration Connectors Connection Advanced
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -367,18 +373,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Connection can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
+ * * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
  * 
- *  * `{{project}}/{{location}}/{{name}}`
+ * * `{{project}}/{{location}}/{{name}}`
  * 
- *  * `{{location}}/{{name}}`
+ * * `{{location}}/{{name}}`
  * 
- *  When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}

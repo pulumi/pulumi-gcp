@@ -14,27 +14,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get a network within GCE from its name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_network = Gcp.Compute.GetNetwork.Invoke(new()
-        ///     {
-        ///         Name = "default-us-east1",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_network" "my-network" {
+        ///   name = "default-us-east1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
@@ -42,27 +28,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get a network within GCE from its name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var my_network = Gcp.Compute.GetNetwork.Invoke(new()
-        ///     {
-        ///         Name = "default-us-east1",
-        ///     });
-        /// 
-        /// });
+        /// ```tf
+        /// data "google_compute_network" "my-network" {
+        ///   name = "default-us-east1"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());

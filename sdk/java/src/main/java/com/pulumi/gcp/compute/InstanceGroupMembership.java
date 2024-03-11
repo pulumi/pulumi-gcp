@@ -35,7 +35,10 @@ import javax.annotation.Nullable;
  *     * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
  * 
  * ## Example Usage
+ * 
  * ### Instance Group Membership
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -95,20 +98,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * InstanceGroupMembership can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}`
+ * * `projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}`
  * 
- *  * `{{project}}/{{zone}}/{{instance_group}}/{{instance}}`
+ * * `{{project}}/{{zone}}/{{instance_group}}/{{instance}}`
  * 
- *  * `{{zone}}/{{instance_group}}/{{instance}}`
+ * * `{{zone}}/{{instance_group}}/{{instance}}`
  * 
- *  * `{{instance_group}}/{{instance}}`
+ * * `{{instance_group}}/{{instance}}`
  * 
- *  When using the `pulumi import` command, InstanceGroupMembership can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, InstanceGroupMembership can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/instanceGroupMembership:InstanceGroupMembership default projects/{{project}}/zones/{{zone}}/instanceGroups/{{instance_group}}/{{instance}}

@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/addPeering)
  * 
  * ## Example Usage
+ * 
  * ### Vmware Engine Network Peering Ven
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,7 +77,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Vmware Engine Network Peering Standard
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -121,18 +127,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * NetworkPeering can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
+ * * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
  * 
- *  * `{{project}}/{{name}}`
+ * * `{{project}}/{{name}}`
  * 
- *  * `{{name}}`
+ * * `{{name}}`
  * 
- *  When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default projects/{{project}}/locations/global/networkPeerings/{{name}}

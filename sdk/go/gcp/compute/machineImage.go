@@ -23,8 +23,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 //
 // ## Example Usage
+//
 // ### Machine Image Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,8 +68,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Compute Machine Image Kms
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,18 +131,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // MachineImage can be imported using any of these accepted formats:
 //
-//   - `projects/{{project}}/global/machineImages/{{name}}`
+// * `projects/{{project}}/global/machineImages/{{name}}`
 //
-//   - `{{project}}/{{name}}`
+// * `{{project}}/{{name}}`
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}

@@ -31,7 +31,10 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
  * 
  * ## Example Usage
+ * 
  * ### Os Config Guest Policies Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -100,7 +103,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Guest Policies Packages
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -182,7 +188,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Os Config Guest Policies Recipes
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -235,18 +244,19 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * GuestPolicies can be imported using any of these accepted formats:
  * 
- *  * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
+ * * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
  * 
- *  * `{{project}}/{{guest_policy_id}}`
+ * * `{{project}}/{{guest_policy_id}}`
  * 
- *  * `{{guest_policy_id}}`
+ * * `{{guest_policy_id}}`
  * 
- *  When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}

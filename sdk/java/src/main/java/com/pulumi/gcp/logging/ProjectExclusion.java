@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,14 +57,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Project-level logging exclusions can be imported using their URI, e.g.
  * 
- *  * `projects/{{project_id}}/exclusions/{{name}}`
+ * * `projects/{{project_id}}/exclusions/{{name}}`
  * 
- *  When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}

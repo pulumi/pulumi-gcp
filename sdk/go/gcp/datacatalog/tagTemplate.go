@@ -22,8 +22,10 @@ import (
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
+//
 // ### Data Catalog Tag Template Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,14 +88,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // TagTemplate can be imported using any of these accepted formats:
 //
-//   - `{{name}}`
+// * `{{name}}`
 //
-//     When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}

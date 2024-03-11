@@ -24,8 +24,10 @@ import (
 // developer experience and broader support of Cloud Run features.
 //
 // ## Example Usage
+//
 // ### Cloud Run Service Pubsub
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,8 +127,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Cloud Run Service Basic
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -166,8 +171,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloud Run Service Sql
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,8 +229,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloud Run Service Noauth
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -280,8 +289,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloud Run Service Probes
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -335,8 +346,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // ### Cloud Run Service Multicontainer
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -433,18 +446,19 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Service can be imported using any of these accepted formats:
 //
-//   - `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
+// * `locations/{{location}}/namespaces/{{project}}/services/{{name}}`
 //
-//   - `{{location}}/{{project}}/{{name}}`
+// * `{{location}}/{{project}}/{{name}}`
 //
-//   - `{{location}}/{{name}}`
+// * `{{location}}/{{name}}`
 //
-//     When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}

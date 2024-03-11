@@ -6,8 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Firebase Apple App Basic
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,8 +20,10 @@ import * as utilities from "../utilities";
  *     bundleId: "apple.app.12345",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Firebase Apple App Full
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,22 +47,23 @@ import * as utilities from "../utilities";
  *     apiKeyId: apple.uid,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * AppleApp can be imported using any of these accepted formats:
  *
- *  * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
+ * * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
  *
- *  * `projects/{{project}}/iosApps/{{app_id}}`
+ * * `projects/{{project}}/iosApps/{{app_id}}`
  *
- *  * `{{project}}/{{project}}/{{app_id}}`
+ * * `{{project}}/{{project}}/{{app_id}}`
  *
- *  * `iosApps/{{app_id}}`
+ * * `iosApps/{{app_id}}`
  *
- *  * `{{app_id}}`
+ * * `{{app_id}}`
  *
- *  When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}

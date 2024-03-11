@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,9 +32,11 @@ import * as utilities from "../utilities";
  *     action: "DELETE",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * To enable the default service accounts on the resource destroy:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,6 +47,7 @@ import * as utilities from "../utilities";
  *     restorePolicy: "REVERT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

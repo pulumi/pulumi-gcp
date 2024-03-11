@@ -605,8 +605,10 @@ class Secret(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
         ## Example Usage
+
         ### Secret Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -629,8 +631,10 @@ class Secret(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Secret With Annotations
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -651,8 +655,10 @@ class Secret(pulumi.CustomResource):
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Secret With Automatic Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -672,18 +678,19 @@ class Secret(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Secret can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/secrets/{{secret_id}}`
+        * `projects/{{project}}/secrets/{{secret_id}}`
 
-         * `{{project}}/{{secret_id}}`
+        * `{{project}}/{{secret_id}}`
 
-         * `{{secret_id}}`
+        * `{{secret_id}}`
 
-         When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
@@ -761,8 +768,10 @@ class Secret(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
         ## Example Usage
+
         ### Secret Config Basic
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -785,8 +794,10 @@ class Secret(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Secret With Annotations
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -807,8 +818,10 @@ class Secret(pulumi.CustomResource):
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         ```
+        <!--End PulumiCodeChooser -->
         ### Secret With Automatic Cmek
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -828,18 +841,19 @@ class Secret(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Secret can be imported using any of these accepted formats:
 
-         * `projects/{{project}}/secrets/{{secret_id}}`
+        * `projects/{{project}}/secrets/{{secret_id}}`
 
-         * `{{project}}/{{secret_id}}`
+        * `{{project}}/{{secret_id}}`
 
-         * `{{secret_id}}`
+        * `{{secret_id}}`
 
-         When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}

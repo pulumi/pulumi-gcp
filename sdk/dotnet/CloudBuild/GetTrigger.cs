@@ -18,10 +18,9 @@ namespace Pulumi.Gcp.CloudBuild
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTriggerResult> InvokeAsync(GetTriggerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTriggerResult>("gcp:cloudbuild/getTrigger:getTrigger", args ?? new GetTriggerArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace Pulumi.Gcp.CloudBuild
         /// * How-to Guides
         ///     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("gcp:cloudbuild/getTrigger:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithDefaults());

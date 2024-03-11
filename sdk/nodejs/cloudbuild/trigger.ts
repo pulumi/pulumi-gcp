@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  * > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
  *
  * ## Example Usage
+ *
  * ### Cloudbuild Trigger Filename
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,8 +39,10 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Build
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -137,8 +141,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Service Account
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -164,8 +170,10 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Include Build Logs
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -184,8 +192,10 @@ import * as utilities from "../utilities";
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Pubsub Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -215,8 +225,10 @@ import * as utilities from "../utilities";
  *     filter: "_ACTION.matches('INSERT')",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Webhook Config
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -266,8 +278,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Manual
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -290,8 +304,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Manual Github Enterprise
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -313,8 +329,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Manual Bitbucket Server
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -336,8 +354,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Repo
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -368,8 +388,10 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Bitbucket Server Push
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -389,8 +411,10 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Bitbucket Server Pull Request
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -411,8 +435,10 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Github Enterprise
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -431,8 +457,10 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Allow Failure
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -508,8 +536,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Allow Exit Codes
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -588,8 +618,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * ### Cloudbuild Trigger Pubsub With Repo
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -629,20 +661,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Trigger can be imported using any of these accepted formats:
  *
- *  * `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}`
+ * * `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}`
  *
- *  * `projects/{{project}}/triggers/{{trigger_id}}`
+ * * `projects/{{project}}/triggers/{{trigger_id}}`
  *
- *  * `{{project}}/{{trigger_id}}`
+ * * `{{project}}/{{trigger_id}}`
  *
- *  * `{{trigger_id}}`
+ * * `{{trigger_id}}`
  *
- *  When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}

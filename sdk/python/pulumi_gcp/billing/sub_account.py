@@ -195,6 +195,7 @@ class SubAccount(pulumi.CustomResource):
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -203,14 +204,15 @@ class SubAccount(pulumi.CustomResource):
             display_name="My Billing Account",
             master_billing_account="012345-567890-ABCDEF")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Billing Subaccounts can be imported using any of these accepted formats:
 
-         * `billingAccounts/{billing_account_id}`
+        * `billingAccounts/{billing_account_id}`
 
-         When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
@@ -236,6 +238,7 @@ class SubAccount(pulumi.CustomResource):
 
         !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -244,14 +247,15 @@ class SubAccount(pulumi.CustomResource):
             display_name="My Billing Account",
             master_billing_account="012345-567890-ABCDEF")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Billing Subaccounts can be imported using any of these accepted formats:
 
-         * `billingAccounts/{billing_account_id}`
+        * `billingAccounts/{billing_account_id}`
 
-         When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}

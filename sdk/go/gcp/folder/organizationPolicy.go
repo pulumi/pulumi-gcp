@@ -26,6 +26,7 @@ import (
 //
 // To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,9 +54,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,9 +88,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Or to deny some services, use the following instead:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,9 +125,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // To restore the default folder organization policy, use the following instead:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -150,16 +157,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Folder organization policies can be imported using any of the follow formats:
 //
-//   - `folders/{{folder_id}}/constraints/serviceuser.services`
+// * `folders/{{folder_id}}/constraints/serviceuser.services`
 //
-//   - `{{folder_id}}/serviceuser.services`
+// * `{{folder_id}}/serviceuser.services`
 //
-//     When using the `pulumi import` command, folder organization policies can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, folder organization policies can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy * `google_folder_organization_policy.default folders/* “{{folder_id}}/constraints/serviceuser.services`

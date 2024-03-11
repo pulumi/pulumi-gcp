@@ -31,6 +31,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,9 +57,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # To create a project under a specific folder
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,14 +94,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Projects can be imported using the `project_id`, e.g.
 //
-//   - `{{project_id}}`
+// * `{{project_id}}`
 //
-//     When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:organizations/project:Project default {{project_id}}

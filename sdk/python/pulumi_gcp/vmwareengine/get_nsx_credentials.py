@@ -87,12 +87,14 @@ def get_nsx_credentials(parent: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     ds = gcp.vmwareengine.get_nsx_credentials(parent="projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str parent: The resource name of the private cloud which contains the NSX.
@@ -120,12 +122,14 @@ def get_nsx_credentials_output(parent: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     ds = gcp.vmwareengine.get_nsx_credentials(parent="projects/my-project/locations/us-west1-a/privateClouds/my-cloud")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str parent: The resource name of the private cloud which contains the NSX.

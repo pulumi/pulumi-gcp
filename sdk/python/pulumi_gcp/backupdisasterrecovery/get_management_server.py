@@ -113,12 +113,14 @@ def get_management_server(location: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_backup_dr_management_server = gcp.backupdisasterrecovery.get_management_server(location="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['location'] = location
@@ -142,11 +144,13 @@ def get_management_server_output(location: Optional[pulumi.Input[str]] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_backup_dr_management_server = gcp.backupdisasterrecovery.get_management_server(location="us-central1")
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

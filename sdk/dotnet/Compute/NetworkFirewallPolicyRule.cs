@@ -13,7 +13,9 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicyRule resource
     /// 
     /// ## Example Usage
+    /// 
     /// ### Global
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -122,18 +124,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// NetworkFirewallPolicyRule can be imported using any of these accepted formats:
     /// 
-    ///  * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
+    /// * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
     /// 
-    ///  * `{{project}}/{{firewall_policy}}/{{priority}}`
+    /// * `{{project}}/{{firewall_policy}}/{{priority}}`
     /// 
-    ///  * `{{firewall_policy}}/{{priority}}`
+    /// * `{{firewall_policy}}/{{priority}}`
     /// 
-    ///  When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}

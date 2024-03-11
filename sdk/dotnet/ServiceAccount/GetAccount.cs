@@ -15,10 +15,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,10 +33,11 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Save Key In Kubernetes Secret
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +75,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceaccount/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
@@ -85,10 +84,9 @@ namespace Pulumi.Gcp.ServiceAccount
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,10 +102,11 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% example %}}
+        /// 
         /// ### Save Key In Kubernetes Secret
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -145,8 +144,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("gcp:serviceaccount/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());

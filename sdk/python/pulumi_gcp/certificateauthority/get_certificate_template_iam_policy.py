@@ -105,12 +105,14 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=default["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str certificate_template: Used to find the parent resource to bind the IAM policy to
@@ -143,12 +145,14 @@ def get_certificate_template_iam_policy_output(certificate_template: Optional[pu
 
     ## example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=default["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str certificate_template: Used to find the parent resource to bind the IAM policy to
