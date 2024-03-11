@@ -496,21 +496,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"access_token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"GOOGLE_OAUTH_ACCESS_TOKEN"},
-				},
-				Secret: tfbridge.True(),
-			},
-			"credentials": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"GOOGLE_CREDENTIALS",
-						"GOOGLE_CLOUD_KEYFILE_JSON",
-						"GCLOUD_KEYFILE_JSON",
-					},
-				},
-			},
 		},
 		ExtraConfig: map[string]*tfbridge.ConfigInfo{
 			"skipRegionValidation": {

@@ -26,7 +26,7 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def access_token(self) -> Optional[str]:
-        return __config__.get('accessToken') or _utilities.get_env('GOOGLE_OAUTH_ACCESS_TOKEN')
+        return __config__.get('accessToken')
 
     @property
     def active_directory_custom_endpoint(self) -> Optional[str]:
@@ -226,7 +226,7 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def credentials(self) -> Optional[str]:
-        return __config__.get('credentials') or _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
+        return __config__.get('credentials')
 
     @property
     def data_catalog_custom_endpoint(self) -> Optional[str]:
