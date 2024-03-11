@@ -2381,7 +2381,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_context_manager_custom_endpoint"] = access_context_manager_custom_endpoint
             if access_token is None:
                 access_token = _utilities.get_env('GOOGLE_OAUTH_ACCESS_TOKEN')
-            __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
+            __props__.__dict__["access_token"] = access_token
             __props__.__dict__["active_directory_custom_endpoint"] = active_directory_custom_endpoint
             __props__.__dict__["add_terraform_attribution_label"] = pulumi.Output.from_input(add_terraform_attribution_label).apply(pulumi.runtime.to_json) if add_terraform_attribution_label is not None else None
             __props__.__dict__["alloydb_custom_endpoint"] = alloydb_custom_endpoint
@@ -2551,8 +2551,6 @@ class Provider(pulumi.ProviderResource):
             if zone is None:
                 zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
             __props__.__dict__["zone"] = zone
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessToken"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'gcp',
             resource_name,

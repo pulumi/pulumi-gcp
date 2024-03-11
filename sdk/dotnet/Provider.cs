@@ -507,10 +507,6 @@ namespace Pulumi.Gcp
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "accessToken",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -528,16 +524,7 @@ namespace Pulumi.Gcp
         public Input<string>? AccessContextManagerCustomEndpoint { get; set; }
 
         [Input("accessToken")]
-        private Input<string>? _accessToken;
-        public Input<string>? AccessToken
-        {
-            get => _accessToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        public Input<string>? AccessToken { get; set; }
 
         [Input("activeDirectoryCustomEndpoint")]
         public Input<string>? ActiveDirectoryCustomEndpoint { get; set; }

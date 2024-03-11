@@ -500,7 +500,6 @@ func Provider() tfbridge.ProviderInfo {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"GOOGLE_OAUTH_ACCESS_TOKEN"},
 				},
-				Secret: tfbridge.True(),
 			},
 			"credentials": {
 				Default: &tfbridge.DefaultInfo{
