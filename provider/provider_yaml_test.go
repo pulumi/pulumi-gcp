@@ -585,8 +585,8 @@ func TestEnvTokenNotInState(t *testing.T) {
 	)
 	googleProj := os.Getenv("GOOGLE_PROJECT")
 	if googleProj == "" {
-        googleProj = testProject
-    }
+		googleProj = testProject
+	}
 	test.SetConfig("gcp:config:project", googleProj)
 
 	test.Up()
