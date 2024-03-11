@@ -19,7 +19,6 @@ package gcp
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -578,7 +577,6 @@ func TestEnvTokenNotInState(t *testing.T) {
 		errMsg := err.(*exec.ExitError).Stderr
 		t.Fatal(string(errMsg))
 	}
-	log.Printf("GOOGLE_OAUTH_ACCESS_TOKEN: %s\n", outputStr)
 	t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", outputStr)
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
