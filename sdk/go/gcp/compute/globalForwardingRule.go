@@ -754,7 +754,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: *pulumi.String(debianImage.SelfLink),
+//						SourceImage: pulumi.String(debianImage.SelfLink),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //					},

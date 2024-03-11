@@ -58,7 +58,7 @@ import (
 //			}
 //			_, err = certificateauthority.NewCertificateTemplateIamPolicy(ctx, "policy", &certificateauthority.CertificateTemplateIamPolicyArgs{
 //				CertificateTemplate: pulumi.Any(_default.Id),
-//				PolicyData:          *pulumi.String(admin.PolicyData),
+//				PolicyData:          pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //			}
 //			_, err = certificateauthority.NewCertificateTemplateIamPolicy(ctx, "policy", &certificateauthority.CertificateTemplateIamPolicyArgs{
 //				CertificateTemplate: pulumi.Any(_default.Id),
-//				PolicyData:          *pulumi.String(admin.PolicyData),
+//				PolicyData:          pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

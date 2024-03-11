@@ -59,7 +59,7 @@ import (
 //				Location:       pulumi.Any(listing.Location),
 //				DataExchangeId: pulumi.Any(listing.DataExchangeId),
 //				ListingId:      pulumi.Any(listing.ListingId),
-//				PolicyData:     *pulumi.String(admin.PolicyData),
+//				PolicyData:     pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

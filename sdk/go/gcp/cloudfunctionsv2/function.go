@@ -897,7 +897,7 @@ import (
 //				return err
 //			}
 //			eaSa, err := projects.NewServiceIdentity(ctx, "ea_sa", &projects.ServiceIdentityArgs{
-//				Project: *pulumi.String(projectGetProject.ProjectId),
+//				Project: pulumi.String(projectGetProject.ProjectId),
 //				Service: pulumi.String("eventarc.googleapis.com"),
 //			})
 //			if err != nil {

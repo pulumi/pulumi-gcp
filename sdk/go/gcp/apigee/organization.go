@@ -70,7 +70,7 @@ import (
 //			}
 //			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         *pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(current.Project),
 //				AuthorizedNetwork: apigeeNetwork.ID(),
 //			})
 //			if err != nil {
@@ -103,7 +103,7 @@ import (
 //			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				Description:       pulumi.String("Terraform-provisioned basic Apigee Org without VPC Peering."),
 //				AnalyticsRegion:   pulumi.String("us-central1"),
-//				ProjectId:         *pulumi.String(current.Project),
+//				ProjectId:         pulumi.String(current.Project),
 //				DisableVpcPeering: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -200,7 +200,7 @@ import (
 //				AnalyticsRegion:                  pulumi.String("us-central1"),
 //				DisplayName:                      pulumi.String("apigee-org"),
 //				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
-//				ProjectId:                        *pulumi.String(current.Project),
+//				ProjectId:                        pulumi.String(current.Project),
 //				AuthorizedNetwork:                apigeeNetwork.ID(),
 //				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
 //			})
@@ -270,7 +270,7 @@ import (
 //				AnalyticsRegion:                  pulumi.String("us-central1"),
 //				DisplayName:                      pulumi.String("apigee-org"),
 //				Description:                      pulumi.String("Terraform-provisioned Apigee Org without VPC Peering."),
-//				ProjectId:                        *pulumi.String(current.Project),
+//				ProjectId:                        pulumi.String(current.Project),
 //				DisableVpcPeering:                pulumi.Bool(true),
 //				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
 //			})

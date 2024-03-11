@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = endpoints.NewServiceIamPolicy(ctx, "policy", &endpoints.ServiceIamPolicyArgs{
 //				ServiceName: pulumi.Any(endpointsService.ServiceName),
-//				PolicyData:  *pulumi.String(admin.PolicyData),
+//				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

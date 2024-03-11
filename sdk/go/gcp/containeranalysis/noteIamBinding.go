@@ -57,7 +57,7 @@ import (
 //			_, err = containeranalysis.NewNoteIamPolicy(ctx, "policy", &containeranalysis.NoteIamPolicyArgs{
 //				Project:    pulumi.Any(note.Project),
 //				Note:       pulumi.Any(note.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

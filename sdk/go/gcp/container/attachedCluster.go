@@ -53,13 +53,13 @@ import (
 //			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
 //				Name:         pulumi.String("basic"),
 //				Location:     pulumi.String("us-west1"),
-//				Project:      *pulumi.String(project.ProjectId),
+//				Project:      pulumi.String(project.ProjectId),
 //				Description:  pulumi.String("Test cluster"),
 //				Distribution: pulumi.String("aks"),
 //				OidcConfig: &container.AttachedClusterOidcConfigArgs{
 //					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
 //				},
-//				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
+//				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
 //					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 //				},
@@ -109,7 +109,7 @@ import (
 //			}
 //			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
 //				Name:         pulumi.String("basic"),
-//				Project:      *pulumi.String(project.ProjectId),
+//				Project:      pulumi.String(project.ProjectId),
 //				Location:     pulumi.String("us-west1"),
 //				Description:  pulumi.String("Test cluster"),
 //				Distribution: pulumi.String("aks"),
@@ -130,7 +130,7 @@ import (
 //					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
 //					Jwks:      invokeBase64encode.Result,
 //				},
-//				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
+//				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
 //					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 //				},
@@ -196,13 +196,13 @@ import (
 //			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
 //				Name:         pulumi.String("basic"),
 //				Location:     pulumi.String("us-west1"),
-//				Project:      *pulumi.String(project.ProjectId),
+//				Project:      pulumi.String(project.ProjectId),
 //				Description:  pulumi.String("Test cluster"),
 //				Distribution: pulumi.String("aks"),
 //				OidcConfig: &container.AttachedClusterOidcConfigArgs{
 //					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
 //				},
-//				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
+//				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
 //					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 //				},

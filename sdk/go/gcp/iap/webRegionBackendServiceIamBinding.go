@@ -60,7 +60,7 @@ import (
 //				Project:                 pulumi.Any(_default.Project),
 //				Region:                  pulumi.Any(_default.Region),
 //				WebRegionBackendService: pulumi.Any(_default.Name),
-//				PolicyData:              *pulumi.String(admin.PolicyData),
+//				PolicyData:              pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //				Project:                 pulumi.Any(_default.Project),
 //				Region:                  pulumi.Any(_default.Region),
 //				WebRegionBackendService: pulumi.Any(_default.Name),
-//				PolicyData:              *pulumi.String(admin.PolicyData),
+//				PolicyData:              pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

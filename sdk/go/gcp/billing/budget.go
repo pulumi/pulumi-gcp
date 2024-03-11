@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: *pulumi.String(account.Id),
+//				BillingAccount: pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				Amount: &billing.BudgetAmountArgs{
 //					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
@@ -99,7 +99,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: *pulumi.String(account.Id),
+//				BillingAccount: pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -151,7 +151,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: *pulumi.String(account.Id),
+//				BillingAccount: pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -232,7 +232,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: *pulumi.String(account.Id),
+//				BillingAccount: pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -297,7 +297,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: *pulumi.String(account.Id),
+//				BillingAccount: pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{

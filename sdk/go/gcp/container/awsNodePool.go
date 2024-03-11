@@ -62,7 +62,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      *pulumi.String(versions.ValidVersions[0]),
+//					Version:      pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),
@@ -161,7 +161,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  *pulumi.String(versions.ValidVersions[0]),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -223,7 +223,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      *pulumi.String(versions.ValidVersions[0]),
+//					Version:      pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),
@@ -322,7 +322,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  *pulumi.String(versions.ValidVersions[0]),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -381,7 +381,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      *pulumi.String(versions.ValidVersions[0]),
+//					Version:      pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),
@@ -484,7 +484,7 @@ import (
 //				},
 //				Name:     pulumi.String("node-pool-name"),
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  *pulumi.String(versions.ValidVersions[0]),
+//				Version:  pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},

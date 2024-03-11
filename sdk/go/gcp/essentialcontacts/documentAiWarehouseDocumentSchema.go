@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_text", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber:    *pulumi.String(project.Number),
+//				ProjectNumber:    pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-text"),
 //				Location:         pulumi.String("us"),
 //				DocumentIsFolder: pulumi.Bool(false),
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_integer", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber: *pulumi.String(project.Number),
+//				ProjectNumber: pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-integer"),
 //				Location:      pulumi.String("us"),
 //				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
@@ -144,7 +144,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_float", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber: *pulumi.String(project.Number),
+//				ProjectNumber: pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-float"),
 //				Location:      pulumi.String("us"),
 //				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
@@ -195,7 +195,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_property", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber:    *pulumi.String(project.Number),
+//				ProjectNumber:    pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-property"),
 //				Location:         pulumi.String("us"),
 //				DocumentIsFolder: pulumi.Bool(false),
@@ -267,7 +267,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_property_enum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber:    *pulumi.String(project.Number),
+//				ProjectNumber:    pulumi.String(project.Number),
 //				DisplayName:      pulumi.String("test-property-property"),
 //				Location:         pulumi.String("us"),
 //				DocumentIsFolder: pulumi.Bool(false),
@@ -346,7 +346,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_enum", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber: *pulumi.String(project.Number),
+//				ProjectNumber: pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-enum"),
 //				Location:      pulumi.String("us"),
 //				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
@@ -404,7 +404,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_map", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber: *pulumi.String(project.Number),
+//				ProjectNumber: pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-map"),
 //				Location:      pulumi.String("us"),
 //				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
@@ -455,7 +455,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_datetime", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber: *pulumi.String(project.Number),
+//				ProjectNumber: pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-date_time"),
 //				Location:      pulumi.String("us"),
 //				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{
@@ -506,7 +506,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiWarehouseDocumentSchema(ctx, "example_timestamp", &essentialcontacts.DocumentAiWarehouseDocumentSchemaArgs{
-//				ProjectNumber: *pulumi.String(project.Number),
+//				ProjectNumber: pulumi.String(project.Number),
 //				DisplayName:   pulumi.String("test-property-timestamp"),
 //				Location:      pulumi.String("us"),
 //				PropertyDefinitions: essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArray{

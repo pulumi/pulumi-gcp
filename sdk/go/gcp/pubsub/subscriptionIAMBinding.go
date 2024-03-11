@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
 //				Subscription: pulumi.String("your-subscription-name"),
-//				PolicyData:   *pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
