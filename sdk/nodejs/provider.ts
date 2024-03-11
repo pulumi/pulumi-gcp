@@ -198,7 +198,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["accessApprovalCustomEndpoint"] = args ? args.accessApprovalCustomEndpoint : undefined;
             resourceInputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
-            resourceInputs["accessToken"] = (args ? args.accessToken : undefined) ?? utilities.getEnv("GOOGLE_OAUTH_ACCESS_TOKEN");
+            resourceInputs["accessToken"] = args ? args.accessToken : undefined;
             resourceInputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
             resourceInputs["addTerraformAttributionLabel"] = pulumi.output(args ? args.addTerraformAttributionLabel : undefined).apply(JSON.stringify);
             resourceInputs["alloydbCustomEndpoint"] = args ? args.alloydbCustomEndpoint : undefined;
@@ -248,7 +248,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["containerAzureCustomEndpoint"] = args ? args.containerAzureCustomEndpoint : undefined;
             resourceInputs["containerCustomEndpoint"] = args ? args.containerCustomEndpoint : undefined;
             resourceInputs["coreBillingCustomEndpoint"] = args ? args.coreBillingCustomEndpoint : undefined;
-            resourceInputs["credentials"] = (args ? args.credentials : undefined) ?? utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
+            resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["dataCatalogCustomEndpoint"] = args ? args.dataCatalogCustomEndpoint : undefined;
             resourceInputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
             resourceInputs["dataLossPreventionCustomEndpoint"] = args ? args.dataLossPreventionCustomEndpoint : undefined;

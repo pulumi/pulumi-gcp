@@ -22,7 +22,7 @@ public final class Config {
         return Codegen.stringProp("accessContextManagerCustomEndpoint").config(config).get();
     }
     public Optional<String> accessToken() {
-        return Codegen.stringProp("accessToken").config(config).env("GOOGLE_OAUTH_ACCESS_TOKEN").get();
+        return Codegen.stringProp("accessToken").config(config).get();
     }
     public Optional<String> activeDirectoryCustomEndpoint() {
         return Codegen.stringProp("activeDirectoryCustomEndpoint").config(config).get();
@@ -172,7 +172,7 @@ public final class Config {
         return Codegen.stringProp("coreBillingCustomEndpoint").config(config).get();
     }
     public Optional<String> credentials() {
-        return Codegen.stringProp("credentials").config(config).env("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").get();
+        return Codegen.stringProp("credentials").config(config).get();
     }
     public Optional<String> dataCatalogCustomEndpoint() {
         return Codegen.stringProp("dataCatalogCustomEndpoint").config(config).get();
