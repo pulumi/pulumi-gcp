@@ -80,7 +80,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(myImage.SelfLink),
+//						Image: pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //			})
@@ -100,7 +100,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(myImage.SelfLink),
+//						Image: pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //			})

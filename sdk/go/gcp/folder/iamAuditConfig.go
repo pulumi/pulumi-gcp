@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
 //				Folder:     pulumi.String("folders/1234567"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -115,7 +115,7 @@ import (
 //			}
 //			_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
 //				Folder:     pulumi.String("folders/1234567"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
