@@ -123,7 +123,7 @@ import (
 //				Zone:        pulumi.String("us-central1-c"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(debianImage.SelfLink),
+//						Image: pulumi.String(debianImage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{

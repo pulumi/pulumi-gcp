@@ -58,7 +58,7 @@ import (
 //			_, err = healthcare.NewConsentStoreIamPolicy(ctx, "policy", &healthcare.ConsentStoreIamPolicyArgs{
 //				Dataset:        pulumi.Any(my_consent.Dataset),
 //				ConsentStoreId: pulumi.Any(my_consent.Name),
-//				PolicyData:     *pulumi.String(admin.PolicyData),
+//				PolicyData:     pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
