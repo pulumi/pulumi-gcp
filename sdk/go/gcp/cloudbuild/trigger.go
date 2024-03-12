@@ -244,7 +244,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "act_as", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -254,7 +254,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "logs_writer", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/logging.logWriter"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -421,7 +421,7 @@ import (
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
 //				Project:    webhookTriggerSecretKey.Project,
 //				SecretId:   webhookTriggerSecretKey.SecretId,
-//				PolicyData: *pulumi.String(secretAccessor.PolicyData),
+//				PolicyData: pulumi.String(secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -58,7 +58,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: *pulumi.String(debian9.Id),
+//						SourceImage: pulumi.String(debian9.Id),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
@@ -161,7 +161,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: *pulumi.String(debian9.Id),
+//						SourceImage: pulumi.String(debian9.Id),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
