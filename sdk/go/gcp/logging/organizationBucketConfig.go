@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = logging.NewOrganizationBucketConfig(ctx, "basic", &logging.OrganizationBucketConfigArgs{
-//				Organization:  *pulumi.String(_default.Organization),
+//				Organization:  pulumi.String(_default.Organization),
 //				Location:      pulumi.String("global"),
 //				RetentionDays: pulumi.Int(30),
 //				BucketId:      pulumi.String("_Default"),

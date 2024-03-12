@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = billing.NewAccountIamPolicy(ctx, "editor", &billing.AccountIamPolicyArgs{
 //				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
-//				PolicyData:       *pulumi.String(admin.PolicyData),
+//				PolicyData:       pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = iap.NewWebIamPolicy(ctx, "policy", &iap.WebIamPolicyArgs{
 //				Project:    pulumi.Any(projectService.Project),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +107,7 @@ import (
 //			}
 //			_, err = iap.NewWebIamPolicy(ctx, "policy", &iap.WebIamPolicyArgs{
 //				Project:    pulumi.Any(projectService.Project),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
