@@ -44,7 +44,7 @@ import (
 //			_, err = container.NewCluster(ctx, "foo", &container.ClusterArgs{
 //				Name:             pulumi.String("test-cluster"),
 //				Location:         pulumi.String("us-central1-b"),
-//				NodeVersion:      *pulumi.String(central1b.LatestNodeVersion),
+//				NodeVersion:      pulumi.String(central1b.LatestNodeVersion),
 //				InitialNodeCount: pulumi.Int(1),
 //			})
 //			if err != nil {

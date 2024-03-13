@@ -53,7 +53,7 @@ import (
 //				Ttl:         pulumi.Int(300),
 //				ManagedZone: prod.Name,
 //				Rrdatas: pulumi.StringArray{
-//					*pulumi.String(myAddress.Address),
+//					pulumi.String(myAddress.Address),
 //				},
 //			})
 //			if err != nil {

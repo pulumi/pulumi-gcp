@@ -66,7 +66,7 @@ import (
 //			}
 //			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "crypto_key", &kms.CryptoKeyIAMPolicyArgs{
 //				CryptoKeyId: key.ID(),
-//				PolicyData:  *pulumi.String(admin.PolicyData),
+//				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
