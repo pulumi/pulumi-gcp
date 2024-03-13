@@ -60,7 +60,7 @@ import (
 //			_, err = compute.NewImageIamPolicy(ctx, "policy", &compute.ImageIamPolicyArgs{
 //				Project:    pulumi.Any(example.Project),
 //				Image:      pulumi.Any(example.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +109,7 @@ import (
 //			_, err = compute.NewImageIamPolicy(ctx, "policy", &compute.ImageIamPolicyArgs{
 //				Project:    pulumi.Any(example.Project),
 //				Image:      pulumi.Any(example.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

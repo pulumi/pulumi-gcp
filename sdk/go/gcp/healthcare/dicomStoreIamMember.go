@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = healthcare.NewDicomStoreIamPolicy(ctx, "dicom_store", &healthcare.DicomStoreIamPolicyArgs{
 //				DicomStoreId: pulumi.String("your-dicom-store-id"),
-//				PolicyData:   *pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

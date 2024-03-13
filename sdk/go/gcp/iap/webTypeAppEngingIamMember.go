@@ -60,7 +60,7 @@ import (
 //			_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
 //				Project:    pulumi.Any(app.Project),
 //				AppId:      pulumi.Any(app.AppId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -109,7 +109,7 @@ import (
 //			_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
 //				Project:    pulumi.Any(app.Project),
 //				AppId:      pulumi.Any(app.AppId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
