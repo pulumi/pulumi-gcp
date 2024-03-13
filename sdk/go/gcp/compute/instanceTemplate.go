@@ -51,7 +51,7 @@ import (
 //			}
 //			foobar, err := compute.NewDisk(ctx, "foobar", &compute.DiskArgs{
 //				Name:  pulumi.String("existing-disk"),
-//				Image: *pulumi.String(myImage.SelfLink),
+//				Image: pulumi.String(myImage.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),
@@ -165,7 +165,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: *pulumi.String(myImage.SelfLink),
+//						SourceImage: pulumi.String(myImage.SelfLink),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //					},
@@ -217,7 +217,7 @@ import (
 //					"enable-osconfig":         pulumi.Any("true"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
-//					Email: *pulumi.String(_default.Email),
+//					Email: pulumi.String(_default.Email),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("cloud-platform"),
 //					},
