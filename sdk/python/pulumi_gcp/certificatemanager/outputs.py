@@ -602,8 +602,13 @@ class DnsAuthorizationDnsResourceRecord(dict):
                
                
                - - -
-        :param str type: (Output)
-               Type of the DNS Resource Record.
+        :param str type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+               be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+               FIXED_RECORD DNS authorization uses DNS-01 validation method
+               PER_PROJECT_RECORD DNS authorization allows for independent management
+               of Google-managed certificates with DNS authorization across multiple
+               projects.
+               Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         if data is not None:
             pulumi.set(__self__, "data", data)
@@ -638,8 +643,13 @@ class DnsAuthorizationDnsResourceRecord(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        (Output)
-        Type of the DNS Resource Record.
+        type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        FIXED_RECORD DNS authorization uses DNS-01 validation method
+        PER_PROJECT_RECORD DNS authorization allows for independent management
+        of Google-managed certificates with DNS authorization across multiple
+        projects.
+        Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         return pulumi.get(self, "type")
 

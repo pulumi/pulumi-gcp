@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent
     {
         /// <summary>
+        /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle> Bundles;
+        /// <summary>
         /// Configures the installation of the Template Library. Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary? TemplateLibrary;
 
         [OutputConstructor]
-        private FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary? templateLibrary)
+        private FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(
+            ImmutableArray<Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle> bundles,
+
+            Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary? templateLibrary)
         {
+            Bundles = bundles;
             TemplateLibrary = templateLibrary;
         }
     }

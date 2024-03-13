@@ -668,6 +668,28 @@ class Certificate(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Certificate Manager Google Managed Regional Certificate Dns Auth
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
+            location="us-central1",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        default = gcp.certificatemanager.Certificate("default",
+            name="dns-cert",
+            description="regional managed certs",
+            location="us-central1",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[instance.domain],
+                dns_authorizations=[instance.id],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -982,6 +1004,28 @@ class Certificate(pulumi.CustomResource):
                     instance.id,
                     instance2.id,
                 ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Certificate Manager Google Managed Regional Certificate Dns Auth
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            name="dns-auth",
+            location="us-central1",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        default = gcp.certificatemanager.Certificate("default",
+            name="dns-cert",
+            description="regional managed certs",
+            location="us-central1",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[instance.domain],
+                dns_authorizations=[instance.id],
             ))
         ```
         <!--End PulumiCodeChooser -->

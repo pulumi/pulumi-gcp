@@ -42,6 +42,29 @@ namespace Pulumi.Gcp.CertificateManager
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Certificate Manager Dns Authorization Regional
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.DnsAuthorization("default", new()
+    ///     {
+    ///         Name = "dns-auth",
+    ///         Location = "us-central1",
+    ///         Description = "reginal dns",
+    ///         Type = "PER_PROJECT_RECORD",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -137,6 +160,18 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        /// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        /// FIXED_RECORD DNS authorization uses DNS-01 validation method
+        /// PER_PROJECT_RECORD DNS authorization allows for independent management
+        /// of Google-managed certificates with DNS authorization across multiple
+        /// projects.
+        /// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -240,6 +275,18 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        /// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        /// FIXED_RECORD DNS authorization uses DNS-01 validation method
+        /// PER_PROJECT_RECORD DNS authorization allows for independent management
+        /// of Google-managed certificates with DNS authorization across multiple
+        /// projects.
+        /// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public DnsAuthorizationArgs()
         {
@@ -348,6 +395,18 @@ namespace Pulumi.Gcp.CertificateManager
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        /// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        /// FIXED_RECORD DNS authorization uses DNS-01 validation method
+        /// PER_PROJECT_RECORD DNS authorization allows for independent management
+        /// of Google-managed certificates with DNS authorization across multiple
+        /// projects.
+        /// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public DnsAuthorizationState()
         {

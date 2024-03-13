@@ -212,7 +212,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly sdkContainerImage!: pulumi.Output<string>;
     /**
-     * The Service Account email used to create the job.
+     * Service account email to run the workers as.
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
     /**
@@ -230,7 +230,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+     * Compute Engine subnetwork for launching instances to run your pipeline.
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
@@ -437,7 +437,7 @@ export interface FlexTemplateJobState {
      */
     sdkContainerImage?: pulumi.Input<string>;
     /**
-     * The Service Account email used to create the job.
+     * Service account email to run the workers as.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
@@ -455,7 +455,7 @@ export interface FlexTemplateJobState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+     * Compute Engine subnetwork for launching instances to run your pipeline.
      */
     subnetwork?: pulumi.Input<string>;
     /**
@@ -566,7 +566,7 @@ export interface FlexTemplateJobArgs {
      */
     sdkContainerImage?: pulumi.Input<string>;
     /**
-     * The Service Account email used to create the job.
+     * Service account email to run the workers as.
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
@@ -580,7 +580,7 @@ export interface FlexTemplateJobArgs {
      */
     stagingLocation?: pulumi.Input<string>;
     /**
-     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+     * Compute Engine subnetwork for launching instances to run your pipeline.
      */
     subnetwork?: pulumi.Input<string>;
     /**

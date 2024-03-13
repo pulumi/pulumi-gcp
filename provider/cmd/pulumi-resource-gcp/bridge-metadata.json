@@ -4016,6 +4016,31 @@
                     }
                 }
             },
+            "google_clouddeploy_custom_target_type_iam_binding": {
+                "current": "gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_clouddeploy_custom_target_type_iam_member": {
+                "current": "gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_clouddeploy_custom_target_type_iam_policy": {
+                "current": "gcp:clouddeploy/customTargetTypeIamPolicy:CustomTargetTypeIamPolicy",
+                "majorVersion": 7
+            },
             "google_clouddeploy_delivery_pipeline": {
                 "current": "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline",
                 "majorVersion": 7,
@@ -15937,6 +15962,29 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "deployment_configs": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "container_resources": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "limits": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "requests": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "pod_tolerations": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "exemptable_namespaces": {
                                                 "maxItemsOne": false
                                             },
@@ -15954,6 +16002,16 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "bundles": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "exempted_namespaces": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "template_library": {
                                                             "maxItemsOne": true
                                                         }
@@ -17873,7 +17931,20 @@
                         "elem": {
                             "fields": {
                                 "cert_chains": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "cavium_certs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "google_card_certs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "google_partition_certs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "external_protection_level_options": {
                                     "maxItemsOne": true
@@ -24960,6 +25031,10 @@
                 "current": "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy",
                 "majorVersion": 7
             },
+            "google_clouddeploy_custom_target_type_iam_policy": {
+                "current": "gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy",
+                "majorVersion": 7
+            },
             "google_clouddeploy_delivery_pipeline_iam_policy": {
                 "current": "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy",
                 "majorVersion": 7
@@ -29903,6 +29978,9 @@
             "gcp:cloudbuildv2/repository:Repository": 0,
             "gcp:clouddeploy/automation:Automation": 0,
             "gcp:clouddeploy/customTargetType:CustomTargetType": 0,
+            "gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding": 0,
+            "gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember": 0,
+            "gcp:clouddeploy/customTargetTypeIamPolicy:CustomTargetTypeIamPolicy": 0,
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": 0,
             "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding": 0,
             "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember": 0,
@@ -30663,6 +30741,7 @@
             "gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll": 0,
             "gcp:cloudbuild/getTrigger:getTrigger": 0,
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": 0,
+            "gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy": 0,
             "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy": 0,
             "gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy": 0,
             "gcp:cloudfunctions/getFunction:getFunction": 0,

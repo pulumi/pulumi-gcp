@@ -55,6 +55,37 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Certificate Manager Dns Authorization Regional
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("reginal dns"),
+//				Type:        pulumi.String("PER_PROJECT_RECORD"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -113,6 +144,14 @@ type DnsAuthorization struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewDnsAuthorization registers a new resource with the given unique name, arguments, and options.
@@ -184,6 +223,14 @@ type dnsAuthorizationState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+	Type *string `pulumi:"type"`
 }
 
 type DnsAuthorizationState struct {
@@ -218,6 +265,14 @@ type DnsAuthorizationState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+	Type pulumi.StringPtrInput
 }
 
 func (DnsAuthorizationState) ElementType() reflect.Type {
@@ -246,6 +301,14 @@ type dnsAuthorizationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a DnsAuthorization resource.
@@ -271,6 +334,14 @@ type DnsAuthorizationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+	Type pulumi.StringPtrInput
 }
 
 func (DnsAuthorizationArgs) ElementType() reflect.Type {
@@ -416,6 +487,17 @@ func (o DnsAuthorizationOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o DnsAuthorizationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+// FIXED_RECORD DNS authorization uses DNS-01 validation method
+// PER_PROJECT_RECORD DNS authorization allows for independent management
+// of Google-managed certificates with DNS authorization across multiple
+// projects.
+// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+func (o DnsAuthorizationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type DnsAuthorizationArrayOutput struct{ *pulumi.OutputState }

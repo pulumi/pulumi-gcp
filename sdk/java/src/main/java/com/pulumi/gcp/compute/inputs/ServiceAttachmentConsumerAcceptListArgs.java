@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,24 +35,44 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
     }
 
     /**
-     * A project that is allowed to connect to this service attachment.
+     * The network that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num and network_url may be set.
      * 
      */
-    @Import(name="projectIdOrNum", required=true)
-    private Output<String> projectIdOrNum;
+    @Import(name="networkUrl")
+    private @Nullable Output<String> networkUrl;
+
+    /**
+     * @return The network that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num and network_url may be set.
+     * 
+     */
+    public Optional<Output<String>> networkUrl() {
+        return Optional.ofNullable(this.networkUrl);
+    }
+
+    /**
+     * A project that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num and network_url may be set.
+     * 
+     */
+    @Import(name="projectIdOrNum")
+    private @Nullable Output<String> projectIdOrNum;
 
     /**
      * @return A project that is allowed to connect to this service attachment.
+     * Only one of project_id_or_num and network_url may be set.
      * 
      */
-    public Output<String> projectIdOrNum() {
-        return this.projectIdOrNum;
+    public Optional<Output<String>> projectIdOrNum() {
+        return Optional.ofNullable(this.projectIdOrNum);
     }
 
     private ServiceAttachmentConsumerAcceptListArgs() {}
 
     private ServiceAttachmentConsumerAcceptListArgs(ServiceAttachmentConsumerAcceptListArgs $) {
         this.connectionLimit = $.connectionLimit;
+        this.networkUrl = $.networkUrl;
         this.projectIdOrNum = $.projectIdOrNum;
     }
 
@@ -96,18 +118,43 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
         }
 
         /**
-         * @param projectIdOrNum A project that is allowed to connect to this service attachment.
+         * @param networkUrl The network that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num and network_url may be set.
          * 
          * @return builder
          * 
          */
-        public Builder projectIdOrNum(Output<String> projectIdOrNum) {
+        public Builder networkUrl(@Nullable Output<String> networkUrl) {
+            $.networkUrl = networkUrl;
+            return this;
+        }
+
+        /**
+         * @param networkUrl The network that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num and network_url may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkUrl(String networkUrl) {
+            return networkUrl(Output.of(networkUrl));
+        }
+
+        /**
+         * @param projectIdOrNum A project that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num and network_url may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectIdOrNum(@Nullable Output<String> projectIdOrNum) {
             $.projectIdOrNum = projectIdOrNum;
             return this;
         }
 
         /**
          * @param projectIdOrNum A project that is allowed to connect to this service attachment.
+         * Only one of project_id_or_num and network_url may be set.
          * 
          * @return builder
          * 
@@ -119,9 +166,6 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
         public ServiceAttachmentConsumerAcceptListArgs build() {
             if ($.connectionLimit == null) {
                 throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptListArgs", "connectionLimit");
-            }
-            if ($.projectIdOrNum == null) {
-                throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptListArgs", "projectIdOrNum");
             }
             return $;
         }

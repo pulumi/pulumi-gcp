@@ -1353,8 +1353,13 @@ type DnsAuthorizationDnsResourceRecord struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// (Output)
-	// Type of the DNS Resource Record.
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1379,8 +1384,13 @@ type DnsAuthorizationDnsResourceRecordArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Output)
-	// Type of the DNS Resource Record.
+	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+	// FIXED_RECORD DNS authorization uses DNS-01 validation method
+	// PER_PROJECT_RECORD DNS authorization allows for independent management
+	// of Google-managed certificates with DNS authorization across multiple
+	// projects.
+	// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1450,8 +1460,13 @@ func (o DnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Type of the DNS Resource Record.
+// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+// FIXED_RECORD DNS authorization uses DNS-01 validation method
+// PER_PROJECT_RECORD DNS authorization allows for independent management
+// of Google-managed certificates with DNS authorization across multiple
+// projects.
+// Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
 func (o DnsAuthorizationDnsResourceRecordOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

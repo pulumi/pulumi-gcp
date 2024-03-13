@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
     /**
+     * @return Default behavior for all instance or health check failures.
+     * 
+     */
+    private String defaultActionOnFailure;
+    /**
      * @return Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
      */
     private String forceUpdateOnRepair;
 
     private GetInstanceGroupManagerInstanceLifecyclePolicy() {}
+    /**
+     * @return Default behavior for all instance or health check failures.
+     * 
+     */
+    public String defaultActionOnFailure() {
+        return this.defaultActionOnFailure;
+    }
     /**
      * @return Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
@@ -34,13 +46,23 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String defaultActionOnFailure;
         private String forceUpdateOnRepair;
         public Builder() {}
         public Builder(GetInstanceGroupManagerInstanceLifecyclePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultActionOnFailure = defaults.defaultActionOnFailure;
     	      this.forceUpdateOnRepair = defaults.forceUpdateOnRepair;
         }
 
+        @CustomType.Setter
+        public Builder defaultActionOnFailure(String defaultActionOnFailure) {
+            if (defaultActionOnFailure == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerInstanceLifecyclePolicy", "defaultActionOnFailure");
+            }
+            this.defaultActionOnFailure = defaultActionOnFailure;
+            return this;
+        }
         @CustomType.Setter
         public Builder forceUpdateOnRepair(String forceUpdateOnRepair) {
             if (forceUpdateOnRepair == null) {
@@ -51,6 +73,7 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
         }
         public GetInstanceGroupManagerInstanceLifecyclePolicy build() {
             final var _resultValue = new GetInstanceGroupManagerInstanceLifecyclePolicy();
+            _resultValue.defaultActionOnFailure = defaultActionOnFailure;
             _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
             return _resultValue;
         }

@@ -24,6 +24,18 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("constraintViolationLimit")]
         public Input<int>? ConstraintViolationLimit { get; set; }
 
+        [Input("deploymentConfigs")]
+        private InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigGetArgs>? _deploymentConfigs;
+
+        /// <summary>
+        /// Map of deployment configs to deployments ("admission", "audit", "mutation").
+        /// </summary>
+        public InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigGetArgs> DeploymentConfigs
+        {
+            get => _deploymentConfigs ?? (_deploymentConfigs = new InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigGetArgs>());
+            set => _deploymentConfigs = value;
+        }
+
         [Input("exemptableNamespaces")]
         private InputList<string>? _exemptableNamespaces;
 

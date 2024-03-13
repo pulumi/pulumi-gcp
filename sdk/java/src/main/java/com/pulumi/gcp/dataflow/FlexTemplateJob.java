@@ -467,14 +467,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.sdkContainerImage;
     }
     /**
-     * The Service Account email used to create the job.
+     * Service account email to run the workers as.
      * 
      */
     @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
-     * @return The Service Account email used to create the job.
+     * @return Service account email to run the workers as.
      * 
      */
     public Output<String> serviceAccountEmail() {
@@ -527,14 +527,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * Compute Engine subnetwork for launching instances to run your pipeline.
      * 
      */
     @Export(name="subnetwork", refs={String.class}, tree="[0]")
     private Output<String> subnetwork;
 
     /**
-     * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * @return Compute Engine subnetwork for launching instances to run your pipeline.
      * 
      */
     public Output<String> subnetwork() {

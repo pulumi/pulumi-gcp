@@ -56,8 +56,8 @@ class FunctionArgs:
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
-        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
-        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
+        :param pulumi.Input[str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
@@ -214,7 +214,7 @@ class FunctionArgs:
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> Optional[pulumi.Input[str]]:
         """
-        Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -226,7 +226,7 @@ class FunctionArgs:
     @pulumi.getter(name="dockerRepository")
     def docker_repository(self) -> Optional[pulumi.Input[str]]:
         """
-        User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         """
         return pulumi.get(self, "docker_repository")
 
@@ -559,8 +559,8 @@ class _FunctionState:
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
-        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
-        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
+        :param pulumi.Input[str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -720,7 +720,7 @@ class _FunctionState:
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> Optional[pulumi.Input[str]]:
         """
-        Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -732,7 +732,7 @@ class _FunctionState:
     @pulumi.getter(name="dockerRepository")
     def docker_repository(self) -> Optional[pulumi.Input[str]]:
         """
-        User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         """
         return pulumi.get(self, "docker_repository")
 
@@ -1235,8 +1235,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
-        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
-        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
+        :param pulumi.Input[str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
         :param pulumi.Input[pulumi.InputType['FunctionEventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
@@ -1530,8 +1530,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         :param pulumi.Input[str] description: Description of the function.
-        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
-        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        :param pulumi.Input[str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
+        :param pulumi.Input[str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entry_point: Name of the function that will be executed when the Google Cloud Function is triggered.
         :param pulumi.Input[Mapping[str, Any]] environment_variables: A set of key/value environment variable pairs to assign to the function.
@@ -1646,7 +1646,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> pulumi.Output[str]:
         """
-        Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -1654,7 +1654,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="dockerRepository")
     def docker_repository(self) -> pulumi.Output[Optional[str]]:
         """
-        User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         """
         return pulumi.get(self, "docker_repository")
 

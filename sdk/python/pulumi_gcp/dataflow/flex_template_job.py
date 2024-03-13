@@ -74,12 +74,12 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
                the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
                terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
                different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        :param pulumi.Input[str] subnetwork: Compute Engine subnetwork for launching instances to run your pipeline.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
@@ -368,7 +368,7 @@ class FlexTemplateJobArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The Service Account email used to create the job.
+        Service account email to run the workers as.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -406,7 +406,7 @@ class FlexTemplateJobArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        Compute Engine subnetwork for launching instances to run your pipeline.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -512,13 +512,13 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
                the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
                terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
                different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
-        :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        :param pulumi.Input[str] subnetwork: Compute Engine subnetwork for launching instances to run your pipeline.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
@@ -856,7 +856,7 @@ class _FlexTemplateJobState:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The Service Account email used to create the job.
+        Service account email to run the workers as.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -906,7 +906,7 @@ class _FlexTemplateJobState:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        Compute Engine subnetwork for launching instances to run your pipeline.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -1095,12 +1095,12 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
                the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
                terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
                different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        :param pulumi.Input[str] subnetwork: Compute Engine subnetwork for launching instances to run your pipeline.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
@@ -1353,13 +1353,13 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] sdk_container_image: Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
                the SDK. Note this field is only valid for portable pipelines.
-        :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
+        :param pulumi.Input[str] service_account_email: Service account email to run the workers as.
         :param pulumi.Input[bool] skip_wait_on_job_termination: If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
                terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
                different, e.g. by embedding a release ID or by using a random_id.
         :param pulumi.Input[str] staging_location: The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
-        :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        :param pulumi.Input[str] subnetwork: Compute Engine subnetwork for launching instances to run your pipeline.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
@@ -1589,7 +1589,7 @@ class FlexTemplateJob(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> pulumi.Output[str]:
         """
-        The Service Account email used to create the job.
+        Service account email to run the workers as.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -1623,7 +1623,7 @@ class FlexTemplateJob(pulumi.CustomResource):
     @pulumi.getter
     def subnetwork(self) -> pulumi.Output[str]:
         """
-        The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        Compute Engine subnetwork for launching instances to run your pipeline.
         """
         return pulumi.get(self, "subnetwork")
 

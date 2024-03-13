@@ -5,7 +5,9 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs Empty = new FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs();
+
+    /**
+     * map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+     * 
+     */
+    @Import(name="bundles")
+    private @Nullable Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs>> bundles;
+
+    /**
+     * @return map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+     * 
+     */
+    public Optional<Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs>>> bundles() {
+        return Optional.ofNullable(this.bundles);
+    }
 
     /**
      * Configures the installation of the Template Library. Structure is documented below.
@@ -33,6 +50,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPol
     private FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs() {}
 
     private FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs $) {
+        this.bundles = $.bundles;
         this.templateLibrary = $.templateLibrary;
     }
 
@@ -52,6 +70,37 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPol
 
         public Builder(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs defaults) {
             $ = new FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bundles map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bundles(@Nullable Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs>> bundles) {
+            $.bundles = bundles;
+            return this;
+        }
+
+        /**
+         * @param bundles map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bundles(List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs> bundles) {
+            return bundles(Output.of(bundles));
+        }
+
+        /**
+         * @param bundles map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bundles(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs... bundles) {
+            return bundles(List.of(bundles));
         }
 
         /**

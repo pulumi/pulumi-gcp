@@ -16,23 +16,23 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// <summary>
         /// Cavium certificate chain corresponding to the attestation.
         /// </summary>
-        public readonly string? CaviumCerts;
+        public readonly ImmutableArray<string> CaviumCerts;
         /// <summary>
         /// Google card certificate chain corresponding to the attestation.
         /// </summary>
-        public readonly string? GoogleCardCerts;
+        public readonly ImmutableArray<string> GoogleCardCerts;
         /// <summary>
         /// Google partition certificate chain corresponding to the attestation.
         /// </summary>
-        public readonly string? GooglePartitionCerts;
+        public readonly ImmutableArray<string> GooglePartitionCerts;
 
         [OutputConstructor]
         private CryptoKeyVersionAttestationCertChains(
-            string? caviumCerts,
+            ImmutableArray<string> caviumCerts,
 
-            string? googleCardCerts,
+            ImmutableArray<string> googleCardCerts,
 
-            string? googlePartitionCerts)
+            ImmutableArray<string> googlePartitionCerts)
         {
             CaviumCerts = caviumCerts;
             GoogleCardCerts = googleCardCerts;

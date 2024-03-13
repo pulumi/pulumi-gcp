@@ -21,7 +21,8 @@ class DnsAuthorizationArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DnsAuthorization resource.
         :param pulumi.Input[str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
@@ -40,6 +41,13 @@ class DnsAuthorizationArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+               be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+               FIXED_RECORD DNS authorization uses DNS-01 validation method
+               PER_PROJECT_RECORD DNS authorization allows for independent management
+               of Google-managed certificates with DNS authorization across multiple
+               projects.
+               Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         pulumi.set(__self__, "domain", domain)
         if description is not None:
@@ -52,6 +60,8 @@ class DnsAuthorizationArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -135,6 +145,24 @@ class DnsAuthorizationArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        FIXED_RECORD DNS authorization uses DNS-01 validation method
+        PER_PROJECT_RECORD DNS authorization allows for independent management
+        of Google-managed certificates with DNS authorization across multiple
+        projects.
+        Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _DnsAuthorizationState:
@@ -147,7 +175,8 @@ class _DnsAuthorizationState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DnsAuthorization resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
@@ -173,6 +202,13 @@ class _DnsAuthorizationState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+               be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+               FIXED_RECORD DNS authorization uses DNS-01 validation method
+               PER_PROJECT_RECORD DNS authorization allows for independent management
+               of Google-managed certificates with DNS authorization across multiple
+               projects.
+               Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -192,6 +228,8 @@ class _DnsAuthorizationState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -315,6 +353,24 @@ class _DnsAuthorizationState:
     def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        FIXED_RECORD DNS authorization uses DNS-01 validation method
+        PER_PROJECT_RECORD DNS authorization allows for independent management
+        of Google-managed certificates with DNS authorization across multiple
+        projects.
+        Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 class DnsAuthorization(pulumi.CustomResource):
     @overload
@@ -327,6 +383,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
@@ -348,6 +405,21 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Certificate Manager Dns Authorization Regional
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.DnsAuthorization("default",
+            name="dns-auth",
+            location="us-central1",
+            description="reginal dns",
+            type="PER_PROJECT_RECORD",
+            domain="subdomain.hashicorptest.com")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -393,6 +465,13 @@ class DnsAuthorization(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+               be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+               FIXED_RECORD DNS authorization uses DNS-01 validation method
+               PER_PROJECT_RECORD DNS authorization allows for independent management
+               of Google-managed certificates with DNS authorization across multiple
+               projects.
+               Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         ...
     @overload
@@ -420,6 +499,21 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Certificate Manager Dns Authorization Regional
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.DnsAuthorization("default",
+            name="dns-auth",
+            location="us-central1",
+            description="reginal dns",
+            type="PER_PROJECT_RECORD",
+            domain="subdomain.hashicorptest.com")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -468,6 +562,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,6 +580,7 @@ class DnsAuthorization(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["type"] = type
             __props__.__dict__["dns_resource_records"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -508,7 +604,8 @@ class DnsAuthorization(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DnsAuthorization':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'DnsAuthorization':
         """
         Get an existing DnsAuthorization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -539,6 +636,13 @@ class DnsAuthorization(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+               be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+               FIXED_RECORD DNS authorization uses DNS-01 validation method
+               PER_PROJECT_RECORD DNS authorization allows for independent management
+               of Google-managed certificates with DNS authorization across multiple
+               projects.
+               Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -553,6 +657,7 @@ class DnsAuthorization(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["type"] = type
         return DnsAuthorization(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -640,4 +745,18 @@ class DnsAuthorization(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+        be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+        FIXED_RECORD DNS authorization uses DNS-01 validation method
+        PER_PROJECT_RECORD DNS authorization allows for independent management
+        of Google-managed certificates with DNS authorization across multiple
+        projects.
+        Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+        """
+        return pulumi.get(self, "type")
 

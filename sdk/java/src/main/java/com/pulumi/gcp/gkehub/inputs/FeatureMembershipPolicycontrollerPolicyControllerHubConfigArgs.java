@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
 import java.lang.Boolean;
@@ -48,6 +49,21 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
      */
     public Optional<Output<Integer>> constraintViolationLimit() {
         return Optional.ofNullable(this.constraintViolationLimit);
+    }
+
+    /**
+     * Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * 
+     */
+    @Import(name="deploymentConfigs")
+    private @Nullable Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs>> deploymentConfigs;
+
+    /**
+     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * 
+     */
+    public Optional<Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs>>> deploymentConfigs() {
+        return Optional.ofNullable(this.deploymentConfigs);
     }
 
     /**
@@ -160,6 +176,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
     private FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs $) {
         this.auditIntervalSeconds = $.auditIntervalSeconds;
         this.constraintViolationLimit = $.constraintViolationLimit;
+        this.deploymentConfigs = $.deploymentConfigs;
         this.exemptableNamespaces = $.exemptableNamespaces;
         this.installSpec = $.installSpec;
         this.logDeniesEnabled = $.logDeniesEnabled;
@@ -227,6 +244,37 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArg
          */
         public Builder constraintViolationLimit(Integer constraintViolationLimit) {
             return constraintViolationLimit(Output.of(constraintViolationLimit));
+        }
+
+        /**
+         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentConfigs(@Nullable Output<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs>> deploymentConfigs) {
+            $.deploymentConfigs = deploymentConfigs;
+            return this;
+        }
+
+        /**
+         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentConfigs(List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs> deploymentConfigs) {
+            return deploymentConfigs(Output.of(deploymentConfigs));
+        }
+
+        /**
+         * @param deploymentConfigs Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentConfigs(FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs... deploymentConfigs) {
+            return deploymentConfigs(List.of(deploymentConfigs));
         }
 
         /**

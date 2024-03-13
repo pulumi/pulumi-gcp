@@ -169,6 +169,92 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Service Attachment Explicit Networks
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pscIlbConsumerNetwork = new gcp.compute.Network("psc_ilb_consumer_network", {
+ *     name: "psc-ilb-consumer-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerServiceHealthCheck = new gcp.compute.HealthCheck("producer_service_health_check", {
+ *     name: "producer-service-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const producerServiceBackend = new gcp.compute.RegionBackendService("producer_service_backend", {
+ *     name: "producer-service",
+ *     region: "us-west2",
+ *     healthChecks: producerServiceHealthCheck.id,
+ * });
+ * const pscIlbNetwork = new gcp.compute.Network("psc_ilb_network", {
+ *     name: "psc-ilb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const pscIlbProducerSubnetwork = new gcp.compute.Subnetwork("psc_ilb_producer_subnetwork", {
+ *     name: "psc-ilb-producer-subnetwork",
+ *     region: "us-west2",
+ *     network: pscIlbNetwork.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * });
+ * const pscIlbTargetService = new gcp.compute.ForwardingRule("psc_ilb_target_service", {
+ *     name: "producer-forwarding-rule",
+ *     region: "us-west2",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: producerServiceBackend.id,
+ *     allPorts: true,
+ *     network: pscIlbNetwork.name,
+ *     subnetwork: pscIlbProducerSubnetwork.name,
+ * });
+ * const pscIlbNat = new gcp.compute.Subnetwork("psc_ilb_nat", {
+ *     name: "psc-ilb-nat",
+ *     region: "us-west2",
+ *     network: pscIlbNetwork.id,
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     ipCidrRange: "10.1.0.0/16",
+ * });
+ * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("psc_ilb_service_attachment", {
+ *     name: "my-psc-ilb",
+ *     region: "us-west2",
+ *     description: "A service attachment configured with Terraform",
+ *     enableProxyProtocol: false,
+ *     connectionPreference: "ACCEPT_MANUAL",
+ *     natSubnets: [pscIlbNat.id],
+ *     targetService: pscIlbTargetService.id,
+ *     consumerAcceptLists: [{
+ *         networkUrl: pscIlbConsumerNetwork.selfLink,
+ *         connectionLimit: 1,
+ *     }],
+ * });
+ * const pscIlbConsumerSubnetwork = new gcp.compute.Subnetwork("psc_ilb_consumer_subnetwork", {
+ *     name: "psc-ilb-consumer-network",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-west2",
+ *     network: pscIlbConsumerNetwork.id,
+ * });
+ * const pscIlbConsumerAddress = new gcp.compute.Address("psc_ilb_consumer_address", {
+ *     name: "psc-ilb-consumer-address",
+ *     region: "us-west2",
+ *     subnetwork: pscIlbConsumerSubnetwork.id,
+ *     addressType: "INTERNAL",
+ * });
+ * const pscIlbConsumer = new gcp.compute.ForwardingRule("psc_ilb_consumer", {
+ *     name: "psc-ilb-consumer-forwarding-rule",
+ *     region: "us-west2",
+ *     target: pscIlbServiceAttachment.id,
+ *     loadBalancingScheme: "",
+ *     network: pscIlbConsumerNetwork.id,
+ *     subnetwork: pscIlbConsumerSubnetwork.id,
+ *     ipAddress: pscIlbConsumerAddress.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  * ### Service Attachment Reconcile Connections
  *
  * <!--Start PulumiCodeChooser -->

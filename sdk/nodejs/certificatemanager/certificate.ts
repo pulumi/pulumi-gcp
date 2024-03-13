@@ -283,6 +283,30 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Certificate Manager Google Managed Regional Certificate Dns Auth
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
+ *     name: "dns-auth",
+ *     location: "us-central1",
+ *     description: "The default dnss",
+ *     domain: "subdomain.hashicorptest.com",
+ * });
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "dns-cert",
+ *     description: "regional managed certs",
+ *     location: "us-central1",
+ *     managed: {
+ *         domains: [instance.domain],
+ *         dnsAuthorizations: [instance.id],
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

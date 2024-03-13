@@ -644,11 +644,11 @@ func (o CryptoKeyVersionAttestationArrayOutput) Index(i pulumi.IntInput) CryptoK
 
 type CryptoKeyVersionAttestationCertChains struct {
 	// Cavium certificate chain corresponding to the attestation.
-	CaviumCerts *string `pulumi:"caviumCerts"`
+	CaviumCerts []string `pulumi:"caviumCerts"`
 	// Google card certificate chain corresponding to the attestation.
-	GoogleCardCerts *string `pulumi:"googleCardCerts"`
+	GoogleCardCerts []string `pulumi:"googleCardCerts"`
 	// Google partition certificate chain corresponding to the attestation.
-	GooglePartitionCerts *string `pulumi:"googlePartitionCerts"`
+	GooglePartitionCerts []string `pulumi:"googlePartitionCerts"`
 }
 
 // CryptoKeyVersionAttestationCertChainsInput is an input type that accepts CryptoKeyVersionAttestationCertChainsArgs and CryptoKeyVersionAttestationCertChainsOutput values.
@@ -664,11 +664,11 @@ type CryptoKeyVersionAttestationCertChainsInput interface {
 
 type CryptoKeyVersionAttestationCertChainsArgs struct {
 	// Cavium certificate chain corresponding to the attestation.
-	CaviumCerts pulumi.StringPtrInput `pulumi:"caviumCerts"`
+	CaviumCerts pulumi.StringArrayInput `pulumi:"caviumCerts"`
 	// Google card certificate chain corresponding to the attestation.
-	GoogleCardCerts pulumi.StringPtrInput `pulumi:"googleCardCerts"`
+	GoogleCardCerts pulumi.StringArrayInput `pulumi:"googleCardCerts"`
 	// Google partition certificate chain corresponding to the attestation.
-	GooglePartitionCerts pulumi.StringPtrInput `pulumi:"googlePartitionCerts"`
+	GooglePartitionCerts pulumi.StringArrayInput `pulumi:"googlePartitionCerts"`
 }
 
 func (CryptoKeyVersionAttestationCertChainsArgs) ElementType() reflect.Type {
@@ -749,18 +749,18 @@ func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestati
 }
 
 // Cavium certificate chain corresponding to the attestation.
-func (o CryptoKeyVersionAttestationCertChainsOutput) CaviumCerts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.CaviumCerts }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionAttestationCertChainsOutput) CaviumCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) []string { return v.CaviumCerts }).(pulumi.StringArrayOutput)
 }
 
 // Google card certificate chain corresponding to the attestation.
-func (o CryptoKeyVersionAttestationCertChainsOutput) GoogleCardCerts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.GoogleCardCerts }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionAttestationCertChainsOutput) GoogleCardCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) []string { return v.GoogleCardCerts }).(pulumi.StringArrayOutput)
 }
 
 // Google partition certificate chain corresponding to the attestation.
-func (o CryptoKeyVersionAttestationCertChainsOutput) GooglePartitionCerts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.GooglePartitionCerts }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionAttestationCertChainsOutput) GooglePartitionCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) []string { return v.GooglePartitionCerts }).(pulumi.StringArrayOutput)
 }
 
 type CryptoKeyVersionAttestationCertChainsPtrOutput struct{ *pulumi.OutputState }
@@ -788,33 +788,33 @@ func (o CryptoKeyVersionAttestationCertChainsPtrOutput) Elem() CryptoKeyVersionA
 }
 
 // Cavium certificate chain corresponding to the attestation.
-func (o CryptoKeyVersionAttestationCertChainsPtrOutput) CaviumCerts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) CaviumCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) []string {
 		if v == nil {
 			return nil
 		}
 		return v.CaviumCerts
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Google card certificate chain corresponding to the attestation.
-func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GoogleCardCerts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GoogleCardCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) []string {
 		if v == nil {
 			return nil
 		}
 		return v.GoogleCardCerts
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 // Google partition certificate chain corresponding to the attestation.
-func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GooglePartitionCerts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GooglePartitionCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) []string {
 		if v == nil {
 			return nil
 		}
 		return v.GooglePartitionCerts
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 type CryptoKeyVersionAttestationExternalProtectionLevelOptions struct {

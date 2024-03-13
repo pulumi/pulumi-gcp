@@ -180,13 +180,13 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        /// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         /// </summary>
         [Output("dockerRegistry")]
         public Output<string> DockerRegistry { get; private set; } = null!;
 
         /// <summary>
-        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         /// </summary>
         [Output("dockerRepository")]
         public Output<string?> DockerRepository { get; private set; } = null!;
@@ -450,13 +450,13 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        /// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         /// </summary>
         [Input("dockerRegistry")]
         public Input<string>? DockerRegistry { get; set; }
 
         /// <summary>
-        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         /// </summary>
         [Input("dockerRepository")]
         public Input<string>? DockerRepository { get; set; }
@@ -676,13 +676,13 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
+        /// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         /// </summary>
         [Input("dockerRegistry")]
         public Input<string>? DockerRegistry { get; set; }
 
         /// <summary>
-        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
+        /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
         /// </summary>
         [Input("dockerRepository")]
         public Input<string>? DockerRepository { get; set; }

@@ -268,13 +268,13 @@ class CryptoKeyVersionAttestationArgs:
 @pulumi.input_type
 class CryptoKeyVersionAttestationCertChainsArgs:
     def __init__(__self__, *,
-                 cavium_certs: Optional[pulumi.Input[str]] = None,
-                 google_card_certs: Optional[pulumi.Input[str]] = None,
-                 google_partition_certs: Optional[pulumi.Input[str]] = None):
+                 cavium_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 google_card_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 google_partition_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] cavium_certs: Cavium certificate chain corresponding to the attestation.
-        :param pulumi.Input[str] google_card_certs: Google card certificate chain corresponding to the attestation.
-        :param pulumi.Input[str] google_partition_certs: Google partition certificate chain corresponding to the attestation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cavium_certs: Cavium certificate chain corresponding to the attestation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] google_card_certs: Google card certificate chain corresponding to the attestation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] google_partition_certs: Google partition certificate chain corresponding to the attestation.
         """
         if cavium_certs is not None:
             pulumi.set(__self__, "cavium_certs", cavium_certs)
@@ -285,38 +285,38 @@ class CryptoKeyVersionAttestationCertChainsArgs:
 
     @property
     @pulumi.getter(name="caviumCerts")
-    def cavium_certs(self) -> Optional[pulumi.Input[str]]:
+    def cavium_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Cavium certificate chain corresponding to the attestation.
         """
         return pulumi.get(self, "cavium_certs")
 
     @cavium_certs.setter
-    def cavium_certs(self, value: Optional[pulumi.Input[str]]):
+    def cavium_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "cavium_certs", value)
 
     @property
     @pulumi.getter(name="googleCardCerts")
-    def google_card_certs(self) -> Optional[pulumi.Input[str]]:
+    def google_card_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Google card certificate chain corresponding to the attestation.
         """
         return pulumi.get(self, "google_card_certs")
 
     @google_card_certs.setter
-    def google_card_certs(self, value: Optional[pulumi.Input[str]]):
+    def google_card_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "google_card_certs", value)
 
     @property
     @pulumi.getter(name="googlePartitionCerts")
-    def google_partition_certs(self) -> Optional[pulumi.Input[str]]:
+    def google_partition_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Google partition certificate chain corresponding to the attestation.
         """
         return pulumi.get(self, "google_partition_certs")
 
     @google_partition_certs.setter
-    def google_partition_certs(self, value: Optional[pulumi.Input[str]]):
+    def google_partition_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "google_partition_certs", value)
 
 

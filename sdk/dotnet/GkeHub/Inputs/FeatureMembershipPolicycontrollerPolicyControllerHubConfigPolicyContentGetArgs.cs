@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bundles")]
+        private InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleGetArgs>? _bundles;
+
+        /// <summary>
+        /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        /// </summary>
+        public InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleGetArgs> Bundles
+        {
+            get => _bundles ?? (_bundles = new InputList<Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleGetArgs>());
+            set => _bundles = value;
+        }
+
         /// <summary>
         /// Configures the installation of the Template Library. Structure is documented below.
         /// </summary>
