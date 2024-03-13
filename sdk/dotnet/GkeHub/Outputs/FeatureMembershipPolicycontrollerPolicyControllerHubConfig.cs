@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly int? ConstraintViolationLimit;
         /// <summary>
+        /// Map of deployment configs to deployments ("admission", "audit", "mutation").
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> DeploymentConfigs;
+        /// <summary>
         /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         /// </summary>
         public readonly ImmutableArray<string> ExemptableNamespaces;
@@ -56,6 +60,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             int? constraintViolationLimit,
 
+            ImmutableArray<Outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs,
+
             ImmutableArray<string> exemptableNamespaces,
 
             string? installSpec,
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         {
             AuditIntervalSeconds = auditIntervalSeconds;
             ConstraintViolationLimit = constraintViolationLimit;
+            DeploymentConfigs = deploymentConfigs;
             ExemptableNamespaces = exemptableNamespaces;
             InstallSpec = installSpec;
             LogDeniesEnabled = logDeniesEnabled;

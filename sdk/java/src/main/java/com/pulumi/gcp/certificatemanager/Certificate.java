@@ -464,6 +464,54 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Certificate Manager Google Managed Regional Certificate Dns Auth
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;The default dnss&#34;)
+ *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .name(&#34;dns-cert&#34;)
+ *             .description(&#34;regional managed certs&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .managed(CertificateManagedArgs.builder()
+ *                 .domains(instance.domain())
+ *                 .dnsAuthorizations(instance.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

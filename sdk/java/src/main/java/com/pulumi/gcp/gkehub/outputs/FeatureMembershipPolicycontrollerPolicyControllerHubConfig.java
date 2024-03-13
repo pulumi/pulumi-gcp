@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gkehub.outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent;
 import java.lang.Boolean;
@@ -26,6 +27,11 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
      * 
      */
     private @Nullable Integer constraintViolationLimit;
+    /**
+     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * 
+     */
+    private @Nullable List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs;
     /**
      * @return The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
      * 
@@ -76,6 +82,13 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
      */
     public Optional<Integer> constraintViolationLimit() {
         return Optional.ofNullable(this.constraintViolationLimit);
+    }
+    /**
+     * @return Map of deployment configs to deployments (&#34;admission&#34;, &#34;audit&#34;, &#34;mutation&#34;).
+     * 
+     */
+    public List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs() {
+        return this.deploymentConfigs == null ? List.of() : this.deploymentConfigs;
     }
     /**
      * @return The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -138,6 +151,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
     public static final class Builder {
         private @Nullable Integer auditIntervalSeconds;
         private @Nullable Integer constraintViolationLimit;
+        private @Nullable List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs;
         private @Nullable List<String> exemptableNamespaces;
         private @Nullable String installSpec;
         private @Nullable Boolean logDeniesEnabled;
@@ -150,6 +164,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
     	      Objects.requireNonNull(defaults);
     	      this.auditIntervalSeconds = defaults.auditIntervalSeconds;
     	      this.constraintViolationLimit = defaults.constraintViolationLimit;
+    	      this.deploymentConfigs = defaults.deploymentConfigs;
     	      this.exemptableNamespaces = defaults.exemptableNamespaces;
     	      this.installSpec = defaults.installSpec;
     	      this.logDeniesEnabled = defaults.logDeniesEnabled;
@@ -170,6 +185,15 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
 
             this.constraintViolationLimit = constraintViolationLimit;
             return this;
+        }
+        @CustomType.Setter
+        public Builder deploymentConfigs(@Nullable List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs) {
+
+            this.deploymentConfigs = deploymentConfigs;
+            return this;
+        }
+        public Builder deploymentConfigs(FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig... deploymentConfigs) {
+            return deploymentConfigs(List.of(deploymentConfigs));
         }
         @CustomType.Setter
         public Builder exemptableNamespaces(@Nullable List<String> exemptableNamespaces) {
@@ -220,6 +244,7 @@ public final class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
             final var _resultValue = new FeatureMembershipPolicycontrollerPolicyControllerHubConfig();
             _resultValue.auditIntervalSeconds = auditIntervalSeconds;
             _resultValue.constraintViolationLimit = constraintViolationLimit;
+            _resultValue.deploymentConfigs = deploymentConfigs;
             _resultValue.exemptableNamespaces = exemptableNamespaces;
             _resultValue.installSpec = installSpec;
             _resultValue.logDeniesEnabled = logDeniesEnabled;

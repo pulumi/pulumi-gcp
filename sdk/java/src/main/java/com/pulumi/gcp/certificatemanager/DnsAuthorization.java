@@ -60,6 +60,42 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Certificate Manager Dns Authorization Regional
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
+ *             .name(&#34;dns-auth&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;reginal dns&#34;)
+ *             .type(&#34;PER_PROJECT_RECORD&#34;)
+ *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -239,6 +275,32 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

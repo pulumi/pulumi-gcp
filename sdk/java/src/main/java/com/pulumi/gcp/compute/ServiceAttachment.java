@@ -263,6 +263,136 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Service Attachment Explicit Networks
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pscIlbConsumerNetwork = new Network(&#34;pscIlbConsumerNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;psc-ilb-consumer-network&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var producerServiceHealthCheck = new HealthCheck(&#34;producerServiceHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .name(&#34;producer-service-health-check&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(&#34;80&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var producerServiceBackend = new RegionBackendService(&#34;producerServiceBackend&#34;, RegionBackendServiceArgs.builder()        
+ *             .name(&#34;producer-service&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .healthChecks(producerServiceHealthCheck.id())
+ *             .build());
+ * 
+ *         var pscIlbNetwork = new Network(&#34;pscIlbNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;psc-ilb-network&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var pscIlbProducerSubnetwork = new Subnetwork(&#34;pscIlbProducerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;psc-ilb-producer-subnetwork&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .network(pscIlbNetwork.id())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var pscIlbTargetService = new ForwardingRule(&#34;pscIlbTargetService&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;producer-forwarding-rule&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .backendService(producerServiceBackend.id())
+ *             .allPorts(true)
+ *             .network(pscIlbNetwork.name())
+ *             .subnetwork(pscIlbProducerSubnetwork.name())
+ *             .build());
+ * 
+ *         var pscIlbNat = new Subnetwork(&#34;pscIlbNat&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;psc-ilb-nat&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .network(pscIlbNetwork.id())
+ *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var pscIlbServiceAttachment = new ServiceAttachment(&#34;pscIlbServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .name(&#34;my-psc-ilb&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .description(&#34;A service attachment configured with Terraform&#34;)
+ *             .enableProxyProtocol(false)
+ *             .connectionPreference(&#34;ACCEPT_MANUAL&#34;)
+ *             .natSubnets(pscIlbNat.id())
+ *             .targetService(pscIlbTargetService.id())
+ *             .consumerAcceptLists(ServiceAttachmentConsumerAcceptListArgs.builder()
+ *                 .networkUrl(pscIlbConsumerNetwork.selfLink())
+ *                 .connectionLimit(1)
+ *                 .build())
+ *             .build());
+ * 
+ *         var pscIlbConsumerSubnetwork = new Subnetwork(&#34;pscIlbConsumerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;psc-ilb-consumer-network&#34;)
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .network(pscIlbConsumerNetwork.id())
+ *             .build());
+ * 
+ *         var pscIlbConsumerAddress = new Address(&#34;pscIlbConsumerAddress&#34;, AddressArgs.builder()        
+ *             .name(&#34;psc-ilb-consumer-address&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .subnetwork(pscIlbConsumerSubnetwork.id())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .build());
+ * 
+ *         var pscIlbConsumer = new ForwardingRule(&#34;pscIlbConsumer&#34;, ForwardingRuleArgs.builder()        
+ *             .name(&#34;psc-ilb-consumer-forwarding-rule&#34;)
+ *             .region(&#34;us-west2&#34;)
+ *             .target(pscIlbServiceAttachment.id())
+ *             .loadBalancingScheme(&#34;&#34;)
+ *             .network(pscIlbConsumerNetwork.id())
+ *             .subnetwork(pscIlbConsumerSubnetwork.id())
+ *             .ipAddress(pscIlbConsumerAddress.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Service Attachment Reconcile Connections
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

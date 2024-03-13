@@ -41,8 +41,14 @@ __all__ = [
     'FeatureMembershipMesh',
     'FeatureMembershipPolicycontroller',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfig',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle',
     'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary',
     'FeatureResourceState',
     'FeatureSpec',
@@ -1908,6 +1914,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
             suggest = "audit_interval_seconds"
         elif key == "constraintViolationLimit":
             suggest = "constraint_violation_limit"
+        elif key == "deploymentConfigs":
+            suggest = "deployment_configs"
         elif key == "exemptableNamespaces":
             suggest = "exemptable_namespaces"
         elif key == "installSpec":
@@ -1935,6 +1943,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
     def __init__(__self__, *,
                  audit_interval_seconds: Optional[int] = None,
                  constraint_violation_limit: Optional[int] = None,
+                 deployment_configs: Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig']] = None,
                  exemptable_namespaces: Optional[Sequence[str]] = None,
                  install_spec: Optional[str] = None,
                  log_denies_enabled: Optional[bool] = None,
@@ -1945,6 +1954,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
         """
         :param int audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         :param int constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+        :param Sequence['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation").
         :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param str install_spec: Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
         :param bool log_denies_enabled: Logs all denies and dry run failures.
@@ -1957,6 +1967,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
             pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
         if constraint_violation_limit is not None:
             pulumi.set(__self__, "constraint_violation_limit", constraint_violation_limit)
+        if deployment_configs is not None:
+            pulumi.set(__self__, "deployment_configs", deployment_configs)
         if exemptable_namespaces is not None:
             pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
         if install_spec is not None:
@@ -1987,6 +1999,14 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
         The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
         """
         return pulumi.get(self, "constraint_violation_limit")
+
+    @property
+    @pulumi.getter(name="deploymentConfigs")
+    def deployment_configs(self) -> Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig']]:
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation").
+        """
+        return pulumi.get(self, "deployment_configs")
 
     @property
     @pulumi.getter(name="exemptableNamespaces")
@@ -2046,6 +2066,245 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
 
 
 @pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentName":
+            suggest = "component_name"
+        elif key == "containerResources":
+            suggest = "container_resources"
+        elif key == "podAffinity":
+            suggest = "pod_affinity"
+        elif key == "podTolerations":
+            suggest = "pod_tolerations"
+        elif key == "replicaCount":
+            suggest = "replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_name: str,
+                 container_resources: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources'] = None,
+                 pod_affinity: Optional[str] = None,
+                 pod_tolerations: Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration']] = None,
+                 replica_count: Optional[int] = None):
+        """
+        :param str component_name: The name of the component. One of `admission` `audit` or `mutation`
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs' container_resources: Container resource requirements.
+        :param str pod_affinity: Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
+        :param Sequence['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs'] pod_tolerations: Pod tolerations of node taints.
+        :param int replica_count: Pod replica count.
+        """
+        pulumi.set(__self__, "component_name", component_name)
+        if container_resources is not None:
+            pulumi.set(__self__, "container_resources", container_resources)
+        if pod_affinity is not None:
+            pulumi.set(__self__, "pod_affinity", pod_affinity)
+        if pod_tolerations is not None:
+            pulumi.set(__self__, "pod_tolerations", pod_tolerations)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
+
+    @property
+    @pulumi.getter(name="componentName")
+    def component_name(self) -> str:
+        """
+        The name of the component. One of `admission` `audit` or `mutation`
+        """
+        return pulumi.get(self, "component_name")
+
+    @property
+    @pulumi.getter(name="containerResources")
+    def container_resources(self) -> Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources']:
+        """
+        Container resource requirements.
+        """
+        return pulumi.get(self, "container_resources")
+
+    @property
+    @pulumi.getter(name="podAffinity")
+    def pod_affinity(self) -> Optional[str]:
+        """
+        Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
+        """
+        return pulumi.get(self, "pod_affinity")
+
+    @property
+    @pulumi.getter(name="podTolerations")
+    def pod_tolerations(self) -> Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration']]:
+        """
+        Pod tolerations of node taints.
+        """
+        return pulumi.get(self, "pod_tolerations")
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[int]:
+        """
+        Pod replica count.
+        """
+        return pulumi.get(self, "replica_count")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources(dict):
+    def __init__(__self__, *,
+                 limits: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits'] = None,
+                 requests: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests'] = None):
+        """
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs' limits: Limits describes the maximum amount of compute resources allowed for use by the running container.
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs' requests: Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits']:
+        """
+        Limits describes the maximum amount of compute resources allowed for use by the running container.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests']:
+        """
+        Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[str] = None,
+                 memory: Optional[str] = None):
+        """
+        :param str cpu: CPU requirement expressed in Kubernetes resource units.
+        :param str memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[str]:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[str]:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[str] = None,
+                 memory: Optional[str] = None):
+        """
+        :param str cpu: CPU requirement expressed in Kubernetes resource units.
+        :param str memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[str]:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[str]:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: Matches a taint effect.
+        :param str key: Matches a taint key (not necessarily unique).
+        :param str operator: Matches a taint operator.
+        :param str value: Matches a taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        Matches a taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Matches a taint key (not necessarily unique).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Matches a taint operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Matches a taint value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring(dict):
     def __init__(__self__, *,
                  backends: Optional[Sequence[str]] = None):
@@ -2084,12 +2343,24 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(di
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bundles: Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle']] = None,
                  template_library: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary'] = None):
         """
+        :param Sequence['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs'] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs' template_library: Configures the installation of the Template Library. Structure is documented below.
         """
+        if bundles is not None:
+            pulumi.set(__self__, "bundles", bundles)
         if template_library is not None:
             pulumi.set(__self__, "template_library", template_library)
+
+    @property
+    @pulumi.getter
+    def bundles(self) -> Optional[Sequence['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle']]:
+        """
+        map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        """
+        return pulumi.get(self, "bundles")
 
     @property
     @pulumi.getter(name="templateLibrary")
@@ -2098,6 +2369,55 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(di
         Configures the installation of the Template Library. Structure is documented below.
         """
         return pulumi.get(self, "template_library")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bundleName":
+            suggest = "bundle_name"
+        elif key == "exemptedNamespaces":
+            suggest = "exempted_namespaces"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bundle_name: str,
+                 exempted_namespaces: Optional[Sequence[str]] = None):
+        """
+        :param str bundle_name: The name of the bundle.
+        :param Sequence[str] exempted_namespaces: The set of namespaces to be exempted from the bundle.
+        """
+        pulumi.set(__self__, "bundle_name", bundle_name)
+        if exempted_namespaces is not None:
+            pulumi.set(__self__, "exempted_namespaces", exempted_namespaces)
+
+    @property
+    @pulumi.getter(name="bundleName")
+    def bundle_name(self) -> str:
+        """
+        The name of the bundle.
+        """
+        return pulumi.get(self, "bundle_name")
+
+    @property
+    @pulumi.getter(name="exemptedNamespaces")
+    def exempted_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        The set of namespaces to be exempted from the bundle.
+        """
+        return pulumi.get(self, "exempted_namespaces")
 
 
 @pulumi.output_type

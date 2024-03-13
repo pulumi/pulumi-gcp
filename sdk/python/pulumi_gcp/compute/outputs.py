@@ -9382,7 +9382,9 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "forceUpdateOnRepair":
+        if key == "defaultActionOnFailure":
+            suggest = "default_action_on_failure"
+        elif key == "forceUpdateOnRepair":
             suggest = "force_update_on_repair"
 
         if suggest:
@@ -9397,22 +9399,32 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_action_on_failure: Optional[str] = None,
                  force_update_on_repair: Optional[str] = None):
         """
-        :param str force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
-               
+        :param str default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
                - - -
+        :param str force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
+        if default_action_on_failure is not None:
+            pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="defaultActionOnFailure")
+    def default_action_on_failure(self) -> Optional[str]:
+        """
+        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+        - - -
+        """
+        return pulumi.get(self, "default_action_on_failure")
 
     @property
     @pulumi.getter(name="forceUpdateOnRepair")
     def force_update_on_repair(self) -> Optional[str]:
         """
-        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
-
-        - - -
+        , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         return pulumi.get(self, "force_update_on_repair")
 
@@ -18547,7 +18559,9 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "forceUpdateOnRepair":
+        if key == "defaultActionOnFailure":
+            suggest = "default_action_on_failure"
+        elif key == "forceUpdateOnRepair":
             suggest = "force_update_on_repair"
 
         if suggest:
@@ -18562,20 +18576,34 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_action_on_failure: Optional[str] = None,
                  force_update_on_repair: Optional[str] = None):
         """
-        :param str force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+        :param str default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+               
                - - -
+        :param str force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
+        if default_action_on_failure is not None:
+            pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="defaultActionOnFailure")
+    def default_action_on_failure(self) -> Optional[str]:
+        """
+        , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+
+        - - -
+        """
+        return pulumi.get(self, "default_action_on_failure")
 
     @property
     @pulumi.getter(name="forceUpdateOnRepair")
     def force_update_on_repair(self) -> Optional[str]:
         """
-        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
-        - - -
+        , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         return pulumi.get(self, "force_update_on_repair")
 
@@ -30925,6 +30953,8 @@ class ServiceAttachmentConsumerAcceptList(dict):
         suggest = None
         if key == "connectionLimit":
             suggest = "connection_limit"
+        elif key == "networkUrl":
+            suggest = "network_url"
         elif key == "projectIdOrNum":
             suggest = "project_id_or_num"
 
@@ -30941,14 +30971,21 @@ class ServiceAttachmentConsumerAcceptList(dict):
 
     def __init__(__self__, *,
                  connection_limit: int,
-                 project_id_or_num: str):
+                 network_url: Optional[str] = None,
+                 project_id_or_num: Optional[str] = None):
         """
         :param int connection_limit: The number of consumer forwarding rules the consumer project can
                create.
+        :param str network_url: The network that is allowed to connect to this service attachment.
+               Only one of project_id_or_num and network_url may be set.
         :param str project_id_or_num: A project that is allowed to connect to this service attachment.
+               Only one of project_id_or_num and network_url may be set.
         """
         pulumi.set(__self__, "connection_limit", connection_limit)
-        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+        if network_url is not None:
+            pulumi.set(__self__, "network_url", network_url)
+        if project_id_or_num is not None:
+            pulumi.set(__self__, "project_id_or_num", project_id_or_num)
 
     @property
     @pulumi.getter(name="connectionLimit")
@@ -30960,10 +30997,20 @@ class ServiceAttachmentConsumerAcceptList(dict):
         return pulumi.get(self, "connection_limit")
 
     @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> Optional[str]:
+        """
+        The network that is allowed to connect to this service attachment.
+        Only one of project_id_or_num and network_url may be set.
+        """
+        return pulumi.get(self, "network_url")
+
+    @property
     @pulumi.getter(name="projectIdOrNum")
-    def project_id_or_num(self) -> str:
+    def project_id_or_num(self) -> Optional[str]:
         """
         A project that is allowed to connect to this service attachment.
+        Only one of project_id_or_num and network_url may be set.
         """
         return pulumi.get(self, "project_id_or_num")
 
@@ -41971,11 +42018,22 @@ class GetInstanceGroupManagerAutoHealingPolicyResult(dict):
 @pulumi.output_type
 class GetInstanceGroupManagerInstanceLifecyclePolicyResult(dict):
     def __init__(__self__, *,
+                 default_action_on_failure: str,
                  force_update_on_repair: str):
         """
+        :param str default_action_on_failure: Default behavior for all instance or health check failures.
         :param str force_update_on_repair: Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
         """
+        pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="defaultActionOnFailure")
+    def default_action_on_failure(self) -> str:
+        """
+        Default behavior for all instance or health check failures.
+        """
+        return pulumi.get(self, "default_action_on_failure")
 
     @property
     @pulumi.getter(name="forceUpdateOnRepair")

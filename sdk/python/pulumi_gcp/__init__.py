@@ -1647,6 +1647,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "clouddeploy/customTargetTypeIamBinding",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding": "CustomTargetTypeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/customTargetTypeIamMember",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember": "CustomTargetTypeIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/customTargetTypeIamPolicy",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/customTargetTypeIamPolicy:CustomTargetTypeIamPolicy": "CustomTargetTypeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "clouddeploy/deliveryPipeline",
   "fqn": "pulumi_gcp.clouddeploy",
   "classes": {

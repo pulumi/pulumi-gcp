@@ -264,13 +264,13 @@ class CryptoKeyVersionAttestationCertChains(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cavium_certs: Optional[str] = None,
-                 google_card_certs: Optional[str] = None,
-                 google_partition_certs: Optional[str] = None):
+                 cavium_certs: Optional[Sequence[str]] = None,
+                 google_card_certs: Optional[Sequence[str]] = None,
+                 google_partition_certs: Optional[Sequence[str]] = None):
         """
-        :param str cavium_certs: Cavium certificate chain corresponding to the attestation.
-        :param str google_card_certs: Google card certificate chain corresponding to the attestation.
-        :param str google_partition_certs: Google partition certificate chain corresponding to the attestation.
+        :param Sequence[str] cavium_certs: Cavium certificate chain corresponding to the attestation.
+        :param Sequence[str] google_card_certs: Google card certificate chain corresponding to the attestation.
+        :param Sequence[str] google_partition_certs: Google partition certificate chain corresponding to the attestation.
         """
         if cavium_certs is not None:
             pulumi.set(__self__, "cavium_certs", cavium_certs)
@@ -281,7 +281,7 @@ class CryptoKeyVersionAttestationCertChains(dict):
 
     @property
     @pulumi.getter(name="caviumCerts")
-    def cavium_certs(self) -> Optional[str]:
+    def cavium_certs(self) -> Optional[Sequence[str]]:
         """
         Cavium certificate chain corresponding to the attestation.
         """
@@ -289,7 +289,7 @@ class CryptoKeyVersionAttestationCertChains(dict):
 
     @property
     @pulumi.getter(name="googleCardCerts")
-    def google_card_certs(self) -> Optional[str]:
+    def google_card_certs(self) -> Optional[Sequence[str]]:
         """
         Google card certificate chain corresponding to the attestation.
         """
@@ -297,7 +297,7 @@ class CryptoKeyVersionAttestationCertChains(dict):
 
     @property
     @pulumi.getter(name="googlePartitionCerts")
-    def google_partition_certs(self) -> Optional[str]:
+    def google_partition_certs(self) -> Optional[Sequence[str]]:
         """
         Google partition certificate chain corresponding to the attestation.
         """

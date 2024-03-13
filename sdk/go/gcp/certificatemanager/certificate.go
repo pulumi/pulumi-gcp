@@ -431,6 +431,52 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Certificate Manager Google Managed Regional Certificate Dns Auth
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
+//				Name:        pulumi.String("dns-auth"),
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("dns-cert"),
+//				Description: pulumi.String("regional managed certs"),
+//				Location:    pulumi.String("us-central1"),
+//				Managed: &certificatemanager.CertificateManagedArgs{
+//					Domains: pulumi.StringArray{
+//						instance.Domain,
+//					},
+//					DnsAuthorizations: pulumi.StringArray{
+//						instance.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

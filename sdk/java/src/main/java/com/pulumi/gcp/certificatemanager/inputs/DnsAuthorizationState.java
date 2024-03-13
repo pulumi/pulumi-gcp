@@ -179,6 +179,33 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.pulumiLabels);
     }
 
+    /**
+     * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private DnsAuthorizationState() {}
 
     private DnsAuthorizationState(DnsAuthorizationState $) {
@@ -191,6 +218,7 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -437,6 +465,39 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param type type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+         * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+         * FIXED_RECORD DNS authorization uses DNS-01 validation method
+         * PER_PROJECT_RECORD DNS authorization allows for independent management
+         * of Google-managed certificates with DNS authorization across multiple
+         * projects.
+         * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+         * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+         * FIXED_RECORD DNS authorization uses DNS-01 validation method
+         * PER_PROJECT_RECORD DNS authorization allows for independent management
+         * of Google-managed certificates with DNS authorization across multiple
+         * projects.
+         * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public DnsAuthorizationState build() {

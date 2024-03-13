@@ -29,6 +29,22 @@ import * as utilities from "../utilities";
  * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Certificate Manager Dns Authorization Regional
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
+ *     name: "dns-auth",
+ *     location: "us-central1",
+ *     description: "reginal dns",
+ *     type: "PER_PROJECT_RECORD",
+ *     domain: "subdomain.hashicorptest.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -132,6 +148,16 @@ export class DnsAuthorization extends pulumi.CustomResource {
      * and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a DnsAuthorization resource with the given unique name, arguments, and options.
@@ -155,6 +181,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DnsAuthorizationArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -166,6 +193,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["dnsResourceRecords"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -231,6 +259,16 @@ export interface DnsAuthorizationState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -271,4 +309,14 @@ export interface DnsAuthorizationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
+     */
+    type?: pulumi.Input<string>;
 }

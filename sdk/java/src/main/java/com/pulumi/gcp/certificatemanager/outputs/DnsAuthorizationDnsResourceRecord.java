@@ -27,8 +27,13 @@ public final class DnsAuthorizationDnsResourceRecord {
      */
     private @Nullable String name;
     /**
-     * @return (Output)
-     * Type of the DNS Resource Record.
+     * @return type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
      * 
      */
     private @Nullable String type;
@@ -54,8 +59,13 @@ public final class DnsAuthorizationDnsResourceRecord {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return (Output)
-     * Type of the DNS Resource Record.
+     * @return type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+     * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+     * FIXED_RECORD DNS authorization uses DNS-01 validation method
+     * PER_PROJECT_RECORD DNS authorization allows for independent management
+     * of Google-managed certificates with DNS authorization across multiple
+     * projects.
+     * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
      * 
      */
     public Optional<String> type() {

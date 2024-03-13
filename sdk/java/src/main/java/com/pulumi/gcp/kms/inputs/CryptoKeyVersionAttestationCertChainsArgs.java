@@ -6,6 +6,7 @@ package com.pulumi.gcp.kms.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,13 +21,13 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
      * 
      */
     @Import(name="caviumCerts")
-    private @Nullable Output<String> caviumCerts;
+    private @Nullable Output<List<String>> caviumCerts;
 
     /**
      * @return Cavium certificate chain corresponding to the attestation.
      * 
      */
-    public Optional<Output<String>> caviumCerts() {
+    public Optional<Output<List<String>>> caviumCerts() {
         return Optional.ofNullable(this.caviumCerts);
     }
 
@@ -35,13 +36,13 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
      * 
      */
     @Import(name="googleCardCerts")
-    private @Nullable Output<String> googleCardCerts;
+    private @Nullable Output<List<String>> googleCardCerts;
 
     /**
      * @return Google card certificate chain corresponding to the attestation.
      * 
      */
-    public Optional<Output<String>> googleCardCerts() {
+    public Optional<Output<List<String>>> googleCardCerts() {
         return Optional.ofNullable(this.googleCardCerts);
     }
 
@@ -50,13 +51,13 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
      * 
      */
     @Import(name="googlePartitionCerts")
-    private @Nullable Output<String> googlePartitionCerts;
+    private @Nullable Output<List<String>> googlePartitionCerts;
 
     /**
      * @return Google partition certificate chain corresponding to the attestation.
      * 
      */
-    public Optional<Output<String>> googlePartitionCerts() {
+    public Optional<Output<List<String>>> googlePartitionCerts() {
         return Optional.ofNullable(this.googlePartitionCerts);
     }
 
@@ -92,7 +93,7 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder caviumCerts(@Nullable Output<String> caviumCerts) {
+        public Builder caviumCerts(@Nullable Output<List<String>> caviumCerts) {
             $.caviumCerts = caviumCerts;
             return this;
         }
@@ -103,8 +104,18 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder caviumCerts(String caviumCerts) {
+        public Builder caviumCerts(List<String> caviumCerts) {
             return caviumCerts(Output.of(caviumCerts));
+        }
+
+        /**
+         * @param caviumCerts Cavium certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caviumCerts(String... caviumCerts) {
+            return caviumCerts(List.of(caviumCerts));
         }
 
         /**
@@ -113,7 +124,7 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder googleCardCerts(@Nullable Output<String> googleCardCerts) {
+        public Builder googleCardCerts(@Nullable Output<List<String>> googleCardCerts) {
             $.googleCardCerts = googleCardCerts;
             return this;
         }
@@ -124,8 +135,18 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder googleCardCerts(String googleCardCerts) {
+        public Builder googleCardCerts(List<String> googleCardCerts) {
             return googleCardCerts(Output.of(googleCardCerts));
+        }
+
+        /**
+         * @param googleCardCerts Google card certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleCardCerts(String... googleCardCerts) {
+            return googleCardCerts(List.of(googleCardCerts));
         }
 
         /**
@@ -134,7 +155,7 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder googlePartitionCerts(@Nullable Output<String> googlePartitionCerts) {
+        public Builder googlePartitionCerts(@Nullable Output<List<String>> googlePartitionCerts) {
             $.googlePartitionCerts = googlePartitionCerts;
             return this;
         }
@@ -145,8 +166,18 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder googlePartitionCerts(String googlePartitionCerts) {
+        public Builder googlePartitionCerts(List<String> googlePartitionCerts) {
             return googlePartitionCerts(Output.of(googlePartitionCerts));
+        }
+
+        /**
+         * @param googlePartitionCerts Google partition certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googlePartitionCerts(String... googlePartitionCerts) {
+            return googlePartitionCerts(List.of(googlePartitionCerts));
         }
 
         public CryptoKeyVersionAttestationCertChainsArgs build() {

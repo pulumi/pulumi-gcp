@@ -20,6 +20,8 @@ __all__ = [
     'CustomTargetTypeCustomActionsIncludeSkaffoldModule',
     'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit',
     'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage',
+    'CustomTargetTypeIamBindingCondition',
+    'CustomTargetTypeIamMemberCondition',
     'DeliveryPipelineCondition',
     'DeliveryPipelineConditionPipelineReadyCondition',
     'DeliveryPipelineConditionTargetsPresentCondition',
@@ -495,6 +497,60 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage(dict)
         Relative path from the source to the Skaffold file.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class CustomTargetTypeIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class CustomTargetTypeIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

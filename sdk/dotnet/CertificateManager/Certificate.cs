@@ -403,6 +403,46 @@ namespace Pulumi.Gcp.CertificateManager
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Certificate Manager Google Managed Regional Certificate Dns Auth
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
+    ///     {
+    ///         Name = "dns-auth",
+    ///         Location = "us-central1",
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Name = "dns-cert",
+    ///         Description = "regional managed certs",
+    ///         Location = "us-central1",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 instance.Domain,
+    ///             },
+    ///             DnsAuthorizations = new[]
+    ///             {
+    ///                 instance.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

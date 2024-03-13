@@ -8314,8 +8314,13 @@ export namespace certificatemanager {
          */
         name?: pulumi.Input<string>;
         /**
-         * (Output)
-         * Type of the DNS Resource Record.
+         * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
+         * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
+         * FIXED_RECORD DNS authorization uses DNS-01 validation method
+         * PER_PROJECT_RECORD DNS authorization allows for independent management
+         * of Google-managed certificates with DNS authorization across multiple
+         * projects.
+         * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
          */
         type?: pulumi.Input<string>;
     }
@@ -9657,6 +9662,18 @@ export namespace clouddeploy {
          * Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
          */
         source: pulumi.Input<string>;
+    }
+
+    export interface CustomTargetTypeIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface CustomTargetTypeIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface DeliveryPipelineCondition {
@@ -16404,9 +16421,12 @@ export namespace compute {
 
     export interface InstanceGroupManagerInstanceLifecyclePolicy {
         /**
-         * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
-         *
+         * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
          * - - -
+         */
+        defaultActionOnFailure?: pulumi.Input<string>;
+        /**
+         * , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
          */
         forceUpdateOnRepair?: pulumi.Input<string>;
     }
@@ -19219,8 +19239,13 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerInstanceLifecyclePolicy {
         /**
-         * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+         * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+         *
          * - - -
+         */
+        defaultActionOnFailure?: pulumi.Input<string>;
+        /**
+         * , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
          */
         forceUpdateOnRepair?: pulumi.Input<string>;
     }
@@ -22733,9 +22758,15 @@ export namespace compute {
          */
         connectionLimit: pulumi.Input<number>;
         /**
-         * A project that is allowed to connect to this service attachment.
+         * The network that is allowed to connect to this service attachment.
+         * Only one of projectIdOrNum and networkUrl may be set.
          */
-        projectIdOrNum: pulumi.Input<string>;
+        networkUrl?: pulumi.Input<string>;
+        /**
+         * A project that is allowed to connect to this service attachment.
+         * Only one of projectIdOrNum and networkUrl may be set.
+         */
+        projectIdOrNum?: pulumi.Input<string>;
     }
 
     export interface SnapshotIamBindingCondition {
@@ -44781,6 +44812,10 @@ export namespace gkehub {
          */
         constraintViolationLimit?: pulumi.Input<number>;
         /**
+         * Map of deployment configs to deployments ("admission", "audit", "mutation").
+         */
+        deploymentConfigs?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig>[]>;
+        /**
          * The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
          */
         exemptableNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
@@ -44810,6 +44845,81 @@ export namespace gkehub {
         referentialRulesEnabled?: pulumi.Input<boolean>;
     }
 
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+        /**
+         * The name of the component. One of `admission` `audit` or `mutation`
+         */
+        componentName: pulumi.Input<string>;
+        /**
+         * Container resource requirements.
+         */
+        containerResources?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources>;
+        /**
+         * Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
+         */
+        podAffinity?: pulumi.Input<string>;
+        /**
+         * Pod tolerations of node taints.
+         */
+        podTolerations?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>[]>;
+        /**
+         * Pod replica count.
+         */
+        replicaCount?: pulumi.Input<number>;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources {
+        /**
+         * Limits describes the maximum amount of compute resources allowed for use by the running container.
+         */
+        limits?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits>;
+        /**
+         * Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+         */
+        requests?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests>;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
+        /**
+         * CPU requirement expressed in Kubernetes resource units.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory requirement expressed in Kubernetes resource units.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
+        /**
+         * CPU requirement expressed in Kubernetes resource units.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory requirement expressed in Kubernetes resource units.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+        /**
+         * Matches a taint effect.
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Matches a taint key (not necessarily unique).
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Matches a taint operator.
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Matches a taint value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
         /**
          * Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
@@ -44819,9 +44929,24 @@ export namespace gkehub {
 
     export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
         /**
+         * map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+         */
+        bundles?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>[]>;
+        /**
          * Configures the installation of the Template Library. Structure is documented below.
          */
         templateLibrary?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary>;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+        /**
+         * The name of the bundle.
+         */
+        bundleName: pulumi.Input<string>;
+        /**
+         * The set of namespaces to be exempted from the bundle.
+         */
+        exemptedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
@@ -49196,15 +49321,15 @@ export namespace kms {
         /**
          * Cavium certificate chain corresponding to the attestation.
          */
-        caviumCerts?: pulumi.Input<string>;
+        caviumCerts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Google card certificate chain corresponding to the attestation.
          */
-        googleCardCerts?: pulumi.Input<string>;
+        googleCardCerts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Google partition certificate chain corresponding to the attestation.
          */
-        googlePartitionCerts?: pulumi.Input<string>;
+        googlePartitionCerts?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CryptoKeyVersionAttestationExternalProtectionLevelOptions {

@@ -370,14 +370,14 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Service Account email used to create the job.
+     * Service account email to run the workers as.
      * 
      */
     @Import(name="serviceAccountEmail")
     private @Nullable Output<String> serviceAccountEmail;
 
     /**
-     * @return The Service Account email used to create the job.
+     * @return Service account email to run the workers as.
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -434,14 +434,14 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * Compute Engine subnetwork for launching instances to run your pipeline.
      * 
      */
     @Import(name="subnetwork")
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * @return Compute Engine subnetwork for launching instances to run your pipeline.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -1033,7 +1033,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceAccountEmail The Service Account email used to create the job.
+         * @param serviceAccountEmail Service account email to run the workers as.
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceAccountEmail The Service Account email used to create the job.
+         * @param serviceAccountEmail Service account email to run the workers as.
          * 
          * @return builder
          * 
@@ -1121,7 +1121,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnetwork The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+         * @param subnetwork Compute Engine subnetwork for launching instances to run your pipeline.
          * 
          * @return builder
          * 
@@ -1132,7 +1132,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnetwork The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+         * @param subnetwork Compute Engine subnetwork for launching instances to run your pipeline.
          * 
          * @return builder
          * 

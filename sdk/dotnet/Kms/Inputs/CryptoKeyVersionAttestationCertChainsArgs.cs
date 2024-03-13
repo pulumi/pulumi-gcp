@@ -12,23 +12,41 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class CryptoKeyVersionAttestationCertChainsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("caviumCerts")]
+        private InputList<string>? _caviumCerts;
+
         /// <summary>
         /// Cavium certificate chain corresponding to the attestation.
         /// </summary>
-        [Input("caviumCerts")]
-        public Input<string>? CaviumCerts { get; set; }
+        public InputList<string> CaviumCerts
+        {
+            get => _caviumCerts ?? (_caviumCerts = new InputList<string>());
+            set => _caviumCerts = value;
+        }
+
+        [Input("googleCardCerts")]
+        private InputList<string>? _googleCardCerts;
 
         /// <summary>
         /// Google card certificate chain corresponding to the attestation.
         /// </summary>
-        [Input("googleCardCerts")]
-        public Input<string>? GoogleCardCerts { get; set; }
+        public InputList<string> GoogleCardCerts
+        {
+            get => _googleCardCerts ?? (_googleCardCerts = new InputList<string>());
+            set => _googleCardCerts = value;
+        }
+
+        [Input("googlePartitionCerts")]
+        private InputList<string>? _googlePartitionCerts;
 
         /// <summary>
         /// Google partition certificate chain corresponding to the attestation.
         /// </summary>
-        [Input("googlePartitionCerts")]
-        public Input<string>? GooglePartitionCerts { get; set; }
+        public InputList<string> GooglePartitionCerts
+        {
+            get => _googlePartitionCerts ?? (_googlePartitionCerts = new InputList<string>());
+            set => _googlePartitionCerts = value;
+        }
 
         public CryptoKeyVersionAttestationCertChainsArgs()
         {

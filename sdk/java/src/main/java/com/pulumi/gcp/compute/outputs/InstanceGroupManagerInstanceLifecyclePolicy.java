@@ -12,18 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceGroupManagerInstanceLifecyclePolicy {
     /**
-     * @return ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
-     * 
+     * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
      * ***
+     * 
+     */
+    private @Nullable String defaultActionOnFailure;
+    /**
+     * @return , Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
      */
     private @Nullable String forceUpdateOnRepair;
 
     private InstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
-     * @return ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
-     * 
+     * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
      * ***
+     * 
+     */
+    public Optional<String> defaultActionOnFailure() {
+        return Optional.ofNullable(this.defaultActionOnFailure);
+    }
+    /**
+     * @return , Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
      */
     public Optional<String> forceUpdateOnRepair() {
@@ -39,13 +49,21 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String defaultActionOnFailure;
         private @Nullable String forceUpdateOnRepair;
         public Builder() {}
         public Builder(InstanceGroupManagerInstanceLifecyclePolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultActionOnFailure = defaults.defaultActionOnFailure;
     	      this.forceUpdateOnRepair = defaults.forceUpdateOnRepair;
         }
 
+        @CustomType.Setter
+        public Builder defaultActionOnFailure(@Nullable String defaultActionOnFailure) {
+
+            this.defaultActionOnFailure = defaultActionOnFailure;
+            return this;
+        }
         @CustomType.Setter
         public Builder forceUpdateOnRepair(@Nullable String forceUpdateOnRepair) {
 
@@ -54,6 +72,7 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
         }
         public InstanceGroupManagerInstanceLifecyclePolicy build() {
             final var _resultValue = new InstanceGroupManagerInstanceLifecyclePolicy();
+            _resultValue.defaultActionOnFailure = defaultActionOnFailure;
             _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
             return _resultValue;
         }

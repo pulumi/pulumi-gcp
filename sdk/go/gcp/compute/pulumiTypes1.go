@@ -10798,6 +10798,8 @@ func (o GetInstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntI
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicy struct {
+	// Default behavior for all instance or health check failures.
+	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
 	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
 }
@@ -10814,6 +10816,8 @@ type GetInstanceGroupManagerInstanceLifecyclePolicyInput interface {
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
+	// Default behavior for all instance or health check failures.
+	DefaultActionOnFailure pulumi.StringInput `pulumi:"defaultActionOnFailure"`
 	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
 }
@@ -10867,6 +10871,11 @@ func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetInstanceGroup
 
 func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetInstanceGroupManagerInstanceLifecyclePolicyOutput {
 	return o
+}
+
+// Default behavior for all instance or health check failures.
+func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
 }
 
 // Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.

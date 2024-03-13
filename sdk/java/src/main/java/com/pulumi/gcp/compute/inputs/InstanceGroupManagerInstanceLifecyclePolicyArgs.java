@@ -16,18 +16,31 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
     public static final InstanceGroupManagerInstanceLifecyclePolicyArgs Empty = new InstanceGroupManagerInstanceLifecyclePolicyArgs();
 
     /**
-     * ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
-     * 
+     * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
      * ***
+     * 
+     */
+    @Import(name="defaultActionOnFailure")
+    private @Nullable Output<String> defaultActionOnFailure;
+
+    /**
+     * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+     * ***
+     * 
+     */
+    public Optional<Output<String>> defaultActionOnFailure() {
+        return Optional.ofNullable(this.defaultActionOnFailure);
+    }
+
+    /**
+     * , Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
      */
     @Import(name="forceUpdateOnRepair")
     private @Nullable Output<String> forceUpdateOnRepair;
 
     /**
-     * @return ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
-     * 
-     * ***
+     * @return , Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
      */
     public Optional<Output<String>> forceUpdateOnRepair() {
@@ -37,6 +50,7 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
     private InstanceGroupManagerInstanceLifecyclePolicyArgs() {}
 
     private InstanceGroupManagerInstanceLifecyclePolicyArgs(InstanceGroupManagerInstanceLifecyclePolicyArgs $) {
+        this.defaultActionOnFailure = $.defaultActionOnFailure;
         this.forceUpdateOnRepair = $.forceUpdateOnRepair;
     }
 
@@ -59,9 +73,30 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
         }
 
         /**
-         * @param forceUpdateOnRepair ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
-         * 
+         * @param defaultActionOnFailure , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
          * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultActionOnFailure(@Nullable Output<String> defaultActionOnFailure) {
+            $.defaultActionOnFailure = defaultActionOnFailure;
+            return this;
+        }
+
+        /**
+         * @param defaultActionOnFailure , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultActionOnFailure(String defaultActionOnFailure) {
+            return defaultActionOnFailure(Output.of(defaultActionOnFailure));
+        }
+
+        /**
+         * @param forceUpdateOnRepair , Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
          * 
          * @return builder
          * 
@@ -72,9 +107,7 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
         }
 
         /**
-         * @param forceUpdateOnRepair ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
-         * 
-         * ***
+         * @param forceUpdateOnRepair , Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
          * 
          * @return builder
          * 

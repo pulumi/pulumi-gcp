@@ -20,10 +20,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> ConnectionLimit { get; set; } = null!;
 
         /// <summary>
-        /// A project that is allowed to connect to this service attachment.
+        /// The network that is allowed to connect to this service attachment.
+        /// Only one of project_id_or_num and network_url may be set.
         /// </summary>
-        [Input("projectIdOrNum", required: true)]
-        public Input<string> ProjectIdOrNum { get; set; } = null!;
+        [Input("networkUrl")]
+        public Input<string>? NetworkUrl { get; set; }
+
+        /// <summary>
+        /// A project that is allowed to connect to this service attachment.
+        /// Only one of project_id_or_num and network_url may be set.
+        /// </summary>
+        [Input("projectIdOrNum")]
+        public Input<string>? ProjectIdOrNum { get; set; }
 
         public ServiceAttachmentConsumerAcceptListArgs()
         {

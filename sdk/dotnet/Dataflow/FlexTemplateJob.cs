@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> SdkContainerImage { get; private set; } = null!;
 
         /// <summary>
-        /// The Service Account email used to create the job.
+        /// Service account email to run the workers as.
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// Compute Engine subnetwork for launching instances to run your pipeline.
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
@@ -497,7 +497,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? SdkContainerImage { get; set; }
 
         /// <summary>
-        /// The Service Account email used to create the job.
+        /// Service account email to run the workers as.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
@@ -517,7 +517,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? StagingLocation { get; set; }
 
         /// <summary>
-        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// Compute Engine subnetwork for launching instances to run your pipeline.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -731,7 +731,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? SdkContainerImage { get; set; }
 
         /// <summary>
-        /// The Service Account email used to create the job.
+        /// Service account email to run the workers as.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
@@ -757,7 +757,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// Compute Engine subnetwork for launching instances to run your pipeline.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

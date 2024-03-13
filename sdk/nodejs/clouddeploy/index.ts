@@ -15,6 +15,21 @@ export type CustomTargetType = import("./customTargetType").CustomTargetType;
 export const CustomTargetType: typeof import("./customTargetType").CustomTargetType = null as any;
 utilities.lazyLoad(exports, ["CustomTargetType"], () => require("./customTargetType"));
 
+export { CustomTargetTypeIamBindingArgs, CustomTargetTypeIamBindingState } from "./customTargetTypeIamBinding";
+export type CustomTargetTypeIamBinding = import("./customTargetTypeIamBinding").CustomTargetTypeIamBinding;
+export const CustomTargetTypeIamBinding: typeof import("./customTargetTypeIamBinding").CustomTargetTypeIamBinding = null as any;
+utilities.lazyLoad(exports, ["CustomTargetTypeIamBinding"], () => require("./customTargetTypeIamBinding"));
+
+export { CustomTargetTypeIamMemberArgs, CustomTargetTypeIamMemberState } from "./customTargetTypeIamMember";
+export type CustomTargetTypeIamMember = import("./customTargetTypeIamMember").CustomTargetTypeIamMember;
+export const CustomTargetTypeIamMember: typeof import("./customTargetTypeIamMember").CustomTargetTypeIamMember = null as any;
+utilities.lazyLoad(exports, ["CustomTargetTypeIamMember"], () => require("./customTargetTypeIamMember"));
+
+export { CustomTargetTypeIamPolicyArgs, CustomTargetTypeIamPolicyState } from "./customTargetTypeIamPolicy";
+export type CustomTargetTypeIamPolicy = import("./customTargetTypeIamPolicy").CustomTargetTypeIamPolicy;
+export const CustomTargetTypeIamPolicy: typeof import("./customTargetTypeIamPolicy").CustomTargetTypeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CustomTargetTypeIamPolicy"], () => require("./customTargetTypeIamPolicy"));
+
 export { DeliveryPipelineArgs, DeliveryPipelineState } from "./deliveryPipeline";
 export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
 export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
@@ -34,6 +49,11 @@ export { DeliveryPipelineIamPolicyArgs, DeliveryPipelineIamPolicyState } from ".
 export type DeliveryPipelineIamPolicy = import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy;
 export const DeliveryPipelineIamPolicy: typeof import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DeliveryPipelineIamPolicy"], () => require("./deliveryPipelineIamPolicy"));
+
+export { GetCustomTargetTypeIamPolicyArgs, GetCustomTargetTypeIamPolicyResult, GetCustomTargetTypeIamPolicyOutputArgs } from "./getCustomTargetTypeIamPolicy";
+export const getCustomTargetTypeIamPolicy: typeof import("./getCustomTargetTypeIamPolicy").getCustomTargetTypeIamPolicy = null as any;
+export const getCustomTargetTypeIamPolicyOutput: typeof import("./getCustomTargetTypeIamPolicy").getCustomTargetTypeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomTargetTypeIamPolicy","getCustomTargetTypeIamPolicyOutput"], () => require("./getCustomTargetTypeIamPolicy"));
 
 export { GetDeliveryPipelineIamPolicyArgs, GetDeliveryPipelineIamPolicyResult, GetDeliveryPipelineIamPolicyOutputArgs } from "./getDeliveryPipelineIamPolicy";
 export const getDeliveryPipelineIamPolicy: typeof import("./getDeliveryPipelineIamPolicy").getDeliveryPipelineIamPolicy = null as any;
@@ -74,6 +94,12 @@ const _module = {
                 return new Automation(name, <any>undefined, { urn })
             case "gcp:clouddeploy/customTargetType:CustomTargetType":
                 return new CustomTargetType(name, <any>undefined, { urn })
+            case "gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding":
+                return new CustomTargetTypeIamBinding(name, <any>undefined, { urn })
+            case "gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember":
+                return new CustomTargetTypeIamMember(name, <any>undefined, { urn })
+            case "gcp:clouddeploy/customTargetTypeIamPolicy:CustomTargetTypeIamPolicy":
+                return new CustomTargetTypeIamPolicy(name, <any>undefined, { urn })
             case "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline":
                 return new DeliveryPipeline(name, <any>undefined, { urn })
             case "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding":
@@ -97,6 +123,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/automation", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/customTargetType", _module)
+pulumi.runtime.registerResourceModule("gcp", "clouddeploy/customTargetTypeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "clouddeploy/customTargetTypeIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "clouddeploy/customTargetTypeIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipeline", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamMember", _module)

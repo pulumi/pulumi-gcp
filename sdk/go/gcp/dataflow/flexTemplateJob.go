@@ -191,7 +191,7 @@ type FlexTemplateJob struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
 	// the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringOutput `pulumi:"sdkContainerImage"`
-	// The Service Account email used to create the job.
+	// Service account email to run the workers as.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
 	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
@@ -201,7 +201,7 @@ type FlexTemplateJob struct {
 	StagingLocation pulumi.StringOutput `pulumi:"stagingLocation"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringOutput `pulumi:"state"`
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// Compute Engine subnetwork for launching instances to run your pipeline.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringOutput `pulumi:"tempLocation"`
@@ -309,7 +309,7 @@ type flexTemplateJobState struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
 	// the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage *string `pulumi:"sdkContainerImage"`
-	// The Service Account email used to create the job.
+	// Service account email to run the workers as.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
 	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
@@ -319,7 +319,7 @@ type flexTemplateJobState struct {
 	StagingLocation *string `pulumi:"stagingLocation"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State *string `pulumi:"state"`
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// Compute Engine subnetwork for launching instances to run your pipeline.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation *string `pulumi:"tempLocation"`
@@ -390,7 +390,7 @@ type FlexTemplateJobState struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
 	// the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringPtrInput
-	// The Service Account email used to create the job.
+	// Service account email to run the workers as.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
 	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
@@ -400,7 +400,7 @@ type FlexTemplateJobState struct {
 	StagingLocation pulumi.StringPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
 	State pulumi.StringPtrInput
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// Compute Engine subnetwork for launching instances to run your pipeline.
 	Subnetwork pulumi.StringPtrInput
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringPtrInput
@@ -468,7 +468,7 @@ type flexTemplateJobArgs struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
 	// the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage *string `pulumi:"sdkContainerImage"`
-	// The Service Account email used to create the job.
+	// Service account email to run the workers as.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
 	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
@@ -476,7 +476,7 @@ type flexTemplateJobArgs struct {
 	SkipWaitOnJobTermination *bool `pulumi:"skipWaitOnJobTermination"`
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation *string `pulumi:"stagingLocation"`
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// Compute Engine subnetwork for launching instances to run your pipeline.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation *string `pulumi:"tempLocation"`
@@ -539,7 +539,7 @@ type FlexTemplateJobArgs struct {
 	// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
 	// the SDK. Note this field is only valid for portable pipelines.
 	SdkContainerImage pulumi.StringPtrInput
-	// The Service Account email used to create the job.
+	// Service account email to run the workers as.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
 	// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
@@ -547,7 +547,7 @@ type FlexTemplateJobArgs struct {
 	SkipWaitOnJobTermination pulumi.BoolPtrInput
 	// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
 	StagingLocation pulumi.StringPtrInput
-	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+	// Compute Engine subnetwork for launching instances to run your pipeline.
 	Subnetwork pulumi.StringPtrInput
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
 	TempLocation pulumi.StringPtrInput
@@ -765,7 +765,7 @@ func (o FlexTemplateJobOutput) SdkContainerImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.SdkContainerImage }).(pulumi.StringOutput)
 }
 
-// The Service Account email used to create the job.
+// Service account email to run the workers as.
 func (o FlexTemplateJobOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
@@ -787,7 +787,7 @@ func (o FlexTemplateJobOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+// Compute Engine subnetwork for launching instances to run your pipeline.
 func (o FlexTemplateJobOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
