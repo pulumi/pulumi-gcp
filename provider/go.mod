@@ -11,7 +11,7 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.108.1
 	github.com/pulumi/pulumi/sdk/v3 v3.108.1
 	github.com/stretchr/testify v1.8.4
-	google.golang.org/api v0.166.0
+	google.golang.org/api v0.167.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
 )
 
@@ -40,7 +40,7 @@ require (
 	github.com/Azure/azure-sdk-for-go/sdk/keyvault/internal v0.7.1 // indirect
 	github.com/AzureAD/microsoft-authentication-library-for-go v1.2.0 // indirect
 	github.com/BurntSushi/toml v1.2.1 // indirect
-	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.62.0 // indirect
+	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.63.0 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
