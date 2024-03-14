@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = tags.NewTagKeyIamPolicy(ctx, "policy", &tags.TagKeyIamPolicyArgs{
 //				TagKey:     pulumi.Any(key.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

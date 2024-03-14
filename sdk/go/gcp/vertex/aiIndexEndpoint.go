@@ -120,7 +120,7 @@ import (
 //				PrivateServiceConnectConfig: &vertex.AiIndexEndpointPrivateServiceConnectConfigArgs{
 //					EnablePrivateServiceConnect: pulumi.Bool(true),
 //					ProjectAllowlists: pulumi.StringArray{
-//						*pulumi.String(project.Number),
+//						pulumi.String(project.Number),
 //					},
 //				},
 //			})

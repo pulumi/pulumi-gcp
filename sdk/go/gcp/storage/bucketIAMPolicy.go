@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = storage.NewBucketIAMPolicy(ctx, "policy", &storage.BucketIAMPolicyArgs{
 //				Bucket:     pulumi.Any(_default.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +107,7 @@ import (
 //			}
 //			_, err = storage.NewBucketIAMPolicy(ctx, "policy", &storage.BucketIAMPolicyArgs{
 //				Bucket:     pulumi.Any(_default.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
