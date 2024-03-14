@@ -58,7 +58,7 @@ import (
 //			_, err = binaryauthorization.NewAttestorIamPolicy(ctx, "policy", &binaryauthorization.AttestorIamPolicyArgs{
 //				Project:    pulumi.Any(attestor.Project),
 //				Attestor:   pulumi.Any(attestor.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

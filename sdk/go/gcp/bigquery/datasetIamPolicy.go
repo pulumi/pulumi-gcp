@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
 //				DatasetId:  datasetDataset.DatasetId,
-//				PolicyData: *pulumi.String(owner.PolicyData),
+//				PolicyData: pulumi.String(owner.PolicyData),
 //			})
 //			if err != nil {
 //				return err
