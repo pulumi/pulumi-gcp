@@ -57,7 +57,7 @@ import (
 //			}
 //			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
 //				Name:  pulumi.String("debian-disk"),
-//				Image: *pulumi.String(debian.SelfLink),
+//				Image: pulumi.String(debian.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),
@@ -109,7 +109,7 @@ import (
 //			}
 //			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
 //				Name:  pulumi.String("debian-disk"),
-//				Image: *pulumi.String(debian.SelfLink),
+//				Image: pulumi.String(debian.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),

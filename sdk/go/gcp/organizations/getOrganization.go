@@ -34,7 +34,7 @@ import (
 //			}
 //			_, err = organizations.NewFolder(ctx, "sales", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("Sales"),
-//				Parent:      *pulumi.String(org.Name),
+//				Parent:      pulumi.String(org.Name),
 //			})
 //			if err != nil {
 //				return err
