@@ -232,7 +232,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.metadataViewer"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
 //			})
@@ -240,7 +240,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataEditor"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
 //			})
@@ -325,7 +325,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.metadataViewer"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
 //			})
@@ -333,7 +333,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
+//				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataEditor"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
 //			})

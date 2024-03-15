@@ -60,7 +60,7 @@ import (
 //				Location:   pulumi.Any(example.Location),
 //				Lake:       pulumi.Any(example.Lake),
 //				TaskId:     pulumi.Any(example.TaskId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
