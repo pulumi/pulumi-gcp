@@ -99,7 +99,7 @@ import (
 //				EnableStackdriverLogging:    pulumi.Bool(true),
 //				EnableStackdriverMonitoring: pulumi.Bool(true),
 //				PrivateInstance:             pulumi.Bool(true),
-//				DataprocServiceAccount:      *pulumi.String(_default.Email),
+//				DataprocServiceAccount:      pulumi.String(_default.Email),
 //				Labels: pulumi.StringMap{
 //					"example_key": pulumi.String("example_value"),
 //				},
