@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = logging.NewBillingAccountBucketConfig(ctx, "basic", &logging.BillingAccountBucketConfigArgs{
-//				BillingAccount: *pulumi.String(_default.BillingAccount),
+//				BillingAccount: pulumi.String(_default.BillingAccount),
 //				Location:       pulumi.String("global"),
 //				RetentionDays:  pulumi.Int(30),
 //				BucketId:       pulumi.String("_Default"),
