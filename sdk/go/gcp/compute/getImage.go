@@ -39,7 +39,7 @@ import (
 //			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(myImage.SelfLink),
+//						Image: pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //			})
