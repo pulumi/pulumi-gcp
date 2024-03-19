@@ -59,7 +59,7 @@ import (
 //				Project:       pulumi.Any(function.Project),
 //				Location:      pulumi.Any(function.Location),
 //				CloudFunction: pulumi.Any(function.Name),
-//				PolicyData:    *pulumi.String(admin.PolicyData),
+//				PolicyData:    pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

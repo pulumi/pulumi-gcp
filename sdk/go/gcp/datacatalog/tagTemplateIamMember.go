@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = datacatalog.NewTagTemplateIamPolicy(ctx, "policy", &datacatalog.TagTemplateIamPolicyArgs{
 //				TagTemplate: pulumi.Any(basicTagTemplate.Name),
-//				PolicyData:  *pulumi.String(admin.PolicyData),
+//				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
