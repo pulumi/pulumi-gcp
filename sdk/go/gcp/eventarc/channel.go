@@ -65,7 +65,7 @@ import (
 //			_, err = eventarc.NewChannel(ctx, "primary", &eventarc.ChannelArgs{
 //				Location:           pulumi.String("us-west1"),
 //				Name:               pulumi.String("channel"),
-//				Project:            *pulumi.String(testProject.ProjectId),
+//				Project:            pulumi.String(testProject.ProjectId),
 //				CryptoKeyName:      pulumi.Any(key1.Id),
 //				ThirdPartyProvider: pulumi.String(fmt.Sprintf("projects/%v/locations/us-west1/providers/datadog", testProject.ProjectId)),
 //			})

@@ -279,7 +279,7 @@ import (
 //				Location:   _default.Location,
 //				Project:    _default.Project,
 //				Service:    _default.Name,
-//				PolicyData: *pulumi.String(noauth.PolicyData),
+//				PolicyData: pulumi.String(noauth.PolicyData),
 //			})
 //			if err != nil {
 //				return err

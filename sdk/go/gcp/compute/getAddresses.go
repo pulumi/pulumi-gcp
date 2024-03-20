@@ -57,7 +57,7 @@ import (
 //				Type:        pulumi.String("A"),
 //				Ttl:         pulumi.Int(300),
 //				ManagedZone: prod.Name,
-//				Rrdatas:     []*pulumi.String(splat0),
+//				Rrdatas:     splat0,
 //			})
 //			if err != nil {
 //				return err

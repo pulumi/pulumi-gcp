@@ -244,7 +244,7 @@ import (
 //					HttpMethod: pulumi.String("GET"),
 //					Uri:        pulumi.String("https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs"),
 //					OauthToken: &cloudscheduler.JobHttpTargetOauthTokenArgs{
-//						ServiceAccountEmail: *pulumi.String(_default.Email),
+//						ServiceAccountEmail: pulumi.String(_default.Email),
 //					},
 //				},
 //			})
@@ -287,7 +287,7 @@ import (
 //					HttpMethod: pulumi.String("GET"),
 //					Uri:        pulumi.String("https://example.com/ping"),
 //					OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
-//						ServiceAccountEmail: *pulumi.String(_default.Email),
+//						ServiceAccountEmail: pulumi.String(_default.Email),
 //					},
 //				},
 //			})
