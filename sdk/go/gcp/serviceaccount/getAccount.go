@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			mykey, err := serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
-//				ServiceAccountId: *pulumi.String(myaccount.Name),
+//				ServiceAccountId: pulumi.String(myaccount.Name),
 //			})
 //			if err != nil {
 //				return err
