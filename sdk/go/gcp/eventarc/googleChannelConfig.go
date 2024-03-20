@@ -65,7 +65,7 @@ import (
 //			_, err = eventarc.NewGoogleChannelConfig(ctx, "primary", &eventarc.GoogleChannelConfigArgs{
 //				Location:      pulumi.String("us-west1"),
 //				Name:          pulumi.String("channel"),
-//				Project:       *pulumi.String(testProject.ProjectId),
+//				Project:       pulumi.String(testProject.ProjectId),
 //				CryptoKeyName: pulumi.Any(key1.Id),
 //			})
 //			if err != nil {

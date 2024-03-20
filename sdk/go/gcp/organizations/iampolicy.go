@@ -66,7 +66,7 @@ import (
 //			}
 //			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
 //				OrgId:      pulumi.String("1234567890"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -113,7 +113,7 @@ import (
 //			}
 //			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
 //				OrgId:      pulumi.String("1234567890"),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
