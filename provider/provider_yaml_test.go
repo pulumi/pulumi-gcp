@@ -595,3 +595,237 @@ func TestEnvTokenNotInState(t *testing.T) {
 	require.NoError(t, err)
 	require.NotContains(t, string(data), "accessToken")
 }
+
+//nolint:lll
+func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	proj := os.Getenv("GOOGLE_PROJECT")
+	if proj == "" {
+		proj = "pulumi-development"
+	}
+	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
+	{
+		"method": "/pulumirpc.ResourceProvider/Configure",
+		"request": {
+			"variables": {
+			"gcp:config:project": %q
+			},
+			"args": {
+			"project": %q,
+			"version": "7.4.0"
+			},
+			"acceptSecrets": true,
+			"acceptResources": true,
+			"sendsOldInputs": true,
+			"sendsOldInputsToDelete": true
+		},
+		"response": {
+			"supportsPreview": true
+		}
+	},
+	{
+		"method": "/pulumirpc.ResourceProvider/Diff",
+		"request": {
+			"id": "locations/us-west1/namespaces/pulumi-development/services/test-gcr-5a4eed9",
+			"urn": "urn:pulumi:dev::gcp_labels::gcp:cloudrun/service:Service::test-gcr",
+			"olds": {
+				"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"2\"}",
+				"autogenerateRevisionName": true,
+				"id": "locations/us-west1/namespaces/pulumi-development/services/test-gcr-5a4eed9",
+				"location": "us-west1",
+				"metadata": {
+					"annotations": {
+						"run.googleapis.com/ingress": "all"
+					},
+					"effectiveAnnotations": {
+						"run.googleapis.com/ingress": "all"
+					},
+					"effectiveLabels": {
+						"env": "dev"
+					},
+					"generation": 0,
+					"labels": {
+						"env": "dev"
+					},
+					"namespace": "",
+					"pulumiLabels": {
+						"env": "dev"
+					},
+					"resourceVersion": "",
+					"selfLink": "",
+					"uid": ""
+				},
+				"name": "test-gcr-5a4eed9",
+				"project": "pulumi-development",
+				"template": {
+					"metadata": {
+						"annotations": {
+							"autoscaling.knative.dev/maxScale": "100"
+						},
+						"generation": 0,
+						"labels": {},
+						"name": "",
+						"namespace": "",
+						"resourceVersion": "",
+						"selfLink": "",
+						"uid": ""
+					},
+					"spec": {
+						"containerConcurrency": 30,
+						"containers": [
+							{
+								"args": [],
+								"commands": [],
+								"envFroms": [],
+								"envs": [],
+								"image": "gcr.io/example",
+								"livenessProbe": null,
+								"name": "",
+								"ports": [],
+								"resources": {
+									"limits": {
+										"cpu": "1",
+										"memory": "512Mi"
+									},
+									"requests": {}
+								},
+								"startupProbe": null,
+								"volumeMounts": [],
+								"workingDir": ""
+							}
+						],
+						"serviceAccountName": "",
+						"servingState": "",
+						"timeoutSeconds": 60,
+						"volumes": []
+					}
+				},
+				"traffics": [
+					{
+						"latestRevision": true,
+						"percent": 100,
+						"revisionName": "",
+						"tag": "",
+						"url": ""
+					}
+				]
+			},
+			"news": {
+				"__defaults": [
+					"name"
+				],
+				"autogenerateRevisionName": true,
+				"location": "us-west1",
+				"metadata": {
+					"__defaults": [],
+					"annotations": {
+						"run.googleapis.com/ingress": "all"
+					},
+					"labels": {
+						"env": "dev"
+					}
+				},
+				"name": "test-gcr-5a4eed9",
+				"template": {
+					"__defaults": [],
+					"metadata": {
+						"__defaults": [],
+						"annotations": {
+							"autoscaling.knative.dev/maxScale": "100"
+						}
+					},
+					"spec": {
+						"__defaults": [],
+						"containerConcurrency": 30,
+						"containers": [
+							{
+								"__defaults": [],
+								"image": "hello-world",
+								"resources": {
+									"__defaults": [],
+									"limits": {
+										"cpu": "1",
+										"memory": "512Mi"
+									}
+								}
+							}
+						],
+						"timeoutSeconds": 60
+					}
+				},
+				"traffics": [
+					{
+						"__defaults": [],
+						"latestRevision": true,
+						"percent": 100
+					}
+				]
+			},
+			"oldInputs": {
+				"__defaults": [
+					"name"
+				],
+				"autogenerateRevisionName": true,
+				"location": "us-west1",
+				"metadata": {
+					"__defaults": [],
+					"annotations": {
+						"run.googleapis.com/ingress": "all"
+					},
+					"labels": {
+						"env": "dev"
+					}
+				},
+				"name": "test-gcr-5a4eed9",
+				"template": {
+					"__defaults": [],
+					"metadata": {
+						"__defaults": [],
+						"annotations": {
+							"autoscaling.knative.dev/maxScale": "100"
+						}
+					},
+					"spec": {
+						"__defaults": [],
+						"containerConcurrency": 30,
+						"containers": [
+							{
+								"__defaults": [],
+								"image": "gcr.io/example",
+								"resources": {
+									"__defaults": [],
+									"limits": {
+										"cpu": "1",
+										"memory": "512Mi"
+									}
+								}
+							}
+						],
+						"timeoutSeconds": 60
+					}
+				},
+				"traffics": [
+					{
+						"__defaults": [],
+						"latestRevision": true,
+						"percent": 100
+					}
+				]
+			}
+		},
+		"response": {
+			"stables": "*",
+			"changes": "*",
+			"hasDetailedDiff": "*"
+		},
+		"metadata": {
+			"kind": "resource",
+			"mode": "client",
+			"name": "gcp"
+		}
+	}
+	]`, proj, proj))
+}

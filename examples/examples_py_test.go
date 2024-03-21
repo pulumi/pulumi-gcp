@@ -62,3 +62,13 @@ func TestAccWebserverPy(t *testing.T) {
 		})
 	}
 }
+
+func TestRegress1843(t *testing.T) {
+	skipIfShort(t)
+	test := getPythonBaseOptions(t).
+        With(integration.ProgramTestOptions{
+            Dir: filepath.Join(getCwd(t), "regress-1843"),
+        })
+
+    integration.ProgramTest(t, &test)
+}
