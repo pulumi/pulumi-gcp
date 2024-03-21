@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -17,6 +19,7 @@ class DatabaseArgs:
                  location_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
+                 cmek_config: Optional[pulumi.Input['DatabaseCmekConfigArgs']] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -36,6 +39,10 @@ class DatabaseArgs:
                - - -
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input['DatabaseCmekConfigArgs'] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+               database. If not present, the database is secured by the default Google
+               encryption key.
+               Structure is documented below.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] delete_protection_state: State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
@@ -66,6 +73,8 @@ class DatabaseArgs:
         pulumi.set(__self__, "type", type)
         if app_engine_integration_mode is not None:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
+        if cmek_config is not None:
+            pulumi.set(__self__, "cmek_config", cmek_config)
         if concurrency_mode is not None:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if delete_protection_state is not None:
@@ -122,6 +131,21 @@ class DatabaseArgs:
     @app_engine_integration_mode.setter
     def app_engine_integration_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "app_engine_integration_mode", value)
+
+    @property
+    @pulumi.getter(name="cmekConfig")
+    def cmek_config(self) -> Optional[pulumi.Input['DatabaseCmekConfigArgs']]:
+        """
+        The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        database. If not present, the database is secured by the default Google
+        encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cmek_config")
+
+    @cmek_config.setter
+    def cmek_config(self, value: Optional[pulumi.Input['DatabaseCmekConfigArgs']]):
+        pulumi.set(self, "cmek_config", value)
 
     @property
     @pulumi.getter(name="concurrencyMode")
@@ -219,6 +243,7 @@ class DatabaseArgs:
 class _DatabaseState:
     def __init__(__self__, *,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
+                 cmek_config: Optional[pulumi.Input['DatabaseCmekConfigArgs']] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
@@ -238,6 +263,10 @@ class _DatabaseState:
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input['DatabaseCmekConfigArgs'] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+               database. If not present, the database is secured by the default Google
+               encryption key.
+               Structure is documented below.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] create_time: Output only. The timestamp at which this database was created.
@@ -292,6 +321,8 @@ class _DatabaseState:
         """
         if app_engine_integration_mode is not None:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
+        if cmek_config is not None:
+            pulumi.set(__self__, "cmek_config", cmek_config)
         if concurrency_mode is not None:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if create_time is not None:
@@ -335,6 +366,21 @@ class _DatabaseState:
     @app_engine_integration_mode.setter
     def app_engine_integration_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "app_engine_integration_mode", value)
+
+    @property
+    @pulumi.getter(name="cmekConfig")
+    def cmek_config(self) -> Optional[pulumi.Input['DatabaseCmekConfigArgs']]:
+        """
+        The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        database. If not present, the database is secured by the default Google
+        encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cmek_config")
+
+    @cmek_config.setter
+    def cmek_config(self, value: Optional[pulumi.Input['DatabaseCmekConfigArgs']]):
+        pulumi.set(self, "cmek_config", value)
 
     @property
     @pulumi.getter(name="concurrencyMode")
@@ -559,6 +605,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
+                 cmek_config: Optional[pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -618,6 +665,40 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE")
         ```
         <!--End PulumiCodeChooser -->
+        ### Firestore Cmek Database
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="kms-key-ring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="kms-key",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT")
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="cmek-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+        ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Default Database In Datastore Mode
 
         <!--Start PulumiCodeChooser -->
@@ -651,6 +732,40 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE")
         ```
         <!--End PulumiCodeChooser -->
+        ### Firestore Cmek Database In Datastore Mode
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="kms-key-ring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="kms-key",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT")
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="cmek-database-id",
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -680,6 +795,10 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+               database. If not present, the database is secured by the default Google
+               encryption key.
+               Structure is documented below.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] delete_protection_state: State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
@@ -771,6 +890,40 @@ class Database(pulumi.CustomResource):
             deletion_policy="DELETE")
         ```
         <!--End PulumiCodeChooser -->
+        ### Firestore Cmek Database
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="kms-key-ring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="kms-key",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT")
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="cmek-database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
+        ```
+        <!--End PulumiCodeChooser -->
         ### Firestore Default Database In Datastore Mode
 
         <!--Start PulumiCodeChooser -->
@@ -802,6 +955,40 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Firestore Cmek Database In Datastore Mode
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="kms-key-ring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="kms-key",
+            key_ring=key_ring.id,
+            purpose="ENCRYPT_DECRYPT")
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="cmek-database-id",
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            cmek_config=gcp.firestore.DatabaseCmekConfigArgs(
+                kms_key_name=crypto_key.id,
+            ))
+        firestore_cmek_keyuser = gcp.kms.CryptoKeyIAMBinding("firestore_cmek_keyuser",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -845,6 +1032,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
+                 cmek_config: Optional[pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -863,6 +1051,7 @@ class Database(pulumi.CustomResource):
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
             __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
+            __props__.__dict__["cmek_config"] = cmek_config
             __props__.__dict__["concurrency_mode"] = concurrency_mode
             __props__.__dict__["delete_protection_state"] = delete_protection_state
             __props__.__dict__["deletion_policy"] = deletion_policy
@@ -893,6 +1082,7 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
+            cmek_config: Optional[pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']]] = None,
             concurrency_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_protection_state: Optional[pulumi.Input[str]] = None,
@@ -917,6 +1107,10 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[pulumi.InputType['DatabaseCmekConfigArgs']] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+               database. If not present, the database is secured by the default Google
+               encryption key.
+               Structure is documented below.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] create_time: Output only. The timestamp at which this database was created.
@@ -974,6 +1168,7 @@ class Database(pulumi.CustomResource):
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
         __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
+        __props__.__dict__["cmek_config"] = cmek_config
         __props__.__dict__["concurrency_mode"] = concurrency_mode
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_protection_state"] = delete_protection_state
@@ -999,6 +1194,17 @@ class Database(pulumi.CustomResource):
         Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "app_engine_integration_mode")
+
+    @property
+    @pulumi.getter(name="cmekConfig")
+    def cmek_config(self) -> pulumi.Output[Optional['outputs.DatabaseCmekConfig']]:
+        """
+        The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        database. If not present, the database is secured by the default Google
+        encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cmek_config")
 
     @property
     @pulumi.getter(name="concurrencyMode")

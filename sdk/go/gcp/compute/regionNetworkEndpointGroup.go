@@ -244,6 +244,37 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Region Network Endpoint Group Appengine Empty
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// App Engine Example
+//			_, err := compute.NewRegionNetworkEndpointGroup(ctx, "appengine_neg", &compute.RegionNetworkEndpointGroupArgs{
+//				Name:                pulumi.String("appengine-neg"),
+//				NetworkEndpointType: pulumi.String("SERVERLESS"),
+//				Region:              pulumi.String("us-central1"),
+//				AppEngine:           nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 // ### Region Network Endpoint Group Psc
 //
 // <!--Start PulumiCodeChooser -->

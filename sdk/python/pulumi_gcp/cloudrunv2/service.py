@@ -29,6 +29,7 @@ class ServiceArgs:
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scaling: Optional[pulumi.Input['ServiceScalingArgs']] = None,
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
@@ -63,6 +64,8 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
                Structure is documented below.
         """
@@ -90,6 +93,8 @@ class ServiceArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scaling is not None:
+            pulumi.set(__self__, "scaling", scaling)
         if traffics is not None:
             pulumi.set(__self__, "traffics", traffics)
 
@@ -269,6 +274,19 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
+    def scaling(self) -> Optional[pulumi.Input['ServiceScalingArgs']]:
+        """
+        Scaling settings that apply to the whole service
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling")
+
+    @scaling.setter
+    def scaling(self, value: Optional[pulumi.Input['ServiceScalingArgs']]):
+        pulumi.set(self, "scaling", value)
+
+    @property
+    @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
@@ -311,6 +329,7 @@ class _ServiceState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
+                 scaling: Optional[pulumi.Input['ServiceScalingArgs']] = None,
                  template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
                  terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
                  traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
@@ -370,6 +389,8 @@ class _ServiceState:
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
+        :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -437,6 +458,8 @@ class _ServiceState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
+        if scaling is not None:
+            pulumi.set(__self__, "scaling", scaling)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if terminal_conditions is not None:
@@ -801,6 +824,19 @@ class _ServiceState:
 
     @property
     @pulumi.getter
+    def scaling(self) -> Optional[pulumi.Input['ServiceScalingArgs']]:
+        """
+        Scaling settings that apply to the whole service
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling")
+
+    @scaling.setter
+    def scaling(self, value: Optional[pulumi.Input['ServiceScalingArgs']]):
+        pulumi.set(self, "scaling", value)
+
+    @property
+    @pulumi.getter
     def template(self) -> Optional[pulumi.Input['ServiceTemplateArgs']]:
         """
         The template used to create revisions for this Service.
@@ -906,6 +942,7 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scaling: Optional[pulumi.Input[pulumi.InputType['ServiceScalingArgs']]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
                  __props__=None):
@@ -1367,6 +1404,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ServiceScalingArgs']] scaling: Scaling settings that apply to the whole service
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
@@ -1832,6 +1871,7 @@ class Service(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scaling: Optional[pulumi.Input[pulumi.InputType['ServiceScalingArgs']]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
                  __props__=None):
@@ -1857,6 +1897,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["scaling"] = scaling
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
@@ -1920,6 +1961,7 @@ class Service(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
+            scaling: Optional[pulumi.Input[pulumi.InputType['ServiceScalingArgs']]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['ServiceTemplateArgs']]] = None,
             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]]] = None,
             traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]]] = None,
@@ -1984,6 +2026,8 @@ class Service(pulumi.CustomResource):
                When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
+        :param pulumi.Input[pulumi.InputType['ServiceScalingArgs']] scaling: Scaling settings that apply to the whole service
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -2028,6 +2072,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
+        __props__.__dict__["scaling"] = scaling
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
         __props__.__dict__["traffic_statuses"] = traffic_statuses
@@ -2275,6 +2320,15 @@ class Service(pulumi.CustomResource):
         If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter
+    def scaling(self) -> pulumi.Output[Optional['outputs.ServiceScaling']]:
+        """
+        Scaling settings that apply to the whole service
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling")
 
     @property
     @pulumi.getter

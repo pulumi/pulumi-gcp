@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationConfigPersistentDirectoryGcePd
     {
         /// <summary>
-        /// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+        /// Type of the disk to use. Defaults to `"pd-standard"`.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
@@ -32,7 +32,10 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly int? SizeGb;
         /// <summary>
-        /// Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+        /// Name of the snapshot to use as the source for the disk.
+        /// Must be empty if `sourceImage` is set.
+        /// Must be empty if `read_only` is false.
+        /// Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
         /// </summary>
         public readonly string? SourceSnapshot;
 

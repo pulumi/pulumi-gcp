@@ -93,6 +93,77 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Firestore Cmek Database
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("kms-key-ring"),
+//				Location: pulumi.String("us"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("kms-key"),
+//				KeyRing: keyRing.ID(),
+//				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:                       pulumi.String("my-project-name"),
+//				Name:                          pulumi.String("cmek-database-id"),
+//				LocationId:                    pulumi.String("nam5"),
+//				Type:                          pulumi.String("FIRESTORE_NATIVE"),
+//				ConcurrencyMode:               pulumi.String("OPTIMISTIC"),
+//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
+//				DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:                pulumi.String("DELETE"),
+//				CmekConfig: &firestore.DatabaseCmekConfigArgs{
+//					KmsKeyName: cryptoKey.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 // ### Firestore Default Database In Datastore Mode
 //
 // <!--Start PulumiCodeChooser -->
@@ -158,6 +229,77 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Firestore Cmek Database In Datastore Mode
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("kms-key-ring"),
+//				Location: pulumi.String("us"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("kms-key"),
+//				KeyRing: keyRing.ID(),
+//				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:                       pulumi.String("my-project-name"),
+//				Name:                          pulumi.String("cmek-database-id"),
+//				LocationId:                    pulumi.String("nam5"),
+//				Type:                          pulumi.String("DATASTORE_MODE"),
+//				ConcurrencyMode:               pulumi.String("OPTIMISTIC"),
+//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
+//				DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:                pulumi.String("DELETE"),
+//				CmekConfig: &firestore.DatabaseCmekConfigArgs{
+//					KmsKeyName: cryptoKey.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -188,6 +330,11 @@ type Database struct {
 	// The App Engine integration mode to use for this database.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode pulumi.StringOutput `pulumi:"appEngineIntegrationMode"`
+	// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+	// database. If not present, the database is secured by the default Google
+	// encryption key.
+	// Structure is documented below.
+	CmekConfig DatabaseCmekConfigPtrOutput `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
@@ -294,6 +441,11 @@ type databaseState struct {
 	// The App Engine integration mode to use for this database.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode *string `pulumi:"appEngineIntegrationMode"`
+	// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+	// database. If not present, the database is secured by the default Google
+	// encryption key.
+	// Structure is documented below.
+	CmekConfig *DatabaseCmekConfig `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
@@ -365,6 +517,11 @@ type DatabaseState struct {
 	// The App Engine integration mode to use for this database.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode pulumi.StringPtrInput
+	// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+	// database. If not present, the database is secured by the default Google
+	// encryption key.
+	// Structure is documented below.
+	CmekConfig DatabaseCmekConfigPtrInput
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
@@ -440,6 +597,11 @@ type databaseArgs struct {
 	// The App Engine integration mode to use for this database.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode *string `pulumi:"appEngineIntegrationMode"`
+	// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+	// database. If not present, the database is secured by the default Google
+	// encryption key.
+	// Structure is documented below.
+	CmekConfig *DatabaseCmekConfig `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
@@ -488,6 +650,11 @@ type DatabaseArgs struct {
 	// The App Engine integration mode to use for this database.
 	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode pulumi.StringPtrInput
+	// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+	// database. If not present, the database is secured by the default Google
+	// encryption key.
+	// Structure is documented below.
+	CmekConfig DatabaseCmekConfigPtrInput
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
@@ -622,6 +789,14 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 // Possible values are: `ENABLED`, `DISABLED`.
 func (o DatabaseOutput) AppEngineIntegrationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AppEngineIntegrationMode }).(pulumi.StringOutput)
+}
+
+// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+// database. If not present, the database is secured by the default Google
+// encryption key.
+// Structure is documented below.
+func (o DatabaseOutput) CmekConfig() DatabaseCmekConfigPtrOutput {
+	return o.ApplyT(func(v *Database) DatabaseCmekConfigPtrOutput { return v.CmekConfig }).(DatabaseCmekConfigPtrOutput)
 }
 
 // The concurrency control mode to use for this database.

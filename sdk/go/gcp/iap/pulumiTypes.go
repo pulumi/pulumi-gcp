@@ -777,6 +777,348 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type TunnelDestGroupIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// TunnelDestGroupIamBindingConditionInput is an input type that accepts TunnelDestGroupIamBindingConditionArgs and TunnelDestGroupIamBindingConditionOutput values.
+// You can construct a concrete instance of `TunnelDestGroupIamBindingConditionInput` via:
+//
+//	TunnelDestGroupIamBindingConditionArgs{...}
+type TunnelDestGroupIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToTunnelDestGroupIamBindingConditionOutput() TunnelDestGroupIamBindingConditionOutput
+	ToTunnelDestGroupIamBindingConditionOutputWithContext(context.Context) TunnelDestGroupIamBindingConditionOutput
+}
+
+type TunnelDestGroupIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (TunnelDestGroupIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelDestGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (i TunnelDestGroupIamBindingConditionArgs) ToTunnelDestGroupIamBindingConditionOutput() TunnelDestGroupIamBindingConditionOutput {
+	return i.ToTunnelDestGroupIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i TunnelDestGroupIamBindingConditionArgs) ToTunnelDestGroupIamBindingConditionOutputWithContext(ctx context.Context) TunnelDestGroupIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelDestGroupIamBindingConditionOutput)
+}
+
+func (i TunnelDestGroupIamBindingConditionArgs) ToTunnelDestGroupIamBindingConditionPtrOutput() TunnelDestGroupIamBindingConditionPtrOutput {
+	return i.ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelDestGroupIamBindingConditionArgs) ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelDestGroupIamBindingConditionOutput).ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// TunnelDestGroupIamBindingConditionPtrInput is an input type that accepts TunnelDestGroupIamBindingConditionArgs, TunnelDestGroupIamBindingConditionPtr and TunnelDestGroupIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TunnelDestGroupIamBindingConditionPtrInput` via:
+//
+//	        TunnelDestGroupIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelDestGroupIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToTunnelDestGroupIamBindingConditionPtrOutput() TunnelDestGroupIamBindingConditionPtrOutput
+	ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(context.Context) TunnelDestGroupIamBindingConditionPtrOutput
+}
+
+type tunnelDestGroupIamBindingConditionPtrType TunnelDestGroupIamBindingConditionArgs
+
+func TunnelDestGroupIamBindingConditionPtr(v *TunnelDestGroupIamBindingConditionArgs) TunnelDestGroupIamBindingConditionPtrInput {
+	return (*tunnelDestGroupIamBindingConditionPtrType)(v)
+}
+
+func (*tunnelDestGroupIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelDestGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (i *tunnelDestGroupIamBindingConditionPtrType) ToTunnelDestGroupIamBindingConditionPtrOutput() TunnelDestGroupIamBindingConditionPtrOutput {
+	return i.ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelDestGroupIamBindingConditionPtrType) ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelDestGroupIamBindingConditionPtrOutput)
+}
+
+type TunnelDestGroupIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (TunnelDestGroupIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelDestGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (o TunnelDestGroupIamBindingConditionOutput) ToTunnelDestGroupIamBindingConditionOutput() TunnelDestGroupIamBindingConditionOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamBindingConditionOutput) ToTunnelDestGroupIamBindingConditionOutputWithContext(ctx context.Context) TunnelDestGroupIamBindingConditionOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamBindingConditionOutput) ToTunnelDestGroupIamBindingConditionPtrOutput() TunnelDestGroupIamBindingConditionPtrOutput {
+	return o.ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelDestGroupIamBindingConditionOutput) ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelDestGroupIamBindingCondition) *TunnelDestGroupIamBindingCondition {
+		return &v
+	}).(TunnelDestGroupIamBindingConditionPtrOutput)
+}
+
+func (o TunnelDestGroupIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelDestGroupIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o TunnelDestGroupIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelDestGroupIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o TunnelDestGroupIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelDestGroupIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TunnelDestGroupIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelDestGroupIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelDestGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (o TunnelDestGroupIamBindingConditionPtrOutput) ToTunnelDestGroupIamBindingConditionPtrOutput() TunnelDestGroupIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamBindingConditionPtrOutput) ToTunnelDestGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamBindingConditionPtrOutput) Elem() TunnelDestGroupIamBindingConditionOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamBindingCondition) TunnelDestGroupIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelDestGroupIamBindingCondition
+		return ret
+	}).(TunnelDestGroupIamBindingConditionOutput)
+}
+
+func (o TunnelDestGroupIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o TunnelDestGroupIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o TunnelDestGroupIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelDestGroupIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// TunnelDestGroupIamMemberConditionInput is an input type that accepts TunnelDestGroupIamMemberConditionArgs and TunnelDestGroupIamMemberConditionOutput values.
+// You can construct a concrete instance of `TunnelDestGroupIamMemberConditionInput` via:
+//
+//	TunnelDestGroupIamMemberConditionArgs{...}
+type TunnelDestGroupIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToTunnelDestGroupIamMemberConditionOutput() TunnelDestGroupIamMemberConditionOutput
+	ToTunnelDestGroupIamMemberConditionOutputWithContext(context.Context) TunnelDestGroupIamMemberConditionOutput
+}
+
+type TunnelDestGroupIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (TunnelDestGroupIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelDestGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (i TunnelDestGroupIamMemberConditionArgs) ToTunnelDestGroupIamMemberConditionOutput() TunnelDestGroupIamMemberConditionOutput {
+	return i.ToTunnelDestGroupIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i TunnelDestGroupIamMemberConditionArgs) ToTunnelDestGroupIamMemberConditionOutputWithContext(ctx context.Context) TunnelDestGroupIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelDestGroupIamMemberConditionOutput)
+}
+
+func (i TunnelDestGroupIamMemberConditionArgs) ToTunnelDestGroupIamMemberConditionPtrOutput() TunnelDestGroupIamMemberConditionPtrOutput {
+	return i.ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TunnelDestGroupIamMemberConditionArgs) ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelDestGroupIamMemberConditionOutput).ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// TunnelDestGroupIamMemberConditionPtrInput is an input type that accepts TunnelDestGroupIamMemberConditionArgs, TunnelDestGroupIamMemberConditionPtr and TunnelDestGroupIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TunnelDestGroupIamMemberConditionPtrInput` via:
+//
+//	        TunnelDestGroupIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TunnelDestGroupIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToTunnelDestGroupIamMemberConditionPtrOutput() TunnelDestGroupIamMemberConditionPtrOutput
+	ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(context.Context) TunnelDestGroupIamMemberConditionPtrOutput
+}
+
+type tunnelDestGroupIamMemberConditionPtrType TunnelDestGroupIamMemberConditionArgs
+
+func TunnelDestGroupIamMemberConditionPtr(v *TunnelDestGroupIamMemberConditionArgs) TunnelDestGroupIamMemberConditionPtrInput {
+	return (*tunnelDestGroupIamMemberConditionPtrType)(v)
+}
+
+func (*tunnelDestGroupIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelDestGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (i *tunnelDestGroupIamMemberConditionPtrType) ToTunnelDestGroupIamMemberConditionPtrOutput() TunnelDestGroupIamMemberConditionPtrOutput {
+	return i.ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelDestGroupIamMemberConditionPtrType) ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelDestGroupIamMemberConditionPtrOutput)
+}
+
+type TunnelDestGroupIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (TunnelDestGroupIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelDestGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (o TunnelDestGroupIamMemberConditionOutput) ToTunnelDestGroupIamMemberConditionOutput() TunnelDestGroupIamMemberConditionOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamMemberConditionOutput) ToTunnelDestGroupIamMemberConditionOutputWithContext(ctx context.Context) TunnelDestGroupIamMemberConditionOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamMemberConditionOutput) ToTunnelDestGroupIamMemberConditionPtrOutput() TunnelDestGroupIamMemberConditionPtrOutput {
+	return o.ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelDestGroupIamMemberConditionOutput) ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelDestGroupIamMemberCondition) *TunnelDestGroupIamMemberCondition {
+		return &v
+	}).(TunnelDestGroupIamMemberConditionPtrOutput)
+}
+
+func (o TunnelDestGroupIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelDestGroupIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o TunnelDestGroupIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelDestGroupIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o TunnelDestGroupIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelDestGroupIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TunnelDestGroupIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelDestGroupIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelDestGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (o TunnelDestGroupIamMemberConditionPtrOutput) ToTunnelDestGroupIamMemberConditionPtrOutput() TunnelDestGroupIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamMemberConditionPtrOutput) ToTunnelDestGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelDestGroupIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TunnelDestGroupIamMemberConditionPtrOutput) Elem() TunnelDestGroupIamMemberConditionOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamMemberCondition) TunnelDestGroupIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelDestGroupIamMemberCondition
+		return ret
+	}).(TunnelDestGroupIamMemberConditionOutput)
+}
+
+func (o TunnelDestGroupIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o TunnelDestGroupIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o TunnelDestGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelDestGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type TunnelIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -3388,6 +3730,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingConditionPtrInput)(nil)).Elem(), AppEngineVersionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberConditionInput)(nil)).Elem(), AppEngineVersionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberConditionPtrInput)(nil)).Elem(), AppEngineVersionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamBindingConditionInput)(nil)).Elem(), TunnelDestGroupIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamBindingConditionPtrInput)(nil)).Elem(), TunnelDestGroupIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamMemberConditionInput)(nil)).Elem(), TunnelDestGroupIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamMemberConditionPtrInput)(nil)).Elem(), TunnelDestGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingConditionInput)(nil)).Elem(), TunnelIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingConditionPtrInput)(nil)).Elem(), TunnelIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamMemberConditionInput)(nil)).Elem(), TunnelIamMemberConditionArgs{})
@@ -3424,6 +3770,10 @@ func init() {
 	pulumi.RegisterOutputType(AppEngineVersionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TunnelDestGroupIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TunnelDestGroupIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TunnelDestGroupIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TunnelDestGroupIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TunnelIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(TunnelIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TunnelIamMemberConditionOutput{})

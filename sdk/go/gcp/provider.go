@@ -27,6 +27,7 @@ type Provider struct {
 	ApigeeCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
 	ApikeysCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"apikeysCustomEndpoint"`
 	AppEngineCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"appEngineCustomEndpoint"`
+	ApphubCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"apphubCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint            pulumi.StringPtrOutput `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint            pulumi.StringPtrOutput `pulumi:"assuredWorkloadsCustomEndpoint"`
 	BackupDrCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"backupDrCustomEndpoint"`
@@ -51,6 +52,7 @@ type Provider struct {
 	CloudFunctionsCustomEndpoint              pulumi.StringPtrOutput `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIdsCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"cloudIdsCustomEndpoint"`
+	CloudQuotasCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"cloudQuotasCustomEndpoint"`
 	CloudResourceManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"cloudRunCustomEndpoint"`
 	CloudRunV2CustomEndpoint                  pulumi.StringPtrOutput `pulumi:"cloudRunV2CustomEndpoint"`
@@ -219,6 +221,7 @@ type providerArgs struct {
 	ApigeeCustomEndpoint                      *string           `pulumi:"apigeeCustomEndpoint"`
 	ApikeysCustomEndpoint                     *string           `pulumi:"apikeysCustomEndpoint"`
 	AppEngineCustomEndpoint                   *string           `pulumi:"appEngineCustomEndpoint"`
+	ApphubCustomEndpoint                      *string           `pulumi:"apphubCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint            *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint            *string           `pulumi:"assuredWorkloadsCustomEndpoint"`
 	BackupDrCustomEndpoint                    *string           `pulumi:"backupDrCustomEndpoint"`
@@ -244,6 +247,7 @@ type providerArgs struct {
 	CloudFunctionsCustomEndpoint              *string           `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint               *string           `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIdsCustomEndpoint                    *string           `pulumi:"cloudIdsCustomEndpoint"`
+	CloudQuotasCustomEndpoint                 *string           `pulumi:"cloudQuotasCustomEndpoint"`
 	CloudResourceManagerCustomEndpoint        *string           `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint                    *string           `pulumi:"cloudRunCustomEndpoint"`
 	CloudRunV2CustomEndpoint                  *string           `pulumi:"cloudRunV2CustomEndpoint"`
@@ -387,6 +391,7 @@ type ProviderArgs struct {
 	ApigeeCustomEndpoint                      pulumi.StringPtrInput
 	ApikeysCustomEndpoint                     pulumi.StringPtrInput
 	AppEngineCustomEndpoint                   pulumi.StringPtrInput
+	ApphubCustomEndpoint                      pulumi.StringPtrInput
 	ArtifactRegistryCustomEndpoint            pulumi.StringPtrInput
 	AssuredWorkloadsCustomEndpoint            pulumi.StringPtrInput
 	BackupDrCustomEndpoint                    pulumi.StringPtrInput
@@ -412,6 +417,7 @@ type ProviderArgs struct {
 	CloudFunctionsCustomEndpoint              pulumi.StringPtrInput
 	CloudIdentityCustomEndpoint               pulumi.StringPtrInput
 	CloudIdsCustomEndpoint                    pulumi.StringPtrInput
+	CloudQuotasCustomEndpoint                 pulumi.StringPtrInput
 	CloudResourceManagerCustomEndpoint        pulumi.StringPtrInput
 	CloudRunCustomEndpoint                    pulumi.StringPtrInput
 	CloudRunV2CustomEndpoint                  pulumi.StringPtrInput
@@ -616,6 +622,10 @@ func (o ProviderOutput) AppEngineCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AppEngineCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) ApphubCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApphubCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) ArtifactRegistryCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ArtifactRegistryCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -710,6 +720,10 @@ func (o ProviderOutput) CloudIdentityCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) CloudIdsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudIdsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) CloudQuotasCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudQuotasCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) CloudResourceManagerCustomEndpoint() pulumi.StringPtrOutput {

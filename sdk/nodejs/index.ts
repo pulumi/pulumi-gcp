@@ -20,6 +20,7 @@ import * as alloydb from "./alloydb";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
+import * as apphub from "./apphub";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as backupdisasterrecovery from "./backupdisasterrecovery";
@@ -43,6 +44,7 @@ import * as cloudfunctions from "./cloudfunctions";
 import * as cloudfunctionsv2 from "./cloudfunctionsv2";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudids from "./cloudids";
+import * as cloudquota from "./cloudquota";
 import * as cloudrun from "./cloudrun";
 import * as cloudrunv2 from "./cloudrunv2";
 import * as cloudscheduler from "./cloudscheduler";
@@ -137,6 +139,7 @@ export {
     apigateway,
     apigee,
     appengine,
+    apphub,
     artifactregistry,
     assuredworkloads,
     backupdisasterrecovery,
@@ -160,6 +163,7 @@ export {
     cloudfunctionsv2,
     cloudidentity,
     cloudids,
+    cloudquota,
     cloudrun,
     cloudrunv2,
     cloudscheduler,

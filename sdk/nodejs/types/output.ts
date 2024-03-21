@@ -464,8 +464,8 @@ export namespace accesscontextmanager {
     export interface ServicePerimeterEgressPolicyEgressFrom {
         /**
          * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Should be in the format of an email address. The email address should
+         * represent an individual user, service account, or Google group.
          */
         identities?: string[];
         /**
@@ -550,9 +550,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * A list of identities that are allowed access through this `IngressPolicy`.
+         * Should be in the format of an email address. The email address should represent
+         * an individual user, service account, or Google group.
          */
         identities?: string[];
         /**
@@ -710,9 +710,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -812,9 +813,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -978,9 +980,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -1080,9 +1083,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -1320,9 +1324,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -1422,9 +1427,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -1588,9 +1594,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -1690,9 +1697,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: string[];
         /**
@@ -3589,6 +3597,351 @@ export namespace appengine {
          * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
+    }
+
+}
+
+export namespace apphub {
+    export interface ApplicationAttributes {
+        /**
+         * Optional. Business team that ensures user needs are met and value is delivered
+         * Structure is documented below.
+         */
+        businessOwners?: outputs.apphub.ApplicationAttributesBusinessOwner[];
+        /**
+         * Criticality of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        criticality?: outputs.apphub.ApplicationAttributesCriticality;
+        /**
+         * Optional. Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: outputs.apphub.ApplicationAttributesDeveloperOwner[];
+        /**
+         * Environment of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        environment?: outputs.apphub.ApplicationAttributesEnvironment;
+        /**
+         * Optional. Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: outputs.apphub.ApplicationAttributesOperatorOwner[];
+    }
+
+    export interface ApplicationAttributesBusinessOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface ApplicationAttributesCriticality {
+        /**
+         * Criticality type.
+         * Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        type: string;
+    }
+
+    export interface ApplicationAttributesDeveloperOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface ApplicationAttributesEnvironment {
+        /**
+         * Environment type.
+         * Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+         */
+        type: string;
+    }
+
+    export interface ApplicationAttributesOperatorOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface ApplicationScope {
+        /**
+         * Required. Scope Type.
+         * Possible values:
+         * REGIONAL
+         * Possible values are: `REGIONAL`.
+         *
+         * - - -
+         */
+        type: string;
+    }
+
+    export interface GetDiscoveredServiceServiceProperty {
+        /**
+         * The service project identifier that the underlying cloud resource resides in.
+         */
+        gcpProject: string;
+        /**
+         * The location of the discovered service.
+         */
+        location: string;
+        /**
+         * The location that the underlying resource resides in if it is zonal.
+         */
+        zone: string;
+    }
+
+    export interface GetDiscoveredServiceServiceReference {
+        /**
+         * Additional path under the resource URI.
+         */
+        path: string;
+        /**
+         * The underlying resource URI.
+         */
+        uri: string;
+    }
+
+    export interface GetDiscoveredWorkloadWorkloadProperty {
+        /**
+         * The service project identifier that the underlying cloud resource resides in.
+         */
+        gcpProject: string;
+        /**
+         * The location of the discovered workload.
+         */
+        location: string;
+        /**
+         * The location that the underlying resource resides in if it is zonal.
+         */
+        zone: string;
+    }
+
+    export interface GetDiscoveredWorkloadWorkloadReference {
+        /**
+         * The underlying resource URI.
+         */
+        uri: string;
+    }
+
+    export interface ServiceAttributes {
+        /**
+         * Business team that ensures user needs are met and value is delivered
+         * Structure is documented below.
+         */
+        businessOwners?: outputs.apphub.ServiceAttributesBusinessOwner[];
+        /**
+         * Criticality of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        criticality?: outputs.apphub.ServiceAttributesCriticality;
+        /**
+         * Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: outputs.apphub.ServiceAttributesDeveloperOwner[];
+        /**
+         * Environment of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        environment?: outputs.apphub.ServiceAttributesEnvironment;
+        /**
+         * Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: outputs.apphub.ServiceAttributesOperatorOwner[];
+    }
+
+    export interface ServiceAttributesBusinessOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface ServiceAttributesCriticality {
+        /**
+         * Criticality type.
+         * Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        type: string;
+    }
+
+    export interface ServiceAttributesDeveloperOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface ServiceAttributesEnvironment {
+        /**
+         * Environment type.
+         * Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+         */
+        type: string;
+    }
+
+    export interface ServiceAttributesOperatorOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface ServiceServiceProperty {
+        /**
+         * (Output)
+         * Output only. The service project identifier that the underlying cloud resource resides in.
+         */
+        gcpProject: string;
+        /**
+         * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+         */
+        location: string;
+        /**
+         * (Output)
+         * Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
+         */
+        zone: string;
+    }
+
+    export interface ServiceServiceReference {
+        /**
+         * (Output)
+         * Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
+         * and Backend Service).
+         */
+        uri: string;
+    }
+
+    export interface WorkloadAttributes {
+        /**
+         * Business team that ensures user needs are met and value is delivered
+         * Structure is documented below.
+         */
+        businessOwners?: outputs.apphub.WorkloadAttributesBusinessOwner[];
+        /**
+         * Criticality of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        criticality?: outputs.apphub.WorkloadAttributesCriticality;
+        /**
+         * Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: outputs.apphub.WorkloadAttributesDeveloperOwner[];
+        /**
+         * Environment of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        environment?: outputs.apphub.WorkloadAttributesEnvironment;
+        /**
+         * Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: outputs.apphub.WorkloadAttributesOperatorOwner[];
+    }
+
+    export interface WorkloadAttributesBusinessOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface WorkloadAttributesCriticality {
+        /**
+         * Criticality type.
+         * Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        type: string;
+    }
+
+    export interface WorkloadAttributesDeveloperOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface WorkloadAttributesEnvironment {
+        /**
+         * Environment type.
+         * Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+         */
+        type: string;
+    }
+
+    export interface WorkloadAttributesOperatorOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: string;
+        /**
+         * Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface WorkloadWorkloadProperty {
+        /**
+         * (Output)
+         * Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+         */
+        gcpProject: string;
+        /**
+         * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+         */
+        location: string;
+        /**
+         * (Output)
+         * Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
+         */
+        zone: string;
+    }
+
+    export interface WorkloadWorkloadReference {
+        /**
+         * (Output)
+         * Output only. The underlying compute resource uri.
+         */
+        uri: string;
     }
 
 }
@@ -13294,6 +13647,42 @@ export namespace cloudidentity {
 
 }
 
+export namespace cloudquota {
+    export interface GetSQuotaInfoDimensionsInfo {
+        /**
+         * The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
+         */
+        applicableLocations: string[];
+        /**
+         * The quota details for a map of dimensions.
+         */
+        details: outputs.cloudquota.GetSQuotaInfoDimensionsInfoDetail[];
+        /**
+         * The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+         */
+        dimensions: {[key: string]: any};
+    }
+
+    export interface GetSQuotaInfoDimensionsInfoDetail {
+        /**
+         * The value currently in effect and being enforced.
+         */
+        value: string;
+    }
+
+    export interface GetSQuotaInfoQuotaIncreaseEligibility {
+        /**
+         * The enumeration of reasons when it is ineligible to request increase adjustment.
+         */
+        ineligibilityReason: string;
+        /**
+         * Whether a higher quota value can be requested for the quota.
+         */
+        isEligible: boolean;
+    }
+
+}
+
 export namespace cloudrun {
     export interface DomainMappingMetadata {
         /**
@@ -15433,6 +15822,13 @@ export namespace cloudrunv2 {
         type: string;
     }
 
+    export interface GetServiceScaling {
+        /**
+         * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+         */
+        minInstanceCount: number;
+    }
+
     export interface GetServiceTemplate {
         /**
          * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -16494,6 +16890,13 @@ export namespace cloudrunv2 {
         title: string;
     }
 
+    export interface ServiceScaling {
+        /**
+         * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+         */
+        minInstanceCount?: number;
+    }
+
     export interface ServiceTemplate {
         /**
          * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -16866,7 +17269,7 @@ export namespace cloudrunv2 {
          */
         maxInstanceCount?: number;
         /**
-         * Minimum number of serving instances that this resource should have.
+         * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          */
         minInstanceCount?: number;
     }
@@ -31181,11 +31584,11 @@ export namespace compute {
          */
         requestHeaders?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader[];
         /**
-         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
          */
         requestQueryParams?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam[];
         /**
-         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
          */
         requestUris?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri[];
         /**
@@ -54495,6 +54898,32 @@ export namespace firestore {
         day?: string;
     }
 
+    export interface DatabaseCmekConfig {
+        /**
+         * (Output)
+         * Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+         * During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+         * multiple in-use key versions.
+         * The expected format is
+         * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+         */
+        activeKeyVersions: string[];
+        /**
+         * The resource ID of a Cloud KMS key. If set, the database created will
+         * be a Customer-managed Encryption Key (CMEK) database encrypted with
+         * this key. This feature is allowlist only in initial launch.
+         * Only keys in the same location as this database are allowed to be used
+         * for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+         * multi-region us. For Firestore's eur3 multi-region, this corresponds to
+         * Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+         * This value should be the KMS key resource ID in the format of
+         * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         * How to retrive this resource ID is listed at
+         * https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+         */
+        kmsKeyName: string;
+    }
+
     export interface FieldIndexConfig {
         /**
          * The indexes to configure on the field. Order or array contains must be specified.
@@ -57645,8 +58074,7 @@ export namespace gkeonprem {
          */
         staticIpConfig?: outputs.gkeonprem.VMwareClusterNetworkConfigStaticIpConfig;
         /**
-         * (Output)
-         * vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+         * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
          */
         vcenterNetwork: string;
     }
@@ -58726,6 +59154,30 @@ export namespace iap {
          * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
          * consider it to be an entirely different resource and will treat it as such.
          */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface TunnelDestGroupIamBindingCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface TunnelDestGroupIamMemberCondition {
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -60297,6 +60749,77 @@ export namespace kms {
          * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel?: string;
+    }
+
+    export interface EkmConnectionServiceResolver {
+        /**
+         * Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+         */
+        endpointFilter: string;
+        /**
+         * Required. The hostname of the EKM replica used at TLS and HTTP layers.
+         */
+        hostname: string;
+        /**
+         * Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+         * Structure is documented below.
+         */
+        serverCertificates: outputs.kms.EkmConnectionServiceResolverServerCertificate[];
+        /**
+         * Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
+         */
+        serviceDirectoryService: string;
+    }
+
+    export interface EkmConnectionServiceResolverServerCertificate {
+        /**
+         * (Output)
+         * Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+         */
+        issuer: string;
+        /**
+         * (Output)
+         * Output only. The certificate is not valid after this time. Only present if parsed is true.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        notAfterTime: string;
+        /**
+         * (Output)
+         * Output only. The certificate is not valid before this time. Only present if parsed is true.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        notBeforeTime: string;
+        /**
+         * (Output)
+         * Output only. True if the certificate was parsed successfully.
+         */
+        parsed: boolean;
+        /**
+         * Required. The raw certificate bytes in DER format. A base64-encoded string.
+         */
+        rawDer: string;
+        /**
+         * (Output)
+         * Output only. The certificate serial number as a hex string. Only present if parsed is true.
+         */
+        serialNumber: string;
+        /**
+         * (Output)
+         * Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+         */
+        sha256Fingerprint: string;
+        /**
+         * (Output)
+         * Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+         */
+        subject: string;
+        /**
+         * (Output)
+         * Output only. The subject Alternative DNS names. Only present if parsed is true.
+         *
+         * - - -
+         */
+        subjectAlternativeDnsNames: string[];
     }
 
     export interface GetKMSCryptoKeyPrimary {
@@ -72918,11 +73441,15 @@ export namespace storage {
         /**
          * Credentials used to authenticate API requests to Azure block.
          */
-        azureCredentials: outputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials;
+        azureCredentials?: outputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials;
         /**
          * The container to transfer from the Azure Storage account.`
          */
         container: string;
+        /**
+         * Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+         */
+        credentialsSecret?: string;
         /**
          * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
          */
@@ -74813,6 +75340,42 @@ export namespace workstations {
         kmsKeyServiceAccount: string;
     }
 
+    export interface WorkstationConfigEphemeralDirectory {
+        /**
+         * An EphemeralDirectory backed by a Compute Engine persistent disk.
+         * Structure is documented below.
+         */
+        gcePd: outputs.workstations.WorkstationConfigEphemeralDirectoryGcePd;
+        /**
+         * Location of this directory in the running workstation.
+         */
+        mountPath: string;
+    }
+
+    export interface WorkstationConfigEphemeralDirectoryGcePd {
+        /**
+         * Type of the disk to use. Defaults to `"pd-standard"`.
+         */
+        diskType: string;
+        /**
+         * Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+         */
+        readOnly?: boolean;
+        /**
+         * Name of the disk image to use as the source for the disk.
+         * Must be empty `sourceSnapshot` is set.
+         * Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+         */
+        sourceImage?: string;
+        /**
+         * Name of the snapshot to use as the source for the disk.
+         * Must be empty if `sourceImage` is set.
+         * Must be empty if `readOnly` is false.
+         * Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
+         */
+        sourceSnapshot?: string;
+    }
+
     export interface WorkstationConfigHost {
         /**
          * A runtime using a Compute Engine instance.
@@ -74935,7 +75498,7 @@ export namespace workstations {
 
     export interface WorkstationConfigPersistentDirectoryGcePd {
         /**
-         * The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+         * Type of the disk to use. Defaults to `"pd-standard"`.
          */
         diskType: string;
         /**
@@ -74953,7 +75516,10 @@ export namespace workstations {
          */
         sizeGb: number;
         /**
-         * Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+         * Name of the snapshot to use as the source for the disk.
+         * Must be empty if `sourceImage` is set.
+         * Must be empty if `readOnly` is false.
+         * Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
          */
         sourceSnapshot?: string;
     }

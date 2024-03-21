@@ -25,6 +25,7 @@ class WorkstationConfigArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]] = None,
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -53,6 +54,8 @@ class WorkstationConfigArgs:
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]] ephemeral_directories: Ephemeral directories which won't persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
                Structure is documented below.
@@ -87,6 +90,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "enable_audit_agent", enable_audit_agent)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if ephemeral_directories is not None:
+            pulumi.set(__self__, "ephemeral_directories", ephemeral_directories)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if idle_timeout is not None:
@@ -223,6 +228,19 @@ class WorkstationConfigArgs:
         pulumi.set(self, "encryption_key", value)
 
     @property
+    @pulumi.getter(name="ephemeralDirectories")
+    def ephemeral_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]]:
+        """
+        Ephemeral directories which won't persist across workstation sessions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_directories")
+
+    @ephemeral_directories.setter
+    def ephemeral_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]]):
+        pulumi.set(self, "ephemeral_directories", value)
+
+    @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input['WorkstationConfigHostArgs']]:
         """
@@ -342,6 +360,7 @@ class _WorkstationConfigState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -378,6 +397,8 @@ class _WorkstationConfigState:
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]] ephemeral_directories: Ephemeral directories which won't persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
@@ -431,6 +452,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "enable_audit_agent", enable_audit_agent)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if ephemeral_directories is not None:
+            pulumi.set(__self__, "ephemeral_directories", ephemeral_directories)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if host is not None:
@@ -602,6 +625,19 @@ class _WorkstationConfigState:
     @encryption_key.setter
     def encryption_key(self, value: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']]):
         pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="ephemeralDirectories")
+    def ephemeral_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]]:
+        """
+        Ephemeral directories which won't persist across workstation sessions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_directories")
+
+    @ephemeral_directories.setter
+    def ephemeral_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]]):
+        pulumi.set(self, "ephemeral_directories", value)
 
     @property
     @pulumi.getter
@@ -809,6 +845,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigEphemeralDirectoryArgs']]]]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1198,6 +1235,8 @@ class WorkstationConfig(pulumi.CustomResource):
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigEphemeralDirectoryArgs']]]] ephemeral_directories: Ephemeral directories which won't persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']] host: Runtime host for a workstation.
                Structure is documented below.
@@ -1613,6 +1652,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigEphemeralDirectoryArgs']]]]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1639,6 +1679,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_audit_agent"] = enable_audit_agent
             __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["ephemeral_directories"] = ephemeral_directories
             __props__.__dict__["host"] = host
             __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["labels"] = labels
@@ -1688,6 +1729,7 @@ class WorkstationConfig(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_audit_agent: Optional[pulumi.Input[bool]] = None,
             encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
+            ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigEphemeralDirectoryArgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
             idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -1729,6 +1771,8 @@ class WorkstationConfig(pulumi.CustomResource):
                If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata.
                If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost.
                If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigEphemeralDirectoryArgs']]]] ephemeral_directories: Ephemeral directories which won't persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
@@ -1775,6 +1819,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_audit_agent"] = enable_audit_agent
         __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["ephemeral_directories"] = ephemeral_directories
         __props__.__dict__["etag"] = etag
         __props__.__dict__["host"] = host
         __props__.__dict__["idle_timeout"] = idle_timeout
@@ -1888,6 +1933,15 @@ class WorkstationConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="ephemeralDirectories")
+    def ephemeral_directories(self) -> pulumi.Output[Sequence['outputs.WorkstationConfigEphemeralDirectory']]:
+        """
+        Ephemeral directories which won't persist across workstation sessions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_directories")
 
     @property
     @pulumi.getter

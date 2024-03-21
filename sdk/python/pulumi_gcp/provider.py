@@ -25,6 +25,7 @@ class ProviderArgs:
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apphub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,7 @@ class ProviderArgs:
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_quotas_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -202,6 +204,8 @@ class ProviderArgs:
             pulumi.set(__self__, "apikeys_custom_endpoint", apikeys_custom_endpoint)
         if app_engine_custom_endpoint is not None:
             pulumi.set(__self__, "app_engine_custom_endpoint", app_engine_custom_endpoint)
+        if apphub_custom_endpoint is not None:
+            pulumi.set(__self__, "apphub_custom_endpoint", apphub_custom_endpoint)
         if artifact_registry_custom_endpoint is not None:
             pulumi.set(__self__, "artifact_registry_custom_endpoint", artifact_registry_custom_endpoint)
         if assured_workloads_custom_endpoint is not None:
@@ -252,6 +256,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
         if cloud_ids_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_ids_custom_endpoint", cloud_ids_custom_endpoint)
+        if cloud_quotas_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_quotas_custom_endpoint", cloud_quotas_custom_endpoint)
         if cloud_resource_manager_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_resource_manager_custom_endpoint", cloud_resource_manager_custom_endpoint)
         if cloud_run_custom_endpoint is not None:
@@ -608,6 +614,15 @@ class ProviderArgs:
         pulumi.set(self, "app_engine_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="apphubCustomEndpoint")
+    def apphub_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "apphub_custom_endpoint")
+
+    @apphub_custom_endpoint.setter
+    def apphub_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apphub_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="artifactRegistryCustomEndpoint")
     def artifact_registry_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "artifact_registry_custom_endpoint")
@@ -831,6 +846,15 @@ class ProviderArgs:
     @cloud_ids_custom_endpoint.setter
     def cloud_ids_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_ids_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudQuotasCustomEndpoint")
+    def cloud_quotas_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_quotas_custom_endpoint")
+
+    @cloud_quotas_custom_endpoint.setter
+    def cloud_quotas_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_quotas_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudResourceManagerCustomEndpoint")
@@ -2009,6 +2033,7 @@ class Provider(pulumi.ProviderResource):
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apphub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2034,6 +2059,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_quotas_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2210,6 +2236,7 @@ class Provider(pulumi.ProviderResource):
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apphub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2235,6 +2262,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_quotas_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2383,6 +2411,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["apigee_custom_endpoint"] = apigee_custom_endpoint
             __props__.__dict__["apikeys_custom_endpoint"] = apikeys_custom_endpoint
             __props__.__dict__["app_engine_custom_endpoint"] = app_engine_custom_endpoint
+            __props__.__dict__["apphub_custom_endpoint"] = apphub_custom_endpoint
             __props__.__dict__["artifact_registry_custom_endpoint"] = artifact_registry_custom_endpoint
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
             __props__.__dict__["backup_dr_custom_endpoint"] = backup_dr_custom_endpoint
@@ -2408,6 +2437,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_functions_custom_endpoint"] = cloud_functions_custom_endpoint
             __props__.__dict__["cloud_identity_custom_endpoint"] = cloud_identity_custom_endpoint
             __props__.__dict__["cloud_ids_custom_endpoint"] = cloud_ids_custom_endpoint
+            __props__.__dict__["cloud_quotas_custom_endpoint"] = cloud_quotas_custom_endpoint
             __props__.__dict__["cloud_resource_manager_custom_endpoint"] = cloud_resource_manager_custom_endpoint
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
             __props__.__dict__["cloud_run_v2_custom_endpoint"] = cloud_run_v2_custom_endpoint
@@ -2595,6 +2625,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "app_engine_custom_endpoint")
 
     @property
+    @pulumi.getter(name="apphubCustomEndpoint")
+    def apphub_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "apphub_custom_endpoint")
+
+    @property
     @pulumi.getter(name="artifactRegistryCustomEndpoint")
     def artifact_registry_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "artifact_registry_custom_endpoint")
@@ -2713,6 +2748,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudIdsCustomEndpoint")
     def cloud_ids_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_ids_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="cloudQuotasCustomEndpoint")
+    def cloud_quotas_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloud_quotas_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudResourceManagerCustomEndpoint")

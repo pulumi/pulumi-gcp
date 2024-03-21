@@ -1507,6 +1507,10 @@ class Instance(pulumi.CustomResource):
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/userinfo.email",
             ],
+            tags=[
+                "foo",
+                "bar",
+            ],
             disk_encryption="CMEK",
             kms_key="my-crypto-key",
             desired_state="ACTIVE")
@@ -1756,6 +1760,10 @@ class Instance(pulumi.CustomResource):
                 "https://www.googleapis.com/auth/devstorage.read_write",
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/userinfo.email",
+            ],
+            tags=[
+                "foo",
+                "bar",
             ],
             disk_encryption="CMEK",
             kms_key="my-crypto-key",

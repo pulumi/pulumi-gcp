@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppCheckAppAttestConfig{}
 	case "gcp:firebase/appCheckDebugToken:AppCheckDebugToken":
 		r = &AppCheckDebugToken{}
+	case "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig":
+		r = &AppCheckDeviceCheckConfig{}
 	case "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig":
 		r = &AppCheckPlayIntegrityConfig{}
 	case "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig":
@@ -83,6 +85,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/appCheckDebugToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appCheckDeviceCheckConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -147,6 +147,10 @@ import * as utilities from "../utilities";
  *         "https://www.googleapis.com/auth/cloud-platform",
  *         "https://www.googleapis.com/auth/userinfo.email",
  *     ],
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
  *     diskEncryption: "CMEK",
  *     kmsKey: "my-crypto-key",
  *     desiredState: "ACTIVE",

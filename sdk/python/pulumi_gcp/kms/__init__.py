@@ -10,6 +10,7 @@ from .crypto_key_iam_binding import *
 from .crypto_key_iam_member import *
 from .crypto_key_iam_policy import *
 from .crypto_key_version import *
+from .ekm_connection import *
 from .get_crypto_key_iam_policy import *
 from .get_key_ring_iam_policy import *
 from .get_kms_crypto_key import *

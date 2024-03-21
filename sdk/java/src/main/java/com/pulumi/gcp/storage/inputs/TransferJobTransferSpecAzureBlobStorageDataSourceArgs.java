@@ -21,15 +21,15 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
      * Credentials used to authenticate API requests to Azure block.
      * 
      */
-    @Import(name="azureCredentials", required=true)
-    private Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials;
+    @Import(name="azureCredentials")
+    private @Nullable Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials;
 
     /**
      * @return Credentials used to authenticate API requests to Azure block.
      * 
      */
-    public Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials() {
-        return this.azureCredentials;
+    public Optional<Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs>> azureCredentials() {
+        return Optional.ofNullable(this.azureCredentials);
     }
 
     /**
@@ -45,6 +45,21 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
      */
     public Output<String> container() {
         return this.container;
+    }
+
+    /**
+     * Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](&lt;https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string&gt;). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+     * 
+     */
+    @Import(name="credentialsSecret")
+    private @Nullable Output<String> credentialsSecret;
+
+    /**
+     * @return Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](&lt;https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string&gt;). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+     * 
+     */
+    public Optional<Output<String>> credentialsSecret() {
+        return Optional.ofNullable(this.credentialsSecret);
     }
 
     /**
@@ -82,6 +97,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
     private TransferJobTransferSpecAzureBlobStorageDataSourceArgs(TransferJobTransferSpecAzureBlobStorageDataSourceArgs $) {
         this.azureCredentials = $.azureCredentials;
         this.container = $.container;
+        this.credentialsSecret = $.credentialsSecret;
         this.path = $.path;
         this.storageAccount = $.storageAccount;
     }
@@ -110,7 +126,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
          * @return builder
          * 
          */
-        public Builder azureCredentials(Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials) {
+        public Builder azureCredentials(@Nullable Output<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> azureCredentials) {
             $.azureCredentials = azureCredentials;
             return this;
         }
@@ -144,6 +160,27 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
          */
         public Builder container(String container) {
             return container(Output.of(container));
+        }
+
+        /**
+         * @param credentialsSecret Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](&lt;https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string&gt;). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialsSecret(@Nullable Output<String> credentialsSecret) {
+            $.credentialsSecret = credentialsSecret;
+            return this;
+        }
+
+        /**
+         * @param credentialsSecret Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](&lt;https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string&gt;). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialsSecret(String credentialsSecret) {
+            return credentialsSecret(Output.of(credentialsSecret));
         }
 
         /**
@@ -189,9 +226,6 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         public TransferJobTransferSpecAzureBlobStorageDataSourceArgs build() {
-            if ($.azureCredentials == null) {
-                throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSourceArgs", "azureCredentials");
-            }
             if ($.container == null) {
                 throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSourceArgs", "container");
             }

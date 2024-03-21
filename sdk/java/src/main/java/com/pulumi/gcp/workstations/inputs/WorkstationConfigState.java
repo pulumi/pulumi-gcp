@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigConditionArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigContainerArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigEncryptionKeyArgs;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigEphemeralDirectoryArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigReadinessCheckArgs;
@@ -205,6 +206,23 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<WorkstationConfigEncryptionKeyArgs>> encryptionKey() {
         return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
+     * Ephemeral directories which won&#39;t persist across workstation sessions.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ephemeralDirectories")
+    private @Nullable Output<List<WorkstationConfigEphemeralDirectoryArgs>> ephemeralDirectories;
+
+    /**
+     * @return Ephemeral directories which won&#39;t persist across workstation sessions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkstationConfigEphemeralDirectoryArgs>>> ephemeralDirectories() {
+        return Optional.ofNullable(this.ephemeralDirectories);
     }
 
     /**
@@ -472,6 +490,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.effectiveLabels = $.effectiveLabels;
         this.enableAuditAgent = $.enableAuditAgent;
         this.encryptionKey = $.encryptionKey;
+        this.ephemeralDirectories = $.ephemeralDirectories;
         this.etag = $.etag;
         this.host = $.host;
         this.idleTimeout = $.idleTimeout;
@@ -765,6 +784,40 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder encryptionKey(WorkstationConfigEncryptionKeyArgs encryptionKey) {
             return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
+         * @param ephemeralDirectories Ephemeral directories which won&#39;t persist across workstation sessions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralDirectories(@Nullable Output<List<WorkstationConfigEphemeralDirectoryArgs>> ephemeralDirectories) {
+            $.ephemeralDirectories = ephemeralDirectories;
+            return this;
+        }
+
+        /**
+         * @param ephemeralDirectories Ephemeral directories which won&#39;t persist across workstation sessions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralDirectories(List<WorkstationConfigEphemeralDirectoryArgs> ephemeralDirectories) {
+            return ephemeralDirectories(Output.of(ephemeralDirectories));
+        }
+
+        /**
+         * @param ephemeralDirectories Ephemeral directories which won&#39;t persist across workstation sessions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralDirectories(WorkstationConfigEphemeralDirectoryArgs... ephemeralDirectories) {
+            return ephemeralDirectories(List.of(ephemeralDirectories));
         }
 
         /**

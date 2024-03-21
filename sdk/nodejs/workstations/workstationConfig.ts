@@ -484,6 +484,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly encryptionKey!: pulumi.Output<outputs.workstations.WorkstationConfigEncryptionKey | undefined>;
     /**
+     * Ephemeral directories which won't persist across workstation sessions.
+     * Structure is documented below.
+     */
+    public readonly ephemeralDirectories!: pulumi.Output<outputs.workstations.WorkstationConfigEphemeralDirectory[]>;
+    /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
@@ -582,6 +587,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableAuditAgent"] = state ? state.enableAuditAgent : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
+            resourceInputs["ephemeralDirectories"] = state ? state.ephemeralDirectories : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
@@ -614,6 +620,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableAuditAgent"] = args ? args.enableAuditAgent : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
+            resourceInputs["ephemeralDirectories"] = args ? args.ephemeralDirectories : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -699,6 +706,11 @@ export interface WorkstationConfigState {
      * Structure is documented below.
      */
     encryptionKey?: pulumi.Input<inputs.workstations.WorkstationConfigEncryptionKey>;
+    /**
+     * Ephemeral directories which won't persist across workstation sessions.
+     * Structure is documented below.
+     */
+    ephemeralDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectory>[]>;
     /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
@@ -810,6 +822,11 @@ export interface WorkstationConfigArgs {
      * Structure is documented below.
      */
     encryptionKey?: pulumi.Input<inputs.workstations.WorkstationConfigEncryptionKey>;
+    /**
+     * Ephemeral directories which won't persist across workstation sessions.
+     * Structure is documented below.
+     */
+    ephemeralDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectory>[]>;
     /**
      * Runtime host for a workstation.
      * Structure is documented below.

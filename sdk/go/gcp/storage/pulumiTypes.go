@@ -5606,9 +5606,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput) SecretAcces
 
 type TransferJobTransferSpecAzureBlobStorageDataSource struct {
 	// Credentials used to authenticate API requests to Azure block.
-	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials `pulumi:"azureCredentials"`
+	AzureCredentials *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.`
 	Container string `pulumi:"container"`
+	// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](<https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string>). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -5628,9 +5630,11 @@ type TransferJobTransferSpecAzureBlobStorageDataSourceInput interface {
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceArgs struct {
 	// Credentials used to authenticate API requests to Azure block.
-	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput `pulumi:"azureCredentials"`
+	AzureCredentials TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrInput `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.`
 	Container pulumi.StringInput `pulumi:"container"`
+	// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](<https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string>). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -5715,15 +5719,20 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) ToTransferJobTr
 }
 
 // Credentials used to authenticate API requests to Azure block.
-func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) AzureCredentials() TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
 		return v.AzureCredentials
-	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
+	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput)
 }
 
 // The container to transfer from the Azure Storage account.`
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) string { return v.Container }).(pulumi.StringOutput)
+}
+
+// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](<https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string>). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
 }
 
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -5766,7 +5775,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) AzureCredent
 		if v == nil {
 			return nil
 		}
-		return &v.AzureCredentials
+		return v.AzureCredentials
 	}).(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput)
 }
 
@@ -5777,6 +5786,16 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Container() 
 			return nil
 		}
 		return &v.Container
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](<https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string>). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialsSecret
 	}).(pulumi.StringPtrOutput)
 }
 

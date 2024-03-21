@@ -265,6 +265,9 @@ import javax.annotation.Nullable;
  *                 &#34;https://www.googleapis.com/auth/devstorage.read_write&#34;,
  *                 &#34;https://www.googleapis.com/auth/cloud-platform&#34;,
  *                 &#34;https://www.googleapis.com/auth/userinfo.email&#34;)
+ *             .tags(            
+ *                 &#34;foo&#34;,
+ *                 &#34;bar&#34;)
  *             .diskEncryption(&#34;CMEK&#34;)
  *             .kmsKey(&#34;my-crypto-key&#34;)
  *             .desiredState(&#34;ACTIVE&#34;)

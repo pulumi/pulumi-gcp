@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var posture1 = new Gcp.SecurityPosture.Posture("posture1", new()
+    ///     var posture1 = new Gcp.SecurityPosture.Posture("posture_1", new()
     ///     {
     ///         PostureId = "posture_1",
     ///         Parent = "organizations/123456789",

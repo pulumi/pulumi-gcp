@@ -17,7 +17,7 @@ public final class ServiceTemplateScaling {
      */
     private @Nullable Integer maxInstanceCount;
     /**
-     * @return Minimum number of serving instances that this resource should have.
+     * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
     private @Nullable Integer minInstanceCount;
@@ -31,7 +31,7 @@ public final class ServiceTemplateScaling {
         return Optional.ofNullable(this.maxInstanceCount);
     }
     /**
-     * @return Minimum number of serving instances that this resource should have.
+     * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
     public Optional<Integer> minInstanceCount() {

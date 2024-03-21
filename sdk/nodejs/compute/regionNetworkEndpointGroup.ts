@@ -156,6 +156,22 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Region Network Endpoint Group Appengine Empty
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // App Engine Example
+ * const appengineNeg = new gcp.compute.RegionNetworkEndpointGroup("appengine_neg", {
+ *     name: "appengine-neg",
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     appEngine: {},
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  * ### Region Network Endpoint Group Psc
  *
  * <!--Start PulumiCodeChooser -->

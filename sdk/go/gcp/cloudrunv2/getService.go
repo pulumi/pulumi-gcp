@@ -97,6 +97,7 @@ type LookupServiceResult struct {
 	Project               *string                       `pulumi:"project"`
 	PulumiLabels          map[string]string             `pulumi:"pulumiLabels"`
 	Reconciling           bool                          `pulumi:"reconciling"`
+	Scalings              []GetServiceScaling           `pulumi:"scalings"`
 	Templates             []GetServiceTemplate          `pulumi:"templates"`
 	TerminalConditions    []GetServiceTerminalCondition `pulumi:"terminalConditions"`
 	TrafficStatuses       []GetServiceTrafficStatus     `pulumi:"trafficStatuses"`
@@ -262,6 +263,10 @@ func (o LookupServiceResultOutput) PulumiLabels() pulumi.StringMapOutput {
 
 func (o LookupServiceResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+func (o LookupServiceResultOutput) Scalings() GetServiceScalingArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceScaling { return v.Scalings }).(GetServiceScalingArrayOutput)
 }
 
 func (o LookupServiceResultOutput) Templates() GetServiceTemplateArrayOutput {

@@ -615,6 +615,11 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
+     * Scaling settings that apply to the whole service
+     * Structure is documented below.
+     */
+    public readonly scaling!: pulumi.Output<outputs.cloudrunv2.ServiceScaling | undefined>;
+    /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
      */
@@ -688,6 +693,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
+            resourceInputs["scaling"] = state ? state.scaling : undefined;
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["terminalConditions"] = state ? state.terminalConditions : undefined;
             resourceInputs["trafficStatuses"] = state ? state.trafficStatuses : undefined;
@@ -715,6 +721,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["scaling"] = args ? args.scaling : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["traffics"] = args ? args.traffics : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -881,6 +888,11 @@ export interface ServiceState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
+     * Scaling settings that apply to the whole service
+     * Structure is documented below.
+     */
+    scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling>;
+    /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
      */
@@ -984,6 +996,11 @@ export interface ServiceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Scaling settings that apply to the whole service
+     * Structure is documented below.
+     */
+    scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling>;
     /**
      * The template used to create revisions for this Service.
      * Structure is documented below.

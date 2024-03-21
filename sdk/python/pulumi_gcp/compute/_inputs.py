@@ -29215,8 +29215,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
         :param pulumi.Input[str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]] request_query_params: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]] request_uris: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]] request_query_params: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]] request_uris: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
                
                <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
@@ -29273,7 +29273,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestQueryParams")
     def request_query_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]]:
         """
-        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
         """
         return pulumi.get(self, "request_query_params")
 
@@ -29285,7 +29285,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @pulumi.getter(name="requestUris")
     def request_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]]]:
         """
-        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
         """
         return pulumi.get(self, "request_uris")
 

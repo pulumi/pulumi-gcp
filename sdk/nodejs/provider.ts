@@ -36,6 +36,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly apigeeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apikeysCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly appEngineCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly apphubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly artifactRegistryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly assuredWorkloadsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly backupDrCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -60,6 +61,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudFunctionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdentityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdsCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudQuotasCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudResourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudRunCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudRunV2CustomEndpoint!: pulumi.Output<string | undefined>;
@@ -206,6 +208,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
             resourceInputs["apikeysCustomEndpoint"] = args ? args.apikeysCustomEndpoint : undefined;
             resourceInputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
+            resourceInputs["apphubCustomEndpoint"] = args ? args.apphubCustomEndpoint : undefined;
             resourceInputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
             resourceInputs["assuredWorkloadsCustomEndpoint"] = args ? args.assuredWorkloadsCustomEndpoint : undefined;
             resourceInputs["backupDrCustomEndpoint"] = args ? args.backupDrCustomEndpoint : undefined;
@@ -231,6 +234,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             resourceInputs["cloudIdentityCustomEndpoint"] = args ? args.cloudIdentityCustomEndpoint : undefined;
             resourceInputs["cloudIdsCustomEndpoint"] = args ? args.cloudIdsCustomEndpoint : undefined;
+            resourceInputs["cloudQuotasCustomEndpoint"] = args ? args.cloudQuotasCustomEndpoint : undefined;
             resourceInputs["cloudResourceManagerCustomEndpoint"] = args ? args.cloudResourceManagerCustomEndpoint : undefined;
             resourceInputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
             resourceInputs["cloudRunV2CustomEndpoint"] = args ? args.cloudRunV2CustomEndpoint : undefined;
@@ -380,6 +384,7 @@ export interface ProviderArgs {
     apigeeCustomEndpoint?: pulumi.Input<string>;
     apikeysCustomEndpoint?: pulumi.Input<string>;
     appEngineCustomEndpoint?: pulumi.Input<string>;
+    apphubCustomEndpoint?: pulumi.Input<string>;
     artifactRegistryCustomEndpoint?: pulumi.Input<string>;
     assuredWorkloadsCustomEndpoint?: pulumi.Input<string>;
     backupDrCustomEndpoint?: pulumi.Input<string>;
@@ -405,6 +410,7 @@ export interface ProviderArgs {
     cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     cloudIdentityCustomEndpoint?: pulumi.Input<string>;
     cloudIdsCustomEndpoint?: pulumi.Input<string>;
+    cloudQuotasCustomEndpoint?: pulumi.Input<string>;
     cloudResourceManagerCustomEndpoint?: pulumi.Input<string>;
     cloudRunCustomEndpoint?: pulumi.Input<string>;
     cloudRunV2CustomEndpoint?: pulumi.Input<string>;

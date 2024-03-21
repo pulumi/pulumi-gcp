@@ -14,6 +14,8 @@ import com.pulumi.gcp.iap.inputs.GetAppEngineVersionIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineVersionIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetClientArgs;
 import com.pulumi.gcp.iap.inputs.GetClientPlainArgs;
+import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetTunnelIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetTunnelIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetTunnelInstanceIamPolicyArgs;
@@ -31,6 +33,7 @@ import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.outputs.GetAppEngineServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetAppEngineVersionIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetClientResult;
+import com.pulumi.gcp.iap.outputs.GetTunnelDestGroupIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelInstanceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebBackendServiceIamPolicyResult;
@@ -416,6 +419,174 @@ public final class IapFunctions {
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tunneldestgroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
+     *             .project(destGroup.project())
+     *             .region(destGroup.region())
+     *             .destGroup(destGroup.groupName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs args) {
+        return getTunnelDestGroupIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for tunneldestgroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
+     *             .project(destGroup.project())
+     *             .region(destGroup.region())
+     *             .destGroup(destGroup.groupName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicyPlain(GetTunnelDestGroupIamPolicyPlainArgs args) {
+        return getTunnelDestGroupIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for tunneldestgroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
+     *             .project(destGroup.project())
+     *             .region(destGroup.region())
+     *             .destGroup(destGroup.groupName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", TypeShape.of(GetTunnelDestGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tunneldestgroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
+     *             .project(destGroup.project())
+     *             .region(destGroup.region())
+     *             .destGroup(destGroup.groupName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicyPlain(GetTunnelDestGroupIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", TypeShape.of(GetTunnelDestGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for tunnel

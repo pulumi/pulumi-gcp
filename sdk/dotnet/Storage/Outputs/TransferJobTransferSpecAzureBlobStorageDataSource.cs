@@ -16,11 +16,15 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// <summary>
         /// Credentials used to authenticate API requests to Azure block.
         /// </summary>
-        public readonly Outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials AzureCredentials;
+        public readonly Outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials? AzureCredentials;
         /// <summary>
         /// The container to transfer from the Azure Storage account.`
         /// </summary>
         public readonly string Container;
+        /// <summary>
+        /// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        /// </summary>
+        public readonly string? CredentialsSecret;
         /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         /// </summary>
@@ -32,9 +36,11 @@ namespace Pulumi.Gcp.Storage.Outputs
 
         [OutputConstructor]
         private TransferJobTransferSpecAzureBlobStorageDataSource(
-            Outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials,
+            Outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials? azureCredentials,
 
             string container,
+
+            string? credentialsSecret,
 
             string? path,
 
@@ -42,6 +48,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         {
             AzureCredentials = azureCredentials;
             Container = container;
+            CredentialsSecret = credentialsSecret;
             Path = path;
             StorageAccount = storageAccount;
         }

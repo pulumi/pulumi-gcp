@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firestore.DatabaseArgs;
 import com.pulumi.gcp.firestore.inputs.DatabaseState;
+import com.pulumi.gcp.firestore.outputs.DatabaseCmekConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -106,6 +107,77 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Cmek Database
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.inputs.DatabaseCmekConfigArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;kms-key-ring&#34;)
+ *             .location(&#34;us&#34;)
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;kms-key&#34;)
+ *             .keyRing(keyRing.id())
+ *             .purpose(&#34;ENCRYPT_DECRYPT&#34;)
+ *             .build());
+ * 
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;cmek-database-id&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .cmekConfig(DatabaseCmekConfigArgs.builder()
+ *                 .kmsKeyName(cryptoKey.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding(&#34;firestoreCmekKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-firestore.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firestore Default Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -181,6 +253,77 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Cmek Database In Datastore Mode
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.inputs.DatabaseCmekConfigArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .name(&#34;kms-key-ring&#34;)
+ *             .location(&#34;us&#34;)
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .name(&#34;kms-key&#34;)
+ *             .keyRing(keyRing.id())
+ *             .purpose(&#34;ENCRYPT_DECRYPT&#34;)
+ *             .build());
+ * 
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;cmek-database-id&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
+ *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .cmekConfig(DatabaseCmekConfigArgs.builder()
+ *                 .kmsKeyName(cryptoKey.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding(&#34;firestoreCmekKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-firestore.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -224,6 +367,26 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<String> appEngineIntegrationMode() {
         return this.appEngineIntegrationMode;
+    }
+    /**
+     * The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+     * database. If not present, the database is secured by the default Google
+     * encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cmekConfig", refs={DatabaseCmekConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseCmekConfig> cmekConfig;
+
+    /**
+     * @return The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+     * database. If not present, the database is secured by the default Google
+     * encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DatabaseCmekConfig>> cmekConfig() {
+        return Codegen.optional(this.cmekConfig);
     }
     /**
      * The concurrency control mode to use for this database.

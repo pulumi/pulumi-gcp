@@ -45,7 +45,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// </summary>
         public readonly Outputs.VMwareClusterNetworkConfigStaticIpConfig? StaticIpConfig;
         /// <summary>
-        /// (Output)
         /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
         /// </summary>
         public readonly string? VcenterNetwork;

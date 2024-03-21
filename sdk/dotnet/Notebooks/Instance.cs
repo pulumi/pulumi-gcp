@@ -200,6 +200,11 @@ namespace Pulumi.Gcp.Notebooks
     ///             "https://www.googleapis.com/auth/cloud-platform",
     ///             "https://www.googleapis.com/auth/userinfo.email",
     ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
     ///         DiskEncryption = "CMEK",
     ///         KmsKey = "my-crypto-key",
     ///         DesiredState = "ACTIVE",

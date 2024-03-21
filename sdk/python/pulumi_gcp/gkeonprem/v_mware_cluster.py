@@ -1093,6 +1093,7 @@ class VMwareCluster(pulumi.CustomResource):
                         gateway="test-gateway",
                     ),
                 ),
+                vcenter_network="test-vcenter-network",
             ),
             control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
                 cpus=4,
@@ -1399,6 +1400,7 @@ class VMwareCluster(pulumi.CustomResource):
                         gateway="test-gateway",
                     ),
                 ),
+                vcenter_network="test-vcenter-network",
             ),
             control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
                 cpus=4,

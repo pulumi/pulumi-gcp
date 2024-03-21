@@ -68,7 +68,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         public Input<Inputs.VMwareClusterNetworkConfigStaticIpConfigArgs>? StaticIpConfig { get; set; }
 
         /// <summary>
-        /// (Output)
         /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
         /// </summary>
         [Input("vcenterNetwork")]

@@ -8,6 +8,7 @@ import typing
 from .android_app import *
 from .app_check_app_attest_config import *
 from .app_check_debug_token import *
+from .app_check_device_check_config import *
 from .app_check_play_integrity_config import *
 from .app_check_recaptcha_enterprise_config import *
 from .app_check_recaptcha_v3_config import *

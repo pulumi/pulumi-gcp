@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> RequestHeaders;
         /// <summary>
-        /// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+        /// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> RequestQueryParams;
         /// <summary>
-        /// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+        /// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri> RequestUris;
         /// <summary>

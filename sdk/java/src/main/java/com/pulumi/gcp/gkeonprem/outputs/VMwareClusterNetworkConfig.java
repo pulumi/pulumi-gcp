@@ -55,8 +55,7 @@ public final class VMwareClusterNetworkConfig {
      */
     private @Nullable VMwareClusterNetworkConfigStaticIpConfig staticIpConfig;
     /**
-     * @return (Output)
-     * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+     * @return vcenter_network specifies vCenter network name. Inherited from the admin cluster.
      * 
      */
     private @Nullable String vcenterNetwork;
@@ -112,8 +111,7 @@ public final class VMwareClusterNetworkConfig {
         return Optional.ofNullable(this.staticIpConfig);
     }
     /**
-     * @return (Output)
-     * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+     * @return vcenter_network specifies vCenter network name. Inherited from the admin cluster.
      * 
      */
     public Optional<String> vcenterNetwork() {

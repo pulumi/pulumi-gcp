@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceBinaryAuthorizationArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
 import java.lang.String;
@@ -236,6 +237,23 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Scaling settings that apply to the whole service
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scaling")
+    private @Nullable Output<ServiceScalingArgs> scaling;
+
+    /**
+     * @return Scaling settings that apply to the whole service
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceScalingArgs>> scaling() {
+        return Optional.ofNullable(this.scaling);
+    }
+
+    /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
      * 
@@ -284,6 +302,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.scaling = $.scaling;
         this.template = $.template;
         this.traffics = $.traffics;
     }
@@ -601,6 +620,29 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param scaling Scaling settings that apply to the whole service
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaling(@Nullable Output<ServiceScalingArgs> scaling) {
+            $.scaling = scaling;
+            return this;
+        }
+
+        /**
+         * @param scaling Scaling settings that apply to the whole service
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaling(ServiceScalingArgs scaling) {
+            return scaling(Output.of(scaling));
         }
 
         /**

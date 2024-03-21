@@ -172,6 +172,7 @@ import javax.annotation.Nullable;
  *                         .gateway(&#34;test-gateway&#34;)
  *                         .build())
  *                     .build())
+ *                 .vcenterNetwork(&#34;test-vcenter-network&#34;)
  *                 .build())
  *             .controlPlaneNode(VMwareClusterControlPlaneNodeArgs.builder()
  *                 .cpus(4)

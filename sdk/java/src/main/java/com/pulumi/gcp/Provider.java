@@ -76,6 +76,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> appEngineCustomEndpoint() {
         return Codegen.optional(this.appEngineCustomEndpoint);
     }
+    @Export(name="apphubCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apphubCustomEndpoint;
+
+    public Output<Optional<String>> apphubCustomEndpoint() {
+        return Codegen.optional(this.apphubCustomEndpoint);
+    }
     @Export(name="artifactRegistryCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> artifactRegistryCustomEndpoint;
 
@@ -219,6 +225,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> cloudIdsCustomEndpoint() {
         return Codegen.optional(this.cloudIdsCustomEndpoint);
+    }
+    @Export(name="cloudQuotasCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cloudQuotasCustomEndpoint;
+
+    public Output<Optional<String>> cloudQuotasCustomEndpoint() {
+        return Codegen.optional(this.cloudQuotasCustomEndpoint);
     }
     @Export(name="cloudResourceManagerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudResourceManagerCustomEndpoint;

@@ -357,7 +357,7 @@ class Posture(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         posture1 = gcp.securityposture.Posture("posture1",
-            posture_id="posture_1",
+            posture_id="posture_example",
             parent="organizations/123456789",
             location="global",
             state="ACTIVE",
@@ -511,7 +511,7 @@ class Posture(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         posture1 = gcp.securityposture.Posture("posture1",
-            posture_id="posture_1",
+            posture_id="posture_example",
             parent="organizations/123456789",
             location="global",
             state="ACTIVE",

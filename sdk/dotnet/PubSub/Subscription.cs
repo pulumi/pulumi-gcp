@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_41819",
+    ///             FilenameSuffix = "-_75092",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
     ///         },
@@ -363,7 +363,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_75092",
+    ///             FilenameSuffix = "-_2605",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
     ///             AvroConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigAvroConfigArgs

@@ -24,6 +24,8 @@ if typing.TYPE_CHECKING:
     apigee = __apigee
     import pulumi_gcp.appengine as __appengine
     appengine = __appengine
+    import pulumi_gcp.apphub as __apphub
+    apphub = __apphub
     import pulumi_gcp.artifactregistry as __artifactregistry
     artifactregistry = __artifactregistry
     import pulumi_gcp.assuredworkloads as __assuredworkloads
@@ -70,6 +72,8 @@ if typing.TYPE_CHECKING:
     cloudidentity = __cloudidentity
     import pulumi_gcp.cloudids as __cloudids
     cloudids = __cloudids
+    import pulumi_gcp.cloudquota as __cloudquota
+    cloudquota = __cloudquota
     import pulumi_gcp.cloudrun as __cloudrun
     cloudrun = __cloudrun
     import pulumi_gcp.cloudrunv2 as __cloudrunv2
@@ -246,6 +250,7 @@ else:
     apigateway = _utilities.lazy_import('pulumi_gcp.apigateway')
     apigee = _utilities.lazy_import('pulumi_gcp.apigee')
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
+    apphub = _utilities.lazy_import('pulumi_gcp.apphub')
     artifactregistry = _utilities.lazy_import('pulumi_gcp.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
     backupdisasterrecovery = _utilities.lazy_import('pulumi_gcp.backupdisasterrecovery')
@@ -269,6 +274,7 @@ else:
     cloudfunctionsv2 = _utilities.lazy_import('pulumi_gcp.cloudfunctionsv2')
     cloudidentity = _utilities.lazy_import('pulumi_gcp.cloudidentity')
     cloudids = _utilities.lazy_import('pulumi_gcp.cloudids')
+    cloudquota = _utilities.lazy_import('pulumi_gcp.cloudquota')
     cloudrun = _utilities.lazy_import('pulumi_gcp.cloudrun')
     cloudrunv2 = _utilities.lazy_import('pulumi_gcp.cloudrunv2')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
@@ -875,6 +881,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.appengine",
   "classes": {
    "gcp:appengine/standardAppVersion:StandardAppVersion": "StandardAppVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apphub/application",
+  "fqn": "pulumi_gcp.apphub",
+  "classes": {
+   "gcp:apphub/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apphub/service",
+  "fqn": "pulumi_gcp.apphub",
+  "classes": {
+   "gcp:apphub/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apphub/serviceProjectAttachment",
+  "fqn": "pulumi_gcp.apphub",
+  "classes": {
+   "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment": "ServiceProjectAttachment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apphub/workload",
+  "fqn": "pulumi_gcp.apphub",
+  "classes": {
+   "gcp:apphub/workload:Workload": "Workload"
   }
  },
  {
@@ -4263,6 +4301,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/appCheckDeviceCheckConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig": "AppCheckDeviceCheckConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/appCheckPlayIntegrityConfig",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -5007,6 +5053,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iap/tunnelDestGroup",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/tunnelDestGroup:TunnelDestGroup": "TunnelDestGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/tunnelDestGroupIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding": "TunnelDestGroupIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/tunnelDestGroupIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/tunnelDestGroupIamMember:TunnelDestGroupIamMember": "TunnelDestGroupIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/tunnelDestGroupIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy": "TunnelDestGroupIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iap/tunnelIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
@@ -5299,6 +5377,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": "CryptoKeyVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/ekmConnection",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/ekmConnection:EkmConnection": "EkmConnection"
   }
  },
  {
@@ -5763,6 +5849,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/firewallEndpoint:FirewallEndpoint": "FirewallEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/firewallEndpointAssociation",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation": "FirewallEndpointAssociation"
   }
  },
  {

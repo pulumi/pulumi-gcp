@@ -303,7 +303,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ServicePerimeter can be imported using any of these accepted formats:

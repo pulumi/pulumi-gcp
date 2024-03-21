@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CryptoKeyIAMPolicy{}
 	case "gcp:kms/cryptoKeyVersion:CryptoKeyVersion":
 		r = &CryptoKeyVersion{}
+	case "gcp:kms/ekmConnection:EkmConnection":
+		r = &EkmConnection{}
 	case "gcp:kms/keyRing:KeyRing":
 		r = &KeyRing{}
 	case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
@@ -79,6 +81,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"kms/cryptoKeyVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/ekmConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

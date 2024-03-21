@@ -211,7 +211,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * ServicePerimeter can be imported using any of these accepted formats:

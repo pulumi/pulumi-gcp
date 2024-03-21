@@ -102,6 +102,13 @@ namespace Pulumi.Gcp
             set => _appEngineCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _apphubCustomEndpoint = new __Value<string?>(() => __config.Get("apphubCustomEndpoint"));
+        public static string? ApphubCustomEndpoint
+        {
+            get => _apphubCustomEndpoint.Get();
+            set => _apphubCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _artifactRegistryCustomEndpoint = new __Value<string?>(() => __config.Get("artifactRegistryCustomEndpoint"));
         public static string? ArtifactRegistryCustomEndpoint
         {
@@ -275,6 +282,13 @@ namespace Pulumi.Gcp
         {
             get => _cloudIdsCustomEndpoint.Get();
             set => _cloudIdsCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _cloudQuotasCustomEndpoint = new __Value<string?>(() => __config.Get("cloudQuotasCustomEndpoint"));
+        public static string? CloudQuotasCustomEndpoint
+        {
+            get => _cloudQuotasCustomEndpoint.Get();
+            set => _cloudQuotasCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _cloudResourceManagerCustomEndpoint = new __Value<string?>(() => __config.Get("cloudResourceManagerCustomEndpoint"));

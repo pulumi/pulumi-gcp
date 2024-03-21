@@ -18,6 +18,8 @@ __all__ = [
     'CryptoKeyVersionAttestationCertChains',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptions',
     'CryptoKeyVersionTemplate',
+    'EkmConnectionServiceResolver',
+    'EkmConnectionServiceResolverServerCertificate',
     'KeyRingIAMBindingCondition',
     'KeyRingIAMMemberCondition',
     'KeyRingImportJobAttestation',
@@ -401,6 +403,246 @@ class CryptoKeyVersionTemplate(dict):
         The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         return pulumi.get(self, "protection_level")
+
+
+@pulumi.output_type
+class EkmConnectionServiceResolver(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverCertificates":
+            suggest = "server_certificates"
+        elif key == "serviceDirectoryService":
+            suggest = "service_directory_service"
+        elif key == "endpointFilter":
+            suggest = "endpoint_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EkmConnectionServiceResolver. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EkmConnectionServiceResolver.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EkmConnectionServiceResolver.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 server_certificates: Sequence['outputs.EkmConnectionServiceResolverServerCertificate'],
+                 service_directory_service: str,
+                 endpoint_filter: Optional[str] = None):
+        """
+        :param str hostname: Required. The hostname of the EKM replica used at TLS and HTTP layers.
+        :param Sequence['EkmConnectionServiceResolverServerCertificateArgs'] server_certificates: Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+               Structure is documented below.
+        :param str service_directory_service: Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
+        :param str endpoint_filter: Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "server_certificates", server_certificates)
+        pulumi.set(__self__, "service_directory_service", service_directory_service)
+        if endpoint_filter is not None:
+            pulumi.set(__self__, "endpoint_filter", endpoint_filter)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Required. The hostname of the EKM replica used at TLS and HTTP layers.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="serverCertificates")
+    def server_certificates(self) -> Sequence['outputs.EkmConnectionServiceResolverServerCertificate']:
+        """
+        Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "server_certificates")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryService")
+    def service_directory_service(self) -> str:
+        """
+        Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
+        """
+        return pulumi.get(self, "service_directory_service")
+
+    @property
+    @pulumi.getter(name="endpointFilter")
+    def endpoint_filter(self) -> Optional[str]:
+        """
+        Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        """
+        return pulumi.get(self, "endpoint_filter")
+
+
+@pulumi.output_type
+class EkmConnectionServiceResolverServerCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rawDer":
+            suggest = "raw_der"
+        elif key == "notAfterTime":
+            suggest = "not_after_time"
+        elif key == "notBeforeTime":
+            suggest = "not_before_time"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "sha256Fingerprint":
+            suggest = "sha256_fingerprint"
+        elif key == "subjectAlternativeDnsNames":
+            suggest = "subject_alternative_dns_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EkmConnectionServiceResolverServerCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EkmConnectionServiceResolverServerCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EkmConnectionServiceResolverServerCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 raw_der: str,
+                 issuer: Optional[str] = None,
+                 not_after_time: Optional[str] = None,
+                 not_before_time: Optional[str] = None,
+                 parsed: Optional[bool] = None,
+                 serial_number: Optional[str] = None,
+                 sha256_fingerprint: Optional[str] = None,
+                 subject: Optional[str] = None,
+                 subject_alternative_dns_names: Optional[Sequence[str]] = None):
+        """
+        :param str raw_der: Required. The raw certificate bytes in DER format. A base64-encoded string.
+        :param str issuer: (Output)
+               Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+        :param str not_after_time: (Output)
+               Output only. The certificate is not valid after this time. Only present if parsed is true.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str not_before_time: (Output)
+               Output only. The certificate is not valid before this time. Only present if parsed is true.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param bool parsed: (Output)
+               Output only. True if the certificate was parsed successfully.
+        :param str serial_number: (Output)
+               Output only. The certificate serial number as a hex string. Only present if parsed is true.
+        :param str sha256_fingerprint: (Output)
+               Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+        :param str subject: (Output)
+               Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+        :param Sequence[str] subject_alternative_dns_names: (Output)
+               Output only. The subject Alternative DNS names. Only present if parsed is true.
+               
+               - - -
+        """
+        pulumi.set(__self__, "raw_der", raw_der)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if not_after_time is not None:
+            pulumi.set(__self__, "not_after_time", not_after_time)
+        if not_before_time is not None:
+            pulumi.set(__self__, "not_before_time", not_before_time)
+        if parsed is not None:
+            pulumi.set(__self__, "parsed", parsed)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if sha256_fingerprint is not None:
+            pulumi.set(__self__, "sha256_fingerprint", sha256_fingerprint)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if subject_alternative_dns_names is not None:
+            pulumi.set(__self__, "subject_alternative_dns_names", subject_alternative_dns_names)
+
+    @property
+    @pulumi.getter(name="rawDer")
+    def raw_der(self) -> str:
+        """
+        Required. The raw certificate bytes in DER format. A base64-encoded string.
+        """
+        return pulumi.get(self, "raw_der")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="notAfterTime")
+    def not_after_time(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The certificate is not valid after this time. Only present if parsed is true.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "not_after_time")
+
+    @property
+    @pulumi.getter(name="notBeforeTime")
+    def not_before_time(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The certificate is not valid before this time. Only present if parsed is true.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "not_before_time")
+
+    @property
+    @pulumi.getter
+    def parsed(self) -> Optional[bool]:
+        """
+        (Output)
+        Output only. True if the certificate was parsed successfully.
+        """
+        return pulumi.get(self, "parsed")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The certificate serial number as a hex string. Only present if parsed is true.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter(name="sha256Fingerprint")
+    def sha256_fingerprint(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+        """
+        return pulumi.get(self, "sha256_fingerprint")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter(name="subjectAlternativeDnsNames")
+    def subject_alternative_dns_names(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        Output only. The subject Alternative DNS names. Only present if parsed is true.
+
+        - - -
+        """
+        return pulumi.get(self, "subject_alternative_dns_names")
 
 
 @pulumi.output_type

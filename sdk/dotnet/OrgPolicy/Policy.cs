@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
-    ///         Name = "custom.disableGkeAutoUpgrade_75223",
+    ///         Name = "custom.disableGkeAutoUpgrade_41819",
     ///         Parent = "organizations/123456789",
     ///         DisplayName = "Disable GKE auto upgrade",
     ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",

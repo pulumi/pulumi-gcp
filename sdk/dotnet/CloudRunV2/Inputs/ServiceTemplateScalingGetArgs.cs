@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? MaxInstanceCount { get; set; }
 
         /// <summary>
-        /// Minimum number of serving instances that this resource should have.
+        /// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         /// </summary>
         [Input("minInstanceCount")]
         public Input<int>? MinInstanceCount { get; set; }

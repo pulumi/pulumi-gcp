@@ -5,6 +5,7 @@ package com.pulumi.gcp.firestore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.firestore.inputs.DatabaseCmekConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,27 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> appEngineIntegrationMode() {
         return Optional.ofNullable(this.appEngineIntegrationMode);
+    }
+
+    /**
+     * The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+     * database. If not present, the database is secured by the default Google
+     * encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cmekConfig")
+    private @Nullable Output<DatabaseCmekConfigArgs> cmekConfig;
+
+    /**
+     * @return The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+     * database. If not present, the database is secured by the default Google
+     * encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatabaseCmekConfigArgs>> cmekConfig() {
+        return Optional.ofNullable(this.cmekConfig);
     }
 
     /**
@@ -331,6 +353,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     private DatabaseState(DatabaseState $) {
         this.appEngineIntegrationMode = $.appEngineIntegrationMode;
+        this.cmekConfig = $.cmekConfig;
         this.concurrencyMode = $.concurrencyMode;
         this.createTime = $.createTime;
         this.deleteProtectionState = $.deleteProtectionState;
@@ -387,6 +410,33 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appEngineIntegrationMode(String appEngineIntegrationMode) {
             return appEngineIntegrationMode(Output.of(appEngineIntegrationMode));
+        }
+
+        /**
+         * @param cmekConfig The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+         * database. If not present, the database is secured by the default Google
+         * encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekConfig(@Nullable Output<DatabaseCmekConfigArgs> cmekConfig) {
+            $.cmekConfig = cmekConfig;
+            return this;
+        }
+
+        /**
+         * @param cmekConfig The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+         * database. If not present, the database is secured by the default Google
+         * encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekConfig(DatabaseCmekConfigArgs cmekConfig) {
+            return cmekConfig(Output.of(cmekConfig));
         }
 
         /**
