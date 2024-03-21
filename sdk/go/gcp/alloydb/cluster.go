@@ -171,7 +171,7 @@ import (
 //			source, err := alloydb.NewCluster(ctx, "source", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-source-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(_default.Id),
+//				Network:   pulumi.String(_default.Id),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-source-cluster"),
 //				},
@@ -201,7 +201,7 @@ import (
 //			_, err = alloydb.NewCluster(ctx, "restored_from_backup", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-backup-restored"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(_default.Id),
+//				Network:   pulumi.String(_default.Id),
 //				RestoreBackupSource: &alloydb.ClusterRestoreBackupSourceArgs{
 //					BackupName: sourceBackup.Name,
 //				},
@@ -212,7 +212,7 @@ import (
 //			_, err = alloydb.NewCluster(ctx, "restored_via_pitr", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-pitr-restored"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   *pulumi.String(_default.Id),
+//				Network:   pulumi.String(_default.Id),
 //				RestoreContinuousBackupSource: &alloydb.ClusterRestoreContinuousBackupSourceArgs{
 //					Cluster:     source.Name,
 //					PointInTime: pulumi.String("2023-08-03T19:19:00.094Z"),
@@ -230,13 +230,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(_default.Id),
+//				Network:      pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(_default.Id),
+//				Network: pulumi.String(_default.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -441,7 +441,7 @@ type Cluster struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -581,7 +581,7 @@ type clusterState struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	Network *string `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -681,7 +681,7 @@ type ClusterState struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	Network pulumi.StringPtrInput
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -765,7 +765,7 @@ type clusterArgs struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	Network *string `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -835,7 +835,7 @@ type ClusterArgs struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	Network pulumi.StringPtrInput
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -1070,7 +1070,7 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 //
 // > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 //
-// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 func (o ClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
