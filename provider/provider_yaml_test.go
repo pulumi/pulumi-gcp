@@ -141,7 +141,7 @@ func TestNoGlobalProjectWarning(t *testing.T) {
 	}
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
-	proj := os.Getenv("GOOGLE_PROJECT")
+	proj := getProject()
 	t.Setenv("GOOGLE_PROJECT", "")
 
 	test := pulumitest.NewPulumiTest(t, "test-programs/project-bucket",
@@ -491,10 +491,7 @@ func TestRegress1488(t *testing.T) {
 
 	// Test that going from replication.automatic: true (v6-style) to replication.auto: {}
 	// (v7-style) is not a replacement.
-	proj := os.Getenv("GOOGLE_PROJECT")
-	if proj == "" {
-		proj = "pulumi-development"
-	}
+	proj := getProject()
 	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
 	{
 	  "method": "/pulumirpc.ResourceProvider/Configure",
@@ -583,10 +580,7 @@ func TestEnvTokenNotInState(t *testing.T) {
 	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "storage-bucket"),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
-	googleProj := os.Getenv("GOOGLE_PROJECT")
-	if googleProj == "" {
-		googleProj = testProject
-	}
+	googleProj := getProject()
 	test.SetConfig("gcp:config:project", googleProj)
 
 	test.Up()
@@ -602,10 +596,7 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
 
-	proj := os.Getenv("GOOGLE_PROJECT")
-	if proj == "" {
-		proj = "pulumi-development"
-	}
+	proj := getProject()
 	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
 	{
 		"method": "/pulumirpc.ResourceProvider/Configure",
