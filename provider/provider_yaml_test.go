@@ -810,7 +810,9 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 		"response": {
 			"stables": "*",
 			"changes": "*",
-			"hasDetailedDiff": "*"
+			"hasDetailedDiff": "*",
+			"diffs": "*",
+			"detailedDiff": "*"
 		},
 		"metadata": {
 			"kind": "resource",
