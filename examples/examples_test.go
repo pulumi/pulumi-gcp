@@ -32,28 +32,28 @@ func skipIfShort(t *testing.T) {
 	}
 }
 
-func getProject(t *testing.T) string {
+func getProject() string {
 	project := os.Getenv("GOOGLE_PROJECT")
 	if project == "" {
-		t.Skipf("Skipping test due to missing GOOGLE_PROJECT environment variable")
+		project="pulumi-development"
 	}
 
 	return project
 }
 
-func getZone(t *testing.T) string {
+func getZone() string {
 	zone := os.Getenv("GOOGLE_ZONE")
 	if zone == "" {
-		t.Skipf("Skipping test due to missing GOOGLE_ZONE environment variable")
+		zone="public"
 	}
 
 	return zone
 }
 
-func getRegion(t *testing.T) string {
+func getRegion() string {
 	region := os.Getenv("GOOGLE_REGION")
 	if region == "" {
-		t.Skipf("Skipping test due to missing GOOGLE_REGION environment variable")
+		region = "us-west1"
 	}
 
 	return region
@@ -69,14 +69,11 @@ func getCwd(t *testing.T) string {
 }
 
 func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	project := getProject(t)
-	zone := getZone(t)
-	region := getRegion(t)
 	return integration.ProgramTestOptions{
 		Config: map[string]string{
-			"gcp:config:project": project,
-			"gcp:config:zone":    zone,
-			"gcp:config:region":  region,
+			"gcp:config:project": getProject(),
+			"gcp:config:zone":    getZone(),
+			"gcp:config:region":  getRegion(),
 		},
 	}
 }
