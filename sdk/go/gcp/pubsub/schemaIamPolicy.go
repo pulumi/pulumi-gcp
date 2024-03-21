@@ -58,7 +58,7 @@ import (
 //			_, err = pubsub.NewSchemaIamPolicy(ctx, "policy", &pubsub.SchemaIamPolicyArgs{
 //				Project:    pulumi.Any(example.Project),
 //				Schema:     pulumi.Any(example.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

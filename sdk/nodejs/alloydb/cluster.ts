@@ -366,7 +366,7 @@ export class Cluster extends pulumi.CustomResource {
      *
      * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
      *
-     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -618,7 +618,7 @@ export interface ClusterState {
      *
      * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
      *
-     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
      */
     network?: pulumi.Input<string>;
     /**
@@ -748,7 +748,7 @@ export interface ClusterArgs {
      *
      * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
      *
-     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
      */
     network?: pulumi.Input<string>;
     /**

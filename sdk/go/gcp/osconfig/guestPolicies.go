@@ -58,7 +58,7 @@ import (
 //				},
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: *pulumi.String(myImage.SelfLink),
+//						Image: pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{

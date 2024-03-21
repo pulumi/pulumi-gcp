@@ -58,7 +58,7 @@ import (
 //			_, err = apigateway.NewApiConfigIamPolicy(ctx, "policy", &apigateway.ApiConfigIamPolicyArgs{
 //				Api:        pulumi.Any(apiCfg.Api),
 //				ApiConfig:  pulumi.Any(apiCfg.ApiConfigId),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

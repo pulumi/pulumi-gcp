@@ -59,7 +59,7 @@ import (
 //				Project:    pulumi.Any(example.Project),
 //				Location:   pulumi.Any(example.Location),
 //				Lake:       pulumi.Any(example.Name),
-//				PolicyData: *pulumi.String(admin.PolicyData),
+//				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

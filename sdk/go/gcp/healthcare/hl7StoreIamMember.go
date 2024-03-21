@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = healthcare.NewHl7StoreIamPolicy(ctx, "hl7_v2_store", &healthcare.Hl7StoreIamPolicyArgs{
 //				Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
-//				PolicyData:   *pulumi.String(admin.PolicyData),
+//				PolicyData:   pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
