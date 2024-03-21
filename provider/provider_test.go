@@ -27,6 +27,14 @@ const (
 	testProject            = "pulumi-development"
 )
 
+func getProject() string {
+	proj := os.Getenv("GOOGLE_PROJECT")
+	if proj == "" {
+		proj = testProject
+	}
+	return proj
+}
+
 func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
