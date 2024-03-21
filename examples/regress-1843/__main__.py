@@ -10,7 +10,7 @@ gcp.cloudrun.Service(
             spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                 containers=[
                     gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="hello-world",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                         resources=gcp.cloudrun.ServiceTemplateSpecContainerResourcesArgs(
                             limits={
                                 "memory": "512Mi",
