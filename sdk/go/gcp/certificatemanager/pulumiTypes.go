@@ -1093,7 +1093,7 @@ type CertificateSelfManaged struct {
 	//
 	// > **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 	//
-	// Deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+	// Deprecated: `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 	CertificatePem *string `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
@@ -1108,7 +1108,7 @@ type CertificateSelfManaged struct {
 	//
 	// > **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 	//
-	// Deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+	// Deprecated: `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 	PrivateKeyPem *string `pulumi:"privateKeyPem"`
 }
 
@@ -1131,7 +1131,7 @@ type CertificateSelfManagedArgs struct {
 	//
 	// > **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 	//
-	// Deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+	// Deprecated: `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 	CertificatePem pulumi.StringPtrInput `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
@@ -1146,7 +1146,7 @@ type CertificateSelfManagedArgs struct {
 	//
 	// > **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 	//
-	// Deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+	// Deprecated: `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 	PrivateKeyPem pulumi.StringPtrInput `pulumi:"privateKeyPem"`
 }
 
@@ -1234,7 +1234,7 @@ func (o CertificateSelfManagedOutput) ToCertificateSelfManagedPtrOutputWithConte
 //
 // > **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 //
-// Deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+// Deprecated: `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 func (o CertificateSelfManagedOutput) CertificatePem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.CertificatePem }).(pulumi.StringPtrOutput)
 }
@@ -1258,7 +1258,7 @@ func (o CertificateSelfManagedOutput) PemPrivateKey() pulumi.StringPtrOutput {
 //
 // > **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 //
-// Deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+// Deprecated: `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 func (o CertificateSelfManagedOutput) PrivateKeyPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PrivateKeyPem }).(pulumi.StringPtrOutput)
 }
@@ -1294,7 +1294,7 @@ func (o CertificateSelfManagedPtrOutput) Elem() CertificateSelfManagedOutput {
 //
 // > **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 //
-// Deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+// Deprecated: `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
 func (o CertificateSelfManagedPtrOutput) CertificatePem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSelfManaged) *string {
 		if v == nil {
@@ -1333,7 +1333,7 @@ func (o CertificateSelfManagedPtrOutput) PemPrivateKey() pulumi.StringPtrOutput 
 //
 // > **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 //
-// Deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+// Deprecated: `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
 func (o CertificateSelfManagedPtrOutput) PrivateKeyPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSelfManaged) *string {
 		if v == nil {

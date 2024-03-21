@@ -167,7 +167,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      *
      * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      *
-     * @deprecated `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */
     public readonly project!: pulumi.Output<string | undefined>;
     /**
@@ -269,7 +269,7 @@ export interface AccessApprovalSettingsState {
      *
      * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      *
-     * @deprecated `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */
     project?: pulumi.Input<string>;
     /**
@@ -308,7 +308,7 @@ export interface AccessApprovalSettingsArgs {
      *
      * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      *
-     * @deprecated `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */
     project?: pulumi.Input<string>;
     /**

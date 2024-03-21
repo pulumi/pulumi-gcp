@@ -104,7 +104,7 @@ import (
 //					},
 //				},
 //				Metadata: pulumi.StringMap{
-//					"password": *pulumi.String(myPassword.Ciphertext),
+//					"password": pulumi.String(myPassword.Ciphertext),
 //				},
 //			})
 //			if err != nil {

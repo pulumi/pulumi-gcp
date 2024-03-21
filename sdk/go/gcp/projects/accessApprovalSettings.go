@@ -183,7 +183,7 @@ type AccessApprovalSettings struct {
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -255,7 +255,7 @@ type accessApprovalSettingsState struct {
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	Project *string `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId *string `pulumi:"projectId"`
@@ -292,7 +292,7 @@ type AccessApprovalSettingsState struct {
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	Project pulumi.StringPtrInput
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringPtrInput
@@ -322,7 +322,7 @@ type accessApprovalSettingsArgs struct {
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	Project *string `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId string `pulumi:"projectId"`
@@ -349,7 +349,7 @@ type AccessApprovalSettingsArgs struct {
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	//
-	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 	Project pulumi.StringPtrInput
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringInput
@@ -495,7 +495,7 @@ func (o AccessApprovalSettingsOutput) NotificationEmails() pulumi.StringArrayOut
 //
 // > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 //
-// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+// Deprecated: `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
 func (o AccessApprovalSettingsOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
 }
