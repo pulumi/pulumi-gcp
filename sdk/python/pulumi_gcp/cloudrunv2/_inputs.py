@@ -36,6 +36,7 @@ __all__ = [
     'ServiceConditionArgs',
     'ServiceIamBindingConditionArgs',
     'ServiceIamMemberConditionArgs',
+    'ServiceScalingArgs',
     'ServiceTemplateArgs',
     'ServiceTemplateContainerArgs',
     'ServiceTemplateContainerEnvArgs',
@@ -1827,6 +1828,29 @@ class ServiceIamMemberConditionArgs:
 
 
 @pulumi.input_type
+class ServiceScalingArgs:
+    def __init__(__self__, *,
+                 min_instance_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        if min_instance_count is not None:
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+    @min_instance_count.setter
+    def min_instance_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instance_count", value)
+
+
+@pulumi.input_type
 class ServiceTemplateArgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -3119,7 +3143,7 @@ class ServiceTemplateScalingArgs:
                  min_instance_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] max_instance_count: Maximum number of serving instances that this resource should have.
-        :param pulumi.Input[int] min_instance_count: Minimum number of serving instances that this resource should have.
+        :param pulumi.Input[int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
@@ -3142,7 +3166,7 @@ class ServiceTemplateScalingArgs:
     @pulumi.getter(name="minInstanceCount")
     def min_instance_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of serving instances that this resource should have.
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         return pulumi.get(self, "min_instance_count")
 

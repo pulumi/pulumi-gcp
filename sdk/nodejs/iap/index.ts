@@ -60,6 +60,11 @@ export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
 
+export { GetTunnelDestGroupIamPolicyArgs, GetTunnelDestGroupIamPolicyResult, GetTunnelDestGroupIamPolicyOutputArgs } from "./getTunnelDestGroupIamPolicy";
+export const getTunnelDestGroupIamPolicy: typeof import("./getTunnelDestGroupIamPolicy").getTunnelDestGroupIamPolicy = null as any;
+export const getTunnelDestGroupIamPolicyOutput: typeof import("./getTunnelDestGroupIamPolicy").getTunnelDestGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTunnelDestGroupIamPolicy","getTunnelDestGroupIamPolicyOutput"], () => require("./getTunnelDestGroupIamPolicy"));
+
 export { GetTunnelIamPolicyArgs, GetTunnelIamPolicyResult, GetTunnelIamPolicyOutputArgs } from "./getTunnelIamPolicy";
 export const getTunnelIamPolicy: typeof import("./getTunnelIamPolicy").getTunnelIamPolicy = null as any;
 export const getTunnelIamPolicyOutput: typeof import("./getTunnelIamPolicy").getTunnelIamPolicyOutput = null as any;
@@ -94,6 +99,26 @@ export { GetWebTypeComputeIamPolicyArgs, GetWebTypeComputeIamPolicyResult, GetWe
 export const getWebTypeComputeIamPolicy: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicy = null as any;
 export const getWebTypeComputeIamPolicyOutput: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebTypeComputeIamPolicy","getWebTypeComputeIamPolicyOutput"], () => require("./getWebTypeComputeIamPolicy"));
+
+export { TunnelDestGroupArgs, TunnelDestGroupState } from "./tunnelDestGroup";
+export type TunnelDestGroup = import("./tunnelDestGroup").TunnelDestGroup;
+export const TunnelDestGroup: typeof import("./tunnelDestGroup").TunnelDestGroup = null as any;
+utilities.lazyLoad(exports, ["TunnelDestGroup"], () => require("./tunnelDestGroup"));
+
+export { TunnelDestGroupIamBindingArgs, TunnelDestGroupIamBindingState } from "./tunnelDestGroupIamBinding";
+export type TunnelDestGroupIamBinding = import("./tunnelDestGroupIamBinding").TunnelDestGroupIamBinding;
+export const TunnelDestGroupIamBinding: typeof import("./tunnelDestGroupIamBinding").TunnelDestGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["TunnelDestGroupIamBinding"], () => require("./tunnelDestGroupIamBinding"));
+
+export { TunnelDestGroupIamMemberArgs, TunnelDestGroupIamMemberState } from "./tunnelDestGroupIamMember";
+export type TunnelDestGroupIamMember = import("./tunnelDestGroupIamMember").TunnelDestGroupIamMember;
+export const TunnelDestGroupIamMember: typeof import("./tunnelDestGroupIamMember").TunnelDestGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["TunnelDestGroupIamMember"], () => require("./tunnelDestGroupIamMember"));
+
+export { TunnelDestGroupIamPolicyArgs, TunnelDestGroupIamPolicyState } from "./tunnelDestGroupIamPolicy";
+export type TunnelDestGroupIamPolicy = import("./tunnelDestGroupIamPolicy").TunnelDestGroupIamPolicy;
+export const TunnelDestGroupIamPolicy: typeof import("./tunnelDestGroupIamPolicy").TunnelDestGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TunnelDestGroupIamPolicy"], () => require("./tunnelDestGroupIamPolicy"));
 
 export { TunnelIamBindingArgs, TunnelIamBindingState } from "./tunnelIamBinding";
 export type TunnelIamBinding = import("./tunnelIamBinding").TunnelIamBinding;
@@ -221,6 +246,14 @@ const _module = {
                 return new Brand(name, <any>undefined, { urn })
             case "gcp:iap/client:Client":
                 return new Client(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelDestGroup:TunnelDestGroup":
+                return new TunnelDestGroup(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding":
+                return new TunnelDestGroupIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelDestGroupIamMember:TunnelDestGroupIamMember":
+                return new TunnelDestGroupIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy":
+                return new TunnelDestGroupIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/tunnelIamBinding:TunnelIamBinding":
                 return new TunnelIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/tunnelIamMember:TunnelIamMember":
@@ -276,6 +309,10 @@ pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamMember", _m
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/brand", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/client", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroupIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroupIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelIamPolicy", _module)

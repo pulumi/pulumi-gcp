@@ -31,14 +31,14 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Minimum number of serving instances that this resource should have.
+     * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
     @Import(name="minInstanceCount")
     private @Nullable Output<Integer> minInstanceCount;
 
     /**
-     * @return Minimum number of serving instances that this resource should have.
+     * @return Minimum number of instances for the service, to be divided among all revisions receiving traffic.
      * 
      */
     public Optional<Output<Integer>> minInstanceCount() {
@@ -92,7 +92,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param minInstanceCount Minimum number of serving instances that this resource should have.
+         * @param minInstanceCount Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param minInstanceCount Minimum number of serving instances that this resource should have.
+         * @param minInstanceCount Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          * 
          * @return builder
          * 

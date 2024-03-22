@@ -126,7 +126,6 @@ public final class VMwareClusterNetworkConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * (Output)
      * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
      * 
      */
@@ -134,8 +133,7 @@ public final class VMwareClusterNetworkConfigArgs extends com.pulumi.resources.R
     private @Nullable Output<String> vcenterNetwork;
 
     /**
-     * @return (Output)
-     * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+     * @return vcenter_network specifies vCenter network name. Inherited from the admin cluster.
      * 
      */
     public Optional<Output<String>> vcenterNetwork() {
@@ -336,8 +334,7 @@ public final class VMwareClusterNetworkConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcenterNetwork (Output)
-         * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+         * @param vcenterNetwork vcenter_network specifies vCenter network name. Inherited from the admin cluster.
          * 
          * @return builder
          * 
@@ -348,8 +345,7 @@ public final class VMwareClusterNetworkConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcenterNetwork (Output)
-         * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+         * @param vcenterNetwork vcenter_network specifies vCenter network name. Inherited from the admin cluster.
          * 
          * @return builder
          * 

@@ -19,8 +19,8 @@ public final class ServicePerimeterEgressPolicyEgressFromArgs extends com.pulumi
 
     /**
      * A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * Should be in the format of an email address. The email address should
+     * represent an individual user, service account, or Google group.
      * 
      */
     @Import(name="identities")
@@ -28,8 +28,8 @@ public final class ServicePerimeterEgressPolicyEgressFromArgs extends com.pulumi
 
     /**
      * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * Should be in the format of an email address. The email address should
+     * represent an individual user, service account, or Google group.
      * 
      */
     public Optional<Output<List<String>>> identities() {
@@ -120,8 +120,8 @@ public final class ServicePerimeterEgressPolicyEgressFromArgs extends com.pulumi
 
         /**
          * @param identities A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Should be in the format of an email address. The email address should
+         * represent an individual user, service account, or Google group.
          * 
          * @return builder
          * 
@@ -133,8 +133,8 @@ public final class ServicePerimeterEgressPolicyEgressFromArgs extends com.pulumi
 
         /**
          * @param identities A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Should be in the format of an email address. The email address should
+         * represent an individual user, service account, or Google group.
          * 
          * @return builder
          * 
@@ -145,8 +145,8 @@ public final class ServicePerimeterEgressPolicyEgressFromArgs extends com.pulumi
 
         /**
          * @param identities A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Should be in the format of an email address. The email address should
+         * represent an individual user, service account, or Google group.
          * 
          * @return builder
          * 

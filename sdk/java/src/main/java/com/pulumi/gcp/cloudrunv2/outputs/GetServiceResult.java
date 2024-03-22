@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceCondition;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplate;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTerminalCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTraffic;
@@ -53,6 +54,7 @@ public final class GetServiceResult {
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private Boolean reconciling;
+    private List<GetServiceScaling> scalings;
     private List<GetServiceTemplate> templates;
     private List<GetServiceTerminalCondition> terminalConditions;
     private List<GetServiceTrafficStatus> trafficStatuses;
@@ -150,6 +152,9 @@ public final class GetServiceResult {
     public Boolean reconciling() {
         return this.reconciling;
     }
+    public List<GetServiceScaling> scalings() {
+        return this.scalings;
+    }
     public List<GetServiceTemplate> templates() {
         return this.templates;
     }
@@ -209,6 +214,7 @@ public final class GetServiceResult {
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private Boolean reconciling;
+        private List<GetServiceScaling> scalings;
         private List<GetServiceTemplate> templates;
         private List<GetServiceTerminalCondition> terminalConditions;
         private List<GetServiceTrafficStatus> trafficStatuses;
@@ -247,6 +253,7 @@ public final class GetServiceResult {
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reconciling = defaults.reconciling;
+    	      this.scalings = defaults.scalings;
     	      this.templates = defaults.templates;
     	      this.terminalConditions = defaults.terminalConditions;
     	      this.trafficStatuses = defaults.trafficStatuses;
@@ -486,6 +493,17 @@ public final class GetServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder scalings(List<GetServiceScaling> scalings) {
+            if (scalings == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "scalings");
+            }
+            this.scalings = scalings;
+            return this;
+        }
+        public Builder scalings(GetServiceScaling... scalings) {
+            return scalings(List.of(scalings));
+        }
+        @CustomType.Setter
         public Builder templates(List<GetServiceTemplate> templates) {
             if (templates == null) {
               throw new MissingRequiredPropertyException("GetServiceResult", "templates");
@@ -583,6 +601,7 @@ public final class GetServiceResult {
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.reconciling = reconciling;
+            _resultValue.scalings = scalings;
             _resultValue.templates = templates;
             _resultValue.terminalConditions = terminalConditions;
             _resultValue.trafficStatuses = trafficStatuses;

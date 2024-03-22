@@ -225,6 +225,29 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Region Network Endpoint Group Appengine Empty
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // App Engine Example
+    ///     var appengineNeg = new Gcp.Compute.RegionNetworkEndpointGroup("appengine_neg", new()
+    ///     {
+    ///         Name = "appengine-neg",
+    ///         NetworkEndpointType = "SERVERLESS",
+    ///         Region = "us-central1",
+    ///         AppEngine = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Network Endpoint Group Psc
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;

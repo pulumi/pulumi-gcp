@@ -16,6 +16,8 @@ __all__ = [
     'WorkstationConfigConditionArgs',
     'WorkstationConfigContainerArgs',
     'WorkstationConfigEncryptionKeyArgs',
+    'WorkstationConfigEphemeralDirectoryArgs',
+    'WorkstationConfigEphemeralDirectoryGcePdArgs',
     'WorkstationConfigHostArgs',
     'WorkstationConfigHostGceInstanceArgs',
     'WorkstationConfigHostGceInstanceAcceleratorArgs',
@@ -398,6 +400,128 @@ class WorkstationConfigEncryptionKeyArgs:
     @kms_key_service_account.setter
     def kms_key_service_account(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_service_account", value)
+
+
+@pulumi.input_type
+class WorkstationConfigEphemeralDirectoryArgs:
+    def __init__(__self__, *,
+                 gce_pd: Optional[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs']] = None,
+                 mount_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs'] gce_pd: An EphemeralDirectory backed by a Compute Engine persistent disk.
+               Structure is documented below.
+        :param pulumi.Input[str] mount_path: Location of this directory in the running workstation.
+        """
+        if gce_pd is not None:
+            pulumi.set(__self__, "gce_pd", gce_pd)
+        if mount_path is not None:
+            pulumi.set(__self__, "mount_path", mount_path)
+
+    @property
+    @pulumi.getter(name="gcePd")
+    def gce_pd(self) -> Optional[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs']]:
+        """
+        An EphemeralDirectory backed by a Compute Engine persistent disk.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gce_pd")
+
+    @gce_pd.setter
+    def gce_pd(self, value: Optional[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs']]):
+        pulumi.set(self, "gce_pd", value)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of this directory in the running workstation.
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mount_path", value)
+
+
+@pulumi.input_type
+class WorkstationConfigEphemeralDirectoryGcePdArgs:
+    def __init__(__self__, *,
+                 disk_type: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 source_image: Optional[pulumi.Input[str]] = None,
+                 source_snapshot: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] disk_type: Type of the disk to use. Defaults to `"pd-standard"`.
+        :param pulumi.Input[bool] read_only: Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+        :param pulumi.Input[str] source_image: Name of the disk image to use as the source for the disk.
+               Must be empty `sourceSnapshot` is set.
+               Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+        :param pulumi.Input[str] source_snapshot: Name of the snapshot to use as the source for the disk.
+               Must be empty if `sourceImage` is set.
+               Must be empty if `read_only` is false.
+               Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+        """
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if source_image is not None:
+            pulumi.set(__self__, "source_image", source_image)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the disk to use. Defaults to `"pd-standard"`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the disk image to use as the source for the disk.
+        Must be empty `sourceSnapshot` is set.
+        Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+        """
+        return pulumi.get(self, "source_image")
+
+    @source_image.setter
+    def source_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the snapshot to use as the source for the disk.
+        Must be empty if `sourceImage` is set.
+        Must be empty if `read_only` is false.
+        Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot", value)
 
 
 @pulumi.input_type
@@ -875,13 +999,16 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
                  size_gb: Optional[pulumi.Input[int]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] disk_type: The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+        :param pulumi.Input[str] disk_type: Type of the disk to use. Defaults to `"pd-standard"`.
         :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
         :param pulumi.Input[str] reclaim_policy: Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
                Possible values are: `DELETE`, `RETAIN`.
         :param pulumi.Input[int] size_gb: The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
                Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
-        :param pulumi.Input[str] source_snapshot: Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+        :param pulumi.Input[str] source_snapshot: Name of the snapshot to use as the source for the disk.
+               Must be empty if `sourceImage` is set.
+               Must be empty if `read_only` is false.
+               Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
         """
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
@@ -898,7 +1025,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+        Type of the disk to use. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -948,7 +1075,10 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+        Name of the snapshot to use as the source for the disk.
+        Must be empty if `sourceImage` is set.
+        Must be empty if `read_only` is false.
+        Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
         """
         return pulumi.get(self, "source_snapshot")
 

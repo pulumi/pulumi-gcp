@@ -17,12 +17,17 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
      * @return Credentials used to authenticate API requests to Azure block.
      * 
      */
-    private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
+    private @Nullable TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
     /**
      * @return The container to transfer from the Azure Storage account.`
      * 
      */
     private String container;
+    /**
+     * @return Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](&lt;https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string&gt;). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+     * 
+     */
+    private @Nullable String credentialsSecret;
     /**
      * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
      * 
@@ -39,8 +44,8 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
      * @return Credentials used to authenticate API requests to Azure block.
      * 
      */
-    public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials() {
-        return this.azureCredentials;
+    public Optional<TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials> azureCredentials() {
+        return Optional.ofNullable(this.azureCredentials);
     }
     /**
      * @return The container to transfer from the Azure Storage account.`
@@ -48,6 +53,13 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
      */
     public String container() {
         return this.container;
+    }
+    /**
+     * @return Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](&lt;https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string&gt;). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+     * 
+     */
+    public Optional<String> credentialsSecret() {
+        return Optional.ofNullable(this.credentialsSecret);
     }
     /**
      * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
@@ -73,8 +85,9 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
+        private @Nullable TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials;
         private String container;
+        private @Nullable String credentialsSecret;
         private @Nullable String path;
         private String storageAccount;
         public Builder() {}
@@ -82,15 +95,14 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
     	      Objects.requireNonNull(defaults);
     	      this.azureCredentials = defaults.azureCredentials;
     	      this.container = defaults.container;
+    	      this.credentialsSecret = defaults.credentialsSecret;
     	      this.path = defaults.path;
     	      this.storageAccount = defaults.storageAccount;
         }
 
         @CustomType.Setter
-        public Builder azureCredentials(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials) {
-            if (azureCredentials == null) {
-              throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSource", "azureCredentials");
-            }
+        public Builder azureCredentials(@Nullable TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials) {
+
             this.azureCredentials = azureCredentials;
             return this;
         }
@@ -100,6 +112,12 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
               throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSource", "container");
             }
             this.container = container;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder credentialsSecret(@Nullable String credentialsSecret) {
+
+            this.credentialsSecret = credentialsSecret;
             return this;
         }
         @CustomType.Setter
@@ -120,6 +138,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
             final var _resultValue = new TransferJobTransferSpecAzureBlobStorageDataSource();
             _resultValue.azureCredentials = azureCredentials;
             _resultValue.container = container;
+            _resultValue.credentialsSecret = credentialsSecret;
             _resultValue.path = path;
             _resultValue.storageAccount = storageAccount;
             return _resultValue;

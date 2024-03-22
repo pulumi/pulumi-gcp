@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 public final class ServicePerimeterEgressPolicyEgressFrom {
     /**
      * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * Should be in the format of an email address. The email address should
+     * represent an individual user, service account, or Google group.
      * 
      */
     private @Nullable List<String> identities;
@@ -44,8 +44,8 @@ public final class ServicePerimeterEgressPolicyEgressFrom {
     private ServicePerimeterEgressPolicyEgressFrom() {}
     /**
      * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * Should be in the format of an email address. The email address should
+     * represent an individual user, service account, or Google group.
      * 
      */
     public List<String> identities() {

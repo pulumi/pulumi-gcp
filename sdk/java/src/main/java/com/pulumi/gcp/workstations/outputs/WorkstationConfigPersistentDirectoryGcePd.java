@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkstationConfigPersistentDirectoryGcePd {
     /**
-     * @return The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+     * @return Type of the disk to use. Defaults to `&#34;pd-standard&#34;`.
      * 
      */
     private @Nullable String diskType;
@@ -35,14 +35,17 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
      */
     private @Nullable Integer sizeGb;
     /**
-     * @return Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+     * @return Name of the snapshot to use as the source for the disk.
+     * Must be empty if `sourceImage` is set.
+     * Must be empty if `read_only` is false.
+     * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
      * 
      */
     private @Nullable String sourceSnapshot;
 
     private WorkstationConfigPersistentDirectoryGcePd() {}
     /**
-     * @return The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+     * @return Type of the disk to use. Defaults to `&#34;pd-standard&#34;`.
      * 
      */
     public Optional<String> diskType() {
@@ -72,7 +75,10 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
         return Optional.ofNullable(this.sizeGb);
     }
     /**
-     * @return Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+     * @return Name of the snapshot to use as the source for the disk.
+     * Must be empty if `sourceImage` is set.
+     * Must be empty if `read_only` is false.
+     * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
      * 
      */
     public Optional<String> sourceSnapshot() {

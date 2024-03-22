@@ -45,6 +45,9 @@ namespace Pulumi.Gcp
         [Output("appEngineCustomEndpoint")]
         public Output<string?> AppEngineCustomEndpoint { get; private set; } = null!;
 
+        [Output("apphubCustomEndpoint")]
+        public Output<string?> ApphubCustomEndpoint { get; private set; } = null!;
+
         [Output("artifactRegistryCustomEndpoint")]
         public Output<string?> ArtifactRegistryCustomEndpoint { get; private set; } = null!;
 
@@ -116,6 +119,9 @@ namespace Pulumi.Gcp
 
         [Output("cloudIdsCustomEndpoint")]
         public Output<string?> CloudIdsCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudQuotasCustomEndpoint")]
+        public Output<string?> CloudQuotasCustomEndpoint { get; private set; } = null!;
 
         [Output("cloudResourceManagerCustomEndpoint")]
         public Output<string?> CloudResourceManagerCustomEndpoint { get; private set; } = null!;
@@ -547,6 +553,9 @@ namespace Pulumi.Gcp
         [Input("appEngineCustomEndpoint")]
         public Input<string>? AppEngineCustomEndpoint { get; set; }
 
+        [Input("apphubCustomEndpoint")]
+        public Input<string>? ApphubCustomEndpoint { get; set; }
+
         [Input("artifactRegistryCustomEndpoint")]
         public Input<string>? ArtifactRegistryCustomEndpoint { get; set; }
 
@@ -621,6 +630,9 @@ namespace Pulumi.Gcp
 
         [Input("cloudIdsCustomEndpoint")]
         public Input<string>? CloudIdsCustomEndpoint { get; set; }
+
+        [Input("cloudQuotasCustomEndpoint")]
+        public Input<string>? CloudQuotasCustomEndpoint { get; set; }
 
         [Input("cloudResourceManagerCustomEndpoint")]
         public Input<string>? CloudResourceManagerCustomEndpoint { get; set; }

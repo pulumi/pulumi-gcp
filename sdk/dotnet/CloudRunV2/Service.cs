@@ -897,6 +897,13 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
+        /// Scaling settings that apply to the whole service
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scaling")]
+        public Output<Outputs.ServiceScaling?> Scaling { get; private set; } = null!;
+
+        /// <summary>
         /// The template used to create revisions for this Service.
         /// Structure is documented below.
         /// </summary>
@@ -1100,6 +1107,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Scaling settings that apply to the whole service
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scaling")]
+        public Input<Inputs.ServiceScalingArgs>? Scaling { get; set; }
 
         /// <summary>
         /// The template used to create revisions for this Service.
@@ -1363,6 +1377,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
+
+        /// <summary>
+        /// Scaling settings that apply to the whole service
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scaling")]
+        public Input<Inputs.ServiceScalingGetArgs>? Scaling { get; set; }
 
         /// <summary>
         /// The template used to create revisions for this Service.

@@ -37,6 +37,7 @@ __all__ = [
     'ServiceCondition',
     'ServiceIamBindingCondition',
     'ServiceIamMemberCondition',
+    'ServiceScaling',
     'ServiceTemplate',
     'ServiceTemplateContainer',
     'ServiceTemplateContainerEnv',
@@ -90,6 +91,7 @@ __all__ = [
     'GetJobTerminalConditionResult',
     'GetServiceBinaryAuthorizationResult',
     'GetServiceConditionResult',
+    'GetServiceScalingResult',
     'GetServiceTemplateResult',
     'GetServiceTemplateContainerResult',
     'GetServiceTemplateContainerEnvResult',
@@ -1820,6 +1822,42 @@ class ServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
+class ServiceScaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minInstanceCount":
+            suggest = "min_instance_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceScaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceScaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceScaling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 min_instance_count: Optional[int] = None):
+        """
+        :param int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        if min_instance_count is not None:
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> Optional[int]:
+        """
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        return pulumi.get(self, "min_instance_count")
+
+
+@pulumi.output_type
 class ServiceTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3086,7 +3124,7 @@ class ServiceTemplateScaling(dict):
                  min_instance_count: Optional[int] = None):
         """
         :param int max_instance_count: Maximum number of serving instances that this resource should have.
-        :param int min_instance_count: Minimum number of serving instances that this resource should have.
+        :param int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
@@ -3105,7 +3143,7 @@ class ServiceTemplateScaling(dict):
     @pulumi.getter(name="minInstanceCount")
     def min_instance_count(self) -> Optional[int]:
         """
-        Minimum number of serving instances that this resource should have.
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         return pulumi.get(self, "min_instance_count")
 
@@ -5006,6 +5044,24 @@ class GetServiceConditionResult(dict):
         type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServiceScalingResult(dict):
+    def __init__(__self__, *,
+                 min_instance_count: int):
+        """
+        :param int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> int:
+        """
+        Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        return pulumi.get(self, "min_instance_count")
 
 
 @pulumi.output_type

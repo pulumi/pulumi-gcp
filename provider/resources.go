@@ -165,6 +165,7 @@ var moduleMapping = map[string]string{
 	"api_gateway":                     gcpApiGateway,
 	"apigee":                          gcpApigee,
 	"app_engine":                      gcpAppEngine,
+	"apphub":                          "Apphub",
 	"artifact_registry":               gcpArtifactRegistry,
 	"assured_workloads":               gcpAssuredWorkloads,
 	"backup_dr":                       gcpBackupDR,
@@ -181,6 +182,7 @@ var moduleMapping = map[string]string{
 	"cloud_asset":                     gcpCloudAsset,
 	"cloud_identity":                  gcpCloudIdentity,
 	"cloud_ids":                       gcpCloudIds,
+	"cloud_quota":                     "CloudQuota",
 	"cloud_run":                       gcpCloudRun,
 	"cloud_run_v2":                    gcpCloudRunV2,
 	"cloud_scheduler":                 gcpCloudScheduler,
@@ -2135,6 +2137,21 @@ func Provider() tfbridge.ProviderInfo {
 			"google_kms_key_ring_import_job": {Tok: gcpResource(gcpKMS, "KeyRingImportJob")},
 
 			// Cloud IAP Resources
+			"google_iap_tunnel_dest_group_iam_binding": {
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_tunnel_dest_group_iam.html.markdown",
+				},
+			},
+			"google_iap_tunnel_dest_group_iam_member": {
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_tunnel_dest_group_iam.html.markdown",
+				},
+			},
+			"google_iap_tunnel_dest_group_iam_policy": {
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_tunnel_dest_group_iam.html.markdown",
+				},
+			},
 			"google_iap_tunnel_instance_iam_binding": {
 				Tok: gcpResource(gcpIAP, "TunnelInstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{

@@ -30,6 +30,8 @@ apikeysCustomEndpoint: Optional[str]
 
 appEngineCustomEndpoint: Optional[str]
 
+apphubCustomEndpoint: Optional[str]
+
 artifactRegistryCustomEndpoint: Optional[str]
 
 assuredWorkloadsCustomEndpoint: Optional[str]
@@ -79,6 +81,8 @@ cloudFunctionsCustomEndpoint: Optional[str]
 cloudIdentityCustomEndpoint: Optional[str]
 
 cloudIdsCustomEndpoint: Optional[str]
+
+cloudQuotasCustomEndpoint: Optional[str]
 
 cloudResourceManagerCustomEndpoint: Optional[str]
 

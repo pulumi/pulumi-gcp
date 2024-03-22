@@ -804,6 +804,9 @@ type Service struct {
 	// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// Scaling settings that apply to the whole service
+	// Structure is documented below.
+	Scaling ServiceScalingPtrOutput `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateOutput `pulumi:"template"`
@@ -943,6 +946,9 @@ type serviceState struct {
 	// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling *bool `pulumi:"reconciling"`
+	// Scaling settings that apply to the whole service
+	// Structure is documented below.
+	Scaling *ServiceScaling `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
@@ -1042,6 +1048,9 @@ type ServiceState struct {
 	// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolPtrInput
+	// Scaling settings that apply to the whole service
+	// Structure is documented below.
+	Scaling ServiceScalingPtrInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplatePtrInput
@@ -1109,6 +1118,9 @@ type serviceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Scaling settings that apply to the whole service
+	// Structure is documented below.
+	Scaling *ServiceScaling `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplate `pulumi:"template"`
@@ -1160,6 +1172,9 @@ type ServiceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Scaling settings that apply to the whole service
+	// Structure is documented below.
+	Scaling ServiceScalingPtrInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateInput
@@ -1411,6 +1426,12 @@ func (o ServiceOutput) PulumiLabels() pulumi.StringMapOutput {
 // If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Scaling settings that apply to the whole service
+// Structure is documented below.
+func (o ServiceOutput) Scaling() ServiceScalingPtrOutput {
+	return o.ApplyT(func(v *Service) ServiceScalingPtrOutput { return v.Scaling }).(ServiceScalingPtrOutput)
 }
 
 // The template used to create revisions for this Service.

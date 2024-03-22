@@ -5361,8 +5361,7 @@ class VMwareClusterNetworkConfig(dict):
                Structure is documented below.
         :param 'VMwareClusterNetworkConfigStaticIpConfigArgs' static_ip_config: Configuration settings for a static IP configuration.
                Structure is documented below.
-        :param str vcenter_network: (Output)
-               vcenter_network specifies vCenter network name. Inherited from the admin cluster.
+        :param str vcenter_network: vcenter_network specifies vCenter network name. Inherited from the admin cluster.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -5436,7 +5435,6 @@ class VMwareClusterNetworkConfig(dict):
     @pulumi.getter(name="vcenterNetwork")
     def vcenter_network(self) -> Optional[str]:
         """
-        (Output)
         vcenter_network specifies vCenter network name. Inherited from the admin cluster.
         """
         return pulumi.get(self, "vcenter_network")

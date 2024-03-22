@@ -12,6 +12,7 @@ import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceState;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceCondition;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplate;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTerminalCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTraffic;
@@ -1160,6 +1161,22 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
+    }
+    /**
+     * Scaling settings that apply to the whole service
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scaling", refs={ServiceScaling.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceScaling> scaling;
+
+    /**
+     * @return Scaling settings that apply to the whole service
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ServiceScaling>> scaling() {
+        return Codegen.optional(this.scaling);
     }
     /**
      * The template used to create revisions for this Service.

@@ -45,6 +45,9 @@ public final class Config {
     public Optional<String> appEngineCustomEndpoint() {
         return Codegen.stringProp("appEngineCustomEndpoint").config(config).get();
     }
+    public Optional<String> apphubCustomEndpoint() {
+        return Codegen.stringProp("apphubCustomEndpoint").config(config).get();
+    }
     public Optional<String> artifactRegistryCustomEndpoint() {
         return Codegen.stringProp("artifactRegistryCustomEndpoint").config(config).get();
     }
@@ -119,6 +122,9 @@ public final class Config {
     }
     public Optional<String> cloudIdsCustomEndpoint() {
         return Codegen.stringProp("cloudIdsCustomEndpoint").config(config).get();
+    }
+    public Optional<String> cloudQuotasCustomEndpoint() {
+        return Codegen.stringProp("cloudQuotasCustomEndpoint").config(config).get();
     }
     public Optional<String> cloudResourceManagerCustomEndpoint() {
         return Codegen.stringProp("cloudResourceManagerCustomEndpoint").config(config).get();

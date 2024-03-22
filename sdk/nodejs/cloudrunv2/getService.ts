@@ -91,6 +91,7 @@ export interface GetServiceResult {
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly reconciling: boolean;
+    readonly scalings: outputs.cloudrunv2.GetServiceScaling[];
     readonly templates: outputs.cloudrunv2.GetServiceTemplate[];
     readonly terminalConditions: outputs.cloudrunv2.GetServiceTerminalCondition[];
     readonly trafficStatuses: outputs.cloudrunv2.GetServiceTrafficStatus[];

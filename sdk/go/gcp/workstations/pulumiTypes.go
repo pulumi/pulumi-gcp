@@ -1012,6 +1012,329 @@ func (o WorkstationConfigEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkstationConfigEphemeralDirectory struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	// Structure is documented below.
+	GcePd *WorkstationConfigEphemeralDirectoryGcePd `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath *string `pulumi:"mountPath"`
+}
+
+// WorkstationConfigEphemeralDirectoryInput is an input type that accepts WorkstationConfigEphemeralDirectoryArgs and WorkstationConfigEphemeralDirectoryOutput values.
+// You can construct a concrete instance of `WorkstationConfigEphemeralDirectoryInput` via:
+//
+//	WorkstationConfigEphemeralDirectoryArgs{...}
+type WorkstationConfigEphemeralDirectoryInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigEphemeralDirectoryOutput() WorkstationConfigEphemeralDirectoryOutput
+	ToWorkstationConfigEphemeralDirectoryOutputWithContext(context.Context) WorkstationConfigEphemeralDirectoryOutput
+}
+
+type WorkstationConfigEphemeralDirectoryArgs struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	// Structure is documented below.
+	GcePd WorkstationConfigEphemeralDirectoryGcePdPtrInput `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
+}
+
+func (WorkstationConfigEphemeralDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigEphemeralDirectory)(nil)).Elem()
+}
+
+func (i WorkstationConfigEphemeralDirectoryArgs) ToWorkstationConfigEphemeralDirectoryOutput() WorkstationConfigEphemeralDirectoryOutput {
+	return i.ToWorkstationConfigEphemeralDirectoryOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigEphemeralDirectoryArgs) ToWorkstationConfigEphemeralDirectoryOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEphemeralDirectoryOutput)
+}
+
+// WorkstationConfigEphemeralDirectoryArrayInput is an input type that accepts WorkstationConfigEphemeralDirectoryArray and WorkstationConfigEphemeralDirectoryArrayOutput values.
+// You can construct a concrete instance of `WorkstationConfigEphemeralDirectoryArrayInput` via:
+//
+//	WorkstationConfigEphemeralDirectoryArray{ WorkstationConfigEphemeralDirectoryArgs{...} }
+type WorkstationConfigEphemeralDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigEphemeralDirectoryArrayOutput() WorkstationConfigEphemeralDirectoryArrayOutput
+	ToWorkstationConfigEphemeralDirectoryArrayOutputWithContext(context.Context) WorkstationConfigEphemeralDirectoryArrayOutput
+}
+
+type WorkstationConfigEphemeralDirectoryArray []WorkstationConfigEphemeralDirectoryInput
+
+func (WorkstationConfigEphemeralDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigEphemeralDirectory)(nil)).Elem()
+}
+
+func (i WorkstationConfigEphemeralDirectoryArray) ToWorkstationConfigEphemeralDirectoryArrayOutput() WorkstationConfigEphemeralDirectoryArrayOutput {
+	return i.ToWorkstationConfigEphemeralDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigEphemeralDirectoryArray) ToWorkstationConfigEphemeralDirectoryArrayOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEphemeralDirectoryArrayOutput)
+}
+
+type WorkstationConfigEphemeralDirectoryOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigEphemeralDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigEphemeralDirectory)(nil)).Elem()
+}
+
+func (o WorkstationConfigEphemeralDirectoryOutput) ToWorkstationConfigEphemeralDirectoryOutput() WorkstationConfigEphemeralDirectoryOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryOutput) ToWorkstationConfigEphemeralDirectoryOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryOutput {
+	return o
+}
+
+// An EphemeralDirectory backed by a Compute Engine persistent disk.
+// Structure is documented below.
+func (o WorkstationConfigEphemeralDirectoryOutput) GcePd() WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigEphemeralDirectory) *WorkstationConfigEphemeralDirectoryGcePd { return v.GcePd }).(WorkstationConfigEphemeralDirectoryGcePdPtrOutput)
+}
+
+// Location of this directory in the running workstation.
+func (o WorkstationConfigEphemeralDirectoryOutput) MountPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigEphemeralDirectory) *string { return v.MountPath }).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigEphemeralDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigEphemeralDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigEphemeralDirectory)(nil)).Elem()
+}
+
+func (o WorkstationConfigEphemeralDirectoryArrayOutput) ToWorkstationConfigEphemeralDirectoryArrayOutput() WorkstationConfigEphemeralDirectoryArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryArrayOutput) ToWorkstationConfigEphemeralDirectoryArrayOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryArrayOutput) Index(i pulumi.IntInput) WorkstationConfigEphemeralDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigEphemeralDirectory {
+		return vs[0].([]WorkstationConfigEphemeralDirectory)[vs[1].(int)]
+	}).(WorkstationConfigEphemeralDirectoryOutput)
+}
+
+type WorkstationConfigEphemeralDirectoryGcePd struct {
+	// Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType *string `pulumi:"diskType"`
+	// Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Name of the disk image to use as the source for the disk.
+	// Must be empty `sourceSnapshot` is set.
+	// Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+	SourceImage *string `pulumi:"sourceImage"`
+	// Name of the snapshot to use as the source for the disk.
+	// Must be empty if `sourceImage` is set.
+	// Must be empty if `readOnly` is false.
+	// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+}
+
+// WorkstationConfigEphemeralDirectoryGcePdInput is an input type that accepts WorkstationConfigEphemeralDirectoryGcePdArgs and WorkstationConfigEphemeralDirectoryGcePdOutput values.
+// You can construct a concrete instance of `WorkstationConfigEphemeralDirectoryGcePdInput` via:
+//
+//	WorkstationConfigEphemeralDirectoryGcePdArgs{...}
+type WorkstationConfigEphemeralDirectoryGcePdInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigEphemeralDirectoryGcePdOutput() WorkstationConfigEphemeralDirectoryGcePdOutput
+	ToWorkstationConfigEphemeralDirectoryGcePdOutputWithContext(context.Context) WorkstationConfigEphemeralDirectoryGcePdOutput
+}
+
+type WorkstationConfigEphemeralDirectoryGcePdArgs struct {
+	// Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Name of the disk image to use as the source for the disk.
+	// Must be empty `sourceSnapshot` is set.
+	// Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+	SourceImage pulumi.StringPtrInput `pulumi:"sourceImage"`
+	// Name of the snapshot to use as the source for the disk.
+	// Must be empty if `sourceImage` is set.
+	// Must be empty if `readOnly` is false.
+	// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
+}
+
+func (WorkstationConfigEphemeralDirectoryGcePdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigEphemeralDirectoryGcePd)(nil)).Elem()
+}
+
+func (i WorkstationConfigEphemeralDirectoryGcePdArgs) ToWorkstationConfigEphemeralDirectoryGcePdOutput() WorkstationConfigEphemeralDirectoryGcePdOutput {
+	return i.ToWorkstationConfigEphemeralDirectoryGcePdOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigEphemeralDirectoryGcePdArgs) ToWorkstationConfigEphemeralDirectoryGcePdOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryGcePdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEphemeralDirectoryGcePdOutput)
+}
+
+func (i WorkstationConfigEphemeralDirectoryGcePdArgs) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutput() WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return i.ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigEphemeralDirectoryGcePdArgs) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEphemeralDirectoryGcePdOutput).ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigEphemeralDirectoryGcePdPtrInput is an input type that accepts WorkstationConfigEphemeralDirectoryGcePdArgs, WorkstationConfigEphemeralDirectoryGcePdPtr and WorkstationConfigEphemeralDirectoryGcePdPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigEphemeralDirectoryGcePdPtrInput` via:
+//
+//	        WorkstationConfigEphemeralDirectoryGcePdArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigEphemeralDirectoryGcePdPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigEphemeralDirectoryGcePdPtrOutput() WorkstationConfigEphemeralDirectoryGcePdPtrOutput
+	ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(context.Context) WorkstationConfigEphemeralDirectoryGcePdPtrOutput
+}
+
+type workstationConfigEphemeralDirectoryGcePdPtrType WorkstationConfigEphemeralDirectoryGcePdArgs
+
+func WorkstationConfigEphemeralDirectoryGcePdPtr(v *WorkstationConfigEphemeralDirectoryGcePdArgs) WorkstationConfigEphemeralDirectoryGcePdPtrInput {
+	return (*workstationConfigEphemeralDirectoryGcePdPtrType)(v)
+}
+
+func (*workstationConfigEphemeralDirectoryGcePdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigEphemeralDirectoryGcePd)(nil)).Elem()
+}
+
+func (i *workstationConfigEphemeralDirectoryGcePdPtrType) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutput() WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return i.ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigEphemeralDirectoryGcePdPtrType) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEphemeralDirectoryGcePdPtrOutput)
+}
+
+type WorkstationConfigEphemeralDirectoryGcePdOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigEphemeralDirectoryGcePdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigEphemeralDirectoryGcePd)(nil)).Elem()
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) ToWorkstationConfigEphemeralDirectoryGcePdOutput() WorkstationConfigEphemeralDirectoryGcePdOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) ToWorkstationConfigEphemeralDirectoryGcePdOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryGcePdOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutput() WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return o.ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigEphemeralDirectoryGcePd) *WorkstationConfigEphemeralDirectoryGcePd {
+		return &v
+	}).(WorkstationConfigEphemeralDirectoryGcePdPtrOutput)
+}
+
+// Type of the disk to use. Defaults to `"pd-standard"`.
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigEphemeralDirectoryGcePd) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigEphemeralDirectoryGcePd) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the disk image to use as the source for the disk.
+// Must be empty `sourceSnapshot` is set.
+// Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigEphemeralDirectoryGcePd) *string { return v.SourceImage }).(pulumi.StringPtrOutput)
+}
+
+// Name of the snapshot to use as the source for the disk.
+// Must be empty if `sourceImage` is set.
+// Must be empty if `readOnly` is false.
+// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
+func (o WorkstationConfigEphemeralDirectoryGcePdOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigEphemeralDirectoryGcePd) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigEphemeralDirectoryGcePdPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigEphemeralDirectoryGcePdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigEphemeralDirectoryGcePd)(nil)).Elem()
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutput() WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) ToWorkstationConfigEphemeralDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigEphemeralDirectoryGcePdPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) Elem() WorkstationConfigEphemeralDirectoryGcePdOutput {
+	return o.ApplyT(func(v *WorkstationConfigEphemeralDirectoryGcePd) WorkstationConfigEphemeralDirectoryGcePd {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigEphemeralDirectoryGcePd
+		return ret
+	}).(WorkstationConfigEphemeralDirectoryGcePdOutput)
+}
+
+// Type of the disk to use. Defaults to `"pd-standard"`.
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigEphemeralDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigEphemeralDirectoryGcePd) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of the disk image to use as the source for the disk.
+// Must be empty `sourceSnapshot` is set.
+// Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigEphemeralDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the snapshot to use as the source for the disk.
+// Must be empty if `sourceImage` is set.
+// Must be empty if `readOnly` is false.
+// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
+func (o WorkstationConfigEphemeralDirectoryGcePdPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigEphemeralDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkstationConfigHost struct {
 	// A runtime using a Compute Engine instance.
 	// Structure is documented below.
@@ -2381,7 +2704,7 @@ func (o WorkstationConfigPersistentDirectoryArrayOutput) Index(i pulumi.IntInput
 }
 
 type WorkstationConfigPersistentDirectoryGcePd struct {
-	// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+	// Type of the disk to use. Defaults to `"pd-standard"`.
 	DiskType *string `pulumi:"diskType"`
 	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
 	FsType *string `pulumi:"fsType"`
@@ -2391,7 +2714,10 @@ type WorkstationConfigPersistentDirectoryGcePd struct {
 	// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
 	// Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
 	SizeGb *int `pulumi:"sizeGb"`
-	// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+	// Name of the snapshot to use as the source for the disk.
+	// Must be empty if `sourceImage` is set.
+	// Must be empty if `readOnly` is false.
+	// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
@@ -2407,7 +2733,7 @@ type WorkstationConfigPersistentDirectoryGcePdInput interface {
 }
 
 type WorkstationConfigPersistentDirectoryGcePdArgs struct {
-	// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+	// Type of the disk to use. Defaults to `"pd-standard"`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
 	FsType pulumi.StringPtrInput `pulumi:"fsType"`
@@ -2417,7 +2743,10 @@ type WorkstationConfigPersistentDirectoryGcePdArgs struct {
 	// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
 	// Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
-	// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+	// Name of the snapshot to use as the source for the disk.
+	// Must be empty if `sourceImage` is set.
+	// Must be empty if `readOnly` is false.
+	// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
 	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 }
 
@@ -2498,7 +2827,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPers
 	}).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
 }
 
-// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+// Type of the disk to use. Defaults to `"pd-standard"`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -2520,7 +2849,10 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) SizeGb() pulumi.IntPtrO
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
 }
 
-// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+// Name of the snapshot to use as the source for the disk.
+// Must be empty if `sourceImage` is set.
+// Must be empty if `readOnly` is false.
+// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
 }
@@ -2549,7 +2881,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) Elem() WorkstationCo
 	}).(WorkstationConfigPersistentDirectoryGcePdOutput)
 }
 
-// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+// Type of the disk to use. Defaults to `"pd-standard"`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {
@@ -2591,7 +2923,10 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SizeGb() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+// Name of the snapshot to use as the source for the disk.
+// Must be empty if `sourceImage` is set.
+// Must be empty if `readOnly` is false.
+// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {
@@ -3046,6 +3381,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigContainerPtrInput)(nil)).Elem(), WorkstationConfigContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEncryptionKeyInput)(nil)).Elem(), WorkstationConfigEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEncryptionKeyPtrInput)(nil)).Elem(), WorkstationConfigEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEphemeralDirectoryInput)(nil)).Elem(), WorkstationConfigEphemeralDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEphemeralDirectoryArrayInput)(nil)).Elem(), WorkstationConfigEphemeralDirectoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEphemeralDirectoryGcePdInput)(nil)).Elem(), WorkstationConfigEphemeralDirectoryGcePdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigEphemeralDirectoryGcePdPtrInput)(nil)).Elem(), WorkstationConfigEphemeralDirectoryGcePdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostInput)(nil)).Elem(), WorkstationConfigHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostPtrInput)(nil)).Elem(), WorkstationConfigHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceInput)(nil)).Elem(), WorkstationConfigHostGceInstanceArgs{})
@@ -3082,6 +3421,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationConfigContainerPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigEphemeralDirectoryOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigEphemeralDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigEphemeralDirectoryGcePdOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigEphemeralDirectoryGcePdPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceOutput{})

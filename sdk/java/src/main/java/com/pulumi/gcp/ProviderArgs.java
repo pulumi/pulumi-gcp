@@ -90,6 +90,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.appEngineCustomEndpoint);
     }
 
+    @Import(name="apphubCustomEndpoint")
+    private @Nullable Output<String> apphubCustomEndpoint;
+
+    public Optional<Output<String>> apphubCustomEndpoint() {
+        return Optional.ofNullable(this.apphubCustomEndpoint);
+    }
+
     @Import(name="artifactRegistryCustomEndpoint")
     private @Nullable Output<String> artifactRegistryCustomEndpoint;
 
@@ -263,6 +270,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> cloudIdsCustomEndpoint() {
         return Optional.ofNullable(this.cloudIdsCustomEndpoint);
+    }
+
+    @Import(name="cloudQuotasCustomEndpoint")
+    private @Nullable Output<String> cloudQuotasCustomEndpoint;
+
+    public Optional<Output<String>> cloudQuotasCustomEndpoint() {
+        return Optional.ofNullable(this.cloudQuotasCustomEndpoint);
     }
 
     @Import(name="cloudResourceManagerCustomEndpoint")
@@ -1181,6 +1195,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.apigeeCustomEndpoint = $.apigeeCustomEndpoint;
         this.apikeysCustomEndpoint = $.apikeysCustomEndpoint;
         this.appEngineCustomEndpoint = $.appEngineCustomEndpoint;
+        this.apphubCustomEndpoint = $.apphubCustomEndpoint;
         this.artifactRegistryCustomEndpoint = $.artifactRegistryCustomEndpoint;
         this.assuredWorkloadsCustomEndpoint = $.assuredWorkloadsCustomEndpoint;
         this.backupDrCustomEndpoint = $.backupDrCustomEndpoint;
@@ -1206,6 +1221,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudFunctionsCustomEndpoint = $.cloudFunctionsCustomEndpoint;
         this.cloudIdentityCustomEndpoint = $.cloudIdentityCustomEndpoint;
         this.cloudIdsCustomEndpoint = $.cloudIdsCustomEndpoint;
+        this.cloudQuotasCustomEndpoint = $.cloudQuotasCustomEndpoint;
         this.cloudResourceManagerCustomEndpoint = $.cloudResourceManagerCustomEndpoint;
         this.cloudRunCustomEndpoint = $.cloudRunCustomEndpoint;
         this.cloudRunV2CustomEndpoint = $.cloudRunV2CustomEndpoint;
@@ -1445,6 +1461,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return appEngineCustomEndpoint(Output.of(appEngineCustomEndpoint));
         }
 
+        public Builder apphubCustomEndpoint(@Nullable Output<String> apphubCustomEndpoint) {
+            $.apphubCustomEndpoint = apphubCustomEndpoint;
+            return this;
+        }
+
+        public Builder apphubCustomEndpoint(String apphubCustomEndpoint) {
+            return apphubCustomEndpoint(Output.of(apphubCustomEndpoint));
+        }
+
         public Builder artifactRegistryCustomEndpoint(@Nullable Output<String> artifactRegistryCustomEndpoint) {
             $.artifactRegistryCustomEndpoint = artifactRegistryCustomEndpoint;
             return this;
@@ -1668,6 +1693,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudIdsCustomEndpoint(String cloudIdsCustomEndpoint) {
             return cloudIdsCustomEndpoint(Output.of(cloudIdsCustomEndpoint));
+        }
+
+        public Builder cloudQuotasCustomEndpoint(@Nullable Output<String> cloudQuotasCustomEndpoint) {
+            $.cloudQuotasCustomEndpoint = cloudQuotasCustomEndpoint;
+            return this;
+        }
+
+        public Builder cloudQuotasCustomEndpoint(String cloudQuotasCustomEndpoint) {
+            return cloudQuotasCustomEndpoint(Output.of(cloudQuotasCustomEndpoint));
         }
 
         public Builder cloudResourceManagerCustomEndpoint(@Nullable Output<String> cloudResourceManagerCustomEndpoint) {

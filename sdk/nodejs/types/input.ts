@@ -468,8 +468,8 @@ export namespace accesscontextmanager {
     export interface ServicePerimeterEgressPolicyEgressFrom {
         /**
          * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Should be in the format of an email address. The email address should
+         * represent an individual user, service account, or Google group.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -554,9 +554,9 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * A list of identities that are allowed access through this `IngressPolicy`.
+         * Should be in the format of an email address. The email address should represent
+         * an individual user, service account, or Google group.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -714,9 +714,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -816,9 +817,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -982,9 +984,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1084,9 +1087,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1
+         * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1324,9 +1328,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1426,9 +1431,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1592,9 +1598,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * 'A list of identities that are allowed access through this `EgressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1694,9 +1701,10 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * 'A list of identities that are allowed access through this `IngressPolicy`.
+         * To specify an identity or identity group, use the IAM v1 format
+         * specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+         * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -3513,6 +3521,302 @@ export namespace appengine {
          * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: pulumi.Input<string>;
+    }
+}
+
+export namespace apphub {
+    export interface ApplicationAttributes {
+        /**
+         * Optional. Business team that ensures user needs are met and value is delivered
+         * Structure is documented below.
+         */
+        businessOwners?: pulumi.Input<pulumi.Input<inputs.apphub.ApplicationAttributesBusinessOwner>[]>;
+        /**
+         * Criticality of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        criticality?: pulumi.Input<inputs.apphub.ApplicationAttributesCriticality>;
+        /**
+         * Optional. Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: pulumi.Input<pulumi.Input<inputs.apphub.ApplicationAttributesDeveloperOwner>[]>;
+        /**
+         * Environment of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        environment?: pulumi.Input<inputs.apphub.ApplicationAttributesEnvironment>;
+        /**
+         * Optional. Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: pulumi.Input<pulumi.Input<inputs.apphub.ApplicationAttributesOperatorOwner>[]>;
+    }
+
+    export interface ApplicationAttributesBusinessOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesCriticality {
+        /**
+         * Criticality type.
+         * Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesDeveloperOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesEnvironment {
+        /**
+         * Environment type.
+         * Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ApplicationAttributesOperatorOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ApplicationScope {
+        /**
+         * Required. Scope Type.
+         * Possible values:
+         * REGIONAL
+         * Possible values are: `REGIONAL`.
+         *
+         * - - -
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttributes {
+        /**
+         * Business team that ensures user needs are met and value is delivered
+         * Structure is documented below.
+         */
+        businessOwners?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceAttributesBusinessOwner>[]>;
+        /**
+         * Criticality of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        criticality?: pulumi.Input<inputs.apphub.ServiceAttributesCriticality>;
+        /**
+         * Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceAttributesDeveloperOwner>[]>;
+        /**
+         * Environment of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        environment?: pulumi.Input<inputs.apphub.ServiceAttributesEnvironment>;
+        /**
+         * Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceAttributesOperatorOwner>[]>;
+    }
+
+    export interface ServiceAttributesBusinessOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttributesCriticality {
+        /**
+         * Criticality type.
+         * Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttributesDeveloperOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttributesEnvironment {
+        /**
+         * Environment type.
+         * Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ServiceAttributesOperatorOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface ServiceServiceProperty {
+        /**
+         * (Output)
+         * Output only. The service project identifier that the underlying cloud resource resides in.
+         */
+        gcpProject?: pulumi.Input<string>;
+        /**
+         * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The location that the underlying resource resides in if it is zonal, for example, us-west1-a).
+         */
+        zone?: pulumi.Input<string>;
+    }
+
+    export interface ServiceServiceReference {
+        /**
+         * (Output)
+         * Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
+         * and Backend Service).
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface WorkloadAttributes {
+        /**
+         * Business team that ensures user needs are met and value is delivered
+         * Structure is documented below.
+         */
+        businessOwners?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadAttributesBusinessOwner>[]>;
+        /**
+         * Criticality of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        criticality?: pulumi.Input<inputs.apphub.WorkloadAttributesCriticality>;
+        /**
+         * Developer team that owns development and coding.
+         * Structure is documented below.
+         */
+        developerOwners?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadAttributesDeveloperOwner>[]>;
+        /**
+         * Environment of the Application, Service, or Workload
+         * Structure is documented below.
+         */
+        environment?: pulumi.Input<inputs.apphub.WorkloadAttributesEnvironment>;
+        /**
+         * Operator team that ensures runtime and operations.
+         * Structure is documented below.
+         */
+        operatorOwners?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadAttributesOperatorOwner>[]>;
+    }
+
+    export interface WorkloadAttributesBusinessOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface WorkloadAttributesCriticality {
+        /**
+         * Criticality type.
+         * Possible values are: `MISSION_CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface WorkloadAttributesDeveloperOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface WorkloadAttributesEnvironment {
+        /**
+         * Environment type.
+         * Possible values are: `PRODUCTION`, `STAGING`, `TEST`, `DEVELOPMENT`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface WorkloadAttributesOperatorOwner {
+        /**
+         * Contact's name.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Email address of the contacts.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface WorkloadWorkloadProperty {
+        /**
+         * (Output)
+         * Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+         */
+        gcpProject?: pulumi.Input<string>;
+        /**
+         * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
+         */
+        zone?: pulumi.Input<string>;
+    }
+
+    export interface WorkloadWorkloadReference {
+        /**
+         * (Output)
+         * Output only. The underlying compute resource uri.
+         */
+        uri?: pulumi.Input<string>;
     }
 }
 
@@ -10961,6 +11265,9 @@ export namespace cloudidentity {
     }
 }
 
+export namespace cloudquota {
+}
+
 export namespace cloudrun {
     export interface DomainMappingMetadata {
         /**
@@ -12451,6 +12758,13 @@ export namespace cloudrunv2 {
         title: pulumi.Input<string>;
     }
 
+    export interface ServiceScaling {
+        /**
+         * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+         */
+        minInstanceCount?: pulumi.Input<number>;
+    }
+
     export interface ServiceTemplate {
         /**
          * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -12823,7 +13137,7 @@ export namespace cloudrunv2 {
          */
         maxInstanceCount?: pulumi.Input<number>;
         /**
-         * Minimum number of serving instances that this resource should have.
+         * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          */
         minInstanceCount?: pulumi.Input<number>;
     }
@@ -22512,11 +22826,11 @@ export namespace compute {
          */
         requestHeaders?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader>[]>;
         /**
-         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
          */
         requestQueryParams?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam>[]>;
         /**
-         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
          */
         requestUris?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri>[]>;
         /**
@@ -43701,6 +44015,32 @@ export namespace firestore {
         day?: pulumi.Input<string>;
     }
 
+    export interface DatabaseCmekConfig {
+        /**
+         * (Output)
+         * Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+         * During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+         * multiple in-use key versions.
+         * The expected format is
+         * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+         */
+        activeKeyVersions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The resource ID of a Cloud KMS key. If set, the database created will
+         * be a Customer-managed Encryption Key (CMEK) database encrypted with
+         * this key. This feature is allowlist only in initial launch.
+         * Only keys in the same location as this database are allowed to be used
+         * for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+         * multi-region us. For Firestore's eur3 multi-region, this corresponds to
+         * Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+         * This value should be the KMS key resource ID in the format of
+         * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         * How to retrive this resource ID is listed at
+         * https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
     export interface FieldIndexConfig {
         /**
          * The indexes to configure on the field. Order or array contains must be specified.
@@ -46792,8 +47132,7 @@ export namespace gkeonprem {
          */
         staticIpConfig?: pulumi.Input<inputs.gkeonprem.VMwareClusterNetworkConfigStaticIpConfig>;
         /**
-         * (Output)
-         * vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+         * vcenter_network specifies vCenter network name. Inherited from the admin cluster.
          */
         vcenterNetwork?: pulumi.Input<string>;
     }
@@ -47785,6 +48124,30 @@ export namespace iap {
          * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
          * consider it to be an entirely different resource and will treat it as such.
          */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface TunnelDestGroupIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface TunnelDestGroupIamMemberCondition {
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -49353,6 +49716,77 @@ export namespace kms {
          * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
          */
         protectionLevel?: pulumi.Input<string>;
+    }
+
+    export interface EkmConnectionServiceResolver {
+        /**
+         * Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+         */
+        endpointFilter?: pulumi.Input<string>;
+        /**
+         * Required. The hostname of the EKM replica used at TLS and HTTP layers.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+         * Structure is documented below.
+         */
+        serverCertificates: pulumi.Input<pulumi.Input<inputs.kms.EkmConnectionServiceResolverServerCertificate>[]>;
+        /**
+         * Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
+         */
+        serviceDirectoryService: pulumi.Input<string>;
+    }
+
+    export interface EkmConnectionServiceResolverServerCertificate {
+        /**
+         * (Output)
+         * Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+         */
+        issuer?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The certificate is not valid after this time. Only present if parsed is true.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        notAfterTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The certificate is not valid before this time. Only present if parsed is true.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        notBeforeTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. True if the certificate was parsed successfully.
+         */
+        parsed?: pulumi.Input<boolean>;
+        /**
+         * Required. The raw certificate bytes in DER format. A base64-encoded string.
+         */
+        rawDer: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The certificate serial number as a hex string. Only present if parsed is true.
+         */
+        serialNumber?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+         */
+        sha256Fingerprint?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+         */
+        subject?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The subject Alternative DNS names. Only present if parsed is true.
+         *
+         * - - -
+         */
+        subjectAlternativeDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface KeyRingIAMBindingCondition {
@@ -59850,11 +60284,15 @@ export namespace storage {
         /**
          * Credentials used to authenticate API requests to Azure block.
          */
-        azureCredentials: pulumi.Input<inputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials>;
+        azureCredentials?: pulumi.Input<inputs.storage.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials>;
         /**
          * The container to transfer from the Azure Storage account.`
          */
         container: pulumi.Input<string>;
+        /**
+         * Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+         */
+        credentialsSecret?: pulumi.Input<string>;
         /**
          * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
          */
@@ -61414,6 +61852,42 @@ export namespace workstations {
         kmsKeyServiceAccount: pulumi.Input<string>;
     }
 
+    export interface WorkstationConfigEphemeralDirectory {
+        /**
+         * An EphemeralDirectory backed by a Compute Engine persistent disk.
+         * Structure is documented below.
+         */
+        gcePd?: pulumi.Input<inputs.workstations.WorkstationConfigEphemeralDirectoryGcePd>;
+        /**
+         * Location of this directory in the running workstation.
+         */
+        mountPath?: pulumi.Input<string>;
+    }
+
+    export interface WorkstationConfigEphemeralDirectoryGcePd {
+        /**
+         * Type of the disk to use. Defaults to `"pd-standard"`.
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Name of the disk image to use as the source for the disk.
+         * Must be empty `sourceSnapshot` is set.
+         * Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
+         */
+        sourceImage?: pulumi.Input<string>;
+        /**
+         * Name of the snapshot to use as the source for the disk.
+         * Must be empty if `sourceImage` is set.
+         * Must be empty if `readOnly` is false.
+         * Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
+         */
+        sourceSnapshot?: pulumi.Input<string>;
+    }
+
     export interface WorkstationConfigHost {
         /**
          * A runtime using a Compute Engine instance.
@@ -61536,7 +62010,7 @@ export namespace workstations {
 
     export interface WorkstationConfigPersistentDirectoryGcePd {
         /**
-         * The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+         * Type of the disk to use. Defaults to `"pd-standard"`.
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -61554,7 +62028,10 @@ export namespace workstations {
          */
         sizeGb?: pulumi.Input<number>;
         /**
-         * Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+         * Name of the snapshot to use as the source for the disk.
+         * Must be empty if `sourceImage` is set.
+         * Must be empty if `readOnly` is false.
+         * Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
          */
         sourceSnapshot?: pulumi.Input<string>;
     }

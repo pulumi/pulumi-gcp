@@ -1135,6 +1135,340 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type EkmConnectionServiceResolver struct {
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	EndpointFilter *string `pulumi:"endpointFilter"`
+	// Required. The hostname of the EKM replica used at TLS and HTTP layers.
+	Hostname string `pulumi:"hostname"`
+	// Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+	// Structure is documented below.
+	ServerCertificates []EkmConnectionServiceResolverServerCertificate `pulumi:"serverCertificates"`
+	// Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
+	ServiceDirectoryService string `pulumi:"serviceDirectoryService"`
+}
+
+// EkmConnectionServiceResolverInput is an input type that accepts EkmConnectionServiceResolverArgs and EkmConnectionServiceResolverOutput values.
+// You can construct a concrete instance of `EkmConnectionServiceResolverInput` via:
+//
+//	EkmConnectionServiceResolverArgs{...}
+type EkmConnectionServiceResolverInput interface {
+	pulumi.Input
+
+	ToEkmConnectionServiceResolverOutput() EkmConnectionServiceResolverOutput
+	ToEkmConnectionServiceResolverOutputWithContext(context.Context) EkmConnectionServiceResolverOutput
+}
+
+type EkmConnectionServiceResolverArgs struct {
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	EndpointFilter pulumi.StringPtrInput `pulumi:"endpointFilter"`
+	// Required. The hostname of the EKM replica used at TLS and HTTP layers.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+	// Structure is documented below.
+	ServerCertificates EkmConnectionServiceResolverServerCertificateArrayInput `pulumi:"serverCertificates"`
+	// Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
+	ServiceDirectoryService pulumi.StringInput `pulumi:"serviceDirectoryService"`
+}
+
+func (EkmConnectionServiceResolverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionServiceResolver)(nil)).Elem()
+}
+
+func (i EkmConnectionServiceResolverArgs) ToEkmConnectionServiceResolverOutput() EkmConnectionServiceResolverOutput {
+	return i.ToEkmConnectionServiceResolverOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionServiceResolverArgs) ToEkmConnectionServiceResolverOutputWithContext(ctx context.Context) EkmConnectionServiceResolverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionServiceResolverOutput)
+}
+
+// EkmConnectionServiceResolverArrayInput is an input type that accepts EkmConnectionServiceResolverArray and EkmConnectionServiceResolverArrayOutput values.
+// You can construct a concrete instance of `EkmConnectionServiceResolverArrayInput` via:
+//
+//	EkmConnectionServiceResolverArray{ EkmConnectionServiceResolverArgs{...} }
+type EkmConnectionServiceResolverArrayInput interface {
+	pulumi.Input
+
+	ToEkmConnectionServiceResolverArrayOutput() EkmConnectionServiceResolverArrayOutput
+	ToEkmConnectionServiceResolverArrayOutputWithContext(context.Context) EkmConnectionServiceResolverArrayOutput
+}
+
+type EkmConnectionServiceResolverArray []EkmConnectionServiceResolverInput
+
+func (EkmConnectionServiceResolverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EkmConnectionServiceResolver)(nil)).Elem()
+}
+
+func (i EkmConnectionServiceResolverArray) ToEkmConnectionServiceResolverArrayOutput() EkmConnectionServiceResolverArrayOutput {
+	return i.ToEkmConnectionServiceResolverArrayOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionServiceResolverArray) ToEkmConnectionServiceResolverArrayOutputWithContext(ctx context.Context) EkmConnectionServiceResolverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionServiceResolverArrayOutput)
+}
+
+type EkmConnectionServiceResolverOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionServiceResolverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionServiceResolver)(nil)).Elem()
+}
+
+func (o EkmConnectionServiceResolverOutput) ToEkmConnectionServiceResolverOutput() EkmConnectionServiceResolverOutput {
+	return o
+}
+
+func (o EkmConnectionServiceResolverOutput) ToEkmConnectionServiceResolverOutputWithContext(ctx context.Context) EkmConnectionServiceResolverOutput {
+	return o
+}
+
+// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+func (o EkmConnectionServiceResolverOutput) EndpointFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolver) *string { return v.EndpointFilter }).(pulumi.StringPtrOutput)
+}
+
+// Required. The hostname of the EKM replica used at TLS and HTTP layers.
+func (o EkmConnectionServiceResolverOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolver) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
+// Structure is documented below.
+func (o EkmConnectionServiceResolverOutput) ServerCertificates() EkmConnectionServiceResolverServerCertificateArrayOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolver) []EkmConnectionServiceResolverServerCertificate {
+		return v.ServerCertificates
+	}).(EkmConnectionServiceResolverServerCertificateArrayOutput)
+}
+
+// Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
+func (o EkmConnectionServiceResolverOutput) ServiceDirectoryService() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolver) string { return v.ServiceDirectoryService }).(pulumi.StringOutput)
+}
+
+type EkmConnectionServiceResolverArrayOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionServiceResolverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EkmConnectionServiceResolver)(nil)).Elem()
+}
+
+func (o EkmConnectionServiceResolverArrayOutput) ToEkmConnectionServiceResolverArrayOutput() EkmConnectionServiceResolverArrayOutput {
+	return o
+}
+
+func (o EkmConnectionServiceResolverArrayOutput) ToEkmConnectionServiceResolverArrayOutputWithContext(ctx context.Context) EkmConnectionServiceResolverArrayOutput {
+	return o
+}
+
+func (o EkmConnectionServiceResolverArrayOutput) Index(i pulumi.IntInput) EkmConnectionServiceResolverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EkmConnectionServiceResolver {
+		return vs[0].([]EkmConnectionServiceResolver)[vs[1].(int)]
+	}).(EkmConnectionServiceResolverOutput)
+}
+
+type EkmConnectionServiceResolverServerCertificate struct {
+	// (Output)
+	// Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+	Issuer *string `pulumi:"issuer"`
+	// (Output)
+	// Output only. The certificate is not valid after this time. Only present if parsed is true.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NotAfterTime *string `pulumi:"notAfterTime"`
+	// (Output)
+	// Output only. The certificate is not valid before this time. Only present if parsed is true.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NotBeforeTime *string `pulumi:"notBeforeTime"`
+	// (Output)
+	// Output only. True if the certificate was parsed successfully.
+	Parsed *bool `pulumi:"parsed"`
+	// Required. The raw certificate bytes in DER format. A base64-encoded string.
+	RawDer string `pulumi:"rawDer"`
+	// (Output)
+	// Output only. The certificate serial number as a hex string. Only present if parsed is true.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// (Output)
+	// Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+	Sha256Fingerprint *string `pulumi:"sha256Fingerprint"`
+	// (Output)
+	// Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+	Subject *string `pulumi:"subject"`
+	// (Output)
+	// Output only. The subject Alternative DNS names. Only present if parsed is true.
+	//
+	// ***
+	SubjectAlternativeDnsNames []string `pulumi:"subjectAlternativeDnsNames"`
+}
+
+// EkmConnectionServiceResolverServerCertificateInput is an input type that accepts EkmConnectionServiceResolverServerCertificateArgs and EkmConnectionServiceResolverServerCertificateOutput values.
+// You can construct a concrete instance of `EkmConnectionServiceResolverServerCertificateInput` via:
+//
+//	EkmConnectionServiceResolverServerCertificateArgs{...}
+type EkmConnectionServiceResolverServerCertificateInput interface {
+	pulumi.Input
+
+	ToEkmConnectionServiceResolverServerCertificateOutput() EkmConnectionServiceResolverServerCertificateOutput
+	ToEkmConnectionServiceResolverServerCertificateOutputWithContext(context.Context) EkmConnectionServiceResolverServerCertificateOutput
+}
+
+type EkmConnectionServiceResolverServerCertificateArgs struct {
+	// (Output)
+	// Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// (Output)
+	// Output only. The certificate is not valid after this time. Only present if parsed is true.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NotAfterTime pulumi.StringPtrInput `pulumi:"notAfterTime"`
+	// (Output)
+	// Output only. The certificate is not valid before this time. Only present if parsed is true.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NotBeforeTime pulumi.StringPtrInput `pulumi:"notBeforeTime"`
+	// (Output)
+	// Output only. True if the certificate was parsed successfully.
+	Parsed pulumi.BoolPtrInput `pulumi:"parsed"`
+	// Required. The raw certificate bytes in DER format. A base64-encoded string.
+	RawDer pulumi.StringInput `pulumi:"rawDer"`
+	// (Output)
+	// Output only. The certificate serial number as a hex string. Only present if parsed is true.
+	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
+	// (Output)
+	// Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+	Sha256Fingerprint pulumi.StringPtrInput `pulumi:"sha256Fingerprint"`
+	// (Output)
+	// Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// (Output)
+	// Output only. The subject Alternative DNS names. Only present if parsed is true.
+	//
+	// ***
+	SubjectAlternativeDnsNames pulumi.StringArrayInput `pulumi:"subjectAlternativeDnsNames"`
+}
+
+func (EkmConnectionServiceResolverServerCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionServiceResolverServerCertificate)(nil)).Elem()
+}
+
+func (i EkmConnectionServiceResolverServerCertificateArgs) ToEkmConnectionServiceResolverServerCertificateOutput() EkmConnectionServiceResolverServerCertificateOutput {
+	return i.ToEkmConnectionServiceResolverServerCertificateOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionServiceResolverServerCertificateArgs) ToEkmConnectionServiceResolverServerCertificateOutputWithContext(ctx context.Context) EkmConnectionServiceResolverServerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionServiceResolverServerCertificateOutput)
+}
+
+// EkmConnectionServiceResolverServerCertificateArrayInput is an input type that accepts EkmConnectionServiceResolverServerCertificateArray and EkmConnectionServiceResolverServerCertificateArrayOutput values.
+// You can construct a concrete instance of `EkmConnectionServiceResolverServerCertificateArrayInput` via:
+//
+//	EkmConnectionServiceResolverServerCertificateArray{ EkmConnectionServiceResolverServerCertificateArgs{...} }
+type EkmConnectionServiceResolverServerCertificateArrayInput interface {
+	pulumi.Input
+
+	ToEkmConnectionServiceResolverServerCertificateArrayOutput() EkmConnectionServiceResolverServerCertificateArrayOutput
+	ToEkmConnectionServiceResolverServerCertificateArrayOutputWithContext(context.Context) EkmConnectionServiceResolverServerCertificateArrayOutput
+}
+
+type EkmConnectionServiceResolverServerCertificateArray []EkmConnectionServiceResolverServerCertificateInput
+
+func (EkmConnectionServiceResolverServerCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EkmConnectionServiceResolverServerCertificate)(nil)).Elem()
+}
+
+func (i EkmConnectionServiceResolverServerCertificateArray) ToEkmConnectionServiceResolverServerCertificateArrayOutput() EkmConnectionServiceResolverServerCertificateArrayOutput {
+	return i.ToEkmConnectionServiceResolverServerCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionServiceResolverServerCertificateArray) ToEkmConnectionServiceResolverServerCertificateArrayOutputWithContext(ctx context.Context) EkmConnectionServiceResolverServerCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionServiceResolverServerCertificateArrayOutput)
+}
+
+type EkmConnectionServiceResolverServerCertificateOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionServiceResolverServerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionServiceResolverServerCertificate)(nil)).Elem()
+}
+
+func (o EkmConnectionServiceResolverServerCertificateOutput) ToEkmConnectionServiceResolverServerCertificateOutput() EkmConnectionServiceResolverServerCertificateOutput {
+	return o
+}
+
+func (o EkmConnectionServiceResolverServerCertificateOutput) ToEkmConnectionServiceResolverServerCertificateOutputWithContext(ctx context.Context) EkmConnectionServiceResolverServerCertificateOutput {
+	return o
+}
+
+// (Output)
+// Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true.
+func (o EkmConnectionServiceResolverServerCertificateOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The certificate is not valid after this time. Only present if parsed is true.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o EkmConnectionServiceResolverServerCertificateOutput) NotAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *string { return v.NotAfterTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The certificate is not valid before this time. Only present if parsed is true.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o EkmConnectionServiceResolverServerCertificateOutput) NotBeforeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *string { return v.NotBeforeTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. True if the certificate was parsed successfully.
+func (o EkmConnectionServiceResolverServerCertificateOutput) Parsed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *bool { return v.Parsed }).(pulumi.BoolPtrOutput)
+}
+
+// Required. The raw certificate bytes in DER format. A base64-encoded string.
+func (o EkmConnectionServiceResolverServerCertificateOutput) RawDer() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) string { return v.RawDer }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. The certificate serial number as a hex string. Only present if parsed is true.
+func (o EkmConnectionServiceResolverServerCertificateOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
+func (o EkmConnectionServiceResolverServerCertificateOutput) Sha256Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *string { return v.Sha256Fingerprint }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
+func (o EkmConnectionServiceResolverServerCertificateOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The subject Alternative DNS names. Only present if parsed is true.
+//
+// ***
+func (o EkmConnectionServiceResolverServerCertificateOutput) SubjectAlternativeDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) []string { return v.SubjectAlternativeDnsNames }).(pulumi.StringArrayOutput)
+}
+
+type EkmConnectionServiceResolverServerCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionServiceResolverServerCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EkmConnectionServiceResolverServerCertificate)(nil)).Elem()
+}
+
+func (o EkmConnectionServiceResolverServerCertificateArrayOutput) ToEkmConnectionServiceResolverServerCertificateArrayOutput() EkmConnectionServiceResolverServerCertificateArrayOutput {
+	return o
+}
+
+func (o EkmConnectionServiceResolverServerCertificateArrayOutput) ToEkmConnectionServiceResolverServerCertificateArrayOutputWithContext(ctx context.Context) EkmConnectionServiceResolverServerCertificateArrayOutput {
+	return o
+}
+
+func (o EkmConnectionServiceResolverServerCertificateArrayOutput) Index(i pulumi.IntInput) EkmConnectionServiceResolverServerCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EkmConnectionServiceResolverServerCertificate {
+		return vs[0].([]EkmConnectionServiceResolverServerCertificate)[vs[1].(int)]
+	}).(EkmConnectionServiceResolverServerCertificateOutput)
+}
+
 type KeyRingIAMBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -2074,6 +2408,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverInput)(nil)).Elem(), EkmConnectionServiceResolverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverArrayInput)(nil)).Elem(), EkmConnectionServiceResolverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverServerCertificateInput)(nil)).Elem(), EkmConnectionServiceResolverServerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverServerCertificateArrayInput)(nil)).Elem(), EkmConnectionServiceResolverServerCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionPtrInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberConditionInput)(nil)).Elem(), KeyRingIAMMemberConditionArgs{})
@@ -2102,6 +2440,10 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
+	pulumi.RegisterOutputType(EkmConnectionServiceResolverOutput{})
+	pulumi.RegisterOutputType(EkmConnectionServiceResolverArrayOutput{})
+	pulumi.RegisterOutputType(EkmConnectionServiceResolverServerCertificateOutput{})
+	pulumi.RegisterOutputType(EkmConnectionServiceResolverServerCertificateArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberConditionOutput{})

@@ -690,6 +690,21 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Region Network Endpoint Group Appengine Empty
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # App Engine Example
+        appengine_neg = gcp.compute.RegionNetworkEndpointGroup("appengine_neg",
+            name="appengine-neg",
+            network_endpoint_type="SERVERLESS",
+            region="us-central1",
+            app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArgs())
+        ```
+        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Psc
 
         <!--Start PulumiCodeChooser -->
@@ -1005,6 +1020,21 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 service=appengine_neg_flexible_app_version.service,
                 version=appengine_neg_flexible_app_version.version_id,
             ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Region Network Endpoint Group Appengine Empty
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # App Engine Example
+        appengine_neg = gcp.compute.RegionNetworkEndpointGroup("appengine_neg",
+            name="appengine-neg",
+            network_endpoint_type="SERVERLESS",
+            region="us-central1",
+            app_engine=gcp.compute.RegionNetworkEndpointGroupAppEngineArgs())
         ```
         <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Group Psc

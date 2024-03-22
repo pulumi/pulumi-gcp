@@ -229,6 +229,10 @@ import (
 //					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 //					pulumi.String("https://www.googleapis.com/auth/userinfo.email"),
 //				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
 //				DiskEncryption: pulumi.String("CMEK"),
 //				KmsKey:         pulumi.String("my-crypto-key"),
 //				DesiredState:   pulumi.String("ACTIVE"),

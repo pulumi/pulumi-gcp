@@ -638,6 +638,9 @@ type WorkstationConfig struct {
 	// If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	// Structure is documented below.
 	EncryptionKey WorkstationConfigEncryptionKeyPtrOutput `pulumi:"encryptionKey"`
+	// Ephemeral directories which won't persist across workstation sessions.
+	// Structure is documented below.
+	EphemeralDirectories WorkstationConfigEphemeralDirectoryArrayOutput `pulumi:"ephemeralDirectories"`
 	// Checksum computed by the server.
 	// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -758,6 +761,9 @@ type workstationConfigState struct {
 	// If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	// Structure is documented below.
 	EncryptionKey *WorkstationConfigEncryptionKey `pulumi:"encryptionKey"`
+	// Ephemeral directories which won't persist across workstation sessions.
+	// Structure is documented below.
+	EphemeralDirectories []WorkstationConfigEphemeralDirectory `pulumi:"ephemeralDirectories"`
 	// Checksum computed by the server.
 	// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -835,6 +841,9 @@ type WorkstationConfigState struct {
 	// If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	// Structure is documented below.
 	EncryptionKey WorkstationConfigEncryptionKeyPtrInput
+	// Ephemeral directories which won't persist across workstation sessions.
+	// Structure is documented below.
+	EphemeralDirectories WorkstationConfigEphemeralDirectoryArrayInput
 	// Checksum computed by the server.
 	// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -904,6 +913,9 @@ type workstationConfigArgs struct {
 	// If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	// Structure is documented below.
 	EncryptionKey *WorkstationConfigEncryptionKey `pulumi:"encryptionKey"`
+	// Ephemeral directories which won't persist across workstation sessions.
+	// Structure is documented below.
+	EphemeralDirectories []WorkstationConfigEphemeralDirectory `pulumi:"ephemeralDirectories"`
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host *WorkstationConfigHost `pulumi:"host"`
@@ -960,6 +972,9 @@ type WorkstationConfigArgs struct {
 	// If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	// Structure is documented below.
 	EncryptionKey WorkstationConfigEncryptionKeyPtrInput
+	// Ephemeral directories which won't persist across workstation sessions.
+	// Structure is documented below.
+	EphemeralDirectories WorkstationConfigEphemeralDirectoryArrayInput
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostPtrInput
@@ -1144,6 +1159,14 @@ func (o WorkstationConfigOutput) EnableAuditAgent() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o WorkstationConfigOutput) EncryptionKey() WorkstationConfigEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigEncryptionKeyPtrOutput { return v.EncryptionKey }).(WorkstationConfigEncryptionKeyPtrOutput)
+}
+
+// Ephemeral directories which won't persist across workstation sessions.
+// Structure is documented below.
+func (o WorkstationConfigOutput) EphemeralDirectories() WorkstationConfigEphemeralDirectoryArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigEphemeralDirectoryArrayOutput {
+		return v.EphemeralDirectories
+	}).(WorkstationConfigEphemeralDirectoryArrayOutput)
 }
 
 // Checksum computed by the server.

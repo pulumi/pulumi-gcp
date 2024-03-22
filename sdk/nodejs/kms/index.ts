@@ -30,6 +30,11 @@ export type CryptoKeyVersion = import("./cryptoKeyVersion").CryptoKeyVersion;
 export const CryptoKeyVersion: typeof import("./cryptoKeyVersion").CryptoKeyVersion = null as any;
 utilities.lazyLoad(exports, ["CryptoKeyVersion"], () => require("./cryptoKeyVersion"));
 
+export { EkmConnectionArgs, EkmConnectionState } from "./ekmConnection";
+export type EkmConnection = import("./ekmConnection").EkmConnection;
+export const EkmConnection: typeof import("./ekmConnection").EkmConnection = null as any;
+utilities.lazyLoad(exports, ["EkmConnection"], () => require("./ekmConnection"));
+
 export { GetCryptoKeyIamPolicyArgs, GetCryptoKeyIamPolicyResult, GetCryptoKeyIamPolicyOutputArgs } from "./getCryptoKeyIamPolicy";
 export const getCryptoKeyIamPolicy: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicy = null as any;
 export const getCryptoKeyIamPolicyOutput: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicyOutput = null as any;
@@ -115,6 +120,8 @@ const _module = {
                 return new CryptoKeyIAMPolicy(name, <any>undefined, { urn })
             case "gcp:kms/cryptoKeyVersion:CryptoKeyVersion":
                 return new CryptoKeyVersion(name, <any>undefined, { urn })
+            case "gcp:kms/ekmConnection:EkmConnection":
+                return new EkmConnection(name, <any>undefined, { urn })
             case "gcp:kms/keyRing:KeyRing":
                 return new KeyRing(name, <any>undefined, { urn })
             case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
@@ -137,6 +144,7 @@ pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyVersion", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnection", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRing", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMMember", _module)

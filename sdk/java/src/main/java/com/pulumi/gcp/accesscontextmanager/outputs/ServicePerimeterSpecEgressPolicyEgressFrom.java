@@ -14,9 +14,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServicePerimeterSpecEgressPolicyEgressFrom {
     /**
-     * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * @return &#39;A list of identities that are allowed access through this `EgressPolicy`.
+     * To specify an identity or identity group, use the IAM v1
+     * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+     * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
      * 
      */
     private @Nullable List<String> identities;
@@ -43,9 +44,10 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
 
     private ServicePerimeterSpecEgressPolicyEgressFrom() {}
     /**
-     * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * @return &#39;A list of identities that are allowed access through this `EgressPolicy`.
+     * To specify an identity or identity group, use the IAM v1
+     * format specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).
+     * The following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.&#39;
      * 
      */
     public List<String> identities() {

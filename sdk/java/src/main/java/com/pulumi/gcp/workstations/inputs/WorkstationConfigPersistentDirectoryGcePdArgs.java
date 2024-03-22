@@ -17,14 +17,14 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     public static final WorkstationConfigPersistentDirectoryGcePdArgs Empty = new WorkstationConfigPersistentDirectoryGcePdArgs();
 
     /**
-     * The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+     * Type of the disk to use. Defaults to `&#34;pd-standard&#34;`.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+     * @return Type of the disk to use. Defaults to `&#34;pd-standard&#34;`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -81,14 +81,20 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     }
 
     /**
-     * Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+     * Name of the snapshot to use as the source for the disk.
+     * Must be empty if `sourceImage` is set.
+     * Must be empty if `read_only` is false.
+     * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
      * 
      */
     @Import(name="sourceSnapshot")
     private @Nullable Output<String> sourceSnapshot;
 
     /**
-     * @return Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+     * @return Name of the snapshot to use as the source for the disk.
+     * Must be empty if `sourceImage` is set.
+     * Must be empty if `read_only` is false.
+     * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
      * 
      */
     public Optional<Output<String>> sourceSnapshot() {
@@ -124,7 +130,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param diskType The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+         * @param diskType Type of the disk to use. Defaults to `&#34;pd-standard&#34;`.
          * 
          * @return builder
          * 
@@ -135,7 +141,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param diskType The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+         * @param diskType Type of the disk to use. Defaults to `&#34;pd-standard&#34;`.
          * 
          * @return builder
          * 
@@ -212,7 +218,10 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param sourceSnapshot Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+         * @param sourceSnapshot Name of the snapshot to use as the source for the disk.
+         * Must be empty if `sourceImage` is set.
+         * Must be empty if `read_only` is false.
+         * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
          * 
          * @return builder
          * 
@@ -223,7 +232,10 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param sourceSnapshot Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
+         * @param sourceSnapshot Name of the snapshot to use as the source for the disk.
+         * Must be empty if `sourceImage` is set.
+         * Must be empty if `read_only` is false.
+         * Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
          * 
          * @return builder
          * 

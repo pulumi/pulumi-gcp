@@ -20,6 +20,11 @@ export type AppCheckDebugToken = import("./appCheckDebugToken").AppCheckDebugTok
 export const AppCheckDebugToken: typeof import("./appCheckDebugToken").AppCheckDebugToken = null as any;
 utilities.lazyLoad(exports, ["AppCheckDebugToken"], () => require("./appCheckDebugToken"));
 
+export { AppCheckDeviceCheckConfigArgs, AppCheckDeviceCheckConfigState } from "./appCheckDeviceCheckConfig";
+export type AppCheckDeviceCheckConfig = import("./appCheckDeviceCheckConfig").AppCheckDeviceCheckConfig;
+export const AppCheckDeviceCheckConfig: typeof import("./appCheckDeviceCheckConfig").AppCheckDeviceCheckConfig = null as any;
+utilities.lazyLoad(exports, ["AppCheckDeviceCheckConfig"], () => require("./appCheckDeviceCheckConfig"));
+
 export { AppCheckPlayIntegrityConfigArgs, AppCheckPlayIntegrityConfigState } from "./appCheckPlayIntegrityConfig";
 export type AppCheckPlayIntegrityConfig = import("./appCheckPlayIntegrityConfig").AppCheckPlayIntegrityConfig;
 export const AppCheckPlayIntegrityConfig: typeof import("./appCheckPlayIntegrityConfig").AppCheckPlayIntegrityConfig = null as any;
@@ -141,6 +146,8 @@ const _module = {
                 return new AppCheckAppAttestConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckDebugToken:AppCheckDebugToken":
                 return new AppCheckDebugToken(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig":
+                return new AppCheckDeviceCheckConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig":
                 return new AppCheckPlayIntegrityConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig":
@@ -179,6 +186,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckAppAttestConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckDebugToken", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckDeviceCheckConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckPlayIntegrityConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaEnterpriseConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckRecaptchaV3Config", _module)

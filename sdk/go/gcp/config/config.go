@@ -41,6 +41,9 @@ func GetApikeysCustomEndpoint(ctx *pulumi.Context) string {
 func GetAppEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:appEngineCustomEndpoint")
 }
+func GetApphubCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:apphubCustomEndpoint")
+}
 func GetArtifactRegistryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:artifactRegistryCustomEndpoint")
 }
@@ -115,6 +118,9 @@ func GetCloudIdentityCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetCloudIdsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudIdsCustomEndpoint")
+}
+func GetCloudQuotasCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudQuotasCustomEndpoint")
 }
 func GetCloudResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudResourceManagerCustomEndpoint")

@@ -15185,8 +15185,7 @@ type VMwareClusterNetworkConfig struct {
 	// Configuration settings for a static IP configuration.
 	// Structure is documented below.
 	StaticIpConfig *VMwareClusterNetworkConfigStaticIpConfig `pulumi:"staticIpConfig"`
-	// (Output)
-	// vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+	// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
 	VcenterNetwork *string `pulumi:"vcenterNetwork"`
 }
 
@@ -15221,8 +15220,7 @@ type VMwareClusterNetworkConfigArgs struct {
 	// Configuration settings for a static IP configuration.
 	// Structure is documented below.
 	StaticIpConfig VMwareClusterNetworkConfigStaticIpConfigPtrInput `pulumi:"staticIpConfig"`
-	// (Output)
-	// vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+	// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
 	VcenterNetwork pulumi.StringPtrInput `pulumi:"vcenterNetwork"`
 }
 
@@ -15342,8 +15340,7 @@ func (o VMwareClusterNetworkConfigOutput) StaticIpConfig() VMwareClusterNetworkC
 	return o.ApplyT(func(v VMwareClusterNetworkConfig) *VMwareClusterNetworkConfigStaticIpConfig { return v.StaticIpConfig }).(VMwareClusterNetworkConfigStaticIpConfigPtrOutput)
 }
 
-// (Output)
-// vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
 func (o VMwareClusterNetworkConfigOutput) VcenterNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterNetworkConfig) *string { return v.VcenterNetwork }).(pulumi.StringPtrOutput)
 }
@@ -15439,8 +15436,7 @@ func (o VMwareClusterNetworkConfigPtrOutput) StaticIpConfig() VMwareClusterNetwo
 	}).(VMwareClusterNetworkConfigStaticIpConfigPtrOutput)
 }
 
-// (Output)
-// vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
 func (o VMwareClusterNetworkConfigPtrOutput) VcenterNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterNetworkConfig) *string {
 		if v == nil {

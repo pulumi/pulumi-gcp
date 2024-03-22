@@ -89,6 +89,14 @@ Object.defineProperty(exports, "appEngineCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const apphubCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "apphubCustomEndpoint", {
+    get() {
+        return __config.get("apphubCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const artifactRegistryCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "artifactRegistryCustomEndpoint", {
     get() {
@@ -285,6 +293,14 @@ export declare const cloudIdsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudIdsCustomEndpoint", {
     get() {
         return __config.get("cloudIdsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudQuotasCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudQuotasCustomEndpoint", {
+    get() {
+        return __config.get("cloudQuotasCustomEndpoint");
     },
     enumerable: true,
 });

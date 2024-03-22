@@ -632,6 +632,13 @@ namespace Pulumi.Gcp.Workstations
         public Output<Outputs.WorkstationConfigEncryptionKey?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// Ephemeral directories which won't persist across workstation sessions.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("ephemeralDirectories")]
+        public Output<ImmutableArray<Outputs.WorkstationConfigEphemeralDirectory>> EphemeralDirectories { get; private set; } = null!;
+
+        /// <summary>
         /// Checksum computed by the server.
         /// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         /// </summary>
@@ -834,6 +841,19 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("encryptionKey")]
         public Input<Inputs.WorkstationConfigEncryptionKeyArgs>? EncryptionKey { get; set; }
+
+        [Input("ephemeralDirectories")]
+        private InputList<Inputs.WorkstationConfigEphemeralDirectoryArgs>? _ephemeralDirectories;
+
+        /// <summary>
+        /// Ephemeral directories which won't persist across workstation sessions.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigEphemeralDirectoryArgs> EphemeralDirectories
+        {
+            get => _ephemeralDirectories ?? (_ephemeralDirectories = new InputList<Inputs.WorkstationConfigEphemeralDirectoryArgs>());
+            set => _ephemeralDirectories = value;
+        }
 
         /// <summary>
         /// Runtime host for a workstation.
@@ -1047,6 +1067,19 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("encryptionKey")]
         public Input<Inputs.WorkstationConfigEncryptionKeyGetArgs>? EncryptionKey { get; set; }
+
+        [Input("ephemeralDirectories")]
+        private InputList<Inputs.WorkstationConfigEphemeralDirectoryGetArgs>? _ephemeralDirectories;
+
+        /// <summary>
+        /// Ephemeral directories which won't persist across workstation sessions.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigEphemeralDirectoryGetArgs> EphemeralDirectories
+        {
+            get => _ephemeralDirectories ?? (_ephemeralDirectories = new InputList<Inputs.WorkstationConfigEphemeralDirectoryGetArgs>());
+            set => _ephemeralDirectories = value;
+        }
 
         /// <summary>
         /// Checksum computed by the server.

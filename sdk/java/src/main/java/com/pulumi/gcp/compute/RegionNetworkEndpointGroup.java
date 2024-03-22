@@ -265,6 +265,42 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Network Endpoint Group Appengine Empty
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupAppEngineArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var appengineNeg = new RegionNetworkEndpointGroup(&#34;appengineNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .name(&#34;appengine-neg&#34;)
+ *             .networkEndpointType(&#34;SERVERLESS&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .appEngine()
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Network Endpoint Group Psc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

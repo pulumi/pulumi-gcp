@@ -134,6 +134,7 @@ import (
 //							Gateway: pulumi.String("test-gateway"),
 //						},
 //					},
+//					VcenterNetwork: pulumi.String("test-vcenter-network"),
 //				},
 //				ControlPlaneNode: &gkeonprem.VMwareClusterControlPlaneNodeArgs{
 //					Cpus:     pulumi.Int(4),

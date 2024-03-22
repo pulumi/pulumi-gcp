@@ -27,12 +27,12 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> requestHeaders;
     /**
-     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams;
     /**
-     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
      * 
      */
     private @Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri> requestUris;
@@ -65,14 +65,14 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         return this.requestHeaders == null ? List.of() : this.requestHeaders;
     }
     /**
-     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams() {
         return this.requestQueryParams == null ? List.of() : this.requestQueryParams;
     }
     /**
-     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
      * 
      */
     public List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri> requestUris() {

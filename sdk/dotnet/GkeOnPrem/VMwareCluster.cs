@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                     Gateway = "test-gateway",
     ///                 },
     ///             },
+    ///             VcenterNetwork = "test-vcenter-network",
     ///         },
     ///         ControlPlaneNode = new Gcp.GkeOnPrem.Inputs.VMwareClusterControlPlaneNodeArgs
     ///         {

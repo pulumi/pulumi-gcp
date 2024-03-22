@@ -15,14 +15,20 @@ namespace Pulumi.Gcp.Storage.Inputs
         /// <summary>
         /// Credentials used to authenticate API requests to Azure block.
         /// </summary>
-        [Input("azureCredentials", required: true)]
-        public Input<Inputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs> AzureCredentials { get; set; } = null!;
+        [Input("azureCredentials")]
+        public Input<Inputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs>? AzureCredentials { get; set; }
 
         /// <summary>
         /// The container to transfer from the Azure Storage account.`
         /// </summary>
         [Input("container", required: true)]
         public Input<string> Container { get; set; } = null!;
+
+        /// <summary>
+        /// Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        /// </summary>
+        [Input("credentialsSecret")]
+        public Input<string>? CredentialsSecret { get; set; }
 
         /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.

@@ -22,7 +22,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, delete_time=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, delete_time=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -107,6 +107,9 @@ class GetServiceResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if scalings and not isinstance(scalings, list):
+            raise TypeError("Expected argument 'scalings' to be a list")
+        pulumi.set(__self__, "scalings", scalings)
         if templates and not isinstance(templates, list):
             raise TypeError("Expected argument 'templates' to be a list")
         pulumi.set(__self__, "templates", templates)
@@ -274,6 +277,11 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
+    def scalings(self) -> Sequence['outputs.GetServiceScalingResult']:
+        return pulumi.get(self, "scalings")
+
+    @property
+    @pulumi.getter
     def templates(self) -> Sequence['outputs.GetServiceTemplateResult']:
         return pulumi.get(self, "templates")
 
@@ -342,6 +350,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             reconciling=self.reconciling,
+            scalings=self.scalings,
             templates=self.templates,
             terminal_conditions=self.terminal_conditions,
             traffic_statuses=self.traffic_statuses,
@@ -416,6 +425,7 @@ def get_service(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        scalings=pulumi.get(__ret__, 'scalings'),
         templates=pulumi.get(__ret__, 'templates'),
         terminal_conditions=pulumi.get(__ret__, 'terminal_conditions'),
         traffic_statuses=pulumi.get(__ret__, 'traffic_statuses'),

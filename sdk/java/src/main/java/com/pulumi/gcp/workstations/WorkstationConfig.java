@@ -13,6 +13,7 @@ import com.pulumi.gcp.workstations.inputs.WorkstationConfigState;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigCondition;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigContainer;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigEncryptionKey;
+import com.pulumi.gcp.workstations.outputs.WorkstationConfigEphemeralDirectory;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHost;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigPersistentDirectory;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigReadinessCheck;
@@ -803,6 +804,22 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkstationConfigEncryptionKey>> encryptionKey() {
         return Codegen.optional(this.encryptionKey);
+    }
+    /**
+     * Ephemeral directories which won&#39;t persist across workstation sessions.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="ephemeralDirectories", refs={List.class,WorkstationConfigEphemeralDirectory.class}, tree="[0,1]")
+    private Output<List<WorkstationConfigEphemeralDirectory>> ephemeralDirectories;
+
+    /**
+     * @return Ephemeral directories which won&#39;t persist across workstation sessions.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<WorkstationConfigEphemeralDirectory>> ephemeralDirectories() {
+        return this.ephemeralDirectories;
     }
     /**
      * Checksum computed by the server.

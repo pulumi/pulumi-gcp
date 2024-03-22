@@ -92,6 +92,7 @@ import * as utilities from "../utilities";
  *                 gateway: "test-gateway",
  *             },
  *         },
+ *         vcenterNetwork: "test-vcenter-network",
  *     },
  *     controlPlaneNode: {
  *         cpus: 4,

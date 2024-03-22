@@ -4200,6 +4200,143 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServiceScaling struct {
+	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+	MinInstanceCount *int `pulumi:"minInstanceCount"`
+}
+
+// ServiceScalingInput is an input type that accepts ServiceScalingArgs and ServiceScalingOutput values.
+// You can construct a concrete instance of `ServiceScalingInput` via:
+//
+//	ServiceScalingArgs{...}
+type ServiceScalingInput interface {
+	pulumi.Input
+
+	ToServiceScalingOutput() ServiceScalingOutput
+	ToServiceScalingOutputWithContext(context.Context) ServiceScalingOutput
+}
+
+type ServiceScalingArgs struct {
+	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
+}
+
+func (ServiceScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceScaling)(nil)).Elem()
+}
+
+func (i ServiceScalingArgs) ToServiceScalingOutput() ServiceScalingOutput {
+	return i.ToServiceScalingOutputWithContext(context.Background())
+}
+
+func (i ServiceScalingArgs) ToServiceScalingOutputWithContext(ctx context.Context) ServiceScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceScalingOutput)
+}
+
+func (i ServiceScalingArgs) ToServiceScalingPtrOutput() ServiceScalingPtrOutput {
+	return i.ToServiceScalingPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceScalingArgs) ToServiceScalingPtrOutputWithContext(ctx context.Context) ServiceScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceScalingOutput).ToServiceScalingPtrOutputWithContext(ctx)
+}
+
+// ServiceScalingPtrInput is an input type that accepts ServiceScalingArgs, ServiceScalingPtr and ServiceScalingPtrOutput values.
+// You can construct a concrete instance of `ServiceScalingPtrInput` via:
+//
+//	        ServiceScalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceScalingPtrInput interface {
+	pulumi.Input
+
+	ToServiceScalingPtrOutput() ServiceScalingPtrOutput
+	ToServiceScalingPtrOutputWithContext(context.Context) ServiceScalingPtrOutput
+}
+
+type serviceScalingPtrType ServiceScalingArgs
+
+func ServiceScalingPtr(v *ServiceScalingArgs) ServiceScalingPtrInput {
+	return (*serviceScalingPtrType)(v)
+}
+
+func (*serviceScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceScaling)(nil)).Elem()
+}
+
+func (i *serviceScalingPtrType) ToServiceScalingPtrOutput() ServiceScalingPtrOutput {
+	return i.ToServiceScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceScalingPtrType) ToServiceScalingPtrOutputWithContext(ctx context.Context) ServiceScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceScalingPtrOutput)
+}
+
+type ServiceScalingOutput struct{ *pulumi.OutputState }
+
+func (ServiceScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceScaling)(nil)).Elem()
+}
+
+func (o ServiceScalingOutput) ToServiceScalingOutput() ServiceScalingOutput {
+	return o
+}
+
+func (o ServiceScalingOutput) ToServiceScalingOutputWithContext(ctx context.Context) ServiceScalingOutput {
+	return o
+}
+
+func (o ServiceScalingOutput) ToServiceScalingPtrOutput() ServiceScalingPtrOutput {
+	return o.ToServiceScalingPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceScalingOutput) ToServiceScalingPtrOutputWithContext(ctx context.Context) ServiceScalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceScaling) *ServiceScaling {
+		return &v
+	}).(ServiceScalingPtrOutput)
+}
+
+// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+func (o ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+type ServiceScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceScaling)(nil)).Elem()
+}
+
+func (o ServiceScalingPtrOutput) ToServiceScalingPtrOutput() ServiceScalingPtrOutput {
+	return o
+}
+
+func (o ServiceScalingPtrOutput) ToServiceScalingPtrOutputWithContext(ctx context.Context) ServiceScalingPtrOutput {
+	return o
+}
+
+func (o ServiceScalingPtrOutput) Elem() ServiceScalingOutput {
+	return o.ApplyT(func(v *ServiceScaling) ServiceScaling {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceScaling
+		return ret
+	}).(ServiceScalingOutput)
+}
+
+// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+func (o ServiceScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
 type ServiceTemplate struct {
 	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
 	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -7377,7 +7514,7 @@ func (o ServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput)
 type ServiceTemplateScaling struct {
 	// Maximum number of serving instances that this resource should have.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
-	// Minimum number of serving instances that this resource should have.
+	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 }
 
@@ -7395,7 +7532,7 @@ type ServiceTemplateScalingInput interface {
 type ServiceTemplateScalingArgs struct {
 	// Maximum number of serving instances that this resource should have.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
-	// Minimum number of serving instances that this resource should have.
+	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 }
 
@@ -7481,7 +7618,7 @@ func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of serving instances that this resource should have.
+// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o ServiceTemplateScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -7520,7 +7657,7 @@ func (o ServiceTemplateScalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of serving instances that this resource should have.
+// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o ServiceTemplateScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateScaling) *int {
 		if v == nil {
@@ -12163,6 +12300,103 @@ func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceCondi
 	}).(GetServiceConditionOutput)
 }
 
+type GetServiceScaling struct {
+	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// GetServiceScalingInput is an input type that accepts GetServiceScalingArgs and GetServiceScalingOutput values.
+// You can construct a concrete instance of `GetServiceScalingInput` via:
+//
+//	GetServiceScalingArgs{...}
+type GetServiceScalingInput interface {
+	pulumi.Input
+
+	ToGetServiceScalingOutput() GetServiceScalingOutput
+	ToGetServiceScalingOutputWithContext(context.Context) GetServiceScalingOutput
+}
+
+type GetServiceScalingArgs struct {
+	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (GetServiceScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceScaling)(nil)).Elem()
+}
+
+func (i GetServiceScalingArgs) ToGetServiceScalingOutput() GetServiceScalingOutput {
+	return i.ToGetServiceScalingOutputWithContext(context.Background())
+}
+
+func (i GetServiceScalingArgs) ToGetServiceScalingOutputWithContext(ctx context.Context) GetServiceScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceScalingOutput)
+}
+
+// GetServiceScalingArrayInput is an input type that accepts GetServiceScalingArray and GetServiceScalingArrayOutput values.
+// You can construct a concrete instance of `GetServiceScalingArrayInput` via:
+//
+//	GetServiceScalingArray{ GetServiceScalingArgs{...} }
+type GetServiceScalingArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceScalingArrayOutput() GetServiceScalingArrayOutput
+	ToGetServiceScalingArrayOutputWithContext(context.Context) GetServiceScalingArrayOutput
+}
+
+type GetServiceScalingArray []GetServiceScalingInput
+
+func (GetServiceScalingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceScaling)(nil)).Elem()
+}
+
+func (i GetServiceScalingArray) ToGetServiceScalingArrayOutput() GetServiceScalingArrayOutput {
+	return i.ToGetServiceScalingArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceScalingArray) ToGetServiceScalingArrayOutputWithContext(ctx context.Context) GetServiceScalingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceScalingArrayOutput)
+}
+
+type GetServiceScalingOutput struct{ *pulumi.OutputState }
+
+func (GetServiceScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceScaling)(nil)).Elem()
+}
+
+func (o GetServiceScalingOutput) ToGetServiceScalingOutput() GetServiceScalingOutput {
+	return o
+}
+
+func (o GetServiceScalingOutput) ToGetServiceScalingOutputWithContext(ctx context.Context) GetServiceScalingOutput {
+	return o
+}
+
+// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+func (o GetServiceScalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceScaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type GetServiceScalingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceScalingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceScaling)(nil)).Elem()
+}
+
+func (o GetServiceScalingArrayOutput) ToGetServiceScalingArrayOutput() GetServiceScalingArrayOutput {
+	return o
+}
+
+func (o GetServiceScalingArrayOutput) ToGetServiceScalingArrayOutputWithContext(ctx context.Context) GetServiceScalingArrayOutput {
+	return o
+}
+
+func (o GetServiceScalingArrayOutput) Index(i pulumi.IntInput) GetServiceScalingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceScaling {
+		return vs[0].([]GetServiceScaling)[vs[1].(int)]
+	}).(GetServiceScalingOutput)
+}
+
 type GetServiceTemplate struct {
 	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
 	//
@@ -16074,6 +16308,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionPtrInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamMemberConditionPtrInput)(nil)).Elem(), ServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceScalingInput)(nil)).Elem(), ServiceScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceScalingPtrInput)(nil)).Elem(), ServiceScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplatePtrInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerInput)(nil)).Elem(), ServiceTemplateContainerArgs{})
@@ -16180,6 +16416,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBinaryAuthorizationArrayInput)(nil)).Elem(), GetServiceBinaryAuthorizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionInput)(nil)).Elem(), GetServiceConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionArrayInput)(nil)).Elem(), GetServiceConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingInput)(nil)).Elem(), GetServiceScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingArrayInput)(nil)).Elem(), GetServiceScalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateInput)(nil)).Elem(), GetServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateArrayInput)(nil)).Elem(), GetServiceTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerInput)(nil)).Elem(), GetServiceTemplateContainerArgs{})
@@ -16294,6 +16532,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ServiceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ServiceScalingOutput{})
+	pulumi.RegisterOutputType(ServiceScalingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateOutput{})
 	pulumi.RegisterOutputType(ServiceTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerOutput{})
@@ -16400,6 +16640,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceBinaryAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceScalingOutput{})
+	pulumi.RegisterOutputType(GetServiceScalingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerOutput{})

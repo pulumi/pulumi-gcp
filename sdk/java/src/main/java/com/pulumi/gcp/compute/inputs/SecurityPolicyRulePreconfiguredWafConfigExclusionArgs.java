@@ -52,14 +52,14 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     }
 
     /**
-     * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
      * 
      */
     @Import(name="requestQueryParams")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs>> requestQueryParams;
 
     /**
-     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs>>> requestQueryParams() {
@@ -67,14 +67,14 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
     }
 
     /**
-     * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
      * 
      */
     @Import(name="requestUris")
     private @Nullable Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs>> requestUris;
 
     /**
-     * @return Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+     * @return Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs>>> requestUris() {
@@ -207,7 +207,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestQueryParams Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestQueryParams Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestQueryParams Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         * @param requestQueryParams Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestUris Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestUris Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         /**
-         * @param requestUris Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         * @param requestUris Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
          * 
          * @return builder
          * 

@@ -75,6 +75,62 @@ namespace Pulumi.Gcp.Firestore
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Firestore Cmek Database
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+    ///     {
+    ///         Name = "kms-key-ring",
+    ///         Location = "us",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+    ///     {
+    ///         Name = "kms-key",
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ENCRYPT_DECRYPT",
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "cmek-database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///         CmekConfig = new Gcp.Firestore.Inputs.DatabaseCmekConfigArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var firestoreCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-firestore.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Default Database In Datastore Mode
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -124,6 +180,62 @@ namespace Pulumi.Gcp.Firestore
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Firestore Cmek Database In Datastore Mode
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+    ///     {
+    ///         Name = "kms-key-ring",
+    ///         Location = "us",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+    ///     {
+    ///         Name = "kms-key",
+    ///         KeyRing = keyRing.Id,
+    ///         Purpose = "ENCRYPT_DECRYPT",
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "cmek-database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "DATASTORE_MODE",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///         CmekConfig = new Gcp.Firestore.Inputs.DatabaseCmekConfigArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var firestoreCmekKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("firestore_cmek_keyuser", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-firestore.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -158,6 +270,15 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("appEngineIntegrationMode")]
         public Output<string> AppEngineIntegrationMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        /// database. If not present, the database is secured by the default Google
+        /// encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cmekConfig")]
+        public Output<Outputs.DatabaseCmekConfig?> CmekConfig { get; private set; } = null!;
 
         /// <summary>
         /// The concurrency control mode to use for this database.
@@ -339,6 +460,15 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? AppEngineIntegrationMode { get; set; }
 
         /// <summary>
+        /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        /// database. If not present, the database is secured by the default Google
+        /// encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cmekConfig")]
+        public Input<Inputs.DatabaseCmekConfigArgs>? CmekConfig { get; set; }
+
+        /// <summary>
         /// The concurrency control mode to use for this database.
         /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         /// </summary>
@@ -426,6 +556,15 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("appEngineIntegrationMode")]
         public Input<string>? AppEngineIntegrationMode { get; set; }
+
+        /// <summary>
+        /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+        /// database. If not present, the database is secured by the default Google
+        /// encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cmekConfig")]
+        public Input<Inputs.DatabaseCmekConfigGetArgs>? CmekConfig { get; set; }
 
         /// <summary>
         /// The concurrency control mode to use for this database.

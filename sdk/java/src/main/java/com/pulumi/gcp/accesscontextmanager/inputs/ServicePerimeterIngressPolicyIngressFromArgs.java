@@ -18,18 +18,18 @@ public final class ServicePerimeterIngressPolicyIngressFromArgs extends com.pulu
     public static final ServicePerimeterIngressPolicyIngressFromArgs Empty = new ServicePerimeterIngressPolicyIngressFromArgs();
 
     /**
-     * A list of identities that are allowed access through this ingress policy.
-     * Should be in the format of email address. The email address should represent
-     * individual user or service account only.
+     * A list of identities that are allowed access through this `IngressPolicy`.
+     * Should be in the format of an email address. The email address should represent
+     * an individual user, service account, or Google group.
      * 
      */
     @Import(name="identities")
     private @Nullable Output<List<String>> identities;
 
     /**
-     * @return A list of identities that are allowed access through this ingress policy.
-     * Should be in the format of email address. The email address should represent
-     * individual user or service account only.
+     * @return A list of identities that are allowed access through this `IngressPolicy`.
+     * Should be in the format of an email address. The email address should represent
+     * an individual user, service account, or Google group.
      * 
      */
     public Optional<Output<List<String>>> identities() {
@@ -101,9 +101,9 @@ public final class ServicePerimeterIngressPolicyIngressFromArgs extends com.pulu
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * @param identities A list of identities that are allowed access through this `IngressPolicy`.
+         * Should be in the format of an email address. The email address should represent
+         * an individual user, service account, or Google group.
          * 
          * @return builder
          * 
@@ -114,9 +114,9 @@ public final class ServicePerimeterIngressPolicyIngressFromArgs extends com.pulu
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * @param identities A list of identities that are allowed access through this `IngressPolicy`.
+         * Should be in the format of an email address. The email address should represent
+         * an individual user, service account, or Google group.
          * 
          * @return builder
          * 
@@ -126,9 +126,9 @@ public final class ServicePerimeterIngressPolicyIngressFromArgs extends com.pulu
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * @param identities A list of identities that are allowed access through this `IngressPolicy`.
+         * Should be in the format of an email address. The email address should represent
+         * an individual user, service account, or Google group.
          * 
          * @return builder
          * 

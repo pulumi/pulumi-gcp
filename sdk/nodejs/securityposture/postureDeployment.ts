@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const posture1 = new gcp.securityposture.Posture("posture1", {
+ * const posture1 = new gcp.securityposture.Posture("posture_1", {
  *     postureId: "posture_1",
  *     parent: "organizations/123456789",
  *     location: "global",

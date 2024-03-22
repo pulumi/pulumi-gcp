@@ -2042,10 +2042,12 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "azureCredentials":
-            suggest = "azure_credentials"
-        elif key == "storageAccount":
+        if key == "storageAccount":
             suggest = "storage_account"
+        elif key == "azureCredentials":
+            suggest = "azure_credentials"
+        elif key == "credentialsSecret":
+            suggest = "credentials_secret"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAzureBlobStorageDataSource. Access the value via the '{suggest}' property getter instead.")
@@ -2059,29 +2061,26 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 azure_credentials: 'outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials',
                  container: str,
                  storage_account: str,
+                 azure_credentials: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials'] = None,
+                 credentials_secret: Optional[str] = None,
                  path: Optional[str] = None):
         """
-        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs' azure_credentials: Credentials used to authenticate API requests to Azure block.
         :param str container: The container to transfer from the Azure Storage account.`
         :param str storage_account: The name of the Azure Storage account.
+        :param 'TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs' azure_credentials: Credentials used to authenticate API requests to Azure block.
+        :param str credentials_secret: Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
-        pulumi.set(__self__, "azure_credentials", azure_credentials)
         pulumi.set(__self__, "container", container)
         pulumi.set(__self__, "storage_account", storage_account)
+        if azure_credentials is not None:
+            pulumi.set(__self__, "azure_credentials", azure_credentials)
+        if credentials_secret is not None:
+            pulumi.set(__self__, "credentials_secret", credentials_secret)
         if path is not None:
             pulumi.set(__self__, "path", path)
-
-    @property
-    @pulumi.getter(name="azureCredentials")
-    def azure_credentials(self) -> 'outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials':
-        """
-        Credentials used to authenticate API requests to Azure block.
-        """
-        return pulumi.get(self, "azure_credentials")
 
     @property
     @pulumi.getter
@@ -2098,6 +2097,22 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
         The name of the Azure Storage account.
         """
         return pulumi.get(self, "storage_account")
+
+    @property
+    @pulumi.getter(name="azureCredentials")
+    def azure_credentials(self) -> Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials']:
+        """
+        Credentials used to authenticate API requests to Azure block.
+        """
+        return pulumi.get(self, "azure_credentials")
+
+    @property
+    @pulumi.getter(name="credentialsSecret")
+    def credentials_secret(self) -> Optional[str]:
+        """
+        Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
+        """
+        return pulumi.get(self, "credentials_secret")
 
     @property
     @pulumi.getter

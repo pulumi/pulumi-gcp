@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool Reconciling;
+        public readonly ImmutableArray<Outputs.GetServiceScalingResult> Scalings;
         public readonly ImmutableArray<Outputs.GetServiceTemplateResult> Templates;
         public readonly ImmutableArray<Outputs.GetServiceTerminalConditionResult> TerminalConditions;
         public readonly ImmutableArray<Outputs.GetServiceTrafficStatusResult> TrafficStatuses;
@@ -230,6 +231,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             bool reconciling,
 
+            ImmutableArray<Outputs.GetServiceScalingResult> scalings,
+
             ImmutableArray<Outputs.GetServiceTemplateResult> templates,
 
             ImmutableArray<Outputs.GetServiceTerminalConditionResult> terminalConditions,
@@ -272,6 +275,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Project = project;
             PulumiLabels = pulumiLabels;
             Reconciling = reconciling;
+            Scalings = scalings;
             Templates = templates;
             TerminalConditions = terminalConditions;
             TrafficStatuses = trafficStatuses;

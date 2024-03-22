@@ -1647,6 +1647,109 @@
                     }
                 }
             },
+            "google_apphub_application": {
+                "current": "gcp:apphub/application:Application",
+                "majorVersion": 7,
+                "fields": {
+                    "attributes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "business_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "criticality": {
+                                    "maxItemsOne": true
+                                },
+                                "developer_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "environment": {
+                                    "maxItemsOne": true
+                                },
+                                "operator_owners": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scope": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_apphub_service": {
+                "current": "gcp:apphub/service:Service",
+                "majorVersion": 7,
+                "fields": {
+                    "attributes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "business_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "criticality": {
+                                    "maxItemsOne": true
+                                },
+                                "developer_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "environment": {
+                                    "maxItemsOne": true
+                                },
+                                "operator_owners": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "service_properties": {
+                        "maxItemsOne": false
+                    },
+                    "service_reference": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_apphub_service_project_attachment": {
+                "current": "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment",
+                "majorVersion": 7
+            },
+            "google_apphub_workload": {
+                "current": "gcp:apphub/workload:Workload",
+                "majorVersion": 7,
+                "fields": {
+                    "attributes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "business_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "criticality": {
+                                    "maxItemsOne": true
+                                },
+                                "developer_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "environment": {
+                                    "maxItemsOne": true
+                                },
+                                "operator_owners": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "workload_properties": {
+                        "maxItemsOne": false
+                    },
+                    "workload_reference": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_artifact_registry_repository": {
                 "current": "gcp:artifactregistry/repository:Repository",
                 "majorVersion": 7,
@@ -3393,6 +3496,9 @@
                     },
                     "custom_audiences": {
                         "maxItemsOne": false
+                    },
+                    "scaling": {
+                        "maxItemsOne": true
                     },
                     "template": {
                         "maxItemsOne": true,
@@ -15158,6 +15264,10 @@
                 "current": "gcp:firebase/appCheckDebugToken:AppCheckDebugToken",
                 "majorVersion": 7
             },
+            "google_firebase_app_check_device_check_config": {
+                "current": "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig",
+                "majorVersion": 7
+            },
             "google_firebase_app_check_play_integrity_config": {
                 "current": "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig",
                 "majorVersion": 7
@@ -15400,7 +15510,19 @@
             },
             "google_firestore_database": {
                 "current": "gcp:firestore/database:Database",
-                "majorVersion": 7
+                "majorVersion": 7,
+                "fields": {
+                    "cmek_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "active_key_version": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_firestore_document": {
                 "current": "gcp:firestore/document:Document",
@@ -17263,6 +17385,43 @@
                 "current": "gcp:iap/client:Client",
                 "majorVersion": 7
             },
+            "google_iap_tunnel_dest_group": {
+                "current": "gcp:iap/tunnelDestGroup:TunnelDestGroup",
+                "majorVersion": 7,
+                "fields": {
+                    "cidrs": {
+                        "maxItemsOne": false
+                    },
+                    "fqdns": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iap_tunnel_dest_group_iam_binding": {
+                "current": "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iap_tunnel_dest_group_iam_member": {
+                "current": "gcp:iap/tunnelDestGroupIamMember:TunnelDestGroupIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_iap_tunnel_dest_group_iam_policy": {
+                "current": "gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy",
+                "majorVersion": 7
+            },
             "google_iap_tunnel_iam_binding": {
                 "current": "gcp:iap/tunnelIamBinding:TunnelIamBinding",
                 "majorVersion": 7,
@@ -17948,6 +18107,29 @@
                                 },
                                 "external_protection_level_options": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_kms_ekm_connection": {
+                "current": "gcp:kms/ekmConnection:EkmConnection",
+                "majorVersion": 7,
+                "fields": {
+                    "service_resolvers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "server_certificates": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "subject_alternative_dns_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -19032,6 +19214,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_network_security_firewall_endpoint_association": {
+                "current": "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation",
+                "majorVersion": 7
             },
             "google_network_security_gateway_security_policy": {
                 "current": "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy",
@@ -23803,6 +23989,16 @@
                     "encryption_key": {
                         "maxItemsOne": true
                     },
+                    "ephemeral_directories": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "gce_pd": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "host": {
                         "maxItemsOne": true,
                         "elem": {
@@ -23979,6 +24175,30 @@
             "google_app_engine_default_service_account": {
                 "current": "gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount",
                 "majorVersion": 7
+            },
+            "google_apphub_discovered_service": {
+                "current": "gcp:apphub/getDiscoveredService:getDiscoveredService",
+                "majorVersion": 7,
+                "fields": {
+                    "service_properties": {
+                        "maxItemsOne": false
+                    },
+                    "service_reference": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_apphub_discovered_workload": {
+                "current": "gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload",
+                "majorVersion": 7,
+                "fields": {
+                    "workload_properties": {
+                        "maxItemsOne": false
+                    },
+                    "workload_reference": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_artifact_registry_repository": {
                 "current": "gcp:artifactregistry/getRepository:getRepository",
@@ -24341,6 +24561,31 @@
                     }
                 }
             },
+            "google_cloud_quotas_quota_info": {
+                "current": "gcp:cloudquota/getSQuotaInfo:getSQuotaInfo",
+                "majorVersion": 7,
+                "fields": {
+                    "dimensions": {
+                        "maxItemsOne": false
+                    },
+                    "dimensions_infos": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "applicable_locations": {
+                                    "maxItemsOne": false
+                                },
+                                "details": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "quota_increase_eligibility": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_cloud_run_locations": {
                 "current": "gcp:cloudrun/getLocations:getLocations",
                 "majorVersion": 7,
@@ -24661,6 +24906,9 @@
                         "maxItemsOne": false
                     },
                     "custom_audiences": {
+                        "maxItemsOne": false
+                    },
+                    "scaling": {
                         "maxItemsOne": false
                     },
                     "template": {
@@ -27619,6 +27867,10 @@
                 "current": "gcp:iap/getClient:getClient",
                 "majorVersion": 7
             },
+            "google_iap_tunnel_dest_group_iam_policy": {
+                "current": "gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy",
+                "majorVersion": 7
+            },
             "google_iap_tunnel_iam_policy": {
                 "current": "gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy",
                 "majorVersion": 7
@@ -29479,6 +29731,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_network_security_firewall_endpoint_association": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_network_security_security_profile": [
                 "effective_labels",
                 "terraform_labels"
@@ -29882,6 +30138,10 @@
             "gcp:appengine/flexibleAppVersion:FlexibleAppVersion": 0,
             "gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings": 0,
             "gcp:appengine/standardAppVersion:StandardAppVersion": 0,
+            "gcp:apphub/application:Application": 0,
+            "gcp:apphub/service:Service": 0,
+            "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment": 0,
+            "gcp:apphub/workload:Workload": 0,
             "gcp:artifactregistry/repository:Repository": 0,
             "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding": 0,
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": 0,
@@ -30305,6 +30565,7 @@
             "gcp:firebase/androidApp:AndroidApp": 0,
             "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig": 0,
             "gcp:firebase/appCheckDebugToken:AppCheckDebugToken": 0,
+            "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig": 0,
             "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig": 0,
             "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig": 0,
             "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config": 0,
@@ -30398,6 +30659,10 @@
             "gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy": 0,
             "gcp:iap/brand:Brand": 0,
             "gcp:iap/client:Client": 0,
+            "gcp:iap/tunnelDestGroup:TunnelDestGroup": 0,
+            "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding": 0,
+            "gcp:iap/tunnelDestGroupIamMember:TunnelDestGroupIamMember": 0,
+            "gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy": 0,
             "gcp:iap/tunnelIamBinding:TunnelIamBinding": 0,
             "gcp:iap/tunnelIamMember:TunnelIamMember": 0,
             "gcp:iap/tunnelIamPolicy:TunnelIamPolicy": 0,
@@ -30435,6 +30700,7 @@
             "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": 0,
             "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy": 0,
             "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": 0,
+            "gcp:kms/ekmConnection:EkmConnection": 0,
             "gcp:kms/keyRing:KeyRing": 0,
             "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": 0,
             "gcp:kms/keyRingIAMMember:KeyRingIAMMember": 0,
@@ -30493,6 +30759,7 @@
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": 0,
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": 0,
             "gcp:networksecurity/firewallEndpoint:FirewallEndpoint": 0,
+            "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation": 0,
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": 0,
             "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": 0,
             "gcp:networksecurity/securityProfile:SecurityProfile": 0,
@@ -30716,6 +30983,8 @@
             "gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy": 0,
             "gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy": 0,
             "gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount": 0,
+            "gcp:apphub/getDiscoveredService:getDiscoveredService": 0,
+            "gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload": 0,
             "gcp:artifactregistry/getRepository:getRepository": 0,
             "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:backupdisasterrecovery/getManagementServer:getManagementServer": 0,
@@ -30751,6 +31020,7 @@
             "gcp:cloudidentity/getGroupLookup:getGroupLookup": 0,
             "gcp:cloudidentity/getGroupMemberships:getGroupMemberships": 0,
             "gcp:cloudidentity/getGroups:getGroups": 0,
+            "gcp:cloudquota/getSQuotaInfo:getSQuotaInfo": 0,
             "gcp:cloudrun/getLocations:getLocations": 0,
             "gcp:cloudrun/getService:getService": 0,
             "gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy": 0,
@@ -30876,6 +31146,7 @@
             "gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy": 0,
             "gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy": 0,
             "gcp:iap/getClient:getClient": 0,
+            "gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy": 0,
             "gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy": 0,
             "gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy": 0,
             "gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy": 0,

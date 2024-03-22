@@ -40,7 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			posture1, err := securityposture.NewPosture(ctx, "posture1", &securityposture.PostureArgs{
+//			posture1, err := securityposture.NewPosture(ctx, "posture_1", &securityposture.PostureArgs{
 //				PostureId:   pulumi.String("posture_1"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Location:    pulumi.String("global"),

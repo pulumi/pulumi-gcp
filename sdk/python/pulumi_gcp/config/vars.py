@@ -57,6 +57,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('appEngineCustomEndpoint')
 
     @property
+    def apphub_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('apphubCustomEndpoint')
+
+    @property
     def artifact_registry_custom_endpoint(self) -> Optional[str]:
         return __config__.get('artifactRegistryCustomEndpoint')
 
@@ -155,6 +159,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def cloud_ids_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudIdsCustomEndpoint')
+
+    @property
+    def cloud_quotas_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudQuotasCustomEndpoint')
 
     @property
     def cloud_resource_manager_custom_endpoint(self) -> Optional[str]:

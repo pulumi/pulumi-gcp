@@ -272,6 +272,222 @@ func (o BackupScheduleWeeklyRecurrencePtrOutput) Day() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatabaseCmekConfig struct {
+	// (Output)
+	// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+	// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+	// multiple in-use key versions.
+	// The expected format is
+	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+	ActiveKeyVersions []string `pulumi:"activeKeyVersions"`
+	// The resource ID of a Cloud KMS key. If set, the database created will
+	// be a Customer-managed Encryption Key (CMEK) database encrypted with
+	// this key. This feature is allowlist only in initial launch.
+	// Only keys in the same location as this database are allowed to be used
+	// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+	// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+	// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+	// This value should be the KMS key resource ID in the format of
+	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// How to retrive this resource ID is listed at
+	// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// DatabaseCmekConfigInput is an input type that accepts DatabaseCmekConfigArgs and DatabaseCmekConfigOutput values.
+// You can construct a concrete instance of `DatabaseCmekConfigInput` via:
+//
+//	DatabaseCmekConfigArgs{...}
+type DatabaseCmekConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseCmekConfigOutput() DatabaseCmekConfigOutput
+	ToDatabaseCmekConfigOutputWithContext(context.Context) DatabaseCmekConfigOutput
+}
+
+type DatabaseCmekConfigArgs struct {
+	// (Output)
+	// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+	// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+	// multiple in-use key versions.
+	// The expected format is
+	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+	ActiveKeyVersions pulumi.StringArrayInput `pulumi:"activeKeyVersions"`
+	// The resource ID of a Cloud KMS key. If set, the database created will
+	// be a Customer-managed Encryption Key (CMEK) database encrypted with
+	// this key. This feature is allowlist only in initial launch.
+	// Only keys in the same location as this database are allowed to be used
+	// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+	// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+	// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+	// This value should be the KMS key resource ID in the format of
+	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	// How to retrive this resource ID is listed at
+	// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (DatabaseCmekConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseCmekConfig)(nil)).Elem()
+}
+
+func (i DatabaseCmekConfigArgs) ToDatabaseCmekConfigOutput() DatabaseCmekConfigOutput {
+	return i.ToDatabaseCmekConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseCmekConfigArgs) ToDatabaseCmekConfigOutputWithContext(ctx context.Context) DatabaseCmekConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseCmekConfigOutput)
+}
+
+func (i DatabaseCmekConfigArgs) ToDatabaseCmekConfigPtrOutput() DatabaseCmekConfigPtrOutput {
+	return i.ToDatabaseCmekConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseCmekConfigArgs) ToDatabaseCmekConfigPtrOutputWithContext(ctx context.Context) DatabaseCmekConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseCmekConfigOutput).ToDatabaseCmekConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseCmekConfigPtrInput is an input type that accepts DatabaseCmekConfigArgs, DatabaseCmekConfigPtr and DatabaseCmekConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseCmekConfigPtrInput` via:
+//
+//	        DatabaseCmekConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseCmekConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseCmekConfigPtrOutput() DatabaseCmekConfigPtrOutput
+	ToDatabaseCmekConfigPtrOutputWithContext(context.Context) DatabaseCmekConfigPtrOutput
+}
+
+type databaseCmekConfigPtrType DatabaseCmekConfigArgs
+
+func DatabaseCmekConfigPtr(v *DatabaseCmekConfigArgs) DatabaseCmekConfigPtrInput {
+	return (*databaseCmekConfigPtrType)(v)
+}
+
+func (*databaseCmekConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseCmekConfig)(nil)).Elem()
+}
+
+func (i *databaseCmekConfigPtrType) ToDatabaseCmekConfigPtrOutput() DatabaseCmekConfigPtrOutput {
+	return i.ToDatabaseCmekConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseCmekConfigPtrType) ToDatabaseCmekConfigPtrOutputWithContext(ctx context.Context) DatabaseCmekConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseCmekConfigPtrOutput)
+}
+
+type DatabaseCmekConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseCmekConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseCmekConfig)(nil)).Elem()
+}
+
+func (o DatabaseCmekConfigOutput) ToDatabaseCmekConfigOutput() DatabaseCmekConfigOutput {
+	return o
+}
+
+func (o DatabaseCmekConfigOutput) ToDatabaseCmekConfigOutputWithContext(ctx context.Context) DatabaseCmekConfigOutput {
+	return o
+}
+
+func (o DatabaseCmekConfigOutput) ToDatabaseCmekConfigPtrOutput() DatabaseCmekConfigPtrOutput {
+	return o.ToDatabaseCmekConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseCmekConfigOutput) ToDatabaseCmekConfigPtrOutputWithContext(ctx context.Context) DatabaseCmekConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseCmekConfig) *DatabaseCmekConfig {
+		return &v
+	}).(DatabaseCmekConfigPtrOutput)
+}
+
+// (Output)
+// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+// multiple in-use key versions.
+// The expected format is
+// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+func (o DatabaseCmekConfigOutput) ActiveKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseCmekConfig) []string { return v.ActiveKeyVersions }).(pulumi.StringArrayOutput)
+}
+
+// The resource ID of a Cloud KMS key. If set, the database created will
+// be a Customer-managed Encryption Key (CMEK) database encrypted with
+// this key. This feature is allowlist only in initial launch.
+// Only keys in the same location as this database are allowed to be used
+// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+// This value should be the KMS key resource ID in the format of
+// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+// How to retrive this resource ID is listed at
+// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+func (o DatabaseCmekConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseCmekConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type DatabaseCmekConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseCmekConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseCmekConfig)(nil)).Elem()
+}
+
+func (o DatabaseCmekConfigPtrOutput) ToDatabaseCmekConfigPtrOutput() DatabaseCmekConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseCmekConfigPtrOutput) ToDatabaseCmekConfigPtrOutputWithContext(ctx context.Context) DatabaseCmekConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseCmekConfigPtrOutput) Elem() DatabaseCmekConfigOutput {
+	return o.ApplyT(func(v *DatabaseCmekConfig) DatabaseCmekConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseCmekConfig
+		return ret
+	}).(DatabaseCmekConfigOutput)
+}
+
+// (Output)
+// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+// multiple in-use key versions.
+// The expected format is
+// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+func (o DatabaseCmekConfigPtrOutput) ActiveKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseCmekConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveKeyVersions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource ID of a Cloud KMS key. If set, the database created will
+// be a Customer-managed Encryption Key (CMEK) database encrypted with
+// this key. This feature is allowlist only in initial launch.
+// Only keys in the same location as this database are allowed to be used
+// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+// This value should be the KMS key resource ID in the format of
+// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+// How to retrive this resource ID is listed at
+// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+func (o DatabaseCmekConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseCmekConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type FieldIndexConfig struct {
 	// The indexes to configure on the field. Order or array contains must be specified.
 	// Structure is documented below.
@@ -831,6 +1047,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrencePtrInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleWeeklyRecurrenceInput)(nil)).Elem(), BackupScheduleWeeklyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleWeeklyRecurrencePtrInput)(nil)).Elem(), BackupScheduleWeeklyRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseCmekConfigInput)(nil)).Elem(), DatabaseCmekConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseCmekConfigPtrInput)(nil)).Elem(), DatabaseCmekConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigInput)(nil)).Elem(), FieldIndexConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigPtrInput)(nil)).Elem(), FieldIndexConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigIndexInput)(nil)).Elem(), FieldIndexConfigIndexArgs{})
@@ -843,6 +1061,8 @@ func init() {
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrenceOutput{})
 	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrencePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseCmekConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseCmekConfigPtrOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigPtrOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigIndexOutput{})

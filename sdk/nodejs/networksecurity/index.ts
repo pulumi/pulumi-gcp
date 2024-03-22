@@ -40,6 +40,11 @@ export type FirewallEndpoint = import("./firewallEndpoint").FirewallEndpoint;
 export const FirewallEndpoint: typeof import("./firewallEndpoint").FirewallEndpoint = null as any;
 utilities.lazyLoad(exports, ["FirewallEndpoint"], () => require("./firewallEndpoint"));
 
+export { FirewallEndpointAssociationArgs, FirewallEndpointAssociationState } from "./firewallEndpointAssociation";
+export type FirewallEndpointAssociation = import("./firewallEndpointAssociation").FirewallEndpointAssociation;
+export const FirewallEndpointAssociation: typeof import("./firewallEndpointAssociation").FirewallEndpointAssociation = null as any;
+utilities.lazyLoad(exports, ["FirewallEndpointAssociation"], () => require("./firewallEndpointAssociation"));
+
 export { GatewaySecurityPolicyArgs, GatewaySecurityPolicyState } from "./gatewaySecurityPolicy";
 export type GatewaySecurityPolicy = import("./gatewaySecurityPolicy").GatewaySecurityPolicy;
 export const GatewaySecurityPolicy: typeof import("./gatewaySecurityPolicy").GatewaySecurityPolicy = null as any;
@@ -99,6 +104,8 @@ const _module = {
                 return new ClientTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
                 return new FirewallEndpoint(name, <any>undefined, { urn })
+            case "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation":
+                return new FirewallEndpointAssociation(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy":
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
@@ -125,6 +132,7 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamPol
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/authorizationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/clientTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpoint", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpointAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfile", _module)
