@@ -8576,7 +8576,7 @@ export namespace certificatemanager {
          *
          * > **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
          *
-         * @deprecated `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+         * @deprecated `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
          */
         certificatePem?: pulumi.Input<string>;
         /**
@@ -8597,7 +8597,7 @@ export namespace certificatemanager {
          *
          * > **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
          *
-         * @deprecated `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+         * @deprecated `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
          */
         privateKeyPem?: pulumi.Input<string>;
     }
@@ -11729,7 +11729,7 @@ export namespace cloudrun {
          *
          * > **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          *
-         * @deprecated `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         servingState?: pulumi.Input<string>;
         /**
@@ -11765,7 +11765,7 @@ export namespace cloudrun {
          *
          * > **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          *
-         * @deprecated `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         envFroms?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFrom>[]>;
         /**
@@ -11819,7 +11819,7 @@ export namespace cloudrun {
          *
          * > **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          *
-         * @deprecated `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * @deprecated `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         workingDir?: pulumi.Input<string>;
     }
@@ -26753,7 +26753,7 @@ export namespace container {
         /**
          * Mode used to make Relay available.
          *
-         * @deprecated Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
+         * @deprecated Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
          */
         relayMode?: pulumi.Input<string>;
     }
@@ -61020,7 +61020,7 @@ export namespace vertex {
          *
          * > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
          *
-         * @deprecated `monitoringInterval` is deprecated and will be removed in a future release.
+         * @deprecated `monitoring_interval` is deprecated and will be removed in a future release.
          */
         monitoringInterval?: pulumi.Input<string>;
         /**

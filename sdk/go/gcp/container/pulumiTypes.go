@@ -18638,7 +18638,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	EnableRelay *bool `pulumi:"enableRelay"`
 	// Mode used to make Relay available.
 	//
-	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
+	// Deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
 	RelayMode *string `pulumi:"relayMode"`
 }
 
@@ -18660,7 +18660,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	EnableRelay pulumi.BoolPtrInput `pulumi:"enableRelay"`
 	// Mode used to make Relay available.
 	//
-	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
+	// Deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
 	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
 }
 
@@ -18727,7 +18727,7 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) Enable
 
 // Mode used to make Relay available.
 //
-// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
+// Deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
 func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *string { return v.RelayMode }).(pulumi.StringPtrOutput)
 }

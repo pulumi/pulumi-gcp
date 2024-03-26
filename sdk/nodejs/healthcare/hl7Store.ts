@@ -250,7 +250,7 @@ export class Hl7Store extends pulumi.CustomResource {
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      *
-     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     * @deprecated `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfig | undefined>;
     /**
@@ -367,7 +367,7 @@ export interface Hl7StoreState {
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      *
-     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     * @deprecated `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
     /**
@@ -435,7 +435,7 @@ export interface Hl7StoreArgs {
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      *
-     * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+     * @deprecated `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
     /**
