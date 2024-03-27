@@ -92,6 +92,20 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
         return this.associatedNetworks;
     }
     /**
+     * Project to bill on endpoint uptime usage.
+     * 
+     */
+    @Export(name="billingProjectId", refs={String.class}, tree="[0]")
+    private Output<String> billingProjectId;
+
+    /**
+     * @return Project to bill on endpoint uptime usage.
+     * 
+     */
+    public Output<String> billingProjectId() {
+        return this.billingProjectId;
+    }
+    /**
      * Time the firewall endpoint was created in UTC.
      * 
      */

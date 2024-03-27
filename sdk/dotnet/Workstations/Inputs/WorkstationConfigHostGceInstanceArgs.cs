@@ -25,6 +25,19 @@ namespace Pulumi.Gcp.Workstations.Inputs
             set => _accelerators = value;
         }
 
+        [Input("boostConfigs")]
+        private InputList<Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs>? _boostConfigs;
+
+        /// <summary>
+        /// A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs> BoostConfigs
+        {
+            get => _boostConfigs ?? (_boostConfigs = new InputList<Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs>());
+            set => _boostConfigs = value;
+        }
+
         /// <summary>
         /// Size of the boot disk in GB.
         /// </summary>

@@ -9,3 +9,8 @@ export const getSQuotaInfo: typeof import("./getSQuotaInfo").getSQuotaInfo = nul
 export const getSQuotaInfoOutput: typeof import("./getSQuotaInfo").getSQuotaInfoOutput = null as any;
 utilities.lazyLoad(exports, ["getSQuotaInfo","getSQuotaInfoOutput"], () => require("./getSQuotaInfo"));
 
+export { GetSQuotaInfosArgs, GetSQuotaInfosResult, GetSQuotaInfosOutputArgs } from "./getSQuotaInfos";
+export const getSQuotaInfos: typeof import("./getSQuotaInfos").getSQuotaInfos = null as any;
+export const getSQuotaInfosOutput: typeof import("./getSQuotaInfos").getSQuotaInfosOutput = null as any;
+utilities.lazyLoad(exports, ["getSQuotaInfos","getSQuotaInfosOutput"], () => require("./getSQuotaInfos"));
+

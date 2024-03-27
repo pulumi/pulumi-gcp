@@ -22,6 +22,8 @@ __all__ = [
     'WorkstationConfigHost',
     'WorkstationConfigHostGceInstance',
     'WorkstationConfigHostGceInstanceAccelerator',
+    'WorkstationConfigHostGceInstanceBoostConfig',
+    'WorkstationConfigHostGceInstanceBoostConfigAccelerator',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfig',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfig',
     'WorkstationConfigIamBindingCondition',
@@ -571,7 +573,9 @@ class WorkstationConfigHostGceInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskSizeGb":
+        if key == "boostConfigs":
+            suggest = "boost_configs"
+        elif key == "bootDiskSizeGb":
             suggest = "boot_disk_size_gb"
         elif key == "confidentialInstanceConfig":
             suggest = "confidential_instance_config"
@@ -605,6 +609,7 @@ class WorkstationConfigHostGceInstance(dict):
 
     def __init__(__self__, *,
                  accelerators: Optional[Sequence['outputs.WorkstationConfigHostGceInstanceAccelerator']] = None,
+                 boost_configs: Optional[Sequence['outputs.WorkstationConfigHostGceInstanceBoostConfig']] = None,
                  boot_disk_size_gb: Optional[int] = None,
                  confidential_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig'] = None,
                  disable_public_ip_addresses: Optional[bool] = None,
@@ -618,6 +623,8 @@ class WorkstationConfigHostGceInstance(dict):
                  tags: Optional[Sequence[str]] = None):
         """
         :param Sequence['WorkstationConfigHostGceInstanceAcceleratorArgs'] accelerators: An accelerator card attached to the instance.
+               Structure is documented below.
+        :param Sequence['WorkstationConfigHostGceInstanceBoostConfigArgs'] boost_configs: A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
                Structure is documented below.
         :param int boot_disk_size_gb: Size of the boot disk in GB.
         :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
@@ -636,6 +643,8 @@ class WorkstationConfigHostGceInstance(dict):
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if boost_configs is not None:
+            pulumi.set(__self__, "boost_configs", boost_configs)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if confidential_instance_config is not None:
@@ -667,6 +676,15 @@ class WorkstationConfigHostGceInstance(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="boostConfigs")
+    def boost_configs(self) -> Optional[Sequence['outputs.WorkstationConfigHostGceInstanceBoostConfig']]:
+        """
+        A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "boost_configs")
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
@@ -762,6 +780,96 @@ class WorkstationConfigHostGceInstance(dict):
 
 @pulumi.output_type
 class WorkstationConfigHostGceInstanceAccelerator(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        """
+        :param int count: Number of accelerator cards exposed to the instance.
+        :param str type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceBoostConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigHostGceInstanceBoostConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkstationConfigHostGceInstanceBoostConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkstationConfigHostGceInstanceBoostConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: str,
+                 accelerators: Optional[Sequence['outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator']] = None,
+                 machine_type: Optional[str] = None):
+        """
+        :param str id: The id to be used for the boost config.
+        :param Sequence['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs'] accelerators: An accelerator card attached to the boost instance.
+               Structure is documented below.
+        :param str machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        """
+        pulumi.set(__self__, "id", id)
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The id to be used for the boost config.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[Sequence['outputs.WorkstationConfigHostGceInstanceBoostConfigAccelerator']]:
+        """
+        An accelerator card attached to the boost instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        """
+        The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        """
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceBoostConfigAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):

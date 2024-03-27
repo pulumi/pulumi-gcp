@@ -3554,6 +3554,371 @@ func (o TopicIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TopicIngestionDataSourceSettings struct {
+	// Settings for ingestion from Amazon Kinesis Data Streams.
+	// Structure is documented below.
+	AwsKinesis *TopicIngestionDataSourceSettingsAwsKinesis `pulumi:"awsKinesis"`
+}
+
+// TopicIngestionDataSourceSettingsInput is an input type that accepts TopicIngestionDataSourceSettingsArgs and TopicIngestionDataSourceSettingsOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsInput` via:
+//
+//	TopicIngestionDataSourceSettingsArgs{...}
+type TopicIngestionDataSourceSettingsInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsOutput() TopicIngestionDataSourceSettingsOutput
+	ToTopicIngestionDataSourceSettingsOutputWithContext(context.Context) TopicIngestionDataSourceSettingsOutput
+}
+
+type TopicIngestionDataSourceSettingsArgs struct {
+	// Settings for ingestion from Amazon Kinesis Data Streams.
+	// Structure is documented below.
+	AwsKinesis TopicIngestionDataSourceSettingsAwsKinesisPtrInput `pulumi:"awsKinesis"`
+}
+
+func (TopicIngestionDataSourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsArgs) ToTopicIngestionDataSourceSettingsOutput() TopicIngestionDataSourceSettingsOutput {
+	return i.ToTopicIngestionDataSourceSettingsOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsArgs) ToTopicIngestionDataSourceSettingsOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsArgs) ToTopicIngestionDataSourceSettingsPtrOutput() TopicIngestionDataSourceSettingsPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsArgs) ToTopicIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsOutput).ToTopicIngestionDataSourceSettingsPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsPtrInput is an input type that accepts TopicIngestionDataSourceSettingsArgs, TopicIngestionDataSourceSettingsPtr and TopicIngestionDataSourceSettingsPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsPtrOutput() TopicIngestionDataSourceSettingsPtrOutput
+	ToTopicIngestionDataSourceSettingsPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsPtrOutput
+}
+
+type topicIngestionDataSourceSettingsPtrType TopicIngestionDataSourceSettingsArgs
+
+func TopicIngestionDataSourceSettingsPtr(v *TopicIngestionDataSourceSettingsArgs) TopicIngestionDataSourceSettingsPtrInput {
+	return (*topicIngestionDataSourceSettingsPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsPtrType) ToTopicIngestionDataSourceSettingsPtrOutput() TopicIngestionDataSourceSettingsPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsPtrType) ToTopicIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsOutput) ToTopicIngestionDataSourceSettingsOutput() TopicIngestionDataSourceSettingsOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsOutput) ToTopicIngestionDataSourceSettingsOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsOutput) ToTopicIngestionDataSourceSettingsPtrOutput() TopicIngestionDataSourceSettingsPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsOutput) ToTopicIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettings {
+		return &v
+	}).(TopicIngestionDataSourceSettingsPtrOutput)
+}
+
+// Settings for ingestion from Amazon Kinesis Data Streams.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsOutput) AwsKinesis() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsAwsKinesis {
+		return v.AwsKinesis
+	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsPtrOutput) ToTopicIngestionDataSourceSettingsPtrOutput() TopicIngestionDataSourceSettingsPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsPtrOutput) ToTopicIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsPtrOutput) Elem() TopicIngestionDataSourceSettingsOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) TopicIngestionDataSourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettings
+		return ret
+	}).(TopicIngestionDataSourceSettingsOutput)
+}
+
+// Settings for ingestion from Amazon Kinesis Data Streams.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsPtrOutput) AwsKinesis() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsAwsKinesis {
+		if v == nil {
+			return nil
+		}
+		return v.AwsKinesis
+	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAwsKinesis struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in
+	// Enhanced Fan-Out mode. The consumer must be already
+	// created and ready to be used.
+	ConsumerArn string `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+	// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+	// equals to this service account number.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn string `pulumi:"streamArn"`
+}
+
+// TopicIngestionDataSourceSettingsAwsKinesisInput is an input type that accepts TopicIngestionDataSourceSettingsAwsKinesisArgs and TopicIngestionDataSourceSettingsAwsKinesisOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsAwsKinesisInput` via:
+//
+//	TopicIngestionDataSourceSettingsAwsKinesisArgs{...}
+type TopicIngestionDataSourceSettingsAwsKinesisInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsAwsKinesisOutput() TopicIngestionDataSourceSettingsAwsKinesisOutput
+	ToTopicIngestionDataSourceSettingsAwsKinesisOutputWithContext(context.Context) TopicIngestionDataSourceSettingsAwsKinesisOutput
+}
+
+type TopicIngestionDataSourceSettingsAwsKinesisArgs struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn pulumi.StringInput `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in
+	// Enhanced Fan-Out mode. The consumer must be already
+	// created and ready to be used.
+	ConsumerArn pulumi.StringInput `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+	// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+	// equals to this service account number.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn pulumi.StringInput `pulumi:"streamArn"`
+}
+
+func (TopicIngestionDataSourceSettingsAwsKinesisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesis)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsAwsKinesisArgs) ToTopicIngestionDataSourceSettingsAwsKinesisOutput() TopicIngestionDataSourceSettingsAwsKinesisOutput {
+	return i.ToTopicIngestionDataSourceSettingsAwsKinesisOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsAwsKinesisArgs) ToTopicIngestionDataSourceSettingsAwsKinesisOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsKinesisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAwsKinesisOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsAwsKinesisArgs) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutput() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsAwsKinesisArgs) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAwsKinesisOutput).ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsAwsKinesisPtrInput is an input type that accepts TopicIngestionDataSourceSettingsAwsKinesisArgs, TopicIngestionDataSourceSettingsAwsKinesisPtr and TopicIngestionDataSourceSettingsAwsKinesisPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsAwsKinesisPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsAwsKinesisArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsAwsKinesisPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutput() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput
+	ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsAwsKinesisPtrOutput
+}
+
+type topicIngestionDataSourceSettingsAwsKinesisPtrType TopicIngestionDataSourceSettingsAwsKinesisArgs
+
+func TopicIngestionDataSourceSettingsAwsKinesisPtr(v *TopicIngestionDataSourceSettingsAwsKinesisArgs) TopicIngestionDataSourceSettingsAwsKinesisPtrInput {
+	return (*topicIngestionDataSourceSettingsAwsKinesisPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsAwsKinesisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsAwsKinesis)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsAwsKinesisPtrType) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutput() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsAwsKinesisPtrType) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAwsKinesisOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsAwsKinesisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesis)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) ToTopicIngestionDataSourceSettingsAwsKinesisOutput() TopicIngestionDataSourceSettingsAwsKinesisOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) ToTopicIngestionDataSourceSettingsAwsKinesisOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsKinesisOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutput() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsAwsKinesis) *TopicIngestionDataSourceSettingsAwsKinesis {
+		return &v
+	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
+}
+
+// AWS role ARN to be used for Federated Identity authentication with
+// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+// required permissions that need to be attached to it.
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsKinesis) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// The Kinesis consumer ARN to used for ingestion in
+// Enhanced Fan-Out mode. The consumer must be already
+// created and ready to be used.
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) ConsumerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsKinesis) string { return v.ConsumerArn }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+// equals to this service account number.
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsKinesis) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// The Kinesis stream ARN to ingest data from.
+func (o TopicIngestionDataSourceSettingsAwsKinesisOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAwsKinesis) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+type TopicIngestionDataSourceSettingsAwsKinesisPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsAwsKinesis)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutput() TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) ToTopicIngestionDataSourceSettingsAwsKinesisPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAwsKinesisPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) Elem() TopicIngestionDataSourceSettingsAwsKinesisOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsKinesis) TopicIngestionDataSourceSettingsAwsKinesis {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsAwsKinesis
+		return ret
+	}).(TopicIngestionDataSourceSettingsAwsKinesisOutput)
+}
+
+// AWS role ARN to be used for Federated Identity authentication with
+// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+// required permissions that need to be attached to it.
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) AwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kinesis consumer ARN to used for ingestion in
+// Enhanced Fan-Out mode. The consumer must be already
+// created and ready to be used.
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) ConsumerArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumerArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+// role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+// equals to this service account number.
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) GcpServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcpServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kinesis stream ARN to ingest data from.
+func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) StreamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StreamArn
+	}).(pulumi.StringPtrOutput)
+}
+
 type TopicMessageStoragePolicy struct {
 	// A list of IDs of GCP regions where messages that are published to
 	// the topic may be persisted in storage. Messages published by
@@ -5119,6 +5484,250 @@ func (o GetSubscriptionRetryPolicyArrayOutput) Index(i pulumi.IntInput) GetSubsc
 	}).(GetSubscriptionRetryPolicyOutput)
 }
 
+type GetTopicIngestionDataSourceSetting struct {
+	// Settings for ingestion from Amazon Kinesis Data Streams.
+	AwsKineses []GetTopicIngestionDataSourceSettingAwsKinese `pulumi:"awsKineses"`
+}
+
+// GetTopicIngestionDataSourceSettingInput is an input type that accepts GetTopicIngestionDataSourceSettingArgs and GetTopicIngestionDataSourceSettingOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingInput` via:
+//
+//	GetTopicIngestionDataSourceSettingArgs{...}
+type GetTopicIngestionDataSourceSettingInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingOutput() GetTopicIngestionDataSourceSettingOutput
+	ToGetTopicIngestionDataSourceSettingOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingOutput
+}
+
+type GetTopicIngestionDataSourceSettingArgs struct {
+	// Settings for ingestion from Amazon Kinesis Data Streams.
+	AwsKineses GetTopicIngestionDataSourceSettingAwsKineseArrayInput `pulumi:"awsKineses"`
+}
+
+func (GetTopicIngestionDataSourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSetting)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingArgs) ToGetTopicIngestionDataSourceSettingOutput() GetTopicIngestionDataSourceSettingOutput {
+	return i.ToGetTopicIngestionDataSourceSettingOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingArgs) ToGetTopicIngestionDataSourceSettingOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingOutput)
+}
+
+// GetTopicIngestionDataSourceSettingArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingArray and GetTopicIngestionDataSourceSettingArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingArray{ GetTopicIngestionDataSourceSettingArgs{...} }
+type GetTopicIngestionDataSourceSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingArrayOutput() GetTopicIngestionDataSourceSettingArrayOutput
+	ToGetTopicIngestionDataSourceSettingArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingArray []GetTopicIngestionDataSourceSettingInput
+
+func (GetTopicIngestionDataSourceSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSetting)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingArray) ToGetTopicIngestionDataSourceSettingArrayOutput() GetTopicIngestionDataSourceSettingArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingArray) ToGetTopicIngestionDataSourceSettingArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSetting)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingOutput) ToGetTopicIngestionDataSourceSettingOutput() GetTopicIngestionDataSourceSettingOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingOutput) ToGetTopicIngestionDataSourceSettingOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingOutput {
+	return o
+}
+
+// Settings for ingestion from Amazon Kinesis Data Streams.
+func (o GetTopicIngestionDataSourceSettingOutput) AwsKineses() GetTopicIngestionDataSourceSettingAwsKineseArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingAwsKinese {
+		return v.AwsKineses
+	}).(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSetting)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingArrayOutput) ToGetTopicIngestionDataSourceSettingArrayOutput() GetTopicIngestionDataSourceSettingArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingArrayOutput) ToGetTopicIngestionDataSourceSettingArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSetting {
+		return vs[0].([]GetTopicIngestionDataSourceSetting)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAwsKinese struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in
+	// Enhanced Fan-Out mode. The consumer must be already
+	// created and ready to be used.
+	ConsumerArn string `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
+	// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+	// equals to this service account number.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn string `pulumi:"streamArn"`
+}
+
+// GetTopicIngestionDataSourceSettingAwsKineseInput is an input type that accepts GetTopicIngestionDataSourceSettingAwsKineseArgs and GetTopicIngestionDataSourceSettingAwsKineseOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingAwsKineseInput` via:
+//
+//	GetTopicIngestionDataSourceSettingAwsKineseArgs{...}
+type GetTopicIngestionDataSourceSettingAwsKineseInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingAwsKineseOutput() GetTopicIngestionDataSourceSettingAwsKineseOutput
+	ToGetTopicIngestionDataSourceSettingAwsKineseOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingAwsKineseOutput
+}
+
+type GetTopicIngestionDataSourceSettingAwsKineseArgs struct {
+	// AWS role ARN to be used for Federated Identity authentication with
+	// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+	// required permissions that need to be attached to it.
+	AwsRoleArn pulumi.StringInput `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in
+	// Enhanced Fan-Out mode. The consumer must be already
+	// created and ready to be used.
+	ConsumerArn pulumi.StringInput `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
+	// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+	// equals to this service account number.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn pulumi.StringInput `pulumi:"streamArn"`
+}
+
+func (GetTopicIngestionDataSourceSettingAwsKineseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKinese)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsKineseArgs) ToGetTopicIngestionDataSourceSettingAwsKineseOutput() GetTopicIngestionDataSourceSettingAwsKineseOutput {
+	return i.ToGetTopicIngestionDataSourceSettingAwsKineseOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsKineseArgs) ToGetTopicIngestionDataSourceSettingAwsKineseOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsKineseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingAwsKineseOutput)
+}
+
+// GetTopicIngestionDataSourceSettingAwsKineseArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingAwsKineseArray and GetTopicIngestionDataSourceSettingAwsKineseArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingAwsKineseArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingAwsKineseArray{ GetTopicIngestionDataSourceSettingAwsKineseArgs{...} }
+type GetTopicIngestionDataSourceSettingAwsKineseArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutput() GetTopicIngestionDataSourceSettingAwsKineseArrayOutput
+	ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingAwsKineseArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingAwsKineseArray []GetTopicIngestionDataSourceSettingAwsKineseInput
+
+func (GetTopicIngestionDataSourceSettingAwsKineseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingAwsKinese)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsKineseArray) ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutput() GetTopicIngestionDataSourceSettingAwsKineseArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingAwsKineseArray) ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsKineseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAwsKineseOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingAwsKineseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKinese)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsKineseOutput) ToGetTopicIngestionDataSourceSettingAwsKineseOutput() GetTopicIngestionDataSourceSettingAwsKineseOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsKineseOutput) ToGetTopicIngestionDataSourceSettingAwsKineseOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsKineseOutput {
+	return o
+}
+
+// AWS role ARN to be used for Federated Identity authentication with
+// Kinesis. Check the Pub/Sub docs for how to set up this role and the
+// required permissions that need to be attached to it.
+func (o GetTopicIngestionDataSourceSettingAwsKineseOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsKinese) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// The Kinesis consumer ARN to used for ingestion in
+// Enhanced Fan-Out mode. The consumer must be already
+// created and ready to be used.
+func (o GetTopicIngestionDataSourceSettingAwsKineseOutput) ConsumerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsKinese) string { return v.ConsumerArn }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
+// role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+// equals to this service account number.
+func (o GetTopicIngestionDataSourceSettingAwsKineseOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsKinese) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// The Kinesis stream ARN to ingest data from.
+func (o GetTopicIngestionDataSourceSettingAwsKineseOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAwsKinese) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAwsKineseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingAwsKinese)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutput() GetTopicIngestionDataSourceSettingAwsKineseArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) ToGetTopicIngestionDataSourceSettingAwsKineseArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAwsKineseArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingAwsKineseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingAwsKinese {
+		return vs[0].([]GetTopicIngestionDataSourceSettingAwsKinese)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingAwsKineseOutput)
+}
+
 type GetTopicMessageStoragePolicy struct {
 	// A list of IDs of GCP regions where messages that are published to
 	// the topic may be persisted in storage. Messages published by
@@ -5387,6 +5996,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMBindingConditionPtrInput)(nil)).Elem(), TopicIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberConditionInput)(nil)).Elem(), TopicIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberConditionPtrInput)(nil)).Elem(), TopicIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsInput)(nil)).Elem(), TopicIngestionDataSourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyPtrInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
@@ -5409,6 +6022,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigOidcTokenArrayInput)(nil)).Elem(), GetSubscriptionPushConfigOidcTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionRetryPolicyInput)(nil)).Elem(), GetSubscriptionRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionRetryPolicyArrayInput)(nil)).Elem(), GetSubscriptionRetryPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyInput)(nil)).Elem(), GetTopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyArrayInput)(nil)).Elem(), GetTopicMessageStoragePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSchemaSettingInput)(nil)).Elem(), GetTopicSchemaSettingArgs{})
@@ -5453,6 +6070,10 @@ func init() {
 	pulumi.RegisterOutputType(TopicIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TopicIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(TopicIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})
@@ -5475,6 +6096,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigOidcTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionRetryPolicyOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionRetryPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicSchemaSettingOutput{})

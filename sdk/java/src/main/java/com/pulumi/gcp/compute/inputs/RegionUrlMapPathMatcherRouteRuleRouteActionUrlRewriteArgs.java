@@ -49,11 +49,47 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
         return Optional.ofNullable(this.pathPrefixRewrite);
     }
 
+    /**
+     * Prior to forwarding the request to the selected origin, if the
+     * request matched a pathTemplateMatch, the matching portion of the
+     * request&#39;s path is replaced re-written using the pattern specified
+     * by pathTemplateRewrite.
+     * pathTemplateRewrite must be between 1 and 255 characters
+     * (inclusive), must start with a &#39;/&#39;, and must only use variables
+     * captured by the route&#39;s pathTemplate matchers.
+     * pathTemplateRewrite may only be used when all of a route&#39;s
+     * MatchRules specify pathTemplate.
+     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * specified.
+     * 
+     */
+    @Import(name="pathTemplateRewrite")
+    private @Nullable Output<String> pathTemplateRewrite;
+
+    /**
+     * @return Prior to forwarding the request to the selected origin, if the
+     * request matched a pathTemplateMatch, the matching portion of the
+     * request&#39;s path is replaced re-written using the pattern specified
+     * by pathTemplateRewrite.
+     * pathTemplateRewrite must be between 1 and 255 characters
+     * (inclusive), must start with a &#39;/&#39;, and must only use variables
+     * captured by the route&#39;s pathTemplate matchers.
+     * pathTemplateRewrite may only be used when all of a route&#39;s
+     * MatchRules specify pathTemplate.
+     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * specified.
+     * 
+     */
+    public Optional<Output<String>> pathTemplateRewrite() {
+        return Optional.ofNullable(this.pathTemplateRewrite);
+    }
+
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs() {}
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs $) {
         this.hostRewrite = $.hostRewrite;
         this.pathPrefixRewrite = $.pathPrefixRewrite;
+        this.pathTemplateRewrite = $.pathTemplateRewrite;
     }
 
     public static Builder builder() {
@@ -118,6 +154,47 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
          */
         public Builder pathPrefixRewrite(String pathPrefixRewrite) {
             return pathPrefixRewrite(Output.of(pathPrefixRewrite));
+        }
+
+        /**
+         * @param pathTemplateRewrite Prior to forwarding the request to the selected origin, if the
+         * request matched a pathTemplateMatch, the matching portion of the
+         * request&#39;s path is replaced re-written using the pattern specified
+         * by pathTemplateRewrite.
+         * pathTemplateRewrite must be between 1 and 255 characters
+         * (inclusive), must start with a &#39;/&#39;, and must only use variables
+         * captured by the route&#39;s pathTemplate matchers.
+         * pathTemplateRewrite may only be used when all of a route&#39;s
+         * MatchRules specify pathTemplate.
+         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathTemplateRewrite(@Nullable Output<String> pathTemplateRewrite) {
+            $.pathTemplateRewrite = pathTemplateRewrite;
+            return this;
+        }
+
+        /**
+         * @param pathTemplateRewrite Prior to forwarding the request to the selected origin, if the
+         * request matched a pathTemplateMatch, the matching portion of the
+         * request&#39;s path is replaced re-written using the pattern specified
+         * by pathTemplateRewrite.
+         * pathTemplateRewrite must be between 1 and 255 characters
+         * (inclusive), must start with a &#39;/&#39;, and must only use variables
+         * captured by the route&#39;s pathTemplate matchers.
+         * pathTemplateRewrite may only be used when all of a route&#39;s
+         * MatchRules specify pathTemplate.
+         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathTemplateRewrite(String pathTemplateRewrite) {
+            return pathTemplateRewrite(Output.of(pathTemplateRewrite));
         }
 
         public RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs build() {

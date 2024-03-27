@@ -327,6 +327,7 @@ func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) Index(i 
 
 type AlertPolicyAlertStrategyNotificationRateLimit struct {
 	// Not more than one notification per period.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
 	Period *string `pulumi:"period"`
 }
 
@@ -343,6 +344,7 @@ type AlertPolicyAlertStrategyNotificationRateLimitInput interface {
 
 type AlertPolicyAlertStrategyNotificationRateLimitArgs struct {
 	// Not more than one notification per period.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
 	Period pulumi.StringPtrInput `pulumi:"period"`
 }
 
@@ -424,6 +426,7 @@ func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToAlertPolicyAlertS
 }
 
 // Not more than one notification per period.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
 func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyAlertStrategyNotificationRateLimit) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
@@ -453,6 +456,7 @@ func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) Elem() AlertPoli
 }
 
 // Not more than one notification per period.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
 func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyAlertStrategyNotificationRateLimit) *string {
 		if v == nil {

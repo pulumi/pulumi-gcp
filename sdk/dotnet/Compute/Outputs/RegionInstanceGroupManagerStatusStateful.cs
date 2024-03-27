@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? HasStatefulConfig;
         /// <summary>
-        /// Status of per-instance configs on the instance.
+        /// Status of per-instance configs on the instances.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> PerInstanceConfigs;
 

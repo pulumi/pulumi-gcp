@@ -481,6 +481,90 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Workstation Config Boost
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("key"),
+//				},
+//				Annotations: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-central1"),
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType:              pulumi.String("e2-standard-4"),
+//						BootDiskSizeGb:           pulumi.Int(35),
+//						DisablePublicIpAddresses: pulumi.Bool(true),
+//						BoostConfigs: workstations.WorkstationConfigHostGceInstanceBoostConfigArray{
+//							&workstations.WorkstationConfigHostGceInstanceBoostConfigArgs{
+//								Id:          pulumi.String("boost-1"),
+//								MachineType: pulumi.String("n1-standard-2"),
+//								Accelerators: workstations.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArray{
+//									&workstations.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs{
+//										Type:  pulumi.String("nvidia-tesla-t4"),
+//										Count: pulumi.Int(1),
+//									},
+//								},
+//							},
+//							&workstations.WorkstationConfigHostGceInstanceBoostConfigArgs{
+//								Id:          pulumi.String("boost-1"),
+//								MachineType: pulumi.String("e2-standard-2"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 // ### Workstation Config Encryption Key
 //
 // <!--Start PulumiCodeChooser -->

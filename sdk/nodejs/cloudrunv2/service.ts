@@ -308,9 +308,9 @@ import * as utilities from "../utilities";
  *         containers: [
  *             {
  *                 name: "hello-1",
- *                 ports: [{
+ *                 ports: {
  *                     containerPort: 8080,
- *                 }],
+ *                 },
  *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *                 dependsOns: ["hello-2"],
  *                 volumeMounts: [{

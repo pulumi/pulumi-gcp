@@ -23,6 +23,7 @@ __all__ = [
     'BucketObjectCustomerEncryptionArgs',
     'BucketObjectRetentionArgs',
     'BucketRetentionPolicyArgs',
+    'BucketSoftDeletePolicyArgs',
     'BucketVersioningArgs',
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
@@ -785,6 +786,45 @@ class BucketRetentionPolicyArgs:
     @is_locked.setter
     def is_locked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_locked", value)
+
+
+@pulumi.input_type
+class BucketSoftDeletePolicyArgs:
+    def __init__(__self__, *,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 retention_duration_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] effective_time: Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        :param pulumi.Input[int] retention_duration_seconds: The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+        """
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if retention_duration_seconds is not None:
+            pulumi.set(__self__, "retention_duration_seconds", retention_duration_seconds)
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
+    @pulumi.getter(name="retentionDurationSeconds")
+    def retention_duration_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+        """
+        return pulumi.get(self, "retention_duration_seconds")
+
+    @retention_duration_seconds.setter
+    def retention_duration_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_duration_seconds", value)
 
 
 @pulumi.input_type

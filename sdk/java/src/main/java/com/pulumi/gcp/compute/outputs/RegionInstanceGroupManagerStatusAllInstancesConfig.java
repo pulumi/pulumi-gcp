@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionInstanceGroupManagerStatusAllInstancesConfig {
     /**
+     * @return Current all-instances configuration revision. This value is in RFC3339 text format.
+     * 
+     */
+    private @Nullable String currentRevision;
+    /**
      * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
      * 
      */
     private @Nullable Boolean effective;
 
     private RegionInstanceGroupManagerStatusAllInstancesConfig() {}
+    /**
+     * @return Current all-instances configuration revision. This value is in RFC3339 text format.
+     * 
+     */
+    public Optional<String> currentRevision() {
+        return Optional.ofNullable(this.currentRevision);
+    }
     /**
      * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
      * 
@@ -35,13 +48,21 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String currentRevision;
         private @Nullable Boolean effective;
         public Builder() {}
         public Builder(RegionInstanceGroupManagerStatusAllInstancesConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.currentRevision = defaults.currentRevision;
     	      this.effective = defaults.effective;
         }
 
+        @CustomType.Setter
+        public Builder currentRevision(@Nullable String currentRevision) {
+
+            this.currentRevision = currentRevision;
+            return this;
+        }
         @CustomType.Setter
         public Builder effective(@Nullable Boolean effective) {
 
@@ -50,6 +71,7 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfig {
         }
         public RegionInstanceGroupManagerStatusAllInstancesConfig build() {
             final var _resultValue = new RegionInstanceGroupManagerStatusAllInstancesConfig();
+            _resultValue.currentRevision = currentRevision;
             _resultValue.effective = effective;
             return _resultValue;
         }

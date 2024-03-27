@@ -19,7 +19,7 @@ public final class InstanceGroupManagerStatusStateful {
      */
     private @Nullable Boolean hasStatefulConfig;
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     private @Nullable List<InstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
@@ -33,7 +33,7 @@ public final class InstanceGroupManagerStatusStateful {
         return Optional.ofNullable(this.hasStatefulConfig);
     }
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     public List<InstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs() {

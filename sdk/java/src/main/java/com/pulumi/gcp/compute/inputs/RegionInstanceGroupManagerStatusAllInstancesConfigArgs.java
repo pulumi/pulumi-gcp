@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class RegionInstanceGroupManagerStatusAllInstancesConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionInstanceGroupManagerStatusAllInstancesConfigArgs Empty = new RegionInstanceGroupManagerStatusAllInstancesConfigArgs();
+
+    /**
+     * Current all-instances configuration revision. This value is in RFC3339 text format.
+     * 
+     */
+    @Import(name="currentRevision")
+    private @Nullable Output<String> currentRevision;
+
+    /**
+     * @return Current all-instances configuration revision. This value is in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> currentRevision() {
+        return Optional.ofNullable(this.currentRevision);
+    }
 
     /**
      * A bit indicating whether this configuration has been applied to all managed instances in the group.
@@ -33,6 +49,7 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfigArgs extend
     private RegionInstanceGroupManagerStatusAllInstancesConfigArgs() {}
 
     private RegionInstanceGroupManagerStatusAllInstancesConfigArgs(RegionInstanceGroupManagerStatusAllInstancesConfigArgs $) {
+        this.currentRevision = $.currentRevision;
         this.effective = $.effective;
     }
 
@@ -52,6 +69,27 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfigArgs extend
 
         public Builder(RegionInstanceGroupManagerStatusAllInstancesConfigArgs defaults) {
             $ = new RegionInstanceGroupManagerStatusAllInstancesConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param currentRevision Current all-instances configuration revision. This value is in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentRevision(@Nullable Output<String> currentRevision) {
+            $.currentRevision = currentRevision;
+            return this;
+        }
+
+        /**
+         * @param currentRevision Current all-instances configuration revision. This value is in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentRevision(String currentRevision) {
+            return currentRevision(Output.of(currentRevision));
         }
 
         /**

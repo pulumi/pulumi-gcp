@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IngressPolicy{}
 	case "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
 		r = &ServicePerimeter{}
+	case "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource":
+		r = &ServicePerimeterDryRunResource{}
 	case "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy":
 		r = &ServicePerimeterEgressPolicy{}
 	case "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy":
@@ -124,6 +126,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"accesscontextmanager/servicePerimeter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"accesscontextmanager/servicePerimeterDryRunResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

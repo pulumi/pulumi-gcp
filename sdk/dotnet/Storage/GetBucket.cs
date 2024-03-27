@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketRetentionPolicyResult> RetentionPolicies;
         public readonly string Rpo;
         public readonly string SelfLink;
+        public readonly ImmutableArray<Outputs.GetBucketSoftDeletePolicyResult> SoftDeletePolicies;
         public readonly string StorageClass;
         public readonly bool UniformBucketLevelAccess;
         public readonly string Url;
@@ -179,6 +180,8 @@ namespace Pulumi.Gcp.Storage
 
             string selfLink,
 
+            ImmutableArray<Outputs.GetBucketSoftDeletePolicyResult> softDeletePolicies,
+
             string storageClass,
 
             bool uniformBucketLevelAccess,
@@ -210,6 +213,7 @@ namespace Pulumi.Gcp.Storage
             RetentionPolicies = retentionPolicies;
             Rpo = rpo;
             SelfLink = selfLink;
+            SoftDeletePolicies = softDeletePolicies;
             StorageClass = storageClass;
             UniformBucketLevelAccess = uniformBucketLevelAccess;
             Url = url;

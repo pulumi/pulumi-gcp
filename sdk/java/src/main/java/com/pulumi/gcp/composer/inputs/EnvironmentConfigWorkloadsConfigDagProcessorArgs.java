@@ -6,6 +6,7 @@ package com.pulumi.gcp.composer.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class EnvironmentConfigWorkloadsConfigDagProcessorArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EnvironmentConfigWorkloadsConfigDagProcessorArgs Empty = new EnvironmentConfigWorkloadsConfigDagProcessorArgs();
+
+    /**
+     * Number of DAG processors.
+     * 
+     */
+    @Import(name="count")
+    private @Nullable Output<Integer> count;
+
+    /**
+     * @return Number of DAG processors.
+     * 
+     */
+    public Optional<Output<Integer>> count() {
+        return Optional.ofNullable(this.count);
+    }
 
     /**
      * CPU request and limit for DAG processor.
@@ -63,6 +79,7 @@ public final class EnvironmentConfigWorkloadsConfigDagProcessorArgs extends com.
     private EnvironmentConfigWorkloadsConfigDagProcessorArgs() {}
 
     private EnvironmentConfigWorkloadsConfigDagProcessorArgs(EnvironmentConfigWorkloadsConfigDagProcessorArgs $) {
+        this.count = $.count;
         this.cpu = $.cpu;
         this.memoryGb = $.memoryGb;
         this.storageGb = $.storageGb;
@@ -84,6 +101,27 @@ public final class EnvironmentConfigWorkloadsConfigDagProcessorArgs extends com.
 
         public Builder(EnvironmentConfigWorkloadsConfigDagProcessorArgs defaults) {
             $ = new EnvironmentConfigWorkloadsConfigDagProcessorArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param count Number of DAG processors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder count(@Nullable Output<Integer> count) {
+            $.count = count;
+            return this;
+        }
+
+        /**
+         * @param count Number of DAG processors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder count(Integer count) {
+            return count(Output.of(count));
         }
 
         /**

@@ -150,6 +150,35 @@ namespace Pulumi.Gcp.PubSub
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Pubsub Topic Ingestion Kinesis
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         IngestionDataSourceSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsArgs
+    ///         {
+    ///             AwsKinesis = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs
+    ///             {
+    ///                 StreamArn = "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+    ///                 ConsumerArn = "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+    ///                 AwsRoleArn = "arn:aws:iam::111111111111:role/fake-role-name",
+    ///                 GcpServiceAccount = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -183,6 +212,13 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for ingestion from a data source into this topic.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("ingestionDataSourceSettings")]
+        public Output<Outputs.TopicIngestionDataSourceSettings?> IngestionDataSourceSettings { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -307,6 +343,13 @@ namespace Pulumi.Gcp.PubSub
     public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Settings for ingestion from a data source into this topic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ingestionDataSourceSettings")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsArgs>? IngestionDataSourceSettings { get; set; }
+
+        /// <summary>
         /// The resource name of the Cloud KMS CryptoKey to be used to protect access
         /// to messages published on this topic. Your project's PubSub service account
         /// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -399,6 +442,13 @@ namespace Pulumi.Gcp.PubSub
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Settings for ingestion from a data source into this topic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("ingestionDataSourceSettings")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsGetArgs>? IngestionDataSourceSettings { get; set; }
 
         /// <summary>
         /// The resource name of the Cloud KMS CryptoKey to be used to protect access

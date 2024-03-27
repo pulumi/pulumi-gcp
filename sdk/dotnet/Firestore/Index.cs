@@ -38,51 +38,24 @@ namespace Pulumi.Gcp.Firestore
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         ProjectId = "project-id",
-    ///         Name = "project-id",
-    ///         OrgId = "123456789",
-    ///     });
-    /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
-    ///     {
-    ///         CreateDuration = "60s",
-    ///     });
-    /// 
-    ///     var firestore = new Gcp.Projects.Service("firestore", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         ServiceName = "firestore.googleapis.com",
-    ///     });
-    /// 
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
-    ///         Project = project.ProjectId,
-    ///         Name = "(default)",
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
     ///         LocationId = "nam5",
     ///         Type = "FIRESTORE_NATIVE",
-    ///     });
-    /// 
-    ///     // Creating a document also creates its collection
-    ///     var document = new Gcp.Firestore.Document("document", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         Database = database.Name,
-    ///         Collection = "somenewcollection",
-    ///         DocumentId = "",
-    ///         Fields = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var my_index = new Gcp.Firestore.Index("my-index", new()
     ///     {
-    ///         Project = project.ProjectId,
+    ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = document.Collection,
+    ///         Collection = "atestcollection",
     ///         Fields = new[]
     ///         {
     ///             new Gcp.Firestore.Inputs.IndexFieldArgs
@@ -112,11 +85,21 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-dm",
+    ///         LocationId = "nam5",
+    ///         Type = "DATASTORE_MODE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
     ///     var my_index = new Gcp.Firestore.Index("my-index", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         Database = "(default)",
-    ///         Collection = "chatrooms",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
     ///         QueryScope = "COLLECTION_RECURSIVE",
     ///         ApiScope = "DATASTORE_MODE_API",
     ///         Fields = new[]

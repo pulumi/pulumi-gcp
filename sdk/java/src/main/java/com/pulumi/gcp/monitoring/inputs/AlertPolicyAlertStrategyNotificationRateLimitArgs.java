@@ -17,6 +17,7 @@ public final class AlertPolicyAlertStrategyNotificationRateLimitArgs extends com
 
     /**
      * Not more than one notification per period.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;60.5s&#34;.
      * 
      */
     @Import(name="period")
@@ -24,6 +25,7 @@ public final class AlertPolicyAlertStrategyNotificationRateLimitArgs extends com
 
     /**
      * @return Not more than one notification per period.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;60.5s&#34;.
      * 
      */
     public Optional<Output<String>> period() {
@@ -56,6 +58,7 @@ public final class AlertPolicyAlertStrategyNotificationRateLimitArgs extends com
 
         /**
          * @param period Not more than one notification per period.
+         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;60.5s&#34;.
          * 
          * @return builder
          * 
@@ -67,6 +70,7 @@ public final class AlertPolicyAlertStrategyNotificationRateLimitArgs extends com
 
         /**
          * @param period Not more than one notification per period.
+         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;60.5s&#34;.
          * 
          * @return builder
          * 

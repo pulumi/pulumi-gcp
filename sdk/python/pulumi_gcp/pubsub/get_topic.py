@@ -22,13 +22,16 @@ class GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
-    def __init__(__self__, effective_labels=None, id=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, name=None, project=None, pulumi_labels=None, schema_settings=None):
+    def __init__(__self__, effective_labels=None, id=None, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policies=None, name=None, project=None, pulumi_labels=None, schema_settings=None):
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ingestion_data_source_settings and not isinstance(ingestion_data_source_settings, list):
+            raise TypeError("Expected argument 'ingestion_data_source_settings' to be a list")
+        pulumi.set(__self__, "ingestion_data_source_settings", ingestion_data_source_settings)
         if kms_key_name and not isinstance(kms_key_name, str):
             raise TypeError("Expected argument 'kms_key_name' to be a str")
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -66,6 +69,11 @@ class GetTopicResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> Sequence['outputs.GetTopicIngestionDataSourceSettingResult']:
+        return pulumi.get(self, "ingestion_data_source_settings")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -116,6 +124,7 @@ class AwaitableGetTopicResult(GetTopicResult):
         return GetTopicResult(
             effective_labels=self.effective_labels,
             id=self.id,
+            ingestion_data_source_settings=self.ingestion_data_source_settings,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
             message_retention_duration=self.message_retention_duration,
@@ -161,6 +170,7 @@ def get_topic(name: Optional[str] = None,
     return AwaitableGetTopicResult(
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
+        ingestion_data_source_settings=pulumi.get(__ret__, 'ingestion_data_source_settings'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         labels=pulumi.get(__ret__, 'labels'),
         message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),

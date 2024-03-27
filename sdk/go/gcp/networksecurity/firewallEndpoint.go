@@ -66,6 +66,8 @@ type FirewallEndpoint struct {
 	// endpoint. A network will only appear in this list after traffic routing is
 	// fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks pulumi.StringArrayOutput `pulumi:"associatedNetworks"`
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId pulumi.StringOutput `pulumi:"billingProjectId"`
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -104,6 +106,9 @@ func NewFirewallEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BillingProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'BillingProjectId'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -143,6 +148,8 @@ type firewallEndpointState struct {
 	// endpoint. A network will only appear in this list after traffic routing is
 	// fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks []string `pulumi:"associatedNetworks"`
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId *string `pulumi:"billingProjectId"`
 	// Time the firewall endpoint was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -180,6 +187,8 @@ type FirewallEndpointState struct {
 	// endpoint. A network will only appear in this list after traffic routing is
 	// fully configured. Format: projects/{project}/global/networks/{name}.
 	AssociatedNetworks pulumi.StringArrayInput
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId pulumi.StringPtrInput
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -216,6 +225,8 @@ func (FirewallEndpointState) ElementType() reflect.Type {
 }
 
 type firewallEndpointArgs struct {
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId string `pulumi:"billingProjectId"`
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -234,6 +245,8 @@ type firewallEndpointArgs struct {
 
 // The set of arguments for constructing a FirewallEndpoint resource.
 type FirewallEndpointArgs struct {
+	// Project to bill on endpoint uptime usage.
+	BillingProjectId pulumi.StringInput
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -343,6 +356,11 @@ func (o FirewallEndpointOutput) ToFirewallEndpointOutputWithContext(ctx context.
 // fully configured. Format: projects/{project}/global/networks/{name}.
 func (o FirewallEndpointOutput) AssociatedNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringArrayOutput { return v.AssociatedNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Project to bill on endpoint uptime usage.
+func (o FirewallEndpointOutput) BillingProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.BillingProjectId }).(pulumi.StringOutput)
 }
 
 // Time the firewall endpoint was created in UTC.

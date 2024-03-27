@@ -28,6 +28,7 @@ __all__ = [
     'JobTemplateTemplateVolume',
     'JobTemplateTemplateVolumeCloudSqlInstance',
     'JobTemplateTemplateVolumeEmptyDir',
+    'JobTemplateTemplateVolumeGcs',
     'JobTemplateTemplateVolumeSecret',
     'JobTemplateTemplateVolumeSecretItem',
     'JobTemplateTemplateVpcAccess',
@@ -84,6 +85,7 @@ __all__ = [
     'GetJobTemplateTemplateVolumeResult',
     'GetJobTemplateTemplateVolumeCloudSqlInstanceResult',
     'GetJobTemplateTemplateVolumeEmptyDirResult',
+    'GetJobTemplateTemplateVolumeGcResult',
     'GetJobTemplateTemplateVolumeSecretResult',
     'GetJobTemplateTemplateVolumeSecretItemResult',
     'GetJobTemplateTemplateVpcAccessResult',
@@ -1087,12 +1089,15 @@ class JobTemplateTemplateVolume(dict):
                  name: str,
                  cloud_sql_instance: Optional['outputs.JobTemplateTemplateVolumeCloudSqlInstance'] = None,
                  empty_dir: Optional['outputs.JobTemplateTemplateVolumeEmptyDir'] = None,
+                 gcs: Optional['outputs.JobTemplateTemplateVolumeGcs'] = None,
                  secret: Optional['outputs.JobTemplateTemplateVolumeSecret'] = None):
         """
         :param str name: Volume's name.
         :param 'JobTemplateTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
         :param 'JobTemplateTemplateVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
+        :param 'JobTemplateTemplateVolumeGcsArgs' gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
                Structure is documented below.
         :param 'JobTemplateTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -1102,6 +1107,8 @@ class JobTemplateTemplateVolume(dict):
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if empty_dir is not None:
             pulumi.set(__self__, "empty_dir", empty_dir)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -1130,6 +1137,15 @@ class JobTemplateTemplateVolume(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "empty_dir")
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional['outputs.JobTemplateTemplateVolumeGcs']:
+        """
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs")
 
     @property
     @pulumi.getter
@@ -1210,6 +1226,53 @@ class JobTemplateTemplateVolumeEmptyDir(dict):
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class JobTemplateTemplateVolumeGcs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateVolumeGcs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTemplateTemplateVolumeGcs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTemplateTemplateVolumeGcs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 read_only: Optional[bool] = None):
+        """
+        :param str bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        :param bool read_only: If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        return pulumi.get(self, "read_only")
 
 
 @pulumi.output_type
@@ -3182,7 +3245,7 @@ class ServiceTemplateVolume(dict):
                Structure is documented below.
         :param 'ServiceTemplateVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
-        :param 'ServiceTemplateVolumeGcsArgs' gcs: Represents a GCS Bucket mounted as a volume.
+        :param 'ServiceTemplateVolumeGcsArgs' gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
                Structure is documented below.
         :param 'ServiceTemplateVolumeNfsArgs' nfs: Represents an NFS mount.
                Structure is documented below.
@@ -3231,7 +3294,7 @@ class ServiceTemplateVolume(dict):
     @pulumi.getter
     def gcs(self) -> Optional['outputs.ServiceTemplateVolumeGcs']:
         """
-        Represents a GCS Bucket mounted as a volume.
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
         Structure is documented below.
         """
         return pulumi.get(self, "gcs")
@@ -4558,16 +4621,19 @@ class GetJobTemplateTemplateVolumeResult(dict):
     def __init__(__self__, *,
                  cloud_sql_instances: Sequence['outputs.GetJobTemplateTemplateVolumeCloudSqlInstanceResult'],
                  empty_dirs: Sequence['outputs.GetJobTemplateTemplateVolumeEmptyDirResult'],
+                 gcs: Sequence['outputs.GetJobTemplateTemplateVolumeGcResult'],
                  name: str,
                  secrets: Sequence['outputs.GetJobTemplateTemplateVolumeSecretResult']):
         """
         :param Sequence['GetJobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instances: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         :param Sequence['GetJobTemplateTemplateVolumeEmptyDirArgs'] empty_dirs: Ephemeral storage used as a shared volume.
+        :param Sequence['GetJobTemplateTemplateVolumeGcArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
         :param str name: The name of the Cloud Run v2 Job.
         :param Sequence['GetJobTemplateTemplateVolumeSecretArgs'] secrets: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
         pulumi.set(__self__, "cloud_sql_instances", cloud_sql_instances)
         pulumi.set(__self__, "empty_dirs", empty_dirs)
+        pulumi.set(__self__, "gcs", gcs)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "secrets", secrets)
 
@@ -4586,6 +4652,14 @@ class GetJobTemplateTemplateVolumeResult(dict):
         Ephemeral storage used as a shared volume.
         """
         return pulumi.get(self, "empty_dirs")
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Sequence['outputs.GetJobTemplateTemplateVolumeGcResult']:
+        """
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        """
+        return pulumi.get(self, "gcs")
 
     @property
     @pulumi.getter
@@ -4649,6 +4723,35 @@ class GetJobTemplateTemplateVolumeEmptyDirResult(dict):
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
         """
         return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class GetJobTemplateTemplateVolumeGcResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 read_only: bool):
+        """
+        :param str bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        :param bool read_only: If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        return pulumi.get(self, "read_only")
 
 
 @pulumi.output_type
@@ -6029,7 +6132,7 @@ class GetServiceTemplateVolumeResult(dict):
         """
         :param Sequence['GetServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instances: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         :param Sequence['GetServiceTemplateVolumeEmptyDirArgs'] empty_dirs: Ephemeral storage used as a shared volume.
-        :param Sequence['GetServiceTemplateVolumeGcArgs'] gcs: Represents a GCS Bucket mounted as a volume.
+        :param Sequence['GetServiceTemplateVolumeGcArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
         :param str name: The name of the Cloud Run v2 Service.
         :param Sequence['GetServiceTemplateVolumeNfArgs'] nfs: Represents an NFS mount.
         :param Sequence['GetServiceTemplateVolumeSecretArgs'] secrets: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -6061,7 +6164,7 @@ class GetServiceTemplateVolumeResult(dict):
     @pulumi.getter
     def gcs(self) -> Sequence['outputs.GetServiceTemplateVolumeGcResult']:
         """
-        Represents a GCS Bucket mounted as a volume.
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
         """
         return pulumi.get(self, "gcs")
 

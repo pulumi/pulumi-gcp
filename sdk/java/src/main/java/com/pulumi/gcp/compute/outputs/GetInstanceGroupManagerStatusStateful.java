@@ -18,7 +18,7 @@ public final class GetInstanceGroupManagerStatusStateful {
      */
     private Boolean hasStatefulConfig;
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     private List<GetInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
@@ -32,7 +32,7 @@ public final class GetInstanceGroupManagerStatusStateful {
         return this.hasStatefulConfig;
     }
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     public List<GetInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs() {

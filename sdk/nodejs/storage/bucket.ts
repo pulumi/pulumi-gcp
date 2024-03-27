@@ -246,6 +246,11 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     */
+    public readonly softDeletePolicy!: pulumi.Output<outputs.storage.BucketSoftDeletePolicy>;
+    /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
@@ -299,6 +304,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
             resourceInputs["rpo"] = state ? state.rpo : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["softDeletePolicy"] = state ? state.softDeletePolicy : undefined;
             resourceInputs["storageClass"] = state ? state.storageClass : undefined;
             resourceInputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -326,6 +332,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["requesterPays"] = args ? args.requesterPays : undefined;
             resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             resourceInputs["rpo"] = args ? args.rpo : undefined;
+            resourceInputs["softDeletePolicy"] = args ? args.softDeletePolicy : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
@@ -433,6 +440,11 @@ export interface BucketState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     */
+    softDeletePolicy?: pulumi.Input<inputs.storage.BucketSoftDeletePolicy>;
+    /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      */
     storageClass?: pulumi.Input<string>;
@@ -531,6 +543,11 @@ export interface BucketArgs {
      * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
      */
     rpo?: pulumi.Input<string>;
+    /**
+     * The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     */
+    softDeletePolicy?: pulumi.Input<inputs.storage.BucketSoftDeletePolicy>;
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      */

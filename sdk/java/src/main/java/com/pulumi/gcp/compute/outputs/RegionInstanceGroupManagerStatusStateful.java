@@ -19,7 +19,7 @@ public final class RegionInstanceGroupManagerStatusStateful {
      */
     private @Nullable Boolean hasStatefulConfig;
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     private @Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
@@ -33,7 +33,7 @@ public final class RegionInstanceGroupManagerStatusStateful {
         return Optional.ofNullable(this.hasStatefulConfig);
     }
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     public List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs() {

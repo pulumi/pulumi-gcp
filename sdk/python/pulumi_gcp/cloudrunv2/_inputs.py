@@ -27,6 +27,7 @@ __all__ = [
     'JobTemplateTemplateVolumeArgs',
     'JobTemplateTemplateVolumeCloudSqlInstanceArgs',
     'JobTemplateTemplateVolumeEmptyDirArgs',
+    'JobTemplateTemplateVolumeGcsArgs',
     'JobTemplateTemplateVolumeSecretArgs',
     'JobTemplateTemplateVolumeSecretItemArgs',
     'JobTemplateTemplateVpcAccessArgs',
@@ -1033,12 +1034,15 @@ class JobTemplateTemplateVolumeArgs:
                  name: pulumi.Input[str],
                  cloud_sql_instance: Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']] = None,
                  empty_dir: Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']] = None,
+                 gcs: Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']] = None,
                  secret: Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -1048,6 +1052,8 @@ class JobTemplateTemplateVolumeArgs:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if empty_dir is not None:
             pulumi.set(__self__, "empty_dir", empty_dir)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -1088,6 +1094,19 @@ class JobTemplateTemplateVolumeArgs:
     @empty_dir.setter
     def empty_dir(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']]):
         pulumi.set(self, "empty_dir", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']]:
+        """
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
     @pulumi.getter
@@ -1167,6 +1186,44 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
     @size_limit.setter
     def size_limit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size_limit", value)
+
+
+@pulumi.input_type
+class JobTemplateTemplateVolumeGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        :param pulumi.Input[bool] read_only: If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
 
 @pulumi.input_type
@@ -3190,7 +3247,7 @@ class ServiceTemplateVolumeArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateVolumeGcsArgs'] gcs: Represents a GCS Bucket mounted as a volume.
+        :param pulumi.Input['ServiceTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeNfsArgs'] nfs: Represents an NFS mount.
                Structure is documented below.
@@ -3251,7 +3308,7 @@ class ServiceTemplateVolumeArgs:
     @pulumi.getter
     def gcs(self) -> Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']]:
         """
-        Represents a GCS Bucket mounted as a volume.
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
         Structure is documented below.
         """
         return pulumi.get(self, "gcs")

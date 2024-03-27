@@ -15,15 +15,17 @@ __all__ = ['AndroidAppArgs', 'AndroidApp']
 class AndroidAppArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 package_name: pulumi.Input[str],
                  api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
-                 package_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
+        :param pulumi.Input[str] package_name: The canonical package name of the Android app as would appear in the Google Play
+               Developer Console.
                
                
                - - -
@@ -33,20 +35,17 @@ class AndroidAppArgs:
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
-        :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
-               Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "package_name", package_name)
         if api_key_id is not None:
             pulumi.set(__self__, "api_key_id", api_key_id)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
-        if package_name is not None:
-            pulumi.set(__self__, "package_name", package_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if sha1_hashes is not None:
@@ -59,15 +58,28 @@ class AndroidAppArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The user-assigned display name of the AndroidApp.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="packageName")
+    def package_name(self) -> pulumi.Input[str]:
+        """
+        The canonical package name of the Android app as would appear in the Google Play
+        Developer Console.
+
+
+        - - -
+        """
+        return pulumi.get(self, "package_name")
+
+    @package_name.setter
+    def package_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_name", value)
 
     @property
     @pulumi.getter(name="apiKeyId")
@@ -96,19 +108,6 @@ class AndroidAppArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "deletion_policy", value)
-
-    @property
-    @pulumi.getter(name="packageName")
-    def package_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. The canonical package name of the Android app as would appear in the Google Play
-        Developer Console.
-        """
-        return pulumi.get(self, "package_name")
-
-    @package_name.setter
-    def package_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "package_name", value)
 
     @property
     @pulumi.getter
@@ -172,15 +171,15 @@ class _AndroidAppState:
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: The fully qualified resource name of the AndroidApp, for example:
                projects/projectId/androidApps/appId
-        :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
+        :param pulumi.Input[str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -253,9 +252,6 @@ class _AndroidAppState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The user-assigned display name of the AndroidApp.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -293,8 +289,11 @@ class _AndroidAppState:
     @pulumi.getter(name="packageName")
     def package_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The canonical package name of the Android app as would appear in the Google Play
+        The canonical package name of the Android app as would appear in the Google Play
         Developer Console.
+
+
+        - - -
         """
         return pulumi.get(self, "package_name")
 
@@ -445,11 +444,11 @@ class AndroidApp(pulumi.CustomResource):
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
+        :param pulumi.Input[str] package_name: The canonical package name of the Android app as would appear in the Google Play
+               Developer Console.
                
                
                - - -
-        :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
-               Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -580,6 +579,8 @@ class AndroidApp(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if package_name is None and not opts.urn:
+                raise TypeError("Missing required property 'package_name'")
             __props__.__dict__["package_name"] = package_name
             __props__.__dict__["project"] = project
             __props__.__dict__["sha1_hashes"] = sha1_hashes
@@ -623,15 +624,15 @@ class AndroidApp(pulumi.CustomResource):
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: The fully qualified resource name of the AndroidApp, for example:
                projects/projectId/androidApps/appId
-        :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
+        :param pulumi.Input[str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -687,9 +688,6 @@ class AndroidApp(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The user-assigned display name of the AndroidApp.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -713,10 +711,13 @@ class AndroidApp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageName")
-    def package_name(self) -> pulumi.Output[Optional[str]]:
+    def package_name(self) -> pulumi.Output[str]:
         """
-        Immutable. The canonical package name of the Android app as would appear in the Google Play
+        The canonical package name of the Android app as would appear in the Google Play
         Developer Console.
+
+
+        - - -
         """
         return pulumi.get(self, "package_name")
 

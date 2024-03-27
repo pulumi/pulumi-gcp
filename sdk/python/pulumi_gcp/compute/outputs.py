@@ -3717,7 +3717,7 @@ class DiskGuestOsFeature(dict):
                  type: str):
         """
         :param str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -3726,7 +3726,7 @@ class DiskGuestOsFeature(dict):
     def type(self) -> str:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
@@ -9691,13 +9691,42 @@ class InstanceGroupManagerStatus(dict):
 
 @pulumi.output_type
 class InstanceGroupManagerStatusAllInstancesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentRevision":
+            suggest = "current_revision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusAllInstancesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusAllInstancesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusAllInstancesConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 current_revision: Optional[str] = None,
                  effective: Optional[bool] = None):
         """
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
         :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
+        if current_revision is not None:
+            pulumi.set(__self__, "current_revision", current_revision)
         if effective is not None:
             pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> Optional[str]:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
 
     @property
     @pulumi.getter
@@ -9734,7 +9763,7 @@ class InstanceGroupManagerStatusStateful(dict):
                  per_instance_configs: Optional[Sequence['outputs.InstanceGroupManagerStatusStatefulPerInstanceConfig']] = None):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param Sequence['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instance.
+        :param Sequence['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instances.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -9753,7 +9782,7 @@ class InstanceGroupManagerStatusStateful(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> Optional[Sequence['outputs.InstanceGroupManagerStatusStatefulPerInstanceConfig']]:
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configs on the instances.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -18870,13 +18899,42 @@ class RegionInstanceGroupManagerStatus(dict):
 
 @pulumi.output_type
 class RegionInstanceGroupManagerStatusAllInstancesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentRevision":
+            suggest = "current_revision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerStatusAllInstancesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerStatusAllInstancesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerStatusAllInstancesConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 current_revision: Optional[str] = None,
                  effective: Optional[bool] = None):
         """
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
         :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
+        if current_revision is not None:
+            pulumi.set(__self__, "current_revision", current_revision)
         if effective is not None:
             pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> Optional[str]:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
 
     @property
     @pulumi.getter
@@ -18913,7 +18971,7 @@ class RegionInstanceGroupManagerStatusStateful(dict):
                  per_instance_configs: Optional[Sequence['outputs.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig']] = None):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param Sequence['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instance.
+        :param Sequence['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instances.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -18932,7 +18990,7 @@ class RegionInstanceGroupManagerStatusStateful(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> Optional[Sequence['outputs.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig']]:
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configs on the instances.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -25413,6 +25471,8 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
             suggest = "ignore_case"
         elif key == "metadataFilters":
             suggest = "metadata_filters"
+        elif key == "pathTemplateMatch":
+            suggest = "path_template_match"
         elif key == "prefixMatch":
             suggest = "prefix_match"
         elif key == "queryParameterMatches":
@@ -25436,6 +25496,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
                  header_matches: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch']] = None,
                  ignore_case: Optional[bool] = None,
                  metadata_filters: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter']] = None,
+                 path_template_match: Optional[str] = None,
                  prefix_match: Optional[str] = None,
                  query_parameter_matches: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch']] = None,
                  regex_match: Optional[str] = None):
@@ -25462,6 +25523,14 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
                UrlMap. metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param str path_template_match: For satisfying the matchRule condition, the path of the request
+               must match the wildcard pattern specified in pathTemplateMatch
+               after removing any query parameters and anchor that may be part
+               of the original URL.
+               pathTemplateMatch must be between 1 and 255 characters
+               (inclusive).  The pattern specified by pathTemplateMatch may
+               have at most 5 wildcard operators and at most 5 variable
+               captures in total.
         :param str prefix_match: For satisfying the matchRule condition, the request's path must begin with the
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -25483,6 +25552,8 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
             pulumi.set(__self__, "ignore_case", ignore_case)
         if metadata_filters is not None:
             pulumi.set(__self__, "metadata_filters", metadata_filters)
+        if path_template_match is not None:
+            pulumi.set(__self__, "path_template_match", path_template_match)
         if prefix_match is not None:
             pulumi.set(__self__, "prefix_match", prefix_match)
         if query_parameter_matches is not None:
@@ -25539,6 +25610,21 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "metadata_filters")
+
+    @property
+    @pulumi.getter(name="pathTemplateMatch")
+    def path_template_match(self) -> Optional[str]:
+        """
+        For satisfying the matchRule condition, the path of the request
+        must match the wildcard pattern specified in pathTemplateMatch
+        after removing any query parameters and anchor that may be part
+        of the original URL.
+        pathTemplateMatch must be between 1 and 255 characters
+        (inclusive).  The pattern specified by pathTemplateMatch may
+        have at most 5 wildcard operators and at most 5 variable
+        captures in total.
+        """
+        return pulumi.get(self, "path_template_match")
 
     @property
     @pulumi.getter(name="prefixMatch")
@@ -26689,6 +26775,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
             suggest = "host_rewrite"
         elif key == "pathPrefixRewrite":
             suggest = "path_prefix_rewrite"
+        elif key == "pathTemplateRewrite":
+            suggest = "path_template_rewrite"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite. Access the value via the '{suggest}' property getter instead.")
@@ -26703,17 +26791,31 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
 
     def __init__(__self__, *,
                  host_rewrite: Optional[str] = None,
-                 path_prefix_rewrite: Optional[str] = None):
+                 path_prefix_rewrite: Optional[str] = None,
+                 path_template_rewrite: Optional[str] = None):
         """
         :param str host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
                The value must be from 1 to 255 characters.
         :param str path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
                The value must be from 1 to 1024 characters.
+        :param str path_template_rewrite: Prior to forwarding the request to the selected origin, if the
+               request matched a pathTemplateMatch, the matching portion of the
+               request's path is replaced re-written using the pattern specified
+               by pathTemplateRewrite.
+               pathTemplateRewrite must be between 1 and 255 characters
+               (inclusive), must start with a '/', and must only use variables
+               captured by the route's pathTemplate matchers.
+               pathTemplateRewrite may only be used when all of a route's
+               MatchRules specify pathTemplate.
+               Only one of pathPrefixRewrite and pathTemplateRewrite may be
+               specified.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
             pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+        if path_template_rewrite is not None:
+            pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -26732,6 +26834,24 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
         The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "path_prefix_rewrite")
+
+    @property
+    @pulumi.getter(name="pathTemplateRewrite")
+    def path_template_rewrite(self) -> Optional[str]:
+        """
+        Prior to forwarding the request to the selected origin, if the
+        request matched a pathTemplateMatch, the matching portion of the
+        request's path is replaced re-written using the pattern specified
+        by pathTemplateRewrite.
+        pathTemplateRewrite must be between 1 and 255 characters
+        (inclusive), must start with a '/', and must only use variables
+        captured by the route's pathTemplate matchers.
+        pathTemplateRewrite may only be used when all of a route's
+        MatchRules specify pathTemplate.
+        Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        specified.
+        """
+        return pulumi.get(self, "path_template_rewrite")
 
 
 @pulumi.output_type
@@ -42214,11 +42334,22 @@ class GetInstanceGroupManagerStatusResult(dict):
 @pulumi.output_type
 class GetInstanceGroupManagerStatusAllInstancesConfigResult(dict):
     def __init__(__self__, *,
+                 current_revision: str,
                  effective: bool):
         """
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
         :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
+        pulumi.set(__self__, "current_revision", current_revision)
         pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> str:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
 
     @property
     @pulumi.getter
@@ -42236,7 +42367,7 @@ class GetInstanceGroupManagerStatusStatefulResult(dict):
                  per_instance_configs: Sequence['outputs.GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult']):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param Sequence['GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instance.
+        :param Sequence['GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instances.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
         pulumi.set(__self__, "per_instance_configs", per_instance_configs)
@@ -42253,7 +42384,7 @@ class GetInstanceGroupManagerStatusStatefulResult(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> Sequence['outputs.GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult']:
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configs on the instances.
         """
         return pulumi.get(self, "per_instance_configs")
 

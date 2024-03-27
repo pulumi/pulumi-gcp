@@ -5,12 +5,18 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigDagProcessor {
+    /**
+     * @return Number of DAG processors.
+     * 
+     */
+    private @Nullable Integer count;
     /**
      * @return CPU request and limit for DAG processor.
      * 
@@ -28,6 +34,13 @@ public final class EnvironmentConfigWorkloadsConfigDagProcessor {
     private @Nullable Double storageGb;
 
     private EnvironmentConfigWorkloadsConfigDagProcessor() {}
+    /**
+     * @return Number of DAG processors.
+     * 
+     */
+    public Optional<Integer> count() {
+        return Optional.ofNullable(this.count);
+    }
     /**
      * @return CPU request and limit for DAG processor.
      * 
@@ -59,17 +72,25 @@ public final class EnvironmentConfigWorkloadsConfigDagProcessor {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer count;
         private @Nullable Double cpu;
         private @Nullable Double memoryGb;
         private @Nullable Double storageGb;
         public Builder() {}
         public Builder(EnvironmentConfigWorkloadsConfigDagProcessor defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.count = defaults.count;
     	      this.cpu = defaults.cpu;
     	      this.memoryGb = defaults.memoryGb;
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
+        public Builder count(@Nullable Integer count) {
+
+            this.count = count;
+            return this;
+        }
         @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
 
@@ -90,6 +111,7 @@ public final class EnvironmentConfigWorkloadsConfigDagProcessor {
         }
         public EnvironmentConfigWorkloadsConfigDagProcessor build() {
             final var _resultValue = new EnvironmentConfigWorkloadsConfigDagProcessor();
+            _resultValue.count = count;
             _resultValue.cpu = cpu;
             _resultValue.memoryGb = memoryGb;
             _resultValue.storageGb = storageGb;

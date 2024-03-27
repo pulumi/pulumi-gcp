@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicMessageStoragePolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TopicArgs Empty = new TopicArgs();
+
+    /**
+     * Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ingestionDataSourceSettings")
+    private @Nullable Output<TopicIngestionDataSourceSettingsArgs> ingestionDataSourceSettings;
+
+    /**
+     * @return Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsArgs>> ingestionDataSourceSettings() {
+        return Optional.ofNullable(this.ingestionDataSourceSettings);
+    }
 
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -168,6 +186,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     private TopicArgs() {}
 
     private TopicArgs(TopicArgs $) {
+        this.ingestionDataSourceSettings = $.ingestionDataSourceSettings;
         this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
         this.messageRetentionDuration = $.messageRetentionDuration;
@@ -193,6 +212,29 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TopicArgs defaults) {
             $ = new TopicArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param ingestionDataSourceSettings Settings for ingestion from a data source into this topic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestionDataSourceSettings(@Nullable Output<TopicIngestionDataSourceSettingsArgs> ingestionDataSourceSettings) {
+            $.ingestionDataSourceSettings = ingestionDataSourceSettings;
+            return this;
+        }
+
+        /**
+         * @param ingestionDataSourceSettings Settings for ingestion from a data source into this topic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs ingestionDataSourceSettings) {
+            return ingestionDataSourceSettings(Output.of(ingestionDataSourceSettings));
         }
 
         /**

@@ -3683,6 +3683,8 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Worker() EnvironmentConfigWor
 }
 
 type EnvironmentConfigWorkloadsConfigDagProcessor struct {
+	// Number of DAG processors.
+	Count *int `pulumi:"count"`
 	// CPU request and limit for DAG processor.
 	Cpu *float64 `pulumi:"cpu"`
 	// Memory (GB) request and limit for DAG processor.
@@ -3703,6 +3705,8 @@ type EnvironmentConfigWorkloadsConfigDagProcessorInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigDagProcessorArgs struct {
+	// Number of DAG processors.
+	Count pulumi.IntPtrInput `pulumi:"count"`
 	// CPU request and limit for DAG processor.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
 	// Memory (GB) request and limit for DAG processor.
@@ -3788,6 +3792,11 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) ToEnvironmentConfigW
 	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
 }
 
+// Number of DAG processors.
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
 // CPU request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
@@ -3825,6 +3834,16 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Elem() Environmen
 		var ret EnvironmentConfigWorkloadsConfigDagProcessor
 		return ret
 	}).(EnvironmentConfigWorkloadsConfigDagProcessorOutput)
+}
+
+// Number of DAG processors.
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
 }
 
 // CPU request and limit for DAG processor.
@@ -7187,6 +7206,8 @@ func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetEnvironmentConfigWorkloadsConfigDagProcessor struct {
+	// Number of DAG processors.
+	Count int `pulumi:"count"`
 	// CPU request and limit for DAG processor.
 	Cpu float64 `pulumi:"cpu"`
 	// Memory (GB) request and limit for DAG processor.
@@ -7207,6 +7228,8 @@ type GetEnvironmentConfigWorkloadsConfigDagProcessorInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigDagProcessorArgs struct {
+	// Number of DAG processors.
+	Count pulumi.IntInput `pulumi:"count"`
 	// CPU request and limit for DAG processor.
 	Cpu pulumi.Float64Input `pulumi:"cpu"`
 	// Memory (GB) request and limit for DAG processor.
@@ -7264,6 +7287,11 @@ func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) ToGetEnvironmentC
 
 func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorOutput {
 	return o
+}
+
+// Number of DAG processors.
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) int { return v.Count }).(pulumi.IntOutput)
 }
 
 // CPU request and limit for DAG processor.

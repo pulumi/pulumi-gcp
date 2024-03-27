@@ -1321,6 +1321,82 @@ class RegionUrlMap(pulumi.CustomResource):
             network_tier="PREMIUM")
         ```
         <!--End PulumiCodeChooser -->
+        ### Region Url Map Path Template Match
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+                request_path="/",
+            ))
+        home_backend = gcp.compute.RegionBackendService("home-backend",
+            region="us-central1",
+            name="home-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        cart_backend = gcp.compute.RegionBackendService("cart-backend",
+            region="us-central1",
+            name="cart-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        user_backend = gcp.compute.RegionBackendService("user-backend",
+            region="us-central1",
+            name="user-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.RegionUrlMap("urlmap",
+            region="us-central1",
+            name="urlmap",
+            description="a description",
+            default_service=home_backend.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="mysite",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="mysite",
+                default_service=home_backend.id,
+                route_rules=[
+                    gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
+                        match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
+                            path_template_match="/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+                        )],
+                        service=cart_backend.id,
+                        priority=1,
+                        route_action=gcp.compute.RegionUrlMapPathMatcherRouteRuleRouteActionArgs(
+                            url_rewrite=gcp.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs(
+                                path_template_rewrite="/{username}-{cartid}/",
+                            ),
+                        ),
+                    ),
+                    gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
+                        match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
+                            path_template_match="/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+                        )],
+                        service=user_backend.id,
+                        priority=2,
+                    ),
+                ],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2172,6 +2248,82 @@ class RegionUrlMap(pulumi.CustomResource):
             network=default.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM")
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Region Url Map Path Template Match
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+                request_path="/",
+            ))
+        home_backend = gcp.compute.RegionBackendService("home-backend",
+            region="us-central1",
+            name="home-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        cart_backend = gcp.compute.RegionBackendService("cart-backend",
+            region="us-central1",
+            name="cart-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        user_backend = gcp.compute.RegionBackendService("user-backend",
+            region="us-central1",
+            name="user-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default.id)
+        urlmap = gcp.compute.RegionUrlMap("urlmap",
+            region="us-central1",
+            name="urlmap",
+            description="a description",
+            default_service=home_backend.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="mysite",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="mysite",
+                default_service=home_backend.id,
+                route_rules=[
+                    gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
+                        match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
+                            path_template_match="/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+                        )],
+                        service=cart_backend.id,
+                        priority=1,
+                        route_action=gcp.compute.RegionUrlMapPathMatcherRouteRuleRouteActionArgs(
+                            url_rewrite=gcp.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs(
+                                path_template_rewrite="/{username}-{cartid}/",
+                            ),
+                        ),
+                    ),
+                    gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
+                        match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
+                            path_template_match="/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+                        )],
+                        service=user_backend.id,
+                        priority=2,
+                    ),
+                ],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

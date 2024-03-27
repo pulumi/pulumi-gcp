@@ -33,14 +33,14 @@ public final class InstanceGroupManagerStatusStatefulArgs extends com.pulumi.res
     }
 
     /**
-     * Status of per-instance configs on the instance.
+     * Status of per-instance configs on the instances.
      * 
      */
     @Import(name="perInstanceConfigs")
     private @Nullable Output<List<InstanceGroupManagerStatusStatefulPerInstanceConfigArgs>> perInstanceConfigs;
 
     /**
-     * @return Status of per-instance configs on the instance.
+     * @return Status of per-instance configs on the instances.
      * 
      */
     public Optional<Output<List<InstanceGroupManagerStatusStatefulPerInstanceConfigArgs>>> perInstanceConfigs() {
@@ -94,7 +94,7 @@ public final class InstanceGroupManagerStatusStatefulArgs extends com.pulumi.res
         }
 
         /**
-         * @param perInstanceConfigs Status of per-instance configs on the instance.
+         * @param perInstanceConfigs Status of per-instance configs on the instances.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class InstanceGroupManagerStatusStatefulArgs extends com.pulumi.res
         }
 
         /**
-         * @param perInstanceConfigs Status of per-instance configs on the instance.
+         * @param perInstanceConfigs Status of per-instance configs on the instances.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class InstanceGroupManagerStatusStatefulArgs extends com.pulumi.res
         }
 
         /**
-         * @param perInstanceConfigs Status of per-instance configs on the instance.
+         * @param perInstanceConfigs Status of per-instance configs on the instances.
          * 
          * @return builder
          * 

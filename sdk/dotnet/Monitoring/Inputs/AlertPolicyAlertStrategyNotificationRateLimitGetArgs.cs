@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     {
         /// <summary>
         /// Not more than one notification per period.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }

@@ -209,6 +209,7 @@ class AlertPolicyAlertStrategyNotificationRateLimit(dict):
                  period: Optional[str] = None):
         """
         :param str period: Not more than one notification per period.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
         """
         if period is not None:
             pulumi.set(__self__, "period", period)
@@ -218,6 +219,7 @@ class AlertPolicyAlertStrategyNotificationRateLimit(dict):
     def period(self) -> Optional[str]:
         """
         Not more than one notification per period.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
         """
         return pulumi.get(self, "period")
 

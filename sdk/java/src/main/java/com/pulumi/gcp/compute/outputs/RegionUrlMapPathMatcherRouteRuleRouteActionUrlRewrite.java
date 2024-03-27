@@ -23,6 +23,21 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
      * 
      */
     private @Nullable String pathPrefixRewrite;
+    /**
+     * @return Prior to forwarding the request to the selected origin, if the
+     * request matched a pathTemplateMatch, the matching portion of the
+     * request&#39;s path is replaced re-written using the pattern specified
+     * by pathTemplateRewrite.
+     * pathTemplateRewrite must be between 1 and 255 characters
+     * (inclusive), must start with a &#39;/&#39;, and must only use variables
+     * captured by the route&#39;s pathTemplate matchers.
+     * pathTemplateRewrite may only be used when all of a route&#39;s
+     * MatchRules specify pathTemplate.
+     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * specified.
+     * 
+     */
+    private @Nullable String pathTemplateRewrite;
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite() {}
     /**
@@ -41,6 +56,23 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
     public Optional<String> pathPrefixRewrite() {
         return Optional.ofNullable(this.pathPrefixRewrite);
     }
+    /**
+     * @return Prior to forwarding the request to the selected origin, if the
+     * request matched a pathTemplateMatch, the matching portion of the
+     * request&#39;s path is replaced re-written using the pattern specified
+     * by pathTemplateRewrite.
+     * pathTemplateRewrite must be between 1 and 255 characters
+     * (inclusive), must start with a &#39;/&#39;, and must only use variables
+     * captured by the route&#39;s pathTemplate matchers.
+     * pathTemplateRewrite may only be used when all of a route&#39;s
+     * MatchRules specify pathTemplate.
+     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * specified.
+     * 
+     */
+    public Optional<String> pathTemplateRewrite() {
+        return Optional.ofNullable(this.pathTemplateRewrite);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,11 +85,13 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
     public static final class Builder {
         private @Nullable String hostRewrite;
         private @Nullable String pathPrefixRewrite;
+        private @Nullable String pathTemplateRewrite;
         public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRewrite = defaults.hostRewrite;
     	      this.pathPrefixRewrite = defaults.pathPrefixRewrite;
+    	      this.pathTemplateRewrite = defaults.pathTemplateRewrite;
         }
 
         @CustomType.Setter
@@ -72,10 +106,17 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
             this.pathPrefixRewrite = pathPrefixRewrite;
             return this;
         }
+        @CustomType.Setter
+        public Builder pathTemplateRewrite(@Nullable String pathTemplateRewrite) {
+
+            this.pathTemplateRewrite = pathTemplateRewrite;
+            return this;
+        }
         public RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite build() {
             final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite();
             _resultValue.hostRewrite = hostRewrite;
             _resultValue.pathPrefixRewrite = pathPrefixRewrite;
+            _resultValue.pathTemplateRewrite = pathTemplateRewrite;
             return _resultValue;
         }
     }

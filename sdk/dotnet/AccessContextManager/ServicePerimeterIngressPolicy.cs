@@ -19,9 +19,87 @@ namespace Pulumi.Gcp.AccessContextManager
     /// Individual ingress policies can be limited by restricting which services and/
     /// or actions they match using the ingressTo field.
     /// 
+    /// &gt; **Note:** By default, updates to this resource will remove the IngressPolicy from the
+    /// from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
+    /// is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+    /// 
     /// To get more information about ServicePerimeterIngressPolicy, see:
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Access Context Manager Service Perimeter Ingress Policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         Title = "Storage Policy",
+    ///     });
+    /// 
+    ///     var storage_perimeter = new Gcp.AccessContextManager.ServicePerimeter("storage-perimeter", new()
+    ///     {
+    ///         Parent = access_policy.Name.Apply(name =&gt; $"accesspolicies/{name}"),
+    ///         Name = access_policy.Name.Apply(name =&gt; $"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
+    ///         Title = "Storage Perimeter",
+    ///         Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///         {
+    ///             RestrictedServices = new[]
+    ///             {
+    ///                 "storage.googleapis.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var ingressPolicy = new Gcp.AccessContextManager.ServicePerimeterIngressPolicy("ingress_policy", new()
+    ///     {
+    ///         Perimeter = storage_perimeter.Name,
+    ///         IngressFrom = new Gcp.AccessContextManager.Inputs.ServicePerimeterIngressPolicyIngressFromArgs
+    ///         {
+    ///             IdentityType = "any_identity",
+    ///             Sources = new[]
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimeterIngressPolicyIngressFromSourceArgs
+    ///                 {
+    ///                     AccessLevel = "*",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IngressTo = new Gcp.AccessContextManager.Inputs.ServicePerimeterIngressPolicyIngressToArgs
+    ///         {
+    ///             Resources = new[]
+    ///             {
+    ///                 "*",
+    ///             },
+    ///             Operations = new[]
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimeterIngressPolicyIngressToOperationArgs
+    ///                 {
+    ///                     ServiceName = "bigquery.googleapis.com",
+    ///                     MethodSelectors = new[]
+    ///                     {
+    ///                         new Gcp.AccessContextManager.Inputs.ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs
+    ///                         {
+    ///                             Method = "*",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

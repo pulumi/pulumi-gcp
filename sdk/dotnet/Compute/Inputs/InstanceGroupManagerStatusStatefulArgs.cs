@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.InstanceGroupManagerStatusStatefulPerInstanceConfigArgs>? _perInstanceConfigs;
 
         /// <summary>
-        /// Status of per-instance configs on the instance.
+        /// Status of per-instance configs on the instances.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatusStatefulPerInstanceConfigArgs> PerInstanceConfigs
         {

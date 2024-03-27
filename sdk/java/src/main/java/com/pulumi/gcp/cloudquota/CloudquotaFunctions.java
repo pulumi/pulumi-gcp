@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfoArgs;
 import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfoPlainArgs;
+import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
+import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosPlainArgs;
 import com.pulumi.gcp.cloudquota.outputs.GetSQuotaInfoResult;
+import com.pulumi.gcp.cloudquota.outputs.GetSQuotaInfosResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudquotaFunctions {
@@ -181,5 +184,169 @@ public final class CloudquotaFunctions {
      */
     public static CompletableFuture<GetSQuotaInfoResult> getSQuotaInfoPlain(GetSQuotaInfoPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", TypeShape.of(GetSQuotaInfoResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about all quotas for a given project, folder or organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
+     * import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
+     *             .parent(&#34;projects/my-project&#34;)
+     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSQuotaInfosResult> getSQuotaInfos(GetSQuotaInfosArgs args) {
+        return getSQuotaInfos(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about all quotas for a given project, folder or organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
+     * import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
+     *             .parent(&#34;projects/my-project&#34;)
+     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSQuotaInfosResult> getSQuotaInfosPlain(GetSQuotaInfosPlainArgs args) {
+        return getSQuotaInfosPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about all quotas for a given project, folder or organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
+     * import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
+     *             .parent(&#34;projects/my-project&#34;)
+     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSQuotaInfosResult> getSQuotaInfos(GetSQuotaInfosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", TypeShape.of(GetSQuotaInfosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about all quotas for a given project, folder or organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
+     * import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
+     *             .parent(&#34;projects/my-project&#34;)
+     *             .service(&#34;compute.googleapis.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSQuotaInfosResult> getSQuotaInfosPlain(GetSQuotaInfosPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", TypeShape.of(GetSQuotaInfosResult.class), args, Utilities.withVersion(options));
     }
 }

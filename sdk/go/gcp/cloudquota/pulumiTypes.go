@@ -331,6 +331,557 @@ func (o GetSQuotaInfoQuotaIncreaseEligibilityArrayOutput) Index(i pulumi.IntInpu
 	}).(GetSQuotaInfoQuotaIncreaseEligibilityOutput)
 }
 
+type GetSQuotaInfosQuotaInfo struct {
+	// (Output) The container type of the QuotaInfo.
+	ContainerType string `pulumi:"containerType"`
+	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+	Dimensions []string `pulumi:"dimensions"`
+	// (Output) The collection of dimensions info ordered by their dimensions from more specific ones to less specific ones.
+	DimensionsInfos []GetSQuotaInfosQuotaInfoDimensionsInfo `pulumi:"dimensionsInfos"`
+	// (Output) Whether the quota is a concurrent quota. Concurrent quotas are enforced on the total number of concurrent operations in flight at any given time.
+	IsConcurrent bool `pulumi:"isConcurrent"`
+	// (Output) Whether the quota value is fixed or adjustable.
+	IsFixed bool `pulumi:"isFixed"`
+	// (Output) Whether this is a precise quota. A precise quota is tracked with absolute precision. In contrast, an imprecise quota is not tracked with precision.
+	IsPrecise bool `pulumi:"isPrecise"`
+	// (Output) The metric of the quota. It specifies the resources consumption the quota is defined for, for example: `compute.googleapis.com/cpus`.
+	Metric string `pulumi:"metric"`
+	// (Output) The display name of the quota metric.
+	MetricDisplayName string `pulumi:"metricDisplayName"`
+	// (Output) The unit in which the metric value is reported, e.g., `MByte`.
+	MetricUnit string `pulumi:"metricUnit"`
+	// (Output) Resource name of this QuotaInfo, for example: `projects/123/locations/global/services/compute.googleapis.com/quotaInfos/CpusPerProjectPerRegion`.
+	Name string `pulumi:"name"`
+	// (Output) The display name of the quota.
+	QuotaDisplayName string `pulumi:"quotaDisplayName"`
+	QuotaId          string `pulumi:"quotaId"`
+	// (Output) Whether it is eligible to request a higher quota value for this quota.
+	QuotaIncreaseEligibilities []GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility `pulumi:"quotaIncreaseEligibilities"`
+	// (Output) The reset time interval for the quota. Refresh interval applies to rate quota only. Example: "minute" for per minute, "day" for per day, or "10 seconds" for every 10 seconds.
+	RefreshInterval string `pulumi:"refreshInterval"`
+	// The name of the service in which the quotas are defined.
+	Service string `pulumi:"service"`
+	// (Output) URI to the page where users can request more quota for the cloud service, for example: `https://console.cloud.google.com/iam-admin/quotas`.
+	ServiceRequestQuotaUri string `pulumi:"serviceRequestQuotaUri"`
+}
+
+// GetSQuotaInfosQuotaInfoInput is an input type that accepts GetSQuotaInfosQuotaInfoArgs and GetSQuotaInfosQuotaInfoOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoInput` via:
+//
+//	GetSQuotaInfosQuotaInfoArgs{...}
+type GetSQuotaInfosQuotaInfoInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoOutput() GetSQuotaInfosQuotaInfoOutput
+	ToGetSQuotaInfosQuotaInfoOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoOutput
+}
+
+type GetSQuotaInfosQuotaInfoArgs struct {
+	// (Output) The container type of the QuotaInfo.
+	ContainerType pulumi.StringInput `pulumi:"containerType"`
+	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+	Dimensions pulumi.StringArrayInput `pulumi:"dimensions"`
+	// (Output) The collection of dimensions info ordered by their dimensions from more specific ones to less specific ones.
+	DimensionsInfos GetSQuotaInfosQuotaInfoDimensionsInfoArrayInput `pulumi:"dimensionsInfos"`
+	// (Output) Whether the quota is a concurrent quota. Concurrent quotas are enforced on the total number of concurrent operations in flight at any given time.
+	IsConcurrent pulumi.BoolInput `pulumi:"isConcurrent"`
+	// (Output) Whether the quota value is fixed or adjustable.
+	IsFixed pulumi.BoolInput `pulumi:"isFixed"`
+	// (Output) Whether this is a precise quota. A precise quota is tracked with absolute precision. In contrast, an imprecise quota is not tracked with precision.
+	IsPrecise pulumi.BoolInput `pulumi:"isPrecise"`
+	// (Output) The metric of the quota. It specifies the resources consumption the quota is defined for, for example: `compute.googleapis.com/cpus`.
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// (Output) The display name of the quota metric.
+	MetricDisplayName pulumi.StringInput `pulumi:"metricDisplayName"`
+	// (Output) The unit in which the metric value is reported, e.g., `MByte`.
+	MetricUnit pulumi.StringInput `pulumi:"metricUnit"`
+	// (Output) Resource name of this QuotaInfo, for example: `projects/123/locations/global/services/compute.googleapis.com/quotaInfos/CpusPerProjectPerRegion`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Output) The display name of the quota.
+	QuotaDisplayName pulumi.StringInput `pulumi:"quotaDisplayName"`
+	QuotaId          pulumi.StringInput `pulumi:"quotaId"`
+	// (Output) Whether it is eligible to request a higher quota value for this quota.
+	QuotaIncreaseEligibilities GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayInput `pulumi:"quotaIncreaseEligibilities"`
+	// (Output) The reset time interval for the quota. Refresh interval applies to rate quota only. Example: "minute" for per minute, "day" for per day, or "10 seconds" for every 10 seconds.
+	RefreshInterval pulumi.StringInput `pulumi:"refreshInterval"`
+	// The name of the service in which the quotas are defined.
+	Service pulumi.StringInput `pulumi:"service"`
+	// (Output) URI to the page where users can request more quota for the cloud service, for example: `https://console.cloud.google.com/iam-admin/quotas`.
+	ServiceRequestQuotaUri pulumi.StringInput `pulumi:"serviceRequestQuotaUri"`
+}
+
+func (GetSQuotaInfosQuotaInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfo)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoArgs) ToGetSQuotaInfosQuotaInfoOutput() GetSQuotaInfosQuotaInfoOutput {
+	return i.ToGetSQuotaInfosQuotaInfoOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoArgs) ToGetSQuotaInfosQuotaInfoOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoOutput)
+}
+
+// GetSQuotaInfosQuotaInfoArrayInput is an input type that accepts GetSQuotaInfosQuotaInfoArray and GetSQuotaInfosQuotaInfoArrayOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoArrayInput` via:
+//
+//	GetSQuotaInfosQuotaInfoArray{ GetSQuotaInfosQuotaInfoArgs{...} }
+type GetSQuotaInfosQuotaInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoArrayOutput() GetSQuotaInfosQuotaInfoArrayOutput
+	ToGetSQuotaInfosQuotaInfoArrayOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoArrayOutput
+}
+
+type GetSQuotaInfosQuotaInfoArray []GetSQuotaInfosQuotaInfoInput
+
+func (GetSQuotaInfosQuotaInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfo)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoArray) ToGetSQuotaInfosQuotaInfoArrayOutput() GetSQuotaInfosQuotaInfoArrayOutput {
+	return i.ToGetSQuotaInfosQuotaInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoArray) ToGetSQuotaInfosQuotaInfoArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoArrayOutput)
+}
+
+type GetSQuotaInfosQuotaInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfo)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoOutput) ToGetSQuotaInfosQuotaInfoOutput() GetSQuotaInfosQuotaInfoOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoOutput) ToGetSQuotaInfosQuotaInfoOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoOutput {
+	return o
+}
+
+// (Output) The container type of the QuotaInfo.
+func (o GetSQuotaInfosQuotaInfoOutput) ContainerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+func (o GetSQuotaInfosQuotaInfoOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+}
+
+// (Output) The collection of dimensions info ordered by their dimensions from more specific ones to less specific ones.
+func (o GetSQuotaInfosQuotaInfoOutput) DimensionsInfos() GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) []GetSQuotaInfosQuotaInfoDimensionsInfo { return v.DimensionsInfos }).(GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput)
+}
+
+// (Output) Whether the quota is a concurrent quota. Concurrent quotas are enforced on the total number of concurrent operations in flight at any given time.
+func (o GetSQuotaInfosQuotaInfoOutput) IsConcurrent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) bool { return v.IsConcurrent }).(pulumi.BoolOutput)
+}
+
+// (Output) Whether the quota value is fixed or adjustable.
+func (o GetSQuotaInfosQuotaInfoOutput) IsFixed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) bool { return v.IsFixed }).(pulumi.BoolOutput)
+}
+
+// (Output) Whether this is a precise quota. A precise quota is tracked with absolute precision. In contrast, an imprecise quota is not tracked with precision.
+func (o GetSQuotaInfosQuotaInfoOutput) IsPrecise() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) bool { return v.IsPrecise }).(pulumi.BoolOutput)
+}
+
+// (Output) The metric of the quota. It specifies the resources consumption the quota is defined for, for example: `compute.googleapis.com/cpus`.
+func (o GetSQuotaInfosQuotaInfoOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// (Output) The display name of the quota metric.
+func (o GetSQuotaInfosQuotaInfoOutput) MetricDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.MetricDisplayName }).(pulumi.StringOutput)
+}
+
+// (Output) The unit in which the metric value is reported, e.g., `MByte`.
+func (o GetSQuotaInfosQuotaInfoOutput) MetricUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.MetricUnit }).(pulumi.StringOutput)
+}
+
+// (Output) Resource name of this QuotaInfo, for example: `projects/123/locations/global/services/compute.googleapis.com/quotaInfos/CpusPerProjectPerRegion`.
+func (o GetSQuotaInfosQuotaInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Output) The display name of the quota.
+func (o GetSQuotaInfosQuotaInfoOutput) QuotaDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.QuotaDisplayName }).(pulumi.StringOutput)
+}
+
+func (o GetSQuotaInfosQuotaInfoOutput) QuotaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.QuotaId }).(pulumi.StringOutput)
+}
+
+// (Output) Whether it is eligible to request a higher quota value for this quota.
+func (o GetSQuotaInfosQuotaInfoOutput) QuotaIncreaseEligibilities() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) []GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility {
+		return v.QuotaIncreaseEligibilities
+	}).(GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput)
+}
+
+// (Output) The reset time interval for the quota. Refresh interval applies to rate quota only. Example: "minute" for per minute, "day" for per day, or "10 seconds" for every 10 seconds.
+func (o GetSQuotaInfosQuotaInfoOutput) RefreshInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.RefreshInterval }).(pulumi.StringOutput)
+}
+
+// The name of the service in which the quotas are defined.
+func (o GetSQuotaInfosQuotaInfoOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// (Output) URI to the page where users can request more quota for the cloud service, for example: `https://console.cloud.google.com/iam-admin/quotas`.
+func (o GetSQuotaInfosQuotaInfoOutput) ServiceRequestQuotaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfo) string { return v.ServiceRequestQuotaUri }).(pulumi.StringOutput)
+}
+
+type GetSQuotaInfosQuotaInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfo)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoArrayOutput) ToGetSQuotaInfosQuotaInfoArrayOutput() GetSQuotaInfosQuotaInfoArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoArrayOutput) ToGetSQuotaInfosQuotaInfoArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoArrayOutput) Index(i pulumi.IntInput) GetSQuotaInfosQuotaInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSQuotaInfosQuotaInfo {
+		return vs[0].([]GetSQuotaInfosQuotaInfo)[vs[1].(int)]
+	}).(GetSQuotaInfosQuotaInfoOutput)
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfo struct {
+	// The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
+	ApplicableLocations []string `pulumi:"applicableLocations"`
+	// The quota details for a map of dimensions.
+	Details []GetSQuotaInfosQuotaInfoDimensionsInfoDetail `pulumi:"details"`
+	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+}
+
+// GetSQuotaInfosQuotaInfoDimensionsInfoInput is an input type that accepts GetSQuotaInfosQuotaInfoDimensionsInfoArgs and GetSQuotaInfosQuotaInfoDimensionsInfoOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoDimensionsInfoInput` via:
+//
+//	GetSQuotaInfosQuotaInfoDimensionsInfoArgs{...}
+type GetSQuotaInfosQuotaInfoDimensionsInfoInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoOutput() GetSQuotaInfosQuotaInfoDimensionsInfoOutput
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoOutput
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoArgs struct {
+	// The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
+	ApplicableLocations pulumi.StringArrayInput `pulumi:"applicableLocations"`
+	// The quota details for a map of dimensions.
+	Details GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput `pulumi:"details"`
+	// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+}
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfo)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoArgs) ToGetSQuotaInfosQuotaInfoDimensionsInfoOutput() GetSQuotaInfosQuotaInfoDimensionsInfoOutput {
+	return i.ToGetSQuotaInfosQuotaInfoDimensionsInfoOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoArgs) ToGetSQuotaInfosQuotaInfoDimensionsInfoOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoDimensionsInfoOutput)
+}
+
+// GetSQuotaInfosQuotaInfoDimensionsInfoArrayInput is an input type that accepts GetSQuotaInfosQuotaInfoDimensionsInfoArray and GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoDimensionsInfoArrayInput` via:
+//
+//	GetSQuotaInfosQuotaInfoDimensionsInfoArray{ GetSQuotaInfosQuotaInfoDimensionsInfoArgs{...} }
+type GetSQuotaInfosQuotaInfoDimensionsInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput() GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoArray []GetSQuotaInfosQuotaInfoDimensionsInfoInput
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfoDimensionsInfo)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoArray) ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput() GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput {
+	return i.ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoArray) ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput)
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfo)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoOutput() GetSQuotaInfosQuotaInfoDimensionsInfoOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoOutput {
+	return o
+}
+
+// The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) ApplicableLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoDimensionsInfo) []string { return v.ApplicableLocations }).(pulumi.StringArrayOutput)
+}
+
+// The quota details for a map of dimensions.
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) Details() GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoDimensionsInfo) []GetSQuotaInfosQuotaInfoDimensionsInfoDetail {
+		return v.Details
+	}).(GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput)
+}
+
+// The map of dimensions for this dimensions info. The key of a map entry is "region", "zone" or the name of a service specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimenisonInfo instance configured for the specific value. Example: {"provider" : "Foo Inc"} where "provider" is a service specific dimension of a quota.
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoOutput) Dimensions() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoDimensionsInfo) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfoDimensionsInfo)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput() GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput) Index(i pulumi.IntInput) GetSQuotaInfosQuotaInfoDimensionsInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSQuotaInfosQuotaInfoDimensionsInfo {
+		return vs[0].([]GetSQuotaInfosQuotaInfoDimensionsInfo)[vs[1].(int)]
+	}).(GetSQuotaInfosQuotaInfoDimensionsInfoOutput)
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetail struct {
+	// The value currently in effect and being enforced.
+	Value string `pulumi:"value"`
+}
+
+// GetSQuotaInfosQuotaInfoDimensionsInfoDetailInput is an input type that accepts GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs and GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoDimensionsInfoDetailInput` via:
+//
+//	GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs{...}
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetailInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput() GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs struct {
+	// The value currently in effect and being enforced.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoDetail)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput() GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput {
+	return i.ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput)
+}
+
+// GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput is an input type that accepts GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray and GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput` via:
+//
+//	GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray{ GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs{...} }
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput() GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput
+	ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray []GetSQuotaInfosQuotaInfoDimensionsInfoDetailInput
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfoDimensionsInfoDetail)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput() GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput {
+	return i.ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput)
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoDetail)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput() GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput {
+	return o
+}
+
+// The value currently in effect and being enforced.
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoDimensionsInfoDetail) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfoDimensionsInfoDetail)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput() GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput) ToGetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput) Index(i pulumi.IntInput) GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSQuotaInfosQuotaInfoDimensionsInfoDetail {
+		return vs[0].([]GetSQuotaInfosQuotaInfoDimensionsInfoDetail)[vs[1].(int)]
+	}).(GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput)
+}
+
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility struct {
+	// The enumeration of reasons when it is ineligible to request increase adjustment.
+	IneligibilityReason string `pulumi:"ineligibilityReason"`
+	// Whether a higher quota value can be requested for the quota.
+	IsEligible bool `pulumi:"isEligible"`
+}
+
+// GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityInput is an input type that accepts GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs and GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityInput` via:
+//
+//	GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs{...}
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput
+	ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput
+}
+
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs struct {
+	// The enumeration of reasons when it is ineligible to request increase adjustment.
+	IneligibilityReason pulumi.StringInput `pulumi:"ineligibilityReason"`
+	// Whether a higher quota value can be requested for the quota.
+	IsEligible pulumi.BoolInput `pulumi:"isEligible"`
+}
+
+func (GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput {
+	return i.ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput)
+}
+
+// GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayInput is an input type that accepts GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray and GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput values.
+// You can construct a concrete instance of `GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayInput` via:
+//
+//	GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray{ GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs{...} }
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayInput interface {
+	pulumi.Input
+
+	ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput
+	ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutputWithContext(context.Context) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput
+}
+
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray []GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityInput
+
+func (GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility)(nil)).Elem()
+}
+
+func (i GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput {
+	return i.ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutputWithContext(context.Background())
+}
+
+func (i GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput)
+}
+
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput {
+	return o
+}
+
+// The enumeration of reasons when it is ineligible to request increase adjustment.
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput) IneligibilityReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility) string { return v.IneligibilityReason }).(pulumi.StringOutput)
+}
+
+// Whether a higher quota value can be requested for the quota.
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput) IsEligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility) bool { return v.IsEligible }).(pulumi.BoolOutput)
+}
+
+type GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility)(nil)).Elem()
+}
+
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput() GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput) ToGetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutputWithContext(ctx context.Context) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput {
+	return o
+}
+
+func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput) Index(i pulumi.IntInput) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility {
+		return vs[0].([]GetSQuotaInfosQuotaInfoQuotaIncreaseEligibility)[vs[1].(int)]
+	}).(GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoDimensionsInfoInput)(nil)).Elem(), GetSQuotaInfoDimensionsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoDimensionsInfoArrayInput)(nil)).Elem(), GetSQuotaInfoDimensionsInfoArray{})
@@ -338,10 +889,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoDimensionsInfoDetailArrayInput)(nil)).Elem(), GetSQuotaInfoDimensionsInfoDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoQuotaIncreaseEligibilityInput)(nil)).Elem(), GetSQuotaInfoQuotaIncreaseEligibilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoQuotaIncreaseEligibilityArrayInput)(nil)).Elem(), GetSQuotaInfoQuotaIncreaseEligibilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoArrayInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoDimensionsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoArrayInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoDimensionsInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoDetailInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoDimensionsInfoDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoDetailOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoQuotaIncreaseEligibilityOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoQuotaIncreaseEligibilityArrayOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoDimensionsInfoOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoDimensionsInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoDimensionsInfoDetailOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityOutput{})
+	pulumi.RegisterOutputType(GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput{})
 }

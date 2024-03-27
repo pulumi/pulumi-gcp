@@ -304,6 +304,13 @@ namespace Pulumi.Gcp.Storage
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        /// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        /// </summary>
+        [Output("softDeletePolicy")]
+        public Output<Outputs.BucketSoftDeletePolicy> SoftDeletePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         /// </summary>
         [Output("storageClass")]
@@ -510,6 +517,13 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Rpo { get; set; }
 
         /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        /// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        /// </summary>
+        [Input("softDeletePolicy")]
+        public Input<Inputs.BucketSoftDeletePolicyArgs>? SoftDeletePolicy { get; set; }
+
+        /// <summary>
         /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         /// </summary>
         [Input("storageClass")]
@@ -704,6 +718,13 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        /// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        /// </summary>
+        [Input("softDeletePolicy")]
+        public Input<Inputs.BucketSoftDeletePolicyGetArgs>? SoftDeletePolicy { get; set; }
 
         /// <summary>
         /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.

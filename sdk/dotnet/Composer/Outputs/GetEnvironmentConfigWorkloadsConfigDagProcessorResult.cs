@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetEnvironmentConfigWorkloadsConfigDagProcessorResult
     {
         /// <summary>
+        /// Number of DAG processors.
+        /// </summary>
+        public readonly int Count;
+        /// <summary>
         /// CPU request and limit for DAG processor.
         /// </summary>
         public readonly double Cpu;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.Composer.Outputs
 
         [OutputConstructor]
         private GetEnvironmentConfigWorkloadsConfigDagProcessorResult(
+            int count,
+
             double cpu,
 
             double memoryGb,
 
             double storageGb)
         {
+            Count = count;
             Cpu = cpu;
             MemoryGb = memoryGb;
             StorageGb = storageGb;

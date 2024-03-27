@@ -26,9 +26,84 @@ import javax.annotation.Nullable;
  * Individual ingress policies can be limited by restricting which services and/
  * or actions they match using the ingressTo field.
  * 
+ * &gt; **Note:** By default, updates to this resource will remove the IngressPolicy from the
+ * from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
+ * is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+ * 
  * To get more information about ServicePerimeterIngressPolicy, see:
  * 
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
+ * 
+ * ## Example Usage
+ * 
+ * ### Access Context Manager Service Perimeter Ingress Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeter;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterIngressPolicy;
+ * import com.pulumi.gcp.accesscontextmanager.ServicePerimeterIngressPolicyArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterIngressPolicyIngressFromArgs;
+ * import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterIngressPolicyIngressToArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var access_policy = new AccessPolicy(&#34;access-policy&#34;, AccessPolicyArgs.builder()        
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .title(&#34;Storage Policy&#34;)
+ *             .build());
+ * 
+ *         var storage_perimeter = new ServicePerimeter(&#34;storage-perimeter&#34;, ServicePerimeterArgs.builder()        
+ *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accesspolicies/%s&#34;, name)))
+ *             .name(access_policy.name().applyValue(name -&gt; String.format(&#34;accesspolicies/%s/serviceperimeters/storage-perimeter&#34;, name)))
+ *             .title(&#34;Storage Perimeter&#34;)
+ *             .status(ServicePerimeterStatusArgs.builder()
+ *                 .restrictedServices(&#34;storage.googleapis.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var ingressPolicy = new ServicePerimeterIngressPolicy(&#34;ingressPolicy&#34;, ServicePerimeterIngressPolicyArgs.builder()        
+ *             .perimeter(storage_perimeter.name())
+ *             .ingressFrom(ServicePerimeterIngressPolicyIngressFromArgs.builder()
+ *                 .identityType(&#34;any_identity&#34;)
+ *                 .sources(ServicePerimeterIngressPolicyIngressFromSourceArgs.builder()
+ *                     .accessLevel(&#34;*&#34;)
+ *                     .build())
+ *                 .build())
+ *             .ingressTo(ServicePerimeterIngressPolicyIngressToArgs.builder()
+ *                 .resources(&#34;*&#34;)
+ *                 .operations(ServicePerimeterIngressPolicyIngressToOperationArgs.builder()
+ *                     .serviceName(&#34;bigquery.googleapis.com&#34;)
+ *                     .methodSelectors(ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs.builder()
+ *                         .method(&#34;*&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -18,6 +18,21 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
     public static final FirewallEndpointArgs Empty = new FirewallEndpointArgs();
 
     /**
+     * Project to bill on endpoint uptime usage.
+     * 
+     */
+    @Import(name="billingProjectId", required=true)
+    private Output<String> billingProjectId;
+
+    /**
+     * @return Project to bill on endpoint uptime usage.
+     * 
+     */
+    public Output<String> billingProjectId() {
+        return this.billingProjectId;
+    }
+
+    /**
      * A map of key/value label pairs to assign to the resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -92,6 +107,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
     private FirewallEndpointArgs() {}
 
     private FirewallEndpointArgs(FirewallEndpointArgs $) {
+        this.billingProjectId = $.billingProjectId;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -114,6 +130,27 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(FirewallEndpointArgs defaults) {
             $ = new FirewallEndpointArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingProjectId(Output<String> billingProjectId) {
+            $.billingProjectId = billingProjectId;
+            return this;
+        }
+
+        /**
+         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingProjectId(String billingProjectId) {
+            return billingProjectId(Output.of(billingProjectId));
         }
 
         /**
@@ -213,6 +250,9 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         public FirewallEndpointArgs build() {
+            if ($.billingProjectId == null) {
+                throw new MissingRequiredPropertyException("FirewallEndpointArgs", "billingProjectId");
+            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("FirewallEndpointArgs", "location");
             }

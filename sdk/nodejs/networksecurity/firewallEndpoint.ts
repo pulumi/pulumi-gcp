@@ -73,6 +73,10 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly associatedNetworks!: pulumi.Output<string[]>;
     /**
+     * Project to bill on endpoint uptime usage.
+     */
+    public readonly billingProjectId!: pulumi.Output<string>;
+    /**
      * Time the firewall endpoint was created in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -139,6 +143,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FirewallEndpointState | undefined;
             resourceInputs["associatedNetworks"] = state ? state.associatedNetworks : undefined;
+            resourceInputs["billingProjectId"] = state ? state.billingProjectId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -152,12 +157,16 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as FirewallEndpointArgs | undefined;
+            if ((!args || args.billingProjectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingProjectId'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["billingProjectId"] = args ? args.billingProjectId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -189,6 +198,10 @@ export interface FirewallEndpointState {
      * fully configured. Format: projects/{project}/global/networks/{name}.
      */
     associatedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Project to bill on endpoint uptime usage.
+     */
+    billingProjectId?: pulumi.Input<string>;
     /**
      * Time the firewall endpoint was created in UTC.
      */
@@ -247,6 +260,10 @@ export interface FirewallEndpointState {
  * The set of arguments for constructing a FirewallEndpoint resource.
  */
 export interface FirewallEndpointArgs {
+    /**
+     * Project to bill on endpoint uptime usage.
+     */
+    billingProjectId: pulumi.Input<string>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *

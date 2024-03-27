@@ -13,6 +13,7 @@ import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
 import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
 import com.pulumi.gcp.storage.inputs.BucketLoggingArgs;
 import com.pulumi.gcp.storage.inputs.BucketRetentionPolicyArgs;
+import com.pulumi.gcp.storage.inputs.BucketSoftDeletePolicyArgs;
 import com.pulumi.gcp.storage.inputs.BucketVersioningArgs;
 import com.pulumi.gcp.storage.inputs.BucketWebsiteArgs;
 import java.lang.Boolean;
@@ -294,6 +295,23 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * 
+     */
+    @Import(name="softDeletePolicy")
+    private @Nullable Output<BucketSoftDeletePolicyArgs> softDeletePolicy;
+
+    /**
+     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * 
+     */
+    public Optional<Output<BucketSoftDeletePolicyArgs>> softDeletePolicy() {
+        return Optional.ofNullable(this.softDeletePolicy);
+    }
+
+    /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      * 
      */
@@ -373,6 +391,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         this.requesterPays = $.requesterPays;
         this.retentionPolicy = $.retentionPolicy;
         this.rpo = $.rpo;
+        this.softDeletePolicy = $.softDeletePolicy;
         this.storageClass = $.storageClass;
         this.uniformBucketLevelAccess = $.uniformBucketLevelAccess;
         this.versioning = $.versioning;
@@ -782,6 +801,29 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rpo(String rpo) {
             return rpo(Output.of(rpo));
+        }
+
+        /**
+         * @param softDeletePolicy The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+         * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder softDeletePolicy(@Nullable Output<BucketSoftDeletePolicyArgs> softDeletePolicy) {
+            $.softDeletePolicy = softDeletePolicy;
+            return this;
+        }
+
+        /**
+         * @param softDeletePolicy The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+         * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder softDeletePolicy(BucketSoftDeletePolicyArgs softDeletePolicy) {
+            return softDeletePolicy(Output.of(softDeletePolicy));
         }
 
         /**

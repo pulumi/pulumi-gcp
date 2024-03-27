@@ -185,6 +185,41 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Pubsub Topic Ingestion Kinesis
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				IngestionDataSourceSettings: &pubsub.TopicIngestionDataSourceSettingsArgs{
+//					AwsKinesis: &pubsub.TopicIngestionDataSourceSettingsAwsKinesisArgs{
+//						StreamArn:         pulumi.String("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name"),
+//						ConsumerArn:       pulumi.String("arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111"),
+//						AwsRoleArn:        pulumi.String("arn:aws:iam::111111111111:role/fake-role-name"),
+//						GcpServiceAccount: pulumi.String("fake-service-account@fake-gcp-project.iam.gserviceaccount.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -214,6 +249,9 @@ type Topic struct {
 
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Settings for ingestion from a data source into this topic.
+	// Structure is documented below.
+	IngestionDataSourceSettings TopicIngestionDataSourceSettingsPtrOutput `pulumi:"ingestionDataSourceSettings"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -291,6 +329,9 @@ func GetTopic(ctx *pulumi.Context,
 type topicState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Settings for ingestion from a data source into this topic.
+	// Structure is documented below.
+	IngestionDataSourceSettings *TopicIngestionDataSourceSettings `pulumi:"ingestionDataSourceSettings"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -334,6 +375,9 @@ type topicState struct {
 type TopicState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Settings for ingestion from a data source into this topic.
+	// Structure is documented below.
+	IngestionDataSourceSettings TopicIngestionDataSourceSettingsPtrInput
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -379,6 +423,9 @@ func (TopicState) ElementType() reflect.Type {
 }
 
 type topicArgs struct {
+	// Settings for ingestion from a data source into this topic.
+	// Structure is documented below.
+	IngestionDataSourceSettings *TopicIngestionDataSourceSettings `pulumi:"ingestionDataSourceSettings"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -418,6 +465,9 @@ type topicArgs struct {
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
+	// Settings for ingestion from a data source into this topic.
+	// Structure is documented below.
+	IngestionDataSourceSettings TopicIngestionDataSourceSettingsPtrInput
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -545,6 +595,12 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TopicOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Settings for ingestion from a data source into this topic.
+// Structure is documented below.
+func (o TopicOutput) IngestionDataSourceSettings() TopicIngestionDataSourceSettingsPtrOutput {
+	return o.ApplyT(func(v *Topic) TopicIngestionDataSourceSettingsPtrOutput { return v.IngestionDataSourceSettings }).(TopicIngestionDataSourceSettingsPtrOutput)
 }
 
 // The resource name of the Cloud KMS CryptoKey to be used to protect access

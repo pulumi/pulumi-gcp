@@ -3631,7 +3631,7 @@ class DiskGuestOsFeatureArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -3640,7 +3640,7 @@ class DiskGuestOsFeatureArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
@@ -9623,12 +9623,28 @@ class InstanceGroupManagerStatusArgs:
 @pulumi.input_type
 class InstanceGroupManagerStatusAllInstancesConfigArgs:
     def __init__(__self__, *,
+                 current_revision: Optional[pulumi.Input[str]] = None,
                  effective: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[str] current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
         :param pulumi.Input[bool] effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
+        if current_revision is not None:
+            pulumi.set(__self__, "current_revision", current_revision)
         if effective is not None:
             pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
+
+    @current_revision.setter
+    def current_revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_revision", value)
 
     @property
     @pulumi.getter
@@ -9650,7 +9666,7 @@ class InstanceGroupManagerStatusStatefulArgs:
                  per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None):
         """
         :param pulumi.Input[bool] has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instances.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -9673,7 +9689,7 @@ class InstanceGroupManagerStatusStatefulArgs:
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]:
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configs on the instances.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -18863,12 +18879,28 @@ class RegionInstanceGroupManagerStatusArgs:
 @pulumi.input_type
 class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
     def __init__(__self__, *,
+                 current_revision: Optional[pulumi.Input[str]] = None,
                  effective: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[str] current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
         :param pulumi.Input[bool] effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
+        if current_revision is not None:
+            pulumi.set(__self__, "current_revision", current_revision)
         if effective is not None:
             pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
+
+    @current_revision.setter
+    def current_revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_revision", value)
 
     @property
     @pulumi.getter
@@ -18890,7 +18922,7 @@ class RegionInstanceGroupManagerStatusStatefulArgs:
                  per_instance_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]] = None):
         """
         :param pulumi.Input[bool] has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]] per_instance_configs: Status of per-instance configs on the instances.
         """
         if has_stateful_config is not None:
             pulumi.set(__self__, "has_stateful_config", has_stateful_config)
@@ -18913,7 +18945,7 @@ class RegionInstanceGroupManagerStatusStatefulArgs:
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs']]]]:
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configs on the instances.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -25230,6 +25262,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
                  header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]] = None,
                  ignore_case: Optional[pulumi.Input[bool]] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]] = None,
+                 path_template_match: Optional[pulumi.Input[str]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
                  query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
@@ -25256,6 +25289,14 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
                UrlMap. metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] path_template_match: For satisfying the matchRule condition, the path of the request
+               must match the wildcard pattern specified in pathTemplateMatch
+               after removing any query parameters and anchor that may be part
+               of the original URL.
+               pathTemplateMatch must be between 1 and 255 characters
+               (inclusive).  The pattern specified by pathTemplateMatch may
+               have at most 5 wildcard operators and at most 5 variable
+               captures in total.
         :param pulumi.Input[str] prefix_match: For satisfying the matchRule condition, the request's path must begin with the
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -25277,6 +25318,8 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
             pulumi.set(__self__, "ignore_case", ignore_case)
         if metadata_filters is not None:
             pulumi.set(__self__, "metadata_filters", metadata_filters)
+        if path_template_match is not None:
+            pulumi.set(__self__, "path_template_match", path_template_match)
         if prefix_match is not None:
             pulumi.set(__self__, "prefix_match", prefix_match)
         if query_parameter_matches is not None:
@@ -25349,6 +25392,25 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
     @metadata_filters.setter
     def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]]):
         pulumi.set(self, "metadata_filters", value)
+
+    @property
+    @pulumi.getter(name="pathTemplateMatch")
+    def path_template_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        For satisfying the matchRule condition, the path of the request
+        must match the wildcard pattern specified in pathTemplateMatch
+        after removing any query parameters and anchor that may be part
+        of the original URL.
+        pathTemplateMatch must be between 1 and 255 characters
+        (inclusive).  The pattern specified by pathTemplateMatch may
+        have at most 5 wildcard operators and at most 5 variable
+        captures in total.
+        """
+        return pulumi.get(self, "path_template_match")
+
+    @path_template_match.setter
+    def path_template_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_template_match", value)
 
     @property
     @pulumi.getter(name="prefixMatch")
@@ -26484,17 +26546,31 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs:
 class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
-                 path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
+                 path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
+                 path_template_rewrite: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
                The value must be from 1 to 255 characters.
         :param pulumi.Input[str] path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
                The value must be from 1 to 1024 characters.
+        :param pulumi.Input[str] path_template_rewrite: Prior to forwarding the request to the selected origin, if the
+               request matched a pathTemplateMatch, the matching portion of the
+               request's path is replaced re-written using the pattern specified
+               by pathTemplateRewrite.
+               pathTemplateRewrite must be between 1 and 255 characters
+               (inclusive), must start with a '/', and must only use variables
+               captured by the route's pathTemplate matchers.
+               pathTemplateRewrite may only be used when all of a route's
+               MatchRules specify pathTemplate.
+               Only one of pathPrefixRewrite and pathTemplateRewrite may be
+               specified.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
             pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+        if path_template_rewrite is not None:
+            pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -26521,6 +26597,28 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     @path_prefix_rewrite.setter
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
+
+    @property
+    @pulumi.getter(name="pathTemplateRewrite")
+    def path_template_rewrite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prior to forwarding the request to the selected origin, if the
+        request matched a pathTemplateMatch, the matching portion of the
+        request's path is replaced re-written using the pattern specified
+        by pathTemplateRewrite.
+        pathTemplateRewrite must be between 1 and 255 characters
+        (inclusive), must start with a '/', and must only use variables
+        captured by the route's pathTemplate matchers.
+        pathTemplateRewrite may only be used when all of a route's
+        MatchRules specify pathTemplate.
+        Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        specified.
+        """
+        return pulumi.get(self, "path_template_rewrite")
+
+    @path_template_rewrite.setter
+    def path_template_rewrite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_template_rewrite", value)
 
 
 @pulumi.input_type

@@ -15,9 +15,52 @@ import * as utilities from "../utilities";
  * perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
  * or query against a BigQuery dataset).
  *
+ * > **Note:** By default, updates to this resource will remove the EgressPolicy from the
+ * from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
+ * is added before the old one is removed, add a `lifecycle` block with `createBeforeDestroy = true` to this resource.
+ *
  * To get more information about ServicePerimeterEgressPolicy, see:
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+ *
+ * ## Example Usage
+ *
+ * ### Access Context Manager Service Perimeter Egress Policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "Storage Policy",
+ * });
+ * const storage_perimeter = new gcp.accesscontextmanager.ServicePerimeter("storage-perimeter", {
+ *     parent: pulumi.interpolate`accesspolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accesspolicies/${access_policy.name}/serviceperimeters/storage-perimeter`,
+ *     title: "Storage Perimeter",
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ * });
+ * const egressPolicy = new gcp.accesscontextmanager.ServicePerimeterEgressPolicy("egress_policy", {
+ *     perimeter: storage_perimeter.name,
+ *     egressFrom: {
+ *         identityType: "ANY_IDENTITY",
+ *     },
+ *     egressTo: {
+ *         resources: ["*"],
+ *         operations: [{
+ *             serviceName: "bigquery.googleapis.com",
+ *             methodSelectors: [{
+ *                 method: "*",
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

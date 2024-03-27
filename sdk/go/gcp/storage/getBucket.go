@@ -70,24 +70,25 @@ type LookupBucketResult struct {
 	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
 	ForceDestroy           bool                             `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                     `pulumi:"id"`
-	Labels                   map[string]string          `pulumi:"labels"`
-	LifecycleRules           []GetBucketLifecycleRule   `pulumi:"lifecycleRules"`
-	Location                 string                     `pulumi:"location"`
-	Loggings                 []GetBucketLogging         `pulumi:"loggings"`
-	Name                     string                     `pulumi:"name"`
-	Project                  string                     `pulumi:"project"`
-	PublicAccessPrevention   string                     `pulumi:"publicAccessPrevention"`
-	PulumiLabels             map[string]string          `pulumi:"pulumiLabels"`
-	RequesterPays            bool                       `pulumi:"requesterPays"`
-	RetentionPolicies        []GetBucketRetentionPolicy `pulumi:"retentionPolicies"`
-	Rpo                      string                     `pulumi:"rpo"`
-	SelfLink                 string                     `pulumi:"selfLink"`
-	StorageClass             string                     `pulumi:"storageClass"`
-	UniformBucketLevelAccess bool                       `pulumi:"uniformBucketLevelAccess"`
-	Url                      string                     `pulumi:"url"`
-	Versionings              []GetBucketVersioning      `pulumi:"versionings"`
-	Websites                 []GetBucketWebsite         `pulumi:"websites"`
+	Id                       string                      `pulumi:"id"`
+	Labels                   map[string]string           `pulumi:"labels"`
+	LifecycleRules           []GetBucketLifecycleRule    `pulumi:"lifecycleRules"`
+	Location                 string                      `pulumi:"location"`
+	Loggings                 []GetBucketLogging          `pulumi:"loggings"`
+	Name                     string                      `pulumi:"name"`
+	Project                  string                      `pulumi:"project"`
+	PublicAccessPrevention   string                      `pulumi:"publicAccessPrevention"`
+	PulumiLabels             map[string]string           `pulumi:"pulumiLabels"`
+	RequesterPays            bool                        `pulumi:"requesterPays"`
+	RetentionPolicies        []GetBucketRetentionPolicy  `pulumi:"retentionPolicies"`
+	Rpo                      string                      `pulumi:"rpo"`
+	SelfLink                 string                      `pulumi:"selfLink"`
+	SoftDeletePolicies       []GetBucketSoftDeletePolicy `pulumi:"softDeletePolicies"`
+	StorageClass             string                      `pulumi:"storageClass"`
+	UniformBucketLevelAccess bool                        `pulumi:"uniformBucketLevelAccess"`
+	Url                      string                      `pulumi:"url"`
+	Versionings              []GetBucketVersioning       `pulumi:"versionings"`
+	Websites                 []GetBucketWebsite          `pulumi:"websites"`
 }
 
 func LookupBucketOutput(ctx *pulumi.Context, args LookupBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBucketResultOutput {
@@ -211,6 +212,10 @@ func (o LookupBucketResultOutput) Rpo() pulumi.StringOutput {
 
 func (o LookupBucketResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketResultOutput) SoftDeletePolicies() GetBucketSoftDeletePolicyArrayOutput {
+	return o.ApplyT(func(v LookupBucketResult) []GetBucketSoftDeletePolicy { return v.SoftDeletePolicies }).(GetBucketSoftDeletePolicyArrayOutput)
 }
 
 func (o LookupBucketResultOutput) StorageClass() pulumi.StringOutput {

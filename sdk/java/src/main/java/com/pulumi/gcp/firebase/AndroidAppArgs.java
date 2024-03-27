@@ -58,8 +58,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-assigned display name of the AndroidApp.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
@@ -67,28 +65,30 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The user-assigned display name of the AndroidApp.
      * 
-     * ***
-     * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
 
     /**
-     * Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      * 
+     * ***
+     * 
      */
-    @Import(name="packageName")
-    private @Nullable Output<String> packageName;
+    @Import(name="packageName", required=true)
+    private Output<String> packageName;
 
     /**
-     * @return Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * @return The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      * 
+     * ***
+     * 
      */
-    public Optional<Output<String>> packageName() {
-        return Optional.ofNullable(this.packageName);
+    public Output<String> packageName() {
+        return this.packageName;
     }
 
     /**
@@ -221,8 +221,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -234,8 +232,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -244,20 +240,24 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageName Immutable. The canonical package name of the Android app as would appear in the Google Play
+         * @param packageName The canonical package name of the Android app as would appear in the Google Play
          * Developer Console.
+         * 
+         * ***
          * 
          * @return builder
          * 
          */
-        public Builder packageName(@Nullable Output<String> packageName) {
+        public Builder packageName(Output<String> packageName) {
             $.packageName = packageName;
             return this;
         }
 
         /**
-         * @param packageName Immutable. The canonical package name of the Android app as would appear in the Google Play
+         * @param packageName The canonical package name of the Android app as would appear in the Google Play
          * Developer Console.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -354,6 +354,9 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         public AndroidAppArgs build() {
             if ($.displayName == null) {
                 throw new MissingRequiredPropertyException("AndroidAppArgs", "displayName");
+            }
+            if ($.packageName == null) {
+                throw new MissingRequiredPropertyException("AndroidAppArgs", "packageName");
             }
             return $;
         }

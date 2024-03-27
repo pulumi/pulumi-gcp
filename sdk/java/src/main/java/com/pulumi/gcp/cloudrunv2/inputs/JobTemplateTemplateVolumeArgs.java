@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeCloudSqlInstanceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeEmptyDirArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeGcsArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeSecretArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -54,6 +55,23 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gcs")
+    private @Nullable Output<JobTemplateTemplateVolumeGcsArgs> gcs;
+
+    /**
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobTemplateTemplateVolumeGcsArgs>> gcs() {
+        return Optional.ofNullable(this.gcs);
+    }
+
+    /**
      * Volume&#39;s name.
      * 
      */
@@ -90,6 +108,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     private JobTemplateTemplateVolumeArgs(JobTemplateTemplateVolumeArgs $) {
         this.cloudSqlInstance = $.cloudSqlInstance;
         this.emptyDir = $.emptyDir;
+        this.gcs = $.gcs;
         this.name = $.name;
         this.secret = $.secret;
     }
@@ -156,6 +175,29 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
          */
         public Builder emptyDir(JobTemplateTemplateVolumeEmptyDirArgs emptyDir) {
             return emptyDir(Output.of(emptyDir));
+        }
+
+        /**
+         * @param gcs Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcs(@Nullable Output<JobTemplateTemplateVolumeGcsArgs> gcs) {
+            $.gcs = gcs;
+            return this;
+        }
+
+        /**
+         * @param gcs Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcs(JobTemplateTemplateVolumeGcsArgs gcs) {
+            return gcs(Output.of(gcs));
         }
 
         /**

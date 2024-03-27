@@ -30,8 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.sourcerepo.Repository;
- * import com.pulumi.gcp.sourcerepo.RepositoryArgs;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
@@ -55,10 +53,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository(&#34;gitRepository&#34;, RepositoryArgs.builder()        
- *             .name(&#34;my/repository&#34;)
- *             .build());
- * 
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;my-secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
@@ -71,13 +65,13 @@ import javax.annotation.Nullable;
  *             .secretData(&#34;secret-data&#34;)
  *             .build());
  * 
- *         var dataformRespository = new Repository(&#34;dataformRespository&#34;, RepositoryArgs.builder()        
+ *         var dataformRepository = new Repository(&#34;dataformRepository&#34;, RepositoryArgs.builder()        
  *             .name(&#34;dataform_repository&#34;)
  *             .displayName(&#34;dataform_repository&#34;)
  *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())
  *             .labels(Map.of(&#34;label_foo1&#34;, &#34;label-bar1&#34;))
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
- *                 .url(gitRepository.url())
+ *                 .url(&#34;https://github.com/OWNER/REPOSITORY.git&#34;)
  *                 .defaultBranch(&#34;main&#34;)
  *                 .authenticationTokenSecretVersion(secretVersion.id())
  *                 .build())
@@ -86,79 +80,6 @@ import javax.annotation.Nullable;
  *                 .schemaSuffix(&#34;_suffix&#34;)
  *                 .tablePrefix(&#34;prefix_&#34;)
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataform Repository Ssh
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.sourcerepo.Repository;
- * import com.pulumi.gcp.sourcerepo.RepositoryArgs;
- * import com.pulumi.gcp.secretmanager.Secret;
- * import com.pulumi.gcp.secretmanager.SecretArgs;
- * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
- * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
- * import com.pulumi.gcp.dataform.Repository;
- * import com.pulumi.gcp.dataform.RepositoryArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository(&#34;gitRepository&#34;, RepositoryArgs.builder()        
- *             .name(&#34;my/repository&#34;)
- *             .build());
- * 
- *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
- *             .secretId(&#34;my-secret&#34;)
- *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
- *                 .build())
- *             .build());
- * 
- *         var secretVersion = new SecretVersion(&#34;secretVersion&#34;, SecretVersionArgs.builder()        
- *             .secret(secret.id())
- *             .secretData(&#34;secret-data&#34;)
- *             .build());
- * 
- *         var dataformRespository = new Repository(&#34;dataformRespository&#34;, RepositoryArgs.builder()        
- *             .name(&#34;dataform_repository&#34;)
- *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
- *                 .url(gitRepository.url())
- *                 .defaultBranch(&#34;main&#34;)
- *                 .sshAuthenticationConfig(RepositoryGitRemoteSettingsSshAuthenticationConfigArgs.builder()
- *                     .userPrivateKeySecretVersion(secretVersion.id())
- *                     .hostPublicKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU&#34;)
- *                     .build())
- *                 .build())
- *             .workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs.builder()
- *                 .defaultDatabase(&#34;database&#34;)
- *                 .schemaSuffix(&#34;_suffix&#34;)
- *                 .tablePrefix(&#34;prefix_&#34;)
- *                 .build())
- *             .serviceAccount(&#34;1234567890-compute@developer.gserviceaccount.com&#34;)
  *             .build());
  * 
  *     }

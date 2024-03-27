@@ -16,6 +16,7 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
+                 ingestion_data_source_settings: Optional[pulumi.Input['TopicIngestionDataSourceSettingsArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -25,6 +26,8 @@ class TopicArgs:
                  schema_settings: Optional[pulumi.Input['TopicSchemaSettingsArgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsArgs'] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+               Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -55,6 +58,8 @@ class TopicArgs:
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
                Structure is documented below.
         """
+        if ingestion_data_source_settings is not None:
+            pulumi.set(__self__, "ingestion_data_source_settings", ingestion_data_source_settings)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -69,6 +74,19 @@ class TopicArgs:
             pulumi.set(__self__, "project", project)
         if schema_settings is not None:
             pulumi.set(__self__, "schema_settings", schema_settings)
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsArgs']]:
+        """
+        Settings for ingestion from a data source into this topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingestion_data_source_settings")
+
+    @ingestion_data_source_settings.setter
+    def ingestion_data_source_settings(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsArgs']]):
+        pulumi.set(self, "ingestion_data_source_settings", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -181,6 +199,7 @@ class TopicArgs:
 class _TopicState:
     def __init__(__self__, *,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input['TopicIngestionDataSourceSettingsArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -192,6 +211,8 @@ class _TopicState:
         """
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsArgs'] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+               Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -226,6 +247,8 @@ class _TopicState:
         """
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if ingestion_data_source_settings is not None:
+            pulumi.set(__self__, "ingestion_data_source_settings", ingestion_data_source_settings)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -254,6 +277,19 @@ class _TopicState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsArgs']]:
+        """
+        Settings for ingestion from a data source into this topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingestion_data_source_settings")
+
+    @ingestion_data_source_settings.setter
+    def ingestion_data_source_settings(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsArgs']]):
+        pulumi.set(self, "ingestion_data_source_settings", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -380,6 +416,7 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -482,6 +519,25 @@ class Topic(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Pubsub Topic Ingestion Kinesis
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings=gcp.pubsub.TopicIngestionDataSourceSettingsArgs(
+                aws_kinesis=gcp.pubsub.TopicIngestionDataSourceSettingsAwsKinesisArgs(
+                    stream_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    consumer_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+                    aws_role_arn="arn:aws:iam::111111111111:role/fake-role-name",
+                    gcp_service_account="fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -509,6 +565,8 @@ class Topic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+               Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -639,6 +697,25 @@ class Topic(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Pubsub Topic Ingestion Kinesis
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings=gcp.pubsub.TopicIngestionDataSourceSettingsArgs(
+                aws_kinesis=gcp.pubsub.TopicIngestionDataSourceSettingsAwsKinesisArgs(
+                    stream_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+                    consumer_arn="arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+                    aws_role_arn="arn:aws:iam::111111111111:role/fake-role-name",
+                    gcp_service_account="fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -679,6 +756,7 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -695,6 +773,7 @@ class Topic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TopicArgs.__new__(TopicArgs)
 
+            __props__.__dict__["ingestion_data_source_settings"] = ingestion_data_source_settings
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
@@ -717,6 +796,7 @@ class Topic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -733,6 +813,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[pulumi.InputType['TopicIngestionDataSourceSettingsArgs']] ingestion_data_source_settings: Settings for ingestion from a data source into this topic.
+               Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access
                to messages published on this topic. Your project's PubSub service account
                (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -770,6 +852,7 @@ class Topic(pulumi.CustomResource):
         __props__ = _TopicState.__new__(_TopicState)
 
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["ingestion_data_source_settings"] = ingestion_data_source_settings
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["message_retention_duration"] = message_retention_duration
@@ -787,6 +870,15 @@ class Topic(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> pulumi.Output[Optional['outputs.TopicIngestionDataSourceSettings']]:
+        """
+        Settings for ingestion from a data source into this topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingestion_data_source_settings")
 
     @property
     @pulumi.getter(name="kmsKeyName")

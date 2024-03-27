@@ -416,7 +416,6 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
@@ -425,7 +424,7 @@ class Repository(pulumi.CustomResource):
         secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
             secret_data="secret-data")
-        dataform_respository = gcp.dataform.Repository("dataform_respository",
+        dataform_repository = gcp.dataform.Repository("dataform_repository",
             name="dataform_repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
@@ -433,7 +432,7 @@ class Repository(pulumi.CustomResource):
                 "label_foo1": "label-bar1",
             },
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
+                url="https://github.com/OWNER/REPOSITORY.git",
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
@@ -442,40 +441,6 @@ class Repository(pulumi.CustomResource):
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-        ### Dataform Repository Ssh
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version = gcp.secretmanager.SecretVersion("secret_version",
-            secret=secret.id,
-            secret_data="secret-data")
-        dataform_respository = gcp.dataform.Repository("dataform_respository",
-            name="dataform_repository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs(
-                    user_private_key_secret_version=secret_version.id,
-                    host_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
-                ),
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            service_account="1234567890-compute@developer.gserviceaccount.com")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -547,7 +512,6 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
@@ -556,7 +520,7 @@ class Repository(pulumi.CustomResource):
         secret_version = gcp.secretmanager.SecretVersion("secret_version",
             secret=secret.id,
             secret_data="secret-data")
-        dataform_respository = gcp.dataform.Repository("dataform_respository",
+        dataform_repository = gcp.dataform.Repository("dataform_repository",
             name="dataform_repository",
             display_name="dataform_repository",
             npmrc_environment_variables_secret_version=secret_version.id,
@@ -564,7 +528,7 @@ class Repository(pulumi.CustomResource):
                 "label_foo1": "label-bar1",
             },
             git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
+                url="https://github.com/OWNER/REPOSITORY.git",
                 default_branch="main",
                 authentication_token_secret_version=secret_version.id,
             ),
@@ -573,40 +537,6 @@ class Repository(pulumi.CustomResource):
                 schema_suffix="_suffix",
                 table_prefix="prefix_",
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-        ### Dataform Repository Ssh
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my-secret",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
-            ))
-        secret_version = gcp.secretmanager.SecretVersion("secret_version",
-            secret=secret.id,
-            secret_data="secret-data")
-        dataform_respository = gcp.dataform.Repository("dataform_respository",
-            name="dataform_repository",
-            git_remote_settings=gcp.dataform.RepositoryGitRemoteSettingsArgs(
-                url=git_repository.url,
-                default_branch="main",
-                ssh_authentication_config=gcp.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs(
-                    user_private_key_secret_version=secret_version.id,
-                    host_public_key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
-                ),
-            ),
-            workspace_compilation_overrides=gcp.dataform.RepositoryWorkspaceCompilationOverridesArgs(
-                default_database="database",
-                schema_suffix="_suffix",
-                table_prefix="prefix_",
-            ),
-            service_account="1234567890-compute@developer.gserviceaccount.com")
         ```
         <!--End PulumiCodeChooser -->
 

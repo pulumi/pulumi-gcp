@@ -63,6 +63,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableArray<string>> AssociatedNetworks { get; private set; } = null!;
 
         /// <summary>
+        /// Project to bill on endpoint uptime usage.
+        /// </summary>
+        [Output("billingProjectId")]
+        public Output<string> BillingProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// Time the firewall endpoint was created in UTC.
         /// </summary>
         [Output("createTime")]
@@ -187,6 +193,12 @@ namespace Pulumi.Gcp.NetworkSecurity
 
     public sealed class FirewallEndpointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Project to bill on endpoint uptime usage.
+        /// </summary>
+        [Input("billingProjectId", required: true)]
+        public Input<string> BillingProjectId { get; set; } = null!;
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -246,6 +258,12 @@ namespace Pulumi.Gcp.NetworkSecurity
             get => _associatedNetworks ?? (_associatedNetworks = new InputList<string>());
             set => _associatedNetworks = value;
         }
+
+        /// <summary>
+        /// Project to bill on endpoint uptime usage.
+        /// </summary>
+        [Input("billingProjectId")]
+        public Input<string>? BillingProjectId { get; set; }
 
         /// <summary>
         /// Time the firewall endpoint was created in UTC.

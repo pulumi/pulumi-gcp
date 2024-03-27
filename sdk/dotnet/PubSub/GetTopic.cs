@@ -124,6 +124,7 @@ namespace Pulumi.Gcp.PubSub
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingResult> IngestionDataSourceSettings;
         public readonly string KmsKeyName;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string MessageRetentionDuration;
@@ -138,6 +139,8 @@ namespace Pulumi.Gcp.PubSub
             ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
+
+            ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingResult> ingestionDataSourceSettings,
 
             string kmsKeyName,
 
@@ -157,6 +160,7 @@ namespace Pulumi.Gcp.PubSub
         {
             EffectiveLabels = effectiveLabels;
             Id = id;
+            IngestionDataSourceSettings = ingestionDataSourceSettings;
             KmsKeyName = kmsKeyName;
             Labels = labels;
             MessageRetentionDuration = messageRetentionDuration;

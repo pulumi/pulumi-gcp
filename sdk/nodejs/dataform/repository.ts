@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "my-secret",
  *     replication: {
@@ -27,7 +26,7 @@ import * as utilities from "../utilities";
  *     secret: secret.id,
  *     secretData: "secret-data",
  * });
- * const dataformRespository = new gcp.dataform.Repository("dataform_respository", {
+ * const dataformRepository = new gcp.dataform.Repository("dataform_repository", {
  *     name: "dataform_repository",
  *     displayName: "dataform_repository",
  *     npmrcEnvironmentVariablesSecretVersion: secretVersion.id,
@@ -35,7 +34,7 @@ import * as utilities from "../utilities";
  *         label_foo1: "label-bar1",
  *     },
  *     gitRemoteSettings: {
- *         url: gitRepository.url,
+ *         url: "https://github.com/OWNER/REPOSITORY.git",
  *         defaultBranch: "main",
  *         authenticationTokenSecretVersion: secretVersion.id,
  *     },
@@ -44,43 +43,6 @@ import * as utilities from "../utilities";
  *         schemaSuffix: "_suffix",
  *         tablePrefix: "prefix_",
  *     },
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- * ### Dataform Repository Ssh
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
- * const secret = new gcp.secretmanager.Secret("secret", {
- *     secretId: "my-secret",
- *     replication: {
- *         auto: {},
- *     },
- * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
- *     secret: secret.id,
- *     secretData: "secret-data",
- * });
- * const dataformRespository = new gcp.dataform.Repository("dataform_respository", {
- *     name: "dataform_repository",
- *     gitRemoteSettings: {
- *         url: gitRepository.url,
- *         defaultBranch: "main",
- *         sshAuthenticationConfig: {
- *             userPrivateKeySecretVersion: secretVersion.id,
- *             hostPublicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
- *         },
- *     },
- *     workspaceCompilationOverrides: {
- *         defaultDatabase: "database",
- *         schemaSuffix: "_suffix",
- *         tablePrefix: "prefix_",
- *     },
- *     serviceAccount: "1234567890-compute@developer.gserviceaccount.com",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

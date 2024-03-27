@@ -20,9 +20,87 @@ import (
 // perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
 // or query against a BigQuery dataset).
 //
+// > **Note:** By default, updates to this resource will remove the EgressPolicy from the
+// from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
+// is added before the old one is removed, add a `lifecycle` block with `createBeforeDestroy = true` to this resource.
+//
 // To get more information about ServicePerimeterEgressPolicy, see:
 //
 // * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+//
+// ## Example Usage
+//
+// ### Access Context Manager Service Perimeter Egress Policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/accesscontextmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+//				Parent: pulumi.String("organizations/123456789"),
+//				Title:  pulumi.String("Storage Policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = accesscontextmanager.NewServicePerimeter(ctx, "storage-perimeter", &accesscontextmanager.ServicePerimeterArgs{
+//				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accesspolicies/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("accesspolicies/%v/serviceperimeters/storage-perimeter", name), nil
+//				}).(pulumi.StringOutput),
+//				Title: pulumi.String("Storage Perimeter"),
+//				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
+//					RestrictedServices: pulumi.StringArray{
+//						pulumi.String("storage.googleapis.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = accesscontextmanager.NewServicePerimeterEgressPolicy(ctx, "egress_policy", &accesscontextmanager.ServicePerimeterEgressPolicyArgs{
+//				Perimeter: storage_perimeter.Name,
+//				EgressFrom: &accesscontextmanager.ServicePerimeterEgressPolicyEgressFromArgs{
+//					IdentityType: pulumi.String("ANY_IDENTITY"),
+//				},
+//				EgressTo: &accesscontextmanager.ServicePerimeterEgressPolicyEgressToArgs{
+//					Resources: pulumi.StringArray{
+//						pulumi.String("*"),
+//					},
+//					Operations: accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationArray{
+//						&accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationArgs{
+//							ServiceName: pulumi.String("bigquery.googleapis.com"),
+//							MethodSelectors: accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArray{
+//								&accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs{
+//									Method: pulumi.String("*"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -137,9 +137,6 @@ export class AndroidApp extends pulumi.CustomResource {
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -153,10 +150,13 @@ export class AndroidApp extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
+     *
+     *
+     * - - -
      */
-    public readonly packageName!: pulumi.Output<string | undefined>;
+    public readonly packageName!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -199,6 +199,9 @@ export class AndroidApp extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            if ((!args || args.packageName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'packageName'");
+            }
             resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -238,9 +241,6 @@ export interface AndroidAppState {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -254,8 +254,11 @@ export interface AndroidAppState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
+     *
+     *
+     * - - -
      */
     packageName?: pulumi.Input<string>;
     /**
@@ -291,16 +294,16 @@ export interface AndroidAppArgs {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.
+     */
+    displayName: pulumi.Input<string>;
+    /**
+     * The canonical package name of the Android app as would appear in the Google Play
+     * Developer Console.
      *
      *
      * - - -
      */
-    displayName: pulumi.Input<string>;
-    /**
-     * Immutable. The canonical package name of the Android app as would appear in the Google Play
-     * Developer Console.
-     */
-    packageName?: pulumi.Input<string>;
+    packageName: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -1140,6 +1140,59 @@ class WorkstationConfig(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Workstation Config Boost
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            })
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host=gcp.workstations.WorkstationConfigHostArgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+                    machine_type="e2-standard-4",
+                    boot_disk_size_gb=35,
+                    disable_public_ip_addresses=True,
+                    boost_configs=[
+                        gcp.workstations.WorkstationConfigHostGceInstanceBoostConfigArgs(
+                            id="boost-1",
+                            machine_type="n1-standard-2",
+                            accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs(
+                                type="nvidia-tesla-t4",
+                                count=1,
+                            )],
+                        ),
+                        gcp.workstations.WorkstationConfigHostGceInstanceBoostConfigArgs(
+                            id="boost-1",
+                            machine_type="e2-standard-2",
+                        ),
+                    ],
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
         ### Workstation Config Encryption Key
 
         <!--Start PulumiCodeChooser -->
@@ -1546,6 +1599,59 @@ class WorkstationConfig(pulumi.CustomResource):
                         type="nvidia-tesla-t4",
                         count=1,
                     )],
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Workstation Config Boost
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            })
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host=gcp.workstations.WorkstationConfigHostArgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+                    machine_type="e2-standard-4",
+                    boot_disk_size_gb=35,
+                    disable_public_ip_addresses=True,
+                    boost_configs=[
+                        gcp.workstations.WorkstationConfigHostGceInstanceBoostConfigArgs(
+                            id="boost-1",
+                            machine_type="n1-standard-2",
+                            accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs(
+                                type="nvidia-tesla-t4",
+                                count=1,
+                            )],
+                        ),
+                        gcp.workstations.WorkstationConfigHostGceInstanceBoostConfigArgs(
+                            id="boost-1",
+                            machine_type="e2-standard-2",
+                        ),
+                    ],
                 ),
             ))
         ```
