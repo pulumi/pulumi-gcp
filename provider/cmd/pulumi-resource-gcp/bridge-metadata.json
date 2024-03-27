@@ -493,6 +493,10 @@
                     }
                 }
             },
+            "google_access_context_manager_service_perimeter_dry_run_resource": {
+                "current": "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource",
+                "majorVersion": 7
+            },
             "google_access_context_manager_service_perimeter_egress_policy": {
                 "current": "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy",
                 "majorVersion": 7,
@@ -3416,6 +3420,9 @@
                                                             }
                                                         },
                                                         "empty_dir": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "gcs": {
                                                             "maxItemsOne": true
                                                         },
                                                         "secret": {
@@ -21878,6 +21885,16 @@
                 "current": "gcp:pubsub/topic:Topic",
                 "majorVersion": 7,
                 "fields": {
+                    "ingestion_data_source_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "aws_kinesis": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "message_storage_policy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -23007,6 +23024,9 @@
                     "retention_policy": {
                         "maxItemsOne": true
                     },
+                    "soft_delete_policy": {
+                        "maxItemsOne": true
+                    },
                     "versioning": {
                         "maxItemsOne": true
                     },
@@ -24010,6 +24030,16 @@
                                             "accelerators": {
                                                 "maxItemsOne": false
                                             },
+                                            "boost_configs": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "accelerators": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "confidential_instance_config": {
                                                 "maxItemsOne": true
                                             },
@@ -24586,6 +24616,38 @@
                     }
                 }
             },
+            "google_cloud_quotas_quota_infos": {
+                "current": "gcp:cloudquota/getSQuotaInfos:getSQuotaInfos",
+                "majorVersion": 7,
+                "fields": {
+                    "quota_infos": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "dimensions": {
+                                    "maxItemsOne": false
+                                },
+                                "dimensions_infos": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "applicable_locations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "details": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "quota_increase_eligibility": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_cloud_run_locations": {
                 "current": "gcp:cloudrun/getLocations:getLocations",
                 "majorVersion": 7,
@@ -24848,6 +24910,9 @@
                                                             }
                                                         },
                                                         "empty_dir": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "gcs": {
                                                             "maxItemsOne": false
                                                         },
                                                         "secret": {
@@ -28347,6 +28412,16 @@
                 "current": "gcp:pubsub/getTopic:getTopic",
                 "majorVersion": 7,
                 "fields": {
+                    "ingestion_data_source_settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "aws_kinesis": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "message_storage_policy": {
                         "maxItemsOne": false,
                         "elem": {
@@ -28947,6 +29022,9 @@
                     "retention_policy": {
                         "maxItemsOne": false
                     },
+                    "soft_delete_policy": {
+                        "maxItemsOne": false
+                    },
                     "versioning": {
                         "maxItemsOne": false
                     },
@@ -29222,6 +29300,11 @@
     },
     "auto-settings": {
         "resources": {
+            "google_cloud_run_v2_service": {
+                "maxItemsOneOverrides": {
+                    "template.$.containers.$.ports": false
+                }
+            },
             "google_compute_autoscaler": {
                 "renames": [
                     "gcp:compute/autoscalar:Autoscalar"
@@ -30085,6 +30168,7 @@
             "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding": 0,
             "gcp:accesscontextmanager/ingressPolicy:IngressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter": 0,
+            "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource": 0,
             "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy": 0,
             "gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource": 0,
@@ -31021,6 +31105,7 @@
             "gcp:cloudidentity/getGroupMemberships:getGroupMemberships": 0,
             "gcp:cloudidentity/getGroups:getGroups": 0,
             "gcp:cloudquota/getSQuotaInfo:getSQuotaInfo": 0,
+            "gcp:cloudquota/getSQuotaInfos:getSQuotaInfos": 0,
             "gcp:cloudrun/getLocations:getLocations": 0,
             "gcp:cloudrun/getService:getService": 0,
             "gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy": 0,
