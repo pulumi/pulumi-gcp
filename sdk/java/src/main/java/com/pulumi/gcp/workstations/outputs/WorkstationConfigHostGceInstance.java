@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceAccelerator;
+import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceBoostConfig;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig;
 import java.lang.Boolean;
@@ -23,6 +24,12 @@ public final class WorkstationConfigHostGceInstance {
      * 
      */
     private @Nullable List<WorkstationConfigHostGceInstanceAccelerator> accelerators;
+    /**
+     * @return A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<WorkstationConfigHostGceInstanceBoostConfig> boostConfigs;
     /**
      * @return Size of the boot disk in GB.
      * 
@@ -90,6 +97,14 @@ public final class WorkstationConfigHostGceInstance {
      */
     public List<WorkstationConfigHostGceInstanceAccelerator> accelerators() {
         return this.accelerators == null ? List.of() : this.accelerators;
+    }
+    /**
+     * @return A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+     * Structure is documented below.
+     * 
+     */
+    public List<WorkstationConfigHostGceInstanceBoostConfig> boostConfigs() {
+        return this.boostConfigs == null ? List.of() : this.boostConfigs;
     }
     /**
      * @return Size of the boot disk in GB.
@@ -182,6 +197,7 @@ public final class WorkstationConfigHostGceInstance {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<WorkstationConfigHostGceInstanceAccelerator> accelerators;
+        private @Nullable List<WorkstationConfigHostGceInstanceBoostConfig> boostConfigs;
         private @Nullable Integer bootDiskSizeGb;
         private @Nullable WorkstationConfigHostGceInstanceConfidentialInstanceConfig confidentialInstanceConfig;
         private @Nullable Boolean disablePublicIpAddresses;
@@ -197,6 +213,7 @@ public final class WorkstationConfigHostGceInstance {
         public Builder(WorkstationConfigHostGceInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerators = defaults.accelerators;
+    	      this.boostConfigs = defaults.boostConfigs;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
     	      this.confidentialInstanceConfig = defaults.confidentialInstanceConfig;
     	      this.disablePublicIpAddresses = defaults.disablePublicIpAddresses;
@@ -218,6 +235,15 @@ public final class WorkstationConfigHostGceInstance {
         }
         public Builder accelerators(WorkstationConfigHostGceInstanceAccelerator... accelerators) {
             return accelerators(List.of(accelerators));
+        }
+        @CustomType.Setter
+        public Builder boostConfigs(@Nullable List<WorkstationConfigHostGceInstanceBoostConfig> boostConfigs) {
+
+            this.boostConfigs = boostConfigs;
+            return this;
+        }
+        public Builder boostConfigs(WorkstationConfigHostGceInstanceBoostConfig... boostConfigs) {
+            return boostConfigs(List.of(boostConfigs));
         }
         @CustomType.Setter
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
@@ -294,6 +320,7 @@ public final class WorkstationConfigHostGceInstance {
         public WorkstationConfigHostGceInstance build() {
             final var _resultValue = new WorkstationConfigHostGceInstance();
             _resultValue.accelerators = accelerators;
+            _resultValue.boostConfigs = boostConfigs;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;
             _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
             _resultValue.disablePublicIpAddresses = disablePublicIpAddresses;

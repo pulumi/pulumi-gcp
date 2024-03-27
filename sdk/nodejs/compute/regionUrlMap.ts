@@ -820,6 +820,87 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Region Url Map Path Template Match
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         requestPath: "/",
+ *     },
+ * });
+ * const home_backend = new gcp.compute.RegionBackendService("home-backend", {
+ *     region: "us-central1",
+ *     name: "home-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const cart_backend = new gcp.compute.RegionBackendService("cart-backend", {
+ *     region: "us-central1",
+ *     name: "cart-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const user_backend = new gcp.compute.RegionBackendService("user-backend", {
+ *     region: "us-central1",
+ *     name: "user-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const urlmap = new gcp.compute.RegionUrlMap("urlmap", {
+ *     region: "us-central1",
+ *     name: "urlmap",
+ *     description: "a description",
+ *     defaultService: home_backend.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "mysite",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "mysite",
+ *         defaultService: home_backend.id,
+ *         routeRules: [
+ *             {
+ *                 matchRules: [{
+ *                     pathTemplateMatch: "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+ *                 }],
+ *                 service: cart_backend.id,
+ *                 priority: 1,
+ *                 routeAction: {
+ *                     urlRewrite: {
+ *                         pathTemplateRewrite: "/{username}-{cartid}/",
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 matchRules: [{
+ *                     pathTemplateMatch: "/xyzwebservices/v2/xyz/users/*&#47;accountinfo/*",
+ *                 }],
+ *                 service: user_backend.id,
+ *                 priority: 2,
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

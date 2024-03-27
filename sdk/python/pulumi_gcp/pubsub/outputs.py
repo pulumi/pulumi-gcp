@@ -31,6 +31,8 @@ __all__ = [
     'SubscriptionRetryPolicy',
     'TopicIAMBindingCondition',
     'TopicIAMMemberCondition',
+    'TopicIngestionDataSourceSettings',
+    'TopicIngestionDataSourceSettingsAwsKinesis',
     'TopicMessageStoragePolicy',
     'TopicSchemaSettings',
     'GetSubscriptionBigqueryConfigResult',
@@ -42,6 +44,8 @@ __all__ = [
     'GetSubscriptionPushConfigNoWrapperResult',
     'GetSubscriptionPushConfigOidcTokenResult',
     'GetSubscriptionRetryPolicyResult',
+    'GetTopicIngestionDataSourceSettingResult',
+    'GetTopicIngestionDataSourceSettingAwsKineseResult',
     'GetTopicMessageStoragePolicyResult',
     'GetTopicSchemaSettingResult',
 ]
@@ -1062,6 +1066,132 @@ class TopicIAMMemberCondition(dict):
 
 
 @pulumi.output_type
+class TopicIngestionDataSourceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsKinesis":
+            suggest = "aws_kinesis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TopicIngestionDataSourceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TopicIngestionDataSourceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TopicIngestionDataSourceSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_kinesis: Optional['outputs.TopicIngestionDataSourceSettingsAwsKinesis'] = None):
+        """
+        :param 'TopicIngestionDataSourceSettingsAwsKinesisArgs' aws_kinesis: Settings for ingestion from Amazon Kinesis Data Streams.
+               Structure is documented below.
+        """
+        if aws_kinesis is not None:
+            pulumi.set(__self__, "aws_kinesis", aws_kinesis)
+
+    @property
+    @pulumi.getter(name="awsKinesis")
+    def aws_kinesis(self) -> Optional['outputs.TopicIngestionDataSourceSettingsAwsKinesis']:
+        """
+        Settings for ingestion from Amazon Kinesis Data Streams.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws_kinesis")
+
+
+@pulumi.output_type
+class TopicIngestionDataSourceSettingsAwsKinesis(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsRoleArn":
+            suggest = "aws_role_arn"
+        elif key == "consumerArn":
+            suggest = "consumer_arn"
+        elif key == "gcpServiceAccount":
+            suggest = "gcp_service_account"
+        elif key == "streamArn":
+            suggest = "stream_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TopicIngestionDataSourceSettingsAwsKinesis. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TopicIngestionDataSourceSettingsAwsKinesis.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TopicIngestionDataSourceSettingsAwsKinesis.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aws_role_arn: str,
+                 consumer_arn: str,
+                 gcp_service_account: str,
+                 stream_arn: str):
+        """
+        :param str aws_role_arn: AWS role ARN to be used for Federated Identity authentication with
+               Kinesis. Check the Pub/Sub docs for how to set up this role and the
+               required permissions that need to be attached to it.
+        :param str consumer_arn: The Kinesis consumer ARN to used for ingestion in
+               Enhanced Fan-Out mode. The consumer must be already
+               created and ready to be used.
+        :param str gcp_service_account: The GCP service account to be used for Federated Identity authentication
+               with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+               role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+               equals to this service account number.
+        :param str stream_arn: The Kinesis stream ARN to ingest data from.
+        """
+        pulumi.set(__self__, "aws_role_arn", aws_role_arn)
+        pulumi.set(__self__, "consumer_arn", consumer_arn)
+        pulumi.set(__self__, "gcp_service_account", gcp_service_account)
+        pulumi.set(__self__, "stream_arn", stream_arn)
+
+    @property
+    @pulumi.getter(name="awsRoleArn")
+    def aws_role_arn(self) -> str:
+        """
+        AWS role ARN to be used for Federated Identity authentication with
+        Kinesis. Check the Pub/Sub docs for how to set up this role and the
+        required permissions that need to be attached to it.
+        """
+        return pulumi.get(self, "aws_role_arn")
+
+    @property
+    @pulumi.getter(name="consumerArn")
+    def consumer_arn(self) -> str:
+        """
+        The Kinesis consumer ARN to used for ingestion in
+        Enhanced Fan-Out mode. The consumer must be already
+        created and ready to be used.
+        """
+        return pulumi.get(self, "consumer_arn")
+
+    @property
+    @pulumi.getter(name="gcpServiceAccount")
+    def gcp_service_account(self) -> str:
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+        role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+        equals to this service account number.
+        """
+        return pulumi.get(self, "gcp_service_account")
+
+    @property
+    @pulumi.getter(name="streamArn")
+    def stream_arn(self) -> str:
+        """
+        The Kinesis stream ARN to ingest data from.
+        """
+        return pulumi.get(self, "stream_arn")
+
+
+@pulumi.output_type
 class TopicMessageStoragePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1624,6 +1754,89 @@ class GetSubscriptionRetryPolicyResult(dict):
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "minimum_backoff")
+
+
+@pulumi.output_type
+class GetTopicIngestionDataSourceSettingResult(dict):
+    def __init__(__self__, *,
+                 aws_kineses: Sequence['outputs.GetTopicIngestionDataSourceSettingAwsKineseResult']):
+        """
+        :param Sequence['GetTopicIngestionDataSourceSettingAwsKineseArgs'] aws_kineses: Settings for ingestion from Amazon Kinesis Data Streams.
+        """
+        pulumi.set(__self__, "aws_kineses", aws_kineses)
+
+    @property
+    @pulumi.getter(name="awsKineses")
+    def aws_kineses(self) -> Sequence['outputs.GetTopicIngestionDataSourceSettingAwsKineseResult']:
+        """
+        Settings for ingestion from Amazon Kinesis Data Streams.
+        """
+        return pulumi.get(self, "aws_kineses")
+
+
+@pulumi.output_type
+class GetTopicIngestionDataSourceSettingAwsKineseResult(dict):
+    def __init__(__self__, *,
+                 aws_role_arn: str,
+                 consumer_arn: str,
+                 gcp_service_account: str,
+                 stream_arn: str):
+        """
+        :param str aws_role_arn: AWS role ARN to be used for Federated Identity authentication with
+               Kinesis. Check the Pub/Sub docs for how to set up this role and the
+               required permissions that need to be attached to it.
+        :param str consumer_arn: The Kinesis consumer ARN to used for ingestion in
+               Enhanced Fan-Out mode. The consumer must be already
+               created and ready to be used.
+        :param str gcp_service_account: The GCP service account to be used for Federated Identity authentication
+               with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
+               role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+               equals to this service account number.
+        :param str stream_arn: The Kinesis stream ARN to ingest data from.
+        """
+        pulumi.set(__self__, "aws_role_arn", aws_role_arn)
+        pulumi.set(__self__, "consumer_arn", consumer_arn)
+        pulumi.set(__self__, "gcp_service_account", gcp_service_account)
+        pulumi.set(__self__, "stream_arn", stream_arn)
+
+    @property
+    @pulumi.getter(name="awsRoleArn")
+    def aws_role_arn(self) -> str:
+        """
+        AWS role ARN to be used for Federated Identity authentication with
+        Kinesis. Check the Pub/Sub docs for how to set up this role and the
+        required permissions that need to be attached to it.
+        """
+        return pulumi.get(self, "aws_role_arn")
+
+    @property
+    @pulumi.getter(name="consumerArn")
+    def consumer_arn(self) -> str:
+        """
+        The Kinesis consumer ARN to used for ingestion in
+        Enhanced Fan-Out mode. The consumer must be already
+        created and ready to be used.
+        """
+        return pulumi.get(self, "consumer_arn")
+
+    @property
+    @pulumi.getter(name="gcpServiceAccount")
+    def gcp_service_account(self) -> str:
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with Kinesis (via a 'AssumeRoleWithWebIdentity' call for the provided
+        role). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'
+        equals to this service account number.
+        """
+        return pulumi.get(self, "gcp_service_account")
+
+    @property
+    @pulumi.getter(name="streamArn")
+    def stream_arn(self) -> str:
+        """
+        The Kinesis stream ARN to ingest data from.
+        """
+        return pulumi.get(self, "stream_arn")
 
 
 @pulumi.output_type

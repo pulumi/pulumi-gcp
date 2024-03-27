@@ -40,6 +40,21 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Project to bill on endpoint uptime usage.
+     * 
+     */
+    @Import(name="billingProjectId")
+    private @Nullable Output<String> billingProjectId;
+
+    /**
+     * @return Project to bill on endpoint uptime usage.
+     * 
+     */
+    public Optional<Output<String>> billingProjectId() {
+        return Optional.ofNullable(this.billingProjectId);
+    }
+
+    /**
      * Time the firewall endpoint was created in UTC.
      * 
      */
@@ -222,6 +237,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
 
     private FirewallEndpointState(FirewallEndpointState $) {
         this.associatedNetworks = $.associatedNetworks;
+        this.billingProjectId = $.billingProjectId;
         this.createTime = $.createTime;
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
@@ -291,6 +307,27 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
          */
         public Builder associatedNetworks(String... associatedNetworks) {
             return associatedNetworks(List.of(associatedNetworks));
+        }
+
+        /**
+         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingProjectId(@Nullable Output<String> billingProjectId) {
+            $.billingProjectId = billingProjectId;
+            return this;
+        }
+
+        /**
+         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder billingProjectId(String billingProjectId) {
+            return billingProjectId(Output.of(billingProjectId));
         }
 
         /**

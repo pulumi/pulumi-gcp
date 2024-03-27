@@ -1231,9 +1231,9 @@ class Service(pulumi.CustomResource):
                 containers=[
                     gcp.cloudrunv2.ServiceTemplateContainerArgs(
                         name="hello-1",
-                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
-                            container_port=8080,
-                        )],
+                        ports={
+                            "containerPort": 8080,
+                        },
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                         depends_ons=["hello-2"],
                         volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
@@ -1702,9 +1702,9 @@ class Service(pulumi.CustomResource):
                 containers=[
                     gcp.cloudrunv2.ServiceTemplateContainerArgs(
                         name="hello-1",
-                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
-                            container_port=8080,
-                        )],
+                        ports={
+                            "containerPort": 8080,
+                        },
                         image="us-docker.pkg.dev/cloudrun/container/hello",
                         depends_ons=["hello-2"],
                         volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(

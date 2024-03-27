@@ -11456,6 +11456,8 @@ func (o GetInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) GetIn
 }
 
 type GetInstanceGroupManagerStatusAllInstancesConfig struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision string `pulumi:"currentRevision"`
 	// A bit indicating whether this configuration has been applied to all managed instances in the group.
 	Effective bool `pulumi:"effective"`
 }
@@ -11472,6 +11474,8 @@ type GetInstanceGroupManagerStatusAllInstancesConfigInput interface {
 }
 
 type GetInstanceGroupManagerStatusAllInstancesConfigArgs struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision pulumi.StringInput `pulumi:"currentRevision"`
 	// A bit indicating whether this configuration has been applied to all managed instances in the group.
 	Effective pulumi.BoolInput `pulumi:"effective"`
 }
@@ -11527,6 +11531,11 @@ func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetInstanceGrou
 	return o
 }
 
+// Current all-instances configuration revision. This value is in RFC3339 text format.
+func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) CurrentRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerStatusAllInstancesConfig) string { return v.CurrentRevision }).(pulumi.StringOutput)
+}
+
 // A bit indicating whether this configuration has been applied to all managed instances in the group.
 func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) Effective() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusAllInstancesConfig) bool { return v.Effective }).(pulumi.BoolOutput)
@@ -11555,7 +11564,7 @@ func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) Index(i pulu
 type GetInstanceGroupManagerStatusStateful struct {
 	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
-	// Status of per-instance configs on the instance.
+	// Status of per-instance configs on the instances.
 	PerInstanceConfigs []GetInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
 }
 
@@ -11573,7 +11582,7 @@ type GetInstanceGroupManagerStatusStatefulInput interface {
 type GetInstanceGroupManagerStatusStatefulArgs struct {
 	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
-	// Status of per-instance configs on the instance.
+	// Status of per-instance configs on the instances.
 	PerInstanceConfigs GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
 }
 
@@ -11633,7 +11642,7 @@ func (o GetInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
 }
 
-// Status of per-instance configs on the instance.
+// Status of per-instance configs on the instances.
 func (o GetInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) []GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
 		return v.PerInstanceConfigs

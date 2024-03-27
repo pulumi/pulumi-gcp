@@ -1314,6 +1314,127 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Region Url Map Path Template Match
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
+    ///     });
+    /// 
+    ///     var home_backend = new Gcp.Compute.RegionBackendService("home-backend", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "home-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var cart_backend = new Gcp.Compute.RegionBackendService("cart-backend", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "cart-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var user_backend = new Gcp.Compute.RegionBackendService("user-backend", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "user-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.RegionUrlMap("urlmap", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "urlmap",
+    ///         Description = "a description",
+    ///         DefaultService = home_backend.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "mysite",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "mysite",
+    ///                 DefaultService = home_backend.Id,
+    ///                 RouteRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PathTemplateMatch = "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}",
+    ///                             },
+    ///                         },
+    ///                         Service = cart_backend.Id,
+    ///                         Priority = 1,
+    ///                         RouteAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionArgs
+    ///                         {
+    ///                             UrlRewrite = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs
+    ///                             {
+    ///                                 PathTemplateRewrite = "/{username}-{cartid}/",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PathTemplateMatch = "/xyzwebservices/v2/xyz/users/*/accountinfo/*",
+    ///                             },
+    ///                         },
+    ///                         Service = user_backend.Id,
+    ///                         Priority = 2,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

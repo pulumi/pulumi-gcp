@@ -27,7 +27,7 @@ public final class GetServiceTemplateVolume {
      */
     private List<GetServiceTemplateVolumeEmptyDir> emptyDirs;
     /**
-     * @return Represents a GCS Bucket mounted as a volume.
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
      * 
      */
     private List<GetServiceTemplateVolumeGc> gcs;
@@ -63,7 +63,7 @@ public final class GetServiceTemplateVolume {
         return this.emptyDirs;
     }
     /**
-     * @return Represents a GCS Bucket mounted as a volume.
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
      * 
      */
     public List<GetServiceTemplateVolumeGc> gcs() {

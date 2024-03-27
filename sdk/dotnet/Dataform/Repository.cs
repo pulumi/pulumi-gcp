@@ -23,11 +23,6 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
-    ///     {
-    ///         Name = "my/repository",
-    ///     });
-    /// 
     ///     var secret = new Gcp.SecretManager.Secret("secret", new()
     ///     {
     ///         SecretId = "my-secret",
@@ -43,7 +38,7 @@ namespace Pulumi.Gcp.Dataform
     ///         SecretData = "secret-data",
     ///     });
     /// 
-    ///     var dataformRespository = new Gcp.Dataform.Repository("dataform_respository", new()
+    ///     var dataformRepository = new Gcp.Dataform.Repository("dataform_repository", new()
     ///     {
     ///         Name = "dataform_repository",
     ///         DisplayName = "dataform_repository",
@@ -54,7 +49,7 @@ namespace Pulumi.Gcp.Dataform
     ///         },
     ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
     ///         {
-    ///             Url = gitRepository.Url,
+    ///             Url = "https://github.com/OWNER/REPOSITORY.git",
     ///             DefaultBranch = "main",
     ///             AuthenticationTokenSecretVersion = secretVersion.Id,
     ///         },
@@ -64,62 +59,6 @@ namespace Pulumi.Gcp.Dataform
     ///             SchemaSuffix = "_suffix",
     ///             TablePrefix = "prefix_",
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// ### Dataform Repository Ssh
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var gitRepository = new Gcp.SourceRepo.Repository("git_repository", new()
-    ///     {
-    ///         Name = "my/repository",
-    ///     });
-    /// 
-    ///     var secret = new Gcp.SecretManager.Secret("secret", new()
-    ///     {
-    ///         SecretId = "my-secret",
-    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///         {
-    ///             Auto = null,
-    ///         },
-    ///     });
-    /// 
-    ///     var secretVersion = new Gcp.SecretManager.SecretVersion("secret_version", new()
-    ///     {
-    ///         Secret = secret.Id,
-    ///         SecretData = "secret-data",
-    ///     });
-    /// 
-    ///     var dataformRespository = new Gcp.Dataform.Repository("dataform_respository", new()
-    ///     {
-    ///         Name = "dataform_repository",
-    ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
-    ///         {
-    ///             Url = gitRepository.Url,
-    ///             DefaultBranch = "main",
-    ///             SshAuthenticationConfig = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs
-    ///             {
-    ///                 UserPrivateKeySecretVersion = secretVersion.Id,
-    ///                 HostPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU",
-    ///             },
-    ///         },
-    ///         WorkspaceCompilationOverrides = new Gcp.Dataform.Inputs.RepositoryWorkspaceCompilationOverridesArgs
-    ///         {
-    ///             DefaultDatabase = "database",
-    ///             SchemaSuffix = "_suffix",
-    ///             TablePrefix = "prefix_",
-    ///         },
-    ///         ServiceAccount = "1234567890-compute@developer.gserviceaccount.com",
     ///     });
     /// 
     /// });

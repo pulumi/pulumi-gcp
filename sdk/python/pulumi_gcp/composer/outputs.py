@@ -1569,20 +1569,32 @@ class EnvironmentConfigWorkloadsConfigDagProcessor(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 count: Optional[int] = None,
                  cpu: Optional[float] = None,
                  memory_gb: Optional[float] = None,
                  storage_gb: Optional[float] = None):
         """
+        :param int count: Number of DAG processors.
         :param float cpu: CPU request and limit for DAG processor.
         :param float memory_gb: Memory (GB) request and limit for DAG processor.
         :param float storage_gb: Storage (GB) request and limit for DAG processor.
         """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if memory_gb is not None:
             pulumi.set(__self__, "memory_gb", memory_gb)
         if storage_gb is not None:
             pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        Number of DAG processors.
+        """
+        return pulumi.get(self, "count")
 
     @property
     @pulumi.getter
@@ -2937,17 +2949,28 @@ class GetEnvironmentConfigWorkloadsConfigResult(dict):
 @pulumi.output_type
 class GetEnvironmentConfigWorkloadsConfigDagProcessorResult(dict):
     def __init__(__self__, *,
+                 count: int,
                  cpu: float,
                  memory_gb: float,
                  storage_gb: float):
         """
+        :param int count: Number of DAG processors.
         :param float cpu: CPU request and limit for DAG processor.
         :param float memory_gb: Memory (GB) request and limit for DAG processor.
         :param float storage_gb: Storage (GB) request and limit for DAG processor.
         """
+        pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "cpu", cpu)
         pulumi.set(__self__, "memory_gb", memory_gb)
         pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Number of DAG processors.
+        """
+        return pulumi.get(self, "count")
 
     @property
     @pulumi.getter

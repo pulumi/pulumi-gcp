@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSetting;
 import com.pulumi.gcp.pubsub.outputs.GetTopicMessageStoragePolicy;
 import com.pulumi.gcp.pubsub.outputs.GetTopicSchemaSetting;
 import java.lang.String;
@@ -22,6 +23,7 @@ public final class GetTopicResult {
      * 
      */
     private String id;
+    private List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings;
     private String kmsKeyName;
     private Map<String,String> labels;
     private String messageRetentionDuration;
@@ -41,6 +43,9 @@ public final class GetTopicResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings() {
+        return this.ingestionDataSourceSettings;
     }
     public String kmsKeyName() {
         return this.kmsKeyName;
@@ -78,6 +83,7 @@ public final class GetTopicResult {
     public static final class Builder {
         private Map<String,String> effectiveLabels;
         private String id;
+        private List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings;
         private String kmsKeyName;
         private Map<String,String> labels;
         private String messageRetentionDuration;
@@ -91,6 +97,7 @@ public final class GetTopicResult {
     	      Objects.requireNonNull(defaults);
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
+    	      this.ingestionDataSourceSettings = defaults.ingestionDataSourceSettings;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.labels = defaults.labels;
     	      this.messageRetentionDuration = defaults.messageRetentionDuration;
@@ -116,6 +123,17 @@ public final class GetTopicResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ingestionDataSourceSettings(List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings) {
+            if (ingestionDataSourceSettings == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "ingestionDataSourceSettings");
+            }
+            this.ingestionDataSourceSettings = ingestionDataSourceSettings;
+            return this;
+        }
+        public Builder ingestionDataSourceSettings(GetTopicIngestionDataSourceSetting... ingestionDataSourceSettings) {
+            return ingestionDataSourceSettings(List.of(ingestionDataSourceSettings));
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
@@ -189,6 +207,7 @@ public final class GetTopicResult {
             final var _resultValue = new GetTopicResult();
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
+            _resultValue.ingestionDataSourceSettings = ingestionDataSourceSettings;
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.labels = labels;
             _resultValue.messageRetentionDuration = messageRetentionDuration;

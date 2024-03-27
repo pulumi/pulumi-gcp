@@ -17,6 +17,7 @@ import com.pulumi.gcp.storage.outputs.BucketEncryption;
 import com.pulumi.gcp.storage.outputs.BucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.BucketLogging;
 import com.pulumi.gcp.storage.outputs.BucketRetentionPolicy;
+import com.pulumi.gcp.storage.outputs.BucketSoftDeletePolicy;
 import com.pulumi.gcp.storage.outputs.BucketVersioning;
 import com.pulumi.gcp.storage.outputs.BucketWebsite;
 import java.lang.Boolean;
@@ -508,6 +509,22 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * 
+     */
+    @Export(name="softDeletePolicy", refs={BucketSoftDeletePolicy.class}, tree="[0]")
+    private Output<BucketSoftDeletePolicy> softDeletePolicy;
+
+    /**
+     * @return The bucket&#39;s soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+     * be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+     * 
+     */
+    public Output<BucketSoftDeletePolicy> softDeletePolicy() {
+        return this.softDeletePolicy;
     }
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.

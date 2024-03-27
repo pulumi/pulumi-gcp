@@ -46,16 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firestore.Database;
  * import com.pulumi.gcp.firestore.DatabaseArgs;
- * import com.pulumi.gcp.firestore.Document;
- * import com.pulumi.gcp.firestore.DocumentArgs;
  * import com.pulumi.gcp.firestore.Index;
  * import com.pulumi.gcp.firestore.IndexArgs;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
@@ -72,40 +64,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;project-id&#34;)
- *             .name(&#34;project-id&#34;)
- *             .orgId(&#34;123456789&#34;)
- *             .build());
- * 
- *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
- *             .createDuration(&#34;60s&#34;)
- *             .build());
- * 
- *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
- *             .project(project.projectId())
- *             .service(&#34;firestore.googleapis.com&#34;)
- *             .build());
- * 
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(project.projectId())
- *             .name(&#34;(default)&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
- *             .build());
- * 
- *         var document = new Document(&#34;document&#34;, DocumentArgs.builder()        
- *             .project(project.projectId())
- *             .database(database.name())
- *             .collection(&#34;somenewcollection&#34;)
- *             .documentId(&#34;&#34;)
- *             .fields(&#34;{\&#34;something\&#34;:{\&#34;mapValue\&#34;:{\&#34;fields\&#34;:{\&#34;akey\&#34;:{\&#34;stringValue\&#34;:\&#34;avalue\&#34;}}}}}&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
  *             .build());
  * 
  *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
- *             .project(project.projectId())
+ *             .project(&#34;my-project-name&#34;)
  *             .database(database.name())
- *             .collection(document.collection())
+ *             .collection(&#34;atestcollection&#34;)
  *             .fields(            
  *                 IndexFieldArgs.builder()
  *                     .fieldPath(&#34;name&#34;)
@@ -130,6 +101,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.Index;
  * import com.pulumi.gcp.firestore.IndexArgs;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
@@ -146,10 +119,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id-dm&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build());
+ * 
  *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .database(&#34;(default)&#34;)
- *             .collection(&#34;chatrooms&#34;)
+ *             .database(database.name())
+ *             .collection(&#34;atestcollection&#34;)
  *             .queryScope(&#34;COLLECTION_RECURSIVE&#34;)
  *             .apiScope(&#34;DATASTORE_MODE_API&#34;)
  *             .fields(            

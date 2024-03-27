@@ -166,9 +166,49 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
         or query against a BigQuery dataset).
 
+        > **Note:** By default, updates to this resource will remove the EgressPolicy from the
+        from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
+        is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+
         To get more information about ServicePerimeterEgressPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+
+        ## Example Usage
+
+        ### Access Context Manager Service Perimeter Egress Policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="Storage Policy")
+        storage_perimeter = gcp.accesscontextmanager.ServicePerimeter("storage-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accesspolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
+            title="Storage Perimeter",
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=["storage.googleapis.com"],
+            ))
+        egress_policy = gcp.accesscontextmanager.ServicePerimeterEgressPolicy("egress_policy",
+            perimeter=storage_perimeter.name,
+            egress_from=gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressFromArgs(
+                identity_type="ANY_IDENTITY",
+            ),
+            egress_to=gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressToArgs(
+                resources=["*"],
+                operations=[gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationArgs(
+                    service_name="bigquery.googleapis.com",
+                    method_selectors=[gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs(
+                        method="*",
+                    )],
+                )],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -209,9 +249,49 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
         or query against a BigQuery dataset).
 
+        > **Note:** By default, updates to this resource will remove the EgressPolicy from the
+        from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
+        is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+
         To get more information about ServicePerimeterEgressPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+
+        ## Example Usage
+
+        ### Access Context Manager Service Perimeter Egress Policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="Storage Policy")
+        storage_perimeter = gcp.accesscontextmanager.ServicePerimeter("storage-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accesspolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
+            title="Storage Perimeter",
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=["storage.googleapis.com"],
+            ))
+        egress_policy = gcp.accesscontextmanager.ServicePerimeterEgressPolicy("egress_policy",
+            perimeter=storage_perimeter.name,
+            egress_from=gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressFromArgs(
+                identity_type="ANY_IDENTITY",
+            ),
+            egress_to=gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressToArgs(
+                resources=["*"],
+                operations=[gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationArgs(
+                    service_name="bigquery.googleapis.com",
+                    method_selectors=[gcp.accesscontextmanager.ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs(
+                        method="*",
+                    )],
+                )],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

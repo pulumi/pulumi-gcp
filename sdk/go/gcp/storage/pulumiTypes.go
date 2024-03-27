@@ -1955,6 +1955,162 @@ func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type BucketSoftDeletePolicy struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+	RetentionDurationSeconds *int `pulumi:"retentionDurationSeconds"`
+}
+
+// BucketSoftDeletePolicyInput is an input type that accepts BucketSoftDeletePolicyArgs and BucketSoftDeletePolicyOutput values.
+// You can construct a concrete instance of `BucketSoftDeletePolicyInput` via:
+//
+//	BucketSoftDeletePolicyArgs{...}
+type BucketSoftDeletePolicyInput interface {
+	pulumi.Input
+
+	ToBucketSoftDeletePolicyOutput() BucketSoftDeletePolicyOutput
+	ToBucketSoftDeletePolicyOutputWithContext(context.Context) BucketSoftDeletePolicyOutput
+}
+
+type BucketSoftDeletePolicyArgs struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+	RetentionDurationSeconds pulumi.IntPtrInput `pulumi:"retentionDurationSeconds"`
+}
+
+func (BucketSoftDeletePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyOutput() BucketSoftDeletePolicyOutput {
+	return i.ToBucketSoftDeletePolicyOutputWithContext(context.Background())
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyOutputWithContext(ctx context.Context) BucketSoftDeletePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketSoftDeletePolicyOutput)
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return i.ToBucketSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BucketSoftDeletePolicyArgs) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketSoftDeletePolicyOutput).ToBucketSoftDeletePolicyPtrOutputWithContext(ctx)
+}
+
+// BucketSoftDeletePolicyPtrInput is an input type that accepts BucketSoftDeletePolicyArgs, BucketSoftDeletePolicyPtr and BucketSoftDeletePolicyPtrOutput values.
+// You can construct a concrete instance of `BucketSoftDeletePolicyPtrInput` via:
+//
+//	        BucketSoftDeletePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketSoftDeletePolicyPtrInput interface {
+	pulumi.Input
+
+	ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput
+	ToBucketSoftDeletePolicyPtrOutputWithContext(context.Context) BucketSoftDeletePolicyPtrOutput
+}
+
+type bucketSoftDeletePolicyPtrType BucketSoftDeletePolicyArgs
+
+func BucketSoftDeletePolicyPtr(v *BucketSoftDeletePolicyArgs) BucketSoftDeletePolicyPtrInput {
+	return (*bucketSoftDeletePolicyPtrType)(v)
+}
+
+func (*bucketSoftDeletePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (i *bucketSoftDeletePolicyPtrType) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return i.ToBucketSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketSoftDeletePolicyPtrType) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketSoftDeletePolicyPtrOutput)
+}
+
+type BucketSoftDeletePolicyOutput struct{ *pulumi.OutputState }
+
+func (BucketSoftDeletePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyOutput() BucketSoftDeletePolicyOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyOutputWithContext(ctx context.Context) BucketSoftDeletePolicyOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return o.ToBucketSoftDeletePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BucketSoftDeletePolicyOutput) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketSoftDeletePolicy) *BucketSoftDeletePolicy {
+		return &v
+	}).(BucketSoftDeletePolicyPtrOutput)
+}
+
+// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+func (o BucketSoftDeletePolicyOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketSoftDeletePolicy) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+func (o BucketSoftDeletePolicyOutput) RetentionDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketSoftDeletePolicy) *int { return v.RetentionDurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+type BucketSoftDeletePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketSoftDeletePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) ToBucketSoftDeletePolicyPtrOutput() BucketSoftDeletePolicyPtrOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) ToBucketSoftDeletePolicyPtrOutputWithContext(ctx context.Context) BucketSoftDeletePolicyPtrOutput {
+	return o
+}
+
+func (o BucketSoftDeletePolicyPtrOutput) Elem() BucketSoftDeletePolicyOutput {
+	return o.ApplyT(func(v *BucketSoftDeletePolicy) BucketSoftDeletePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BucketSoftDeletePolicy
+		return ret
+	}).(BucketSoftDeletePolicyOutput)
+}
+
+// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+func (o BucketSoftDeletePolicyPtrOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketSoftDeletePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+func (o BucketSoftDeletePolicyPtrOutput) RetentionDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketSoftDeletePolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDurationSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type BucketVersioning struct {
 	// While set to `true`, versioning is fully enabled for this bucket.
 	Enabled bool `pulumi:"enabled"`
@@ -8597,6 +8753,112 @@ func (o GetBucketRetentionPolicyArrayOutput) Index(i pulumi.IntInput) GetBucketR
 	}).(GetBucketRetentionPolicyOutput)
 }
 
+type GetBucketSoftDeletePolicy struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
+	RetentionDurationSeconds int `pulumi:"retentionDurationSeconds"`
+}
+
+// GetBucketSoftDeletePolicyInput is an input type that accepts GetBucketSoftDeletePolicyArgs and GetBucketSoftDeletePolicyOutput values.
+// You can construct a concrete instance of `GetBucketSoftDeletePolicyInput` via:
+//
+//	GetBucketSoftDeletePolicyArgs{...}
+type GetBucketSoftDeletePolicyInput interface {
+	pulumi.Input
+
+	ToGetBucketSoftDeletePolicyOutput() GetBucketSoftDeletePolicyOutput
+	ToGetBucketSoftDeletePolicyOutputWithContext(context.Context) GetBucketSoftDeletePolicyOutput
+}
+
+type GetBucketSoftDeletePolicyArgs struct {
+	// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
+	RetentionDurationSeconds pulumi.IntInput `pulumi:"retentionDurationSeconds"`
+}
+
+func (GetBucketSoftDeletePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (i GetBucketSoftDeletePolicyArgs) ToGetBucketSoftDeletePolicyOutput() GetBucketSoftDeletePolicyOutput {
+	return i.ToGetBucketSoftDeletePolicyOutputWithContext(context.Background())
+}
+
+func (i GetBucketSoftDeletePolicyArgs) ToGetBucketSoftDeletePolicyOutputWithContext(ctx context.Context) GetBucketSoftDeletePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketSoftDeletePolicyOutput)
+}
+
+// GetBucketSoftDeletePolicyArrayInput is an input type that accepts GetBucketSoftDeletePolicyArray and GetBucketSoftDeletePolicyArrayOutput values.
+// You can construct a concrete instance of `GetBucketSoftDeletePolicyArrayInput` via:
+//
+//	GetBucketSoftDeletePolicyArray{ GetBucketSoftDeletePolicyArgs{...} }
+type GetBucketSoftDeletePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketSoftDeletePolicyArrayOutput() GetBucketSoftDeletePolicyArrayOutput
+	ToGetBucketSoftDeletePolicyArrayOutputWithContext(context.Context) GetBucketSoftDeletePolicyArrayOutput
+}
+
+type GetBucketSoftDeletePolicyArray []GetBucketSoftDeletePolicyInput
+
+func (GetBucketSoftDeletePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (i GetBucketSoftDeletePolicyArray) ToGetBucketSoftDeletePolicyArrayOutput() GetBucketSoftDeletePolicyArrayOutput {
+	return i.ToGetBucketSoftDeletePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketSoftDeletePolicyArray) ToGetBucketSoftDeletePolicyArrayOutputWithContext(ctx context.Context) GetBucketSoftDeletePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketSoftDeletePolicyArrayOutput)
+}
+
+type GetBucketSoftDeletePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBucketSoftDeletePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (o GetBucketSoftDeletePolicyOutput) ToGetBucketSoftDeletePolicyOutput() GetBucketSoftDeletePolicyOutput {
+	return o
+}
+
+func (o GetBucketSoftDeletePolicyOutput) ToGetBucketSoftDeletePolicyOutputWithContext(ctx context.Context) GetBucketSoftDeletePolicyOutput {
+	return o
+}
+
+// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+func (o GetBucketSoftDeletePolicyOutput) EffectiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketSoftDeletePolicy) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
+func (o GetBucketSoftDeletePolicyOutput) RetentionDurationSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBucketSoftDeletePolicy) int { return v.RetentionDurationSeconds }).(pulumi.IntOutput)
+}
+
+type GetBucketSoftDeletePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketSoftDeletePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketSoftDeletePolicy)(nil)).Elem()
+}
+
+func (o GetBucketSoftDeletePolicyArrayOutput) ToGetBucketSoftDeletePolicyArrayOutput() GetBucketSoftDeletePolicyArrayOutput {
+	return o
+}
+
+func (o GetBucketSoftDeletePolicyArrayOutput) ToGetBucketSoftDeletePolicyArrayOutputWithContext(ctx context.Context) GetBucketSoftDeletePolicyArrayOutput {
+	return o
+}
+
+func (o GetBucketSoftDeletePolicyArrayOutput) Index(i pulumi.IntInput) GetBucketSoftDeletePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketSoftDeletePolicy {
+		return vs[0].([]GetBucketSoftDeletePolicy)[vs[1].(int)]
+	}).(GetBucketSoftDeletePolicyOutput)
+}
+
 type GetBucketVersioning struct {
 	// While set to true, versioning is fully enabled for this bucket.
 	Enabled bool `pulumi:"enabled"`
@@ -8825,6 +9087,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectRetentionPtrInput)(nil)).Elem(), BucketObjectRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyInput)(nil)).Elem(), BucketRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRetentionPolicyPtrInput)(nil)).Elem(), BucketRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketSoftDeletePolicyInput)(nil)).Elem(), BucketSoftDeletePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketSoftDeletePolicyPtrInput)(nil)).Elem(), BucketSoftDeletePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningInput)(nil)).Elem(), BucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningPtrInput)(nil)).Elem(), BucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
@@ -8911,6 +9175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectRetentionArrayInput)(nil)).Elem(), GetBucketObjectRetentionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketRetentionPolicyInput)(nil)).Elem(), GetBucketRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketRetentionPolicyArrayInput)(nil)).Elem(), GetBucketRetentionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketSoftDeletePolicyInput)(nil)).Elem(), GetBucketSoftDeletePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketSoftDeletePolicyArrayInput)(nil)).Elem(), GetBucketSoftDeletePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketVersioningInput)(nil)).Elem(), GetBucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketVersioningArrayInput)(nil)).Elem(), GetBucketVersioningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteInput)(nil)).Elem(), GetBucketWebsiteArgs{})
@@ -8939,6 +9205,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketObjectRetentionPtrOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BucketRetentionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BucketSoftDeletePolicyOutput{})
+	pulumi.RegisterOutputType(BucketSoftDeletePolicyPtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningOutput{})
 	pulumi.RegisterOutputType(BucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})
@@ -9025,6 +9293,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketObjectRetentionArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(GetBucketRetentionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketSoftDeletePolicyOutput{})
+	pulumi.RegisterOutputType(GetBucketSoftDeletePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketVersioningOutput{})
 	pulumi.RegisterOutputType(GetBucketVersioningArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketWebsiteOutput{})

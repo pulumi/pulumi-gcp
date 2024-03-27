@@ -70,6 +70,11 @@ export type ServicePerimeter = import("./servicePerimeter").ServicePerimeter;
 export const ServicePerimeter: typeof import("./servicePerimeter").ServicePerimeter = null as any;
 utilities.lazyLoad(exports, ["ServicePerimeter"], () => require("./servicePerimeter"));
 
+export { ServicePerimeterDryRunResourceArgs, ServicePerimeterDryRunResourceState } from "./servicePerimeterDryRunResource";
+export type ServicePerimeterDryRunResource = import("./servicePerimeterDryRunResource").ServicePerimeterDryRunResource;
+export const ServicePerimeterDryRunResource: typeof import("./servicePerimeterDryRunResource").ServicePerimeterDryRunResource = null as any;
+utilities.lazyLoad(exports, ["ServicePerimeterDryRunResource"], () => require("./servicePerimeterDryRunResource"));
+
 export { ServicePerimeterEgressPolicyArgs, ServicePerimeterEgressPolicyState } from "./servicePerimeterEgressPolicy";
 export type ServicePerimeterEgressPolicy = import("./servicePerimeterEgressPolicy").ServicePerimeterEgressPolicy;
 export const ServicePerimeterEgressPolicy: typeof import("./servicePerimeterEgressPolicy").ServicePerimeterEgressPolicy = null as any;
@@ -119,6 +124,8 @@ const _module = {
                 return new IngressPolicy(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
                 return new ServicePerimeter(name, <any>undefined, { urn })
+            case "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource":
+                return new ServicePerimeterDryRunResource(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy":
                 return new ServicePerimeterEgressPolicy(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy":
@@ -144,6 +151,7 @@ pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/egressPolicy"
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/gcpUserAccessBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/ingressPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeter", _module)
+pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeterDryRunResource", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeterEgressPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeterIngressPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeterResource", _module)

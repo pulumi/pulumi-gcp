@@ -6,10 +6,16 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerStatusAllInstancesConfig {
+    /**
+     * @return Current all-instances configuration revision. This value is in RFC3339 text format.
+     * 
+     */
+    private String currentRevision;
     /**
      * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
      * 
@@ -17,6 +23,13 @@ public final class GetInstanceGroupManagerStatusAllInstancesConfig {
     private Boolean effective;
 
     private GetInstanceGroupManagerStatusAllInstancesConfig() {}
+    /**
+     * @return Current all-instances configuration revision. This value is in RFC3339 text format.
+     * 
+     */
+    public String currentRevision() {
+        return this.currentRevision;
+    }
     /**
      * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
      * 
@@ -34,13 +47,23 @@ public final class GetInstanceGroupManagerStatusAllInstancesConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String currentRevision;
         private Boolean effective;
         public Builder() {}
         public Builder(GetInstanceGroupManagerStatusAllInstancesConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.currentRevision = defaults.currentRevision;
     	      this.effective = defaults.effective;
         }
 
+        @CustomType.Setter
+        public Builder currentRevision(String currentRevision) {
+            if (currentRevision == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatusAllInstancesConfig", "currentRevision");
+            }
+            this.currentRevision = currentRevision;
+            return this;
+        }
         @CustomType.Setter
         public Builder effective(Boolean effective) {
             if (effective == null) {
@@ -51,6 +74,7 @@ public final class GetInstanceGroupManagerStatusAllInstancesConfig {
         }
         public GetInstanceGroupManagerStatusAllInstancesConfig build() {
             final var _resultValue = new GetInstanceGroupManagerStatusAllInstancesConfig();
+            _resultValue.currentRevision = currentRevision;
             _resultValue.effective = effective;
             return _resultValue;
         }

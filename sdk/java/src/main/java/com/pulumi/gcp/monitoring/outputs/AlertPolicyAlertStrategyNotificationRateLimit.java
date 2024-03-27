@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class AlertPolicyAlertStrategyNotificationRateLimit {
     /**
      * @return Not more than one notification per period.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;60.5s&#34;.
      * 
      */
     private @Nullable String period;
@@ -20,6 +21,7 @@ public final class AlertPolicyAlertStrategyNotificationRateLimit {
     private AlertPolicyAlertStrategyNotificationRateLimit() {}
     /**
      * @return Not more than one notification per period.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example &#34;60.5s&#34;.
      * 
      */
     public Optional<String> period() {

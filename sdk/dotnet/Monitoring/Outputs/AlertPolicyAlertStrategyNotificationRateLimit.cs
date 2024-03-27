@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     {
         /// <summary>
         /// Not more than one notification per period.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
         /// </summary>
         public readonly string? Period;
 

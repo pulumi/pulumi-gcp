@@ -1458,20 +1458,36 @@ class EnvironmentConfigWorkloadsConfigArgs:
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigDagProcessorArgs:
     def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  memory_gb: Optional[pulumi.Input[float]] = None,
                  storage_gb: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input[int] count: Number of DAG processors.
         :param pulumi.Input[float] cpu: CPU request and limit for DAG processor.
         :param pulumi.Input[float] memory_gb: Memory (GB) request and limit for DAG processor.
         :param pulumi.Input[float] storage_gb: Storage (GB) request and limit for DAG processor.
         """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if memory_gb is not None:
             pulumi.set(__self__, "memory_gb", memory_gb)
         if storage_gb is not None:
             pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of DAG processors.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter

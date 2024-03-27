@@ -12548,6 +12548,11 @@ export namespace cloudrunv2 {
          */
         emptyDir?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolumeEmptyDir>;
         /**
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolumeGcs>;
+        /**
          * Volume's name.
          */
         name: pulumi.Input<string>;
@@ -12576,6 +12581,17 @@ export namespace cloudrunv2 {
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
          */
         sizeLimit?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateTemplateVolumeGcs {
+        /**
+         * Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+         */
+        readOnly?: pulumi.Input<boolean>;
     }
 
     export interface JobTemplateTemplateVolumeSecret {
@@ -13154,7 +13170,7 @@ export namespace cloudrunv2 {
          */
         emptyDir?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolumeEmptyDir>;
         /**
-         * Represents a GCS Bucket mounted as a volume.
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
          * Structure is documented below.
          */
         gcs?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolumeGcs>;
@@ -14040,6 +14056,10 @@ export namespace composer {
     }
 
     export interface EnvironmentConfigWorkloadsConfigDagProcessor {
+        /**
+         * Number of DAG processors.
+         */
+        count?: pulumi.Input<number>;
         /**
          * CPU request and limit for DAG processor.
          */
@@ -15107,7 +15127,7 @@ export namespace compute {
     export interface DiskGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
          */
         type: pulumi.Input<string>;
     }
@@ -16813,6 +16833,10 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatusAllInstancesConfig {
         /**
+         * Current all-instances configuration revision. This value is in RFC3339 text format.
+         */
+        currentRevision?: pulumi.Input<string>;
+        /**
          * A bit indicating whether this configuration has been applied to all managed instances in the group.
          */
         effective?: pulumi.Input<boolean>;
@@ -16824,7 +16848,7 @@ export namespace compute {
          */
         hasStatefulConfig?: pulumi.Input<boolean>;
         /**
-         * Status of per-instance configs on the instance.
+         * Status of per-instance configs on the instances.
          */
         perInstanceConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatusStatefulPerInstanceConfig>[]>;
     }
@@ -19632,6 +19656,10 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatusAllInstancesConfig {
         /**
+         * Current all-instances configuration revision. This value is in RFC3339 text format.
+         */
+        currentRevision?: pulumi.Input<string>;
+        /**
          * A bit indicating whether this configuration has been applied to all managed instances in the group.
          */
         effective?: pulumi.Input<boolean>;
@@ -19643,7 +19671,7 @@ export namespace compute {
          */
         hasStatefulConfig?: pulumi.Input<boolean>;
         /**
-         * Status of per-instance configs on the instance.
+         * Status of per-instance configs on the instances.
          */
         perInstanceConfigs?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatusStatefulPerInstanceConfig>[]>;
     }
@@ -21610,6 +21638,17 @@ export namespace compute {
          */
         metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>[]>;
         /**
+         * For satisfying the matchRule condition, the path of the request
+         * must match the wildcard pattern specified in pathTemplateMatch
+         * after removing any query parameters and anchor that may be part
+         * of the original URL.
+         * pathTemplateMatch must be between 1 and 255 characters
+         * (inclusive).  The pattern specified by pathTemplateMatch may
+         * have at most 5 wildcard operators and at most 5 variable
+         * captures in total.
+         */
+        pathTemplateMatch?: pulumi.Input<string>;
+        /**
          * For satisfying the matchRule condition, the request's path must begin with the
          * specified prefixMatch. prefixMatch must begin with a /. The value must be
          * between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -21988,6 +22027,20 @@ export namespace compute {
          * The value must be from 1 to 1024 characters.
          */
         pathPrefixRewrite?: pulumi.Input<string>;
+        /**
+         * Prior to forwarding the request to the selected origin, if the
+         * request matched a pathTemplateMatch, the matching portion of the
+         * request's path is replaced re-written using the pattern specified
+         * by pathTemplateRewrite.
+         * pathTemplateRewrite must be between 1 and 255 characters
+         * (inclusive), must start with a '/', and must only use variables
+         * captured by the route's pathTemplate matchers.
+         * pathTemplateRewrite may only be used when all of a route's
+         * MatchRules specify pathTemplate.
+         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * specified.
+         */
+        pathTemplateRewrite?: pulumi.Input<string>;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
@@ -50795,6 +50848,7 @@ export namespace monitoring {
     export interface AlertPolicyAlertStrategyNotificationRateLimit {
         /**
          * Not more than one notification per period.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
          */
         period?: pulumi.Input<string>;
     }
@@ -57670,6 +57724,40 @@ export namespace pubsub {
         title: pulumi.Input<string>;
     }
 
+    export interface TopicIngestionDataSourceSettings {
+        /**
+         * Settings for ingestion from Amazon Kinesis Data Streams.
+         * Structure is documented below.
+         */
+        awsKinesis?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsAwsKinesis>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsAwsKinesis {
+        /**
+         * AWS role ARN to be used for Federated Identity authentication with
+         * Kinesis. Check the Pub/Sub docs for how to set up this role and the
+         * required permissions that need to be attached to it.
+         */
+        awsRoleArn: pulumi.Input<string>;
+        /**
+         * The Kinesis consumer ARN to used for ingestion in
+         * Enhanced Fan-Out mode. The consumer must be already
+         * created and ready to be used.
+         */
+        consumerArn: pulumi.Input<string>;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+         * role). The `awsRoleArn` must be set up with `accounts.google.com:sub`
+         * equals to this service account number.
+         */
+        gcpServiceAccount: pulumi.Input<string>;
+        /**
+         * The Kinesis stream ARN to ingest data from.
+         */
+        streamArn: pulumi.Input<string>;
+    }
+
     export interface TopicMessageStoragePolicy {
         /**
          * A list of IDs of GCP regions where messages that are published to
@@ -59950,6 +60038,17 @@ export namespace storage {
         retentionPeriod: pulumi.Input<number>;
     }
 
+    export interface BucketSoftDeletePolicy {
+        /**
+         * Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+         */
+        effectiveTime?: pulumi.Input<string>;
+        /**
+         * The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+         */
+        retentionDurationSeconds?: pulumi.Input<number>;
+    }
+
     export interface BucketVersioning {
         /**
          * While set to `true`, versioning is fully enabled for this bucket.
@@ -61903,6 +62002,11 @@ export namespace workstations {
          */
         accelerators?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceAccelerator>[]>;
         /**
+         * A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+         * Structure is documented below.
+         */
+        boostConfigs?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceBoostConfig>[]>;
+        /**
          * Size of the boot disk in GB.
          */
         bootDiskSizeGb?: pulumi.Input<number>;
@@ -61952,6 +62056,33 @@ export namespace workstations {
     }
 
     export interface WorkstationConfigHostGceInstanceAccelerator {
+        /**
+         * Number of accelerator cards exposed to the instance.
+         */
+        count: pulumi.Input<number>;
+        /**
+         * Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface WorkstationConfigHostGceInstanceBoostConfig {
+        /**
+         * An accelerator card attached to the boost instance.
+         * Structure is documented below.
+         */
+        accelerators?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceBoostConfigAccelerator>[]>;
+        /**
+         * The id to be used for the boost config.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+         */
+        machineType?: pulumi.Input<string>;
+    }
+
+    export interface WorkstationConfigHostGceInstanceBoostConfigAccelerator {
         /**
          * Number of accelerator cards exposed to the instance.
          */

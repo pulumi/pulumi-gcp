@@ -314,6 +314,63 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Workstation Config Boost
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             boostConfigs: [
+ *                 {
+ *                     id: "boost-1",
+ *                     machineType: "n1-standard-2",
+ *                     accelerators: [{
+ *                         type: "nvidia-tesla-t4",
+ *                         count: 1,
+ *                     }],
+ *                 },
+ *                 {
+ *                     id: "boost-1",
+ *                     machineType: "e2-standard-2",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  * ### Workstation Config Encryption Key
  *
  * <!--Start PulumiCodeChooser -->

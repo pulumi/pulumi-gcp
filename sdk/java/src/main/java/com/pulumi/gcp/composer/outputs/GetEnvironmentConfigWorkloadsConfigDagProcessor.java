@@ -6,10 +6,16 @@ package com.pulumi.gcp.composer.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
+import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigDagProcessor {
+    /**
+     * @return Number of DAG processors.
+     * 
+     */
+    private Integer count;
     /**
      * @return CPU request and limit for DAG processor.
      * 
@@ -27,6 +33,13 @@ public final class GetEnvironmentConfigWorkloadsConfigDagProcessor {
     private Double storageGb;
 
     private GetEnvironmentConfigWorkloadsConfigDagProcessor() {}
+    /**
+     * @return Number of DAG processors.
+     * 
+     */
+    public Integer count() {
+        return this.count;
+    }
     /**
      * @return CPU request and limit for DAG processor.
      * 
@@ -58,17 +71,27 @@ public final class GetEnvironmentConfigWorkloadsConfigDagProcessor {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer count;
         private Double cpu;
         private Double memoryGb;
         private Double storageGb;
         public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfigDagProcessor defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.count = defaults.count;
     	      this.cpu = defaults.cpu;
     	      this.memoryGb = defaults.memoryGb;
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
+        public Builder count(Integer count) {
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigDagProcessor", "count");
+            }
+            this.count = count;
+            return this;
+        }
         @CustomType.Setter
         public Builder cpu(Double cpu) {
             if (cpu == null) {
@@ -95,6 +118,7 @@ public final class GetEnvironmentConfigWorkloadsConfigDagProcessor {
         }
         public GetEnvironmentConfigWorkloadsConfigDagProcessor build() {
             final var _resultValue = new GetEnvironmentConfigWorkloadsConfigDagProcessor();
+            _resultValue.count = count;
             _resultValue.cpu = cpu;
             _resultValue.memoryGb = memoryGb;
             _resultValue.storageGb = storageGb;

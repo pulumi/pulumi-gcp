@@ -33,6 +33,7 @@ class BucketArgs:
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
@@ -61,6 +62,8 @@ class BucketArgs:
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+               be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -99,6 +102,8 @@ class BucketArgs:
             pulumi.set(__self__, "retention_policy", retention_policy)
         if rpo is not None:
             pulumi.set(__self__, "rpo", rpo)
+        if soft_delete_policy is not None:
+            pulumi.set(__self__, "soft_delete_policy", soft_delete_policy)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
         if uniform_bucket_level_access is not None:
@@ -318,6 +323,19 @@ class BucketArgs:
         pulumi.set(self, "rpo", value)
 
     @property
+    @pulumi.getter(name="softDeletePolicy")
+    def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        """
+        return pulumi.get(self, "soft_delete_policy")
+
+    @soft_delete_policy.setter
+    def soft_delete_policy(self, value: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]):
+        pulumi.set(self, "soft_delete_policy", value)
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -389,6 +407,7 @@ class _BucketState:
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -422,6 +441,8 @@ class _BucketState:
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+               be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
@@ -468,6 +489,8 @@ class _BucketState:
             pulumi.set(__self__, "rpo", rpo)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if soft_delete_policy is not None:
+            pulumi.set(__self__, "soft_delete_policy", soft_delete_policy)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
         if uniform_bucket_level_access is not None:
@@ -726,6 +749,19 @@ class _BucketState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="softDeletePolicy")
+    def soft_delete_policy(self) -> Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]:
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        """
+        return pulumi.get(self, "soft_delete_policy")
+
+    @soft_delete_policy.setter
+    def soft_delete_policy(self, value: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']]):
+        pulumi.set(self, "soft_delete_policy", value)
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -808,6 +844,7 @@ class Bucket(pulumi.CustomResource):
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
@@ -959,6 +996,8 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+        :param pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+               be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -1124,6 +1163,7 @@ class Bucket(pulumi.CustomResource):
                  requester_pays: Optional[pulumi.Input[bool]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
+                 soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
@@ -1156,6 +1196,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["requester_pays"] = requester_pays
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["rpo"] = rpo
+            __props__.__dict__["soft_delete_policy"] = soft_delete_policy
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
             __props__.__dict__["versioning"] = versioning
@@ -1196,6 +1237,7 @@ class Bucket(pulumi.CustomResource):
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
             rpo: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            soft_delete_policy: Optional[pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
             uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -1234,6 +1276,8 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] rpo: The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[pulumi.InputType['BucketSoftDeletePolicyArgs']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+               be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
@@ -1264,6 +1308,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["retention_policy"] = retention_policy
         __props__.__dict__["rpo"] = rpo
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["soft_delete_policy"] = soft_delete_policy
         __props__.__dict__["storage_class"] = storage_class
         __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
         __props__.__dict__["url"] = url
@@ -1436,6 +1481,15 @@ class Bucket(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="softDeletePolicy")
+    def soft_delete_policy(self) -> pulumi.Output['outputs.BucketSoftDeletePolicy']:
+        """
+        The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+        be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+        """
+        return pulumi.get(self, "soft_delete_policy")
 
     @property
     @pulumi.getter(name="storageClass")

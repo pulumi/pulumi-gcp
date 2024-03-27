@@ -118,10 +118,11 @@ class ServicePerimeterResource(pulumi.CustomResource):
                  resource: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows configuring a single GCP resource that should be inside of a service perimeter.
+        Allows configuring a single GCP resource that should be inside the `status` block of a service perimeter.
         This resource is intended to be used in cases where it is not possible to compile a full list
         of projects to include in a `accesscontextmanager.ServicePerimeter` resource,
         to enable them to be added separately.
+        If your perimeter is in dry-run mode use `accesscontextmanager.ServicePerimeterDryRunResource` instead.
 
         > **Note:** If this resource is used alongside a `accesscontextmanager.ServicePerimeter` resource,
         the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].resources]` so
@@ -193,10 +194,11 @@ class ServicePerimeterResource(pulumi.CustomResource):
                  args: ServicePerimeterResourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows configuring a single GCP resource that should be inside of a service perimeter.
+        Allows configuring a single GCP resource that should be inside the `status` block of a service perimeter.
         This resource is intended to be used in cases where it is not possible to compile a full list
         of projects to include in a `accesscontextmanager.ServicePerimeter` resource,
         to enable them to be added separately.
+        If your perimeter is in dry-run mode use `accesscontextmanager.ServicePerimeterDryRunResource` instead.
 
         > **Note:** If this resource is used alongside a `accesscontextmanager.ServicePerimeter` resource,
         the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].resources]` so

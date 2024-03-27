@@ -67,15 +67,16 @@ type LookupTopicArgs struct {
 type LookupTopicResult struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                         `pulumi:"id"`
-	KmsKeyName               string                         `pulumi:"kmsKeyName"`
-	Labels                   map[string]string              `pulumi:"labels"`
-	MessageRetentionDuration string                         `pulumi:"messageRetentionDuration"`
-	MessageStoragePolicies   []GetTopicMessageStoragePolicy `pulumi:"messageStoragePolicies"`
-	Name                     string                         `pulumi:"name"`
-	Project                  *string                        `pulumi:"project"`
-	PulumiLabels             map[string]string              `pulumi:"pulumiLabels"`
-	SchemaSettings           []GetTopicSchemaSetting        `pulumi:"schemaSettings"`
+	Id                          string                               `pulumi:"id"`
+	IngestionDataSourceSettings []GetTopicIngestionDataSourceSetting `pulumi:"ingestionDataSourceSettings"`
+	KmsKeyName                  string                               `pulumi:"kmsKeyName"`
+	Labels                      map[string]string                    `pulumi:"labels"`
+	MessageRetentionDuration    string                               `pulumi:"messageRetentionDuration"`
+	MessageStoragePolicies      []GetTopicMessageStoragePolicy       `pulumi:"messageStoragePolicies"`
+	Name                        string                               `pulumi:"name"`
+	Project                     *string                              `pulumi:"project"`
+	PulumiLabels                map[string]string                    `pulumi:"pulumiLabels"`
+	SchemaSettings              []GetTopicSchemaSetting              `pulumi:"schemaSettings"`
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
@@ -128,6 +129,10 @@ func (o LookupTopicResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicResultOutput) IngestionDataSourceSettings() GetTopicIngestionDataSourceSettingArrayOutput {
+	return o.ApplyT(func(v LookupTopicResult) []GetTopicIngestionDataSourceSetting { return v.IngestionDataSourceSettings }).(GetTopicIngestionDataSourceSettingArrayOutput)
 }
 
 func (o LookupTopicResultOutput) KmsKeyName() pulumi.StringOutput {

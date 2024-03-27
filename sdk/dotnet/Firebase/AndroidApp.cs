@@ -157,9 +157,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the AndroidApp.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -179,11 +176,14 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The canonical package name of the Android app as would appear in the Google Play
+        /// The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("packageName")]
-        public Output<string?> PackageName { get; private set; } = null!;
+        public Output<string> PackageName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -268,19 +268,19 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the AndroidApp.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The canonical package name of the Android app as would appear in the Google Play
+        /// The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
-        [Input("packageName")]
-        public Input<string>? PackageName { get; set; }
+        [Input("packageName", required: true)]
+        public Input<string> PackageName { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -346,9 +346,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the AndroidApp.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -368,8 +365,11 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. The canonical package name of the Android app as would appear in the Google Play
+        /// The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("packageName")]
         public Input<string>? PackageName { get; set; }

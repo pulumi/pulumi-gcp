@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkstationConfigHostGceInstanceAccelerator> Accelerators;
         /// <summary>
+        /// A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WorkstationConfigHostGceInstanceBoostConfig> BoostConfigs;
+        /// <summary>
         /// Size of the boot disk in GB.
         /// </summary>
         public readonly int? BootDiskSizeGb;
@@ -70,6 +75,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
         private WorkstationConfigHostGceInstance(
             ImmutableArray<Outputs.WorkstationConfigHostGceInstanceAccelerator> accelerators,
 
+            ImmutableArray<Outputs.WorkstationConfigHostGceInstanceBoostConfig> boostConfigs,
+
             int? bootDiskSizeGb,
 
             Outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig? confidentialInstanceConfig,
@@ -93,6 +100,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             ImmutableArray<string> tags)
         {
             Accelerators = accelerators;
+            BoostConfigs = boostConfigs;
             BootDiskSizeGb = bootDiskSizeGb;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             DisablePublicIpAddresses = disablePublicIpAddresses;

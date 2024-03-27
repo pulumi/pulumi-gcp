@@ -477,12 +477,9 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
     ///                 {
     ///                     Name = "hello-1",
-    ///                     Ports = new[]
+    ///                     Ports = 
     ///                     {
-    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerPortArgs
-    ///                         {
-    ///                             ContainerPort = 8080,
-    ///                         },
+    ///                         { "containerPort", 8080 },
     ///                     },
     ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                     DependsOns = new[]

@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionInstanceGroupManagerStatusAllInstancesConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Current all-instances configuration revision. This value is in RFC3339 text format.
+        /// </summary>
+        [Input("currentRevision")]
+        public Input<string>? CurrentRevision { get; set; }
+
+        /// <summary>
         /// A bit indicating whether this configuration has been applied to all managed instances in the group.
         /// </summary>
         [Input("effective")]

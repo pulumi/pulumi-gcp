@@ -204,16 +204,12 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
     /**
      * The user-assigned display name of the AndroidApp.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the AndroidApp.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -252,20 +248,24 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
+     * 
+     * ***
      * 
      */
     @Export(name="packageName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> packageName;
+    private Output<String> packageName;
 
     /**
-     * @return Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * @return The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      * 
+     * ***
+     * 
      */
-    public Output<Optional<String>> packageName() {
-        return Codegen.optional(this.packageName);
+    public Output<String> packageName() {
+        return this.packageName;
     }
     /**
      * The ID of the project in which the resource belongs.

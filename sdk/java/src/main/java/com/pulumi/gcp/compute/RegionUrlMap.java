@@ -1076,6 +1076,117 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Url Map Path Template Match
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;health-check&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath(&#34;/&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var home_backend = new RegionBackendService(&#34;home-backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;home-service&#34;)
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var cart_backend = new RegionBackendService(&#34;cart-backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;cart-service&#34;)
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var user_backend = new RegionBackendService(&#34;user-backend&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;user-service&#34;)
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var urlmap = new RegionUrlMap(&#34;urlmap&#34;, RegionUrlMapArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .name(&#34;urlmap&#34;)
+ *             .description(&#34;a description&#34;)
+ *             .defaultService(home_backend.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;mysite&#34;)
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name(&#34;mysite&#34;)
+ *                 .defaultService(home_backend.id())
+ *                 .routeRules(                
+ *                     RegionUrlMapPathMatcherRouteRuleArgs.builder()
+ *                         .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}&#34;)
+ *                             .build())
+ *                         .service(cart_backend.id())
+ *                         .priority(1)
+ *                         .routeAction(RegionUrlMapPathMatcherRouteRuleRouteActionArgs.builder()
+ *                             .urlRewrite(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
+ *                                 .pathTemplateRewrite(&#34;/{username}-{cartid}/&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     RegionUrlMapPathMatcherRouteRuleArgs.builder()
+ *                         .matchRules(RegionUrlMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*&#34;)
+ *                             .build())
+ *                         .service(user_backend.id())
+ *                         .priority(2)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -74,16 +74,12 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-assigned display name of the AndroidApp.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the AndroidApp.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -125,16 +121,20 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
+     * 
+     * ***
      * 
      */
     @Import(name="packageName")
     private @Nullable Output<String> packageName;
 
     /**
-     * @return Immutable. The canonical package name of the Android app as would appear in the Google Play
+     * @return The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> packageName() {
@@ -297,8 +297,6 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -309,8 +307,6 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -366,8 +362,10 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageName Immutable. The canonical package name of the Android app as would appear in the Google Play
+         * @param packageName The canonical package name of the Android app as would appear in the Google Play
          * Developer Console.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -378,8 +376,10 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageName Immutable. The canonical package name of the Android app as would appear in the Google Play
+         * @param packageName The canonical package name of the Android app as would appear in the Google Play
          * Developer Console.
+         * 
+         * ***
          * 
          * @return builder
          * 

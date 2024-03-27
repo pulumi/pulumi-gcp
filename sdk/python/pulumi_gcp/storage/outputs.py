@@ -24,6 +24,7 @@ __all__ = [
     'BucketObjectCustomerEncryption',
     'BucketObjectRetention',
     'BucketRetentionPolicy',
+    'BucketSoftDeletePolicy',
     'BucketVersioning',
     'BucketWebsite',
     'DefaultObjectAccessControlProjectTeam',
@@ -67,6 +68,7 @@ __all__ = [
     'GetBucketObjectCustomerEncryptionResult',
     'GetBucketObjectRetentionResult',
     'GetBucketRetentionPolicyResult',
+    'GetBucketSoftDeletePolicyResult',
     'GetBucketVersioningResult',
     'GetBucketWebsiteResult',
 ]
@@ -847,6 +849,56 @@ class BucketRetentionPolicy(dict):
         If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
         """
         return pulumi.get(self, "is_locked")
+
+
+@pulumi.output_type
+class BucketSoftDeletePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "effectiveTime":
+            suggest = "effective_time"
+        elif key == "retentionDurationSeconds":
+            suggest = "retention_duration_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketSoftDeletePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketSoftDeletePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketSoftDeletePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effective_time: Optional[str] = None,
+                 retention_duration_seconds: Optional[int] = None):
+        """
+        :param str effective_time: Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        :param int retention_duration_seconds: The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+        """
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if retention_duration_seconds is not None:
+            pulumi.set(__self__, "retention_duration_seconds", retention_duration_seconds)
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[str]:
+        """
+        Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
+    @pulumi.getter(name="retentionDurationSeconds")
+    def retention_duration_seconds(self) -> Optional[int]:
+        """
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800. The value must be in between 604800(7 days) and 7776000(90 days). **Note**: To disable the soft delete policy on a bucket, This field must be set to 0.
+        """
+        return pulumi.get(self, "retention_duration_seconds")
 
 
 @pulumi.output_type
@@ -3038,6 +3090,35 @@ class GetBucketRetentionPolicyResult(dict):
         The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
         """
         return pulumi.get(self, "retention_period")
+
+
+@pulumi.output_type
+class GetBucketSoftDeletePolicyResult(dict):
+    def __init__(__self__, *,
+                 effective_time: str,
+                 retention_duration_seconds: int):
+        """
+        :param str effective_time: Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        :param int retention_duration_seconds: The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
+        """
+        pulumi.set(__self__, "effective_time", effective_time)
+        pulumi.set(__self__, "retention_duration_seconds", retention_duration_seconds)
+
+    @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> str:
+        """
+        Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @property
+    @pulumi.getter(name="retentionDurationSeconds")
+    def retention_duration_seconds(self) -> int:
+        """
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
+        """
+        return pulumi.get(self, "retention_duration_seconds")
 
 
 @pulumi.output_type

@@ -6,4 +6,5 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_s_quota_info import *
+from .get_s_quota_infos import *
 from . import outputs

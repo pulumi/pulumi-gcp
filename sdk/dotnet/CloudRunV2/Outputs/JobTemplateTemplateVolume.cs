@@ -24,6 +24,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.JobTemplateTemplateVolumeEmptyDir? EmptyDir;
         /// <summary>
+        /// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobTemplateTemplateVolumeGcs? Gcs;
+        /// <summary>
         /// Volume's name.
         /// </summary>
         public readonly string Name;
@@ -39,12 +44,15 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.JobTemplateTemplateVolumeEmptyDir? emptyDir,
 
+            Outputs.JobTemplateTemplateVolumeGcs? gcs,
+
             string name,
 
             Outputs.JobTemplateTemplateVolumeSecret? secret)
         {
             CloudSqlInstance = cloudSqlInstance;
             EmptyDir = emptyDir;
+            Gcs = gcs;
             Name = name;
             Secret = secret;
         }

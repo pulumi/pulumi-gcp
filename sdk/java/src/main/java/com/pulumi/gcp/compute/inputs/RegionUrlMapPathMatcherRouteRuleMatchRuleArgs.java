@@ -117,6 +117,35 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs extends com.pul
     }
 
     /**
+     * For satisfying the matchRule condition, the path of the request
+     * must match the wildcard pattern specified in pathTemplateMatch
+     * after removing any query parameters and anchor that may be part
+     * of the original URL.
+     * pathTemplateMatch must be between 1 and 255 characters
+     * (inclusive).  The pattern specified by pathTemplateMatch may
+     * have at most 5 wildcard operators and at most 5 variable
+     * captures in total.
+     * 
+     */
+    @Import(name="pathTemplateMatch")
+    private @Nullable Output<String> pathTemplateMatch;
+
+    /**
+     * @return For satisfying the matchRule condition, the path of the request
+     * must match the wildcard pattern specified in pathTemplateMatch
+     * after removing any query parameters and anchor that may be part
+     * of the original URL.
+     * pathTemplateMatch must be between 1 and 255 characters
+     * (inclusive).  The pattern specified by pathTemplateMatch may
+     * have at most 5 wildcard operators and at most 5 variable
+     * captures in total.
+     * 
+     */
+    public Optional<Output<String>> pathTemplateMatch() {
+        return Optional.ofNullable(this.pathTemplateMatch);
+    }
+
+    /**
      * For satisfying the matchRule condition, the request&#39;s path must begin with the
      * specified prefixMatch. prefixMatch must begin with a /. The value must be
      * between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -186,6 +215,7 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs extends com.pul
         this.headerMatches = $.headerMatches;
         this.ignoreCase = $.ignoreCase;
         this.metadataFilters = $.metadataFilters;
+        this.pathTemplateMatch = $.pathTemplateMatch;
         this.prefixMatch = $.prefixMatch;
         this.queryParameterMatches = $.queryParameterMatches;
         this.regexMatch = $.regexMatch;
@@ -360,6 +390,41 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs extends com.pul
          */
         public Builder metadataFilters(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs... metadataFilters) {
             return metadataFilters(List.of(metadataFilters));
+        }
+
+        /**
+         * @param pathTemplateMatch For satisfying the matchRule condition, the path of the request
+         * must match the wildcard pattern specified in pathTemplateMatch
+         * after removing any query parameters and anchor that may be part
+         * of the original URL.
+         * pathTemplateMatch must be between 1 and 255 characters
+         * (inclusive).  The pattern specified by pathTemplateMatch may
+         * have at most 5 wildcard operators and at most 5 variable
+         * captures in total.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathTemplateMatch(@Nullable Output<String> pathTemplateMatch) {
+            $.pathTemplateMatch = pathTemplateMatch;
+            return this;
+        }
+
+        /**
+         * @param pathTemplateMatch For satisfying the matchRule condition, the path of the request
+         * must match the wildcard pattern specified in pathTemplateMatch
+         * after removing any query parameters and anchor that may be part
+         * of the original URL.
+         * pathTemplateMatch must be between 1 and 255 characters
+         * (inclusive).  The pattern specified by pathTemplateMatch may
+         * have at most 5 wildcard operators and at most 5 variable
+         * captures in total.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathTemplateMatch(String pathTemplateMatch) {
+            return pathTemplateMatch(Output.of(pathTemplateMatch));
         }
 
         /**

@@ -440,6 +440,87 @@ namespace Pulumi.Gcp.Workstations
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Workstation Config Boost
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label", "key" },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "e2-standard-4",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///                 BoostConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs
+    ///                     {
+    ///                         Id = "boost-1",
+    ///                         MachineType = "n1-standard-2",
+    ///                         Accelerators = new[]
+    ///                         {
+    ///                             new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs
+    ///                             {
+    ///                                 Type = "nvidia-tesla-t4",
+    ///                                 Count = 1,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceBoostConfigArgs
+    ///                     {
+    ///                         Id = "boost-1",
+    ///                         MachineType = "e2-standard-2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Workstation Config Encryption Key
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;

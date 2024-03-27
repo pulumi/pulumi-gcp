@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeEmptyDir;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeGc;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeSecret;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,11 @@ public final class GetJobTemplateTemplateVolume {
      * 
      */
     private List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs;
+    /**
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * 
+     */
+    private List<GetJobTemplateTemplateVolumeGc> gcs;
     /**
      * @return The name of the Cloud Run v2 Job.
      * 
@@ -51,6 +57,13 @@ public final class GetJobTemplateTemplateVolume {
         return this.emptyDirs;
     }
     /**
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * 
+     */
+    public List<GetJobTemplateTemplateVolumeGc> gcs() {
+        return this.gcs;
+    }
+    /**
      * @return The name of the Cloud Run v2 Job.
      * 
      */
@@ -76,6 +89,7 @@ public final class GetJobTemplateTemplateVolume {
     public static final class Builder {
         private List<GetJobTemplateTemplateVolumeCloudSqlInstance> cloudSqlInstances;
         private List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs;
+        private List<GetJobTemplateTemplateVolumeGc> gcs;
         private String name;
         private List<GetJobTemplateTemplateVolumeSecret> secrets;
         public Builder() {}
@@ -83,6 +97,7 @@ public final class GetJobTemplateTemplateVolume {
     	      Objects.requireNonNull(defaults);
     	      this.cloudSqlInstances = defaults.cloudSqlInstances;
     	      this.emptyDirs = defaults.emptyDirs;
+    	      this.gcs = defaults.gcs;
     	      this.name = defaults.name;
     	      this.secrets = defaults.secrets;
         }
@@ -110,6 +125,17 @@ public final class GetJobTemplateTemplateVolume {
             return emptyDirs(List.of(emptyDirs));
         }
         @CustomType.Setter
+        public Builder gcs(List<GetJobTemplateTemplateVolumeGc> gcs) {
+            if (gcs == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "gcs");
+            }
+            this.gcs = gcs;
+            return this;
+        }
+        public Builder gcs(GetJobTemplateTemplateVolumeGc... gcs) {
+            return gcs(List.of(gcs));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "name");
@@ -132,6 +158,7 @@ public final class GetJobTemplateTemplateVolume {
             final var _resultValue = new GetJobTemplateTemplateVolume();
             _resultValue.cloudSqlInstances = cloudSqlInstances;
             _resultValue.emptyDirs = emptyDirs;
+            _resultValue.gcs = gcs;
             _resultValue.name = name;
             _resultValue.secrets = secrets;
             return _resultValue;

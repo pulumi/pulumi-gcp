@@ -171,9 +171,52 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         Individual ingress policies can be limited by restricting which services and/
         or actions they match using the ingressTo field.
 
+        > **Note:** By default, updates to this resource will remove the IngressPolicy from the
+        from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
+        is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+
         To get more information about ServicePerimeterIngressPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
+
+        ## Example Usage
+
+        ### Access Context Manager Service Perimeter Ingress Policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="Storage Policy")
+        storage_perimeter = gcp.accesscontextmanager.ServicePerimeter("storage-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accesspolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
+            title="Storage Perimeter",
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=["storage.googleapis.com"],
+            ))
+        ingress_policy = gcp.accesscontextmanager.ServicePerimeterIngressPolicy("ingress_policy",
+            perimeter=storage_perimeter.name,
+            ingress_from=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromArgs(
+                identity_type="any_identity",
+                sources=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromSourceArgs(
+                    access_level="*",
+                )],
+            ),
+            ingress_to=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToArgs(
+                resources=["*"],
+                operations=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationArgs(
+                    service_name="bigquery.googleapis.com",
+                    method_selectors=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs(
+                        method="*",
+                    )],
+                )],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,9 +259,52 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         Individual ingress policies can be limited by restricting which services and/
         or actions they match using the ingressTo field.
 
+        > **Note:** By default, updates to this resource will remove the IngressPolicy from the
+        from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
+        is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+
         To get more information about ServicePerimeterIngressPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
+
+        ## Example Usage
+
+        ### Access Context Manager Service Perimeter Ingress Policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="Storage Policy")
+        storage_perimeter = gcp.accesscontextmanager.ServicePerimeter("storage-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accesspolicies/{name}"),
+            name=access_policy.name.apply(lambda name: f"accesspolicies/{name}/serviceperimeters/storage-perimeter"),
+            title="Storage Perimeter",
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=["storage.googleapis.com"],
+            ))
+        ingress_policy = gcp.accesscontextmanager.ServicePerimeterIngressPolicy("ingress_policy",
+            perimeter=storage_perimeter.name,
+            ingress_from=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromArgs(
+                identity_type="any_identity",
+                sources=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressFromSourceArgs(
+                    access_level="*",
+                )],
+            ),
+            ingress_to=gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToArgs(
+                resources=["*"],
+                operations=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationArgs(
+                    service_name="bigquery.googleapis.com",
+                    method_selectors=[gcp.accesscontextmanager.ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs(
+                        method="*",
+                    )],
+                )],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

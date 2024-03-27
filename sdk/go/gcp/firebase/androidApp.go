@@ -155,8 +155,6 @@ type AndroidApp struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// This checksum is computed by the server based on the value of other fields, and it may be sent
 	// with update requests to ensure the client has an up-to-date value before proceeding.
@@ -164,9 +162,11 @@ type AndroidApp struct {
 	// The fully qualified resource name of the AndroidApp, for example:
 	// projects/projectId/androidApps/appId
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Immutable. The canonical package name of the Android app as would appear in the Google Play
+	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
-	PackageName pulumi.StringPtrOutput `pulumi:"packageName"`
+	//
+	// ***
+	PackageName pulumi.StringOutput `pulumi:"packageName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -185,6 +185,9 @@ func NewAndroidApp(ctx *pulumi.Context,
 
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.PackageName == nil {
+		return nil, errors.New("invalid value for required argument 'PackageName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AndroidApp
@@ -221,8 +224,6 @@ type androidAppState struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// This checksum is computed by the server based on the value of other fields, and it may be sent
 	// with update requests to ensure the client has an up-to-date value before proceeding.
@@ -230,8 +231,10 @@ type androidAppState struct {
 	// The fully qualified resource name of the AndroidApp, for example:
 	// projects/projectId/androidApps/appId
 	Name *string `pulumi:"name"`
-	// Immutable. The canonical package name of the Android app as would appear in the Google Play
+	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
+	//
+	// ***
 	PackageName *string `pulumi:"packageName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -255,8 +258,6 @@ type AndroidAppState struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and it may be sent
 	// with update requests to ensure the client has an up-to-date value before proceeding.
@@ -264,8 +265,10 @@ type AndroidAppState struct {
 	// The fully qualified resource name of the AndroidApp, for example:
 	// projects/projectId/androidApps/appId
 	Name pulumi.StringPtrInput
-	// Immutable. The canonical package name of the Android app as would appear in the Google Play
+	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
+	//
+	// ***
 	PackageName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -290,12 +293,12 @@ type androidAppArgs struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
+	DisplayName string `pulumi:"displayName"`
+	// The canonical package name of the Android app as would appear in the Google Play
+	// Developer Console.
 	//
 	// ***
-	DisplayName string `pulumi:"displayName"`
-	// Immutable. The canonical package name of the Android app as would appear in the Google Play
-	// Developer Console.
-	PackageName *string `pulumi:"packageName"`
+	PackageName string `pulumi:"packageName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -316,12 +319,12 @@ type AndroidAppArgs struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
+	DisplayName pulumi.StringInput
+	// The canonical package name of the Android app as would appear in the Google Play
+	// Developer Console.
 	//
 	// ***
-	DisplayName pulumi.StringInput
-	// Immutable. The canonical package name of the Android app as would appear in the Google Play
-	// Developer Console.
-	PackageName pulumi.StringPtrInput
+	PackageName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -439,8 +442,6 @@ func (o AndroidAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 }
 
 // The user-assigned display name of the AndroidApp.
-//
-// ***
 func (o AndroidAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -457,10 +458,12 @@ func (o AndroidAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Immutable. The canonical package name of the Android app as would appear in the Google Play
+// The canonical package name of the Android app as would appear in the Google Play
 // Developer Console.
-func (o AndroidAppOutput) PackageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidApp) pulumi.StringPtrOutput { return v.PackageName }).(pulumi.StringPtrOutput)
+//
+// ***
+func (o AndroidAppOutput) PackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.PackageName }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

@@ -59,6 +59,7 @@ export interface GetTopicResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ingestionDataSourceSettings: outputs.pubsub.GetTopicIngestionDataSourceSetting[];
     readonly kmsKeyName: string;
     readonly labels: {[key: string]: string};
     readonly messageRetentionDuration: string;

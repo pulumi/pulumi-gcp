@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -86,6 +86,9 @@ class GetBucketResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if soft_delete_policies and not isinstance(soft_delete_policies, list):
+            raise TypeError("Expected argument 'soft_delete_policies' to be a list")
+        pulumi.set(__self__, "soft_delete_policies", soft_delete_policies)
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
@@ -211,6 +214,11 @@ class GetBucketResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="softDeletePolicies")
+    def soft_delete_policies(self) -> Sequence['outputs.GetBucketSoftDeletePolicyResult']:
+        return pulumi.get(self, "soft_delete_policies")
+
+    @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         return pulumi.get(self, "storage_class")
@@ -263,6 +271,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             retention_policies=self.retention_policies,
             rpo=self.rpo,
             self_link=self.self_link,
+            soft_delete_policies=self.soft_delete_policies,
             storage_class=self.storage_class,
             uniform_bucket_level_access=self.uniform_bucket_level_access,
             url=self.url,
@@ -319,6 +328,7 @@ def get_bucket(name: Optional[str] = None,
         retention_policies=pulumi.get(__ret__, 'retention_policies'),
         rpo=pulumi.get(__ret__, 'rpo'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        soft_delete_policies=pulumi.get(__ret__, 'soft_delete_policies'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         uniform_bucket_level_access=pulumi.get(__ret__, 'uniform_bucket_level_access'),
         url=pulumi.get(__ret__, 'url'),

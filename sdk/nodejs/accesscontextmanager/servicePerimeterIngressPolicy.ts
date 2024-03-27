@@ -16,9 +16,55 @@ import * as utilities from "../utilities";
  * Individual ingress policies can be limited by restricting which services and/
  * or actions they match using the ingressTo field.
  *
+ * > **Note:** By default, updates to this resource will remove the IngressPolicy from the
+ * from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
+ * is added before the old one is removed, add a `lifecycle` block with `createBeforeDestroy = true` to this resource.
+ *
  * To get more information about ServicePerimeterIngressPolicy, see:
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#ingresspolicy)
+ *
+ * ## Example Usage
+ *
+ * ### Access Context Manager Service Perimeter Ingress Policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "Storage Policy",
+ * });
+ * const storage_perimeter = new gcp.accesscontextmanager.ServicePerimeter("storage-perimeter", {
+ *     parent: pulumi.interpolate`accesspolicies/${access_policy.name}`,
+ *     name: pulumi.interpolate`accesspolicies/${access_policy.name}/serviceperimeters/storage-perimeter`,
+ *     title: "Storage Perimeter",
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ * });
+ * const ingressPolicy = new gcp.accesscontextmanager.ServicePerimeterIngressPolicy("ingress_policy", {
+ *     perimeter: storage_perimeter.name,
+ *     ingressFrom: {
+ *         identityType: "any_identity",
+ *         sources: [{
+ *             accessLevel: "*",
+ *         }],
+ *     },
+ *     ingressTo: {
+ *         resources: ["*"],
+ *         operations: [{
+ *             serviceName: "bigquery.googleapis.com",
+ *             methodSelectors: [{
+ *                 method: "*",
+ *             }],
+ *         }],
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

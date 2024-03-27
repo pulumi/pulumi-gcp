@@ -23,19 +23,12 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
-//				Name: pulumi.String("my/repository"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("my-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
@@ -52,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataform.NewRepository(ctx, "dataform_respository", &dataform.RepositoryArgs{
+//			_, err = dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 //				Name:                                   pulumi.String("dataform_repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
 //				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
@@ -60,7 +53,7 @@ import (
 //					"label_foo1": pulumi.String("label-bar1"),
 //				},
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
-//					Url:                              gitRepository.Url,
+//					Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 //					DefaultBranch:                    pulumi.String("main"),
 //					AuthenticationTokenSecretVersion: secretVersion.ID(),
 //				},
@@ -69,71 +62,6 @@ import (
 //					SchemaSuffix:    pulumi.String("_suffix"),
 //					TablePrefix:     pulumi.String("prefix_"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-// ### Dataform Repository Ssh
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
-//				Name: pulumi.String("my/repository"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("my-secret"),
-//				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataform.NewRepository(ctx, "dataform_respository", &dataform.RepositoryArgs{
-//				Name: pulumi.String("dataform_repository"),
-//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
-//					Url:           gitRepository.Url,
-//					DefaultBranch: pulumi.String("main"),
-//					SshAuthenticationConfig: &dataform.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs{
-//						UserPrivateKeySecretVersion: secretVersion.ID(),
-//						HostPublicKey:               pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU"),
-//					},
-//				},
-//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
-//					DefaultDatabase: pulumi.String("database"),
-//					SchemaSuffix:    pulumi.String("_suffix"),
-//					TablePrefix:     pulumi.String("prefix_"),
-//				},
-//				ServiceAccount: pulumi.String("1234567890-compute@developer.gserviceaccount.com"),
 //			})
 //			if err != nil {
 //				return err

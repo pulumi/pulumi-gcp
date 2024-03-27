@@ -12,6 +12,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketEncryption;
 import com.pulumi.gcp.storage.outputs.GetBucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.GetBucketLogging;
 import com.pulumi.gcp.storage.outputs.GetBucketRetentionPolicy;
+import com.pulumi.gcp.storage.outputs.GetBucketSoftDeletePolicy;
 import com.pulumi.gcp.storage.outputs.GetBucketVersioning;
 import com.pulumi.gcp.storage.outputs.GetBucketWebsite;
 import java.lang.Boolean;
@@ -47,6 +48,7 @@ public final class GetBucketResult {
     private List<GetBucketRetentionPolicy> retentionPolicies;
     private String rpo;
     private String selfLink;
+    private List<GetBucketSoftDeletePolicy> softDeletePolicies;
     private String storageClass;
     private Boolean uniformBucketLevelAccess;
     private String url;
@@ -121,6 +123,9 @@ public final class GetBucketResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public List<GetBucketSoftDeletePolicy> softDeletePolicies() {
+        return this.softDeletePolicies;
+    }
     public String storageClass() {
         return this.storageClass;
     }
@@ -167,6 +172,7 @@ public final class GetBucketResult {
         private List<GetBucketRetentionPolicy> retentionPolicies;
         private String rpo;
         private String selfLink;
+        private List<GetBucketSoftDeletePolicy> softDeletePolicies;
         private String storageClass;
         private Boolean uniformBucketLevelAccess;
         private String url;
@@ -196,6 +202,7 @@ public final class GetBucketResult {
     	      this.retentionPolicies = defaults.retentionPolicies;
     	      this.rpo = defaults.rpo;
     	      this.selfLink = defaults.selfLink;
+    	      this.softDeletePolicies = defaults.softDeletePolicies;
     	      this.storageClass = defaults.storageClass;
     	      this.uniformBucketLevelAccess = defaults.uniformBucketLevelAccess;
     	      this.url = defaults.url;
@@ -393,6 +400,17 @@ public final class GetBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder softDeletePolicies(List<GetBucketSoftDeletePolicy> softDeletePolicies) {
+            if (softDeletePolicies == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "softDeletePolicies");
+            }
+            this.softDeletePolicies = softDeletePolicies;
+            return this;
+        }
+        public Builder softDeletePolicies(GetBucketSoftDeletePolicy... softDeletePolicies) {
+            return softDeletePolicies(List.of(softDeletePolicies));
+        }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             if (storageClass == null) {
               throw new MissingRequiredPropertyException("GetBucketResult", "storageClass");
@@ -461,6 +479,7 @@ public final class GetBucketResult {
             _resultValue.retentionPolicies = retentionPolicies;
             _resultValue.rpo = rpo;
             _resultValue.selfLink = selfLink;
+            _resultValue.softDeletePolicies = softDeletePolicies;
             _resultValue.storageClass = storageClass;
             _resultValue.uniformBucketLevelAccess = uniformBucketLevelAccess;
             _resultValue.url = url;

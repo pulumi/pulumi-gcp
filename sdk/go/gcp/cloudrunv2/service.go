@@ -504,9 +504,7 @@ import (
 //						&cloudrunv2.ServiceTemplateContainerArgs{
 //							Name: pulumi.String("hello-1"),
 //							Ports: cloudrunv2.ServiceTemplateContainerPortArray{
-//								&cloudrunv2.ServiceTemplateContainerPortArgs{
-//									ContainerPort: pulumi.Int(8080),
-//								},
+//								ContainerPort: 8080,
 //							},
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 //							DependsOns: pulumi.StringArray{

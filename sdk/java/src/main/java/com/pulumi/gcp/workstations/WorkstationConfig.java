@@ -504,6 +504,89 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Workstation Config Boost
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .name(&#34;workstation-cluster&#34;)
+ *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(default_.name())
+ *             .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *             .workstationClusterId(&#34;workstation-cluster&#34;)
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig(&#34;defaultWorkstationConfig&#34;, WorkstationConfigArgs.builder()        
+ *             .workstationConfigId(&#34;workstation-config&#34;)
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location(&#34;us-central1&#34;)
+ *             .host(WorkstationConfigHostArgs.builder()
+ *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
+ *                     .machineType(&#34;e2-standard-4&#34;)
+ *                     .bootDiskSizeGb(35)
+ *                     .disablePublicIpAddresses(true)
+ *                     .boostConfigs(                    
+ *                         WorkstationConfigHostGceInstanceBoostConfigArgs.builder()
+ *                             .id(&#34;boost-1&#34;)
+ *                             .machineType(&#34;n1-standard-2&#34;)
+ *                             .accelerators(WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs.builder()
+ *                                 .type(&#34;nvidia-tesla-t4&#34;)
+ *                                 .count(&#34;1&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         WorkstationConfigHostGceInstanceBoostConfigArgs.builder()
+ *                             .id(&#34;boost-1&#34;)
+ *                             .machineType(&#34;e2-standard-2&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Workstation Config Encryption Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

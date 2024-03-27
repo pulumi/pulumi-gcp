@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicMessageStoragePolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
 import java.lang.String;
@@ -31,6 +32,23 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ingestionDataSourceSettings")
+    private @Nullable Output<TopicIngestionDataSourceSettingsArgs> ingestionDataSourceSettings;
+
+    /**
+     * @return Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsArgs>> ingestionDataSourceSettings() {
+        return Optional.ofNullable(this.ingestionDataSourceSettings);
     }
 
     /**
@@ -201,6 +219,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
 
     private TopicState(TopicState $) {
         this.effectiveLabels = $.effectiveLabels;
+        this.ingestionDataSourceSettings = $.ingestionDataSourceSettings;
         this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
         this.messageRetentionDuration = $.messageRetentionDuration;
@@ -248,6 +267,29 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param ingestionDataSourceSettings Settings for ingestion from a data source into this topic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestionDataSourceSettings(@Nullable Output<TopicIngestionDataSourceSettingsArgs> ingestionDataSourceSettings) {
+            $.ingestionDataSourceSettings = ingestionDataSourceSettings;
+            return this;
+        }
+
+        /**
+         * @param ingestionDataSourceSettings Settings for ingestion from a data source into this topic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs ingestionDataSourceSettings) {
+            return ingestionDataSourceSettings(Output.of(ingestionDataSourceSettings));
         }
 
         /**

@@ -461,6 +461,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterDryRunResource",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource": "ServicePerimeterDryRunResource"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "accesscontextmanager/servicePerimeterEgressPolicy",
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {

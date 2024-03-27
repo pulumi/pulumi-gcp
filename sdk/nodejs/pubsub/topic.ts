@@ -107,6 +107,26 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Pubsub Topic Ingestion Kinesis
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     ingestionDataSourceSettings: {
+ *         awsKinesis: {
+ *             streamArn: "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name",
+ *             consumerArn: "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
+ *             awsRoleArn: "arn:aws:iam::111111111111:role/fake-role-name",
+ *             gcpServiceAccount: "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -164,6 +184,11 @@ export class Topic extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     */
+    public readonly ingestionDataSourceSettings!: pulumi.Output<outputs.pubsub.TopicIngestionDataSourceSettings | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
@@ -234,6 +259,7 @@ export class Topic extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["ingestionDataSourceSettings"] = state ? state.ingestionDataSourceSettings : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
@@ -244,6 +270,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["schemaSettings"] = state ? state.schemaSettings : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
+            resourceInputs["ingestionDataSourceSettings"] = args ? args.ingestionDataSourceSettings : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
@@ -269,6 +296,11 @@ export interface TopicState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     */
+    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettings>;
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
@@ -330,6 +362,11 @@ export interface TopicState {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
+    /**
+     * Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     */
+    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettings>;
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account

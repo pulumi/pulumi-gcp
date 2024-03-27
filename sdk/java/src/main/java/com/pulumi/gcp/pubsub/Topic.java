@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.pubsub.TopicArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicState;
+import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettings;
 import com.pulumi.gcp.pubsub.outputs.TopicMessageStoragePolicy;
 import com.pulumi.gcp.pubsub.outputs.TopicSchemaSettings;
 import java.lang.String;
@@ -209,6 +210,48 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Topic Ingestion Kinesis
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic(&#34;example&#34;, TopicArgs.builder()        
+ *             .name(&#34;example-topic&#34;)
+ *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
+ *                 .awsKinesis(TopicIngestionDataSourceSettingsAwsKinesisArgs.builder()
+ *                     .streamArn(&#34;arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name&#34;)
+ *                     .consumerArn(&#34;arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111&#34;)
+ *                     .awsRoleArn(&#34;arn:aws:iam::111111111111:role/fake-role-name&#34;)
+ *                     .gcpServiceAccount(&#34;fake-service-account@fake-gcp-project.iam.gserviceaccount.com&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -250,6 +293,22 @@ public class Topic extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="ingestionDataSourceSettings", refs={TopicIngestionDataSourceSettings.class}, tree="[0]")
+    private Output</* @Nullable */ TopicIngestionDataSourceSettings> ingestionDataSourceSettings;
+
+    /**
+     * @return Settings for ingestion from a data source into this topic.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<TopicIngestionDataSourceSettings>> ingestionDataSourceSettings() {
+        return Codegen.optional(this.ingestionDataSourceSettings);
     }
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access

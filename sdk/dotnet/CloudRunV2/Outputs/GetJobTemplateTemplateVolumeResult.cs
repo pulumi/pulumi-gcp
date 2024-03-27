@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVolumeEmptyDirResult> EmptyDirs;
         /// <summary>
+        /// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVolumeGcResult> Gcs;
+        /// <summary>
         /// The name of the Cloud Run v2 Job.
         /// </summary>
         public readonly string Name;
@@ -36,12 +40,15 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.GetJobTemplateTemplateVolumeEmptyDirResult> emptyDirs,
 
+            ImmutableArray<Outputs.GetJobTemplateTemplateVolumeGcResult> gcs,
+
             string name,
 
             ImmutableArray<Outputs.GetJobTemplateTemplateVolumeSecretResult> secrets)
         {
             CloudSqlInstances = cloudSqlInstances;
             EmptyDirs = emptyDirs;
+            Gcs = gcs;
             Name = name;
             Secrets = secrets;
         }

@@ -2303,6 +2303,9 @@ type JobTemplateTemplateVolume struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir *JobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDir"`
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Structure is documented below.
+	Gcs *JobTemplateTemplateVolumeGcs `pulumi:"gcs"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2328,6 +2331,9 @@ type JobTemplateTemplateVolumeArgs struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir JobTemplateTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Structure is documented below.
+	Gcs JobTemplateTemplateVolumeGcsPtrInput `pulumi:"gcs"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2398,6 +2404,12 @@ func (o JobTemplateTemplateVolumeOutput) CloudSqlInstance() JobTemplateTemplateV
 // Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) EmptyDir() JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeEmptyDir { return v.EmptyDir }).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
+}
+
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+// Structure is documented below.
+func (o JobTemplateTemplateVolumeOutput) Gcs() JobTemplateTemplateVolumeGcsPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeGcs { return v.Gcs }).(JobTemplateTemplateVolumeGcsPtrOutput)
 }
 
 // Volume's name.
@@ -2730,6 +2742,162 @@ func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtr
 		}
 		return v.SizeLimit
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateVolumeGcs struct {
+	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+	Bucket string `pulumi:"bucket"`
+	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// JobTemplateTemplateVolumeGcsInput is an input type that accepts JobTemplateTemplateVolumeGcsArgs and JobTemplateTemplateVolumeGcsOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVolumeGcsInput` via:
+//
+//	JobTemplateTemplateVolumeGcsArgs{...}
+type JobTemplateTemplateVolumeGcsInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVolumeGcsOutput() JobTemplateTemplateVolumeGcsOutput
+	ToJobTemplateTemplateVolumeGcsOutputWithContext(context.Context) JobTemplateTemplateVolumeGcsOutput
+}
+
+type JobTemplateTemplateVolumeGcsArgs struct {
+	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (JobTemplateTemplateVolumeGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateVolumeGcsArgs) ToJobTemplateTemplateVolumeGcsOutput() JobTemplateTemplateVolumeGcsOutput {
+	return i.ToJobTemplateTemplateVolumeGcsOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVolumeGcsArgs) ToJobTemplateTemplateVolumeGcsOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeGcsOutput)
+}
+
+func (i JobTemplateTemplateVolumeGcsArgs) ToJobTemplateTemplateVolumeGcsPtrOutput() JobTemplateTemplateVolumeGcsPtrOutput {
+	return i.ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVolumeGcsArgs) ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeGcsOutput).ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateVolumeGcsPtrInput is an input type that accepts JobTemplateTemplateVolumeGcsArgs, JobTemplateTemplateVolumeGcsPtr and JobTemplateTemplateVolumeGcsPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVolumeGcsPtrInput` via:
+//
+//	        JobTemplateTemplateVolumeGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateVolumeGcsPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVolumeGcsPtrOutput() JobTemplateTemplateVolumeGcsPtrOutput
+	ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(context.Context) JobTemplateTemplateVolumeGcsPtrOutput
+}
+
+type jobTemplateTemplateVolumeGcsPtrType JobTemplateTemplateVolumeGcsArgs
+
+func JobTemplateTemplateVolumeGcsPtr(v *JobTemplateTemplateVolumeGcsArgs) JobTemplateTemplateVolumeGcsPtrInput {
+	return (*jobTemplateTemplateVolumeGcsPtrType)(v)
+}
+
+func (*jobTemplateTemplateVolumeGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateVolumeGcsPtrType) ToJobTemplateTemplateVolumeGcsPtrOutput() JobTemplateTemplateVolumeGcsPtrOutput {
+	return i.ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateVolumeGcsPtrType) ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeGcsPtrOutput)
+}
+
+type JobTemplateTemplateVolumeGcsOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVolumeGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVolumeGcsOutput) ToJobTemplateTemplateVolumeGcsOutput() JobTemplateTemplateVolumeGcsOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeGcsOutput) ToJobTemplateTemplateVolumeGcsOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeGcsOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeGcsOutput) ToJobTemplateTemplateVolumeGcsPtrOutput() JobTemplateTemplateVolumeGcsPtrOutput {
+	return o.ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateVolumeGcsOutput) ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeGcs) *JobTemplateTemplateVolumeGcs {
+		return &v
+	}).(JobTemplateTemplateVolumeGcsPtrOutput)
+}
+
+// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+func (o JobTemplateTemplateVolumeGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+func (o JobTemplateTemplateVolumeGcsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeGcs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type JobTemplateTemplateVolumeGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVolumeGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVolumeGcsPtrOutput) ToJobTemplateTemplateVolumeGcsPtrOutput() JobTemplateTemplateVolumeGcsPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeGcsPtrOutput) ToJobTemplateTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeGcsPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeGcsPtrOutput) Elem() JobTemplateTemplateVolumeGcsOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeGcs) JobTemplateTemplateVolumeGcs {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateVolumeGcs
+		return ret
+	}).(JobTemplateTemplateVolumeGcsOutput)
+}
+
+// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+func (o JobTemplateTemplateVolumeGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+func (o JobTemplateTemplateVolumeGcsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeGcs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
 }
 
 type JobTemplateTemplateVolumeSecret struct {
@@ -7674,7 +7842,7 @@ type ServiceTemplateVolume struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir *ServiceTemplateVolumeEmptyDir `pulumi:"emptyDir"`
-	// Represents a GCS Bucket mounted as a volume.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
 	// Structure is documented below.
 	Gcs *ServiceTemplateVolumeGcs `pulumi:"gcs"`
 	// Volume's name.
@@ -7705,7 +7873,7 @@ type ServiceTemplateVolumeArgs struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir ServiceTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
-	// Represents a GCS Bucket mounted as a volume.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
 	// Structure is documented below.
 	Gcs ServiceTemplateVolumeGcsPtrInput `pulumi:"gcs"`
 	// Volume's name.
@@ -7781,7 +7949,7 @@ func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtr
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
 
-// Represents a GCS Bucket mounted as a volume.
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
 // Structure is documented below.
 func (o ServiceTemplateVolumeOutput) Gcs() ServiceTemplateVolumeGcsPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeGcs { return v.Gcs }).(ServiceTemplateVolumeGcsPtrOutput)
@@ -11064,6 +11232,8 @@ type GetJobTemplateTemplateVolume struct {
 	CloudSqlInstances []GetJobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs []GetJobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDirs"`
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	Gcs []GetJobTemplateTemplateVolumeGc `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -11086,6 +11256,8 @@ type GetJobTemplateTemplateVolumeArgs struct {
 	CloudSqlInstances GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs GetJobTemplateTemplateVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	Gcs GetJobTemplateTemplateVolumeGcArrayInput `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -11153,6 +11325,11 @@ func (o GetJobTemplateTemplateVolumeOutput) CloudSqlInstances() GetJobTemplateTe
 // Ephemeral storage used as a shared volume.
 func (o GetJobTemplateTemplateVolumeOutput) EmptyDirs() GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetJobTemplateTemplateVolumeEmptyDirArrayOutput)
+}
+
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+func (o GetJobTemplateTemplateVolumeOutput) Gcs() GetJobTemplateTemplateVolumeGcArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeGc { return v.Gcs }).(GetJobTemplateTemplateVolumeGcArrayOutput)
 }
 
 // The name of the Cloud Run v2 Job.
@@ -11386,6 +11563,112 @@ func (o GetJobTemplateTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeEmptyDir {
 		return vs[0].([]GetJobTemplateTemplateVolumeEmptyDir)[vs[1].(int)]
 	}).(GetJobTemplateTemplateVolumeEmptyDirOutput)
+}
+
+type GetJobTemplateTemplateVolumeGc struct {
+	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+	Bucket string `pulumi:"bucket"`
+	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+	ReadOnly bool `pulumi:"readOnly"`
+}
+
+// GetJobTemplateTemplateVolumeGcInput is an input type that accepts GetJobTemplateTemplateVolumeGcArgs and GetJobTemplateTemplateVolumeGcOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeGcInput` via:
+//
+//	GetJobTemplateTemplateVolumeGcArgs{...}
+type GetJobTemplateTemplateVolumeGcInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeGcOutput() GetJobTemplateTemplateVolumeGcOutput
+	ToGetJobTemplateTemplateVolumeGcOutputWithContext(context.Context) GetJobTemplateTemplateVolumeGcOutput
+}
+
+type GetJobTemplateTemplateVolumeGcArgs struct {
+	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+}
+
+func (GetJobTemplateTemplateVolumeGcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeGc)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeGcArgs) ToGetJobTemplateTemplateVolumeGcOutput() GetJobTemplateTemplateVolumeGcOutput {
+	return i.ToGetJobTemplateTemplateVolumeGcOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeGcArgs) ToGetJobTemplateTemplateVolumeGcOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeGcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeGcOutput)
+}
+
+// GetJobTemplateTemplateVolumeGcArrayInput is an input type that accepts GetJobTemplateTemplateVolumeGcArray and GetJobTemplateTemplateVolumeGcArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeGcArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeGcArray{ GetJobTemplateTemplateVolumeGcArgs{...} }
+type GetJobTemplateTemplateVolumeGcArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeGcArrayOutput() GetJobTemplateTemplateVolumeGcArrayOutput
+	ToGetJobTemplateTemplateVolumeGcArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeGcArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeGcArray []GetJobTemplateTemplateVolumeGcInput
+
+func (GetJobTemplateTemplateVolumeGcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeGc)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeGcArray) ToGetJobTemplateTemplateVolumeGcArrayOutput() GetJobTemplateTemplateVolumeGcArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeGcArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeGcArray) ToGetJobTemplateTemplateVolumeGcArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeGcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeGcArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeGcOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeGcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeGc)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeGcOutput) ToGetJobTemplateTemplateVolumeGcOutput() GetJobTemplateTemplateVolumeGcOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeGcOutput) ToGetJobTemplateTemplateVolumeGcOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeGcOutput {
+	return o
+}
+
+// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+func (o GetJobTemplateTemplateVolumeGcOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeGc) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+func (o GetJobTemplateTemplateVolumeGcOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeGc) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+type GetJobTemplateTemplateVolumeGcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeGcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeGc)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeGcArrayOutput) ToGetJobTemplateTemplateVolumeGcArrayOutput() GetJobTemplateTemplateVolumeGcArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeGcArrayOutput) ToGetJobTemplateTemplateVolumeGcArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeGcArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeGcArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeGcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeGc {
+		return vs[0].([]GetJobTemplateTemplateVolumeGc)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeGcOutput)
 }
 
 type GetJobTemplateTemplateVolumeSecret struct {
@@ -14801,7 +15084,7 @@ type GetServiceTemplateVolume struct {
 	CloudSqlInstances []GetServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs []GetServiceTemplateVolumeEmptyDir `pulumi:"emptyDirs"`
-	// Represents a GCS Bucket mounted as a volume.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
 	Gcs []GetServiceTemplateVolumeGc `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
 	Name string `pulumi:"name"`
@@ -14827,7 +15110,7 @@ type GetServiceTemplateVolumeArgs struct {
 	CloudSqlInstances GetServiceTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs GetServiceTemplateVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
-	// Represents a GCS Bucket mounted as a volume.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
 	Gcs GetServiceTemplateVolumeGcArrayInput `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -14900,7 +15183,7 @@ func (o GetServiceTemplateVolumeOutput) EmptyDirs() GetServiceTemplateVolumeEmpt
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateVolumeEmptyDirArrayOutput)
 }
 
-// Represents a GCS Bucket mounted as a volume.
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
 func (o GetServiceTemplateVolumeOutput) Gcs() GetServiceTemplateVolumeGcArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeGc { return v.Gcs }).(GetServiceTemplateVolumeGcArrayOutput)
 }
@@ -16290,6 +16573,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeCloudSqlInstancePtrInput)(nil)).Elem(), JobTemplateTemplateVolumeCloudSqlInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDirInput)(nil)).Elem(), JobTemplateTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDirPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeGcsInput)(nil)).Elem(), JobTemplateTemplateVolumeGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeGcsPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretItemInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretItemArgs{})
@@ -16402,6 +16687,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeCloudSqlInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDirInput)(nil)).Elem(), GetJobTemplateTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDirArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeEmptyDirArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeGcInput)(nil)).Elem(), GetJobTemplateTemplateVolumeGcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeGcArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeGcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretItemInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretItemArgs{})
@@ -16514,6 +16801,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeEmptyDirPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVolumeGcsOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVolumeGcsPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretItemOutput{})
@@ -16626,6 +16915,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeEmptyDirArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeGcOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeGcArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretItemOutput{})

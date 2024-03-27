@@ -33,36 +33,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
  *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "project-id",
- *     name: "project-id",
- *     orgId: "123456789",
- * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"});
- * const firestore = new gcp.projects.Service("firestore", {
- *     project: project.projectId,
- *     service: "firestore.googleapis.com",
- * });
  * const database = new gcp.firestore.Database("database", {
- *     project: project.projectId,
- *     name: "(default)",
+ *     project: "my-project-name",
+ *     name: "database-id",
  *     locationId: "nam5",
  *     type: "FIRESTORE_NATIVE",
- * });
- * // Creating a document also creates its collection
- * const document = new gcp.firestore.Document("document", {
- *     project: project.projectId,
- *     database: database.name,
- *     collection: "somenewcollection",
- *     documentId: "",
- *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
  * });
  * const my_index = new gcp.firestore.Index("my-index", {
- *     project: project.projectId,
+ *     project: "my-project-name",
  *     database: database.name,
- *     collection: document.collection,
+ *     collection: "atestcollection",
  *     fields: [
  *         {
  *             fieldPath: "name",
@@ -83,10 +66,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id-dm",
+ *     locationId: "nam5",
+ *     type: "DATASTORE_MODE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
  * const my_index = new gcp.firestore.Index("my-index", {
  *     project: "my-project-name",
- *     database: "(default)",
- *     collection: "chatrooms",
+ *     database: database.name,
+ *     collection: "atestcollection",
  *     queryScope: "COLLECTION_RECURSIVE",
  *     apiScope: "DATASTORE_MODE_API",
  *     fields: [

@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetInstanceGroupManagerStatusAllInstancesConfigResult
     {
         /// <summary>
+        /// Current all-instances configuration revision. This value is in RFC3339 text format.
+        /// </summary>
+        public readonly string CurrentRevision;
+        /// <summary>
         /// A bit indicating whether this configuration has been applied to all managed instances in the group.
         /// </summary>
         public readonly bool Effective;
 
         [OutputConstructor]
-        private GetInstanceGroupManagerStatusAllInstancesConfigResult(bool effective)
+        private GetInstanceGroupManagerStatusAllInstancesConfigResult(
+            string currentRevision,
+
+            bool effective)
         {
+            CurrentRevision = currentRevision;
             Effective = effective;
         }
     }

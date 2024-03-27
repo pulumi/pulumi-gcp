@@ -6,6 +6,7 @@ package com.pulumi.gcp.workstations.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceAcceleratorArgs;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs;
 import java.lang.Boolean;
@@ -36,6 +37,23 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
      */
     public Optional<Output<List<WorkstationConfigHostGceInstanceAcceleratorArgs>>> accelerators() {
         return Optional.ofNullable(this.accelerators);
+    }
+
+    /**
+     * A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="boostConfigs")
+    private @Nullable Output<List<WorkstationConfigHostGceInstanceBoostConfigArgs>> boostConfigs;
+
+    /**
+     * @return A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkstationConfigHostGceInstanceBoostConfigArgs>>> boostConfigs() {
+        return Optional.ofNullable(this.boostConfigs);
     }
 
     /**
@@ -213,6 +231,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
     private WorkstationConfigHostGceInstanceArgs(WorkstationConfigHostGceInstanceArgs $) {
         this.accelerators = $.accelerators;
+        this.boostConfigs = $.boostConfigs;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.disablePublicIpAddresses = $.disablePublicIpAddresses;
@@ -276,6 +295,40 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder accelerators(WorkstationConfigHostGceInstanceAcceleratorArgs... accelerators) {
             return accelerators(List.of(accelerators));
+        }
+
+        /**
+         * @param boostConfigs A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boostConfigs(@Nullable Output<List<WorkstationConfigHostGceInstanceBoostConfigArgs>> boostConfigs) {
+            $.boostConfigs = boostConfigs;
+            return this;
+        }
+
+        /**
+         * @param boostConfigs A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boostConfigs(List<WorkstationConfigHostGceInstanceBoostConfigArgs> boostConfigs) {
+            return boostConfigs(Output.of(boostConfigs));
+        }
+
+        /**
+         * @param boostConfigs A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boostConfigs(WorkstationConfigHostGceInstanceBoostConfigArgs... boostConfigs) {
+            return boostConfigs(List.of(boostConfigs));
         }
 
         /**

@@ -235,6 +235,9 @@ type Bucket struct {
 	Rpo pulumi.StringOutput `pulumi:"rpo"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+	// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	SoftDeletePolicy BucketSoftDeletePolicyOutput `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -331,6 +334,9 @@ type bucketState struct {
 	Rpo *string `pulumi:"rpo"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+	// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	SoftDeletePolicy *BucketSoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -390,6 +396,9 @@ type BucketState struct {
 	Rpo pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+	// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	SoftDeletePolicy BucketSoftDeletePolicyPtrInput
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -446,6 +455,9 @@ type bucketArgs struct {
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
 	Rpo *string `pulumi:"rpo"`
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+	// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	SoftDeletePolicy *BucketSoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -497,6 +509,9 @@ type BucketArgs struct {
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
 	Rpo pulumi.StringPtrInput
+	// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+	// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+	SoftDeletePolicy BucketSoftDeletePolicyPtrInput
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
@@ -698,6 +713,12 @@ func (o BucketOutput) Rpo() pulumi.StringOutput {
 // The URI of the created resource.
 func (o BucketOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
+// be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+func (o BucketOutput) SoftDeletePolicy() BucketSoftDeletePolicyOutput {
+	return o.ApplyT(func(v *Bucket) BucketSoftDeletePolicyOutput { return v.SoftDeletePolicy }).(BucketSoftDeletePolicyOutput)
 }
 
 // The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.

@@ -1201,6 +1201,124 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Region Url Map Path Template Match
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Region:           pulumi.String("us-central1"),
+//				Name:             pulumi.String("health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "home-backend", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("home-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "cart-backend", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("cart-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "user-backend", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("user-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				HealthChecks:        _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionUrlMap(ctx, "urlmap", &compute.RegionUrlMapArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Name:           pulumi.String("urlmap"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: home_backend.ID(),
+//				HostRules: compute.RegionUrlMapHostRuleArray{
+//					&compute.RegionUrlMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("mysite"),
+//					},
+//				},
+//				PathMatchers: compute.RegionUrlMapPathMatcherArray{
+//					&compute.RegionUrlMapPathMatcherArgs{
+//						Name:           pulumi.String("mysite"),
+//						DefaultService: home_backend.ID(),
+//						RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
+//							&compute.RegionUrlMapPathMatcherRouteRuleArgs{
+//								MatchRules: compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs{
+//										PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}"),
+//									},
+//								},
+//								Service:  cart_backend.ID(),
+//								Priority: pulumi.Int(1),
+//								RouteAction: &compute.RegionUrlMapPathMatcherRouteRuleRouteActionArgs{
+//									UrlRewrite: &compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{
+//										PathTemplateRewrite: pulumi.String("/{username}-{cartid}/"),
+//									},
+//								},
+//							},
+//							&compute.RegionUrlMapPathMatcherRouteRuleArgs{
+//								MatchRules: compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArray{
+//									&compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs{
+//										PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/*/accountinfo/*"),
+//									},
+//								},
+//								Service:  user_backend.ID(),
+//								Priority: pulumi.Int(2),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

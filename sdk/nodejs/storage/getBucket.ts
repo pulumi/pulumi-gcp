@@ -71,6 +71,7 @@ export interface GetBucketResult {
     readonly retentionPolicies: outputs.storage.GetBucketRetentionPolicy[];
     readonly rpo: string;
     readonly selfLink: string;
+    readonly softDeletePolicies: outputs.storage.GetBucketSoftDeletePolicy[];
     readonly storageClass: string;
     readonly uniformBucketLevelAccess: boolean;
     readonly url: string;
