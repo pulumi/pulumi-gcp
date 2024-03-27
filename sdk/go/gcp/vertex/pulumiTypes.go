@@ -4927,7 +4927,7 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 	//
 	// > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
 	//
-	// Deprecated: `monitoringInterval` is deprecated and will be removed in a future release.
+	// Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 	MonitoringInterval *string `pulumi:"monitoringInterval"`
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
 	// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
@@ -4955,7 +4955,7 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
 	//
 	// > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
 	//
-	// Deprecated: `monitoringInterval` is deprecated and will be removed in a future release.
+	// Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 	MonitoringInterval pulumi.StringPtrInput `pulumi:"monitoringInterval"`
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
 	// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
@@ -5051,7 +5051,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Disabled
 //
 // > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
 //
-// Deprecated: `monitoringInterval` is deprecated and will be removed in a future release.
+// Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) MonitoringInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string { return v.MonitoringInterval }).(pulumi.StringPtrOutput)
 }
@@ -5106,7 +5106,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Disab
 //
 // > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
 //
-// Deprecated: `monitoringInterval` is deprecated and will be removed in a future release.
+// Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) MonitoringInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string {
 		if v == nil {

@@ -382,7 +382,7 @@ type Instance struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Service account which will be used to access resources in the customer project.
 	//
-	// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
@@ -513,7 +513,7 @@ type instanceState struct {
 	Region *string `pulumi:"region"`
 	// Service account which will be used to access resources in the customer project.
 	//
-	// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
@@ -607,7 +607,7 @@ type InstanceState struct {
 	Region pulumi.StringPtrInput
 	// Service account which will be used to access resources in the customer project.
 	//
-	// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
 	ServiceAccount pulumi.StringPtrInput
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringPtrInput
@@ -990,7 +990,7 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 
 // Service account which will be used to access resources in the customer project.
 //
-// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
+// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
 func (o InstanceOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }

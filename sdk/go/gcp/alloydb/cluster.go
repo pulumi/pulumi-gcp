@@ -441,7 +441,7 @@ type Cluster struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -581,7 +581,7 @@ type clusterState struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network *string `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -681,7 +681,7 @@ type ClusterState struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network pulumi.StringPtrInput
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -765,7 +765,7 @@ type clusterArgs struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network *string `pulumi:"network"`
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -835,7 +835,7 @@ type ClusterArgs struct {
 	//
 	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 	//
-	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network pulumi.StringPtrInput
 	// Metadata related to network configuration.
 	// Structure is documented below.
@@ -1070,7 +1070,7 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 //
 // > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
 //
-// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 func (o ClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
