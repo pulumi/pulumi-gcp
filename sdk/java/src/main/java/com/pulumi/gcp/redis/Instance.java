@@ -94,6 +94,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This example assumes this network already exists.
+ *         // The API creates a tenant network per network authorized for a
+ *         // Redis instance and that network is not deleted when the user-created
+ *         // network (authorized_network) is deleted, so this prevents issues
+ *         // with tenant network quota.
+ *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // config, add an additional network resource or change
+ *         // this from &#34;data&#34;to &#34;resource&#34;
  *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;redis-test-network&#34;)
  *             .build());
@@ -200,6 +208,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This example assumes this network already exists.
+ *         // The API creates a tenant network per network authorized for a
+ *         // Redis instance and that network is not deleted when the user-created
+ *         // network (authorized_network) is deleted, so this prevents issues
+ *         // with tenant network quota.
+ *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // config, add an additional network resource or change
+ *         // this from &#34;data&#34;to &#34;resource&#34;
  *         var redis_network = new Network(&#34;redis-network&#34;, NetworkArgs.builder()        
  *             .name(&#34;redis-test-network&#34;)
  *             .build());
@@ -260,6 +276,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This example assumes this network already exists.
+ *         // The API creates a tenant network per network authorized for a
+ *         // Redis instance and that network is not deleted when the user-created
+ *         // network (authorized_network) is deleted, so this prevents issues
+ *         // with tenant network quota.
+ *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // config, add an additional network resource or change
+ *         // this from &#34;data&#34;to &#34;resource&#34;
  *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;redis-test-network&#34;)
  *             .build());
@@ -326,6 +350,14 @@ import javax.annotation.Nullable;
  *             .keyRing(redisKeyring.id())
  *             .build());
  * 
+ *         // This example assumes this network already exists.
+ *         // The API creates a tenant network per network authorized for a
+ *         // Redis instance and that network is not deleted when the user-created
+ *         // network (authorized_network) is deleted, so this prevents issues
+ *         // with tenant network quota.
+ *         // If this network hasn&#39;t been created and you are using this example in your
+ *         // config, add an additional network resource or change
+ *         // this from &#34;data&#34;to &#34;resource&#34;
  *         final var redis-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
  *             .name(&#34;redis-test-network&#34;)
  *             .build());

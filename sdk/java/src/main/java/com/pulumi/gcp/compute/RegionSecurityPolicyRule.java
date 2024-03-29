@@ -177,6 +177,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // First activate advanced network DDoS protection for the desired region
  *         var policyddosprotection = new RegionSecurityPolicy(&#34;policyddosprotection&#34;, RegionSecurityPolicyArgs.builder()        
  *             .region(&#34;us-west2&#34;)
  *             .name(&#34;policyddosprotection&#34;)
@@ -194,6 +195,7 @@ import javax.annotation.Nullable;
  *             .securityPolicy(policyddosprotection.selfLink())
  *             .build());
  * 
+ *         // Add the desired policy and custom rule.
  *         var policynetworkmatch = new RegionSecurityPolicy(&#34;policynetworkmatch&#34;, RegionSecurityPolicyArgs.builder()        
  *             .region(&#34;us-west2&#34;)
  *             .name(&#34;policyfornetworkmatch&#34;)

@@ -130,6 +130,7 @@ import javax.annotation.Nullable;
  *             .tier(&#34;ENTERPRISE&#34;)
  *             .build());
  * 
+ *         // creating certificate_issuance_config to use it in the managed certificate
  *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
  *             .name(&#34;issuance-config&#34;)
  *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)
@@ -343,6 +344,7 @@ import javax.annotation.Nullable;
  *             .tier(&#34;ENTERPRISE&#34;)
  *             .build());
  * 
+ *         // creating certificate_issuance_config to use it in the managed certificate
  *         var issuanceconfig = new CertificateIssuanceConfig(&#34;issuanceconfig&#34;, CertificateIssuanceConfigArgs.builder()        
  *             .name(&#34;issuance-config&#34;)
  *             .description(&#34;sample description for the certificate issuanceConfigs&#34;)

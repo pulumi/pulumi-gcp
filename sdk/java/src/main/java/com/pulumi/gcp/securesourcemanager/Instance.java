@@ -229,6 +229,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // ca pool IAM permissions can take time to propagate
  *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
  *             .createDuration(&#34;60s&#34;)
  *             .build());

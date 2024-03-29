@@ -112,6 +112,9 @@ import javax.annotation.Nullable;
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // This example substitutes an arbitrary internal IP for an internal network
+ *         // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
+ *         // to set one up.
  *         var ilb = new GlobalAddress(&#34;ilb&#34;, GlobalAddressArgs.builder()        
  *             .name(&#34;my-ilb&#34;)
  *             .build());

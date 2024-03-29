@@ -829,11 +829,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Internal HTTPS load balancer with HTTP-to-HTTPS redirect
+ *         // VPC network
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-ilb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // Proxy-only subnet
  *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-proxy-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
@@ -843,6 +846,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
+ *         // Backend subnet
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -850,6 +854,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
+ *         // Reserved internal address
  *         var defaultAddress = new Address(&#34;defaultAddress&#34;, AddressArgs.builder()        
  *             .name(&#34;l7-ilb-ip&#34;)
  *             .subnetwork(defaultSubnetwork.id())
@@ -859,6 +864,7 @@ import javax.annotation.Nullable;
  *             .purpose(&#34;SHARED_LOADBALANCER_VIP&#34;)
  *             .build());
  * 
+ *         // Self-signed regional SSL certificate for testing
  *         var defaultPrivateKey = new PrivateKey(&#34;defaultPrivateKey&#34;, PrivateKeyArgs.builder()        
  *             .algorithm(&#34;RSA&#34;)
  *             .rsaBits(2048)
@@ -887,6 +893,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;europe-west1&#34;)
  *             .build());
  * 
+ *         // Regional health check
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
  *             .name(&#34;l7-ilb-hc&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -895,6 +902,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Instance template
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -931,6 +939,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // Regional MIG
  *         var defaultRegionInstanceGroupManager = new RegionInstanceGroupManager(&#34;defaultRegionInstanceGroupManager&#34;, RegionInstanceGroupManagerArgs.builder()        
  *             .name(&#34;l7-ilb-mig1&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -946,6 +955,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // Regional backend service
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
  *             .name(&#34;l7-ilb-backend-service&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -961,12 +971,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Regional URL map
  *         var httpsLb = new RegionUrlMap(&#34;httpsLb&#34;, RegionUrlMapArgs.builder()        
  *             .name(&#34;l7-ilb-regional-url-map&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .defaultService(defaultRegionBackendService.id())
  *             .build());
  * 
+ *         // Regional target HTTPS proxy
  *         var defaultRegionTargetHttpsProxy = new RegionTargetHttpsProxy(&#34;defaultRegionTargetHttpsProxy&#34;, RegionTargetHttpsProxyArgs.builder()        
  *             .name(&#34;l7-ilb-target-https-proxy&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -974,6 +986,7 @@ import javax.annotation.Nullable;
  *             .sslCertificates(defaultRegionSslCertificate.selfLink())
  *             .build());
  * 
+ *         // Regional forwarding rule
  *         var defaultForwardingRule = new ForwardingRule(&#34;defaultForwardingRule&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;l7-ilb-forwarding-rule&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -987,6 +1000,7 @@ import javax.annotation.Nullable;
  *             .networkTier(&#34;PREMIUM&#34;)
  *             .build());
  * 
+ *         // Allow all access to health check ranges
  *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-ilb-fw-allow-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -1000,6 +1014,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Allow http from proxy subnet to backends
  *         var backends = new Firewall(&#34;backends&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-ilb-fw-allow-ilb-to-backends&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -1015,6 +1030,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Test instance
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .name(&#34;l7-ilb-test-vm&#34;)
  *             .zone(&#34;europe-west1-b&#34;)
@@ -1030,6 +1046,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         //## HTTP-to-HTTPS redirect ###
+ *         // Regional URL map
  *         var redirectRegionUrlMap = new RegionUrlMap(&#34;redirectRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
  *             .name(&#34;l7-ilb-redirect-url-map&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -1053,12 +1071,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Regional HTTP proxy
  *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;defaultRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
  *             .name(&#34;l7-ilb-target-http-proxy&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .urlMap(redirectRegionUrlMap.id())
  *             .build());
  * 
+ *         // Regional forwarding rule
  *         var redirect = new ForwardingRule(&#34;redirect&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;l7-ilb-redirect&#34;)
  *             .region(&#34;europe-west1&#34;)

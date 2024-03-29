@@ -66,6 +66,8 @@ import javax.annotation.Nullable;
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
+ *         // The sample data comes from the following link:
+ *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
  *         var data = new BucketObject(&#34;data&#34;, BucketObjectArgs.builder()        
  *             .name(&#34;contents/data.json&#34;)
  *             .bucket(bucket.name())
@@ -140,6 +142,8 @@ import javax.annotation.Nullable;
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
+ *         // The sample data comes from the following link:
+ *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
  *         var data = new BucketObject(&#34;data&#34;, BucketObjectArgs.builder()        
  *             .name(&#34;contents/data.json&#34;)
  *             .bucket(bucket.name())
