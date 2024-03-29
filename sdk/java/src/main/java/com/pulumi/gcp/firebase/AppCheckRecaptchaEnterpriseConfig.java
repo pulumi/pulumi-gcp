@@ -57,6 +57,8 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Web App for reCAPTCHA Enterprise&#34;)
  *             .build());
  * 
+ *         // It takes a while for App Check to recognize the new app
+ *         // If your app already exists, you don&#39;t have to wait 30 seconds.
  *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
  *             .createDuration(&#34;30s&#34;)
  *             .build());

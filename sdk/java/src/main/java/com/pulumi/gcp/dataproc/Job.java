@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .build());
  * 
+ *         // Submit an example spark job to a dataproc cluster
  *         var spark = new Job(&#34;spark&#34;, JobArgs.builder()        
  *             .region(mycluster.region())
  *             .forceDelete(true)
@@ -86,6 +87,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Submit an example pyspark job to a dataproc cluster
  *         var pyspark = new Job(&#34;pyspark&#34;, JobArgs.builder()        
  *             .region(mycluster.region())
  *             .forceDelete(true)

@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
  * 
+ *         // Enable Compute API
  *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
  *             .service(&#34;compute.googleapis.com&#34;)
@@ -99,12 +100,14 @@ import javax.annotation.Nullable;
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
+ *         // VPC network
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-ilb-network&#34;)
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-subnet&#34;)
  *             .project(serviceProject.projectId())
@@ -113,6 +116,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // health check
  *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
  *             .name(&#34;l7-ilb-hc&#34;)
  *             .project(serviceProject.projectId())
@@ -123,6 +127,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // backend service
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
  *             .name(&#34;l7-ilb-backend-subnet&#34;)
  *             .project(serviceProject.projectId())
@@ -130,6 +135,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var forwardingRule = new ForwardingRule(&#34;forwardingRule&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;l7-ilb-forwarding-rule&#34;)
  *             .project(serviceProject.projectId())
@@ -142,6 +148,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(ilbSubnet.id())
  *             .build());
  * 
+ *         // discovered service block
  *         final var catalog-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
  *             .location(&#34;us-central1&#34;)
  *             .serviceUri(forwardingRule.id().applyValue(id -&gt; String.format(&#34;//compute.googleapis.com/%s&#34;, id)))
@@ -228,6 +235,7 @@ import javax.annotation.Nullable;
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
  * 
+ *         // Enable Compute API
  *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
  *             .service(&#34;compute.googleapis.com&#34;)
@@ -241,12 +249,14 @@ import javax.annotation.Nullable;
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
+ *         // VPC network
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-ilb-network&#34;)
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-subnet&#34;)
  *             .project(serviceProject.projectId())
@@ -255,6 +265,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // health check
  *         var default_ = new HealthCheck(&#34;default&#34;, HealthCheckArgs.builder()        
  *             .name(&#34;l7-ilb-hc&#34;)
  *             .project(serviceProject.projectId())
@@ -265,6 +276,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // backend service
  *         var backend = new RegionBackendService(&#34;backend&#34;, RegionBackendServiceArgs.builder()        
  *             .name(&#34;l7-ilb-backend-subnet&#34;)
  *             .project(serviceProject.projectId())
@@ -272,6 +284,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(default_.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var forwardingRule = new ForwardingRule(&#34;forwardingRule&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;l7-ilb-forwarding-rule&#34;)
  *             .project(serviceProject.projectId())
@@ -284,6 +297,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(ilbSubnet.id())
  *             .build());
  * 
+ *         // discovered service block
  *         final var catalog-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
  *             .location(&#34;us-central1&#34;)
  *             .serviceUri(forwardingRule.id().applyValue(id -&gt; String.format(&#34;//compute.googleapis.com/%s&#34;, id)))

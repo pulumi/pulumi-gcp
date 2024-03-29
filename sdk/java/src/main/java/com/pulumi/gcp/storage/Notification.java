@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // End enabling notifications
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
  *             .name(&#34;default_bucket&#34;)
  *             .location(&#34;US&#34;)
@@ -85,6 +86,7 @@ import javax.annotation.Nullable;
  *             .customAttributes(Map.of(&#34;new-attribute&#34;, &#34;new-attribute-value&#34;))
  *             .build());
  * 
+ *         // Enable notifications by giving the correct IAM permission to the unique service account.
  *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
  *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        

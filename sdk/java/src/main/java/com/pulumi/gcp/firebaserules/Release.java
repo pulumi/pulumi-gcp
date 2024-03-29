@@ -97,12 +97,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Provision a non-default Cloud Storage bucket.
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .name(&#34;bucket&#34;)
  *             .location(&#34;us-west1&#34;)
  *             .build());
  * 
+ *         // Create a ruleset of Firebase Security Rules from a local file.
  *         var storage = new Ruleset(&#34;storage&#34;, RulesetArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .source(RulesetSourceArgs.builder()
@@ -119,6 +121,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
+ *         // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
  *         var bucketStorageBucket = new StorageBucket(&#34;bucketStorageBucket&#34;, StorageBucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .bucketId(bucket.name())

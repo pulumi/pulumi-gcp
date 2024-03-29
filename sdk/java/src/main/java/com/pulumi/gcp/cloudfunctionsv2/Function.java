@@ -381,6 +381,8 @@ import javax.annotation.Nullable;
  * 
  *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
+ *         // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
+ *         // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
  *         var gcs_pubsub_publishing = new IAMMember(&#34;gcs-pubsub-publishing&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/pubsub.publisher&#34;)
@@ -392,6 +394,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
  *             .build());
  * 
+ *         // Permissions on the service account used by the function and Eventarc trigger
  *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)
@@ -488,6 +491,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // This example follows the examples shown in this Google Cloud Community blog post
+ *         // https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
+ *         // and the docs:
+ *         // https://cloud.google.com/eventarc/docs/path-patterns
  *         var source_bucket = new Bucket(&#34;source-bucket&#34;, BucketArgs.builder()        
  *             .name(&#34;gcf-source-bucket&#34;)
  *             .location(&#34;US&#34;)
@@ -505,12 +512,16 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
  *             .build());
  * 
+ *         // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
+ *         // Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
+ *         // google_cloudfunctions2_function below (Audit Log events have path pattern support)
  *         var audit_log_bucket = new Bucket(&#34;audit-log-bucket&#34;, BucketArgs.builder()        
  *             .name(&#34;gcf-auditlog-bucket&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
+ *         // Permissions on the service account used by the function and Eventarc trigger
  *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)

@@ -113,6 +113,7 @@ public final class MonitoringFunctions {
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
+     *         // Monitors the default AppEngine service
      *         final var srv = MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
      *             .moduleId(myapp.service())
      *             .build());
@@ -208,6 +209,7 @@ public final class MonitoringFunctions {
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
+     *         // Monitors the default AppEngine service
      *         final var srv = MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
      *             .moduleId(myapp.service())
      *             .build());
@@ -303,6 +305,7 @@ public final class MonitoringFunctions {
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
+     *         // Monitors the default AppEngine service
      *         final var srv = MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
      *             .moduleId(myapp.service())
      *             .build());
@@ -398,6 +401,7 @@ public final class MonitoringFunctions {
      *             .deleteServiceOnDestroy(false)
      *             .build());
      * 
+     *         // Monitors the default AppEngine service
      *         final var srv = MonitoringFunctions.getAppEngineService(GetAppEngineServiceArgs.builder()
      *             .moduleId(myapp.service())
      *             .build());
@@ -452,6 +456,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .location(&#34;us-west2-a&#34;)
      *             .clusterName(&#34;west&#34;)
@@ -509,6 +514,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .location(&#34;us-west2-a&#34;)
      *             .clusterName(&#34;west&#34;)
@@ -566,6 +572,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .location(&#34;us-west2-a&#34;)
      *             .clusterName(&#34;west&#34;)
@@ -623,6 +630,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default ClusterIstio service
      *         final var default = MonitoringFunctions.getClusterIstioService(GetClusterIstioServiceArgs.builder()
      *             .location(&#34;us-west2-a&#34;)
      *             .clusterName(&#34;west&#34;)
@@ -680,6 +688,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
@@ -736,6 +745,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
@@ -792,6 +802,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
@@ -848,6 +859,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getIstioCanonicalService(GetIstioCanonicalServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .canonicalServiceNamespace(&#34;istio-system&#34;)
@@ -904,6 +916,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
@@ -960,6 +973,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
@@ -1016,6 +1030,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)
@@ -1072,6 +1087,7 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Monitors the default MeshIstio service
      *         final var default = MonitoringFunctions.getMeshIstioService(GetMeshIstioServiceArgs.builder()
      *             .meshUid(&#34;proj-573164786102&#34;)
      *             .serviceNamespace(&#34;istio-system&#34;)

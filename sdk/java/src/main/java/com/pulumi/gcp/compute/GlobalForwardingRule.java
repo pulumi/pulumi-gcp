@@ -86,11 +86,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // External SSL proxy load balancer with managed instance group backend
+ *         // VPC
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -98,10 +101,12 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
+ *         // reserved IP address
  *         var defaultGlobalAddress = new GlobalAddress(&#34;defaultGlobalAddress&#34;, GlobalAddressArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-ip&#34;)
  *             .build());
  * 
+ *         // Self-signed regional SSL certificate for testing
  *         var defaultPrivateKey = new PrivateKey(&#34;defaultPrivateKey&#34;, PrivateKeyArgs.builder()        
  *             .algorithm(&#34;RSA&#34;)
  *             .rsaBits(2048)
@@ -138,6 +143,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // instance template
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -175,6 +181,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // MIG
  *         var defaultInstanceGroupManager = new InstanceGroupManager(&#34;defaultInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-mig1&#34;)
  *             .zone(&#34;us-central1-c&#34;)
@@ -190,6 +197,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // backend service
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-backend-service&#34;)
  *             .protocol(&#34;SSL&#34;)
@@ -211,6 +219,7 @@ import javax.annotation.Nullable;
  *             .sslCertificates(defaultSSLCertificate.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-forwarding-rule&#34;)
  *             .ipProtocol(&#34;TCP&#34;)
@@ -220,6 +229,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(defaultGlobalAddress.id())
  *             .build());
  * 
+ *         // allow access from health check ranges
  *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
  *             .name(&#34;ssl-proxy-xlb-fw-allow-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -286,11 +296,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // External TCP proxy load balancer with managed instance group backend
+ *         // VPC
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -298,6 +311,7 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
+ *         // reserved IP address
  *         var defaultGlobalAddress = new GlobalAddress(&#34;defaultGlobalAddress&#34;, GlobalAddressArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-ip&#34;)
  *             .build());
@@ -311,6 +325,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // instance template
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -344,6 +359,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // MIG
  *         var defaultInstanceGroupManager = new InstanceGroupManager(&#34;defaultInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-mig1&#34;)
  *             .zone(&#34;us-central1-c&#34;)
@@ -359,6 +375,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // backend service
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-backend-service&#34;)
  *             .protocol(&#34;TCP&#34;)
@@ -379,6 +396,7 @@ import javax.annotation.Nullable;
  *             .backendService(defaultBackendService.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-forwarding-rule&#34;)
  *             .ipProtocol(&#34;TCP&#34;)
@@ -388,6 +406,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(defaultGlobalAddress.id())
  *             .build());
  * 
+ *         // allow access from health check ranges
  *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
  *             .name(&#34;tcp-proxy-xlb-fw-allow-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -456,11 +475,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // External HTTP load balancer with a CDN-enabled managed instance group backend
+ *         // and custom request and response headers
+ *         // VPC
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-xlb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-xlb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -468,10 +491,12 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
+ *         // reserved IP address
  *         var defaultGlobalAddress = new GlobalAddress(&#34;defaultGlobalAddress&#34;, GlobalAddressArgs.builder()        
  *             .name(&#34;l7-xlb-static-ip&#34;)
  *             .build());
  * 
+ *         // health check
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
  *             .name(&#34;l7-xlb-hc&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
@@ -479,6 +504,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // instance template
  *         var defaultInstanceTemplate = new InstanceTemplate(&#34;defaultInstanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -515,6 +541,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // MIG
  *         var defaultInstanceGroupManager = new InstanceGroupManager(&#34;defaultInstanceGroupManager&#34;, InstanceGroupManagerArgs.builder()        
  *             .name(&#34;l7-xlb-mig1&#34;)
  *             .zone(&#34;us-central1-c&#34;)
@@ -530,6 +557,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // backend service with custom request and response headers
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
  *             .name(&#34;l7-xlb-backend-service&#34;)
  *             .protocol(&#34;HTTP&#34;)
@@ -547,16 +575,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // url map
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
  *             .name(&#34;l7-xlb-url-map&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .build());
  * 
+ *         // http proxy
  *         var defaultTargetHttpProxy = new TargetHttpProxy(&#34;defaultTargetHttpProxy&#34;, TargetHttpProxyArgs.builder()        
  *             .name(&#34;l7-xlb-target-http-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
  *             .name(&#34;l7-xlb-forwarding-rule&#34;)
  *             .ipProtocol(&#34;TCP&#34;)
@@ -566,6 +597,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(defaultGlobalAddress.id())
  *             .build());
  * 
+ *         // allow access from health check ranges
  *         var defaultFirewall = new Firewall(&#34;defaultFirewall&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-xlb-fw-allow-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -946,6 +978,7 @@ import javax.annotation.Nullable;
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
+ *         // Zonal NEG with GCE_VM_IP_PORT
  *         var defaultNetworkEndpointGroup = new NetworkEndpointGroup(&#34;defaultNetworkEndpointGroup&#34;, NetworkEndpointGroupArgs.builder()        
  *             .name(&#34;default-neg&#34;)
  *             .network(default_.id())
@@ -954,6 +987,7 @@ import javax.annotation.Nullable;
  *             .networkEndpointType(&#34;GCE_VM_IP_PORT&#34;)
  *             .build());
  * 
+ *         // Zonal NEG with GCE_VM_IP
  *         var internalNetworkEndpointGroup = new NetworkEndpointGroup(&#34;internalNetworkEndpointGroup&#34;, NetworkEndpointGroupArgs.builder()        
  *             .name(&#34;internal-neg&#34;)
  *             .network(internal.id())
@@ -962,6 +996,7 @@ import javax.annotation.Nullable;
  *             .networkEndpointType(&#34;GCE_VM_IP&#34;)
  *             .build());
  * 
+ *         // Hybrid connectivity NEG
  *         var hybrid = new NetworkEndpointGroup(&#34;hybrid&#34;, NetworkEndpointGroupArgs.builder()        
  *             .name(&#34;hybrid-neg&#34;)
  *             .network(default_.id())
@@ -985,6 +1020,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Backend service for Zonal NEG
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
  *             .name(&#34;backend-default&#34;)
  *             .portName(&#34;http&#34;)
@@ -998,6 +1034,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
+ *         // Backgend service for Hybrid NEG
  *         var hybridBackendService = new BackendService(&#34;hybridBackendService&#34;, BackendServiceArgs.builder()        
  *             .name(&#34;backend-hybrid&#34;)
  *             .portName(&#34;http&#34;)
@@ -1103,11 +1140,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Global Internal HTTP load balancer with a managed instance group backend
+ *         // VPC network
  *         var gilbNetwork = new Network(&#34;gilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-gilb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // proxy-only subnet
  *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-gilb-proxy-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
@@ -1117,6 +1157,7 @@ import javax.annotation.Nullable;
  *             .network(gilbNetwork.id())
  *             .build());
  * 
+ *         // backend subnet
  *         var gilbSubnet = new Subnetwork(&#34;gilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-gilb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -1124,6 +1165,7 @@ import javax.annotation.Nullable;
  *             .network(gilbNetwork.id())
  *             .build());
  * 
+ *         // health check
  *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
  *             .name(&#34;l7-gilb-hc&#34;)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
@@ -1131,6 +1173,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // instance template
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -1167,6 +1210,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // MIG
  *         var mig = new InstanceGroupManager(&#34;mig&#34;, InstanceGroupManagerArgs.builder()        
  *             .name(&#34;l7-gilb-mig1&#34;)
  *             .zone(&#34;europe-west1-b&#34;)
@@ -1178,6 +1222,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // backend service
  *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
  *             .name(&#34;l7-gilb-backend-subnet&#34;)
  *             .protocol(&#34;HTTP&#34;)
@@ -1191,16 +1236,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // URL map
  *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
  *             .name(&#34;l7-gilb-url-map&#34;)
  *             .defaultService(defaultBackendService.id())
  *             .build());
  * 
+ *         // HTTP target proxy
  *         var default_ = new TargetHttpProxy(&#34;default&#34;, TargetHttpProxyArgs.builder()        
  *             .name(&#34;l7-gilb-target-http-proxy&#34;)
  *             .urlMap(defaultURLMap.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var googleComputeForwardingRule = new GlobalForwardingRule(&#34;googleComputeForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
  *             .name(&#34;l7-gilb-forwarding-rule&#34;)
  *             .ipProtocol(&#34;TCP&#34;)
@@ -1211,6 +1259,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(gilbSubnet.id())
  *             .build());
  * 
+ *         // allow all access from IAP and health check ranges
  *         var fw_iap = new Firewall(&#34;fw-iap&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-gilb-fw-allow-iap-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -1224,6 +1273,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // allow http from proxy subnet to backends
  *         var fw_gilb_to_backends = new Firewall(&#34;fw-gilb-to-backends&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-gilb-fw-allow-gilb-to-backends&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -1239,6 +1289,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // test instance
  *         var vm_test = new Instance(&#34;vm-test&#34;, InstanceArgs.builder()        
  *             .name(&#34;l7-gilb-test-vm&#34;)
  *             .zone(&#34;europe-west1-b&#34;)

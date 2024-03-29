@@ -84,11 +84,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Internal HTTP load balancer with a managed instance group backend
+ *         // VPC network
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-ilb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // proxy-only subnet
  *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-proxy-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
@@ -98,6 +101,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // backend subnet
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -105,6 +109,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // health check
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
  *             .name(&#34;l7-ilb-hc&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -113,6 +118,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // instance template
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -149,6 +155,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // MIG
  *         var mig = new RegionInstanceGroupManager(&#34;mig&#34;, RegionInstanceGroupManagerArgs.builder()        
  *             .name(&#34;l7-ilb-mig1&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -160,6 +167,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // backend service
  *         var defaultRegionBackendService = new RegionBackendService(&#34;defaultRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
  *             .name(&#34;l7-ilb-backend-subnet&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -174,18 +182,21 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // URL map
  *         var defaultRegionUrlMap = new RegionUrlMap(&#34;defaultRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
  *             .name(&#34;l7-ilb-regional-url-map&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .defaultService(defaultRegionBackendService.id())
  *             .build());
  * 
+ *         // HTTP target proxy
  *         var default_ = new RegionTargetHttpProxy(&#34;default&#34;, RegionTargetHttpProxyArgs.builder()        
  *             .name(&#34;l7-ilb-target-http-proxy&#34;)
  *             .region(&#34;europe-west1&#34;)
  *             .urlMap(defaultRegionUrlMap.id())
  *             .build());
  * 
+ *         // forwarding rule
  *         var googleComputeForwardingRule = new ForwardingRule(&#34;googleComputeForwardingRule&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;l7-ilb-forwarding-rule&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -198,6 +209,7 @@ import javax.annotation.Nullable;
  *             .networkTier(&#34;PREMIUM&#34;)
  *             .build());
  * 
+ *         // allow all access from IAP and health check ranges
  *         var fw_iap = new Firewall(&#34;fw-iap&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-ilb-fw-allow-iap-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -211,6 +223,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // allow http from proxy subnet to backends
  *         var fw_ilb_to_backends = new Firewall(&#34;fw-ilb-to-backends&#34;, FirewallArgs.builder()        
  *             .name(&#34;l7-ilb-fw-allow-ilb-to-backends&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -226,6 +239,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // test instance
  *         var vm_test = new Instance(&#34;vm-test&#34;, InstanceArgs.builder()        
  *             .name(&#34;l7-ilb-test-vm&#34;)
  *             .zone(&#34;europe-west1-b&#34;)
@@ -294,11 +308,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Internal TCP/UDP load balancer with a managed instance group backend
+ *         // VPC
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l4-ilb-network&#34;)
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backed subnet
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l4-ilb-subnet&#34;)
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
@@ -306,6 +323,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // health check
  *         var defaultRegionHealthCheck = new RegionHealthCheck(&#34;defaultRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
  *             .name(&#34;l4-ilb-hc&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -314,6 +332,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // instance template
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -352,6 +371,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;))
  *             .build());
  * 
+ *         // MIG
  *         var mig = new RegionInstanceGroupManager(&#34;mig&#34;, RegionInstanceGroupManagerArgs.builder()        
  *             .name(&#34;l4-ilb-mig1&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -363,6 +383,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // backend service
  *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
  *             .name(&#34;l4-ilb-backend-subnet&#34;)
  *             .region(&#34;europe-west1&#34;)
@@ -375,6 +396,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // forwarding rule
  *         var googleComputeForwardingRule = new ForwardingRule(&#34;googleComputeForwardingRule&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;l4-ilb-forwarding-rule&#34;)
  *             .backendService(default_.id())
@@ -387,6 +409,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(ilbSubnet.id())
  *             .build());
  * 
+ *         // allow all access from health check ranges
  *         var fwHc = new Firewall(&#34;fwHc&#34;, FirewallArgs.builder()        
  *             .name(&#34;l4-ilb-fw-allow-hc&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -401,6 +424,7 @@ import javax.annotation.Nullable;
  *             .targetTags(&#34;allow-health-check&#34;)
  *             .build());
  * 
+ *         // allow communication within the subnet 
  *         var fwIlbToBackends = new Firewall(&#34;fwIlbToBackends&#34;, FirewallArgs.builder()        
  *             .name(&#34;l4-ilb-fw-allow-ilb-to-backends&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -418,6 +442,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
+ *         // allow SSH
  *         var fwIlbSsh = new Firewall(&#34;fwIlbSsh&#34;, FirewallArgs.builder()        
  *             .name(&#34;l4-ilb-fw-ssh&#34;)
  *             .direction(&#34;INGRESS&#34;)
@@ -430,6 +455,7 @@ import javax.annotation.Nullable;
  *             .sourceRanges(&#34;0.0.0.0/0&#34;)
  *             .build());
  * 
+ *         // test instance
  *         var vmTest = new Instance(&#34;vmTest&#34;, InstanceArgs.builder()        
  *             .name(&#34;l4-ilb-test-vm&#34;)
  *             .zone(&#34;europe-west1-b&#34;)
@@ -495,6 +521,7 @@ import javax.annotation.Nullable;
  *             .healthChecks(hc.id())
  *             .build());
  * 
+ *         // Forwarding rule for External Network Load Balancing using Backend Services
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -566,6 +593,7 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .build());
  * 
+ *         // Forwarding rule for Internal Load Balancing
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -737,6 +765,7 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .build());
  * 
+ *         // Forwarding rule for Internal Load Balancing
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -882,6 +911,7 @@ import javax.annotation.Nullable;
  *             .urlMap(defaultRegionUrlMap.id())
  *             .build());
  * 
+ *         // Forwarding rule for Internal Load Balancing
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -1108,6 +1138,7 @@ import javax.annotation.Nullable;
  *             .networkTier(&#34;STANDARD&#34;)
  *             .build());
  * 
+ *         // Forwarding rule for Regional External Load Balancing
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;website-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -1233,6 +1264,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Consumer service endpoint
  *         var consumerNet = new Network(&#34;consumerNet&#34;, NetworkArgs.builder()        
  *             .name(&#34;consumer-net&#34;)
  *             .autoCreateSubnetworks(false)
@@ -1252,6 +1284,7 @@ import javax.annotation.Nullable;
  *             .addressType(&#34;INTERNAL&#34;)
  *             .build());
  * 
+ *         // Producer service attachment
  *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
  *             .name(&#34;producer-net&#34;)
  *             .autoCreateSubnetworks(false)
@@ -1307,6 +1340,7 @@ import javax.annotation.Nullable;
  *             .targetService(producerTargetService.id())
  *             .build());
  * 
+ *         // Forwarding rule for VPC private service connect
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;psc-endpoint&#34;)
  *             .region(&#34;us-central1&#34;)
@@ -1572,6 +1606,7 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .build());
  * 
+ *         // Forwarding rule for Internal Load Balancing
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .name(&#34;ilb-ipv6-forwarding-rule&#34;)
  *             .region(&#34;us-central1&#34;)

@@ -71,10 +71,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a network or use datasource to reference existing network
  *         var peeringNetwork = new Network(&#34;peeringNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;test-network&#34;)
  *             .build());
  * 
+ *         // Reserve a CIDR for NetApp Volumes to use
+ *         // When using shared-VPCs, this resource needs to be created in host project
  *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
  *             .name(&#34;test-address&#34;)
  *             .purpose(&#34;VPC_PEERING&#34;)
@@ -83,12 +86,16 @@ import javax.annotation.Nullable;
  *             .network(peeringNetwork.id())
  *             .build());
  * 
+ *         // Create a Private Service Access connection
+ *         // When using shared-VPCs, this resource needs to be created in host project
  *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
  *             .network(peeringNetwork.id())
  *             .service(&#34;netapp.servicenetworking.goog&#34;)
  *             .reservedPeeringRanges(privateIpAlloc.name())
  *             .build());
  * 
+ *         // Modify the PSA Connection to allow import/export of custom routes
+ *         // When using shared-VPCs, this resource needs to be created in host project
  *         var routeUpdates = new NetworkPeeringRoutesConfig(&#34;routeUpdates&#34;, NetworkPeeringRoutesConfigArgs.builder()        
  *             .peering(default_.peering())
  *             .network(peeringNetwork.name())
@@ -96,6 +103,8 @@ import javax.annotation.Nullable;
  *             .exportCustomRoutes(true)
  *             .build());
  * 
+ *         // Create a storage pool
+ *         // Create this resource in the project which is expected to own the volumes
  *         var testPool = new StoragePool(&#34;testPool&#34;, StoragePoolArgs.builder()        
  *             .name(&#34;test-pool&#34;)
  *             .location(&#34;us-central1&#34;)

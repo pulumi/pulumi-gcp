@@ -5818,10 +5818,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
@@ -5866,10 +5868,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
@@ -5914,10 +5918,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
@@ -5962,10 +5968,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
@@ -6010,10 +6018,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
@@ -6058,10 +6068,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // by name
      *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .name(&#34;generic-tpl-20200107&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
@@ -7605,10 +7617,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name(&#34;my-snapshot&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .filter(&#34;name != my-snapshot&#34;)
      *             .mostRecent(true)
@@ -7654,10 +7668,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name(&#34;my-snapshot&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .filter(&#34;name != my-snapshot&#34;)
      *             .mostRecent(true)
@@ -7703,10 +7719,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name(&#34;my-snapshot&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .filter(&#34;name != my-snapshot&#34;)
      *             .mostRecent(true)
@@ -7752,10 +7770,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name(&#34;my-snapshot&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .filter(&#34;name != my-snapshot&#34;)
      *             .mostRecent(true)
@@ -7801,10 +7821,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name(&#34;my-snapshot&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .filter(&#34;name != my-snapshot&#34;)
      *             .mostRecent(true)
@@ -7850,10 +7872,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         //by name 
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name(&#34;my-snapshot&#34;)
      *             .build());
      * 
+     *         // using a filter
      *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .filter(&#34;name != my-snapshot&#34;)
      *             .mostRecent(true)

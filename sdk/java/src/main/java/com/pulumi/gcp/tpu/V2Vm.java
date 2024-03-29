@@ -173,6 +173,7 @@ import javax.annotation.Nullable;
  *             .tags(&#34;foo&#34;)
  *             .build());
  * 
+ *         // Wait after service account creation to limit eventual consistency errors.
  *         var wait60Seconds = new Sleep(&#34;wait60Seconds&#34;, SleepArgs.builder()        
  *             .createDuration(&#34;60s&#34;)
  *             .build());

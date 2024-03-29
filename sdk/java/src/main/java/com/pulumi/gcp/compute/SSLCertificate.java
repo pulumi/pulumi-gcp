@@ -107,6 +107,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
+ *         // You may also want to control name generation explicitly:
  *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
  *             .name(certificate.hex())
  *             .privateKey(StdFunctions.file(FileArgs.builder()
@@ -155,6 +156,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Using with Target HTTPS Proxies
+ *         //
+ *         // SSL certificates cannot be updated after creation. In order to apply
+ *         // the specified configuration, the provider will destroy the existing
+ *         // resource and create a replacement. Example:
  *         var default_ = new SSLCertificate(&#34;default&#34;, SSLCertificateArgs.builder()        
  *             .namePrefix(&#34;my-certificate-&#34;)
  *             .privateKey(StdFunctions.file(FileArgs.builder()

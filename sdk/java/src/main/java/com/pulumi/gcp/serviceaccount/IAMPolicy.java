@@ -211,6 +211,7 @@ import javax.annotation.Nullable;
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
+ *         // Allow SA service account use the default GCE account
  *         var gce_default_account_iam = new IAMMember(&#34;gce-default-account-iam&#34;, IAMMemberArgs.builder()        
  *             .serviceAccountId(default_.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)

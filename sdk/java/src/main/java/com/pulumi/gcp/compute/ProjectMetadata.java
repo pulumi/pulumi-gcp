@@ -86,6 +86,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         //A key set in project metadata is propagated to every instance in the project.
+ *         //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
+ *         //It is better to use OS Login instead.
  *         var mySshKey = new ProjectMetadata(&#34;mySshKey&#34;, ProjectMetadataArgs.builder()        
  *             .metadata(Map.of(&#34;ssh-keys&#34;, &#34;&#34;&#34;
  *       dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev

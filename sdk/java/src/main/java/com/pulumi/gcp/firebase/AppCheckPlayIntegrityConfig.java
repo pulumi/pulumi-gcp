@@ -61,6 +61,8 @@ import javax.annotation.Nullable;
  *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
  *             .build());
  * 
+ *         // It takes a while for App Check to recognize the new app
+ *         // If your app already exists, you don&#39;t have to wait 30 seconds.
  *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
  *             .createDuration(&#34;30s&#34;)
  *             .build());
@@ -110,6 +112,8 @@ import javax.annotation.Nullable;
  *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
  *             .build());
  * 
+ *         // It takes a while for App Check to recognize the new app
+ *         // If your app already exists, you don&#39;t have to wait 30 seconds.
  *         var wait30s = new Sleep(&#34;wait30s&#34;, SleepArgs.builder()        
  *             .createDuration(&#34;30s&#34;)
  *             .build());

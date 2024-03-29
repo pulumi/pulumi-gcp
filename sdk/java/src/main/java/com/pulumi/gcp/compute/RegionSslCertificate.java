@@ -108,6 +108,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
+ *         // You may also want to control name generation explicitly:
  *         var default_ = new RegionSslCertificate(&#34;default&#34;, RegionSslCertificateArgs.builder()        
  *             .region(&#34;us-central1&#34;)
  *             .name(certificate.hex())
@@ -158,6 +159,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Using with Region Target HTTPS Proxies
+ *         //
+ *         // SSL certificates cannot be updated after creation. In order to apply
+ *         // the specified configuration, the provider will destroy the existing
+ *         // resource and create a replacement. To effectively use an SSL
+ *         // certificate resource with a Target HTTPS Proxy resource, it&#39;s
+ *         // recommended to specify create_before_destroy in a lifecycle block.
+ *         // Either omit the Instance Template name attribute, specify a partial
+ *         // name with name_prefix, or use random_id resource. Example:
  *         var default_ = new RegionSslCertificate(&#34;default&#34;, RegionSslCertificateArgs.builder()        
  *             .region(&#34;us-central1&#34;)
  *             .namePrefix(&#34;my-certificate-&#34;)
