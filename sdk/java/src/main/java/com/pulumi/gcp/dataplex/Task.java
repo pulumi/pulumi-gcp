@@ -138,6 +138,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // VPC network
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .name(&#34;tf-test-workstation-cluster_22811&#34;)
  *             .autoCreateSubnetworks(true)
@@ -232,6 +233,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // VPC network
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .name(&#34;tf-test-workstation-cluster_89605&#34;)
  *             .autoCreateSubnetworks(true)

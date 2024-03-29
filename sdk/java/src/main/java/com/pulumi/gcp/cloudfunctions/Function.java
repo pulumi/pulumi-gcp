@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  *             .entryPoint(&#34;helloGET&#34;)
  *             .build());
  * 
+ *         // IAM entry for all users to invoke the function
  *         var invoker = new FunctionIamMember(&#34;invoker&#34;, FunctionIamMemberArgs.builder()        
  *             .project(function.project())
  *             .region(function.region())
@@ -161,6 +162,7 @@ import javax.annotation.Nullable;
  *             .environmentVariables(Map.of(&#34;MY_ENV_VAR&#34;, &#34;my-env-var-value&#34;))
  *             .build());
  * 
+ *         // IAM entry for a single user to invoke the function
  *         var invoker = new FunctionIamMember(&#34;invoker&#34;, FunctionIamMemberArgs.builder()        
  *             .project(function.project())
  *             .region(function.region())

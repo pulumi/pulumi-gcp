@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;My Service Account&#34;)
  *             .build());
  * 
+ *         // note this requires the terraform to be run regularly
  *         var mykeyRotation = new Rotating(&#34;mykeyRotation&#34;, RotatingArgs.builder()        
  *             .rotationDays(30)
  *             .build());
@@ -138,6 +139,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
+ *         // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
  *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
  *             .accountId(&#34;myaccount&#34;)
  *             .displayName(&#34;My Service Account&#34;)

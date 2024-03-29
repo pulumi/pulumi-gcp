@@ -54,10 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new service account
  *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
  *             .accountId(&#34;my-svc-acc&#34;)
  *             .build());
  * 
+ *         //Create the HMAC key for the associated service account
  *         var key = new HmacKey(&#34;key&#34;, HmacKeyArgs.builder()        
  *             .serviceAccountEmail(serviceAccount.email())
  *             .build());

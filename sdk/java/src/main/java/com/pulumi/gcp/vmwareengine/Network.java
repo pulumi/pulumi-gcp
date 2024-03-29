@@ -90,6 +90,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // there can be only 1 Legacy network per region for a given project,
+ *         // so creating new project for isolation in CI.
  *         var acceptanceProject = new Project(&#34;acceptanceProject&#34;, ProjectArgs.builder()        
  *             .name(&#34;vmw-proj&#34;)
  *             .projectId(&#34;vmw-proj&#34;)

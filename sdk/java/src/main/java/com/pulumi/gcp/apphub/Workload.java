@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
  * 
+ *         // Enable Compute API
  *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
  *             .service(&#34;compute.googleapis.com&#34;)
@@ -99,12 +100,14 @@ import javax.annotation.Nullable;
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
+ *         // VPC network
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-ilb-network&#34;)
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-subnet&#34;)
  *             .project(serviceProject.projectId())
@@ -113,6 +116,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // instance template
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -159,6 +163,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // Discovered workload
  *         final var catalog-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
  *             .location(&#34;us-central1&#34;)
  *             .workloadUri(StdFunctions.replace().applyValue(invoke -&gt; invoke.result()))
@@ -245,6 +250,7 @@ import javax.annotation.Nullable;
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
  * 
+ *         // Enable Compute API
  *         var computeServiceProject = new Service(&#34;computeServiceProject&#34;, ServiceArgs.builder()        
  *             .project(serviceProject.projectId())
  *             .service(&#34;compute.googleapis.com&#34;)
@@ -258,12 +264,14 @@ import javax.annotation.Nullable;
  *             .serviceProjectAttachmentId(serviceProject.projectId())
  *             .build());
  * 
+ *         // VPC network
  *         var ilbNetwork = new Network(&#34;ilbNetwork&#34;, NetworkArgs.builder()        
  *             .name(&#34;l7-ilb-network&#34;)
  *             .project(serviceProject.projectId())
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
+ *         // backend subnet
  *         var ilbSubnet = new Subnetwork(&#34;ilbSubnet&#34;, SubnetworkArgs.builder()        
  *             .name(&#34;l7-ilb-subnet&#34;)
  *             .project(serviceProject.projectId())
@@ -272,6 +280,7 @@ import javax.annotation.Nullable;
  *             .network(ilbNetwork.id())
  *             .build());
  * 
+ *         // instance template
  *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .accessConfigs()
@@ -318,6 +327,7 @@ import javax.annotation.Nullable;
  *             .targetSize(2)
  *             .build());
  * 
+ *         // Discovered workload 
  *         final var catalog-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
  *             .location(&#34;us-central1&#34;)
  *             .workloadUri(StdFunctions.replace().applyValue(invoke -&gt; invoke.result()))

@@ -59,11 +59,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // The topic where the resource change notifications will be sent.
  *         var feedOutput = new Topic(&#34;feedOutput&#34;, TopicArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .name(&#34;network-updates&#34;)
  *             .build());
  * 
+ *         // Create a feed that sends notifications about network resource updates.
  *         var projectFeed = new ProjectFeed(&#34;projectFeed&#34;, ProjectFeedArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .feedId(&#34;network-updates&#34;)
@@ -86,6 +88,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Find the project number of the project whose identity will be used for sending
+ *         // the asset change notifications.
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .projectId(&#34;my-project-name&#34;)
  *             .build());

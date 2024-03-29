@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  *             .entryPoint(&#34;helloGET&#34;)
  *             .build());
  * 
+ *         // Cloud Functions Example
  *         var functionNeg = new RegionNetworkEndpointGroup(&#34;functionNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
  *             .name(&#34;function-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
@@ -144,6 +145,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Cloud Run Example
  *         var cloudrunNeg = new RegionNetworkEndpointGroup(&#34;cloudrunNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
  *             .name(&#34;cloudrun-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
@@ -251,6 +253,7 @@ import javax.annotation.Nullable;
  *             .deleteServiceOnDestroy(true)
  *             .build());
  * 
+ *         // App Engine Example
  *         var appengineNeg = new RegionNetworkEndpointGroup(&#34;appengineNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
  *             .name(&#34;appengine-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
@@ -290,6 +293,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // App Engine Example
  *         var appengineNeg = new RegionNetworkEndpointGroup(&#34;appengineNeg&#34;, RegionNetworkEndpointGroupArgs.builder()        
  *             .name(&#34;appengine-neg&#34;)
  *             .networkEndpointType(&#34;SERVERLESS&#34;)
