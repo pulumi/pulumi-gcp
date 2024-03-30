@@ -58,6 +58,12 @@ jobs:
         cache-dependency-path: |
             sdk/go.sum
         go-version: 1.21.x
+    - name: Cache examples generation
+      uses: actions/cache@v4
+      with:
+        path: |
+          .pulumi/examples-cache
+        key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
@@ -213,6 +219,12 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+    - name: Cache examples generation
+      uses: actions/cache@v4
+      with:
+        path: |
+          .pulumi/examples-cache
+        key: ${{ runner.os }}-${{ hashFiles('provider/go.sum') }}
     - name: Checkout Scripts Repo
       uses: actions/checkout@v4
       with:
