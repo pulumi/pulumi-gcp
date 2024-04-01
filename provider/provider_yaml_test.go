@@ -28,6 +28,8 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/optnewstack"
+	"github.com/pulumi/providertest/pulumitest/optrun"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
 )
@@ -112,6 +114,33 @@ func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testProviderUpgrade(t, "test-programs/topic-iam-binding", "7.0.0")
+}
+
+func TestConnectionProfile(t *testing.T) {
+	// This is not quite an upgrade test since it actually runs Up on both versions.
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	baselineVersion := "6.67.0"
+	test := pulumitest.NewPulumiTest(t, "test-programs/connection-profile",
+		opttest.DownloadProviderVersion(providerName, baselineVersion),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.DownloadProviderVersion("random", "4.16.0"),
+	)
+
+	test.CopyToTempDir(opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+	test.Run(
+		func(test *pulumitest.PulumiTest) {
+			test.T().Helper()
+			test.Up()
+		},
+		optrun.WithOpts(
+			opttest.NewStackOptions(optnewstack.EnableAutoDestroy()),
+			opttest.DownloadProviderVersion(providerName, baselineVersion)),
+	)
+	test.Up()
 }
 
 func TestWrongRegionWarning(t *testing.T) {
