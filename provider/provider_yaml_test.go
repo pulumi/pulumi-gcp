@@ -851,3 +851,163 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 	}
 	]`, proj, proj))
 }
+
+func TestConnProfileUpgradeDiff(t *testing.T) {
+	proj := getProject()
+
+	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
+		{
+			"method": "/pulumirpc.ResourceProvider/Configure",
+			"request": {
+				"variables": {
+				"gcp:config:project": %q
+				},
+				"args": {
+				"project": %q,
+				"version": "7.4.0"
+				},
+				"acceptSecrets": true,
+				"acceptResources": true,
+				"sendsOldInputs": true,
+				"sendsOldInputsToDelete": true
+			},
+			"response": {
+				"supportsPreview": true
+			}
+		},
+		{
+			"method": "/pulumirpc.ResourceProvider/Diff",
+			"request": {
+				"id": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp-FZz3PEgE6Hx3iUgi",
+				"urn": "urn:pulumi:dev::connection-profile::gcp:datastream/connectionProfile:ConnectionProfile::dbReplicationConnectionProfile",
+				"olds": {
+					"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+					"bigqueryProfile": null,
+					"connectionProfileId": "db_bigquery-replication-cp-FZz3PEgE6Hx3iUgi",
+					"displayName": "db_bigquery-replication-cp",
+					"forwardSshConnectivity": null,
+					"gcsProfile": null,
+					"id": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp-FZz3PEgE6Hx3iUgi",
+					"labels": {},
+					"location": "us-central1",
+					"mysqlProfile": null,
+					"name": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp-FZz3PEgE6Hx3iUgi",
+					"oracleProfile": null,
+					"postgresqlProfile": null,
+					"privateConnectivity": null,
+					"project": "pulumi-development"
+				},
+				"news": {
+					"__defaults": [],
+					"bigqueryProfile": {
+						"__defaults": []
+					},
+					"connectionProfileId": "db_bigquery-replication-cp-FZz3PEgE6Hx3iUgi",
+					"displayName": "db_bigquery-replication-cp",
+					"location": "us-central1"
+				},
+				"oldInputs": {
+					"__defaults": [],
+					"bigqueryProfile": {
+						"__defaults": []
+					},
+					"connectionProfileId": "db_bigquery-replication-cp-FZz3PEgE6Hx3iUgi",
+					"displayName": "db_bigquery-replication-cp",
+					"location": "us-central1"
+				}
+			},
+			"response": {
+				"stables": [
+					"connectionProfileId",
+					"location",
+					"project"
+				],
+				"changes": "DIFF_NONE",
+				"hasDetailedDiff": true
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
+		}
+	]`, proj, proj))
+}
+
+
+func TestConnProfileUpgradeIssue(t *testing.T) {
+	proj := getProject()
+
+	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
+		{
+			"method": "/pulumirpc.ResourceProvider/Configure",
+			"request": {
+				"variables": {
+				"gcp:config:project": %q
+				},
+				"args": {
+				"project": %q,
+				"version": "7.4.0"
+				},
+				"acceptSecrets": true,
+				"acceptResources": true,
+				"sendsOldInputs": true,
+				"sendsOldInputsToDelete": true
+			},
+			"response": {
+				"supportsPreview": true
+			}
+		},
+		{
+			"method": "/pulumirpc.ResourceProvider/Update",
+			"request": {
+				"id": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp",
+				"urn": "urn:pulumi:dev::gcp_conn_profile::gcp:datastream/connectionProfile:ConnectionProfile::db-replication-connection-profile",
+				"olds": {
+					"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+					"bigqueryProfile": null,
+					"connectionProfileId": "db_bigquery-replication-cp",
+					"displayName": "$db_bigquery-replication-cp",
+					"forwardSshConnectivity": null,
+					"gcsProfile": null,
+					"id": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp",
+					"labels": {},
+					"location": "us-central1",
+					"mysqlProfile": null,
+					"name": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp",
+					"oracleProfile": null,
+					"postgresqlProfile": null,
+					"privateConnectivity": null,
+					"project": "pulumi-development",
+					"pulumiLabels": {}
+				},
+				"news": {
+					"__defaults": [],
+					"bigqueryProfile": {
+						"__defaults": []
+					},
+					"connectionProfileId": "db_bigquery-replication-cp",
+					"displayName": "$db_bigquery-replication-cp",
+					"location": "us-central1"
+				},
+				"oldInputs": {
+					"__defaults": [],
+					"bigqueryProfile": {
+						"__defaults": []
+					},
+					"connectionProfileId": "db_bigquery-replication-cp",
+					"displayName": "$db_bigquery-replication-cp",
+					"location": "us-central1"
+				}
+			},
+			"response": {
+				"*": "*"
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
+		}
+	]`, proj, proj))
+}
