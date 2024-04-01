@@ -28,8 +28,6 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest/pulumitest"
-	"github.com/pulumi/providertest/pulumitest/optnewstack"
-	"github.com/pulumi/providertest/pulumitest/optrun"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
 )
@@ -117,29 +115,18 @@ func TestTopicIamBinding(t *testing.T) {
 }
 
 func TestConnectionProfile(t *testing.T) {
-	// This is not quite an upgrade test since it actually runs Up on both versions.
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
-	baselineVersion := "6.67.0"
 	test := pulumitest.NewPulumiTest(t, "test-programs/connection-profile",
-		opttest.DownloadProviderVersion(providerName, baselineVersion),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 		opttest.DownloadProviderVersion("random", "4.16.0"),
 	)
 
-	test.CopyToTempDir(opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
-	test.Run(
-		func(test *pulumitest.PulumiTest) {
-			test.T().Helper()
-			test.Up()
-		},
-		optrun.WithOpts(
-			opttest.NewStackOptions(optnewstack.EnableAutoDestroy()),
-			opttest.DownloadProviderVersion(providerName, baselineVersion)),
-	)
+	test.Up()
+	// We always produce a diff and updating fails after.
 	test.Up()
 }
 
@@ -852,7 +839,8 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 	]`, proj, proj))
 }
 
-func TestConnProfileUpgradeDiff(t *testing.T) {
+//nolint:lll
+func TestConnProfileUpgradePermaDiff(t *testing.T) {
 	proj := getProject()
 
 	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
@@ -924,84 +912,6 @@ func TestConnProfileUpgradeDiff(t *testing.T) {
 				],
 				"changes": "DIFF_NONE",
 				"hasDetailedDiff": true
-			},
-			"metadata": {
-				"kind": "resource",
-				"mode": "client",
-				"name": "gcp"
-			}
-		}
-	]`, proj, proj))
-}
-
-
-func TestConnProfileUpgradeIssue(t *testing.T) {
-	proj := getProject()
-
-	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
-		{
-			"method": "/pulumirpc.ResourceProvider/Configure",
-			"request": {
-				"variables": {
-				"gcp:config:project": %q
-				},
-				"args": {
-				"project": %q,
-				"version": "7.4.0"
-				},
-				"acceptSecrets": true,
-				"acceptResources": true,
-				"sendsOldInputs": true,
-				"sendsOldInputsToDelete": true
-			},
-			"response": {
-				"supportsPreview": true
-			}
-		},
-		{
-			"method": "/pulumirpc.ResourceProvider/Update",
-			"request": {
-				"id": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp",
-				"urn": "urn:pulumi:dev::gcp_conn_profile::gcp:datastream/connectionProfile:ConnectionProfile::db-replication-connection-profile",
-				"olds": {
-					"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
-					"bigqueryProfile": null,
-					"connectionProfileId": "db_bigquery-replication-cp",
-					"displayName": "$db_bigquery-replication-cp",
-					"forwardSshConnectivity": null,
-					"gcsProfile": null,
-					"id": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp",
-					"labels": {},
-					"location": "us-central1",
-					"mysqlProfile": null,
-					"name": "projects/pulumi-development/locations/us-central1/connectionProfiles/db_bigquery-replication-cp",
-					"oracleProfile": null,
-					"postgresqlProfile": null,
-					"privateConnectivity": null,
-					"project": "pulumi-development",
-					"pulumiLabels": {}
-				},
-				"news": {
-					"__defaults": [],
-					"bigqueryProfile": {
-						"__defaults": []
-					},
-					"connectionProfileId": "db_bigquery-replication-cp",
-					"displayName": "$db_bigquery-replication-cp",
-					"location": "us-central1"
-				},
-				"oldInputs": {
-					"__defaults": [],
-					"bigqueryProfile": {
-						"__defaults": []
-					},
-					"connectionProfileId": "db_bigquery-replication-cp",
-					"displayName": "$db_bigquery-replication-cp",
-					"location": "us-central1"
-				}
-			},
-			"response": {
-				"*": "*"
 			},
 			"metadata": {
 				"kind": "resource",

@@ -1,10 +1,6 @@
 name: connection-profile
 runtime: yaml
 resources:
-  gcpProv:
-   type: pulumi:providers:gcp
-   options:
-     version: 7.16.0
   randomName:
     type: random:RandomString
     properties:
