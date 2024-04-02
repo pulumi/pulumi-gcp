@@ -72,7 +72,10 @@ func testProviderUpgrade(t *testing.T, dir string, opts ...func(*UpgradeTestOpts
 	testProviderUpgradeWithConfig(t, dir, options.baselineVersion, options.config, options.assertFunc)
 }
 
-func testProviderUpgradeWithConfig(t *testing.T, dir, baselineVersion string, config map[string]string, assertFunction func(*testing.T, auto.PreviewResult)) {
+func testProviderUpgradeWithConfig(
+	t *testing.T, dir, baselineVersion string, config map[string]string,
+	assertFunction func(*testing.T, auto.PreviewResult),
+) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
@@ -94,7 +97,7 @@ func testProviderUpgradeWithConfig(t *testing.T, dir, baselineVersion string, co
 	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
 	if assertFunction != nil {
 		assertFunction(t, result)
-    } else {
+	} else {
 		assertpreview.HasNoReplacements(t, result)
 	}
 }
