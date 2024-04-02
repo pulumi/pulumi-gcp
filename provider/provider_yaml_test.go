@@ -841,6 +841,9 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 
 //nolint:lll
 func TestConnProfileUpgradePermaDiff(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	proj := getProject()
 
 	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
