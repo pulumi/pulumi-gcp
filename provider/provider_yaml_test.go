@@ -28,6 +28,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
 )
@@ -112,6 +113,10 @@ func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testProviderUpgrade(t, "test-programs/topic-iam-binding", WithBaselineVersion("7.0.0"))
+}
+
+func TestConnectionProfileUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges))
 }
 
 func TestConnectionProfile(t *testing.T) {
