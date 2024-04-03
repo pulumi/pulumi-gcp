@@ -3888,7 +3888,10 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/express":    "^4.16.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
+				"@types/node": "^18.0.0", // so we can access strongly typed node definitions.
+			},
+			Resolutions: map[string]string{
+				"@types/mime": "3.0.4",
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				DestFiles: []string{
