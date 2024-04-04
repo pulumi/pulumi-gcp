@@ -3367,10 +3367,10 @@ type GetBackendServiceBackend struct {
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
 	//
-	// Default value is 1, which means the group will serve up to 100%!
-	// (MISSING)of its configured capacity (depending on balancingMode). A
+	// Default value is 1, which means the group will serve up to 100%
+	// of its configured capacity (depending on balancingMode). A
 	// setting of 0 means the group is completely drained, offering
-	// 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+	// 0% of its available Capacity. Valid range is [0.0,1.0].
 	CapacityScaler float64 `pulumi:"capacityScaler"`
 	// Textual description for the Backend Service.
 	Description string `pulumi:"description"`
@@ -3461,10 +3461,10 @@ type GetBackendServiceBackendArgs struct {
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
 	//
-	// Default value is 1, which means the group will serve up to 100%!
-	// (MISSING)of its configured capacity (depending on balancingMode). A
+	// Default value is 1, which means the group will serve up to 100%
+	// of its configured capacity (depending on balancingMode). A
 	// setting of 0 means the group is completely drained, offering
-	// 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+	// 0% of its available Capacity. Valid range is [0.0,1.0].
 	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
 	// Textual description for the Backend Service.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -3597,10 +3597,10 @@ func (o GetBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
 // A multiplier applied to the group's maximum servicing capacity
 // (based on UTILIZATION, RATE or CONNECTION).
 //
-// Default value is 1, which means the group will serve up to 100%!
-// (MISSING)of its configured capacity (depending on balancingMode). A
+// Default value is 1, which means the group will serve up to 100%
+// of its configured capacity (depending on balancingMode). A
 // setting of 0 means the group is completely drained, offering
-// 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+// 0% of its available Capacity. Valid range is [0.0,1.0].
 func (o GetBackendServiceBackendOutput) CapacityScaler() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceBackend) float64 { return v.CapacityScaler }).(pulumi.Float64Output)
 }
@@ -5605,8 +5605,7 @@ type GetBackendServiceOutlierDetection struct {
 	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
 	Intervals []GetBackendServiceOutlierDetectionInterval `pulumi:"intervals"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
-	// that can be ejected. Defaults to 10%!
-	// (MISSING)
+	// that can be ejected. Defaults to 10%.
 	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
 	// The number of hosts in a cluster that must have enough request volume to detect
 	// success rate outliers. If the number of hosts is less than this setting, outlier
@@ -5668,8 +5667,7 @@ type GetBackendServiceOutlierDetectionArgs struct {
 	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
 	Intervals GetBackendServiceOutlierDetectionIntervalArrayInput `pulumi:"intervals"`
 	// Maximum percentage of hosts in the load balancing pool for the backend service
-	// that can be ejected. Defaults to 10%!
-	// (MISSING)
+	// that can be ejected. Defaults to 10%.
 	MaxEjectionPercent pulumi.IntInput `pulumi:"maxEjectionPercent"`
 	// The number of hosts in a cluster that must have enough request volume to detect
 	// success rate outliers. If the number of hosts is less than this setting, outlier
@@ -5795,8 +5793,7 @@ func (o GetBackendServiceOutlierDetectionOutput) Intervals() GetBackendServiceOu
 }
 
 // Maximum percentage of hosts in the load balancing pool for the backend service
-// that can be ejected. Defaults to 10%!
-// (MISSING)
+// that can be ejected. Defaults to 10%.
 func (o GetBackendServiceOutlierDetectionOutput) MaxEjectionPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
 }
@@ -10007,7 +10004,9 @@ type GetInstanceAttachedDisk struct {
 	DeviceName string `pulumi:"deviceName"`
 	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	DiskEncryptionKeyRaw string `pulumi:"diskEncryptionKeyRaw"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key]
+	// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
 	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
@@ -10034,7 +10033,9 @@ type GetInstanceAttachedDiskArgs struct {
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	DiskEncryptionKeyRaw pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key]
+	// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
 	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
@@ -10106,7 +10107,9 @@ func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutpu
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
 }
 
-// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// encoded SHA-256 hash of the [customer-supplied encryption key]
+// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
 }
@@ -10154,7 +10157,9 @@ type GetInstanceBootDisk struct {
 	DeviceName string `pulumi:"deviceName"`
 	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	DiskEncryptionKeyRaw string `pulumi:"diskEncryptionKeyRaw"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key]
+	// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
@@ -10186,7 +10191,9 @@ type GetInstanceBootDiskArgs struct {
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	DiskEncryptionKeyRaw pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+	// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+	// encoded SHA-256 hash of the [customer-supplied encryption key]
+	// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
@@ -10266,7 +10273,9 @@ func (o GetInstanceBootDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
 }
 
-// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+// encoded SHA-256 hash of the [customer-supplied encryption key]
+// (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
 func (o GetInstanceBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
 }
@@ -12484,7 +12493,7 @@ type GetInstanceNetworkInterface struct {
 	Network string `pulumi:"network"`
 	// Beta The URL of the network attachment to this interface.
 	NetworkAttachment string `pulumi:"networkAttachment"`
-	// The private IP address assigned to the instance.
+	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp string `pulumi:"networkIp"`
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 	NicType string `pulumi:"nicType"`
@@ -12531,7 +12540,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	Network pulumi.StringInput `pulumi:"network"`
 	// Beta The URL of the network attachment to this interface.
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
-	// The private IP address assigned to the instance.
+	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
 	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 	NicType pulumi.StringInput `pulumi:"nicType"`
@@ -12646,7 +12655,7 @@ func (o GetInstanceNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
 
-// The private IP address assigned to the instance.
+// The internal ip address of the instance, either manually or dynamically assigned.
 func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }

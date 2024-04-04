@@ -26,12 +26,13 @@ import java.util.Objects;
 @CustomType
 public final class GetEnvironmentConfig {
     /**
-     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * @return The URI of the Apache Airflow Web UI hosted within the
+     * environment.
      * 
      */
     private String airflowUri;
     /**
-     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * @return The Cloud Storage prefix of the DAGs for the environment.
      * 
      */
     private String dagGcsPrefix;
@@ -66,7 +67,7 @@ public final class GetEnvironmentConfig {
      */
     private String environmentSize;
     /**
-     * @return The Kubernetes Engine cluster used to run this environment.
+     * @return The Kubernetes Engine cluster used to run the environment.
      * 
      */
     private String gkeCluster;
@@ -128,14 +129,15 @@ public final class GetEnvironmentConfig {
 
     private GetEnvironmentConfig() {}
     /**
-     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * @return The URI of the Apache Airflow Web UI hosted within the
+     * environment.
      * 
      */
     public String airflowUri() {
         return this.airflowUri;
     }
     /**
-     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * @return The Cloud Storage prefix of the DAGs for the environment.
      * 
      */
     public String dagGcsPrefix() {
@@ -184,7 +186,7 @@ public final class GetEnvironmentConfig {
         return this.environmentSize;
     }
     /**
-     * @return The Kubernetes Engine cluster used to run this environment.
+     * @return The Kubernetes Engine cluster used to run the environment.
      * 
      */
     public String gkeCluster() {

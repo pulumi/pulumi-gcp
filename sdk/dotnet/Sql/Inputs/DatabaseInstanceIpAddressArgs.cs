@@ -12,12 +12,22 @@ namespace Pulumi.Gcp.Sql.Inputs
 
     public sealed class DatabaseInstanceIpAddressArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IPv4 address assigned.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// The time this IP address will be retired, in RFC
+        /// 3339 format.
+        /// </summary>
         [Input("timeToRetire")]
         public Input<string>? TimeToRetire { get; set; }
 
+        /// <summary>
+        /// The type of this IP address.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

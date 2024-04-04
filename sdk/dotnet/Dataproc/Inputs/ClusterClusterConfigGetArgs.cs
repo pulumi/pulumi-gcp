@@ -35,7 +35,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        /// The name of the cloud storage bucket ultimately used to house the staging data
+        /// for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+        /// it will be the auto generated name.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

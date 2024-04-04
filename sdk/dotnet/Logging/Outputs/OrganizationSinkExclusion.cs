@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Logging.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         public readonly string Filter;

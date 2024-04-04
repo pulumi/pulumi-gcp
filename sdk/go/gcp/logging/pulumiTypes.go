@@ -518,7 +518,7 @@ type BillingAccountSinkExclusion struct {
 	Description *string `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -541,7 +541,7 @@ type BillingAccountSinkExclusionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -609,7 +609,7 @@ func (o BillingAccountSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o BillingAccountSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
@@ -1145,7 +1145,7 @@ type FolderSinkExclusion struct {
 	Description *string `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -1168,7 +1168,7 @@ type FolderSinkExclusionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -1236,7 +1236,7 @@ func (o FolderSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o FolderSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
@@ -2953,7 +2953,7 @@ type OrganizationSinkExclusion struct {
 	Description *string `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -2976,7 +2976,7 @@ type OrganizationSinkExclusionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -3044,7 +3044,7 @@ func (o OrganizationSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o OrganizationSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
@@ -3580,7 +3580,7 @@ type ProjectSinkExclusion struct {
 	Description *string `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -3603,7 +3603,7 @@ type ProjectSinkExclusionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -3671,7 +3671,7 @@ func (o ProjectSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o ProjectSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)

@@ -5255,9 +5255,9 @@ class ClusterFleet(dict):
                  pre_registered: Optional[bool] = None,
                  project: Optional[str] = None):
         """
-        :param str membership: Full resource name of the registered fleet membership of the cluster.
-        :param str membership_id: Short name of the fleet membership, for example "member-1".
-        :param str membership_location: Location of the fleet membership, for example "us-central1".
+        :param str membership: The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+        :param str membership_id: The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+        :param str membership_location: The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         :param bool pre_registered: Whether the cluster has been registered via the fleet API.
         :param str project: The name of the Fleet host project where this cluster will be registered.
         """
@@ -5276,7 +5276,7 @@ class ClusterFleet(dict):
     @pulumi.getter
     def membership(self) -> Optional[str]:
         """
-        Full resource name of the registered fleet membership of the cluster.
+        The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
         """
         return pulumi.get(self, "membership")
 
@@ -5284,7 +5284,7 @@ class ClusterFleet(dict):
     @pulumi.getter(name="membershipId")
     def membership_id(self) -> Optional[str]:
         """
-        Short name of the fleet membership, for example "member-1".
+        The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_id")
 
@@ -5292,7 +5292,7 @@ class ClusterFleet(dict):
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> Optional[str]:
         """
-        Location of the fleet membership, for example "us-central1".
+        The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_location")
 
@@ -5893,9 +5893,12 @@ class ClusterMasterAuth(dict):
                  cluster_ca_certificate: Optional[str] = None):
         """
         :param 'ClusterMasterAuthClientCertificateConfigArgs' client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-        :param str client_certificate: Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
-        :param str client_key: Base64 encoded private key used by clients to authenticate to the cluster endpoint.
-        :param str cluster_ca_certificate: Base64 encoded public certificate that is the root of trust for the cluster.
+        :param str client_certificate: Base64 encoded public certificate
+               used by clients to authenticate to the cluster endpoint.
+        :param str client_key: Base64 encoded private key used by clients
+               to authenticate to the cluster endpoint.
+        :param str cluster_ca_certificate: Base64 encoded public certificate
+               that is the root certificate of the cluster.
         """
         pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_certificate is not None:
@@ -5917,7 +5920,8 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[str]:
         """
-        Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+        Base64 encoded public certificate
+        used by clients to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_certificate")
 
@@ -5925,7 +5929,8 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
         """
-        Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+        Base64 encoded private key used by clients
+        to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_key")
 
@@ -5933,7 +5938,8 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> Optional[str]:
         """
-        Base64 encoded public certificate that is the root of trust for the cluster.
+        Base64 encoded public certificate
+        that is the root certificate of the cluster.
         """
         return pulumi.get(self, "cluster_ca_certificate")
 
@@ -6418,7 +6424,7 @@ class ClusterNodeConfig(dict):
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
+        :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -6622,7 +6628,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[Sequence['outputs.ClusterNodeConfigEffectiveTaint']]:
         """
-        List of kubernetes taints applied to each node.
+        List of kubernetes taints applied to each node. Structure is documented above.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -8882,7 +8888,7 @@ class ClusterNodePoolNodeConfig(dict):
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
+        :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -9086,7 +9092,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigEffectiveTaint']]:
         """
-        List of kubernetes taints applied to each node.
+        List of kubernetes taints applied to each node. Structure is documented above.
         """
         return pulumi.get(self, "effective_taints")
 

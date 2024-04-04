@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodePoolNodeConfigEffectiveTaintGetArgs>? _effectiveTaints;
 
         /// <summary>
-        /// List of kubernetes taints applied to each node.
+        /// List of kubernetes taints applied to each node. Structure is documented above.
         /// </summary>
         public InputList<Inputs.ClusterNodePoolNodeConfigEffectiveTaintGetArgs> EffectiveTaints
         {

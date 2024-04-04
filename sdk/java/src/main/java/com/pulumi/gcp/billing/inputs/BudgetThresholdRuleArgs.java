@@ -40,7 +40,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
 
     /**
      * Send an alert when this threshold is exceeded. This is a
-     * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
+     * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
      * 
      */
     @Import(name="thresholdPercent", required=true)
@@ -48,7 +48,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Send an alert when this threshold is exceeded. This is a
-     * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
+     * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
      * 
      */
     public Output<Double> thresholdPercent() {
@@ -109,7 +109,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
 
         /**
          * @param thresholdPercent Send an alert when this threshold is exceeded. This is a
-         * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
+         * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
 
         /**
          * @param thresholdPercent Send an alert when this threshold is exceeded. This is a
-         * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be &gt;= 0.
+         * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
          * 
          * @return builder
          * 

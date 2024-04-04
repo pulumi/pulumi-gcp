@@ -161,7 +161,8 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// Used to make sure changes to the settings block are atomic.
+        /// Used to make sure changes to the `settings` block are
+        /// atomic.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

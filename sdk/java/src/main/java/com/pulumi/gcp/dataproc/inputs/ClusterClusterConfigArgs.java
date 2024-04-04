@@ -69,14 +69,18 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+     * The name of the cloud storage bucket ultimately used to house the staging data
+     * for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+     * it will be the auto generated name.
      * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
-     * @return The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+     * @return The name of the cloud storage bucket ultimately used to house the staging data
+     * for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+     * it will be the auto generated name.
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -441,7 +445,9 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bucket The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         * @param bucket The name of the cloud storage bucket ultimately used to house the staging data
+         * for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+         * it will be the auto generated name.
          * 
          * @return builder
          * 
@@ -452,7 +458,9 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bucket The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         * @param bucket The name of the cloud storage bucket ultimately used to house the staging data
+         * for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+         * it will be the auto generated name.
          * 
          * @return builder
          * 

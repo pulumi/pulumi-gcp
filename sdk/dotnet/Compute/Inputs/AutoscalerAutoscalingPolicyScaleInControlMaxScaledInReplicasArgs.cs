@@ -20,9 +20,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Fixed { get; set; }
 
         /// <summary>
-        /// Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-        /// For example, specify 80 for 80%!
-        /// (MISSING)
+        /// Specifies a percentage of instances between 0 to 100%, inclusive.
+        /// For example, specify 80 for 80%.
         /// </summary>
         [Input("percent")]
         public Input<int>? Percent { get; set; }

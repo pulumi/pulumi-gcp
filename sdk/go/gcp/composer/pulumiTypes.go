@@ -14,9 +14,14 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type EnvironmentConfig struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment.
+	// The URI of the Apache Airflow Web UI hosted within this
+	// environment.
 	AirflowUri *string `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	// The Cloud Storage prefix of the DAGs for this environment.
+	// Although Cloud Storage objects reside in a flat namespace, a
+	// hierarchical file tree can be simulated using '/'-delimited
+	// object name prefixes. DAG objects for this environment
+	// reside in a simulated directory with this prefix.
 	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
 	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
 	DataRetentionConfig *EnvironmentConfigDataRetentionConfig `pulumi:"dataRetentionConfig"`
@@ -68,9 +73,14 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment.
+	// The URI of the Apache Airflow Web UI hosted within this
+	// environment.
 	AirflowUri pulumi.StringPtrInput `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	// The Cloud Storage prefix of the DAGs for this environment.
+	// Although Cloud Storage objects reside in a flat namespace, a
+	// hierarchical file tree can be simulated using '/'-delimited
+	// object name prefixes. DAG objects for this environment
+	// reside in a simulated directory with this prefix.
 	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
 	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
 	DataRetentionConfig EnvironmentConfigDataRetentionConfigPtrInput `pulumi:"dataRetentionConfig"`
@@ -187,12 +197,17 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 
-// The URI of the Apache Airflow Web UI hosted within this environment.
+// The URI of the Apache Airflow Web UI hosted within this
+// environment.
 func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
 }
 
-// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+// The Cloud Storage prefix of the DAGs for this environment.
+// Although Cloud Storage objects reside in a flat namespace, a
+// hierarchical file tree can be simulated using '/'-delimited
+// object name prefixes. DAG objects for this environment
+// reside in a simulated directory with this prefix.
 func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
@@ -317,7 +332,8 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 	}).(EnvironmentConfigOutput)
 }
 
-// The URI of the Apache Airflow Web UI hosted within this environment.
+// The URI of the Apache Airflow Web UI hosted within this
+// environment.
 func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -327,7 +343,11 @@ func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+// The Cloud Storage prefix of the DAGs for this environment.
+// Although Cloud Storage objects reside in a flat namespace, a
+// hierarchical file tree can be simulated using '/'-delimited
+// object name prefixes. DAG objects for this environment
+// reside in a simulated directory with this prefix.
 func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -4771,9 +4791,10 @@ func (o EnvironmentStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 }
 
 type GetEnvironmentConfig struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment.
+	// The URI of the Apache Airflow Web UI hosted within the
+	// environment.
 	AirflowUri string `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	// The Cloud Storage prefix of the DAGs for the environment.
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
 	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
 	DataRetentionConfigs []GetEnvironmentConfigDataRetentionConfig `pulumi:"dataRetentionConfigs"`
@@ -4787,7 +4808,7 @@ type GetEnvironmentConfig struct {
 	EncryptionConfigs []GetEnvironmentConfigEncryptionConfig `pulumi:"encryptionConfigs"`
 	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize string `pulumi:"environmentSize"`
-	// The Kubernetes Engine cluster used to run this environment.
+	// The Kubernetes Engine cluster used to run the environment.
 	GkeCluster string `pulumi:"gkeCluster"`
 	// The configuration for Cloud Composer maintenance window.
 	MaintenanceWindows []GetEnvironmentConfigMaintenanceWindow `pulumi:"maintenanceWindows"`
@@ -4825,9 +4846,10 @@ type GetEnvironmentConfigInput interface {
 }
 
 type GetEnvironmentConfigArgs struct {
-	// The URI of the Apache Airflow Web UI hosted within this environment.
+	// The URI of the Apache Airflow Web UI hosted within the
+	// environment.
 	AirflowUri pulumi.StringInput `pulumi:"airflowUri"`
-	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	// The Cloud Storage prefix of the DAGs for the environment.
 	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
 	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
 	DataRetentionConfigs GetEnvironmentConfigDataRetentionConfigArrayInput `pulumi:"dataRetentionConfigs"`
@@ -4841,7 +4863,7 @@ type GetEnvironmentConfigArgs struct {
 	EncryptionConfigs GetEnvironmentConfigEncryptionConfigArrayInput `pulumi:"encryptionConfigs"`
 	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	EnvironmentSize pulumi.StringInput `pulumi:"environmentSize"`
-	// The Kubernetes Engine cluster used to run this environment.
+	// The Kubernetes Engine cluster used to run the environment.
 	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
 	// The configuration for Cloud Composer maintenance window.
 	MaintenanceWindows GetEnvironmentConfigMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
@@ -4918,12 +4940,13 @@ func (o GetEnvironmentConfigOutput) ToGetEnvironmentConfigOutputWithContext(ctx 
 	return o
 }
 
-// The URI of the Apache Airflow Web UI hosted within this environment.
+// The URI of the Apache Airflow Web UI hosted within the
+// environment.
 func (o GetEnvironmentConfigOutput) AirflowUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.AirflowUri }).(pulumi.StringOutput)
 }
 
-// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+// The Cloud Storage prefix of the DAGs for the environment.
 func (o GetEnvironmentConfigOutput) DagGcsPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
 }
@@ -4958,7 +4981,7 @@ func (o GetEnvironmentConfigOutput) EnvironmentSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.EnvironmentSize }).(pulumi.StringOutput)
 }
 
-// The Kubernetes Engine cluster used to run this environment.
+// The Kubernetes Engine cluster used to run the environment.
 func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.GkeCluster }).(pulumi.StringOutput)
 }

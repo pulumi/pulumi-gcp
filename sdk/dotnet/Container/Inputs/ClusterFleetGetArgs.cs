@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterFleetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full resource name of the registered fleet membership of the cluster.
+        /// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
         /// </summary>
         [Input("membership")]
         public Input<string>? Membership { get; set; }
 
         /// <summary>
-        /// Short name of the fleet membership, for example "member-1".
+        /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
         /// </summary>
         [Input("membershipId")]
         public Input<string>? MembershipId { get; set; }
 
         /// <summary>
-        /// Location of the fleet membership, for example "us-central1".
+        /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         /// </summary>
         [Input("membershipLocation")]
         public Input<string>? MembershipLocation { get; set; }

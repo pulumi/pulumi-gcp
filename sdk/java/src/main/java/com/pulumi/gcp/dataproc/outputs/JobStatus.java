@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobStatus {
     /**
-     * @return Output-only. Optional job state details, such as an error description if the state is ERROR
+     * @return Optional job state details, such as an error description if the state is ERROR.
      * 
      */
     private @Nullable String details;
     /**
-     * @return Output-only. A state message specifying the overall job state
+     * @return A state message specifying the overall job state.
      * 
      */
     private @Nullable String state;
     /**
-     * @return Output-only. The time when this state was entered
+     * @return The time when this state was entered.
      * 
      */
     private @Nullable String stateStartTime;
     /**
-     * @return Output-only. Additional state information, which includes status reported by the agent
+     * @return Additional state information, which includes status reported by the agent.
      * 
      */
     private @Nullable String substate;
 
     private JobStatus() {}
     /**
-     * @return Output-only. Optional job state details, such as an error description if the state is ERROR
+     * @return Optional job state details, such as an error description if the state is ERROR.
      * 
      */
     public Optional<String> details() {
         return Optional.ofNullable(this.details);
     }
     /**
-     * @return Output-only. A state message specifying the overall job state
+     * @return A state message specifying the overall job state.
      * 
      */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return Output-only. The time when this state was entered
+     * @return The time when this state was entered.
      * 
      */
     public Optional<String> stateStartTime() {
         return Optional.ofNullable(this.stateStartTime);
     }
     /**
-     * @return Output-only. Additional state information, which includes status reported by the agent
+     * @return Additional state information, which includes status reported by the agent.
      * 
      */
     public Optional<String> substate() {

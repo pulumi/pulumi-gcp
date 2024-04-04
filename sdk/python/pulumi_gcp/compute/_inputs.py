@@ -1063,9 +1063,8 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
         """
         :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-               For example, specify 80 for 80%!
-               (MISSING)
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -1089,9 +1088,8 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
     @pulumi.getter
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-        For example, specify 80 for 80%!
-        (MISSING)
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
         """
         return pulumi.get(self, "percent")
 
@@ -1151,9 +1149,8 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
         """
         :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-               For example, specify 80 for 80%!
-               (MISSING)
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -1177,9 +1174,8 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     @pulumi.getter
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-        For example, specify 80 for 80%!
-        (MISSING)
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
         """
         return pulumi.get(self, "percent")
 
@@ -1742,10 +1738,10 @@ class BackendServiceBackendArgs:
                Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
-               Default value is 1, which means the group will serve up to 100%!
-               (MISSING)of its configured capacity (depending on balancingMode). A
+               Default value is 1, which means the group will serve up to 100%
+               of its configured capacity (depending on balancingMode). A
                setting of 0 means the group is completely drained, offering
-               0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+               0% of its available Capacity. Valid range is [0.0,1.0].
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[int] max_connections: The max number of simultaneous connections for the group. Can
@@ -1853,10 +1849,10 @@ class BackendServiceBackendArgs:
         """
         A multiplier applied to the group's maximum servicing capacity
         (based on UTILIZATION, RATE or CONNECTION).
-        Default value is 1, which means the group will serve up to 100%!
-        (MISSING)of its configured capacity (depending on balancingMode). A
+        Default value is 1, which means the group will serve up to 100%
+        of its configured capacity (depending on balancingMode). A
         setting of 0 means the group is completely drained, offering
-        0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+        0% of its available Capacity. Valid range is [0.0,1.0].
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -3114,8 +3110,7 @@ class BackendServiceOutlierDetectionArgs:
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param pulumi.Input[int] max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
-               that can be ejected. Defaults to 10%!
-               (MISSING)
+               that can be ejected. Defaults to 10%.
         :param pulumi.Input[int] success_rate_minimum_hosts: The number of hosts in a cluster that must have enough request volume to detect
                success rate outliers. If the number of hosts is less than this setting, outlier
                detection via success rate statistics is not performed for any host in the
@@ -3259,8 +3254,7 @@ class BackendServiceOutlierDetectionArgs:
     def max_ejection_percent(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum percentage of hosts in the load balancing pool for the backend service
-        that can be ejected. Defaults to 10%!
-        (MISSING)
+        that can be ejected. Defaults to 10%.
         """
         return pulumi.get(self, "max_ejection_percent")
 
@@ -5681,7 +5675,9 @@ class InstanceAttachedDiskArgs:
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
-        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               encoded SHA-256 hash of the [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is
                stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
                and `disk_encryption_key_raw` may be set.
@@ -5746,7 +5742,9 @@ class InstanceAttachedDiskArgs:
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        encoded SHA-256 hash of the [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
@@ -5805,7 +5803,9 @@ class InstanceBootDiskArgs:
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
                may be set.
-        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               encoded SHA-256 hash of the [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
@@ -5881,7 +5881,9 @@ class InstanceBootDiskArgs:
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        encoded SHA-256 hash of the [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
@@ -15356,9 +15358,8 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs
         """
         :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-               For example, specify 80 for 80%!
-               (MISSING)
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -15382,9 +15383,8 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs
     @pulumi.getter
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-        For example, specify 80 for 80%!
-        (MISSING)
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
         """
         return pulumi.get(self, "percent")
 
@@ -15444,9 +15444,8 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
         """
         :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
                integer.
-        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-               For example, specify 80 for 80%!
-               (MISSING)
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -15470,9 +15469,8 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     @pulumi.getter
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-        For example, specify 80 for 80%!
-        (MISSING)
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
         """
         return pulumi.get(self, "percent")
 
@@ -15640,7 +15638,7 @@ class RegionBackendServiceBackendArgs:
                but is required for non-INTERNAL backend service. The total
                capacity_scaler for all backends must be non-zero.
                A setting of 0 means the group is completely drained, offering
-               0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+               0% of its available Capacity. Valid range is [0.0,1.0].
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[bool] failover: This field designates whether this is a failover backend. More
@@ -15763,7 +15761,7 @@ class RegionBackendServiceBackendArgs:
         but is required for non-INTERNAL backend service. The total
         capacity_scaler for all backends must be non-zero.
         A setting of 0 means the group is completely drained, offering
-        0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+        0% of its available Capacity. Valid range is [0.0,1.0].
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -17054,8 +17052,7 @@ class RegionBackendServiceOutlierDetectionArgs:
                ejections as well as hosts being returned to service. Defaults to 10 seconds.
                Structure is documented below.
         :param pulumi.Input[int] max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
-               that can be ejected. Defaults to 10%!
-               (MISSING)
+               that can be ejected. Defaults to 10%.
         :param pulumi.Input[int] success_rate_minimum_hosts: The number of hosts in a cluster that must have enough request volume to detect
                success rate outliers. If the number of hosts is less than this setting, outlier
                detection via success rate statistics is not performed for any host in the
@@ -17199,8 +17196,7 @@ class RegionBackendServiceOutlierDetectionArgs:
     def max_ejection_percent(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum percentage of hosts in the load balancing pool for the backend service
-        that can be ejected. Defaults to 10%!
-        (MISSING)
+        that can be ejected. Defaults to 10%.
         """
         return pulumi.get(self, "max_ejection_percent")
 

@@ -14,19 +14,19 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class JobStatus
     {
         /// <summary>
-        /// Output-only. Optional job state details, such as an error description if the state is ERROR
+        /// Optional job state details, such as an error description if the state is ERROR.
         /// </summary>
         public readonly string? Details;
         /// <summary>
-        /// Output-only. A state message specifying the overall job state
+        /// A state message specifying the overall job state.
         /// </summary>
         public readonly string? State;
         /// <summary>
-        /// Output-only. The time when this state was entered
+        /// The time when this state was entered.
         /// </summary>
         public readonly string? StateStartTime;
         /// <summary>
-        /// Output-only. Additional state information, which includes status reported by the agent
+        /// Additional state information, which includes status reported by the agent.
         /// </summary>
         public readonly string? Substate;
 

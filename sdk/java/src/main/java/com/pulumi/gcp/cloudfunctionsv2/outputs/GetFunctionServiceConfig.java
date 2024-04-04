@@ -17,7 +17,7 @@ import java.util.Objects;
 @CustomType
 public final class GetFunctionServiceConfig {
     /**
-     * @return Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
      * 
      */
     private Boolean allTrafficOnLatestRevision;
@@ -110,7 +110,7 @@ public final class GetFunctionServiceConfig {
 
     private GetFunctionServiceConfig() {}
     /**
-     * @return Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
      * 
      */
     public Boolean allTrafficOnLatestRevision() {

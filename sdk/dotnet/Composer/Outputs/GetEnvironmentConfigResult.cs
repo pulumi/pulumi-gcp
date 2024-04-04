@@ -14,11 +14,12 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetEnvironmentConfigResult
     {
         /// <summary>
-        /// The URI of the Apache Airflow Web UI hosted within this environment.
+        /// The URI of the Apache Airflow Web UI hosted within the
+        /// environment.
         /// </summary>
         public readonly string AirflowUri;
         /// <summary>
-        /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        /// The Cloud Storage prefix of the DAGs for the environment.
         /// </summary>
         public readonly string DagGcsPrefix;
         /// <summary>
@@ -46,7 +47,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly string EnvironmentSize;
         /// <summary>
-        /// The Kubernetes Engine cluster used to run this environment.
+        /// The Kubernetes Engine cluster used to run the environment.
         /// </summary>
         public readonly string GkeCluster;
         /// <summary>

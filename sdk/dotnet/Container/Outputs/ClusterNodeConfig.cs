@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// List of kubernetes taints applied to each node.
+        /// List of kubernetes taints applied to each node. Structure is documented above.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigEffectiveTaint> EffectiveTaints;
         /// <summary>
