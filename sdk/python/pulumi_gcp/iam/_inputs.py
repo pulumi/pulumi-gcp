@@ -513,6 +513,23 @@ class WorkforcePoolProviderOidcArgs:
                .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
                keys are supported. The JWK must use following format and include only
                the following fields:
+               ```
+               {
+               "keys": [
+               {
+               "kty": "RSA/EC",
+               "alg": "<algorithm>",
+               "use": "sig",
+               "kid": "<key-id>",
+               "n": "",
+               "e": "",
+               "x": "",
+               "y": "",
+               "crv": ""
+               }
+               ]
+               }
+               ```
         :param pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs'] web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
                Structure is documented below.
         """
@@ -572,6 +589,23 @@ class WorkforcePoolProviderOidcArgs:
         .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         keys are supported. The JWK must use following format and include only
         the following fields:
+        ```
+        {
+        "keys": [
+        {
+        "kty": "RSA/EC",
+        "alg": "<algorithm>",
+        "use": "sig",
+        "kid": "<key-id>",
+        "n": "",
+        "e": "",
+        "x": "",
+        "y": "",
+        "crv": ""
+        }
+        ]
+        }
+        ```
         """
         return pulumi.get(self, "jwks_json")
 
@@ -812,12 +846,33 @@ class WorkloadIdentityPoolProviderOidcArgs:
                If this list is empty, the OIDC token audience must be equal to the full canonical
                resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
                For example:
+               ```
+               //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+               https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+               ```
         :param pulumi.Input[str] jwks_json: OIDC JWKs in JSON String format. For details on definition of a
                JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
                use the `jwks_uri` from the discovery document fetched from the
                .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
                keys are supported. The JWK must use following format and include only
                the following fields:
+               ```
+               {
+               "keys": [
+               {
+               "kty": "RSA/EC",
+               "alg": "<algorithm>",
+               "use": "sig",
+               "kid": "<key-id>",
+               "n": "",
+               "e": "",
+               "x": "",
+               "y": "",
+               "crv": ""
+               }
+               ]
+               }
+               ```
         """
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         if allowed_audiences is not None:
@@ -848,6 +903,10 @@ class WorkloadIdentityPoolProviderOidcArgs:
         If this list is empty, the OIDC token audience must be equal to the full canonical
         resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         For example:
+        ```
+        //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+        https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+        ```
         """
         return pulumi.get(self, "allowed_audiences")
 
@@ -865,6 +924,23 @@ class WorkloadIdentityPoolProviderOidcArgs:
         .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         keys are supported. The JWK must use following format and include only
         the following fields:
+        ```
+        {
+        "keys": [
+        {
+        "kty": "RSA/EC",
+        "alg": "<algorithm>",
+        "use": "sig",
+        "kid": "<key-id>",
+        "n": "",
+        "e": "",
+        "x": "",
+        "y": "",
+        "crv": ""
+        }
+        ]
+        }
+        ```
         """
         return pulumi.get(self, "jwks_json")
 

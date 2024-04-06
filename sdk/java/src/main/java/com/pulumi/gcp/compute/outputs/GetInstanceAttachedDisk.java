@@ -22,7 +22,9 @@ public final class GetInstanceAttachedDisk {
      */
     private String diskEncryptionKeyRaw;
     /**
-     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * encoded SHA-256 hash of the [customer-supplied encryption key]
+     * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;) that protects this resource.
      * 
      */
     private String diskEncryptionKeySha256;
@@ -59,7 +61,9 @@ public final class GetInstanceAttachedDisk {
         return this.diskEncryptionKeyRaw;
     }
     /**
-     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * encoded SHA-256 hash of the [customer-supplied encryption key]
+     * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;) that protects this resource.
      * 
      */
     public String diskEncryptionKeySha256() {

@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// If this list is empty, the OIDC token audience must be equal to the full canonical
         /// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         /// For example:
+        /// ```
+        /// //iam.googleapis.com/projects/&lt;project-number&gt;/locations/&lt;location&gt;/workloadIdentityPools/&lt;pool-id&gt;/providers/&lt;provider-id&gt;
+        /// https://iam.googleapis.com/projects/&lt;project-number&gt;/locations/&lt;location&gt;/workloadIdentityPools/&lt;pool-id&gt;/providers/&lt;provider-id&gt;
+        /// ```
         /// </summary>
         public InputList<string> AllowedAudiences
         {
@@ -43,6 +47,23 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         /// keys are supported. The JWK must use following format and include only
         /// the following fields:
+        /// ```
+        /// {
+        /// "keys": [
+        /// {
+        /// "kty": "RSA/EC",
+        /// "alg": "&lt;algorithm&gt;",
+        /// "use": "sig",
+        /// "kid": "&lt;key-id&gt;",
+        /// "n": "",
+        /// "e": "",
+        /// "x": "",
+        /// "y": "",
+        /// "crv": ""
+        /// }
+        /// ]
+        /// }
+        /// ```
         /// </summary>
         [Input("jwksJson")]
         public Input<string>? JwksJson { get; set; }

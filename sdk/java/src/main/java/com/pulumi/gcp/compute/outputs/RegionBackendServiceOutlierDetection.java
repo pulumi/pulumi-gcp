@@ -65,8 +65,7 @@ public final class RegionBackendServiceOutlierDetection {
     private @Nullable RegionBackendServiceOutlierDetectionInterval interval;
     /**
      * @return Maximum percentage of hosts in the load balancing pool for the backend service
-     * that can be ejected. Defaults to 10%!
-     * (MISSING)
+     * that can be ejected. Defaults to 10%.
      * 
      */
     private @Nullable Integer maxEjectionPercent;
@@ -165,8 +164,7 @@ public final class RegionBackendServiceOutlierDetection {
     }
     /**
      * @return Maximum percentage of hosts in the load balancing pool for the backend service
-     * that can be ejected. Defaults to 10%!
-     * (MISSING)
+     * that can be ejected. Defaults to 10%.
      * 
      */
     public Optional<Integer> maxEjectionPercent() {

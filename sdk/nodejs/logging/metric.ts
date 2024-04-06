@@ -234,7 +234,7 @@ export class Metric extends pulumi.CustomResource {
     /**
      * The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      */
@@ -349,7 +349,7 @@ export interface MetricState {
     /**
      * The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      */
@@ -421,7 +421,7 @@ export interface MetricArgs {
     /**
      * The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      */

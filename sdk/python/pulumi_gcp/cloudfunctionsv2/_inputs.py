@@ -687,7 +687,7 @@ class FunctionServiceConfigArgs:
                  vpc_connector: Optional[pulumi.Input[str]] = None,
                  vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] all_traffic_on_latest_revision: Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+        :param pulumi.Input[bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
         :param pulumi.Input[str] available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
         :param pulumi.Input[str] available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
@@ -757,7 +757,7 @@ class FunctionServiceConfigArgs:
     @pulumi.getter(name="allTrafficOnLatestRevision")
     def all_traffic_on_latest_revision(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+        Whether 100% of traffic is routed to the latest revision. Defaults to true.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
 

@@ -74,6 +74,26 @@ class WorkloadIdentityPoolProviderArgs:
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
+               ```
+               {
+               "google.subject":"assertion.arn",
+               "attribute.aws_role":
+               "assertion.arn.contains('assumed-role')"
+               " ? assertion.arn.extract('{account_arn}assumed-role/')"
+               "   + 'assumed-role/'"
+               "   + assertion.arn.extract('assumed-role/{role_name}/')"
+               " : assertion.arn",
+               }
+               ```
+               - If any custom attribute mappings are defined, they must include a mapping to the
+               `google.subject` attribute.
+               For OIDC providers, the following rules apply:
+               - Custom attribute mappings must be defined, and must include a mapping to the
+               `google.subject` attribute. For example, the following maps the `sub` claim of the
+               incoming credential to the `subject` attribute on a Google token.
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -190,6 +210,26 @@ class WorkloadIdentityPoolProviderArgs:
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
+        ```
+        {
+        "google.subject":"assertion.arn",
+        "attribute.aws_role":
+        "assertion.arn.contains('assumed-role')"
+        " ? assertion.arn.extract('{account_arn}assumed-role/')"
+        "   + 'assumed-role/'"
+        "   + assertion.arn.extract('assumed-role/{role_name}/')"
+        " : assertion.arn",
+        }
+        ```
+        - If any custom attribute mappings are defined, they must include a mapping to the
+        `google.subject` attribute.
+        For OIDC providers, the following rules apply:
+        - Custom attribute mappings must be defined, and must include a mapping to the
+        `google.subject` attribute. For example, the following maps the `sub` claim of the
+        incoming credential to the `subject` attribute on a Google token.
+        ```
+        {"google.subject": "assertion.sub"}
+        ```
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -341,6 +381,26 @@ class _WorkloadIdentityPoolProviderState:
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
+               ```
+               {
+               "google.subject":"assertion.arn",
+               "attribute.aws_role":
+               "assertion.arn.contains('assumed-role')"
+               " ? assertion.arn.extract('{account_arn}assumed-role/')"
+               "   + 'assumed-role/'"
+               "   + assertion.arn.extract('assumed-role/{role_name}/')"
+               " : assertion.arn",
+               }
+               ```
+               - If any custom attribute mappings are defined, they must include a mapping to the
+               `google.subject` attribute.
+               For OIDC providers, the following rules apply:
+               - Custom attribute mappings must be defined, and must include a mapping to the
+               `google.subject` attribute. For example, the following maps the `sub` claim of the
+               incoming credential to the `subject` attribute on a Google token.
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
         :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -450,6 +510,26 @@ class _WorkloadIdentityPoolProviderState:
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
+        ```
+        {
+        "google.subject":"assertion.arn",
+        "attribute.aws_role":
+        "assertion.arn.contains('assumed-role')"
+        " ? assertion.arn.extract('{account_arn}assumed-role/')"
+        "   + 'assumed-role/'"
+        "   + assertion.arn.extract('assumed-role/{role_name}/')"
+        " : assertion.arn",
+        }
+        ```
+        - If any custom attribute mappings are defined, they must include a mapping to the
+        `google.subject` attribute.
+        For OIDC providers, the following rules apply:
+        - Custom attribute mappings must be defined, and must include a mapping to the
+        `google.subject` attribute. For example, the following maps the `sub` claim of the
+        incoming credential to the `subject` attribute on a Google token.
+        ```
+        {"google.subject": "assertion.sub"}
+        ```
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -874,6 +954,26 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
+               ```
+               {
+               "google.subject":"assertion.arn",
+               "attribute.aws_role":
+               "assertion.arn.contains('assumed-role')"
+               " ? assertion.arn.extract('{account_arn}assumed-role/')"
+               "   + 'assumed-role/'"
+               "   + assertion.arn.extract('assumed-role/{role_name}/')"
+               " : assertion.arn",
+               }
+               ```
+               - If any custom attribute mappings are defined, they must include a mapping to the
+               `google.subject` attribute.
+               For OIDC providers, the following rules apply:
+               - Custom attribute mappings must be defined, and must include a mapping to the
+               `google.subject` attribute. For example, the following maps the `sub` claim of the
+               incoming credential to the `subject` attribute on a Google token.
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -1230,6 +1330,26 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                the total size of all mapped attributes must not exceed 8KB.
                For AWS providers, the following rules apply:
                - If no attribute mapping is defined, the following default mapping applies:
+               ```
+               {
+               "google.subject":"assertion.arn",
+               "attribute.aws_role":
+               "assertion.arn.contains('assumed-role')"
+               " ? assertion.arn.extract('{account_arn}assumed-role/')"
+               "   + 'assumed-role/'"
+               "   + assertion.arn.extract('assumed-role/{role_name}/')"
+               " : assertion.arn",
+               }
+               ```
+               - If any custom attribute mappings are defined, they must include a mapping to the
+               `google.subject` attribute.
+               For OIDC providers, the following rules apply:
+               - Custom attribute mappings must be defined, and must include a mapping to the
+               `google.subject` attribute. For example, the following maps the `sub` claim of the
+               incoming credential to the `subject` attribute on a Google token.
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
@@ -1327,6 +1447,26 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         the total size of all mapped attributes must not exceed 8KB.
         For AWS providers, the following rules apply:
         - If no attribute mapping is defined, the following default mapping applies:
+        ```
+        {
+        "google.subject":"assertion.arn",
+        "attribute.aws_role":
+        "assertion.arn.contains('assumed-role')"
+        " ? assertion.arn.extract('{account_arn}assumed-role/')"
+        "   + 'assumed-role/'"
+        "   + assertion.arn.extract('assumed-role/{role_name}/')"
+        " : assertion.arn",
+        }
+        ```
+        - If any custom attribute mappings are defined, they must include a mapping to the
+        `google.subject` attribute.
+        For OIDC providers, the following rules apply:
+        - Custom attribute mappings must be defined, and must include a mapping to the
+        `google.subject` attribute. For example, the following maps the `sub` claim of the
+        incoming credential to the `subject` attribute on a Google token.
+        ```
+        {"google.subject": "assertion.sub"}
+        ```
         """
         return pulumi.get(self, "attribute_mapping")
 

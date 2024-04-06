@@ -35,7 +35,7 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
 
     /**
      * (Output)
-     * The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+     * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
      * 
      */
     @Import(name="target")
@@ -43,7 +43,7 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
 
     /**
      * @return (Output)
-     * The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+     * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
      * 
      */
     public Optional<Output<Integer>> target() {
@@ -100,7 +100,7 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
 
         /**
          * @param target (Output)
-         * The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
 
         /**
          * @param target (Output)
-         * The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
          * 
          * @return builder
          * 

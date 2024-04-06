@@ -16,14 +16,14 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobStatusArgs Empty = new JobStatusArgs();
 
     /**
-     * Output-only. Optional job state details, such as an error description if the state is ERROR
+     * Optional job state details, such as an error description if the state is ERROR.
      * 
      */
     @Import(name="details")
     private @Nullable Output<String> details;
 
     /**
-     * @return Output-only. Optional job state details, such as an error description if the state is ERROR
+     * @return Optional job state details, such as an error description if the state is ERROR.
      * 
      */
     public Optional<Output<String>> details() {
@@ -31,14 +31,14 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output-only. A state message specifying the overall job state
+     * A state message specifying the overall job state.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Output-only. A state message specifying the overall job state
+     * @return A state message specifying the overall job state.
      * 
      */
     public Optional<Output<String>> state() {
@@ -46,14 +46,14 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output-only. The time when this state was entered
+     * The time when this state was entered.
      * 
      */
     @Import(name="stateStartTime")
     private @Nullable Output<String> stateStartTime;
 
     /**
-     * @return Output-only. The time when this state was entered
+     * @return The time when this state was entered.
      * 
      */
     public Optional<Output<String>> stateStartTime() {
@@ -61,14 +61,14 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output-only. Additional state information, which includes status reported by the agent
+     * Additional state information, which includes status reported by the agent.
      * 
      */
     @Import(name="substate")
     private @Nullable Output<String> substate;
 
     /**
-     * @return Output-only. Additional state information, which includes status reported by the agent
+     * @return Additional state information, which includes status reported by the agent.
      * 
      */
     public Optional<Output<String>> substate() {
@@ -103,7 +103,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param details Output-only. Optional job state details, such as an error description if the state is ERROR
+         * @param details Optional job state details, such as an error description if the state is ERROR.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param details Output-only. Optional job state details, such as an error description if the state is ERROR
+         * @param details Optional job state details, such as an error description if the state is ERROR.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output-only. A state message specifying the overall job state
+         * @param state A state message specifying the overall job state.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output-only. A state message specifying the overall job state
+         * @param state A state message specifying the overall job state.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stateStartTime Output-only. The time when this state was entered
+         * @param stateStartTime The time when this state was entered.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stateStartTime Output-only. The time when this state was entered
+         * @param stateStartTime The time when this state was entered.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param substate Output-only. Additional state information, which includes status reported by the agent
+         * @param substate Additional state information, which includes status reported by the agent.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param substate Output-only. Additional state information, which includes status reported by the agent
+         * @param substate Additional state information, which includes status reported by the agent.
          * 
          * @return builder
          * 

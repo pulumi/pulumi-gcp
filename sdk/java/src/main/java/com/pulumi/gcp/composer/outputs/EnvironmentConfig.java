@@ -26,12 +26,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnvironmentConfig {
     /**
-     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * @return The URI of the Apache Airflow Web UI hosted within this
+     * environment.
      * 
      */
     private @Nullable String airflowUri;
     /**
-     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * @return The Cloud Storage prefix of the DAGs for this environment.
+     * Although Cloud Storage objects reside in a flat namespace, a
+     * hierarchical file tree can be simulated using &#39;/&#39;-delimited
+     * object name prefixes. DAG objects for this environment
+     * reside in a simulated directory with this prefix.
      * 
      */
     private @Nullable String dagGcsPrefix;
@@ -128,14 +133,19 @@ public final class EnvironmentConfig {
 
     private EnvironmentConfig() {}
     /**
-     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * @return The URI of the Apache Airflow Web UI hosted within this
+     * environment.
      * 
      */
     public Optional<String> airflowUri() {
         return Optional.ofNullable(this.airflowUri);
     }
     /**
-     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * @return The Cloud Storage prefix of the DAGs for this environment.
+     * Although Cloud Storage objects reside in a flat namespace, a
+     * hierarchical file tree can be simulated using &#39;/&#39;-delimited
+     * object name prefixes. DAG objects for this environment
+     * reside in a simulated directory with this prefix.
      * 
      */
     public Optional<String> dagGcsPrefix() {

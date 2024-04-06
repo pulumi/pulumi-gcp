@@ -1259,7 +1259,9 @@ type ClusterClusterConfig struct {
 	// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
 	// Structure defined below.
 	AuxiliaryNodeGroups []ClusterClusterConfigAuxiliaryNodeGroup `pulumi:"auxiliaryNodeGroups"`
-	// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+	// The name of the cloud storage bucket ultimately used to house the staging data
+	// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
+	// it will be the auto generated name.
 	Bucket *string `pulumi:"bucket"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
@@ -1334,7 +1336,9 @@ type ClusterClusterConfigArgs struct {
 	// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
 	// Structure defined below.
 	AuxiliaryNodeGroups ClusterClusterConfigAuxiliaryNodeGroupArrayInput `pulumi:"auxiliaryNodeGroups"`
-	// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+	// The name of the cloud storage bucket ultimately used to house the staging data
+	// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
+	// it will be the auto generated name.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
@@ -1480,7 +1484,9 @@ func (o ClusterClusterConfigOutput) AuxiliaryNodeGroups() ClusterClusterConfigAu
 	return o.ApplyT(func(v ClusterClusterConfig) []ClusterClusterConfigAuxiliaryNodeGroup { return v.AuxiliaryNodeGroups }).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
 }
 
-// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+// The name of the cloud storage bucket ultimately used to house the staging data
+// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
+// it will be the auto generated name.
 func (o ClusterClusterConfigOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
@@ -1630,7 +1636,9 @@ func (o ClusterClusterConfigPtrOutput) AuxiliaryNodeGroups() ClusterClusterConfi
 	}).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
 }
 
-// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+// The name of the cloud storage bucket ultimately used to house the staging data
+// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
+// it will be the auto generated name.
 func (o ClusterClusterConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *string {
 		if v == nil {
@@ -13389,13 +13397,13 @@ func (o JobSparksqlConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.String
 }
 
 type JobStatus struct {
-	// Output-only. Optional job state details, such as an error description if the state is ERROR
+	// Optional job state details, such as an error description if the state is ERROR.
 	Details *string `pulumi:"details"`
-	// Output-only. A state message specifying the overall job state
+	// A state message specifying the overall job state.
 	State *string `pulumi:"state"`
-	// Output-only. The time when this state was entered
+	// The time when this state was entered.
 	StateStartTime *string `pulumi:"stateStartTime"`
-	// Output-only. Additional state information, which includes status reported by the agent
+	// Additional state information, which includes status reported by the agent.
 	Substate *string `pulumi:"substate"`
 }
 
@@ -13411,13 +13419,13 @@ type JobStatusInput interface {
 }
 
 type JobStatusArgs struct {
-	// Output-only. Optional job state details, such as an error description if the state is ERROR
+	// Optional job state details, such as an error description if the state is ERROR.
 	Details pulumi.StringPtrInput `pulumi:"details"`
-	// Output-only. A state message specifying the overall job state
+	// A state message specifying the overall job state.
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// Output-only. The time when this state was entered
+	// The time when this state was entered.
 	StateStartTime pulumi.StringPtrInput `pulumi:"stateStartTime"`
-	// Output-only. Additional state information, which includes status reported by the agent
+	// Additional state information, which includes status reported by the agent.
 	Substate pulumi.StringPtrInput `pulumi:"substate"`
 }
 
@@ -13472,22 +13480,22 @@ func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobSt
 	return o
 }
 
-// Output-only. Optional job state details, such as an error description if the state is ERROR
+// Optional job state details, such as an error description if the state is ERROR.
 func (o JobStatusOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
-// Output-only. A state message specifying the overall job state
+// A state message specifying the overall job state.
 func (o JobStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// Output-only. The time when this state was entered
+// The time when this state was entered.
 func (o JobStatusOutput) StateStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.StateStartTime }).(pulumi.StringPtrOutput)
 }
 
-// Output-only. Additional state information, which includes status reported by the agent
+// Additional state information, which includes status reported by the agent.
 func (o JobStatusOutput) Substate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.Substate }).(pulumi.StringPtrOutput)
 }

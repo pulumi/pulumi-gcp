@@ -43,7 +43,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey cryptoKey;
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
      * 
      */
     private @Nullable String customAlphabet;
@@ -97,7 +97,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
      * 
      */
     public Optional<String> customAlphabet() {

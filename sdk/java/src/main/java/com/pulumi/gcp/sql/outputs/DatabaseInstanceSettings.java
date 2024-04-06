@@ -131,7 +131,8 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable Map<String,String> userLabels;
     /**
-     * @return Used to make sure changes to the settings block are atomic.
+     * @return Used to make sure changes to the `settings` block are
+     * atomic.
      * 
      */
     private @Nullable Integer version;
@@ -292,7 +293,8 @@ public final class DatabaseInstanceSettings {
         return this.userLabels == null ? Map.of() : this.userLabels;
     }
     /**
-     * @return Used to make sure changes to the settings block are atomic.
+     * @return Used to make sure changes to the `settings` block are
+     * atomic.
      * 
      */
     public Optional<Integer> version() {

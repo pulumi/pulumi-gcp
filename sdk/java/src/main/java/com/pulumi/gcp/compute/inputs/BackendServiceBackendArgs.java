@@ -50,10 +50,10 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     /**
      * A multiplier applied to the group&#39;s maximum servicing capacity
      * (based on UTILIZATION, RATE or CONNECTION).
-     * Default value is 1, which means the group will serve up to 100%!
-     * (MISSING)of its configured capacity (depending on balancingMode). A
+     * Default value is 1, which means the group will serve up to 100%
+     * of its configured capacity (depending on balancingMode). A
      * setting of 0 means the group is completely drained, offering
-     * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+     * 0% of its available Capacity. Valid range is [0.0,1.0].
      * 
      */
     @Import(name="capacityScaler")
@@ -62,10 +62,10 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     /**
      * @return A multiplier applied to the group&#39;s maximum servicing capacity
      * (based on UTILIZATION, RATE or CONNECTION).
-     * Default value is 1, which means the group will serve up to 100%!
-     * (MISSING)of its configured capacity (depending on balancingMode). A
+     * Default value is 1, which means the group will serve up to 100%
+     * of its configured capacity (depending on balancingMode). A
      * setting of 0 means the group is completely drained, offering
-     * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+     * 0% of its available Capacity. Valid range is [0.0,1.0].
      * 
      */
     public Optional<Output<Double>> capacityScaler() {
@@ -357,10 +357,10 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         /**
          * @param capacityScaler A multiplier applied to the group&#39;s maximum servicing capacity
          * (based on UTILIZATION, RATE or CONNECTION).
-         * Default value is 1, which means the group will serve up to 100%!
-         * (MISSING)of its configured capacity (depending on balancingMode). A
+         * Default value is 1, which means the group will serve up to 100%
+         * of its configured capacity (depending on balancingMode). A
          * setting of 0 means the group is completely drained, offering
-         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
          * 
          * @return builder
          * 
@@ -373,10 +373,10 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         /**
          * @param capacityScaler A multiplier applied to the group&#39;s maximum servicing capacity
          * (based on UTILIZATION, RATE or CONNECTION).
-         * Default value is 1, which means the group will serve up to 100%!
-         * (MISSING)of its configured capacity (depending on balancingMode). A
+         * Default value is 1, which means the group will serve up to 100%
+         * of its configured capacity (depending on balancingMode). A
          * setting of 0 means the group is completely drained, offering
-         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
          * 
          * @return builder
          * 

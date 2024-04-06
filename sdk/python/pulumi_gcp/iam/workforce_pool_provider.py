@@ -81,6 +81,11 @@ class WorkforcePoolProviderArgs:
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
+               An object containing a list of `"key": value` pairs.
+               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -209,6 +214,11 @@ class WorkforcePoolProviderArgs:
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
+        ```
+        {"google.subject": "assertion.sub"}
+        ```
+        An object containing a list of `"key": value` pairs.
+        Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -339,6 +349,11 @@ class _WorkforcePoolProviderState:
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
+               An object containing a list of `"key": value` pairs.
+               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -449,6 +464,11 @@ class _WorkforcePoolProviderState:
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
+        ```
+        {"google.subject": "assertion.sub"}
+        ```
+        An object containing a list of `"key": value` pairs.
+        Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "attribute_mapping")
 
@@ -811,6 +831,11 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
+               An object containing a list of `"key": value` pairs.
+               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -1117,6 +1142,11 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
                For example, the following maps the sub claim of the incoming credential to the `subject` attribute
                on a Google token:
+               ```
+               {"google.subject": "assertion.sub"}
+               ```
+               An object containing a list of `"key": value` pairs.
+               Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
@@ -1216,6 +1246,11 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
         For example, the following maps the sub claim of the incoming credential to the `subject` attribute
         on a Google token:
+        ```
+        {"google.subject": "assertion.sub"}
+        ```
+        An object containing a list of `"key": value` pairs.
+        Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "attribute_mapping")
 

@@ -30,14 +30,16 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
     public static final EnvironmentConfigArgs Empty = new EnvironmentConfigArgs();
 
     /**
-     * The URI of the Apache Airflow Web UI hosted within this environment.
+     * The URI of the Apache Airflow Web UI hosted within this
+     * environment.
      * 
      */
     @Import(name="airflowUri")
     private @Nullable Output<String> airflowUri;
 
     /**
-     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * @return The URI of the Apache Airflow Web UI hosted within this
+     * environment.
      * 
      */
     public Optional<Output<String>> airflowUri() {
@@ -45,14 +47,22 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * The Cloud Storage prefix of the DAGs for this environment.
+     * Although Cloud Storage objects reside in a flat namespace, a
+     * hierarchical file tree can be simulated using &#39;/&#39;-delimited
+     * object name prefixes. DAG objects for this environment
+     * reside in a simulated directory with this prefix.
      * 
      */
     @Import(name="dagGcsPrefix")
     private @Nullable Output<String> dagGcsPrefix;
 
     /**
-     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * @return The Cloud Storage prefix of the DAGs for this environment.
+     * Although Cloud Storage objects reside in a flat namespace, a
+     * hierarchical file tree can be simulated using &#39;/&#39;-delimited
+     * object name prefixes. DAG objects for this environment
+     * reside in a simulated directory with this prefix.
      * 
      */
     public Optional<Output<String>> dagGcsPrefix() {
@@ -373,7 +383,8 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param airflowUri The URI of the Apache Airflow Web UI hosted within this environment.
+         * @param airflowUri The URI of the Apache Airflow Web UI hosted within this
+         * environment.
          * 
          * @return builder
          * 
@@ -384,7 +395,8 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param airflowUri The URI of the Apache Airflow Web UI hosted within this environment.
+         * @param airflowUri The URI of the Apache Airflow Web UI hosted within this
+         * environment.
          * 
          * @return builder
          * 
@@ -394,7 +406,11 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dagGcsPrefix The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         * @param dagGcsPrefix The Cloud Storage prefix of the DAGs for this environment.
+         * Although Cloud Storage objects reside in a flat namespace, a
+         * hierarchical file tree can be simulated using &#39;/&#39;-delimited
+         * object name prefixes. DAG objects for this environment
+         * reside in a simulated directory with this prefix.
          * 
          * @return builder
          * 
@@ -405,7 +421,11 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dagGcsPrefix The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         * @param dagGcsPrefix The Cloud Storage prefix of the DAGs for this environment.
+         * Although Cloud Storage objects reside in a flat namespace, a
+         * hierarchical file tree can be simulated using &#39;/&#39;-delimited
+         * object name prefixes. DAG objects for this environment
+         * reside in a simulated directory with this prefix.
          * 
          * @return builder
          * 

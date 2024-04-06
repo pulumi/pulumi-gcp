@@ -83,7 +83,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The number of nodes in the cluster.
-     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     @Import(name="numNodes")
@@ -91,7 +91,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The number of nodes in the cluster.
-     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     public Optional<Output<Integer>> numNodes() {
@@ -99,14 +99,14 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The state of the cluster
+     * describes the current state of the cluster.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the cluster
+     * @return describes the current state of the cluster.
      * 
      */
     public Optional<Output<String>> state() {
@@ -262,7 +262,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param numNodes The number of nodes in the cluster.
-         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param numNodes The number of nodes in the cluster.
-         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state The state of the cluster
+         * @param state describes the current state of the cluster.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state The state of the cluster
+         * @param state describes the current state of the cluster.
          * 
          * @return builder
          * 

@@ -235,9 +235,13 @@ func (o DatabaseInstanceClonePtrOutput) SourceInstanceName() pulumi.StringPtrOut
 }
 
 type DatabaseInstanceIpAddress struct {
-	IpAddress    *string `pulumi:"ipAddress"`
+	// The IPv4 address assigned.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The time this IP address will be retired, in RFC
+	// 3339 format.
 	TimeToRetire *string `pulumi:"timeToRetire"`
-	Type         *string `pulumi:"type"`
+	// The type of this IP address.
+	Type *string `pulumi:"type"`
 }
 
 // DatabaseInstanceIpAddressInput is an input type that accepts DatabaseInstanceIpAddressArgs and DatabaseInstanceIpAddressOutput values.
@@ -252,9 +256,13 @@ type DatabaseInstanceIpAddressInput interface {
 }
 
 type DatabaseInstanceIpAddressArgs struct {
-	IpAddress    pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The IPv4 address assigned.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The time this IP address will be retired, in RFC
+	// 3339 format.
 	TimeToRetire pulumi.StringPtrInput `pulumi:"timeToRetire"`
-	Type         pulumi.StringPtrInput `pulumi:"type"`
+	// The type of this IP address.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DatabaseInstanceIpAddressArgs) ElementType() reflect.Type {
@@ -308,14 +316,18 @@ func (o DatabaseInstanceIpAddressOutput) ToDatabaseInstanceIpAddressOutputWithCo
 	return o
 }
 
+// The IPv4 address assigned.
 func (o DatabaseInstanceIpAddressOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceIpAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The time this IP address will be retired, in RFC
+// 3339 format.
 func (o DatabaseInstanceIpAddressOutput) TimeToRetire() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceIpAddress) *string { return v.TimeToRetire }).(pulumi.StringPtrOutput)
 }
 
+// The type of this IP address.
 func (o DatabaseInstanceIpAddressOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceIpAddress) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1078,7 +1090,8 @@ type DatabaseInstanceSettings struct {
 	TimeZone *string `pulumi:"timeZone"`
 	// A set of key/value user label pairs to assign to the instance.
 	UserLabels map[string]string `pulumi:"userLabels"`
-	// Used to make sure changes to the settings block are atomic.
+	// Used to make sure changes to the `settings` block are
+	// atomic.
 	Version *int `pulumi:"version"`
 }
 
@@ -1145,7 +1158,8 @@ type DatabaseInstanceSettingsArgs struct {
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// A set of key/value user label pairs to assign to the instance.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
-	// Used to make sure changes to the settings block are atomic.
+	// Used to make sure changes to the `settings` block are
+	// atomic.
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
@@ -1371,7 +1385,8 @@ func (o DatabaseInstanceSettingsOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
-// Used to make sure changes to the settings block are atomic.
+// Used to make sure changes to the `settings` block are
+// atomic.
 func (o DatabaseInstanceSettingsOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
@@ -1659,7 +1674,8 @@ func (o DatabaseInstanceSettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Used to make sure changes to the settings block are atomic.
+// Used to make sure changes to the `settings` block are
+// atomic.
 func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
 		if v == nil {

@@ -34,7 +34,7 @@ public final class ConsumerQuotaOverrideArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      * 
      */
@@ -42,7 +42,7 @@ public final class ConsumerQuotaOverrideArgs extends com.pulumi.resources.Resour
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * @return If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      * 
      */
@@ -187,7 +187,7 @@ public final class ConsumerQuotaOverrideArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param force If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+         * @param force If the new quota would decrease the existing quota by more than 10%, the request is rejected.
          * If `force` is `true`, that safety check is ignored.
          * 
          * @return builder
@@ -199,7 +199,7 @@ public final class ConsumerQuotaOverrideArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param force If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+         * @param force If the new quota would decrease the existing quota by more than 10%, the request is rejected.
          * If `force` is `true`, that safety check is ignored.
          * 
          * @return builder

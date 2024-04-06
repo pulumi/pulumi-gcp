@@ -1227,7 +1227,7 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.trafficStatuses;
     }
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      * 
      */
@@ -1235,7 +1235,7 @@ public class Service extends com.pulumi.resources.CustomResource {
     private Output<List<ServiceTraffic>> traffics;
 
     /**
-     * @return Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+     * @return Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      * 
      */

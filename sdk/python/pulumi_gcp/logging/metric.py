@@ -52,7 +52,7 @@ class MetricArgs:
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -190,7 +190,7 @@ class MetricArgs:
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
-        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
         character (/) denotes a hierarchy of name pieces, and it cannot be the first character
         of the name.
         """
@@ -271,7 +271,7 @@ class _MetricState:
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -410,7 +410,7 @@ class _MetricState:
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
-        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
         character (/) denotes a hierarchy of name pieces, and it cannot be the first character
         of the name.
         """
@@ -642,7 +642,7 @@ class Metric(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -906,7 +906,7 @@ class Metric(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
-               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+               characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
                character (/) denotes a hierarchy of name pieces, and it cannot be the first character
                of the name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1012,7 +1012,7 @@ class Metric(pulumi.CustomResource):
         """
         The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
         Metric identifiers are limited to 100 characters and can include only the following
-        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+        characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
         character (/) denotes a hierarchy of name pieces, and it cannot be the first character
         of the name.
         """

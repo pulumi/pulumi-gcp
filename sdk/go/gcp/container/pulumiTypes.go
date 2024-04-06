@@ -15663,11 +15663,11 @@ func (o ClusterEnableK8sBetaApisPtrOutput) EnabledApis() pulumi.StringArrayOutpu
 }
 
 type ClusterFleet struct {
-	// Full resource name of the registered fleet membership of the cluster.
+	// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
 	Membership *string `pulumi:"membership"`
-	// Short name of the fleet membership, for example "member-1".
+	// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
 	MembershipId *string `pulumi:"membershipId"`
-	// Location of the fleet membership, for example "us-central1".
+	// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
 	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Whether the cluster has been registered via the fleet API.
 	PreRegistered *bool `pulumi:"preRegistered"`
@@ -15687,11 +15687,11 @@ type ClusterFleetInput interface {
 }
 
 type ClusterFleetArgs struct {
-	// Full resource name of the registered fleet membership of the cluster.
+	// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
 	Membership pulumi.StringPtrInput `pulumi:"membership"`
-	// Short name of the fleet membership, for example "member-1".
+	// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
 	MembershipId pulumi.StringPtrInput `pulumi:"membershipId"`
-	// Location of the fleet membership, for example "us-central1".
+	// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
 	MembershipLocation pulumi.StringPtrInput `pulumi:"membershipLocation"`
 	// Whether the cluster has been registered via the fleet API.
 	PreRegistered pulumi.BoolPtrInput `pulumi:"preRegistered"`
@@ -15776,17 +15776,17 @@ func (o ClusterFleetOutput) ToClusterFleetPtrOutputWithContext(ctx context.Conte
 	}).(ClusterFleetPtrOutput)
 }
 
-// Full resource name of the registered fleet membership of the cluster.
+// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
 func (o ClusterFleetOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
 }
 
-// Short name of the fleet membership, for example "member-1".
+// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
 func (o ClusterFleetOutput) MembershipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterFleet) *string { return v.MembershipId }).(pulumi.StringPtrOutput)
 }
 
-// Location of the fleet membership, for example "us-central1".
+// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
 func (o ClusterFleetOutput) MembershipLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterFleet) *string { return v.MembershipLocation }).(pulumi.StringPtrOutput)
 }
@@ -15825,7 +15825,7 @@ func (o ClusterFleetPtrOutput) Elem() ClusterFleetOutput {
 	}).(ClusterFleetOutput)
 }
 
-// Full resource name of the registered fleet membership of the cluster.
+// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
 func (o ClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterFleet) *string {
 		if v == nil {
@@ -15835,7 +15835,7 @@ func (o ClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Short name of the fleet membership, for example "member-1".
+// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
 func (o ClusterFleetPtrOutput) MembershipId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterFleet) *string {
 		if v == nil {
@@ -15845,7 +15845,7 @@ func (o ClusterFleetPtrOutput) MembershipId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location of the fleet membership, for example "us-central1".
+// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
 func (o ClusterFleetPtrOutput) MembershipLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterFleet) *string {
 		if v == nil {
@@ -17712,13 +17712,16 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) StartTime() pulumi.Str
 }
 
 type ClusterMasterAuth struct {
-	// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+	// Base64 encoded public certificate
+	// used by clients to authenticate to the cluster endpoint.
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
-	// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+	// Base64 encoded private key used by clients
+	// to authenticate to the cluster endpoint.
 	ClientKey *string `pulumi:"clientKey"`
-	// Base64 encoded public certificate that is the root of trust for the cluster.
+	// Base64 encoded public certificate
+	// that is the root certificate of the cluster.
 	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
 }
 
@@ -17734,13 +17737,16 @@ type ClusterMasterAuthInput interface {
 }
 
 type ClusterMasterAuthArgs struct {
-	// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+	// Base64 encoded public certificate
+	// used by clients to authenticate to the cluster endpoint.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigInput `pulumi:"clientCertificateConfig"`
-	// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+	// Base64 encoded private key used by clients
+	// to authenticate to the cluster endpoint.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
-	// Base64 encoded public certificate that is the root of trust for the cluster.
+	// Base64 encoded public certificate
+	// that is the root certificate of the cluster.
 	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
 }
 
@@ -17821,7 +17827,8 @@ func (o ClusterMasterAuthOutput) ToClusterMasterAuthPtrOutputWithContext(ctx con
 	}).(ClusterMasterAuthPtrOutput)
 }
 
-// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+// Base64 encoded public certificate
+// used by clients to authenticate to the cluster endpoint.
 func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
@@ -17831,12 +17838,14 @@ func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClie
 	return o.ApplyT(func(v ClusterMasterAuth) ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigOutput)
 }
 
-// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+// Base64 encoded private key used by clients
+// to authenticate to the cluster endpoint.
 func (o ClusterMasterAuthOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
-// Base64 encoded public certificate that is the root of trust for the cluster.
+// Base64 encoded public certificate
+// that is the root certificate of the cluster.
 func (o ClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
 }
@@ -17865,7 +17874,8 @@ func (o ClusterMasterAuthPtrOutput) Elem() ClusterMasterAuthOutput {
 	}).(ClusterMasterAuthOutput)
 }
 
-// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+// Base64 encoded public certificate
+// used by clients to authenticate to the cluster endpoint.
 func (o ClusterMasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *string {
 		if v == nil {
@@ -17885,7 +17895,8 @@ func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthC
 	}).(ClusterMasterAuthClientCertificateConfigPtrOutput)
 }
 
-// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+// Base64 encoded private key used by clients
+// to authenticate to the cluster endpoint.
 func (o ClusterMasterAuthPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *string {
 		if v == nil {
@@ -17895,7 +17906,8 @@ func (o ClusterMasterAuthPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Base64 encoded public certificate that is the root of trust for the cluster.
+// Base64 encoded public certificate
+// that is the root certificate of the cluster.
 func (o ClusterMasterAuthPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *string {
 		if v == nil {
@@ -19059,7 +19071,7 @@ type ClusterNodeConfig struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
-	// List of kubernetes taints applied to each node.
+	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints []ClusterNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
@@ -19198,7 +19210,7 @@ type ClusterNodeConfigArgs struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// List of kubernetes taints applied to each node.
+	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints ClusterNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
@@ -19417,7 +19429,7 @@ func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// List of kubernetes taints applied to each node.
+// List of kubernetes taints applied to each node. Structure is documented above.
 func (o ClusterNodeConfigOutput) EffectiveTaints() ClusterNodeConfigEffectiveTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigEffectiveTaint { return v.EffectiveTaints }).(ClusterNodeConfigEffectiveTaintArrayOutput)
 }
@@ -19707,7 +19719,7 @@ func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of kubernetes taints applied to each node.
+// List of kubernetes taints applied to each node. Structure is documented above.
 func (o ClusterNodeConfigPtrOutput) EffectiveTaints() ClusterNodeConfigEffectiveTaintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []ClusterNodeConfigEffectiveTaint {
 		if v == nil {
@@ -25551,7 +25563,7 @@ type ClusterNodePoolNodeConfig struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
-	// List of kubernetes taints applied to each node.
+	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints []ClusterNodePoolNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
@@ -25690,7 +25702,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// List of kubernetes taints applied to each node.
+	// List of kubernetes taints applied to each node. Structure is documented above.
 	EffectiveTaints ClusterNodePoolNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
@@ -25913,7 +25925,7 @@ func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// List of kubernetes taints applied to each node.
+// List of kubernetes taints applied to each node. Structure is documented above.
 func (o ClusterNodePoolNodeConfigOutput) EffectiveTaints() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigEffectiveTaint { return v.EffectiveTaints }).(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
 }
@@ -26219,7 +26231,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of kubernetes taints applied to each node.
+// List of kubernetes taints applied to each node. Structure is documented above.
 func (o ClusterNodePoolNodeConfigPtrOutput) EffectiveTaints() ClusterNodePoolNodeConfigEffectiveTaintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigEffectiveTaint {
 		if v == nil {

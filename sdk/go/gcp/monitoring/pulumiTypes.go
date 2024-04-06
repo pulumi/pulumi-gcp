@@ -9708,7 +9708,7 @@ type UptimeCheckConfigHttpCheck struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	// Structure is documented below.
 	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 	Body *string `pulumi:"body"`
 	// The content type to use for the check.
 	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
@@ -9754,7 +9754,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	// Structure is documented below.
 	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type to use for the check.
 	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
@@ -9873,7 +9873,7 @@ func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckA
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 func (o UptimeCheckConfigHttpCheckOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
@@ -9978,7 +9978,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) AuthInfo() UptimeCheckConfigHttpChe
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {

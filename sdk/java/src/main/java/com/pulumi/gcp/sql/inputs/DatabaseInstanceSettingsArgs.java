@@ -367,14 +367,16 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Used to make sure changes to the settings block are atomic.
+     * Used to make sure changes to the `settings` block are
+     * atomic.
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return Used to make sure changes to the settings block are atomic.
+     * @return Used to make sure changes to the `settings` block are
+     * atomic.
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -890,7 +892,8 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param version Used to make sure changes to the settings block are atomic.
+         * @param version Used to make sure changes to the `settings` block are
+         * atomic.
          * 
          * @return builder
          * 
@@ -901,7 +904,8 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param version Used to make sure changes to the settings block are atomic.
+         * @param version Used to make sure changes to the `settings` block are
+         * atomic.
          * 
          * @return builder
          * 

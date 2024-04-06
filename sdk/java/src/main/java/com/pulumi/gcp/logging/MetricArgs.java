@@ -156,7 +156,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The client-assigned metric identifier. Examples - &#34;error_count&#34;, &#34;nginx/requests&#34;.
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%!/(MISSING). The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%/. The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      * 
@@ -167,7 +167,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The client-assigned metric identifier. Examples - &#34;error_count&#34;, &#34;nginx/requests&#34;.
      * Metric identifiers are limited to 100 characters and can include only the following
-     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%!/(MISSING). The forward-slash
+     * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%/. The forward-slash
      * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
      * of the name.
      * 
@@ -431,7 +431,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The client-assigned metric identifier. Examples - &#34;error_count&#34;, &#34;nginx/requests&#34;.
          * Metric identifiers are limited to 100 characters and can include only the following
-         * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%!/(MISSING). The forward-slash
+         * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%/. The forward-slash
          * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
          * of the name.
          * 
@@ -446,7 +446,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The client-assigned metric identifier. Examples - &#34;error_count&#34;, &#34;nginx/requests&#34;.
          * Metric identifiers are limited to 100 characters and can include only the following
-         * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%!/(MISSING). The forward-slash
+         * characters A-Z, a-z, 0-9, and the special characters _-.,+!*&#39;,()%/. The forward-slash
          * character (/) denotes a hierarchy of name pieces, and it cannot be the first character
          * of the name.
          * 

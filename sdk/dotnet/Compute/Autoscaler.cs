@@ -268,8 +268,8 @@ namespace Pulumi.Gcp.Compute
         /// define one or more of the policies for an autoscaler: cpuUtilization,
         /// customMetricUtilizations, and loadBalancingUtilization.
         /// If none of these are specified, the default will be to autoscale based
-        /// on cpuUtilization to 0.6 or 60%!
-        /// (MISSING)Structure is documented below.
+        /// on cpuUtilization to 0.6 or 60%.
+        /// Structure is documented below.
         /// </summary>
         [Output("autoscalingPolicy")]
         public Output<Outputs.AutoscalerAutoscalingPolicy> AutoscalingPolicy { get; private set; } = null!;
@@ -376,8 +376,8 @@ namespace Pulumi.Gcp.Compute
         /// define one or more of the policies for an autoscaler: cpuUtilization,
         /// customMetricUtilizations, and loadBalancingUtilization.
         /// If none of these are specified, the default will be to autoscale based
-        /// on cpuUtilization to 0.6 or 60%!
-        /// (MISSING)Structure is documented below.
+        /// on cpuUtilization to 0.6 or 60%.
+        /// Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy", required: true)]
         public Input<Inputs.AutoscalerAutoscalingPolicyArgs> AutoscalingPolicy { get; set; } = null!;
@@ -430,8 +430,8 @@ namespace Pulumi.Gcp.Compute
         /// define one or more of the policies for an autoscaler: cpuUtilization,
         /// customMetricUtilizations, and loadBalancingUtilization.
         /// If none of these are specified, the default will be to autoscale based
-        /// on cpuUtilization to 0.6 or 60%!
-        /// (MISSING)Structure is documented below.
+        /// on cpuUtilization to 0.6 or 60%.
+        /// Structure is documented below.
         /// </summary>
         [Input("autoscalingPolicy")]
         public Input<Inputs.AutoscalerAutoscalingPolicyGetArgs>? AutoscalingPolicy { get; set; }

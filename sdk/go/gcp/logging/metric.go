@@ -277,7 +277,7 @@ type Metric struct {
 	MetricDescriptor MetricMetricDescriptorOutput `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
-	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
 	// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
 	// of the name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -357,7 +357,7 @@ type metricState struct {
 	MetricDescriptor *MetricMetricDescriptor `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
-	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
 	// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
 	// of the name.
 	Name *string `pulumi:"name"`
@@ -405,7 +405,7 @@ type MetricState struct {
 	MetricDescriptor MetricMetricDescriptorPtrInput
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
-	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
 	// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
 	// of the name.
 	Name pulumi.StringPtrInput
@@ -457,7 +457,7 @@ type metricArgs struct {
 	MetricDescriptor *MetricMetricDescriptor `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
-	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
 	// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
 	// of the name.
 	Name *string `pulumi:"name"`
@@ -506,7 +506,7 @@ type MetricArgs struct {
 	MetricDescriptor MetricMetricDescriptorPtrInput
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
-	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
 	// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
 	// of the name.
 	Name pulumi.StringPtrInput
@@ -661,7 +661,7 @@ func (o MetricOutput) MetricDescriptor() MetricMetricDescriptorOutput {
 
 // The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 // Metric identifiers are limited to 100 characters and can include only the following
-// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%!/(MISSING). The forward-slash
+// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
 // character (/) denotes a hierarchy of name pieces, and it cannot be the first character
 // of the name.
 func (o MetricOutput) Name() pulumi.StringOutput {

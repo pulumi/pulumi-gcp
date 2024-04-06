@@ -293,6 +293,8 @@ type WorkforcePoolProvider struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
+	// An object containing a list of `"key": value` pairs.
+	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -414,6 +416,8 @@ type workforcePoolProviderState struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
+	// An object containing a list of `"key": value` pairs.
+	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -497,6 +501,8 @@ type WorkforcePoolProviderState struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
+	// An object containing a list of `"key": value` pairs.
+	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -584,6 +590,8 @@ type workforcePoolProviderArgs struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
+	// An object containing a list of `"key": value` pairs.
+	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -658,6 +666,8 @@ type WorkforcePoolProviderArgs struct {
 	//   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 	//   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 	//   on a Google token:
+	// An object containing a list of `"key": value` pairs.
+	// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -820,6 +830,9 @@ func (o WorkforcePoolProviderOutput) AttributeCondition() pulumi.StringPtrOutput
 //     For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
 //     For example, the following maps the sub claim of the incoming credential to the `subject` attribute
 //     on a Google token:
+//
+// An object containing a list of `"key": value` pairs.
+// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 func (o WorkforcePoolProviderOutput) AttributeMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)
 }

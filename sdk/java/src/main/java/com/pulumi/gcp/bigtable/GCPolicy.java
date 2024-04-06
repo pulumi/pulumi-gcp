@@ -229,6 +229,10 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * This is equivalent to running the following `cbt` command:
  * 
+ * ## Import
+ * 
+ * This resource does not support import.
+ * 
  */
 @ResourceType(type="gcp:bigtable/gCPolicy:GCPolicy")
 public class GCPolicy extends com.pulumi.resources.CustomResource {

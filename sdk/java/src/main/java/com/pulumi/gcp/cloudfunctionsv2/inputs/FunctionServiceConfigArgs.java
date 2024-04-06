@@ -22,14 +22,14 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     public static final FunctionServiceConfigArgs Empty = new FunctionServiceConfigArgs();
 
     /**
-     * Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+     * Whether 100% of traffic is routed to the latest revision. Defaults to true.
      * 
      */
     @Import(name="allTrafficOnLatestRevision")
     private @Nullable Output<Boolean> allTrafficOnLatestRevision;
 
     /**
-     * @return Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> allTrafficOnLatestRevision() {
@@ -343,7 +343,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allTrafficOnLatestRevision Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+         * @param allTrafficOnLatestRevision Whether 100% of traffic is routed to the latest revision. Defaults to true.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allTrafficOnLatestRevision Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+         * @param allTrafficOnLatestRevision Whether 100% of traffic is routed to the latest revision. Defaults to true.
          * 
          * @return builder
          * 
