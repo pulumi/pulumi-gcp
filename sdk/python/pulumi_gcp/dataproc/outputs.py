@@ -653,7 +653,9 @@ class ClusterClusterConfig(dict):
                Structure defined below.
         :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupArgs'] auxiliary_node_groups: A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
                Structure defined below.
-        :param str bucket: The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        :param str bucket: The name of the cloud storage bucket ultimately used to house the staging data
+               for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+               it will be the auto generated name.
         :param 'ClusterClusterConfigDataprocMetricConfigArgs' dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param 'ClusterClusterConfigEncryptionConfigArgs' encryption_config: The Customer managed encryption keys settings for the cluster.
@@ -751,7 +753,9 @@ class ClusterClusterConfig(dict):
     @pulumi.getter
     def bucket(self) -> Optional[str]:
         """
-        The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        The name of the cloud storage bucket ultimately used to house the staging data
+        for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+        it will be the auto generated name.
         """
         return pulumi.get(self, "bucket")
 
@@ -5305,10 +5309,10 @@ class JobStatus(dict):
                  state_start_time: Optional[str] = None,
                  substate: Optional[str] = None):
         """
-        :param str details: Output-only. Optional job state details, such as an error description if the state is ERROR
-        :param str state: Output-only. A state message specifying the overall job state
-        :param str state_start_time: Output-only. The time when this state was entered
-        :param str substate: Output-only. Additional state information, which includes status reported by the agent
+        :param str details: Optional job state details, such as an error description if the state is ERROR.
+        :param str state: A state message specifying the overall job state.
+        :param str state_start_time: The time when this state was entered.
+        :param str substate: Additional state information, which includes status reported by the agent.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -5323,7 +5327,7 @@ class JobStatus(dict):
     @pulumi.getter
     def details(self) -> Optional[str]:
         """
-        Output-only. Optional job state details, such as an error description if the state is ERROR
+        Optional job state details, such as an error description if the state is ERROR.
         """
         return pulumi.get(self, "details")
 
@@ -5331,7 +5335,7 @@ class JobStatus(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        Output-only. A state message specifying the overall job state
+        A state message specifying the overall job state.
         """
         return pulumi.get(self, "state")
 
@@ -5339,7 +5343,7 @@ class JobStatus(dict):
     @pulumi.getter(name="stateStartTime")
     def state_start_time(self) -> Optional[str]:
         """
-        Output-only. The time when this state was entered
+        The time when this state was entered.
         """
         return pulumi.get(self, "state_start_time")
 
@@ -5347,7 +5351,7 @@ class JobStatus(dict):
     @pulumi.getter
     def substate(self) -> Optional[str]:
         """
-        Output-only. Additional state information, which includes status reported by the agent
+        Additional state information, which includes status reported by the agent.
         """
         return pulumi.get(self, "substate")
 

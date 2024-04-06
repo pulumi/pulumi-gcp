@@ -28,8 +28,8 @@ class AutoscalerArgs:
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%!
-               (MISSING)Structure is documented below.
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -60,8 +60,8 @@ class AutoscalerArgs:
         define one or more of the policies for an autoscaler: cpuUtilization,
         customMetricUtilizations, and loadBalancingUtilization.
         If none of these are specified, the default will be to autoscale based
-        on cpuUtilization to 0.6 or 60%!
-        (MISSING)Structure is documented below.
+        on cpuUtilization to 0.6 or 60%.
+        Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -152,8 +152,8 @@ class _AutoscalerState:
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%!
-               (MISSING)Structure is documented below.
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -192,8 +192,8 @@ class _AutoscalerState:
         define one or more of the policies for an autoscaler: cpuUtilization,
         customMetricUtilizations, and loadBalancingUtilization.
         If none of these are specified, the default will be to autoscale based
-        on cpuUtilization to 0.6 or 60%!
-        (MISSING)Structure is documented below.
+        on cpuUtilization to 0.6 or 60%.
+        Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -471,8 +471,8 @@ class Autoscaler(pulumi.CustomResource):
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%!
-               (MISSING)Structure is documented below.
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -725,8 +725,8 @@ class Autoscaler(pulumi.CustomResource):
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%!
-               (MISSING)Structure is documented below.
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -762,8 +762,8 @@ class Autoscaler(pulumi.CustomResource):
         define one or more of the policies for an autoscaler: cpuUtilization,
         customMetricUtilizations, and loadBalancingUtilization.
         If none of these are specified, the default will be to autoscale based
-        on cpuUtilization to 0.6 or 60%!
-        (MISSING)Structure is documented below.
+        on cpuUtilization to 0.6 or 60%.
+        Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
 

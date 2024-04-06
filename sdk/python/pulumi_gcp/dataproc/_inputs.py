@@ -587,7 +587,9 @@ class ClusterClusterConfigArgs:
                Structure defined below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgs']]] auxiliary_node_groups: A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
                Structure defined below.
-        :param pulumi.Input[str] bucket: The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        :param pulumi.Input[str] bucket: The name of the cloud storage bucket ultimately used to house the staging data
+               for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+               it will be the auto generated name.
         :param pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs'] dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigEncryptionConfigArgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
@@ -693,7 +695,9 @@ class ClusterClusterConfigArgs:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        The name of the cloud storage bucket ultimately used to house the staging data
+        for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+        it will be the auto generated name.
         """
         return pulumi.get(self, "bucket")
 
@@ -4956,10 +4960,10 @@ class JobStatusArgs:
                  state_start_time: Optional[pulumi.Input[str]] = None,
                  substate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] details: Output-only. Optional job state details, such as an error description if the state is ERROR
-        :param pulumi.Input[str] state: Output-only. A state message specifying the overall job state
-        :param pulumi.Input[str] state_start_time: Output-only. The time when this state was entered
-        :param pulumi.Input[str] substate: Output-only. Additional state information, which includes status reported by the agent
+        :param pulumi.Input[str] details: Optional job state details, such as an error description if the state is ERROR.
+        :param pulumi.Input[str] state: A state message specifying the overall job state.
+        :param pulumi.Input[str] state_start_time: The time when this state was entered.
+        :param pulumi.Input[str] substate: Additional state information, which includes status reported by the agent.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -4974,7 +4978,7 @@ class JobStatusArgs:
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[str]]:
         """
-        Output-only. Optional job state details, such as an error description if the state is ERROR
+        Optional job state details, such as an error description if the state is ERROR.
         """
         return pulumi.get(self, "details")
 
@@ -4986,7 +4990,7 @@ class JobStatusArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output-only. A state message specifying the overall job state
+        A state message specifying the overall job state.
         """
         return pulumi.get(self, "state")
 
@@ -4998,7 +5002,7 @@ class JobStatusArgs:
     @pulumi.getter(name="stateStartTime")
     def state_start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output-only. The time when this state was entered
+        The time when this state was entered.
         """
         return pulumi.get(self, "state_start_time")
 
@@ -5010,7 +5014,7 @@ class JobStatusArgs:
     @pulumi.getter
     def substate(self) -> Optional[pulumi.Input[str]]:
         """
-        Output-only. Additional state information, which includes status reported by the agent
+        Additional state information, which includes status reported by the agent.
         """
         return pulumi.get(self, "substate")
 

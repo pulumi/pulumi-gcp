@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Output<ImmutableDictionary<string, string>?> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
         /// If `force` is `true`, that safety check is ignored.
         /// </summary>
         [Output("force")]
@@ -286,7 +286,7 @@ namespace Pulumi.Gcp.ServiceUsage
         }
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
         /// If `force` is `true`, that safety check is ignored.
         /// </summary>
         [Input("force")]
@@ -349,7 +349,7 @@ namespace Pulumi.Gcp.ServiceUsage
         }
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
         /// If `force` is `true`, that safety check is ignored.
         /// </summary>
         [Input("force")]

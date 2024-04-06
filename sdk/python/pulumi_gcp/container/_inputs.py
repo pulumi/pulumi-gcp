@@ -4640,9 +4640,9 @@ class ClusterFleetArgs:
                  pre_registered: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] membership: Full resource name of the registered fleet membership of the cluster.
-        :param pulumi.Input[str] membership_id: Short name of the fleet membership, for example "member-1".
-        :param pulumi.Input[str] membership_location: Location of the fleet membership, for example "us-central1".
+        :param pulumi.Input[str] membership: The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+        :param pulumi.Input[str] membership_id: The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+        :param pulumi.Input[str] membership_location: The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         :param pulumi.Input[bool] pre_registered: Whether the cluster has been registered via the fleet API.
         :param pulumi.Input[str] project: The name of the Fleet host project where this cluster will be registered.
         """
@@ -4661,7 +4661,7 @@ class ClusterFleetArgs:
     @pulumi.getter
     def membership(self) -> Optional[pulumi.Input[str]]:
         """
-        Full resource name of the registered fleet membership of the cluster.
+        The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
         """
         return pulumi.get(self, "membership")
 
@@ -4673,7 +4673,7 @@ class ClusterFleetArgs:
     @pulumi.getter(name="membershipId")
     def membership_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Short name of the fleet membership, for example "member-1".
+        The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_id")
 
@@ -4685,7 +4685,7 @@ class ClusterFleetArgs:
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> Optional[pulumi.Input[str]]:
         """
-        Location of the fleet membership, for example "us-central1".
+        The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
         """
         return pulumi.get(self, "membership_location")
 
@@ -5009,6 +5009,25 @@ class ClusterMaintenancePolicyArgs:
                Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
                
                Examples:
+               ```
+               maintenance_policy {
+               recurring_window {
+               start_time = "2019-08-01T02:00:00Z"
+               end_time = "2019-08-01T06:00:00Z"
+               recurrence = "FREQ=DAILY"
+               }
+               }
+               ```
+               
+               ```
+               maintenance_policy {
+               recurring_window {
+               start_time = "2019-01-01T09:00:00Z"
+               end_time = "2019-01-01T17:00:00Z"
+               recurrence = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+               }
+               }
+               ```
         """
         if daily_maintenance_window is not None:
             pulumi.set(__self__, "daily_maintenance_window", daily_maintenance_window)
@@ -5057,6 +5076,25 @@ class ClusterMaintenancePolicyArgs:
         Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 
         Examples:
+        ```
+        maintenance_policy {
+        recurring_window {
+        start_time = "2019-08-01T02:00:00Z"
+        end_time = "2019-08-01T06:00:00Z"
+        recurrence = "FREQ=DAILY"
+        }
+        }
+        ```
+
+        ```
+        maintenance_policy {
+        recurring_window {
+        start_time = "2019-01-01T09:00:00Z"
+        end_time = "2019-01-01T17:00:00Z"
+        recurrence = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+        }
+        }
+        ```
         """
         return pulumi.get(self, "recurring_window")
 
@@ -5162,6 +5200,32 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
                Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
                
                Examples:
+               
+               ```
+               maintenance_policy {
+               recurring_window {
+               start_time = "2019-01-01T00:00:00Z"
+               end_time = "2019-01-02T00:00:00Z"
+               recurrence = "FREQ=DAILY"
+               }
+               maintenance_exclusion{
+               exclusion_name = "batch job"
+               start_time = "2019-01-01T00:00:00Z"
+               end_time = "2019-01-02T00:00:00Z"
+               exclusion_options {
+               scope = "NO_UPGRADES"
+               }
+               }
+               maintenance_exclusion{
+               exclusion_name = "holiday data load"
+               start_time = "2019-05-01T00:00:00Z"
+               end_time = "2019-05-02T00:00:00Z"
+               exclusion_options {
+               scope = "NO_MINOR_UPGRADES"
+               }
+               }
+               }
+               ```
         """
         pulumi.set(__self__, "scope", scope)
 
@@ -5177,6 +5241,32 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
         Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
 
         Examples:
+
+        ```
+        maintenance_policy {
+        recurring_window {
+        start_time = "2019-01-01T00:00:00Z"
+        end_time = "2019-01-02T00:00:00Z"
+        recurrence = "FREQ=DAILY"
+        }
+        maintenance_exclusion{
+        exclusion_name = "batch job"
+        start_time = "2019-01-01T00:00:00Z"
+        end_time = "2019-01-02T00:00:00Z"
+        exclusion_options {
+        scope = "NO_UPGRADES"
+        }
+        }
+        maintenance_exclusion{
+        exclusion_name = "holiday data load"
+        start_time = "2019-05-01T00:00:00Z"
+        end_time = "2019-05-02T00:00:00Z"
+        exclusion_options {
+        scope = "NO_MINOR_UPGRADES"
+        }
+        }
+        }
+        ```
         """
         return pulumi.get(self, "scope")
 
@@ -5232,9 +5322,12 @@ class ClusterMasterAuthArgs:
                  cluster_ca_certificate: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-        :param pulumi.Input[str] client_certificate: Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
-        :param pulumi.Input[str] client_key: Base64 encoded private key used by clients to authenticate to the cluster endpoint.
-        :param pulumi.Input[str] cluster_ca_certificate: Base64 encoded public certificate that is the root of trust for the cluster.
+        :param pulumi.Input[str] client_certificate: Base64 encoded public certificate
+               used by clients to authenticate to the cluster endpoint.
+        :param pulumi.Input[str] client_key: Base64 encoded private key used by clients
+               to authenticate to the cluster endpoint.
+        :param pulumi.Input[str] cluster_ca_certificate: Base64 encoded public certificate
+               that is the root certificate of the cluster.
         """
         pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_certificate is not None:
@@ -5260,7 +5353,8 @@ class ClusterMasterAuthArgs:
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+        Base64 encoded public certificate
+        used by clients to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_certificate")
 
@@ -5272,7 +5366,8 @@ class ClusterMasterAuthArgs:
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+        Base64 encoded private key used by clients
+        to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_key")
 
@@ -5284,7 +5379,8 @@ class ClusterMasterAuthArgs:
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        Base64 encoded public certificate that is the root of trust for the cluster.
+        Base64 encoded public certificate
+        that is the root certificate of the cluster.
         """
         return pulumi.get(self, "cluster_ca_certificate")
 
@@ -5645,7 +5741,7 @@ class ClusterNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -5671,6 +5767,15 @@ class ClusterNodeConfigArgs:
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
+               
+               ```
+               kubelet_config {
+               cpu_manager_policy   = "static"
+               cpu_cfs_quota        = true
+               cpu_cfs_quota_period = "100us"
+               pod_pids_limit       = 1024
+               }
+               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes. Structure is documented below.
@@ -5869,7 +5974,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]:
         """
-        List of kubernetes taints applied to each node.
+        List of kubernetes taints applied to each node. Structure is documented above.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -6005,6 +6110,15 @@ class ClusterNodeConfigArgs:
         """
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
+
+        ```
+        kubelet_config {
+        cpu_manager_policy   = "static"
+        cpu_cfs_quota        = true
+        cpu_cfs_quota_period = "100us"
+        pod_pids_limit       = 1024
+        }
+        ```
         """
         return pulumi.get(self, "kubelet_config")
 
@@ -8065,7 +8179,7 @@ class ClusterNodePoolNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
         :param pulumi.Input[bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -8091,6 +8205,15 @@ class ClusterNodePoolNodeConfigArgs:
                will delete and recreate all nodes in the node pool.
         :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
+               
+               ```
+               kubelet_config {
+               cpu_manager_policy   = "static"
+               cpu_cfs_quota        = true
+               cpu_cfs_quota_period = "100us"
+               pod_pids_limit       = 1024
+               }
+               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes. Structure is documented below.
@@ -8289,7 +8412,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]:
         """
-        List of kubernetes taints applied to each node.
+        List of kubernetes taints applied to each node. Structure is documented above.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -8425,6 +8548,15 @@ class ClusterNodePoolNodeConfigArgs:
         """
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
+
+        ```
+        kubelet_config {
+        cpu_manager_policy   = "static"
+        cpu_cfs_quota        = true
+        cpu_cfs_quota_period = "100us"
+        pod_pids_limit       = 1024
+        }
+        ```
         """
         return pulumi.get(self, "kubelet_config")
 

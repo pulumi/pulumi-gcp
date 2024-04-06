@@ -13,25 +13,25 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class JobStatusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output-only. Optional job state details, such as an error description if the state is ERROR
+        /// Optional job state details, such as an error description if the state is ERROR.
         /// </summary>
         [Input("details")]
         public Input<string>? Details { get; set; }
 
         /// <summary>
-        /// Output-only. A state message specifying the overall job state
+        /// A state message specifying the overall job state.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output-only. The time when this state was entered
+        /// The time when this state was entered.
         /// </summary>
         [Input("stateStartTime")]
         public Input<string>? StateStartTime { get; set; }
 
         /// <summary>
-        /// Output-only. Additional state information, which includes status reported by the agent
+        /// Additional state information, which includes status reported by the agent.
         /// </summary>
         [Input("substate")]
         public Input<string>? Substate { get; set; }

@@ -203,6 +203,12 @@ class DatabaseInstanceIpAddress(dict):
                  ip_address: Optional[str] = None,
                  time_to_retire: Optional[str] = None,
                  type: Optional[str] = None):
+        """
+        :param str ip_address: The IPv4 address assigned.
+        :param str time_to_retire: The time this IP address will be retired, in RFC
+               3339 format.
+        :param str type: The type of this IP address.
+        """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if time_to_retire is not None:
@@ -213,16 +219,26 @@ class DatabaseInstanceIpAddress(dict):
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
+        """
+        The IPv4 address assigned.
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="timeToRetire")
     def time_to_retire(self) -> Optional[str]:
+        """
+        The time this IP address will be retired, in RFC
+        3339 format.
+        """
         return pulumi.get(self, "time_to_retire")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The type of this IP address.
+        """
         return pulumi.get(self, "type")
 
 
@@ -692,7 +708,8 @@ class DatabaseInstanceSettings(dict):
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
-        :param int version: Used to make sure changes to the settings block are atomic.
+        :param int version: Used to make sure changes to the `settings` block are
+               atomic.
         """
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
@@ -941,7 +958,8 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter
     def version(self) -> Optional[int]:
         """
-        Used to make sure changes to the settings block are atomic.
+        Used to make sure changes to the `settings` block are
+        atomic.
         """
         return pulumi.get(self, "version")
 

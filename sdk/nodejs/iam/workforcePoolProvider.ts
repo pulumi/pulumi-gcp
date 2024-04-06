@@ -245,6 +245,11 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      * For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      * on a Google token:
+     * ```
+     * {"google.subject": "assertion.sub"}
+     * ```
+     * An object containing a list of `"key": value` pairs.
+     * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -409,6 +414,11 @@ export interface WorkforcePoolProviderState {
      * For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      * For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      * on a Google token:
+     * ```
+     * {"google.subject": "assertion.sub"}
+     * ```
+     * An object containing a list of `"key": value` pairs.
+     * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -520,6 +530,11 @@ export interface WorkforcePoolProviderArgs {
      * For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      * For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      * on a Google token:
+     * ```
+     * {"google.subject": "assertion.sub"}
+     * ```
+     * An object containing a list of `"key": value` pairs.
+     * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

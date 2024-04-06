@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
         /// <summary>
         /// The default percentage of leaf nodes that any query may be searched. Must be in
-        /// range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+        /// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         /// </summary>
         [Input("leafNodesToSearchPercent")]
         public Input<int>? LeafNodesToSearchPercent { get; set; }

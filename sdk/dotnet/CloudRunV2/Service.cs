@@ -922,7 +922,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<Outputs.ServiceTrafficStatus>> TrafficStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         /// Structure is documented below.
         /// </summary>
         [Output("traffics")]
@@ -1123,7 +1123,7 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<Inputs.ServiceTrafficArgs>? _traffics;
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTrafficArgs> Traffics
@@ -1419,7 +1419,7 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<Inputs.ServiceTrafficGetArgs>? _traffics;
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTrafficGetArgs> Traffics

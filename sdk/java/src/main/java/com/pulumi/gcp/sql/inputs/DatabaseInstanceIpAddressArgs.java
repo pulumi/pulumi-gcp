@@ -15,23 +15,49 @@ public final class DatabaseInstanceIpAddressArgs extends com.pulumi.resources.Re
 
     public static final DatabaseInstanceIpAddressArgs Empty = new DatabaseInstanceIpAddressArgs();
 
+    /**
+     * The IPv4 address assigned.
+     * 
+     */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
+    /**
+     * @return The IPv4 address assigned.
+     * 
+     */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * The time this IP address will be retired, in RFC
+     * 3339 format.
+     * 
+     */
     @Import(name="timeToRetire")
     private @Nullable Output<String> timeToRetire;
 
+    /**
+     * @return The time this IP address will be retired, in RFC
+     * 3339 format.
+     * 
+     */
     public Optional<Output<String>> timeToRetire() {
         return Optional.ofNullable(this.timeToRetire);
     }
 
+    /**
+     * The type of this IP address.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type of this IP address.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -62,29 +88,67 @@ public final class DatabaseInstanceIpAddressArgs extends com.pulumi.resources.Re
             $ = new DatabaseInstanceIpAddressArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipAddress The IPv4 address assigned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
 
+        /**
+         * @param ipAddress The IPv4 address assigned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
         }
 
+        /**
+         * @param timeToRetire The time this IP address will be retired, in RFC
+         * 3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeToRetire(@Nullable Output<String> timeToRetire) {
             $.timeToRetire = timeToRetire;
             return this;
         }
 
+        /**
+         * @param timeToRetire The time this IP address will be retired, in RFC
+         * 3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeToRetire(String timeToRetire) {
             return timeToRetire(Output.of(timeToRetire));
         }
 
+        /**
+         * @param type The type of this IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of this IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

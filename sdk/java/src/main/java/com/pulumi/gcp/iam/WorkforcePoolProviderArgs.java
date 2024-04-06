@@ -81,6 +81,8 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      *   on a Google token:
+     * An object containing a list of `&#34;key&#34;: value` pairs.
+     * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
     @Import(name="attributeMapping")
@@ -124,6 +126,8 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
      *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
      *   on a Google token:
+     * An object containing a list of `&#34;key&#34;: value` pairs.
+     * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
     public Optional<Output<Map<String,String>>> attributeMapping() {
@@ -370,6 +374,8 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
          *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
          *   on a Google token:
+         * An object containing a list of `&#34;key&#34;: value` pairs.
+         * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
          * 
          * @return builder
          * 
@@ -417,6 +423,8 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
          *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
          *   on a Google token:
+         * An object containing a list of `&#34;key&#34;: value` pairs.
+         * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
          * 
          * @return builder
          * 

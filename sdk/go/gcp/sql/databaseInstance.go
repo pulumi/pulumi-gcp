@@ -16,7 +16,7 @@ import (
 // or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
 //
 // > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
-// default 'root'@'%!'(MISSING) user with no password. This user will be deleted by the provider on
+// default 'root'@'%' user with no password. This user will be deleted by the provider on
 // instance creation. You should use `sql.User` to define a custom user with
 // a restricted host and strong password.
 //

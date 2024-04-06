@@ -11,17 +11,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabaseInstanceIpAddress {
+    /**
+     * @return The IPv4 address assigned.
+     * 
+     */
     private @Nullable String ipAddress;
+    /**
+     * @return The time this IP address will be retired, in RFC
+     * 3339 format.
+     * 
+     */
     private @Nullable String timeToRetire;
+    /**
+     * @return The type of this IP address.
+     * 
+     */
     private @Nullable String type;
 
     private DatabaseInstanceIpAddress() {}
+    /**
+     * @return The IPv4 address assigned.
+     * 
+     */
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
+    /**
+     * @return The time this IP address will be retired, in RFC
+     * 3339 format.
+     * 
+     */
     public Optional<String> timeToRetire() {
         return Optional.ofNullable(this.timeToRetire);
     }
+    /**
+     * @return The type of this IP address.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

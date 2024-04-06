@@ -143,8 +143,13 @@ class EnvironmentConfig(dict):
                  web_server_network_access_control: Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl'] = None,
                  workloads_config: Optional['outputs.EnvironmentConfigWorkloadsConfig'] = None):
         """
-        :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment.
-        :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this
+               environment.
+        :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment.
+               Although Cloud Storage objects reside in a flat namespace, a
+               hierarchical file tree can be simulated using '/'-delimited
+               object name prefixes. DAG objects for this environment
+               reside in a simulated directory with this prefix.
         :param 'EnvironmentConfigDataRetentionConfigArgs' data_retention_config: The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
         :param 'EnvironmentConfigDatabaseConfigArgs' database_config: The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param bool enable_private_builds_only: Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
@@ -209,7 +214,8 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="airflowUri")
     def airflow_uri(self) -> Optional[str]:
         """
-        The URI of the Apache Airflow Web UI hosted within this environment.
+        The URI of the Apache Airflow Web UI hosted within this
+        environment.
         """
         return pulumi.get(self, "airflow_uri")
 
@@ -217,7 +223,11 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="dagGcsPrefix")
     def dag_gcs_prefix(self) -> Optional[str]:
         """
-        The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        The Cloud Storage prefix of the DAGs for this environment.
+        Although Cloud Storage objects reside in a flat namespace, a
+        hierarchical file tree can be simulated using '/'-delimited
+        object name prefixes. DAG objects for this environment
+        reside in a simulated directory with this prefix.
         """
         return pulumi.get(self, "dag_gcs_prefix")
 
@@ -1946,15 +1956,16 @@ class GetEnvironmentConfigResult(dict):
                  web_server_network_access_controls: Sequence['outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult'],
                  workloads_configs: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigResult']):
         """
-        :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment.
-        :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within the
+               environment.
+        :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for the environment.
         :param Sequence['GetEnvironmentConfigDataRetentionConfigArgs'] data_retention_configs: The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
         :param Sequence['GetEnvironmentConfigDatabaseConfigArgs'] database_configs: The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param bool enable_private_builds_only: Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
         :param bool enable_private_environment: Optional. If true, a private Composer environment will be created.
         :param Sequence['GetEnvironmentConfigEncryptionConfigArgs'] encryption_configs: The encryption options for the Composer environment and its dependencies.
         :param str environment_size: The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-        :param str gke_cluster: The Kubernetes Engine cluster used to run this environment.
+        :param str gke_cluster: The Kubernetes Engine cluster used to run the environment.
         :param Sequence['GetEnvironmentConfigMaintenanceWindowArgs'] maintenance_windows: The configuration for Cloud Composer maintenance window.
         :param Sequence['GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs'] master_authorized_networks_configs: Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
         :param Sequence['GetEnvironmentConfigNodeConfigArgs'] node_configs: The configuration used for the Kubernetes Engine cluster.
@@ -1992,7 +2003,8 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="airflowUri")
     def airflow_uri(self) -> str:
         """
-        The URI of the Apache Airflow Web UI hosted within this environment.
+        The URI of the Apache Airflow Web UI hosted within the
+        environment.
         """
         return pulumi.get(self, "airflow_uri")
 
@@ -2000,7 +2012,7 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="dagGcsPrefix")
     def dag_gcs_prefix(self) -> str:
         """
-        The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        The Cloud Storage prefix of the DAGs for the environment.
         """
         return pulumi.get(self, "dag_gcs_prefix")
 
@@ -2056,7 +2068,7 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="gkeCluster")
     def gke_cluster(self) -> str:
         """
-        The Kubernetes Engine cluster used to run this environment.
+        The Kubernetes Engine cluster used to run the environment.
         """
         return pulumi.get(self, "gke_cluster")
 

@@ -18,9 +18,8 @@ public final class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownRepli
      */
     private @Nullable Integer fixed;
     /**
-     * @return Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-     * For example, specify 80 for 80%!
-     * (MISSING)
+     * @return Specifies a percentage of instances between 0 to 100%, inclusive.
+     * For example, specify 80 for 80%.
      * 
      */
     private @Nullable Integer percent;
@@ -35,9 +34,8 @@ public final class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownRepli
         return Optional.ofNullable(this.fixed);
     }
     /**
-     * @return Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-     * For example, specify 80 for 80%!
-     * (MISSING)
+     * @return Specifies a percentage of instances between 0 to 100%, inclusive.
+     * For example, specify 80 for 80%.
      * 
      */
     public Optional<Integer> percent() {

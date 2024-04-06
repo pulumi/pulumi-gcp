@@ -13,13 +13,18 @@ namespace Pulumi.Gcp.Composer.Inputs
     public sealed class EnvironmentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URI of the Apache Airflow Web UI hosted within this environment.
+        /// The URI of the Apache Airflow Web UI hosted within this
+        /// environment.
         /// </summary>
         [Input("airflowUri")]
         public Input<string>? AirflowUri { get; set; }
 
         /// <summary>
-        /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        /// The Cloud Storage prefix of the DAGs for this environment.
+        /// Although Cloud Storage objects reside in a flat namespace, a
+        /// hierarchical file tree can be simulated using '/'-delimited
+        /// object name prefixes. DAG objects for this environment
+        /// reside in a simulated directory with this prefix.
         /// </summary>
         [Input("dagGcsPrefix")]
         public Input<string>? DagGcsPrefix { get; set; }

@@ -6635,11 +6635,11 @@ export namespace bigtable {
         kmsKeyName: string;
         /**
          * The number of nodes in the cluster.
-         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          */
         numNodes: number;
         /**
-         * The state of the cluster
+         * describes the current state of the cluster.
          */
         state: string;
         /**
@@ -6754,7 +6754,7 @@ export namespace billing {
 
     export interface BudgetAmount {
         /**
-         * Configures a budget amount that is automatically set to 100%!o(MISSING)f
+         * Configures a budget amount that is automatically set to 100% of
          * last period's spend.
          * Boolean. Set value to true to use. Do not set to false, instead
          * use the `specifiedAmount` block.
@@ -6918,7 +6918,7 @@ export namespace billing {
         spendBasis?: string;
         /**
          * Send an alert when this threshold is exceeded. This is a
-         * 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
+         * 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
          */
         thresholdPercent: number;
     }
@@ -12916,7 +12916,7 @@ export namespace cloudfunctionsv2 {
 
     export interface FunctionServiceConfig {
         /**
-         * Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+         * Whether 100% of traffic is routed to the latest revision. Defaults to true.
          */
         allTrafficOnLatestRevision?: boolean;
         /**
@@ -13207,7 +13207,7 @@ export namespace cloudfunctionsv2 {
 
     export interface GetFunctionServiceConfig {
         /**
-         * Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+         * Whether 100% of traffic is routed to the latest revision. Defaults to true.
          */
         allTrafficOnLatestRevision: boolean;
         /**
@@ -17923,11 +17923,16 @@ export namespace cloudtasks {
 export namespace composer {
     export interface EnvironmentConfig {
         /**
-         * The URI of the Apache Airflow Web UI hosted within this environment.
+         * The URI of the Apache Airflow Web UI hosted within this
+         * environment.
          */
         airflowUri: string;
         /**
-         * The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         * The Cloud Storage prefix of the DAGs for this environment.
+         * Although Cloud Storage objects reside in a flat namespace, a
+         * hierarchical file tree can be simulated using '/'-delimited
+         * object name prefixes. DAG objects for this environment
+         * reside in a simulated directory with this prefix.
          */
         dagGcsPrefix: string;
         /**
@@ -18402,11 +18407,12 @@ export namespace composer {
 
     export interface GetEnvironmentConfig {
         /**
-         * The URI of the Apache Airflow Web UI hosted within this environment.
+         * The URI of the Apache Airflow Web UI hosted within the
+         * environment.
          */
         airflowUri: string;
         /**
-         * The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         * The Cloud Storage prefix of the DAGs for the environment.
          */
         dagGcsPrefix: string;
         /**
@@ -18434,7 +18440,7 @@ export namespace composer {
          */
         environmentSize: string;
         /**
-         * The Kubernetes Engine cluster used to run this environment.
+         * The Kubernetes Engine cluster used to run the environment.
          */
         gkeCluster: string;
         /**
@@ -19085,9 +19091,8 @@ export namespace compute {
          */
         fixed?: number;
         /**
-         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-         * For example, specify 80 for 80%!
-         * (MISSING)
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
          */
         percent?: number;
     }
@@ -19112,9 +19117,8 @@ export namespace compute {
          */
         fixed?: number;
         /**
-         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-         * For example, specify 80 for 80%!
-         * (MISSING)
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
          */
         percent?: number;
     }
@@ -19272,10 +19276,10 @@ export namespace compute {
         /**
          * A multiplier applied to the group's maximum servicing capacity
          * (based on UTILIZATION, RATE or CONNECTION).
-         * Default value is 1, which means the group will serve up to 100%!
-         * (MISSING)of its configured capacity (depending on balancingMode). A
+         * Default value is 1, which means the group will serve up to 100%
+         * of its configured capacity (depending on balancingMode). A
          * setting of 0 means the group is completely drained, offering
-         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: number;
         /**
@@ -19733,8 +19737,7 @@ export namespace compute {
         interval?: outputs.compute.BackendServiceOutlierDetectionInterval;
         /**
          * Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%!
-         * (MISSING)
+         * that can be ejected. Defaults to 10%.
          */
         maxEjectionPercent?: number;
         /**
@@ -20215,10 +20218,10 @@ export namespace compute {
          * A multiplier applied to the group's maximum servicing capacity
          * (based on UTILIZATION, RATE or CONNECTION).
          *
-         * Default value is 1, which means the group will serve up to 100%!
-         * (MISSING)of its configured capacity (depending on balancingMode). A
+         * Default value is 1, which means the group will serve up to 100%
+         * of its configured capacity (depending on balancingMode). A
          * setting of 0 means the group is completely drained, offering
-         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler: number;
         /**
@@ -20641,8 +20644,7 @@ export namespace compute {
         intervals: outputs.compute.GetBackendServiceOutlierDetectionInterval[];
         /**
          * Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%!
-         * (MISSING)
+         * that can be ejected. Defaults to 10%.
          */
         maxEjectionPercent: number;
         /**
@@ -21568,7 +21570,9 @@ export namespace compute {
          */
         diskEncryptionKeyRaw: string;
         /**
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
          */
         diskEncryptionKeySha256: string;
         /**
@@ -21600,7 +21604,9 @@ export namespace compute {
          */
         diskEncryptionKeyRaw: string;
         /**
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
          */
         diskEncryptionKeySha256: string;
         /**
@@ -21925,7 +21931,7 @@ export namespace compute {
          */
         networkAttachment: string;
         /**
-         * The private IP address assigned to the instance.
+         * The internal ip address of the instance, either manually or dynamically assigned.
          */
         networkIp: string;
         /**
@@ -24439,7 +24445,9 @@ export namespace compute {
          */
         diskEncryptionKeyRaw?: string;
         /**
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          */
         diskEncryptionKeySha256: string;
         /**
@@ -24481,7 +24489,9 @@ export namespace compute {
          */
         diskEncryptionKeyRaw?: string;
         /**
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          */
         diskEncryptionKeySha256: string;
         /**
@@ -27270,9 +27280,8 @@ export namespace compute {
          */
         fixed?: number;
         /**
-         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-         * For example, specify 80 for 80%!
-         * (MISSING)
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
          */
         percent?: number;
     }
@@ -27297,9 +27306,8 @@ export namespace compute {
          */
         fixed?: number;
         /**
-         * Specifies a percentage of instances between 0 to 100%!,(MISSING) inclusive.
-         * For example, specify 80 for 80%!
-         * (MISSING)
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
          */
         percent?: number;
     }
@@ -27352,7 +27360,7 @@ export namespace compute {
          * but is required for non-INTERNAL backend service. The total
          * capacityScaler for all backends must be non-zero.
          * A setting of 0 means the group is completely drained, offering
-         * 0%!o(MISSING)f its available Capacity. Valid range is [0.0,1.0].
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
          */
         capacityScaler?: number;
         /**
@@ -27834,8 +27842,7 @@ export namespace compute {
         interval?: outputs.compute.RegionBackendServiceOutlierDetectionInterval;
         /**
          * Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%!
-         * (MISSING)
+         * that can be ejected. Defaults to 10%.
          */
         maxEjectionPercent?: number;
         /**
@@ -35437,15 +35444,15 @@ export namespace container {
 
     export interface ClusterFleet {
         /**
-         * Full resource name of the registered fleet membership of the cluster.
+         * The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
          */
         membership: string;
         /**
-         * Short name of the fleet membership, for example "member-1".
+         * The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
          */
         membershipId: string;
         /**
-         * Location of the fleet membership, for example "us-central1".
+         * The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
          */
         membershipLocation: string;
         /**
@@ -35566,6 +35573,25 @@ export namespace container {
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
          *
          * Examples:
+         * ```
+         * maintenance_policy {
+         * recurring_window {
+         * start_time = "2019-08-01T02:00:00Z"
+         * end_time = "2019-08-01T06:00:00Z"
+         * recurrence = "FREQ=DAILY"
+         * }
+         * }
+         * ```
+         *
+         * ```
+         * maintenance_policy {
+         * recurring_window {
+         * start_time = "2019-01-01T09:00:00Z"
+         * end_time = "2019-01-01T17:00:00Z"
+         * recurrence = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+         * }
+         * }
+         * ```
          */
         recurringWindow?: outputs.container.ClusterMaintenancePolicyRecurringWindow;
     }
@@ -35595,6 +35621,32 @@ export namespace container {
          * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
          *
          * Examples:
+         *
+         * ```
+         * maintenance_policy {
+         * recurring_window {
+         * start_time = "2019-01-01T00:00:00Z"
+         * end_time = "2019-01-02T00:00:00Z"
+         * recurrence = "FREQ=DAILY"
+         * }
+         * maintenance_exclusion{
+         * exclusion_name = "batch job"
+         * start_time = "2019-01-01T00:00:00Z"
+         * end_time = "2019-01-02T00:00:00Z"
+         * exclusion_options {
+         * scope = "NO_UPGRADES"
+         * }
+         * }
+         * maintenance_exclusion{
+         * exclusion_name = "holiday data load"
+         * start_time = "2019-05-01T00:00:00Z"
+         * end_time = "2019-05-02T00:00:00Z"
+         * exclusion_options {
+         * scope = "NO_MINOR_UPGRADES"
+         * }
+         * }
+         * }
+         * ```
          */
         scope: string;
     }
@@ -35607,7 +35659,8 @@ export namespace container {
 
     export interface ClusterMasterAuth {
         /**
-         * Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+         * Base64 encoded public certificate
+         * used by clients to authenticate to the cluster endpoint.
          */
         clientCertificate: string;
         /**
@@ -35615,11 +35668,13 @@ export namespace container {
          */
         clientCertificateConfig: outputs.container.ClusterMasterAuthClientCertificateConfig;
         /**
-         * Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+         * Base64 encoded private key used by clients
+         * to authenticate to the cluster endpoint.
          */
         clientKey: string;
         /**
-         * Base64 encoded public certificate that is the root of trust for the cluster.
+         * Base64 encoded public certificate
+         * that is the root certificate of the cluster.
          */
         clusterCaCertificate: string;
     }
@@ -35738,7 +35793,7 @@ export namespace container {
          */
         diskType: string;
         /**
-         * List of kubernetes taints applied to each node.
+         * List of kubernetes taints applied to each node. Structure is documented above.
          */
         effectiveTaints: outputs.container.ClusterNodeConfigEffectiveTaint[];
         /**
@@ -35794,6 +35849,15 @@ export namespace container {
         /**
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
+         *
+         * ```
+         * kubelet_config {
+         * cpu_manager_policy   = "static"
+         * cpu_cfs_quota        = true
+         * cpu_cfs_quota_period = "100us"
+         * pod_pids_limit       = 1024
+         * }
+         * ```
          */
         kubeletConfig?: outputs.container.ClusterNodeConfigKubeletConfig;
         /**
@@ -36455,7 +36519,7 @@ export namespace container {
          */
         diskType: string;
         /**
-         * List of kubernetes taints applied to each node.
+         * List of kubernetes taints applied to each node. Structure is documented above.
          */
         effectiveTaints: outputs.container.ClusterNodePoolNodeConfigEffectiveTaint[];
         /**
@@ -36511,6 +36575,15 @@ export namespace container {
         /**
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
+         *
+         * ```
+         * kubelet_config {
+         * cpu_manager_policy   = "static"
+         * cpu_cfs_quota        = true
+         * cpu_cfs_quota_period = "100us"
+         * pod_pids_limit       = 1024
+         * }
+         * ```
          */
         kubeletConfig?: outputs.container.ClusterNodePoolNodeConfigKubeletConfig;
         /**
@@ -41668,7 +41741,7 @@ export namespace dataloss {
         cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey;
         /**
          * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          */
         customAlphabet?: string;
         /**
@@ -42763,7 +42836,7 @@ export namespace dataloss {
         cryptoKey: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey;
         /**
          * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          */
         customAlphabet?: string;
         /**
@@ -43643,7 +43716,7 @@ export namespace dataloss {
         cryptoKey?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey;
         /**
          * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%!^(MISSING)&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
+         * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
          */
         customAlphabet?: string;
         /**
@@ -46964,7 +47037,9 @@ export namespace dataproc {
          */
         auxiliaryNodeGroups: outputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroup[];
         /**
-         * The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         * The name of the cloud storage bucket ultimately used to house the staging data
+         * for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
+         * it will be the auto generated name.
          */
         bucket: string;
         /**
@@ -48377,19 +48452,19 @@ export namespace dataproc {
 
     export interface JobStatus {
         /**
-         * Output-only. Optional job state details, such as an error description if the state is ERROR
+         * Optional job state details, such as an error description if the state is ERROR.
          */
         details: string;
         /**
-         * Output-only. A state message specifying the overall job state
+         * A state message specifying the overall job state.
          */
         state: string;
         /**
-         * Output-only. The time when this state was entered
+         * The time when this state was entered.
          */
         stateStartTime: string;
         /**
-         * Output-only. Additional state information, which includes status reported by the agent
+         * Additional state information, which includes status reported by the agent.
          */
         substate: string;
     }
@@ -59147,6 +59222,23 @@ export namespace iam {
          * .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
          * keys are supported. The JWK must use following format and include only
          * the following fields:
+         * ```
+         * {
+         * "keys": [
+         * {
+         * "kty": "RSA/EC",
+         * "alg": "<algorithm>",
+         * "use": "sig",
+         * "kid": "<key-id>",
+         * "n": "",
+         * "e": "",
+         * "x": "",
+         * "y": "",
+         * "crv": ""
+         * }
+         * ]
+         * }
+         * ```
          */
         jwksJson?: string;
         /**
@@ -59235,6 +59327,10 @@ export namespace iam {
          * If this list is empty, the OIDC token audience must be equal to the full canonical
          * resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
          * For example:
+         * ```
+         * //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+         * https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+         * ```
          */
         allowedAudiences?: string[];
         /**
@@ -59248,6 +59344,23 @@ export namespace iam {
          * .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
          * keys are supported. The JWK must use following format and include only
          * the following fields:
+         * ```
+         * {
+         * "keys": [
+         * {
+         * "kty": "RSA/EC",
+         * "alg": "<algorithm>",
+         * "use": "sig",
+         * "kid": "<key-id>",
+         * "n": "",
+         * "e": "",
+         * "x": "",
+         * "y": "",
+         * "crv": ""
+         * }
+         * ]
+         * }
+         * ```
          */
         jwksJson?: string;
     }
@@ -61157,7 +61270,7 @@ export namespace logging {
          */
         disabled?: boolean;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
@@ -61230,7 +61343,7 @@ export namespace logging {
          */
         disabled?: boolean;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
@@ -61451,7 +61564,7 @@ export namespace logging {
          */
         disabled?: boolean;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
@@ -61524,7 +61637,7 @@ export namespace logging {
          */
         disabled?: boolean;
         /**
-         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100%!o(MISSING)f the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
@@ -63410,7 +63523,7 @@ export namespace monitoring {
          */
         authInfo?: outputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo;
         /**
-         * The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%!D(MISSING)bar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
+         * The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
          */
         body?: string;
         /**
@@ -65341,7 +65454,7 @@ export namespace networkservices {
         serviceName?: string;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-         * If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          */
@@ -65444,7 +65557,7 @@ export namespace networkservices {
         serviceName?: string;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-         * If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          */
@@ -65620,7 +65733,7 @@ export namespace networkservices {
         serviceName?: string;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-         * If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
          *
@@ -71390,8 +71503,18 @@ export namespace sql {
     }
 
     export interface DatabaseInstanceIpAddress {
+        /**
+         * The IPv4 address assigned.
+         */
         ipAddress: string;
+        /**
+         * The time this IP address will be retired, in RFC
+         * 3339 format.
+         */
         timeToRetire: string;
+        /**
+         * The type of this IP address.
+         */
         type: string;
     }
 
@@ -71580,7 +71703,8 @@ export namespace sql {
          */
         userLabels: {[key: string]: string};
         /**
-         * Used to make sure changes to the settings block are atomic.
+         * Used to make sure changes to the `settings` block are
+         * atomic.
          */
         version: number;
     }
@@ -73710,7 +73834,7 @@ export namespace storage {
          */
         container: string;
         /**
-         * Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%!w(MISSING)ith%!a(MISSING)%27/%!-(MISSING),credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
+         * Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentialsSecret is specified, do not specify azure_credentials.`,
          */
         credentialsSecret?: string;
         /**
@@ -74130,7 +74254,7 @@ export namespace vertex {
         metricName: string;
         /**
          * (Output)
-         * The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
          */
         target: number;
     }
@@ -74224,8 +74348,7 @@ export namespace vertex {
 
     export interface AiFeatureOnlineStoreBigtableAutoScaling {
         /**
-         * A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
-         * (MISSING)
+         * A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
          */
         cpuUtilizationTarget: number;
         /**
@@ -74616,7 +74739,7 @@ export namespace vertex {
         leafNodeEmbeddingCount?: number;
         /**
          * The default percentage of leaf nodes that any query may be searched. Must be in
-         * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
          */
         leafNodesToSearchPercent?: number;
     }
@@ -74751,7 +74874,7 @@ export namespace vertex {
         leafNodeEmbeddingCount: number;
         /**
          * The default percentage of leaf nodes that any query may be searched. Must be in
-         * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
          */
         leafNodesToSearchPercent: number;
     }

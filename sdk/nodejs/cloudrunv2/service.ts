@@ -635,7 +635,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly trafficStatuses!: pulumi.Output<outputs.cloudrunv2.ServiceTrafficStatus[]>;
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      */
     public readonly traffics!: pulumi.Output<outputs.cloudrunv2.ServiceTraffic[]>;
@@ -908,7 +908,7 @@ export interface ServiceState {
      */
     trafficStatuses?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTrafficStatus>[]>;
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;
@@ -1007,7 +1007,7 @@ export interface ServiceArgs {
      */
     template: pulumi.Input<inputs.cloudrunv2.ServiceTemplate>;
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100%!t(MISSING)raffic to the latest Ready Revision.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
      * Structure is documented below.
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;

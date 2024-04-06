@@ -447,7 +447,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
         :param pulumi.Input[str] metric_name: (Output)
                The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
         :param pulumi.Input[int] target: (Output)
-               The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+               The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
@@ -472,7 +472,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
     def target(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
-        The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+        The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         return pulumi.get(self, "target")
 
@@ -816,8 +816,7 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgs:
         """
         :param pulumi.Input[int] max_node_count: The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
         :param pulumi.Input[int] min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
-        :param pulumi.Input[int] cpu_utilization_target: A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
-               (MISSING)
+        :param pulumi.Input[int] cpu_utilization_target: A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
         """
         pulumi.set(__self__, "max_node_count", max_node_count)
         pulumi.set(__self__, "min_node_count", min_node_count)
@@ -852,8 +851,7 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgs:
     @pulumi.getter(name="cpuUtilizationTarget")
     def cpu_utilization_target(self) -> Optional[pulumi.Input[int]]:
         """
-        A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
-        (MISSING)
+        A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
         """
         return pulumi.get(self, "cpu_utilization_target")
 
@@ -2162,7 +2160,7 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
         """
         :param pulumi.Input[int] leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
         :param pulumi.Input[int] leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
-               range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+               range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
         if leaf_node_embedding_count is not None:
             pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
@@ -2186,7 +2184,7 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
     def leaf_nodes_to_search_percent(self) -> Optional[pulumi.Input[int]]:
         """
         The default percentage of leaf nodes that any query may be searched. Must be in
-        range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+        range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
         return pulumi.get(self, "leaf_nodes_to_search_percent")
 

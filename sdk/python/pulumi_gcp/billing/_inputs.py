@@ -199,7 +199,7 @@ class BudgetAmountArgs:
                  last_period_amount: Optional[pulumi.Input[bool]] = None,
                  specified_amount: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']] = None):
         """
-        :param pulumi.Input[bool] last_period_amount: Configures a budget amount that is automatically set to 100%!o(MISSING)f
+        :param pulumi.Input[bool] last_period_amount: Configures a budget amount that is automatically set to 100% of
                last period's spend.
                Boolean. Set value to true to use. Do not set to false, instead
                use the `specified_amount` block.
@@ -217,7 +217,7 @@ class BudgetAmountArgs:
     @pulumi.getter(name="lastPeriodAmount")
     def last_period_amount(self) -> Optional[pulumi.Input[bool]]:
         """
-        Configures a budget amount that is automatically set to 100%!o(MISSING)f
+        Configures a budget amount that is automatically set to 100% of
         last period's spend.
         Boolean. Set value to true to use. Do not set to false, instead
         use the `specified_amount` block.
@@ -687,7 +687,7 @@ class BudgetThresholdRuleArgs:
                  spend_basis: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[float] threshold_percent: Send an alert when this threshold is exceeded. This is a
-               1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
+               1.0-based percentage, so 0.5 = 50%. Must be >= 0.
         :param pulumi.Input[str] spend_basis: The type of basis used to determine if spend has passed
                the threshold.
                Default value is `CURRENT_SPEND`.
@@ -702,7 +702,7 @@ class BudgetThresholdRuleArgs:
     def threshold_percent(self) -> pulumi.Input[float]:
         """
         Send an alert when this threshold is exceeded. This is a
-        1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
+        1.0-based percentage, so 0.5 = 50%. Must be >= 0.
         """
         return pulumi.get(self, "threshold_percent")
 

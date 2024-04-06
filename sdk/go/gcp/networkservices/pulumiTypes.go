@@ -8374,7 +8374,7 @@ type HttpRouteRuleActionDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName *string `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-	// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight *int `pulumi:"weight"`
@@ -8395,7 +8395,7 @@ type HttpRouteRuleActionDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-	// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
@@ -8458,7 +8458,7 @@ func (o HttpRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutp
 }
 
 // Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 // If weights are specified for any one service name, they need to be specified for all of them.
 // If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o HttpRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
@@ -9538,7 +9538,7 @@ type HttpRouteRuleActionRequestMirrorPolicyDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName *string `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-	// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight *int `pulumi:"weight"`
@@ -9559,7 +9559,7 @@ type HttpRouteRuleActionRequestMirrorPolicyDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-	// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
@@ -9648,7 +9648,7 @@ func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ServiceName() p
 }
 
 // Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 // If weights are specified for any one service name, they need to be specified for all of them.
 // If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) Weight() pulumi.IntPtrOutput {
@@ -9690,7 +9690,7 @@ func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ServiceName(
 }
 
 // Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 // If weights are specified for any one service name, they need to be specified for all of them.
 // If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) Weight() pulumi.IntPtrOutput {
@@ -10982,7 +10982,7 @@ type TcpRouteRuleActionDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName *string `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-	// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	//
@@ -11005,7 +11005,7 @@ type TcpRouteRuleActionDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-	// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 	//
@@ -11070,7 +11070,7 @@ func (o TcpRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutpu
 }
 
 // Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
-// If only one serviceName is specified and it has a weight greater than 0, 100%!o(MISSING)f the traffic is forwarded to that backend.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 // If weights are specified for any one service name, they need to be specified for all of them.
 // If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
 //

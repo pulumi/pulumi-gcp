@@ -43,6 +43,25 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
         /// 
         /// Examples:
+        /// ```
+        /// maintenance_policy {
+        /// recurring_window {
+        /// start_time = "2019-08-01T02:00:00Z"
+        /// end_time = "2019-08-01T06:00:00Z"
+        /// recurrence = "FREQ=DAILY"
+        /// }
+        /// }
+        /// ```
+        /// 
+        /// ```
+        /// maintenance_policy {
+        /// recurring_window {
+        /// start_time = "2019-01-01T09:00:00Z"
+        /// end_time = "2019-01-01T17:00:00Z"
+        /// recurrence = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+        /// }
+        /// }
+        /// ```
         /// </summary>
         [Input("recurringWindow")]
         public Input<Inputs.ClusterMaintenancePolicyRecurringWindowArgs>? RecurringWindow { get; set; }

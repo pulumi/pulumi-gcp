@@ -162,7 +162,7 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
@@ -255,7 +255,7 @@ export interface ConsumerQuotaOverrideState {
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
     force?: pulumi.Input<boolean>;
@@ -300,7 +300,7 @@ export interface ConsumerQuotaOverrideArgs {
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
     force?: pulumi.Input<boolean>;

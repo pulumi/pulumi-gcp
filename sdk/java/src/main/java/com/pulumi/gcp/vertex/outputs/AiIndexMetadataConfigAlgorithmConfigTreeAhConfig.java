@@ -18,7 +18,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
     private @Nullable Integer leafNodeEmbeddingCount;
     /**
      * @return The default percentage of leaf nodes that any query may be searched. Must be in
-     * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+     * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
      * 
      */
     private @Nullable Integer leafNodesToSearchPercent;
@@ -33,7 +33,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
     }
     /**
      * @return The default percentage of leaf nodes that any query may be searched. Must be in
-     * range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+     * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
      * 
      */
     public Optional<Integer> leafNodesToSearchPercent() {
