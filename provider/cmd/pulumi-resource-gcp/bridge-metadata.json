@@ -3121,6 +3121,15 @@
                     }
                 }
             },
+            "google_cloud_quotas_quota_preference": {
+                "current": "gcp:cloudquota/sQuotaPreference:SQuotaPreference",
+                "majorVersion": 7,
+                "fields": {
+                    "quota_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_cloud_run_domain_mapping": {
                 "current": "gcp:cloudrun/domainMapping:DomainMapping",
                 "majorVersion": 7,
@@ -12967,6 +12976,9 @@
                     "scaling_config": {
                         "maxItemsOne": true
                     },
+                    "scheduled_backup": {
+                        "maxItemsOne": true
+                    },
                     "telemetry_config": {
                         "maxItemsOne": true
                     }
@@ -18051,6 +18063,15 @@
                 "current": "gcp:integrationconnectors/endpointAttachment:EndpointAttachment",
                 "majorVersion": 7
             },
+            "google_integrations_client": {
+                "current": "gcp:applicationintegration/client:Client",
+                "majorVersion": 7,
+                "fields": {
+                    "cloud_kms_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_kms_crypto_key": {
                 "current": "gcp:kms/cryptoKey:CryptoKey",
                 "majorVersion": 7,
@@ -18117,6 +18138,9 @@
                                 }
                             }
                         }
+                    },
+                    "external_protection_level_options": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -23408,6 +23432,25 @@
                     }
                 }
             },
+            "google_vertex_ai_deployment_resource_pool": {
+                "current": "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool",
+                "majorVersion": 7,
+                "fields": {
+                    "dedicated_resources": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "autoscaling_metric_specs": {
+                                    "maxItemsOne": false
+                                },
+                                "machine_spec": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_vertex_ai_endpoint": {
                 "current": "gcp:vertex/aiEndpoint:AiEndpoint",
                 "majorVersion": 7,
@@ -24205,6 +24248,37 @@
             "google_app_engine_default_service_account": {
                 "current": "gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount",
                 "majorVersion": 7
+            },
+            "google_apphub_application": {
+                "current": "gcp:apphub/getApplication:getApplication",
+                "majorVersion": 7,
+                "fields": {
+                    "attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "business_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "criticality": {
+                                    "maxItemsOne": false
+                                },
+                                "developer_owners": {
+                                    "maxItemsOne": false
+                                },
+                                "environment": {
+                                    "maxItemsOne": false
+                                },
+                                "operator_owners": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scope": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_apphub_discovered_service": {
                 "current": "gcp:apphub/getDiscoveredService:getDiscoveredService",
@@ -27574,6 +27648,9 @@
                     "scaling_config": {
                         "maxItemsOne": false
                     },
+                    "scheduled_backup": {
+                        "maxItemsOne": false
+                    },
                     "telemetry_config": {
                         "maxItemsOne": false
                     }
@@ -30226,6 +30303,7 @@
             "gcp:apphub/service:Service": 0,
             "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment": 0,
             "gcp:apphub/workload:Workload": 0,
+            "gcp:applicationintegration/client:Client": 0,
             "gcp:artifactregistry/repository:Repository": 0,
             "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding": 0,
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": 0,
@@ -30345,6 +30423,7 @@
             "gcp:cloudidentity/group:Group": 0,
             "gcp:cloudidentity/groupMembership:GroupMembership": 0,
             "gcp:cloudids/endpoint:Endpoint": 0,
+            "gcp:cloudquota/sQuotaPreference:SQuotaPreference": 0,
             "gcp:cloudrun/domainMapping:DomainMapping": 0,
             "gcp:cloudrun/iamBinding:IamBinding": 0,
             "gcp:cloudrun/iamMember:IamMember": 0,
@@ -31010,6 +31089,7 @@
             "gcp:tpu/node:Node": 0,
             "gcp:tpu/v2Vm:V2Vm": 0,
             "gcp:vertex/aiDataset:AiDataset": 0,
+            "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool": 0,
             "gcp:vertex/aiEndpoint:AiEndpoint": 0,
             "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding": 0,
             "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": 0,
@@ -31067,6 +31147,7 @@
             "gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy": 0,
             "gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy": 0,
             "gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount": 0,
+            "gcp:apphub/getApplication:getApplication": 0,
             "gcp:apphub/getDiscoveredService:getDiscoveredService": 0,
             "gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload": 0,
             "gcp:artifactregistry/getRepository:getRepository": 0,
