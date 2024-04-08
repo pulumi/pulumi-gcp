@@ -26,6 +26,8 @@ if typing.TYPE_CHECKING:
     appengine = __appengine
     import pulumi_gcp.apphub as __apphub
     apphub = __apphub
+    import pulumi_gcp.applicationintegration as __applicationintegration
+    applicationintegration = __applicationintegration
     import pulumi_gcp.artifactregistry as __artifactregistry
     artifactregistry = __artifactregistry
     import pulumi_gcp.assuredworkloads as __assuredworkloads
@@ -251,6 +253,7 @@ else:
     apigee = _utilities.lazy_import('pulumi_gcp.apigee')
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
     apphub = _utilities.lazy_import('pulumi_gcp.apphub')
+    applicationintegration = _utilities.lazy_import('pulumi_gcp.applicationintegration')
     artifactregistry = _utilities.lazy_import('pulumi_gcp.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
     backupdisasterrecovery = _utilities.lazy_import('pulumi_gcp.backupdisasterrecovery')
@@ -921,6 +924,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apphub",
   "classes": {
    "gcp:apphub/workload:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "applicationintegration/client",
+  "fqn": "pulumi_gcp.applicationintegration",
+  "classes": {
+   "gcp:applicationintegration/client:Client": "Client"
   }
  },
  {
@@ -1873,6 +1884,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudids",
   "classes": {
    "gcp:cloudids/endpoint:Endpoint": "Endpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudquota/sQuotaPreference",
+  "fqn": "pulumi_gcp.cloudquota",
+  "classes": {
+   "gcp:cloudquota/sQuotaPreference:SQuotaPreference": "SQuotaPreference"
   }
  },
  {
@@ -7193,6 +7212,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiDataset:AiDataset": "AiDataset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiDeploymentResourcePool",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool": "AiDeploymentResourcePool"
   }
  },
  {

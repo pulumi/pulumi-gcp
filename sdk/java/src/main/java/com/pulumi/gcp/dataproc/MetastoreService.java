@@ -16,6 +16,7 @@ import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMaintenanceWindow;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMetadataIntegration;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceNetworkConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScalingConfig;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScheduledBackup;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceTelemetryConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -341,6 +342,65 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Metastore Service Scheduled Backup
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScheduledBackupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .name(&#34;backup&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var backup = new MetastoreService(&#34;backup&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;backup&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .port(9080)
+ *             .tier(&#34;DEVELOPER&#34;)
+ *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
+ *                 .hourOfDay(2)
+ *                 .dayOfWeek(&#34;SUNDAY&#34;)
+ *                 .build())
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version(&#34;2.3.6&#34;)
+ *                 .build())
+ *             .scheduledBackup(MetastoreServiceScheduledBackupArgs.builder()
+ *                 .enabled(true)
+ *                 .cronSchedule(&#34;0 0 * * *&#34;)
+ *                 .timeZone(&#34;UTC&#34;)
+ *                 .backupLocation(bucket.name().applyValue(name -&gt; String.format(&#34;gs://%s&#34;, name)))
+ *                 .build())
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -660,6 +720,22 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<MetastoreServiceScalingConfig>> scalingConfig() {
         return Codegen.optional(this.scalingConfig);
+    }
+    /**
+     * The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scheduledBackup", refs={MetastoreServiceScheduledBackup.class}, tree="[0]")
+    private Output</* @Nullable */ MetastoreServiceScheduledBackup> scheduledBackup;
+
+    /**
+     * @return The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<MetastoreServiceScheduledBackup>> scheduledBackup() {
+        return Codegen.optional(this.scheduledBackup);
     }
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.Firestore
     public partial class BackupSchedule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// For a schedule that runs daily at a specified time.
+        /// For a schedule that runs daily.
         /// </summary>
         [Output("dailyRecurrence")]
         public Output<Outputs.BackupScheduleDailyRecurrence?> DailyRecurrence { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Retention { get; private set; } = null!;
 
         /// <summary>
-        /// For a schedule that runs weekly on a specific day and time.
+        /// For a schedule that runs weekly on a specific day.
         /// Structure is documented below.
         /// </summary>
         [Output("weeklyRecurrence")]
@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.Firestore
     public sealed class BackupScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For a schedule that runs daily at a specified time.
+        /// For a schedule that runs daily.
         /// </summary>
         [Input("dailyRecurrence")]
         public Input<Inputs.BackupScheduleDailyRecurrenceArgs>? DailyRecurrence { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string> Retention { get; set; } = null!;
 
         /// <summary>
-        /// For a schedule that runs weekly on a specific day and time.
+        /// For a schedule that runs weekly on a specific day.
         /// Structure is documented below.
         /// </summary>
         [Input("weeklyRecurrence")]
@@ -258,7 +258,7 @@ namespace Pulumi.Gcp.Firestore
     public sealed class BackupScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For a schedule that runs daily at a specified time.
+        /// For a schedule that runs daily.
         /// </summary>
         [Input("dailyRecurrence")]
         public Input<Inputs.BackupScheduleDailyRecurrenceGetArgs>? DailyRecurrence { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Retention { get; set; }
 
         /// <summary>
-        /// For a schedule that runs weekly on a specific day and time.
+        /// For a schedule that runs weekly on a specific day.
         /// Structure is documented below.
         /// </summary>
         [Input("weeklyRecurrence")]

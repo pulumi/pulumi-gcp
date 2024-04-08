@@ -73,6 +73,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? IgnoreUnknownValues;
         /// <summary>
+        /// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+        /// </summary>
+        public readonly string? JsonExtension;
+        /// <summary>
         /// Additional properties to set if
         /// `source_format` is set to "JSON". Structure is documented below.
         /// </summary>
@@ -150,6 +154,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             bool? ignoreUnknownValues,
 
+            string? jsonExtension,
+
             Outputs.TableExternalDataConfigurationJsonOptions? jsonOptions,
 
             int? maxBadRecords,
@@ -177,6 +183,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             GoogleSheetsOptions = googleSheetsOptions;
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
+            JsonExtension = jsonExtension;
             JsonOptions = jsonOptions;
             MaxBadRecords = maxBadRecords;
             MetadataCacheMode = metadataCacheMode;

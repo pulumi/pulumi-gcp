@@ -21,6 +21,7 @@ import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
 import * as apphub from "./apphub";
+import * as applicationintegration from "./applicationintegration";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as backupdisasterrecovery from "./backupdisasterrecovery";
@@ -140,6 +141,7 @@ export {
     apigee,
     appengine,
     apphub,
+    applicationintegration,
     artifactregistry,
     assuredworkloads,
     backupdisasterrecovery,

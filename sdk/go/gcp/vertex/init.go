@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:vertex/aiDataset:AiDataset":
 		r = &AiDataset{}
+	case "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool":
+		r = &AiDeploymentResourcePool{}
 	case "gcp:vertex/aiEndpoint:AiEndpoint":
 		r = &AiEndpoint{}
 	case "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding":
@@ -81,6 +83,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiDataset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiDeploymentResourcePool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

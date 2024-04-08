@@ -113,6 +113,11 @@ export class CryptoKey extends pulumi.CustomResource {
     }
 
     /**
+     * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+     */
+    public readonly cryptoKeyBackend!: pulumi.Output<string>;
+    /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 24 hours.
      */
@@ -193,6 +198,7 @@ export class CryptoKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
+            resourceInputs["cryptoKeyBackend"] = state ? state.cryptoKeyBackend : undefined;
             resourceInputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["importOnly"] = state ? state.importOnly : undefined;
@@ -210,6 +216,7 @@ export class CryptoKey extends pulumi.CustomResource {
             if ((!args || args.keyRing === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
+            resourceInputs["cryptoKeyBackend"] = args ? args.cryptoKeyBackend : undefined;
             resourceInputs["destroyScheduledDuration"] = args ? args.destroyScheduledDuration : undefined;
             resourceInputs["importOnly"] = args ? args.importOnly : undefined;
             resourceInputs["keyRing"] = args ? args.keyRing : undefined;
@@ -234,6 +241,11 @@ export class CryptoKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CryptoKey resources.
  */
 export interface CryptoKeyState {
+    /**
+     * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+     */
+    cryptoKeyBackend?: pulumi.Input<string>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 24 hours.
@@ -307,6 +319,11 @@ export interface CryptoKeyState {
  * The set of arguments for constructing a CryptoKey resource.
  */
 export interface CryptoKeyArgs {
+    /**
+     * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+     */
+    cryptoKeyBackend?: pulumi.Input<string>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 24 hours.

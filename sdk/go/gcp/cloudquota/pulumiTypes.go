@@ -13,6 +13,266 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SQuotaPreferenceQuotaConfig struct {
+	// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+	// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Annotations map[string]string `pulumi:"annotations"`
+	// (Output)
+	// Granted quota value.
+	GrantedValue *string `pulumi:"grantedValue"`
+	// The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+	PreferredValue string `pulumi:"preferredValue"`
+	// (Output)
+	// The origin of the quota preference request.
+	//
+	// ***
+	RequestOrigin *string `pulumi:"requestOrigin"`
+	// (Output)
+	// Optional details about the state of this quota preference.
+	StateDetail *string `pulumi:"stateDetail"`
+	// (Output)
+	// The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+	TraceId *string `pulumi:"traceId"`
+}
+
+// SQuotaPreferenceQuotaConfigInput is an input type that accepts SQuotaPreferenceQuotaConfigArgs and SQuotaPreferenceQuotaConfigOutput values.
+// You can construct a concrete instance of `SQuotaPreferenceQuotaConfigInput` via:
+//
+//	SQuotaPreferenceQuotaConfigArgs{...}
+type SQuotaPreferenceQuotaConfigInput interface {
+	pulumi.Input
+
+	ToSQuotaPreferenceQuotaConfigOutput() SQuotaPreferenceQuotaConfigOutput
+	ToSQuotaPreferenceQuotaConfigOutputWithContext(context.Context) SQuotaPreferenceQuotaConfigOutput
+}
+
+type SQuotaPreferenceQuotaConfigArgs struct {
+	// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+	// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// (Output)
+	// Granted quota value.
+	GrantedValue pulumi.StringPtrInput `pulumi:"grantedValue"`
+	// The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+	PreferredValue pulumi.StringInput `pulumi:"preferredValue"`
+	// (Output)
+	// The origin of the quota preference request.
+	//
+	// ***
+	RequestOrigin pulumi.StringPtrInput `pulumi:"requestOrigin"`
+	// (Output)
+	// Optional details about the state of this quota preference.
+	StateDetail pulumi.StringPtrInput `pulumi:"stateDetail"`
+	// (Output)
+	// The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+	TraceId pulumi.StringPtrInput `pulumi:"traceId"`
+}
+
+func (SQuotaPreferenceQuotaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SQuotaPreferenceQuotaConfig)(nil)).Elem()
+}
+
+func (i SQuotaPreferenceQuotaConfigArgs) ToSQuotaPreferenceQuotaConfigOutput() SQuotaPreferenceQuotaConfigOutput {
+	return i.ToSQuotaPreferenceQuotaConfigOutputWithContext(context.Background())
+}
+
+func (i SQuotaPreferenceQuotaConfigArgs) ToSQuotaPreferenceQuotaConfigOutputWithContext(ctx context.Context) SQuotaPreferenceQuotaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SQuotaPreferenceQuotaConfigOutput)
+}
+
+func (i SQuotaPreferenceQuotaConfigArgs) ToSQuotaPreferenceQuotaConfigPtrOutput() SQuotaPreferenceQuotaConfigPtrOutput {
+	return i.ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SQuotaPreferenceQuotaConfigArgs) ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(ctx context.Context) SQuotaPreferenceQuotaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SQuotaPreferenceQuotaConfigOutput).ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(ctx)
+}
+
+// SQuotaPreferenceQuotaConfigPtrInput is an input type that accepts SQuotaPreferenceQuotaConfigArgs, SQuotaPreferenceQuotaConfigPtr and SQuotaPreferenceQuotaConfigPtrOutput values.
+// You can construct a concrete instance of `SQuotaPreferenceQuotaConfigPtrInput` via:
+//
+//	        SQuotaPreferenceQuotaConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SQuotaPreferenceQuotaConfigPtrInput interface {
+	pulumi.Input
+
+	ToSQuotaPreferenceQuotaConfigPtrOutput() SQuotaPreferenceQuotaConfigPtrOutput
+	ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(context.Context) SQuotaPreferenceQuotaConfigPtrOutput
+}
+
+type squotaPreferenceQuotaConfigPtrType SQuotaPreferenceQuotaConfigArgs
+
+func SQuotaPreferenceQuotaConfigPtr(v *SQuotaPreferenceQuotaConfigArgs) SQuotaPreferenceQuotaConfigPtrInput {
+	return (*squotaPreferenceQuotaConfigPtrType)(v)
+}
+
+func (*squotaPreferenceQuotaConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SQuotaPreferenceQuotaConfig)(nil)).Elem()
+}
+
+func (i *squotaPreferenceQuotaConfigPtrType) ToSQuotaPreferenceQuotaConfigPtrOutput() SQuotaPreferenceQuotaConfigPtrOutput {
+	return i.ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *squotaPreferenceQuotaConfigPtrType) ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(ctx context.Context) SQuotaPreferenceQuotaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SQuotaPreferenceQuotaConfigPtrOutput)
+}
+
+type SQuotaPreferenceQuotaConfigOutput struct{ *pulumi.OutputState }
+
+func (SQuotaPreferenceQuotaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SQuotaPreferenceQuotaConfig)(nil)).Elem()
+}
+
+func (o SQuotaPreferenceQuotaConfigOutput) ToSQuotaPreferenceQuotaConfigOutput() SQuotaPreferenceQuotaConfigOutput {
+	return o
+}
+
+func (o SQuotaPreferenceQuotaConfigOutput) ToSQuotaPreferenceQuotaConfigOutputWithContext(ctx context.Context) SQuotaPreferenceQuotaConfigOutput {
+	return o
+}
+
+func (o SQuotaPreferenceQuotaConfigOutput) ToSQuotaPreferenceQuotaConfigPtrOutput() SQuotaPreferenceQuotaConfigPtrOutput {
+	return o.ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SQuotaPreferenceQuotaConfigOutput) ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(ctx context.Context) SQuotaPreferenceQuotaConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SQuotaPreferenceQuotaConfig) *SQuotaPreferenceQuotaConfig {
+		return &v
+	}).(SQuotaPreferenceQuotaConfigPtrOutput)
+}
+
+// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+func (o SQuotaPreferenceQuotaConfigOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Granted quota value.
+func (o SQuotaPreferenceQuotaConfigOutput) GrantedValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) *string { return v.GrantedValue }).(pulumi.StringPtrOutput)
+}
+
+// The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+func (o SQuotaPreferenceQuotaConfigOutput) PreferredValue() pulumi.StringOutput {
+	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) string { return v.PreferredValue }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The origin of the quota preference request.
+//
+// ***
+func (o SQuotaPreferenceQuotaConfigOutput) RequestOrigin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) *string { return v.RequestOrigin }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Optional details about the state of this quota preference.
+func (o SQuotaPreferenceQuotaConfigOutput) StateDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) *string { return v.StateDetail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+func (o SQuotaPreferenceQuotaConfigOutput) TraceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) *string { return v.TraceId }).(pulumi.StringPtrOutput)
+}
+
+type SQuotaPreferenceQuotaConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SQuotaPreferenceQuotaConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SQuotaPreferenceQuotaConfig)(nil)).Elem()
+}
+
+func (o SQuotaPreferenceQuotaConfigPtrOutput) ToSQuotaPreferenceQuotaConfigPtrOutput() SQuotaPreferenceQuotaConfigPtrOutput {
+	return o
+}
+
+func (o SQuotaPreferenceQuotaConfigPtrOutput) ToSQuotaPreferenceQuotaConfigPtrOutputWithContext(ctx context.Context) SQuotaPreferenceQuotaConfigPtrOutput {
+	return o
+}
+
+func (o SQuotaPreferenceQuotaConfigPtrOutput) Elem() SQuotaPreferenceQuotaConfigOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) SQuotaPreferenceQuotaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SQuotaPreferenceQuotaConfig
+		return ret
+	}).(SQuotaPreferenceQuotaConfigOutput)
+}
+
+// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+func (o SQuotaPreferenceQuotaConfigPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Granted quota value.
+func (o SQuotaPreferenceQuotaConfigPtrOutput) GrantedValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantedValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+func (o SQuotaPreferenceQuotaConfigPtrOutput) PreferredValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PreferredValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The origin of the quota preference request.
+//
+// ***
+func (o SQuotaPreferenceQuotaConfigPtrOutput) RequestOrigin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestOrigin
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Optional details about the state of this quota preference.
+func (o SQuotaPreferenceQuotaConfigPtrOutput) StateDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateDetail
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+func (o SQuotaPreferenceQuotaConfigPtrOutput) TraceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TraceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSQuotaInfoDimensionsInfo struct {
 	// The applicable regions or zones of this dimensions info. The field will be set to `['global']` for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.
 	ApplicableLocations []string `pulumi:"applicableLocations"`
@@ -883,6 +1143,8 @@ func (o GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayOutput) Index(i pulu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SQuotaPreferenceQuotaConfigInput)(nil)).Elem(), SQuotaPreferenceQuotaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SQuotaPreferenceQuotaConfigPtrInput)(nil)).Elem(), SQuotaPreferenceQuotaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoDimensionsInfoInput)(nil)).Elem(), GetSQuotaInfoDimensionsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoDimensionsInfoArrayInput)(nil)).Elem(), GetSQuotaInfoDimensionsInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfoDimensionsInfoDetailInput)(nil)).Elem(), GetSQuotaInfoDimensionsInfoDetailArgs{})
@@ -897,6 +1159,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoDimensionsInfoDetailArrayInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoDimensionsInfoDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArrayInput)(nil)).Elem(), GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityArray{})
+	pulumi.RegisterOutputType(SQuotaPreferenceQuotaConfigOutput{})
+	pulumi.RegisterOutputType(SQuotaPreferenceQuotaConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetSQuotaInfoDimensionsInfoDetailOutput{})

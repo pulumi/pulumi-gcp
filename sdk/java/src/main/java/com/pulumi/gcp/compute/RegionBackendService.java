@@ -808,6 +808,20 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.fingerprint;
     }
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="generatedId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> generatedId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> generatedId() {
+        return this.generatedId;
+    }
+    /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
      * check can be specified.

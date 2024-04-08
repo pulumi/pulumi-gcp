@@ -140,7 +140,7 @@ import (
 type BackupSchedule struct {
 	pulumi.CustomResourceState
 
-	// For a schedule that runs daily at a specified time.
+	// For a schedule that runs daily.
 	DailyRecurrence BackupScheduleDailyRecurrencePtrOutput `pulumi:"dailyRecurrence"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
@@ -156,7 +156,7 @@ type BackupSchedule struct {
 	//
 	// ***
 	Retention pulumi.StringOutput `pulumi:"retention"`
-	// For a schedule that runs weekly on a specific day and time.
+	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
 	WeeklyRecurrence BackupScheduleWeeklyRecurrencePtrOutput `pulumi:"weeklyRecurrence"`
 }
@@ -194,7 +194,7 @@ func GetBackupSchedule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupSchedule resources.
 type backupScheduleState struct {
-	// For a schedule that runs daily at a specified time.
+	// For a schedule that runs daily.
 	DailyRecurrence *BackupScheduleDailyRecurrence `pulumi:"dailyRecurrence"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
@@ -210,13 +210,13 @@ type backupScheduleState struct {
 	//
 	// ***
 	Retention *string `pulumi:"retention"`
-	// For a schedule that runs weekly on a specific day and time.
+	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
 	WeeklyRecurrence *BackupScheduleWeeklyRecurrence `pulumi:"weeklyRecurrence"`
 }
 
 type BackupScheduleState struct {
-	// For a schedule that runs daily at a specified time.
+	// For a schedule that runs daily.
 	DailyRecurrence BackupScheduleDailyRecurrencePtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
@@ -232,7 +232,7 @@ type BackupScheduleState struct {
 	//
 	// ***
 	Retention pulumi.StringPtrInput
-	// For a schedule that runs weekly on a specific day and time.
+	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
 	WeeklyRecurrence BackupScheduleWeeklyRecurrencePtrInput
 }
@@ -242,7 +242,7 @@ func (BackupScheduleState) ElementType() reflect.Type {
 }
 
 type backupScheduleArgs struct {
-	// For a schedule that runs daily at a specified time.
+	// For a schedule that runs daily.
 	DailyRecurrence *BackupScheduleDailyRecurrence `pulumi:"dailyRecurrence"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
@@ -255,14 +255,14 @@ type backupScheduleArgs struct {
 	//
 	// ***
 	Retention string `pulumi:"retention"`
-	// For a schedule that runs weekly on a specific day and time.
+	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
 	WeeklyRecurrence *BackupScheduleWeeklyRecurrence `pulumi:"weeklyRecurrence"`
 }
 
 // The set of arguments for constructing a BackupSchedule resource.
 type BackupScheduleArgs struct {
-	// For a schedule that runs daily at a specified time.
+	// For a schedule that runs daily.
 	DailyRecurrence BackupScheduleDailyRecurrencePtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
@@ -275,7 +275,7 @@ type BackupScheduleArgs struct {
 	//
 	// ***
 	Retention pulumi.StringInput
-	// For a schedule that runs weekly on a specific day and time.
+	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
 	WeeklyRecurrence BackupScheduleWeeklyRecurrencePtrInput
 }
@@ -367,7 +367,7 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// For a schedule that runs daily at a specified time.
+// For a schedule that runs daily.
 func (o BackupScheduleOutput) DailyRecurrence() BackupScheduleDailyRecurrencePtrOutput {
 	return o.ApplyT(func(v *BackupSchedule) BackupScheduleDailyRecurrencePtrOutput { return v.DailyRecurrence }).(BackupScheduleDailyRecurrencePtrOutput)
 }
@@ -398,7 +398,7 @@ func (o BackupScheduleOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
 }
 
-// For a schedule that runs weekly on a specific day and time.
+// For a schedule that runs weekly on a specific day.
 // Structure is documented below.
 func (o BackupScheduleOutput) WeeklyRecurrence() BackupScheduleWeeklyRecurrencePtrOutput {
 	return o.ApplyT(func(v *BackupSchedule) BackupScheduleWeeklyRecurrencePtrOutput { return v.WeeklyRecurrence }).(BackupScheduleWeeklyRecurrencePtrOutput)

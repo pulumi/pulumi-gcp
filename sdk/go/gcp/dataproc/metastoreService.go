@@ -295,6 +295,64 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Dataproc Metastore Service Scheduled Backup
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("backup"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewMetastoreService(ctx, "backup", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String("backup"),
+//				Location:  pulumi.String("us-central1"),
+//				Port:      pulumi.Int(9080),
+//				Tier:      pulumi.String("DEVELOPER"),
+//				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
+//					HourOfDay: pulumi.Int(2),
+//					DayOfWeek: pulumi.String("SUNDAY"),
+//				},
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("2.3.6"),
+//				},
+//				ScheduledBackup: &dataproc.MetastoreServiceScheduledBackupArgs{
+//					Enabled:      pulumi.Bool(true),
+//					CronSchedule: pulumi.String("0 0 * * *"),
+//					TimeZone:     pulumi.String("UTC"),
+//					BackupLocation: bucket.Name.ApplyT(func(name string) (string, error) {
+//						return fmt.Sprintf("gs://%v", name), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -378,6 +436,9 @@ type MetastoreService struct {
 	// Represents the scaling configuration of a metastore service.
 	// Structure is documented below.
 	ScalingConfig MetastoreServiceScalingConfigPtrOutput `pulumi:"scalingConfig"`
+	// The configuration of scheduled backup for the metastore service.
+	// Structure is documented below.
+	ScheduledBackup MetastoreServiceScheduledBackupPtrOutput `pulumi:"scheduledBackup"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -492,6 +553,9 @@ type metastoreServiceState struct {
 	// Represents the scaling configuration of a metastore service.
 	// Structure is documented below.
 	ScalingConfig *MetastoreServiceScalingConfig `pulumi:"scalingConfig"`
+	// The configuration of scheduled backup for the metastore service.
+	// Structure is documented below.
+	ScheduledBackup *MetastoreServiceScheduledBackup `pulumi:"scheduledBackup"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -569,6 +633,9 @@ type MetastoreServiceState struct {
 	// Represents the scaling configuration of a metastore service.
 	// Structure is documented below.
 	ScalingConfig MetastoreServiceScalingConfigPtrInput
+	// The configuration of scheduled backup for the metastore service.
+	// Structure is documented below.
+	ScheduledBackup MetastoreServiceScheduledBackupPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -638,6 +705,9 @@ type metastoreServiceArgs struct {
 	// Represents the scaling configuration of a metastore service.
 	// Structure is documented below.
 	ScalingConfig *MetastoreServiceScalingConfig `pulumi:"scalingConfig"`
+	// The configuration of scheduled backup for the metastore service.
+	// Structure is documented below.
+	ScheduledBackup *MetastoreServiceScheduledBackup `pulumi:"scheduledBackup"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -698,6 +768,9 @@ type MetastoreServiceArgs struct {
 	// Represents the scaling configuration of a metastore service.
 	// Structure is documented below.
 	ScalingConfig MetastoreServiceScalingConfigPtrInput
+	// The configuration of scheduled backup for the metastore service.
+	// Structure is documented below.
+	ScheduledBackup MetastoreServiceScheduledBackupPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -907,6 +980,12 @@ func (o MetastoreServiceOutput) ReleaseChannel() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o MetastoreServiceOutput) ScalingConfig() MetastoreServiceScalingConfigPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceScalingConfigPtrOutput { return v.ScalingConfig }).(MetastoreServiceScalingConfigPtrOutput)
+}
+
+// The configuration of scheduled backup for the metastore service.
+// Structure is documented below.
+func (o MetastoreServiceOutput) ScheduledBackup() MetastoreServiceScheduledBackupPtrOutput {
+	return o.ApplyT(func(v *MetastoreService) MetastoreServiceScheduledBackupPtrOutput { return v.ScheduledBackup }).(MetastoreServiceScheduledBackupPtrOutput)
 }
 
 // The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

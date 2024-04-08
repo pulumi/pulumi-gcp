@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .ai_dataset import *
+from .ai_deployment_resource_pool import *
 from .ai_endpoint import *
 from .ai_endpoint_iam_binding import *
 from .ai_endpoint_iam_member import *

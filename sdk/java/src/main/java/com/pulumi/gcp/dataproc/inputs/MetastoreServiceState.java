@@ -11,6 +11,7 @@ import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMetadataIntegrationArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScheduledBackupArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceTelemetryConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -335,6 +336,23 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scheduledBackup")
+    private @Nullable Output<MetastoreServiceScheduledBackupArgs> scheduledBackup;
+
+    /**
+     * @return The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MetastoreServiceScheduledBackupArgs>> scheduledBackup() {
+        return Optional.ofNullable(this.scheduledBackup);
+    }
+
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -457,6 +475,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.pulumiLabels = $.pulumiLabels;
         this.releaseChannel = $.releaseChannel;
         this.scalingConfig = $.scalingConfig;
+        this.scheduledBackup = $.scheduledBackup;
         this.serviceId = $.serviceId;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
@@ -899,6 +918,29 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder scalingConfig(MetastoreServiceScalingConfigArgs scalingConfig) {
             return scalingConfig(Output.of(scalingConfig));
+        }
+
+        /**
+         * @param scheduledBackup The configuration of scheduled backup for the metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduledBackup(@Nullable Output<MetastoreServiceScheduledBackupArgs> scheduledBackup) {
+            $.scheduledBackup = scheduledBackup;
+            return this;
+        }
+
+        /**
+         * @param scheduledBackup The configuration of scheduled backup for the metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduledBackup(MetastoreServiceScheduledBackupArgs scheduledBackup) {
+            return scheduledBackup(Output.of(scheduledBackup));
         }
 
         /**

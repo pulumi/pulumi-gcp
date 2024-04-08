@@ -568,6 +568,8 @@ type RegionBackendService struct {
 	// Fingerprint of this resource. A hash of the contents stored in this
 	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntOutput `pulumi:"generatedId"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
 	// check can be specified.
@@ -719,6 +721,8 @@ type regionBackendServiceState struct {
 	// Fingerprint of this resource. A hash of the contents stored in this
 	// object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId *int `pulumi:"generatedId"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
 	// check can be specified.
@@ -841,6 +845,8 @@ type RegionBackendServiceState struct {
 	// Fingerprint of this resource. A hash of the contents stored in this
 	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GeneratedId pulumi.IntPtrInput
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
 	// check can be specified.
@@ -1320,6 +1326,11 @@ func (o RegionBackendServiceOutput) FailoverPolicy() RegionBackendServiceFailove
 // object. This field is used in optimistic locking.
 func (o RegionBackendServiceOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionBackendServiceOutput) GeneratedId() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.IntOutput { return v.GeneratedId }).(pulumi.IntOutput)
 }
 
 // The set of URLs to HealthCheck resources for health checking

@@ -30,6 +30,7 @@ class MetastoreServiceArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
+                 scheduled_backup: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
@@ -71,6 +72,8 @@ class MetastoreServiceArgs:
                Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input['MetastoreServiceScalingConfigArgs'] scaling_config: Represents the scaling configuration of a metastore service.
                Structure is documented below.
+        :param pulumi.Input['MetastoreServiceScheduledBackupArgs'] scheduled_backup: The configuration of scheduled backup for the metastore service.
+               Structure is documented below.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
@@ -103,6 +106,8 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "release_channel", release_channel)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
+        if scheduled_backup is not None:
+            pulumi.set(__self__, "scheduled_backup", scheduled_backup)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
@@ -300,6 +305,19 @@ class MetastoreServiceArgs:
         pulumi.set(self, "scaling_config", value)
 
     @property
+    @pulumi.getter(name="scheduledBackup")
+    def scheduled_backup(self) -> Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]:
+        """
+        The configuration of scheduled backup for the metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduled_backup")
+
+    @scheduled_backup.setter
+    def scheduled_backup(self, value: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]):
+        pulumi.set(self, "scheduled_backup", value)
+
+    @property
     @pulumi.getter(name="telemetryConfig")
     def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
         """
@@ -347,6 +365,7 @@ class _MetastoreServiceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
+                 scheduled_backup: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
@@ -392,6 +411,8 @@ class _MetastoreServiceState:
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input['MetastoreServiceScalingConfigArgs'] scaling_config: Represents the scaling configuration of a metastore service.
+               Structure is documented below.
+        :param pulumi.Input['MetastoreServiceScheduledBackupArgs'] scheduled_backup: The configuration of scheduled backup for the metastore service.
                Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -443,6 +464,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "release_channel", release_channel)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
+        if scheduled_backup is not None:
+            pulumi.set(__self__, "scheduled_backup", scheduled_backup)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
         if state is not None:
@@ -693,6 +716,19 @@ class _MetastoreServiceState:
         pulumi.set(self, "scaling_config", value)
 
     @property
+    @pulumi.getter(name="scheduledBackup")
+    def scheduled_backup(self) -> Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]:
+        """
+        The configuration of scheduled backup for the metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduled_backup")
+
+    @scheduled_backup.setter
+    def scheduled_backup(self, value: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']]):
+        pulumi.set(self, "scheduled_backup", value)
+
+    @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -790,6 +826,7 @@ class MetastoreService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
+                 scheduled_backup: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScheduledBackupArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -951,6 +988,39 @@ class MetastoreService(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Dataproc Metastore Service Scheduled Backup
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="backup",
+            location="us-central1")
+        backup = gcp.dataproc.MetastoreService("backup",
+            service_id="backup",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+                hour_of_day=2,
+                day_of_week="SUNDAY",
+            ),
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="2.3.6",
+            ),
+            scheduled_backup=gcp.dataproc.MetastoreServiceScheduledBackupArgs(
+                enabled=True,
+                cron_schedule="0 0 * * *",
+                time_zone="UTC",
+                backup_location=bucket.name.apply(lambda name: f"gs://{name}"),
+            ),
+            labels={
+                "env": "test",
+            })
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1008,6 +1078,8 @@ class MetastoreService(pulumi.CustomResource):
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']] scaling_config: Represents the scaling configuration of a metastore service.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceScheduledBackupArgs']] scheduled_backup: The configuration of scheduled backup for the metastore service.
                Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -1183,6 +1255,39 @@ class MetastoreService(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Dataproc Metastore Service Scheduled Backup
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="backup",
+            location="us-central1")
+        backup = gcp.dataproc.MetastoreService("backup",
+            service_id="backup",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+                hour_of_day=2,
+                day_of_week="SUNDAY",
+            ),
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="2.3.6",
+            ),
+            scheduled_backup=gcp.dataproc.MetastoreServiceScheduledBackupArgs(
+                enabled=True,
+                cron_schedule="0 0 * * *",
+                time_zone="UTC",
+                backup_location=bucket.name.apply(lambda name: f"gs://{name}"),
+            ),
+            labels={
+                "env": "test",
+            })
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1236,6 +1341,7 @@ class MetastoreService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
+                 scheduled_backup: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScheduledBackupArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -1261,6 +1367,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["scaling_config"] = scaling_config
+            __props__.__dict__["scheduled_backup"] = scheduled_backup
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
@@ -1304,6 +1411,7 @@ class MetastoreService(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
+            scheduled_backup: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScheduledBackupArgs']]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
@@ -1355,6 +1463,8 @@ class MetastoreService(pulumi.CustomResource):
                Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']] scaling_config: Represents the scaling configuration of a metastore service.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceScheduledBackupArgs']] scheduled_backup: The configuration of scheduled backup for the metastore service.
+               Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -1391,6 +1501,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["release_channel"] = release_channel
         __props__.__dict__["scaling_config"] = scaling_config
+        __props__.__dict__["scheduled_backup"] = scheduled_backup
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
@@ -1562,6 +1673,15 @@ class MetastoreService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "scaling_config")
+
+    @property
+    @pulumi.getter(name="scheduledBackup")
+    def scheduled_backup(self) -> pulumi.Output[Optional['outputs.MetastoreServiceScheduledBackup']]:
+        """
+        The configuration of scheduled backup for the metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scheduled_backup")
 
     @property
     @pulumi.getter(name="serviceId")

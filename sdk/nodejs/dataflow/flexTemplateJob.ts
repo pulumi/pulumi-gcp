@@ -111,11 +111,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     }
 
     /**
-     * List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+     * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     public readonly additionalExperiments!: pulumi.Output<string[]>;
     /**
-     * The algorithm to use for autoscaling
+     * The algorithm to use for autoscaling.
      */
     public readonly autoscalingAlgorithm!: pulumi.Output<string>;
     /**
@@ -131,11 +131,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Indicates if the job should use the streaming engine feature.
+     * Immutable. Indicates if the job should use the streaming engine feature.
      */
     public readonly enableStreamingEngine!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     public readonly ipConfiguration!: pulumi.Output<string | undefined>;
     /**
@@ -143,8 +143,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly jobId!: pulumi.Output<string>;
     /**
-     * The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
     /**
@@ -166,12 +165,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
-     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      */
     public readonly maxWorkers!: pulumi.Output<number>;
     /**
-     * A unique name for the resource, required by Dataflow.
+     * Immutable. A unique name for the resource, required by Dataflow.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -179,7 +177,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The initial number of Google Compute Engine instances for the job.
+     * Immutable. The initial number of Google Compute Engine instances for the job.
      */
     public readonly numWorkers!: pulumi.Output<number>;
     /**
@@ -203,12 +201,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The region in which the created job should run.
+     * Immutable. The region in which the created job should run.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      */
     public readonly sdkContainerImage!: pulumi.Output<string>;
     /**
@@ -230,7 +227,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Compute Engine subnetwork for launching instances to run your pipeline.
+     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
@@ -238,8 +235,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
      */
     public readonly tempLocation!: pulumi.Output<string>;
     /**
-     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      */
     public readonly transformNameMapping!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -336,11 +332,11 @@ export class FlexTemplateJob extends pulumi.CustomResource {
  */
 export interface FlexTemplateJobState {
     /**
-     * List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+     * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The algorithm to use for autoscaling
+     * The algorithm to use for autoscaling.
      */
     autoscalingAlgorithm?: pulumi.Input<string>;
     /**
@@ -356,11 +352,11 @@ export interface FlexTemplateJobState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Indicates if the job should use the streaming engine feature.
+     * Immutable. Indicates if the job should use the streaming engine feature.
      */
     enableStreamingEngine?: pulumi.Input<boolean>;
     /**
-     * The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     ipConfiguration?: pulumi.Input<string>;
     /**
@@ -368,8 +364,7 @@ export interface FlexTemplateJobState {
      */
     jobId?: pulumi.Input<string>;
     /**
-     * The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
@@ -391,12 +386,11 @@ export interface FlexTemplateJobState {
      */
     machineType?: pulumi.Input<string>;
     /**
-     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      */
     maxWorkers?: pulumi.Input<number>;
     /**
-     * A unique name for the resource, required by Dataflow.
+     * Immutable. A unique name for the resource, required by Dataflow.
      */
     name?: pulumi.Input<string>;
     /**
@@ -404,7 +398,7 @@ export interface FlexTemplateJobState {
      */
     network?: pulumi.Input<string>;
     /**
-     * The initial number of Google Compute Engine instances for the job.
+     * Immutable. The initial number of Google Compute Engine instances for the job.
      */
     numWorkers?: pulumi.Input<number>;
     /**
@@ -428,12 +422,11 @@ export interface FlexTemplateJobState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The region in which the created job should run.
+     * Immutable. The region in which the created job should run.
      */
     region?: pulumi.Input<string>;
     /**
-     * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      */
     sdkContainerImage?: pulumi.Input<string>;
     /**
@@ -455,7 +448,7 @@ export interface FlexTemplateJobState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Compute Engine subnetwork for launching instances to run your pipeline.
+     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
      */
     subnetwork?: pulumi.Input<string>;
     /**
@@ -463,8 +456,7 @@ export interface FlexTemplateJobState {
      */
     tempLocation?: pulumi.Input<string>;
     /**
-     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      */
     transformNameMapping?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -478,11 +470,11 @@ export interface FlexTemplateJobState {
  */
 export interface FlexTemplateJobArgs {
     /**
-     * List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+     * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The algorithm to use for autoscaling
+     * The algorithm to use for autoscaling.
      */
     autoscalingAlgorithm?: pulumi.Input<string>;
     /**
@@ -493,16 +485,15 @@ export interface FlexTemplateJobArgs {
      */
     containerSpecGcsPath: pulumi.Input<string>;
     /**
-     * Indicates if the job should use the streaming engine feature.
+     * Immutable. Indicates if the job should use the streaming engine feature.
      */
     enableStreamingEngine?: pulumi.Input<boolean>;
     /**
-     * The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+     * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     ipConfiguration?: pulumi.Input<string>;
     /**
-     * The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
@@ -524,12 +515,11 @@ export interface FlexTemplateJobArgs {
      */
     machineType?: pulumi.Input<string>;
     /**
-     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      */
     maxWorkers?: pulumi.Input<number>;
     /**
-     * A unique name for the resource, required by Dataflow.
+     * Immutable. A unique name for the resource, required by Dataflow.
      */
     name?: pulumi.Input<string>;
     /**
@@ -537,7 +527,7 @@ export interface FlexTemplateJobArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * The initial number of Google Compute Engine instances for the job.
+     * Immutable. The initial number of Google Compute Engine instances for the job.
      */
     numWorkers?: pulumi.Input<number>;
     /**
@@ -557,12 +547,11 @@ export interface FlexTemplateJobArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The region in which the created job should run.
+     * Immutable. The region in which the created job should run.
      */
     region?: pulumi.Input<string>;
     /**
-     * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      */
     sdkContainerImage?: pulumi.Input<string>;
     /**
@@ -580,7 +569,7 @@ export interface FlexTemplateJobArgs {
      */
     stagingLocation?: pulumi.Input<string>;
     /**
-     * Compute Engine subnetwork for launching instances to run your pipeline.
+     * The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
      */
     subnetwork?: pulumi.Input<string>;
     /**
@@ -588,8 +577,7 @@ export interface FlexTemplateJobArgs {
      */
     tempLocation?: pulumi.Input<string>;
     /**
-     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      */
     transformNameMapping?: pulumi.Input<{[key: string]: any}>;
 }

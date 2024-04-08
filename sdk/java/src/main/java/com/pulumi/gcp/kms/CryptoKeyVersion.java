@@ -11,8 +11,10 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.kms.CryptoKeyVersionArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyVersionState;
 import com.pulumi.gcp.kms.outputs.CryptoKeyVersionAttestation;
+import com.pulumi.gcp.kms.outputs.CryptoKeyVersionExternalProtectionLevelOptions;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -142,6 +144,22 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> cryptoKey() {
         return this.cryptoKey;
+    }
+    /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="externalProtectionLevelOptions", refs={CryptoKeyVersionExternalProtectionLevelOptions.class}, tree="[0]")
+    private Output</* @Nullable */ CryptoKeyVersionExternalProtectionLevelOptions> externalProtectionLevelOptions;
+
+    /**
+     * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CryptoKeyVersionExternalProtectionLevelOptions>> externalProtectionLevelOptions() {
+        return Codegen.optional(this.externalProtectionLevelOptions);
     }
     /**
      * The time this CryptoKeyVersion key material was generated

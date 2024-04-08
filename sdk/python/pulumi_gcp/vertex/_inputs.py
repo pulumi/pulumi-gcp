@@ -11,6 +11,9 @@ from .. import _utilities
 
 __all__ = [
     'AiDatasetEncryptionSpecArgs',
+    'AiDeploymentResourcePoolDedicatedResourcesArgs',
+    'AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs',
+    'AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs',
     'AiEndpointDeployedModelArgs',
     'AiEndpointDeployedModelAutomaticResourceArgs',
     'AiEndpointDeployedModelDedicatedResourceArgs',
@@ -83,6 +86,172 @@ class AiDatasetEncryptionSpecArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class AiDeploymentResourcePoolDedicatedResourcesArgs:
+    def __init__(__self__, *,
+                 machine_spec: pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs'],
+                 min_replica_count: pulumi.Input[int],
+                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]] = None,
+                 max_replica_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs'] machine_spec: The specification of a single machine used by the prediction
+               Structure is documented below.
+        :param pulumi.Input[int] min_replica_count: The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+        :param pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]] autoscaling_metric_specs: A list of the metric specifications that overrides a resource utilization metric.
+               Structure is documented below.
+        :param pulumi.Input[int] max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if autoscaling_metric_specs is not None:
+            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+
+    @property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs']:
+        """
+        The specification of a single machine used by the prediction
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @machine_spec.setter
+    def machine_spec(self, value: pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs']):
+        pulumi.set(self, "machine_spec", value)
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> pulumi.Input[int]:
+        """
+        The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_replica_count", value)
+
+    @property
+    @pulumi.getter(name="autoscalingMetricSpecs")
+    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]:
+        """
+        A list of the metric specifications that overrides a resource utilization metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_metric_specs")
+
+    @autoscaling_metric_specs.setter
+    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]):
+        pulumi.set(self, "autoscaling_metric_specs", value)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+
+@pulumi.input_type
+class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs:
+    def __init__(__self__, *,
+                 metric_name: pulumi.Input[str],
+                 target: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] metric_name: The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        :param pulumi.Input[int] target: The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        """
+        pulumi.set(__self__, "metric_name", metric_name)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[str]:
+        """
+        The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[int]]:
+        """
+        The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target", value)
+
+
+@pulumi.input_type
+class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[int]] = None,
+                 accelerator_type: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] accelerator_count: The number of accelerators to attach to the machine.
+        :param pulumi.Input[str] accelerator_type: The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        :param pulumi.Input[str] machine_type: The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of accelerators to attach to the machine.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
 
 
 @pulumi.input_type

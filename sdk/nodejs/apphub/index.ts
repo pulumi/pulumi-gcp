@@ -10,6 +10,11 @@ export type Application = import("./application").Application;
 export const Application: typeof import("./application").Application = null as any;
 utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
+export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
+export const getApplication: typeof import("./getApplication").getApplication = null as any;
+export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
+
 export { GetDiscoveredServiceArgs, GetDiscoveredServiceResult, GetDiscoveredServiceOutputArgs } from "./getDiscoveredService";
 export const getDiscoveredService: typeof import("./getDiscoveredService").getDiscoveredService = null as any;
 export const getDiscoveredServiceOutput: typeof import("./getDiscoveredService").getDiscoveredServiceOutput = null as any;

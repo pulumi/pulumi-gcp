@@ -127,6 +127,7 @@ namespace Pulumi.Gcp.Dataproc
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string ReleaseChannel;
         public readonly ImmutableArray<Outputs.GetMetastoreServiceScalingConfigResult> ScalingConfigs;
+        public readonly ImmutableArray<Outputs.GetMetastoreServiceScheduledBackupResult> ScheduledBackups;
         public readonly string ServiceId;
         public readonly string State;
         public readonly string StateMessage;
@@ -174,6 +175,8 @@ namespace Pulumi.Gcp.Dataproc
 
             ImmutableArray<Outputs.GetMetastoreServiceScalingConfigResult> scalingConfigs,
 
+            ImmutableArray<Outputs.GetMetastoreServiceScheduledBackupResult> scheduledBackups,
+
             string serviceId,
 
             string state,
@@ -205,6 +208,7 @@ namespace Pulumi.Gcp.Dataproc
             PulumiLabels = pulumiLabels;
             ReleaseChannel = releaseChannel;
             ScalingConfigs = scalingConfigs;
+            ScheduledBackups = scheduledBackups;
             ServiceId = serviceId;
             State = state;
             StateMessage = stateMessage;

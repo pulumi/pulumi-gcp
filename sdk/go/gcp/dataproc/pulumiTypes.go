@@ -16010,6 +16010,200 @@ func (o MetastoreServiceScalingConfigPtrOutput) ScalingFactor() pulumi.Float64Pt
 	}).(pulumi.Float64PtrOutput)
 }
 
+type MetastoreServiceScheduledBackup struct {
+	// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+	BackupLocation string `pulumi:"backupLocation"`
+	// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule *string `pulumi:"cronSchedule"`
+	// Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled *bool `pulumi:"enabled"`
+	// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// MetastoreServiceScheduledBackupInput is an input type that accepts MetastoreServiceScheduledBackupArgs and MetastoreServiceScheduledBackupOutput values.
+// You can construct a concrete instance of `MetastoreServiceScheduledBackupInput` via:
+//
+//	MetastoreServiceScheduledBackupArgs{...}
+type MetastoreServiceScheduledBackupInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScheduledBackupOutput() MetastoreServiceScheduledBackupOutput
+	ToMetastoreServiceScheduledBackupOutputWithContext(context.Context) MetastoreServiceScheduledBackupOutput
+}
+
+type MetastoreServiceScheduledBackupArgs struct {
+	// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+	BackupLocation pulumi.StringInput `pulumi:"backupLocation"`
+	// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule pulumi.StringPtrInput `pulumi:"cronSchedule"`
+	// Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (MetastoreServiceScheduledBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (i MetastoreServiceScheduledBackupArgs) ToMetastoreServiceScheduledBackupOutput() MetastoreServiceScheduledBackupOutput {
+	return i.ToMetastoreServiceScheduledBackupOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScheduledBackupArgs) ToMetastoreServiceScheduledBackupOutputWithContext(ctx context.Context) MetastoreServiceScheduledBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScheduledBackupOutput)
+}
+
+func (i MetastoreServiceScheduledBackupArgs) ToMetastoreServiceScheduledBackupPtrOutput() MetastoreServiceScheduledBackupPtrOutput {
+	return i.ToMetastoreServiceScheduledBackupPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScheduledBackupArgs) ToMetastoreServiceScheduledBackupPtrOutputWithContext(ctx context.Context) MetastoreServiceScheduledBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScheduledBackupOutput).ToMetastoreServiceScheduledBackupPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceScheduledBackupPtrInput is an input type that accepts MetastoreServiceScheduledBackupArgs, MetastoreServiceScheduledBackupPtr and MetastoreServiceScheduledBackupPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceScheduledBackupPtrInput` via:
+//
+//	        MetastoreServiceScheduledBackupArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceScheduledBackupPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScheduledBackupPtrOutput() MetastoreServiceScheduledBackupPtrOutput
+	ToMetastoreServiceScheduledBackupPtrOutputWithContext(context.Context) MetastoreServiceScheduledBackupPtrOutput
+}
+
+type metastoreServiceScheduledBackupPtrType MetastoreServiceScheduledBackupArgs
+
+func MetastoreServiceScheduledBackupPtr(v *MetastoreServiceScheduledBackupArgs) MetastoreServiceScheduledBackupPtrInput {
+	return (*metastoreServiceScheduledBackupPtrType)(v)
+}
+
+func (*metastoreServiceScheduledBackupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (i *metastoreServiceScheduledBackupPtrType) ToMetastoreServiceScheduledBackupPtrOutput() MetastoreServiceScheduledBackupPtrOutput {
+	return i.ToMetastoreServiceScheduledBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceScheduledBackupPtrType) ToMetastoreServiceScheduledBackupPtrOutputWithContext(ctx context.Context) MetastoreServiceScheduledBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScheduledBackupPtrOutput)
+}
+
+type MetastoreServiceScheduledBackupOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScheduledBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (o MetastoreServiceScheduledBackupOutput) ToMetastoreServiceScheduledBackupOutput() MetastoreServiceScheduledBackupOutput {
+	return o
+}
+
+func (o MetastoreServiceScheduledBackupOutput) ToMetastoreServiceScheduledBackupOutputWithContext(ctx context.Context) MetastoreServiceScheduledBackupOutput {
+	return o
+}
+
+func (o MetastoreServiceScheduledBackupOutput) ToMetastoreServiceScheduledBackupPtrOutput() MetastoreServiceScheduledBackupPtrOutput {
+	return o.ToMetastoreServiceScheduledBackupPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceScheduledBackupOutput) ToMetastoreServiceScheduledBackupPtrOutputWithContext(ctx context.Context) MetastoreServiceScheduledBackupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceScheduledBackup) *MetastoreServiceScheduledBackup {
+		return &v
+	}).(MetastoreServiceScheduledBackupPtrOutput)
+}
+
+// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+func (o MetastoreServiceScheduledBackupOutput) BackupLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceScheduledBackup) string { return v.BackupLocation }).(pulumi.StringOutput)
+}
+
+// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+func (o MetastoreServiceScheduledBackupOutput) CronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScheduledBackup) *string { return v.CronSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Defines whether the scheduled backup is enabled. The default value is false.
+func (o MetastoreServiceScheduledBackupOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScheduledBackup) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+func (o MetastoreServiceScheduledBackupOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScheduledBackup) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceScheduledBackupPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScheduledBackupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (o MetastoreServiceScheduledBackupPtrOutput) ToMetastoreServiceScheduledBackupPtrOutput() MetastoreServiceScheduledBackupPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScheduledBackupPtrOutput) ToMetastoreServiceScheduledBackupPtrOutputWithContext(ctx context.Context) MetastoreServiceScheduledBackupPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScheduledBackupPtrOutput) Elem() MetastoreServiceScheduledBackupOutput {
+	return o.ApplyT(func(v *MetastoreServiceScheduledBackup) MetastoreServiceScheduledBackup {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceScheduledBackup
+		return ret
+	}).(MetastoreServiceScheduledBackupOutput)
+}
+
+// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+func (o MetastoreServiceScheduledBackupPtrOutput) BackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScheduledBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+func (o MetastoreServiceScheduledBackupPtrOutput) CronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScheduledBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CronSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines whether the scheduled backup is enabled. The default value is false.
+func (o MetastoreServiceScheduledBackupPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScheduledBackup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+func (o MetastoreServiceScheduledBackupPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScheduledBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetastoreServiceTelemetryConfig struct {
 	// The output format of the Dataproc Metastore service's logs.
 	// Default value is `JSON`.
@@ -27733,6 +27927,130 @@ func (o GetMetastoreServiceScalingConfigArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetMetastoreServiceScalingConfigOutput)
 }
 
+type GetMetastoreServiceScheduledBackup struct {
+	// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+	BackupLocation string `pulumi:"backupLocation"`
+	// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule string `pulumi:"cronSchedule"`
+	// Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled bool `pulumi:"enabled"`
+	// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// GetMetastoreServiceScheduledBackupInput is an input type that accepts GetMetastoreServiceScheduledBackupArgs and GetMetastoreServiceScheduledBackupOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScheduledBackupInput` via:
+//
+//	GetMetastoreServiceScheduledBackupArgs{...}
+type GetMetastoreServiceScheduledBackupInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScheduledBackupOutput() GetMetastoreServiceScheduledBackupOutput
+	ToGetMetastoreServiceScheduledBackupOutputWithContext(context.Context) GetMetastoreServiceScheduledBackupOutput
+}
+
+type GetMetastoreServiceScheduledBackupArgs struct {
+	// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+	BackupLocation pulumi.StringInput `pulumi:"backupLocation"`
+	// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule pulumi.StringInput `pulumi:"cronSchedule"`
+	// Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GetMetastoreServiceScheduledBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScheduledBackupArgs) ToGetMetastoreServiceScheduledBackupOutput() GetMetastoreServiceScheduledBackupOutput {
+	return i.ToGetMetastoreServiceScheduledBackupOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScheduledBackupArgs) ToGetMetastoreServiceScheduledBackupOutputWithContext(ctx context.Context) GetMetastoreServiceScheduledBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScheduledBackupOutput)
+}
+
+// GetMetastoreServiceScheduledBackupArrayInput is an input type that accepts GetMetastoreServiceScheduledBackupArray and GetMetastoreServiceScheduledBackupArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScheduledBackupArrayInput` via:
+//
+//	GetMetastoreServiceScheduledBackupArray{ GetMetastoreServiceScheduledBackupArgs{...} }
+type GetMetastoreServiceScheduledBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScheduledBackupArrayOutput() GetMetastoreServiceScheduledBackupArrayOutput
+	ToGetMetastoreServiceScheduledBackupArrayOutputWithContext(context.Context) GetMetastoreServiceScheduledBackupArrayOutput
+}
+
+type GetMetastoreServiceScheduledBackupArray []GetMetastoreServiceScheduledBackupInput
+
+func (GetMetastoreServiceScheduledBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScheduledBackupArray) ToGetMetastoreServiceScheduledBackupArrayOutput() GetMetastoreServiceScheduledBackupArrayOutput {
+	return i.ToGetMetastoreServiceScheduledBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScheduledBackupArray) ToGetMetastoreServiceScheduledBackupArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScheduledBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScheduledBackupArrayOutput)
+}
+
+type GetMetastoreServiceScheduledBackupOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScheduledBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScheduledBackupOutput) ToGetMetastoreServiceScheduledBackupOutput() GetMetastoreServiceScheduledBackupOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScheduledBackupOutput) ToGetMetastoreServiceScheduledBackupOutputWithContext(ctx context.Context) GetMetastoreServiceScheduledBackupOutput {
+	return o
+}
+
+// A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+func (o GetMetastoreServiceScheduledBackupOutput) BackupLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScheduledBackup) string { return v.BackupLocation }).(pulumi.StringOutput)
+}
+
+// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+func (o GetMetastoreServiceScheduledBackupOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScheduledBackup) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+// Defines whether the scheduled backup is enabled. The default value is false.
+func (o GetMetastoreServiceScheduledBackupOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScheduledBackup) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+func (o GetMetastoreServiceScheduledBackupOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScheduledBackup) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceScheduledBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScheduledBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScheduledBackup)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScheduledBackupArrayOutput) ToGetMetastoreServiceScheduledBackupArrayOutput() GetMetastoreServiceScheduledBackupArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScheduledBackupArrayOutput) ToGetMetastoreServiceScheduledBackupArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScheduledBackupArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScheduledBackupArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceScheduledBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceScheduledBackup {
+		return vs[0].([]GetMetastoreServiceScheduledBackup)[vs[1].(int)]
+	}).(GetMetastoreServiceScheduledBackupOutput)
+}
+
 type GetMetastoreServiceTelemetryConfig struct {
 	// The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
 	LogFormat string `pulumi:"logFormat"`
@@ -28003,6 +28321,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigInput)(nil)).Elem(), MetastoreServiceScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigPtrInput)(nil)).Elem(), MetastoreServiceScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScheduledBackupInput)(nil)).Elem(), MetastoreServiceScheduledBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScheduledBackupPtrInput)(nil)).Elem(), MetastoreServiceScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigPtrInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
@@ -28139,6 +28459,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), GetMetastoreServiceNetworkConfigConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigInput)(nil)).Elem(), GetMetastoreServiceScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigArrayInput)(nil)).Elem(), GetMetastoreServiceScalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScheduledBackupInput)(nil)).Elem(), GetMetastoreServiceScheduledBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScheduledBackupArrayInput)(nil)).Elem(), GetMetastoreServiceScheduledBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceTelemetryConfigInput)(nil)).Elem(), GetMetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceTelemetryConfigArrayInput)(nil)).Elem(), GetMetastoreServiceTelemetryConfigArray{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmOutput{})
@@ -28313,6 +28635,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerArrayOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceScalingConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceScalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScheduledBackupOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScheduledBackupPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})
@@ -28449,6 +28773,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMetastoreServiceNetworkConfigConsumerArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScheduledBackupOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScheduledBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceTelemetryConfigOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceTelemetryConfigArrayOutput{})
 }

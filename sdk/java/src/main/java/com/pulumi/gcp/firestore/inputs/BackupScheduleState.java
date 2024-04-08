@@ -18,14 +18,14 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
     public static final BackupScheduleState Empty = new BackupScheduleState();
 
     /**
-     * For a schedule that runs daily at a specified time.
+     * For a schedule that runs daily.
      * 
      */
     @Import(name="dailyRecurrence")
     private @Nullable Output<BackupScheduleDailyRecurrenceArgs> dailyRecurrence;
 
     /**
-     * @return For a schedule that runs daily at a specified time.
+     * @return For a schedule that runs daily.
      * 
      */
     public Optional<Output<BackupScheduleDailyRecurrenceArgs>> dailyRecurrence() {
@@ -105,7 +105,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * For a schedule that runs weekly on a specific day and time.
+     * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      * 
      */
@@ -113,7 +113,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<BackupScheduleWeeklyRecurrenceArgs> weeklyRecurrence;
 
     /**
-     * @return For a schedule that runs weekly on a specific day and time.
+     * @return For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      * 
      */
@@ -151,7 +151,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dailyRecurrence For a schedule that runs daily at a specified time.
+         * @param dailyRecurrence For a schedule that runs daily.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dailyRecurrence For a schedule that runs daily at a specified time.
+         * @param dailyRecurrence For a schedule that runs daily.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param weeklyRecurrence For a schedule that runs weekly on a specific day and time.
+         * @param weeklyRecurrence For a schedule that runs weekly on a specific day.
          * Structure is documented below.
          * 
          * @return builder
@@ -280,7 +280,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param weeklyRecurrence For a schedule that runs weekly on a specific day and time.
+         * @param weeklyRecurrence For a schedule that runs weekly on a specific day.
          * Structure is documented below.
          * 
          * @return builder

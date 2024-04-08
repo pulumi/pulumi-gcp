@@ -387,6 +387,55 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Routine Data Governance Type
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Dataset(&#34;test&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;tf_test_dataset_id_77884&#34;)
+ *             .build());
+ * 
+ *         var customMaskingRoutine = new Routine(&#34;customMaskingRoutine&#34;, RoutineArgs.builder()        
+ *             .datasetId(test.datasetId())
+ *             .routineId(&#34;custom_masking_routine&#34;)
+ *             .routineType(&#34;SCALAR_FUNCTION&#34;)
+ *             .language(&#34;SQL&#34;)
+ *             .dataGovernanceType(&#34;DATA_MASKING&#34;)
+ *             .definitionBody(&#34;SAFE.REGEXP_REPLACE(ssn, &#39;[0-9]&#39;, &#39;X&#39;)&#34;)
+ *             .arguments(RoutineArgumentArgs.builder()
+ *                 .name(&#34;ssn&#34;)
+ *                 .dataType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *                 .build())
+ *             .returnType(&#34;{\&#34;typeKind\&#34; :  \&#34;STRING\&#34;}&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Routine Remote Function
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -504,6 +553,22 @@ public class Routine extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> creationTime() {
         return this.creationTime;
+    }
+    /**
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     * 
+     */
+    @Export(name="dataGovernanceType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataGovernanceType;
+
+    /**
+     * @return If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     * 
+     */
+    public Output<Optional<String>> dataGovernanceType() {
+        return Codegen.optional(this.dataGovernanceType);
     }
     /**
      * The ID of the dataset containing this routine
