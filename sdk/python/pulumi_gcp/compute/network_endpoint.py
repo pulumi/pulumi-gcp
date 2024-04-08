@@ -276,6 +276,10 @@ class NetworkEndpoint(pulumi.CustomResource):
         single subnet. **NOTE**: Network endpoints cannot be created outside of a
         network endpoint group.
 
+        > **NOTE** In case the Endpoint's Instance is recreated, it's needed to
+        perform `apply` twice. To avoid situations like this, please use this resource
+        with the lifecycle `update_triggered_by` method, with the passed Instance's ID.
+
         To get more information about NetworkEndpoint, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -388,6 +392,10 @@ class NetworkEndpoint(pulumi.CustomResource):
         collections of these endpoints for GCP resources within a
         single subnet. **NOTE**: Network endpoints cannot be created outside of a
         network endpoint group.
+
+        > **NOTE** In case the Endpoint's Instance is recreated, it's needed to
+        perform `apply` twice. To avoid situations like this, please use this resource
+        with the lifecycle `update_triggered_by` method, with the passed Instance's ID.
 
         To get more information about NetworkEndpoint, see:
 

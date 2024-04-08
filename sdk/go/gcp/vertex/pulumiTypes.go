@@ -154,6 +154,493 @@ func (o AiDatasetEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiDeploymentResourcePoolDedicatedResources struct {
+	// A list of the metric specifications that overrides a resource utilization metric.
+	// Structure is documented below.
+	AutoscalingMetricSpecs []AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec `pulumi:"autoscalingMetricSpecs"`
+	// The specification of a single machine used by the prediction
+	// Structure is documented below.
+	MachineSpec AiDeploymentResourcePoolDedicatedResourcesMachineSpec `pulumi:"machineSpec"`
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+	MinReplicaCount int `pulumi:"minReplicaCount"`
+}
+
+// AiDeploymentResourcePoolDedicatedResourcesInput is an input type that accepts AiDeploymentResourcePoolDedicatedResourcesArgs and AiDeploymentResourcePoolDedicatedResourcesOutput values.
+// You can construct a concrete instance of `AiDeploymentResourcePoolDedicatedResourcesInput` via:
+//
+//	AiDeploymentResourcePoolDedicatedResourcesArgs{...}
+type AiDeploymentResourcePoolDedicatedResourcesInput interface {
+	pulumi.Input
+
+	ToAiDeploymentResourcePoolDedicatedResourcesOutput() AiDeploymentResourcePoolDedicatedResourcesOutput
+	ToAiDeploymentResourcePoolDedicatedResourcesOutputWithContext(context.Context) AiDeploymentResourcePoolDedicatedResourcesOutput
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesArgs struct {
+	// A list of the metric specifications that overrides a resource utilization metric.
+	// Structure is documented below.
+	AutoscalingMetricSpecs AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayInput `pulumi:"autoscalingMetricSpecs"`
+	// The specification of a single machine used by the prediction
+	// Structure is documented below.
+	MachineSpec AiDeploymentResourcePoolDedicatedResourcesMachineSpecInput `pulumi:"machineSpec"`
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+	MinReplicaCount pulumi.IntInput `pulumi:"minReplicaCount"`
+}
+
+func (AiDeploymentResourcePoolDedicatedResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResources)(nil)).Elem()
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesArgs) ToAiDeploymentResourcePoolDedicatedResourcesOutput() AiDeploymentResourcePoolDedicatedResourcesOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesOutputWithContext(context.Background())
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesArgs) ToAiDeploymentResourcePoolDedicatedResourcesOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesOutput)
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesArgs) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutput() AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesArgs) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesOutput).ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(ctx)
+}
+
+// AiDeploymentResourcePoolDedicatedResourcesPtrInput is an input type that accepts AiDeploymentResourcePoolDedicatedResourcesArgs, AiDeploymentResourcePoolDedicatedResourcesPtr and AiDeploymentResourcePoolDedicatedResourcesPtrOutput values.
+// You can construct a concrete instance of `AiDeploymentResourcePoolDedicatedResourcesPtrInput` via:
+//
+//	        AiDeploymentResourcePoolDedicatedResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiDeploymentResourcePoolDedicatedResourcesPtrInput interface {
+	pulumi.Input
+
+	ToAiDeploymentResourcePoolDedicatedResourcesPtrOutput() AiDeploymentResourcePoolDedicatedResourcesPtrOutput
+	ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(context.Context) AiDeploymentResourcePoolDedicatedResourcesPtrOutput
+}
+
+type aiDeploymentResourcePoolDedicatedResourcesPtrType AiDeploymentResourcePoolDedicatedResourcesArgs
+
+func AiDeploymentResourcePoolDedicatedResourcesPtr(v *AiDeploymentResourcePoolDedicatedResourcesArgs) AiDeploymentResourcePoolDedicatedResourcesPtrInput {
+	return (*aiDeploymentResourcePoolDedicatedResourcesPtrType)(v)
+}
+
+func (*aiDeploymentResourcePoolDedicatedResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiDeploymentResourcePoolDedicatedResources)(nil)).Elem()
+}
+
+func (i *aiDeploymentResourcePoolDedicatedResourcesPtrType) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutput() AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *aiDeploymentResourcePoolDedicatedResourcesPtrType) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesPtrOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesOutput struct{ *pulumi.OutputState }
+
+func (AiDeploymentResourcePoolDedicatedResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResources)(nil)).Elem()
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) ToAiDeploymentResourcePoolDedicatedResourcesOutput() AiDeploymentResourcePoolDedicatedResourcesOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) ToAiDeploymentResourcePoolDedicatedResourcesOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutput() AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return o.ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiDeploymentResourcePoolDedicatedResources) *AiDeploymentResourcePoolDedicatedResources {
+		return &v
+	}).(AiDeploymentResourcePoolDedicatedResourcesPtrOutput)
+}
+
+// A list of the metric specifications that overrides a resource utilization metric.
+// Structure is documented below.
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) AutoscalingMetricSpecs() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResources) []AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec {
+		return v.AutoscalingMetricSpecs
+	}).(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput)
+}
+
+// The specification of a single machine used by the prediction
+// Structure is documented below.
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) MachineSpec() AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResources) AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
+		return v.MachineSpec
+	}).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput)
+}
+
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResources) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+func (o AiDeploymentResourcePoolDedicatedResourcesOutput) MinReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResources) int { return v.MinReplicaCount }).(pulumi.IntOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (AiDeploymentResourcePoolDedicatedResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiDeploymentResourcePoolDedicatedResources)(nil)).Elem()
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutput() AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) ToAiDeploymentResourcePoolDedicatedResourcesPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) Elem() AiDeploymentResourcePoolDedicatedResourcesOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResources) AiDeploymentResourcePoolDedicatedResources {
+		if v != nil {
+			return *v
+		}
+		var ret AiDeploymentResourcePoolDedicatedResources
+		return ret
+	}).(AiDeploymentResourcePoolDedicatedResourcesOutput)
+}
+
+// A list of the metric specifications that overrides a resource utilization metric.
+// Structure is documented below.
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) AutoscalingMetricSpecs() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResources) []AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingMetricSpecs
+	}).(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput)
+}
+
+// The specification of a single machine used by the prediction
+// Structure is documented below.
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) MachineSpec() AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResources) *AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineSpec
+	}).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput)
+}
+
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+func (o AiDeploymentResourcePoolDedicatedResourcesPtrOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResources) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec struct {
+	// The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+	MetricName string `pulumi:"metricName"`
+	// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+	Target *int `pulumi:"target"`
+}
+
+// AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecInput is an input type that accepts AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs and AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput values.
+// You can construct a concrete instance of `AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecInput` via:
+//
+//	AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs{...}
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecInput interface {
+	pulumi.Input
+
+	ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput
+	ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutputWithContext(context.Context) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs struct {
+	// The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+	Target pulumi.IntPtrInput `pulumi:"target"`
+}
+
+func (AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutputWithContext(context.Background())
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput)
+}
+
+// AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayInput is an input type that accepts AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray and AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput values.
+// You can construct a concrete instance of `AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayInput` via:
+//
+//	AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray{ AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs{...} }
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput
+	ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(context.Context) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray []AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecInput
+
+func (AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput struct{ *pulumi.OutputState }
+
+func (AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput {
+	return o
+}
+
+// The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput) Target() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec) *int { return v.Target }).(pulumi.IntPtrOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput() AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput) ToAiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput) Index(i pulumi.IntInput) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec {
+		return vs[0].([]AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec)[vs[1].(int)]
+	}).(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesMachineSpec struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+	MachineType *string `pulumi:"machineType"`
+}
+
+// AiDeploymentResourcePoolDedicatedResourcesMachineSpecInput is an input type that accepts AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs and AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput values.
+// You can construct a concrete instance of `AiDeploymentResourcePoolDedicatedResourcesMachineSpecInput` via:
+//
+//	AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs{...}
+type AiDeploymentResourcePoolDedicatedResourcesMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput
+	ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutputWithContext(context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput)
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput).ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(ctx)
+}
+
+// AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrInput is an input type that accepts AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs, AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtr and AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput values.
+// You can construct a concrete instance of `AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrInput` via:
+//
+//	        AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput
+	ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput
+}
+
+type aiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrType AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs
+
+func AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtr(v *AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs) AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrInput {
+	return (*aiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrType)(v)
+}
+
+func (*aiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiDeploymentResourcePoolDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (i *aiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrType) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return i.ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrType) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return o.ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
+		return &v
+	}).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput)
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *int { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
+}
+
+// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiDeploymentResourcePoolDedicatedResourcesMachineSpec)(nil)).Elem()
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput() AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) ToAiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutputWithContext(ctx context.Context) AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput {
+	return o
+}
+
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) Elem() AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResourcesMachineSpec) AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiDeploymentResourcePoolDedicatedResourcesMachineSpec
+		return ret
+	}).(AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput)
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+func (o AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePoolDedicatedResourcesMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiEndpointDeployedModel struct {
 	// (Output)
 	// A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
@@ -8320,6 +8807,12 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) Index(i 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesPtrInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesMachineSpecInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrInput)(nil)).Elem(), AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelInput)(nil)).Elem(), AiEndpointDeployedModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelArrayInput)(nil)).Elem(), AiEndpointDeployedModelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelAutomaticResourceInput)(nil)).Elem(), AiEndpointDeployedModelAutomaticResourceArgs{})
@@ -8430,6 +8923,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesOutput{})
+	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesPtrOutput{})
+	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecOutput{})
+	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiDeploymentResourcePoolDedicatedResourcesMachineSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointDeployedModelOutput{})
 	pulumi.RegisterOutputType(AiEndpointDeployedModelArrayOutput{})
 	pulumi.RegisterOutputType(AiEndpointDeployedModelAutomaticResourceOutput{})

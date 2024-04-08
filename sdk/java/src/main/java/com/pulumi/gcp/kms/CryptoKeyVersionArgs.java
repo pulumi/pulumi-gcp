@@ -6,6 +6,7 @@ package com.pulumi.gcp.kms;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.kms.inputs.CryptoKeyVersionExternalProtectionLevelOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,6 +39,23 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="externalProtectionLevelOptions")
+    private @Nullable Output<CryptoKeyVersionExternalProtectionLevelOptionsArgs> externalProtectionLevelOptions;
+
+    /**
+     * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CryptoKeyVersionExternalProtectionLevelOptionsArgs>> externalProtectionLevelOptions() {
+        return Optional.ofNullable(this.externalProtectionLevelOptions);
+    }
+
+    /**
      * The current state of the CryptoKeyVersion.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
@@ -58,6 +76,7 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
 
     private CryptoKeyVersionArgs(CryptoKeyVersionArgs $) {
         this.cryptoKey = $.cryptoKey;
+        this.externalProtectionLevelOptions = $.externalProtectionLevelOptions;
         this.state = $.state;
     }
 
@@ -104,6 +123,29 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder cryptoKey(String cryptoKey) {
             return cryptoKey(Output.of(cryptoKey));
+        }
+
+        /**
+         * @param externalProtectionLevelOptions ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalProtectionLevelOptions(@Nullable Output<CryptoKeyVersionExternalProtectionLevelOptionsArgs> externalProtectionLevelOptions) {
+            $.externalProtectionLevelOptions = externalProtectionLevelOptions;
+            return this;
+        }
+
+        /**
+         * @param externalProtectionLevelOptions ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalProtectionLevelOptions(CryptoKeyVersionExternalProtectionLevelOptionsArgs externalProtectionLevelOptions) {
+            return externalProtectionLevelOptions(Output.of(externalProtectionLevelOptions));
         }
 
         /**

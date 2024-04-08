@@ -333,6 +333,9 @@ public final class Config {
     public Optional<String> integrationConnectorsCustomEndpoint() {
         return Codegen.stringProp("integrationConnectorsCustomEndpoint").config(config).get();
     }
+    public Optional<String> integrationsCustomEndpoint() {
+        return Codegen.stringProp("integrationsCustomEndpoint").config(config).get();
+    }
     public Optional<String> kmsCustomEndpoint() {
         return Codegen.stringProp("kmsCustomEndpoint").config(config).get();
     }

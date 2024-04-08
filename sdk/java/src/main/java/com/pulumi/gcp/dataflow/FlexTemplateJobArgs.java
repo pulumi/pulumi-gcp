@@ -22,14 +22,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     public static final FlexTemplateJobArgs Empty = new FlexTemplateJobArgs();
 
     /**
-     * List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
      * 
      */
     @Import(name="additionalExperiments")
     private @Nullable Output<List<String>> additionalExperiments;
 
     /**
-     * @return List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
      * 
      */
     public Optional<Output<List<String>>> additionalExperiments() {
@@ -37,14 +37,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The algorithm to use for autoscaling
+     * The algorithm to use for autoscaling.
      * 
      */
     @Import(name="autoscalingAlgorithm")
     private @Nullable Output<String> autoscalingAlgorithm;
 
     /**
-     * @return The algorithm to use for autoscaling
+     * @return The algorithm to use for autoscaling.
      * 
      */
     public Optional<Output<String>> autoscalingAlgorithm() {
@@ -73,14 +73,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Indicates if the job should use the streaming engine feature.
+     * Immutable. Indicates if the job should use the streaming engine feature.
      * 
      */
     @Import(name="enableStreamingEngine")
     private @Nullable Output<Boolean> enableStreamingEngine;
 
     /**
-     * @return Indicates if the job should use the streaming engine feature.
+     * @return Immutable. Indicates if the job should use the streaming engine feature.
      * 
      */
     public Optional<Output<Boolean>> enableStreamingEngine() {
@@ -88,14 +88,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * The configuration for VM IPs.  Options are `&#34;WORKER_IP_PUBLIC&#34;` or `&#34;WORKER_IP_PRIVATE&#34;`.
      * 
      */
     @Import(name="ipConfiguration")
     private @Nullable Output<String> ipConfiguration;
 
     /**
-     * @return The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * @return The configuration for VM IPs.  Options are `&#34;WORKER_IP_PUBLIC&#34;` or `&#34;WORKER_IP_PRIVATE&#34;`.
      * 
      */
     public Optional<Output<String>> ipConfiguration() {
@@ -103,16 +103,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      * 
      */
     @Import(name="kmsKeyName")
     private @Nullable Output<String> kmsKeyName;
 
     /**
-     * @return The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * @return The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -177,16 +175,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      * 
      */
     @Import(name="maxWorkers")
     private @Nullable Output<Integer> maxWorkers;
 
     /**
-     * @return The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * @return Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      * 
      */
     public Optional<Output<Integer>> maxWorkers() {
@@ -194,14 +190,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A unique name for the resource, required by Dataflow.
+     * Immutable. A unique name for the resource, required by Dataflow.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique name for the resource, required by Dataflow.
+     * @return Immutable. A unique name for the resource, required by Dataflow.
      * 
      */
     public Optional<Output<String>> name() {
@@ -224,14 +220,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The initial number of Google Compute Engine instances for the job.
+     * Immutable. The initial number of Google Compute Engine instances for the job.
      * 
      */
     @Import(name="numWorkers")
     private @Nullable Output<Integer> numWorkers;
 
     /**
-     * @return The initial number of Google Compute Engine instances for the job.
+     * @return Immutable. The initial number of Google Compute Engine instances for the job.
      * 
      */
     public Optional<Output<Integer>> numWorkers() {
@@ -292,14 +288,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The region in which the created job should run.
+     * Immutable. The region in which the created job should run.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which the created job should run.
+     * @return Immutable. The region in which the created job should run.
      * 
      */
     public Optional<Output<String>> region() {
@@ -307,16 +303,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      * 
      */
     @Import(name="sdkContainerImage")
     private @Nullable Output<String> sdkContainerImage;
 
     /**
-     * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      * 
      */
     public Optional<Output<String>> sdkContainerImage() {
@@ -373,14 +367,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Compute Engine subnetwork for launching instances to run your pipeline.
+     * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
      * 
      */
     @Import(name="subnetwork")
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return Compute Engine subnetwork for launching instances to run your pipeline.
+     * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -403,16 +397,14 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
     @Import(name="transformNameMapping")
     private @Nullable Output<Map<String,Object>> transformNameMapping;
 
     /**
-     * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
     public Optional<Output<Map<String,Object>>> transformNameMapping() {
@@ -467,7 +459,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
          * 
          * @return builder
          * 
@@ -478,7 +470,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
          * 
          * @return builder
          * 
@@ -488,7 +480,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalExperiments List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
          * 
          * @return builder
          * 
@@ -498,7 +490,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoscalingAlgorithm The algorithm to use for autoscaling
+         * @param autoscalingAlgorithm The algorithm to use for autoscaling.
          * 
          * @return builder
          * 
@@ -509,7 +501,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoscalingAlgorithm The algorithm to use for autoscaling
+         * @param autoscalingAlgorithm The algorithm to use for autoscaling.
          * 
          * @return builder
          * 
@@ -546,7 +538,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableStreamingEngine Indicates if the job should use the streaming engine feature.
+         * @param enableStreamingEngine Immutable. Indicates if the job should use the streaming engine feature.
          * 
          * @return builder
          * 
@@ -557,7 +549,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enableStreamingEngine Indicates if the job should use the streaming engine feature.
+         * @param enableStreamingEngine Immutable. Indicates if the job should use the streaming engine feature.
          * 
          * @return builder
          * 
@@ -567,7 +559,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipConfiguration The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+         * @param ipConfiguration The configuration for VM IPs.  Options are `&#34;WORKER_IP_PUBLIC&#34;` or `&#34;WORKER_IP_PRIVATE&#34;`.
          * 
          * @return builder
          * 
@@ -578,7 +570,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipConfiguration The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+         * @param ipConfiguration The configuration for VM IPs.  Options are `&#34;WORKER_IP_PUBLIC&#34;` or `&#34;WORKER_IP_PRIVATE&#34;`.
          * 
          * @return builder
          * 
@@ -588,8 +580,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kmsKeyName The name for the Cloud KMS key for the job. Key format is:
-         * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+         * @param kmsKeyName The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
          * 
          * @return builder
          * 
@@ -600,8 +591,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param kmsKeyName The name for the Cloud KMS key for the job. Key format is:
-         * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+         * @param kmsKeyName The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
          * 
          * @return builder
          * 
@@ -686,8 +676,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param maxWorkers The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-         * 1000.
+         * @param maxWorkers Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
          * 
          * @return builder
          * 
@@ -698,8 +687,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param maxWorkers The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-         * 1000.
+         * @param maxWorkers Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
          * 
          * @return builder
          * 
@@ -709,7 +697,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name A unique name for the resource, required by Dataflow.
+         * @param name Immutable. A unique name for the resource, required by Dataflow.
          * 
          * @return builder
          * 
@@ -720,7 +708,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name A unique name for the resource, required by Dataflow.
+         * @param name Immutable. A unique name for the resource, required by Dataflow.
          * 
          * @return builder
          * 
@@ -751,7 +739,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numWorkers The initial number of Google Compute Engine instances for the job.
+         * @param numWorkers Immutable. The initial number of Google Compute Engine instances for the job.
          * 
          * @return builder
          * 
@@ -762,7 +750,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numWorkers The initial number of Google Compute Engine instances for the job.
+         * @param numWorkers Immutable. The initial number of Google Compute Engine instances for the job.
          * 
          * @return builder
          * 
@@ -843,7 +831,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param region The region in which the created job should run.
+         * @param region Immutable. The region in which the created job should run.
          * 
          * @return builder
          * 
@@ -854,7 +842,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param region The region in which the created job should run.
+         * @param region Immutable. The region in which the created job should run.
          * 
          * @return builder
          * 
@@ -864,8 +852,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sdkContainerImage Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
-         * the SDK. Note this field is only valid for portable pipelines.
+         * @param sdkContainerImage Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
          * 
          * @return builder
          * 
@@ -876,8 +863,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sdkContainerImage Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
-         * the SDK. Note this field is only valid for portable pipelines.
+         * @param sdkContainerImage Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
          * 
          * @return builder
          * 
@@ -954,7 +940,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subnetwork Compute Engine subnetwork for launching instances to run your pipeline.
+         * @param subnetwork The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
          * 
          * @return builder
          * 
@@ -965,7 +951,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param subnetwork Compute Engine subnetwork for launching instances to run your pipeline.
+         * @param subnetwork The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
          * 
          * @return builder
          * 
@@ -996,8 +982,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param transformNameMapping Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-         * corresponding name prefixes of the new job.
+         * @param transformNameMapping Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
          * 
          * @return builder
          * 
@@ -1008,8 +993,7 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param transformNameMapping Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-         * corresponding name prefixes of the new job.
+         * @param transformNameMapping Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
          * 
          * @return builder
          * 

@@ -21,6 +21,7 @@ class RoutineArgs:
                  routine_id: pulumi.Input[str],
                  routine_type: pulumi.Input[str],
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
+                 data_governance_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input[str]] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -43,6 +44,8 @@ class RoutineArgs:
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+               Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -76,6 +79,8 @@ class RoutineArgs:
         pulumi.set(__self__, "routine_type", routine_type)
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
+        if data_governance_type is not None:
+            pulumi.set(__self__, "data_governance_type", data_governance_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
@@ -160,6 +165,19 @@ class RoutineArgs:
     @arguments.setter
     def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]]):
         pulumi.set(self, "arguments", value)
+
+    @property
+    @pulumi.getter(name="dataGovernanceType")
+    def data_governance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        Possible values are: `DATA_MASKING`.
+        """
+        return pulumi.get(self, "data_governance_type")
+
+    @data_governance_type.setter
+    def data_governance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_governance_type", value)
 
     @property
     @pulumi.getter
@@ -292,6 +310,7 @@ class _RoutineState:
     def __init__(__self__, *,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
+                 data_governance_type: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -312,6 +331,8 @@ class _RoutineState:
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+               Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
@@ -354,6 +375,8 @@ class _RoutineState:
             pulumi.set(__self__, "arguments", arguments)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
+        if data_governance_type is not None:
+            pulumi.set(__self__, "data_governance_type", data_governance_type)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if definition_body is not None:
@@ -408,6 +431,19 @@ class _RoutineState:
     @creation_time.setter
     def creation_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "creation_time", value)
+
+    @property
+    @pulumi.getter(name="dataGovernanceType")
+    def data_governance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        Possible values are: `DATA_MASKING`.
+        """
+        return pulumi.get(self, "data_governance_type")
+
+    @data_governance_type.setter
+    def data_governance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_governance_type", value)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -607,6 +643,7 @@ class Routine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+                 data_governance_type: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -809,6 +846,28 @@ class Routine(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Bigquery Routine Data Governance Type
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_77884")
+        custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
+            dataset_id=test.dataset_id,
+            routine_id="custom_masking_routine",
+            routine_type="SCALAR_FUNCTION",
+            language="SQL",
+            data_governance_type="DATA_MASKING",
+            definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="ssn",
+                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            )],
+            return_type="{\\"typeKind\\" :  \\"STRING\\"}")
+        ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Remote Function
 
         <!--Start PulumiCodeChooser -->
@@ -866,6 +925,8 @@ class Routine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+               Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
@@ -1096,6 +1157,28 @@ class Routine(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Bigquery Routine Data Governance Type
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_77884")
+        custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
+            dataset_id=test.dataset_id,
+            routine_id="custom_masking_routine",
+            routine_type="SCALAR_FUNCTION",
+            language="SQL",
+            data_governance_type="DATA_MASKING",
+            definition_body="SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="ssn",
+                data_type="{\\"typeKind\\" :  \\"STRING\\"}",
+            )],
+            return_type="{\\"typeKind\\" :  \\"STRING\\"}")
+        ```
+        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Remote Function
 
         <!--Start PulumiCodeChooser -->
@@ -1165,6 +1248,7 @@ class Routine(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+                 data_governance_type: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1188,6 +1272,7 @@ class Routine(pulumi.CustomResource):
             __props__ = RoutineArgs.__new__(RoutineArgs)
 
             __props__.__dict__["arguments"] = arguments
+            __props__.__dict__["data_governance_type"] = data_governance_type
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
@@ -1223,6 +1308,7 @@ class Routine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
+            data_governance_type: Optional[pulumi.Input[str]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             definition_body: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1248,6 +1334,8 @@ class Routine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+               Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
@@ -1292,6 +1380,7 @@ class Routine(pulumi.CustomResource):
 
         __props__.__dict__["arguments"] = arguments
         __props__.__dict__["creation_time"] = creation_time
+        __props__.__dict__["data_governance_type"] = data_governance_type
         __props__.__dict__["dataset_id"] = dataset_id
         __props__.__dict__["definition_body"] = definition_body
         __props__.__dict__["description"] = description
@@ -1325,6 +1414,15 @@ class Routine(pulumi.CustomResource):
         epoch.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="dataGovernanceType")
+    def data_governance_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        Possible values are: `DATA_MASKING`.
+        """
+        return pulumi.get(self, "data_governance_type")
 
     @property
     @pulumi.getter(name="datasetId")

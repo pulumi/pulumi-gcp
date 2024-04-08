@@ -68,6 +68,7 @@ export interface GetMetastoreServiceResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly releaseChannel: string;
     readonly scalingConfigs: outputs.dataproc.GetMetastoreServiceScalingConfig[];
+    readonly scheduledBackups: outputs.dataproc.GetMetastoreServiceScheduledBackup[];
     readonly serviceId: string;
     readonly state: string;
     readonly stateMessage: string;

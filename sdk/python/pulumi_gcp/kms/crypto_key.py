@@ -17,6 +17,7 @@ __all__ = ['CryptoKeyArgs', 'CryptoKey']
 class CryptoKeyArgs:
     def __init__(__self__, *,
                  key_ring: pulumi.Input[str],
+                 crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -32,6 +33,8 @@ class CryptoKeyArgs:
                
                
                - - -
+        :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+               The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
@@ -54,6 +57,8 @@ class CryptoKeyArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "key_ring", key_ring)
+        if crypto_key_backend is not None:
+            pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
         if destroy_scheduled_duration is not None:
             pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if import_only is not None:
@@ -86,6 +91,19 @@ class CryptoKeyArgs:
     @key_ring.setter
     def key_ring(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_ring", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyBackend")
+    def crypto_key_backend(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        """
+        return pulumi.get(self, "crypto_key_backend")
+
+    @crypto_key_backend.setter
+    def crypto_key_backend(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_backend", value)
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -199,6 +217,7 @@ class CryptoKeyArgs:
 @pulumi.input_type
 class _CryptoKeyState:
     def __init__(__self__, *,
+                 crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
@@ -213,6 +232,8 @@ class _CryptoKeyState:
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         Input properties used for looking up and filtering CryptoKey resources.
+        :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+               The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -245,6 +266,8 @@ class _CryptoKeyState:
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new crypto key versions.
                Structure is documented below.
         """
+        if crypto_key_backend is not None:
+            pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
         if destroy_scheduled_duration is not None:
             pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         if effective_labels is not None:
@@ -269,6 +292,19 @@ class _CryptoKeyState:
             pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_template is not None:
             pulumi.set(__self__, "version_template", version_template)
+
+    @property
+    @pulumi.getter(name="cryptoKeyBackend")
+    def crypto_key_backend(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        """
+        return pulumi.get(self, "crypto_key_backend")
+
+    @crypto_key_backend.setter
+    def crypto_key_backend(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_backend", value)
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -439,6 +475,7 @@ class CryptoKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
@@ -525,6 +562,8 @@ class CryptoKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+               The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
@@ -646,6 +685,7 @@ class CryptoKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_backend: Optional[pulumi.Input[str]] = None,
                  destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
                  import_only: Optional[pulumi.Input[bool]] = None,
                  key_ring: Optional[pulumi.Input[str]] = None,
@@ -664,6 +704,7 @@ class CryptoKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CryptoKeyArgs.__new__(CryptoKeyArgs)
 
+            __props__.__dict__["crypto_key_backend"] = crypto_key_backend
             __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
             __props__.__dict__["import_only"] = import_only
             if key_ring is None and not opts.urn:
@@ -690,6 +731,7 @@ class CryptoKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            crypto_key_backend: Optional[pulumi.Input[str]] = None,
             destroy_scheduled_duration: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             import_only: Optional[pulumi.Input[bool]] = None,
@@ -709,6 +751,8 @@ class CryptoKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+               The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -745,6 +789,7 @@ class CryptoKey(pulumi.CustomResource):
 
         __props__ = _CryptoKeyState.__new__(_CryptoKeyState)
 
+        __props__.__dict__["crypto_key_backend"] = crypto_key_backend
         __props__.__dict__["destroy_scheduled_duration"] = destroy_scheduled_duration
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["import_only"] = import_only
@@ -758,6 +803,15 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
         __props__.__dict__["version_template"] = version_template
         return CryptoKey(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cryptoKeyBackend")
+    def crypto_key_backend(self) -> pulumi.Output[str]:
+        """
+        The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        """
+        return pulumi.get(self, "crypto_key_backend")
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")

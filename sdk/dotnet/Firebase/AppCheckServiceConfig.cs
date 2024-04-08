@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Firebase
     ///     var @default = new Gcp.Firebase.AppCheckServiceConfig("default", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         ServiceId = "firebasedatabase.googleapis.com",
+    ///         ServiceId = "identitytoolkit.googleapis.com",
     ///         EnforcementMode = "UNENFORCED",
     ///     });
     /// 

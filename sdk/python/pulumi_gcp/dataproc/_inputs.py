@@ -96,6 +96,7 @@ __all__ = [
     'MetastoreServiceNetworkConfigArgs',
     'MetastoreServiceNetworkConfigConsumerArgs',
     'MetastoreServiceScalingConfigArgs',
+    'MetastoreServiceScheduledBackupArgs',
     'MetastoreServiceTelemetryConfigArgs',
     'WorkflowTemplateJobArgs',
     'WorkflowTemplateJobHadoopJobArgs',
@@ -5708,6 +5709,76 @@ class MetastoreServiceScalingConfigArgs:
     @scaling_factor.setter
     def scaling_factor(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "scaling_factor", value)
+
+
+@pulumi.input_type
+class MetastoreServiceScheduledBackupArgs:
+    def __init__(__self__, *,
+                 backup_location: pulumi.Input[str],
+                 cron_schedule: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] backup_location: A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+        :param pulumi.Input[str] cron_schedule: The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        :param pulumi.Input[bool] enabled: Defines whether the scheduled backup is enabled. The default value is false.
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        """
+        pulumi.set(__self__, "backup_location", backup_location)
+        if cron_schedule is not None:
+            pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="backupLocation")
+    def backup_location(self) -> pulumi.Input[str]:
+        """
+        A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+        """
+        return pulumi.get(self, "backup_location")
+
+    @backup_location.setter
+    def backup_location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_location", value)
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        """
+        return pulumi.get(self, "cron_schedule")
+
+    @cron_schedule.setter
+    def cron_schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron_schedule", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the scheduled backup is enabled. The default value is false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type

@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
         /// <summary>
+        /// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+        /// </summary>
+        [Input("jsonExtension")]
+        public Input<string>? JsonExtension { get; set; }
+
+        /// <summary>
         /// Additional properties to set if
         /// `source_format` is set to "JSON". Structure is documented below.
         /// </summary>

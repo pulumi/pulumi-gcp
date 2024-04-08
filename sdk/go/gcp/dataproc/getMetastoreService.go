@@ -59,6 +59,7 @@ type LookupMetastoreServiceResult struct {
 	PulumiLabels         map[string]string                        `pulumi:"pulumiLabels"`
 	ReleaseChannel       string                                   `pulumi:"releaseChannel"`
 	ScalingConfigs       []GetMetastoreServiceScalingConfig       `pulumi:"scalingConfigs"`
+	ScheduledBackups     []GetMetastoreServiceScheduledBackup     `pulumi:"scheduledBackups"`
 	ServiceId            string                                   `pulumi:"serviceId"`
 	State                string                                   `pulumi:"state"`
 	StateMessage         string                                   `pulumi:"stateMessage"`
@@ -193,6 +194,10 @@ func (o LookupMetastoreServiceResultOutput) ReleaseChannel() pulumi.StringOutput
 
 func (o LookupMetastoreServiceResultOutput) ScalingConfigs() GetMetastoreServiceScalingConfigArrayOutput {
 	return o.ApplyT(func(v LookupMetastoreServiceResult) []GetMetastoreServiceScalingConfig { return v.ScalingConfigs }).(GetMetastoreServiceScalingConfigArrayOutput)
+}
+
+func (o LookupMetastoreServiceResultOutput) ScheduledBackups() GetMetastoreServiceScheduledBackupArrayOutput {
+	return o.ApplyT(func(v LookupMetastoreServiceResult) []GetMetastoreServiceScheduledBackup { return v.ScheduledBackups }).(GetMetastoreServiceScheduledBackupArrayOutput)
 }
 
 func (o LookupMetastoreServiceResultOutput) ServiceId() pulumi.StringOutput {

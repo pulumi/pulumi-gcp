@@ -126,7 +126,7 @@ export class BackupSchedule extends pulumi.CustomResource {
     }
 
     /**
-     * For a schedule that runs daily at a specified time.
+     * For a schedule that runs daily.
      */
     public readonly dailyRecurrence!: pulumi.Output<outputs.firestore.BackupScheduleDailyRecurrence | undefined>;
     /**
@@ -153,7 +153,7 @@ export class BackupSchedule extends pulumi.CustomResource {
      */
     public readonly retention!: pulumi.Output<string>;
     /**
-     * For a schedule that runs weekly on a specific day and time.
+     * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      */
     public readonly weeklyRecurrence!: pulumi.Output<outputs.firestore.BackupScheduleWeeklyRecurrence | undefined>;
@@ -199,7 +199,7 @@ export class BackupSchedule extends pulumi.CustomResource {
  */
 export interface BackupScheduleState {
     /**
-     * For a schedule that runs daily at a specified time.
+     * For a schedule that runs daily.
      */
     dailyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleDailyRecurrence>;
     /**
@@ -226,7 +226,7 @@ export interface BackupScheduleState {
      */
     retention?: pulumi.Input<string>;
     /**
-     * For a schedule that runs weekly on a specific day and time.
+     * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      */
     weeklyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleWeeklyRecurrence>;
@@ -237,7 +237,7 @@ export interface BackupScheduleState {
  */
 export interface BackupScheduleArgs {
     /**
-     * For a schedule that runs daily at a specified time.
+     * For a schedule that runs daily.
      */
     dailyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleDailyRecurrence>;
     /**
@@ -259,7 +259,7 @@ export interface BackupScheduleArgs {
      */
     retention: pulumi.Input<string>;
     /**
-     * For a schedule that runs weekly on a specific day and time.
+     * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      */
     weeklyRecurrence?: pulumi.Input<inputs.firestore.BackupScheduleWeeklyRecurrence>;

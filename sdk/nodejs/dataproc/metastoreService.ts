@@ -175,6 +175,41 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Dataproc Metastore Service Scheduled Backup
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "backup",
+ *     location: "us-central1",
+ * });
+ * const backup = new gcp.dataproc.MetastoreService("backup", {
+ *     serviceId: "backup",
+ *     location: "us-central1",
+ *     port: 9080,
+ *     tier: "DEVELOPER",
+ *     maintenanceWindow: {
+ *         hourOfDay: 2,
+ *         dayOfWeek: "SUNDAY",
+ *     },
+ *     hiveMetastoreConfig: {
+ *         version: "2.3.6",
+ *     },
+ *     scheduledBackup: {
+ *         enabled: true,
+ *         cronSchedule: "0 0 * * *",
+ *         timeZone: "UTC",
+ *         backupLocation: pulumi.interpolate`gs://${bucket.name}`,
+ *     },
+ *     labels: {
+ *         env: "test",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -321,6 +356,11 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly scalingConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceScalingConfig | undefined>;
     /**
+     * The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     */
+    public readonly scheduledBackup!: pulumi.Output<outputs.dataproc.MetastoreServiceScheduledBackup | undefined>;
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -383,6 +423,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
+            resourceInputs["scheduledBackup"] = state ? state.scheduledBackup : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
@@ -407,6 +448,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["scalingConfig"] = args ? args.scalingConfig : undefined;
+            resourceInputs["scheduledBackup"] = args ? args.scheduledBackup : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
@@ -523,6 +565,11 @@ export interface MetastoreServiceState {
      */
     scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig>;
     /**
+     * The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     */
+    scheduledBackup?: pulumi.Input<inputs.dataproc.MetastoreServiceScheduledBackup>;
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -629,6 +676,11 @@ export interface MetastoreServiceArgs {
      * Structure is documented below.
      */
     scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig>;
+    /**
+     * The configuration of scheduled backup for the metastore service.
+     * Structure is documented below.
+     */
+    scheduledBackup?: pulumi.Input<inputs.dataproc.MetastoreServiceScheduledBackup>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between

@@ -38,6 +38,23 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     * 
+     */
+    @Import(name="dataGovernanceType")
+    private @Nullable Output<String> dataGovernanceType;
+
+    /**
+     * @return If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     * 
+     */
+    public Optional<Output<String>> dataGovernanceType() {
+        return Optional.ofNullable(this.dataGovernanceType);
+    }
+
+    /**
      * The ID of the dataset containing this routine
      * 
      */
@@ -278,6 +295,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
 
     private RoutineArgs(RoutineArgs $) {
         this.arguments = $.arguments;
+        this.dataGovernanceType = $.dataGovernanceType;
         this.datasetId = $.datasetId;
         this.definitionBody = $.definitionBody;
         this.description = $.description;
@@ -343,6 +361,29 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder arguments(RoutineArgumentArgs... arguments) {
             return arguments(List.of(arguments));
+        }
+
+        /**
+         * @param dataGovernanceType If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+         * Possible values are: `DATA_MASKING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataGovernanceType(@Nullable Output<String> dataGovernanceType) {
+            $.dataGovernanceType = dataGovernanceType;
+            return this;
+        }
+
+        /**
+         * @param dataGovernanceType If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+         * Possible values are: `DATA_MASKING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataGovernanceType(String dataGovernanceType) {
+            return dataGovernanceType(Output.of(dataGovernanceType));
         }
 
         /**

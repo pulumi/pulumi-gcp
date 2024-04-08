@@ -857,6 +857,14 @@ Object.defineProperty(exports, "integrationConnectorsCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const integrationsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "integrationsCustomEndpoint", {
+    get() {
+        return __config.get("integrationsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const kmsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "kmsCustomEndpoint", {
     get() {

@@ -441,6 +441,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('integrationConnectorsCustomEndpoint')
 
     @property
+    def integrations_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('integrationsCustomEndpoint')
+
+    @property
     def kms_custom_endpoint(self) -> Optional[str]:
         return __config__.get('kmsCustomEndpoint')
 

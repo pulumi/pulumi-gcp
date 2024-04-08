@@ -3691,6 +3691,85 @@ export namespace apphub {
         type: string;
     }
 
+    export interface GetApplicationAttribute {
+        /**
+         * Optional. Business team that ensures user needs are met and value is delivered
+         */
+        businessOwners: outputs.apphub.GetApplicationAttributeBusinessOwner[];
+        /**
+         * Criticality of the Application, Service, or Workload
+         */
+        criticalities: outputs.apphub.GetApplicationAttributeCriticality[];
+        /**
+         * Optional. Developer team that owns development and coding.
+         */
+        developerOwners: outputs.apphub.GetApplicationAttributeDeveloperOwner[];
+        /**
+         * Environment of the Application, Service, or Workload
+         */
+        environments: outputs.apphub.GetApplicationAttributeEnvironment[];
+        /**
+         * Optional. Operator team that ensures runtime and operations.
+         */
+        operatorOwners: outputs.apphub.GetApplicationAttributeOperatorOwner[];
+    }
+
+    export interface GetApplicationAttributeBusinessOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface GetApplicationAttributeCriticality {
+        /**
+         * Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
+         */
+        type: string;
+    }
+
+    export interface GetApplicationAttributeDeveloperOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface GetApplicationAttributeEnvironment {
+        /**
+         * Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
+         */
+        type: string;
+    }
+
+    export interface GetApplicationAttributeOperatorOwner {
+        /**
+         * Optional. Contact's name.
+         */
+        displayName: string;
+        /**
+         * Required. Email address of the contacts.
+         */
+        email: string;
+    }
+
+    export interface GetApplicationScope {
+        /**
+         * Required. Scope Type. 
+         *  Possible values:
+         * REGIONAL Possible values: ["REGIONAL"]
+         */
+        type: string;
+    }
+
     export interface GetDiscoveredServiceServiceProperty {
         /**
          * The service project identifier that the underlying cloud resource resides in.
@@ -3942,6 +4021,42 @@ export namespace apphub {
          * Output only. The underlying compute resource uri.
          */
         uri: string;
+    }
+
+}
+
+export namespace applicationintegration {
+    export interface ClientCloudKmsConfig {
+        /**
+         * A Cloud KMS key is a named object containing one or more key versions, along
+         * with metadata for the key. A key exists on exactly one key ring tied to a
+         * specific location.
+         */
+        key: string;
+        /**
+         * Each version of a key contains key material used for encryption or signing.
+         * A key's version is represented by an integer, starting at 1. To decrypt data
+         * or verify a signature, you must use the same key version that was used to
+         * encrypt or sign the data.
+         */
+        keyVersion?: string;
+        /**
+         * Location name of the key ring, e.g. "us-west1".
+         */
+        kmsLocation: string;
+        /**
+         * The Google Cloud project id of the project where the kms key stored. If empty,
+         * the kms key is stored at the same project as customer's project and ecrypted
+         * with CMEK, otherwise, the kms key is stored in the tenant project and
+         * encrypted with GMEK.
+         */
+        kmsProjectId?: string;
+        /**
+         * A key ring organizes keys in a specific Google Cloud location and allows you to
+         * manage access control on groups of keys. A key ring's name does not need to be
+         * unique across a Google Cloud project, but must be unique within a given location.
+         */
+        kmsRing: string;
     }
 
 }
@@ -6139,6 +6254,10 @@ export namespace bigquery {
          * The default value is false.
          */
         ignoreUnknownValues?: boolean;
+        /**
+         * Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+         */
+        jsonExtension?: string;
         /**
          * Additional properties to set if
          * `sourceFormat` is set to "JSON". Structure is documented below.
@@ -13776,6 +13895,40 @@ export namespace cloudquota {
          * Whether a higher quota value can be requested for the quota.
          */
         isEligible: boolean;
+    }
+
+    export interface SQuotaPreferenceQuotaConfig {
+        /**
+         * The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+         * An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * (Output)
+         * Granted quota value.
+         */
+        grantedValue: string;
+        /**
+         * The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+         */
+        preferredValue: string;
+        /**
+         * (Output)
+         * The origin of the quota preference request.
+         *
+         * - - -
+         */
+        requestOrigin: string;
+        /**
+         * (Output)
+         * Optional details about the state of this quota preference.
+         */
+        stateDetail: string;
+        /**
+         * (Output)
+         * The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+         */
+        traceId: string;
     }
 
 }
@@ -48117,6 +48270,25 @@ export namespace dataproc {
         scalingFactor: number;
     }
 
+    export interface GetMetastoreServiceScheduledBackup {
+        /**
+         * A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+         */
+        backupLocation: string;
+        /**
+         * The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+         */
+        cronSchedule: string;
+        /**
+         * Defines whether the scheduled backup is enabled. The default value is false.
+         */
+        enabled: boolean;
+        /**
+         * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+         */
+        timeZone: string;
+    }
+
     export interface GetMetastoreServiceTelemetryConfig {
         /**
          * The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
@@ -48655,6 +48827,25 @@ export namespace dataproc {
          * Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
          */
         scalingFactor?: number;
+    }
+
+    export interface MetastoreServiceScheduledBackup {
+        /**
+         * A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+         */
+        backupLocation: string;
+        /**
+         * The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+         */
+        cronSchedule?: string;
+        /**
+         * Defines whether the scheduled backup is enabled. The default value is false.
+         */
+        enabled: boolean;
+        /**
+         * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+         */
+        timeZone: string;
     }
 
     export interface MetastoreServiceTelemetryConfig {
@@ -60990,6 +61181,8 @@ export namespace kms {
         /**
          * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
          * Structure is documented below.
+         *
+         * @deprecated `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
          */
         externalProtectionLevelOptions?: outputs.kms.CryptoKeyVersionAttestationExternalProtectionLevelOptions;
         /**
@@ -61015,6 +61208,17 @@ export namespace kms {
     }
 
     export interface CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+        /**
+         * The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+         */
+        ekmConnectionKeyPath?: string;
+        /**
+         * The URI for an external resource that this CryptoKeyVersion represents.
+         */
+        externalKeyUri?: string;
+    }
+
+    export interface CryptoKeyVersionExternalProtectionLevelOptions {
         /**
          * The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
          */
@@ -74141,6 +74345,53 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName?: string;
+    }
+
+    export interface AiDeploymentResourcePoolDedicatedResources {
+        /**
+         * A list of the metric specifications that overrides a resource utilization metric.
+         * Structure is documented below.
+         */
+        autoscalingMetricSpecs?: outputs.vertex.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec[];
+        /**
+         * The specification of a single machine used by the prediction
+         * Structure is documented below.
+         */
+        machineSpec: outputs.vertex.AiDeploymentResourcePoolDedicatedResourcesMachineSpec;
+        /**
+         * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+         */
+        maxReplicaCount?: number;
+        /**
+         * The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+         */
+        minReplicaCount: number;
+    }
+
+    export interface AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec {
+        /**
+         * The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+         */
+        metricName: string;
+        /**
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         */
+        target?: number;
+    }
+
+    export interface AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine.
+         */
+        acceleratorCount?: number;
+        /**
+         * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+         */
+        acceleratorType?: string;
+        /**
+         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+         */
+        machineType?: string;
     }
 
     export interface AiEndpointDeployedModel {

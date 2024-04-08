@@ -1051,7 +1051,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
                 bucket=example.name,
                 filename_prefix="pre-",
-                filename_suffix="-_75092",
+                filename_suffix="-_2605",
                 max_bytes=1000,
                 max_duration="300s",
             ))
@@ -1080,7 +1080,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
                 bucket=example.name,
                 filename_prefix="pre-",
-                filename_suffix="-_2605",
+                filename_suffix="-_34535",
                 max_bytes=1000,
                 max_duration="300s",
                 avro_config=gcp.pubsub.SubscriptionCloudStorageConfigAvroConfigArgs(
@@ -1392,7 +1392,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
                 bucket=example.name,
                 filename_prefix="pre-",
-                filename_suffix="-_75092",
+                filename_suffix="-_2605",
                 max_bytes=1000,
                 max_duration="300s",
             ))
@@ -1421,7 +1421,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config=gcp.pubsub.SubscriptionCloudStorageConfigArgs(
                 bucket=example.name,
                 filename_prefix="pre-",
-                filename_suffix="-_2605",
+                filename_suffix="-_34535",
                 max_bytes=1000,
                 max_duration="300s",
                 avro_config=gcp.pubsub.SubscriptionCloudStorageConfigAvroConfigArgs(

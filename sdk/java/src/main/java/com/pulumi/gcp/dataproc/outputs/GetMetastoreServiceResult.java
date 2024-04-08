@@ -11,6 +11,7 @@ import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceMaintenanceWindow;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceMetadataIntegration;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceNetworkConfig;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceScalingConfig;
+import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceScheduledBackup;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceTelemetryConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -45,6 +46,7 @@ public final class GetMetastoreServiceResult {
     private Map<String,String> pulumiLabels;
     private String releaseChannel;
     private List<GetMetastoreServiceScalingConfig> scalingConfigs;
+    private List<GetMetastoreServiceScheduledBackup> scheduledBackups;
     private String serviceId;
     private String state;
     private String stateMessage;
@@ -114,6 +116,9 @@ public final class GetMetastoreServiceResult {
     public List<GetMetastoreServiceScalingConfig> scalingConfigs() {
         return this.scalingConfigs;
     }
+    public List<GetMetastoreServiceScheduledBackup> scheduledBackups() {
+        return this.scheduledBackups;
+    }
     public String serviceId() {
         return this.serviceId;
     }
@@ -161,6 +166,7 @@ public final class GetMetastoreServiceResult {
         private Map<String,String> pulumiLabels;
         private String releaseChannel;
         private List<GetMetastoreServiceScalingConfig> scalingConfigs;
+        private List<GetMetastoreServiceScheduledBackup> scheduledBackups;
         private String serviceId;
         private String state;
         private String stateMessage;
@@ -189,6 +195,7 @@ public final class GetMetastoreServiceResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.releaseChannel = defaults.releaseChannel;
     	      this.scalingConfigs = defaults.scalingConfigs;
+    	      this.scheduledBackups = defaults.scheduledBackups;
     	      this.serviceId = defaults.serviceId;
     	      this.state = defaults.state;
     	      this.stateMessage = defaults.stateMessage;
@@ -366,6 +373,17 @@ public final class GetMetastoreServiceResult {
             return scalingConfigs(List.of(scalingConfigs));
         }
         @CustomType.Setter
+        public Builder scheduledBackups(List<GetMetastoreServiceScheduledBackup> scheduledBackups) {
+            if (scheduledBackups == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "scheduledBackups");
+            }
+            this.scheduledBackups = scheduledBackups;
+            return this;
+        }
+        public Builder scheduledBackups(GetMetastoreServiceScheduledBackup... scheduledBackups) {
+            return scheduledBackups(List.of(scheduledBackups));
+        }
+        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             if (serviceId == null) {
               throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "serviceId");
@@ -437,6 +455,7 @@ public final class GetMetastoreServiceResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.releaseChannel = releaseChannel;
             _resultValue.scalingConfigs = scalingConfigs;
+            _resultValue.scheduledBackups = scheduledBackups;
             _resultValue.serviceId = serviceId;
             _resultValue.state = state;
             _resultValue.stateMessage = stateMessage;

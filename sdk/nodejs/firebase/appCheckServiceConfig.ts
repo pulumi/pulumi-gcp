@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * const _default = new gcp.firebase.AppCheckServiceConfig("default", {
  *     project: "my-project-name",
- *     serviceId: "firebasedatabase.googleapis.com",
+ *     serviceId: "identitytoolkit.googleapis.com",
  *     enforcementMode: "UNENFORCED",
  * });
  * ```

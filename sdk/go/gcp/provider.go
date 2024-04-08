@@ -119,6 +119,7 @@ type Provider struct {
 	IdentityPlatformCustomEndpoint            pulumi.StringPtrOutput `pulumi:"identityPlatformCustomEndpoint"`
 	ImpersonateServiceAccount                 pulumi.StringPtrOutput `pulumi:"impersonateServiceAccount"`
 	IntegrationConnectorsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"integrationConnectorsCustomEndpoint"`
+	IntegrationsCustomEndpoint                pulumi.StringPtrOutput `pulumi:"integrationsCustomEndpoint"`
 	KmsCustomEndpoint                         pulumi.StringPtrOutput `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
@@ -317,6 +318,7 @@ type providerArgs struct {
 	ImpersonateServiceAccount                 *string           `pulumi:"impersonateServiceAccount"`
 	ImpersonateServiceAccountDelegates        []string          `pulumi:"impersonateServiceAccountDelegates"`
 	IntegrationConnectorsCustomEndpoint       *string           `pulumi:"integrationConnectorsCustomEndpoint"`
+	IntegrationsCustomEndpoint                *string           `pulumi:"integrationsCustomEndpoint"`
 	KmsCustomEndpoint                         *string           `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                     *string           `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                      *string           `pulumi:"lookerCustomEndpoint"`
@@ -487,6 +489,7 @@ type ProviderArgs struct {
 	ImpersonateServiceAccount                 pulumi.StringPtrInput
 	ImpersonateServiceAccountDelegates        pulumi.StringArrayInput
 	IntegrationConnectorsCustomEndpoint       pulumi.StringPtrInput
+	IntegrationsCustomEndpoint                pulumi.StringPtrInput
 	KmsCustomEndpoint                         pulumi.StringPtrInput
 	LoggingCustomEndpoint                     pulumi.StringPtrInput
 	LookerCustomEndpoint                      pulumi.StringPtrInput
@@ -988,6 +991,10 @@ func (o ProviderOutput) ImpersonateServiceAccount() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) IntegrationConnectorsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.IntegrationConnectorsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) IntegrationsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.IntegrationsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) KmsCustomEndpoint() pulumi.StringPtrOutput {

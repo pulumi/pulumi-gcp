@@ -95,6 +95,13 @@ namespace Pulumi.Gcp.Kms
         public Output<string> CryptoKey { get; private set; } = null!;
 
         /// <summary>
+        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("externalProtectionLevelOptions")]
+        public Output<Outputs.CryptoKeyVersionExternalProtectionLevelOptions?> ExternalProtectionLevelOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The time this CryptoKeyVersion key material was generated
         /// </summary>
         [Output("generateTime")]
@@ -176,6 +183,13 @@ namespace Pulumi.Gcp.Kms
         public Input<string> CryptoKey { get; set; } = null!;
 
         /// <summary>
+        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("externalProtectionLevelOptions")]
+        public Input<Inputs.CryptoKeyVersionExternalProtectionLevelOptionsArgs>? ExternalProtectionLevelOptions { get; set; }
+
+        /// <summary>
         /// The current state of the CryptoKeyVersion.
         /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
@@ -219,6 +233,13 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }
+
+        /// <summary>
+        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("externalProtectionLevelOptions")]
+        public Input<Inputs.CryptoKeyVersionExternalProtectionLevelOptionsGetArgs>? ExternalProtectionLevelOptions { get; set; }
 
         /// <summary>
         /// The time this CryptoKeyVersion key material was generated

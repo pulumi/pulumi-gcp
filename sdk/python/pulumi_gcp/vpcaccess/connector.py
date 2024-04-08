@@ -31,10 +31,17 @@ class ConnectorArgs:
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
-        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
-        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+               higher than the value specified by min_instances.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+               when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+               min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+               max_throughput is discouraged in favor of max_instances.
+        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+               lower than the value specified by max_instances.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+               Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+               min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
                
                
@@ -97,7 +104,8 @@ class ConnectorArgs:
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum value of instances in autoscaling group underlying the connector.
+        Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+        higher than the value specified by min_instances.
         """
         return pulumi.get(self, "max_instances")
 
@@ -109,7 +117,10 @@ class ConnectorArgs:
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+        when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+        min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+        max_throughput is discouraged in favor of max_instances.
         """
         return pulumi.get(self, "max_throughput")
 
@@ -121,7 +132,8 @@ class ConnectorArgs:
     @pulumi.getter(name="minInstances")
     def min_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum value of instances in autoscaling group underlying the connector.
+        Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+        lower than the value specified by max_instances.
         """
         return pulumi.get(self, "min_instances")
 
@@ -133,7 +145,9 @@ class ConnectorArgs:
     @pulumi.getter(name="minThroughput")
     def min_throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum throughput of the connector in Mbps. Default and min is 200.
+        Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+        Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+        min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         """
         return pulumi.get(self, "min_throughput")
 
@@ -229,10 +243,17 @@ class _ConnectorState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connected_projects: List of projects using the connector.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
-        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
-        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+               higher than the value specified by min_instances.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+               when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+               min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+               max_throughput is discouraged in favor of max_instances.
+        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+               lower than the value specified by max_instances.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+               Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+               min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
                
                
@@ -315,7 +336,8 @@ class _ConnectorState:
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum value of instances in autoscaling group underlying the connector.
+        Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+        higher than the value specified by min_instances.
         """
         return pulumi.get(self, "max_instances")
 
@@ -327,7 +349,10 @@ class _ConnectorState:
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+        when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+        min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+        max_throughput is discouraged in favor of max_instances.
         """
         return pulumi.get(self, "max_throughput")
 
@@ -339,7 +364,8 @@ class _ConnectorState:
     @pulumi.getter(name="minInstances")
     def min_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum value of instances in autoscaling group underlying the connector.
+        Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+        lower than the value specified by max_instances.
         """
         return pulumi.get(self, "min_instances")
 
@@ -351,7 +377,9 @@ class _ConnectorState:
     @pulumi.getter(name="minThroughput")
     def min_throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum throughput of the connector in Mbps. Default and min is 200.
+        Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+        Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+        min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         """
         return pulumi.get(self, "min_throughput")
 
@@ -548,10 +576,17 @@ class Connector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
-        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
-        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+               higher than the value specified by min_instances.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+               when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+               min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+               max_throughput is discouraged in favor of max_instances.
+        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+               lower than the value specified by max_instances.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+               Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+               min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
                
                
@@ -730,10 +765,17 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connected_projects: List of projects using the connector.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
-        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
-        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+               higher than the value specified by min_instances.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+               when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+               min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+               max_throughput is discouraged in favor of max_instances.
+        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+               lower than the value specified by max_instances.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+               Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+               min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
                
                
@@ -795,7 +837,8 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> pulumi.Output[int]:
         """
-        Maximum value of instances in autoscaling group underlying the connector.
+        Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
+        higher than the value specified by min_instances.
         """
         return pulumi.get(self, "max_instances")
 
@@ -803,7 +846,10 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+        when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
+        min_throughput. If both max_throughput and max_instances are provided, max_instances takes precedence over max_throughput. The use of
+        max_throughput is discouraged in favor of max_instances.
         """
         return pulumi.get(self, "max_throughput")
 
@@ -811,7 +857,8 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="minInstances")
     def min_instances(self) -> pulumi.Output[int]:
         """
-        Minimum value of instances in autoscaling group underlying the connector.
+        Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
+        lower than the value specified by max_instances.
         """
         return pulumi.get(self, "min_instances")
 
@@ -819,7 +866,9 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="minThroughput")
     def min_throughput(self) -> pulumi.Output[Optional[int]]:
         """
-        Minimum throughput of the connector in Mbps. Default and min is 200.
+        Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
+        Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
+        min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         """
         return pulumi.get(self, "min_throughput")
 

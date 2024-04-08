@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new AppCheckServiceConfig(&#34;default&#34;, AppCheckServiceConfigArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .serviceId(&#34;firebasedatabase.googleapis.com&#34;)
+ *             .serviceId(&#34;identitytoolkit.googleapis.com&#34;)
  *             .enforcementMode(&#34;UNENFORCED&#34;)
  *             .build());
  * 

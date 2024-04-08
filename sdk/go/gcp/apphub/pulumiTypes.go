@@ -3114,6 +3114,756 @@ func (o WorkloadWorkloadReferenceArrayOutput) Index(i pulumi.IntInput) WorkloadW
 	}).(WorkloadWorkloadReferenceOutput)
 }
 
+type GetApplicationAttribute struct {
+	// Optional. Business team that ensures user needs are met and value is delivered
+	BusinessOwners []GetApplicationAttributeBusinessOwner `pulumi:"businessOwners"`
+	// Criticality of the Application, Service, or Workload
+	Criticalities []GetApplicationAttributeCriticality `pulumi:"criticalities"`
+	// Optional. Developer team that owns development and coding.
+	DeveloperOwners []GetApplicationAttributeDeveloperOwner `pulumi:"developerOwners"`
+	// Environment of the Application, Service, or Workload
+	Environments []GetApplicationAttributeEnvironment `pulumi:"environments"`
+	// Optional. Operator team that ensures runtime and operations.
+	OperatorOwners []GetApplicationAttributeOperatorOwner `pulumi:"operatorOwners"`
+}
+
+// GetApplicationAttributeInput is an input type that accepts GetApplicationAttributeArgs and GetApplicationAttributeOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeInput` via:
+//
+//	GetApplicationAttributeArgs{...}
+type GetApplicationAttributeInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeOutput() GetApplicationAttributeOutput
+	ToGetApplicationAttributeOutputWithContext(context.Context) GetApplicationAttributeOutput
+}
+
+type GetApplicationAttributeArgs struct {
+	// Optional. Business team that ensures user needs are met and value is delivered
+	BusinessOwners GetApplicationAttributeBusinessOwnerArrayInput `pulumi:"businessOwners"`
+	// Criticality of the Application, Service, or Workload
+	Criticalities GetApplicationAttributeCriticalityArrayInput `pulumi:"criticalities"`
+	// Optional. Developer team that owns development and coding.
+	DeveloperOwners GetApplicationAttributeDeveloperOwnerArrayInput `pulumi:"developerOwners"`
+	// Environment of the Application, Service, or Workload
+	Environments GetApplicationAttributeEnvironmentArrayInput `pulumi:"environments"`
+	// Optional. Operator team that ensures runtime and operations.
+	OperatorOwners GetApplicationAttributeOperatorOwnerArrayInput `pulumi:"operatorOwners"`
+}
+
+func (GetApplicationAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttribute)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeArgs) ToGetApplicationAttributeOutput() GetApplicationAttributeOutput {
+	return i.ToGetApplicationAttributeOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeArgs) ToGetApplicationAttributeOutputWithContext(ctx context.Context) GetApplicationAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeOutput)
+}
+
+// GetApplicationAttributeArrayInput is an input type that accepts GetApplicationAttributeArray and GetApplicationAttributeArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeArrayInput` via:
+//
+//	GetApplicationAttributeArray{ GetApplicationAttributeArgs{...} }
+type GetApplicationAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeArrayOutput() GetApplicationAttributeArrayOutput
+	ToGetApplicationAttributeArrayOutputWithContext(context.Context) GetApplicationAttributeArrayOutput
+}
+
+type GetApplicationAttributeArray []GetApplicationAttributeInput
+
+func (GetApplicationAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttribute)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeArray) ToGetApplicationAttributeArrayOutput() GetApplicationAttributeArrayOutput {
+	return i.ToGetApplicationAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeArray) ToGetApplicationAttributeArrayOutputWithContext(ctx context.Context) GetApplicationAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeArrayOutput)
+}
+
+type GetApplicationAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttribute)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeOutput) ToGetApplicationAttributeOutput() GetApplicationAttributeOutput {
+	return o
+}
+
+func (o GetApplicationAttributeOutput) ToGetApplicationAttributeOutputWithContext(ctx context.Context) GetApplicationAttributeOutput {
+	return o
+}
+
+// Optional. Business team that ensures user needs are met and value is delivered
+func (o GetApplicationAttributeOutput) BusinessOwners() GetApplicationAttributeBusinessOwnerArrayOutput {
+	return o.ApplyT(func(v GetApplicationAttribute) []GetApplicationAttributeBusinessOwner { return v.BusinessOwners }).(GetApplicationAttributeBusinessOwnerArrayOutput)
+}
+
+// Criticality of the Application, Service, or Workload
+func (o GetApplicationAttributeOutput) Criticalities() GetApplicationAttributeCriticalityArrayOutput {
+	return o.ApplyT(func(v GetApplicationAttribute) []GetApplicationAttributeCriticality { return v.Criticalities }).(GetApplicationAttributeCriticalityArrayOutput)
+}
+
+// Optional. Developer team that owns development and coding.
+func (o GetApplicationAttributeOutput) DeveloperOwners() GetApplicationAttributeDeveloperOwnerArrayOutput {
+	return o.ApplyT(func(v GetApplicationAttribute) []GetApplicationAttributeDeveloperOwner { return v.DeveloperOwners }).(GetApplicationAttributeDeveloperOwnerArrayOutput)
+}
+
+// Environment of the Application, Service, or Workload
+func (o GetApplicationAttributeOutput) Environments() GetApplicationAttributeEnvironmentArrayOutput {
+	return o.ApplyT(func(v GetApplicationAttribute) []GetApplicationAttributeEnvironment { return v.Environments }).(GetApplicationAttributeEnvironmentArrayOutput)
+}
+
+// Optional. Operator team that ensures runtime and operations.
+func (o GetApplicationAttributeOutput) OperatorOwners() GetApplicationAttributeOperatorOwnerArrayOutput {
+	return o.ApplyT(func(v GetApplicationAttribute) []GetApplicationAttributeOperatorOwner { return v.OperatorOwners }).(GetApplicationAttributeOperatorOwnerArrayOutput)
+}
+
+type GetApplicationAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttribute)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeArrayOutput) ToGetApplicationAttributeArrayOutput() GetApplicationAttributeArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeArrayOutput) ToGetApplicationAttributeArrayOutputWithContext(ctx context.Context) GetApplicationAttributeArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeArrayOutput) Index(i pulumi.IntInput) GetApplicationAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAttribute {
+		return vs[0].([]GetApplicationAttribute)[vs[1].(int)]
+	}).(GetApplicationAttributeOutput)
+}
+
+type GetApplicationAttributeBusinessOwner struct {
+	// Optional. Contact's name.
+	DisplayName string `pulumi:"displayName"`
+	// Required. Email address of the contacts.
+	Email string `pulumi:"email"`
+}
+
+// GetApplicationAttributeBusinessOwnerInput is an input type that accepts GetApplicationAttributeBusinessOwnerArgs and GetApplicationAttributeBusinessOwnerOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeBusinessOwnerInput` via:
+//
+//	GetApplicationAttributeBusinessOwnerArgs{...}
+type GetApplicationAttributeBusinessOwnerInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeBusinessOwnerOutput() GetApplicationAttributeBusinessOwnerOutput
+	ToGetApplicationAttributeBusinessOwnerOutputWithContext(context.Context) GetApplicationAttributeBusinessOwnerOutput
+}
+
+type GetApplicationAttributeBusinessOwnerArgs struct {
+	// Optional. Contact's name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Required. Email address of the contacts.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetApplicationAttributeBusinessOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeBusinessOwner)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeBusinessOwnerArgs) ToGetApplicationAttributeBusinessOwnerOutput() GetApplicationAttributeBusinessOwnerOutput {
+	return i.ToGetApplicationAttributeBusinessOwnerOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeBusinessOwnerArgs) ToGetApplicationAttributeBusinessOwnerOutputWithContext(ctx context.Context) GetApplicationAttributeBusinessOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeBusinessOwnerOutput)
+}
+
+// GetApplicationAttributeBusinessOwnerArrayInput is an input type that accepts GetApplicationAttributeBusinessOwnerArray and GetApplicationAttributeBusinessOwnerArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeBusinessOwnerArrayInput` via:
+//
+//	GetApplicationAttributeBusinessOwnerArray{ GetApplicationAttributeBusinessOwnerArgs{...} }
+type GetApplicationAttributeBusinessOwnerArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeBusinessOwnerArrayOutput() GetApplicationAttributeBusinessOwnerArrayOutput
+	ToGetApplicationAttributeBusinessOwnerArrayOutputWithContext(context.Context) GetApplicationAttributeBusinessOwnerArrayOutput
+}
+
+type GetApplicationAttributeBusinessOwnerArray []GetApplicationAttributeBusinessOwnerInput
+
+func (GetApplicationAttributeBusinessOwnerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeBusinessOwner)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeBusinessOwnerArray) ToGetApplicationAttributeBusinessOwnerArrayOutput() GetApplicationAttributeBusinessOwnerArrayOutput {
+	return i.ToGetApplicationAttributeBusinessOwnerArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeBusinessOwnerArray) ToGetApplicationAttributeBusinessOwnerArrayOutputWithContext(ctx context.Context) GetApplicationAttributeBusinessOwnerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeBusinessOwnerArrayOutput)
+}
+
+type GetApplicationAttributeBusinessOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeBusinessOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeBusinessOwner)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeBusinessOwnerOutput) ToGetApplicationAttributeBusinessOwnerOutput() GetApplicationAttributeBusinessOwnerOutput {
+	return o
+}
+
+func (o GetApplicationAttributeBusinessOwnerOutput) ToGetApplicationAttributeBusinessOwnerOutputWithContext(ctx context.Context) GetApplicationAttributeBusinessOwnerOutput {
+	return o
+}
+
+// Optional. Contact's name.
+func (o GetApplicationAttributeBusinessOwnerOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeBusinessOwner) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Required. Email address of the contacts.
+func (o GetApplicationAttributeBusinessOwnerOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeBusinessOwner) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetApplicationAttributeBusinessOwnerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeBusinessOwnerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeBusinessOwner)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeBusinessOwnerArrayOutput) ToGetApplicationAttributeBusinessOwnerArrayOutput() GetApplicationAttributeBusinessOwnerArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeBusinessOwnerArrayOutput) ToGetApplicationAttributeBusinessOwnerArrayOutputWithContext(ctx context.Context) GetApplicationAttributeBusinessOwnerArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeBusinessOwnerArrayOutput) Index(i pulumi.IntInput) GetApplicationAttributeBusinessOwnerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAttributeBusinessOwner {
+		return vs[0].([]GetApplicationAttributeBusinessOwner)[vs[1].(int)]
+	}).(GetApplicationAttributeBusinessOwnerOutput)
+}
+
+type GetApplicationAttributeCriticality struct {
+	// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
+	Type string `pulumi:"type"`
+}
+
+// GetApplicationAttributeCriticalityInput is an input type that accepts GetApplicationAttributeCriticalityArgs and GetApplicationAttributeCriticalityOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeCriticalityInput` via:
+//
+//	GetApplicationAttributeCriticalityArgs{...}
+type GetApplicationAttributeCriticalityInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeCriticalityOutput() GetApplicationAttributeCriticalityOutput
+	ToGetApplicationAttributeCriticalityOutputWithContext(context.Context) GetApplicationAttributeCriticalityOutput
+}
+
+type GetApplicationAttributeCriticalityArgs struct {
+	// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetApplicationAttributeCriticalityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeCriticality)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeCriticalityArgs) ToGetApplicationAttributeCriticalityOutput() GetApplicationAttributeCriticalityOutput {
+	return i.ToGetApplicationAttributeCriticalityOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeCriticalityArgs) ToGetApplicationAttributeCriticalityOutputWithContext(ctx context.Context) GetApplicationAttributeCriticalityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeCriticalityOutput)
+}
+
+// GetApplicationAttributeCriticalityArrayInput is an input type that accepts GetApplicationAttributeCriticalityArray and GetApplicationAttributeCriticalityArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeCriticalityArrayInput` via:
+//
+//	GetApplicationAttributeCriticalityArray{ GetApplicationAttributeCriticalityArgs{...} }
+type GetApplicationAttributeCriticalityArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeCriticalityArrayOutput() GetApplicationAttributeCriticalityArrayOutput
+	ToGetApplicationAttributeCriticalityArrayOutputWithContext(context.Context) GetApplicationAttributeCriticalityArrayOutput
+}
+
+type GetApplicationAttributeCriticalityArray []GetApplicationAttributeCriticalityInput
+
+func (GetApplicationAttributeCriticalityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeCriticality)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeCriticalityArray) ToGetApplicationAttributeCriticalityArrayOutput() GetApplicationAttributeCriticalityArrayOutput {
+	return i.ToGetApplicationAttributeCriticalityArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeCriticalityArray) ToGetApplicationAttributeCriticalityArrayOutputWithContext(ctx context.Context) GetApplicationAttributeCriticalityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeCriticalityArrayOutput)
+}
+
+type GetApplicationAttributeCriticalityOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeCriticalityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeCriticality)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeCriticalityOutput) ToGetApplicationAttributeCriticalityOutput() GetApplicationAttributeCriticalityOutput {
+	return o
+}
+
+func (o GetApplicationAttributeCriticalityOutput) ToGetApplicationAttributeCriticalityOutputWithContext(ctx context.Context) GetApplicationAttributeCriticalityOutput {
+	return o
+}
+
+// Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
+func (o GetApplicationAttributeCriticalityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeCriticality) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetApplicationAttributeCriticalityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeCriticalityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeCriticality)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeCriticalityArrayOutput) ToGetApplicationAttributeCriticalityArrayOutput() GetApplicationAttributeCriticalityArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeCriticalityArrayOutput) ToGetApplicationAttributeCriticalityArrayOutputWithContext(ctx context.Context) GetApplicationAttributeCriticalityArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeCriticalityArrayOutput) Index(i pulumi.IntInput) GetApplicationAttributeCriticalityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAttributeCriticality {
+		return vs[0].([]GetApplicationAttributeCriticality)[vs[1].(int)]
+	}).(GetApplicationAttributeCriticalityOutput)
+}
+
+type GetApplicationAttributeDeveloperOwner struct {
+	// Optional. Contact's name.
+	DisplayName string `pulumi:"displayName"`
+	// Required. Email address of the contacts.
+	Email string `pulumi:"email"`
+}
+
+// GetApplicationAttributeDeveloperOwnerInput is an input type that accepts GetApplicationAttributeDeveloperOwnerArgs and GetApplicationAttributeDeveloperOwnerOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeDeveloperOwnerInput` via:
+//
+//	GetApplicationAttributeDeveloperOwnerArgs{...}
+type GetApplicationAttributeDeveloperOwnerInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeDeveloperOwnerOutput() GetApplicationAttributeDeveloperOwnerOutput
+	ToGetApplicationAttributeDeveloperOwnerOutputWithContext(context.Context) GetApplicationAttributeDeveloperOwnerOutput
+}
+
+type GetApplicationAttributeDeveloperOwnerArgs struct {
+	// Optional. Contact's name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Required. Email address of the contacts.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetApplicationAttributeDeveloperOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeDeveloperOwner)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeDeveloperOwnerArgs) ToGetApplicationAttributeDeveloperOwnerOutput() GetApplicationAttributeDeveloperOwnerOutput {
+	return i.ToGetApplicationAttributeDeveloperOwnerOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeDeveloperOwnerArgs) ToGetApplicationAttributeDeveloperOwnerOutputWithContext(ctx context.Context) GetApplicationAttributeDeveloperOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeDeveloperOwnerOutput)
+}
+
+// GetApplicationAttributeDeveloperOwnerArrayInput is an input type that accepts GetApplicationAttributeDeveloperOwnerArray and GetApplicationAttributeDeveloperOwnerArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeDeveloperOwnerArrayInput` via:
+//
+//	GetApplicationAttributeDeveloperOwnerArray{ GetApplicationAttributeDeveloperOwnerArgs{...} }
+type GetApplicationAttributeDeveloperOwnerArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeDeveloperOwnerArrayOutput() GetApplicationAttributeDeveloperOwnerArrayOutput
+	ToGetApplicationAttributeDeveloperOwnerArrayOutputWithContext(context.Context) GetApplicationAttributeDeveloperOwnerArrayOutput
+}
+
+type GetApplicationAttributeDeveloperOwnerArray []GetApplicationAttributeDeveloperOwnerInput
+
+func (GetApplicationAttributeDeveloperOwnerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeDeveloperOwner)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeDeveloperOwnerArray) ToGetApplicationAttributeDeveloperOwnerArrayOutput() GetApplicationAttributeDeveloperOwnerArrayOutput {
+	return i.ToGetApplicationAttributeDeveloperOwnerArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeDeveloperOwnerArray) ToGetApplicationAttributeDeveloperOwnerArrayOutputWithContext(ctx context.Context) GetApplicationAttributeDeveloperOwnerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeDeveloperOwnerArrayOutput)
+}
+
+type GetApplicationAttributeDeveloperOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeDeveloperOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeDeveloperOwner)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeDeveloperOwnerOutput) ToGetApplicationAttributeDeveloperOwnerOutput() GetApplicationAttributeDeveloperOwnerOutput {
+	return o
+}
+
+func (o GetApplicationAttributeDeveloperOwnerOutput) ToGetApplicationAttributeDeveloperOwnerOutputWithContext(ctx context.Context) GetApplicationAttributeDeveloperOwnerOutput {
+	return o
+}
+
+// Optional. Contact's name.
+func (o GetApplicationAttributeDeveloperOwnerOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeDeveloperOwner) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Required. Email address of the contacts.
+func (o GetApplicationAttributeDeveloperOwnerOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeDeveloperOwner) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetApplicationAttributeDeveloperOwnerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeDeveloperOwnerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeDeveloperOwner)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeDeveloperOwnerArrayOutput) ToGetApplicationAttributeDeveloperOwnerArrayOutput() GetApplicationAttributeDeveloperOwnerArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeDeveloperOwnerArrayOutput) ToGetApplicationAttributeDeveloperOwnerArrayOutputWithContext(ctx context.Context) GetApplicationAttributeDeveloperOwnerArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeDeveloperOwnerArrayOutput) Index(i pulumi.IntInput) GetApplicationAttributeDeveloperOwnerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAttributeDeveloperOwner {
+		return vs[0].([]GetApplicationAttributeDeveloperOwner)[vs[1].(int)]
+	}).(GetApplicationAttributeDeveloperOwnerOutput)
+}
+
+type GetApplicationAttributeEnvironment struct {
+	// Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
+	Type string `pulumi:"type"`
+}
+
+// GetApplicationAttributeEnvironmentInput is an input type that accepts GetApplicationAttributeEnvironmentArgs and GetApplicationAttributeEnvironmentOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeEnvironmentInput` via:
+//
+//	GetApplicationAttributeEnvironmentArgs{...}
+type GetApplicationAttributeEnvironmentInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeEnvironmentOutput() GetApplicationAttributeEnvironmentOutput
+	ToGetApplicationAttributeEnvironmentOutputWithContext(context.Context) GetApplicationAttributeEnvironmentOutput
+}
+
+type GetApplicationAttributeEnvironmentArgs struct {
+	// Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetApplicationAttributeEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeEnvironment)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeEnvironmentArgs) ToGetApplicationAttributeEnvironmentOutput() GetApplicationAttributeEnvironmentOutput {
+	return i.ToGetApplicationAttributeEnvironmentOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeEnvironmentArgs) ToGetApplicationAttributeEnvironmentOutputWithContext(ctx context.Context) GetApplicationAttributeEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeEnvironmentOutput)
+}
+
+// GetApplicationAttributeEnvironmentArrayInput is an input type that accepts GetApplicationAttributeEnvironmentArray and GetApplicationAttributeEnvironmentArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeEnvironmentArrayInput` via:
+//
+//	GetApplicationAttributeEnvironmentArray{ GetApplicationAttributeEnvironmentArgs{...} }
+type GetApplicationAttributeEnvironmentArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeEnvironmentArrayOutput() GetApplicationAttributeEnvironmentArrayOutput
+	ToGetApplicationAttributeEnvironmentArrayOutputWithContext(context.Context) GetApplicationAttributeEnvironmentArrayOutput
+}
+
+type GetApplicationAttributeEnvironmentArray []GetApplicationAttributeEnvironmentInput
+
+func (GetApplicationAttributeEnvironmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeEnvironment)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeEnvironmentArray) ToGetApplicationAttributeEnvironmentArrayOutput() GetApplicationAttributeEnvironmentArrayOutput {
+	return i.ToGetApplicationAttributeEnvironmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeEnvironmentArray) ToGetApplicationAttributeEnvironmentArrayOutputWithContext(ctx context.Context) GetApplicationAttributeEnvironmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeEnvironmentArrayOutput)
+}
+
+type GetApplicationAttributeEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeEnvironment)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeEnvironmentOutput) ToGetApplicationAttributeEnvironmentOutput() GetApplicationAttributeEnvironmentOutput {
+	return o
+}
+
+func (o GetApplicationAttributeEnvironmentOutput) ToGetApplicationAttributeEnvironmentOutputWithContext(ctx context.Context) GetApplicationAttributeEnvironmentOutput {
+	return o
+}
+
+// Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
+func (o GetApplicationAttributeEnvironmentOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeEnvironment) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetApplicationAttributeEnvironmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeEnvironmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeEnvironment)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeEnvironmentArrayOutput) ToGetApplicationAttributeEnvironmentArrayOutput() GetApplicationAttributeEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeEnvironmentArrayOutput) ToGetApplicationAttributeEnvironmentArrayOutputWithContext(ctx context.Context) GetApplicationAttributeEnvironmentArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeEnvironmentArrayOutput) Index(i pulumi.IntInput) GetApplicationAttributeEnvironmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAttributeEnvironment {
+		return vs[0].([]GetApplicationAttributeEnvironment)[vs[1].(int)]
+	}).(GetApplicationAttributeEnvironmentOutput)
+}
+
+type GetApplicationAttributeOperatorOwner struct {
+	// Optional. Contact's name.
+	DisplayName string `pulumi:"displayName"`
+	// Required. Email address of the contacts.
+	Email string `pulumi:"email"`
+}
+
+// GetApplicationAttributeOperatorOwnerInput is an input type that accepts GetApplicationAttributeOperatorOwnerArgs and GetApplicationAttributeOperatorOwnerOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeOperatorOwnerInput` via:
+//
+//	GetApplicationAttributeOperatorOwnerArgs{...}
+type GetApplicationAttributeOperatorOwnerInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeOperatorOwnerOutput() GetApplicationAttributeOperatorOwnerOutput
+	ToGetApplicationAttributeOperatorOwnerOutputWithContext(context.Context) GetApplicationAttributeOperatorOwnerOutput
+}
+
+type GetApplicationAttributeOperatorOwnerArgs struct {
+	// Optional. Contact's name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Required. Email address of the contacts.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetApplicationAttributeOperatorOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeOperatorOwner)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeOperatorOwnerArgs) ToGetApplicationAttributeOperatorOwnerOutput() GetApplicationAttributeOperatorOwnerOutput {
+	return i.ToGetApplicationAttributeOperatorOwnerOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeOperatorOwnerArgs) ToGetApplicationAttributeOperatorOwnerOutputWithContext(ctx context.Context) GetApplicationAttributeOperatorOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeOperatorOwnerOutput)
+}
+
+// GetApplicationAttributeOperatorOwnerArrayInput is an input type that accepts GetApplicationAttributeOperatorOwnerArray and GetApplicationAttributeOperatorOwnerArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAttributeOperatorOwnerArrayInput` via:
+//
+//	GetApplicationAttributeOperatorOwnerArray{ GetApplicationAttributeOperatorOwnerArgs{...} }
+type GetApplicationAttributeOperatorOwnerArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationAttributeOperatorOwnerArrayOutput() GetApplicationAttributeOperatorOwnerArrayOutput
+	ToGetApplicationAttributeOperatorOwnerArrayOutputWithContext(context.Context) GetApplicationAttributeOperatorOwnerArrayOutput
+}
+
+type GetApplicationAttributeOperatorOwnerArray []GetApplicationAttributeOperatorOwnerInput
+
+func (GetApplicationAttributeOperatorOwnerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeOperatorOwner)(nil)).Elem()
+}
+
+func (i GetApplicationAttributeOperatorOwnerArray) ToGetApplicationAttributeOperatorOwnerArrayOutput() GetApplicationAttributeOperatorOwnerArrayOutput {
+	return i.ToGetApplicationAttributeOperatorOwnerArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationAttributeOperatorOwnerArray) ToGetApplicationAttributeOperatorOwnerArrayOutputWithContext(ctx context.Context) GetApplicationAttributeOperatorOwnerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAttributeOperatorOwnerArrayOutput)
+}
+
+type GetApplicationAttributeOperatorOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeOperatorOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAttributeOperatorOwner)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeOperatorOwnerOutput) ToGetApplicationAttributeOperatorOwnerOutput() GetApplicationAttributeOperatorOwnerOutput {
+	return o
+}
+
+func (o GetApplicationAttributeOperatorOwnerOutput) ToGetApplicationAttributeOperatorOwnerOutputWithContext(ctx context.Context) GetApplicationAttributeOperatorOwnerOutput {
+	return o
+}
+
+// Optional. Contact's name.
+func (o GetApplicationAttributeOperatorOwnerOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeOperatorOwner) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Required. Email address of the contacts.
+func (o GetApplicationAttributeOperatorOwnerOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAttributeOperatorOwner) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetApplicationAttributeOperatorOwnerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAttributeOperatorOwnerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAttributeOperatorOwner)(nil)).Elem()
+}
+
+func (o GetApplicationAttributeOperatorOwnerArrayOutput) ToGetApplicationAttributeOperatorOwnerArrayOutput() GetApplicationAttributeOperatorOwnerArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeOperatorOwnerArrayOutput) ToGetApplicationAttributeOperatorOwnerArrayOutputWithContext(ctx context.Context) GetApplicationAttributeOperatorOwnerArrayOutput {
+	return o
+}
+
+func (o GetApplicationAttributeOperatorOwnerArrayOutput) Index(i pulumi.IntInput) GetApplicationAttributeOperatorOwnerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAttributeOperatorOwner {
+		return vs[0].([]GetApplicationAttributeOperatorOwner)[vs[1].(int)]
+	}).(GetApplicationAttributeOperatorOwnerOutput)
+}
+
+type GetApplicationScope struct {
+	// Required. Scope Type.
+	//  Possible values:
+	// REGIONAL Possible values: ["REGIONAL"]
+	Type string `pulumi:"type"`
+}
+
+// GetApplicationScopeInput is an input type that accepts GetApplicationScopeArgs and GetApplicationScopeOutput values.
+// You can construct a concrete instance of `GetApplicationScopeInput` via:
+//
+//	GetApplicationScopeArgs{...}
+type GetApplicationScopeInput interface {
+	pulumi.Input
+
+	ToGetApplicationScopeOutput() GetApplicationScopeOutput
+	ToGetApplicationScopeOutputWithContext(context.Context) GetApplicationScopeOutput
+}
+
+type GetApplicationScopeArgs struct {
+	// Required. Scope Type.
+	//  Possible values:
+	// REGIONAL Possible values: ["REGIONAL"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetApplicationScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScope)(nil)).Elem()
+}
+
+func (i GetApplicationScopeArgs) ToGetApplicationScopeOutput() GetApplicationScopeOutput {
+	return i.ToGetApplicationScopeOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScopeArgs) ToGetApplicationScopeOutputWithContext(ctx context.Context) GetApplicationScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScopeOutput)
+}
+
+// GetApplicationScopeArrayInput is an input type that accepts GetApplicationScopeArray and GetApplicationScopeArrayOutput values.
+// You can construct a concrete instance of `GetApplicationScopeArrayInput` via:
+//
+//	GetApplicationScopeArray{ GetApplicationScopeArgs{...} }
+type GetApplicationScopeArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationScopeArrayOutput() GetApplicationScopeArrayOutput
+	ToGetApplicationScopeArrayOutputWithContext(context.Context) GetApplicationScopeArrayOutput
+}
+
+type GetApplicationScopeArray []GetApplicationScopeInput
+
+func (GetApplicationScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScope)(nil)).Elem()
+}
+
+func (i GetApplicationScopeArray) ToGetApplicationScopeArrayOutput() GetApplicationScopeArrayOutput {
+	return i.ToGetApplicationScopeArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationScopeArray) ToGetApplicationScopeArrayOutputWithContext(ctx context.Context) GetApplicationScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationScopeArrayOutput)
+}
+
+type GetApplicationScopeOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationScope)(nil)).Elem()
+}
+
+func (o GetApplicationScopeOutput) ToGetApplicationScopeOutput() GetApplicationScopeOutput {
+	return o
+}
+
+func (o GetApplicationScopeOutput) ToGetApplicationScopeOutputWithContext(ctx context.Context) GetApplicationScopeOutput {
+	return o
+}
+
+// Required. Scope Type.
+//
+//	Possible values:
+//
+// REGIONAL Possible values: ["REGIONAL"]
+func (o GetApplicationScopeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationScope) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetApplicationScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationScope)(nil)).Elem()
+}
+
+func (o GetApplicationScopeArrayOutput) ToGetApplicationScopeArrayOutput() GetApplicationScopeArrayOutput {
+	return o
+}
+
+func (o GetApplicationScopeArrayOutput) ToGetApplicationScopeArrayOutputWithContext(ctx context.Context) GetApplicationScopeArrayOutput {
+	return o
+}
+
+func (o GetApplicationScopeArrayOutput) Index(i pulumi.IntInput) GetApplicationScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScope {
+		return vs[0].([]GetApplicationScope)[vs[1].(int)]
+	}).(GetApplicationScopeOutput)
+}
+
 type GetDiscoveredServiceServiceProperty struct {
 	// The service project identifier that the underlying cloud resource resides in.
 	GcpProject string `pulumi:"gcpProject"`
@@ -3594,6 +4344,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadReferenceInput)(nil)).Elem(), WorkloadWorkloadReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadReferenceArrayInput)(nil)).Elem(), WorkloadWorkloadReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeInput)(nil)).Elem(), GetApplicationAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeArrayInput)(nil)).Elem(), GetApplicationAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeBusinessOwnerInput)(nil)).Elem(), GetApplicationAttributeBusinessOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeBusinessOwnerArrayInput)(nil)).Elem(), GetApplicationAttributeBusinessOwnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeCriticalityInput)(nil)).Elem(), GetApplicationAttributeCriticalityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeCriticalityArrayInput)(nil)).Elem(), GetApplicationAttributeCriticalityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeDeveloperOwnerInput)(nil)).Elem(), GetApplicationAttributeDeveloperOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeDeveloperOwnerArrayInput)(nil)).Elem(), GetApplicationAttributeDeveloperOwnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeEnvironmentInput)(nil)).Elem(), GetApplicationAttributeEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeEnvironmentArrayInput)(nil)).Elem(), GetApplicationAttributeEnvironmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeOperatorOwnerInput)(nil)).Elem(), GetApplicationAttributeOperatorOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeOperatorOwnerArrayInput)(nil)).Elem(), GetApplicationAttributeOperatorOwnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeInput)(nil)).Elem(), GetApplicationScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeArrayInput)(nil)).Elem(), GetApplicationScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveredServiceServicePropertyInput)(nil)).Elem(), GetDiscoveredServiceServicePropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveredServiceServicePropertyArrayInput)(nil)).Elem(), GetDiscoveredServiceServicePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiscoveredServiceServiceReferenceInput)(nil)).Elem(), GetDiscoveredServiceServiceReferenceArgs{})
@@ -3648,6 +4412,20 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadWorkloadPropertyArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadReferenceOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadReferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeBusinessOwnerOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeBusinessOwnerArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeCriticalityOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeCriticalityArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeDeveloperOwnerOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeDeveloperOwnerArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeEnvironmentOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeEnvironmentArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeOperatorOwnerOutput{})
+	pulumi.RegisterOutputType(GetApplicationAttributeOperatorOwnerArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationScopeOutput{})
+	pulumi.RegisterOutputType(GetApplicationScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetDiscoveredServiceServicePropertyOutput{})
 	pulumi.RegisterOutputType(GetDiscoveredServiceServicePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetDiscoveredServiceServiceReferenceOutput{})

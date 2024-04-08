@@ -106,6 +106,23 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
+     * IPv6 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
+     * 
+     */
+    @Import(name="cloudRouterIpv6Address")
+    private @Nullable Output<String> cloudRouterIpv6Address;
+
+    /**
+     * @return IPv6 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
+     * 
+     */
+    public Optional<Output<String>> cloudRouterIpv6Address() {
+        return Optional.ofNullable(this.cloudRouterIpv6Address);
+    }
+
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */
@@ -135,6 +152,23 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> customerRouterIpAddress() {
         return Optional.ofNullable(this.customerRouterIpAddress);
+    }
+
+    /**
+     * IPv6 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
+     * 
+     */
+    @Import(name="customerRouterIpv6Address")
+    private @Nullable Output<String> customerRouterIpv6Address;
+
+    /**
+     * @return IPv6 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
+     * 
+     */
+    public Optional<Output<String>> customerRouterIpv6Address() {
+        return Optional.ofNullable(this.customerRouterIpv6Address);
     }
 
     /**
@@ -547,8 +581,10 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         this.bandwidth = $.bandwidth;
         this.candidateSubnets = $.candidateSubnets;
         this.cloudRouterIpAddress = $.cloudRouterIpAddress;
+        this.cloudRouterIpv6Address = $.cloudRouterIpv6Address;
         this.creationTimestamp = $.creationTimestamp;
         this.customerRouterIpAddress = $.customerRouterIpAddress;
+        this.customerRouterIpv6Address = $.customerRouterIpv6Address;
         this.description = $.description;
         this.edgeAvailabilityDomain = $.edgeAvailabilityDomain;
         this.encryption = $.encryption;
@@ -715,6 +751,29 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param cloudRouterIpv6Address IPv6 address + prefix length to be configured on Cloud Router
+         * Interface for this interconnect attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudRouterIpv6Address(@Nullable Output<String> cloudRouterIpv6Address) {
+            $.cloudRouterIpv6Address = cloudRouterIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param cloudRouterIpv6Address IPv6 address + prefix length to be configured on Cloud Router
+         * Interface for this interconnect attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudRouterIpv6Address(String cloudRouterIpv6Address) {
+            return cloudRouterIpv6Address(Output.of(cloudRouterIpv6Address));
+        }
+
+        /**
          * @param creationTimestamp Creation timestamp in RFC3339 text format.
          * 
          * @return builder
@@ -756,6 +815,29 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          */
         public Builder customerRouterIpAddress(String customerRouterIpAddress) {
             return customerRouterIpAddress(Output.of(customerRouterIpAddress));
+        }
+
+        /**
+         * @param customerRouterIpv6Address IPv6 address + prefix length to be configured on the customer
+         * router subinterface for this interconnect attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerRouterIpv6Address(@Nullable Output<String> customerRouterIpv6Address) {
+            $.customerRouterIpv6Address = customerRouterIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param customerRouterIpv6Address IPv6 address + prefix length to be configured on the customer
+         * router subinterface for this interconnect attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customerRouterIpv6Address(String customerRouterIpv6Address) {
+            return customerRouterIpv6Address(Output.of(customerRouterIpv6Address));
         }
 
         /**

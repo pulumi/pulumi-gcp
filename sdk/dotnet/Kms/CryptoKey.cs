@@ -110,6 +110,13 @@ namespace Pulumi.Gcp.Kms
     public partial class CryptoKey : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        /// </summary>
+        [Output("cryptoKeyBackend")]
+        public Output<string> CryptoKeyBackend { get; private set; } = null!;
+
+        /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         /// If not specified at creation time, the default duration is 24 hours.
         /// </summary>
@@ -252,6 +259,13 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        /// </summary>
+        [Input("cryptoKeyBackend")]
+        public Input<string>? CryptoKeyBackend { get; set; }
+
+        /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         /// If not specified at creation time, the default duration is 24 hours.
         /// </summary>
@@ -335,6 +349,13 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class CryptoKeyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+        /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        /// </summary>
+        [Input("cryptoKeyBackend")]
+        public Input<string>? CryptoKeyBackend { get; set; }
+
         /// <summary>
         /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
         /// If not specified at creation time, the default duration is 24 hours.

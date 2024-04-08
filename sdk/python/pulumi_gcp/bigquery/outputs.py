@@ -4303,6 +4303,8 @@ class TableExternalDataConfiguration(dict):
             suggest = "hive_partitioning_options"
         elif key == "ignoreUnknownValues":
             suggest = "ignore_unknown_values"
+        elif key == "jsonExtension":
+            suggest = "json_extension"
         elif key == "jsonOptions":
             suggest = "json_options"
         elif key == "maxBadRecords":
@@ -4340,6 +4342,7 @@ class TableExternalDataConfiguration(dict):
                  google_sheets_options: Optional['outputs.TableExternalDataConfigurationGoogleSheetsOptions'] = None,
                  hive_partitioning_options: Optional['outputs.TableExternalDataConfigurationHivePartitioningOptions'] = None,
                  ignore_unknown_values: Optional[bool] = None,
+                 json_extension: Optional[str] = None,
                  json_options: Optional['outputs.TableExternalDataConfigurationJsonOptions'] = None,
                  max_bad_records: Optional[int] = None,
                  metadata_cache_mode: Optional[str] = None,
@@ -4383,6 +4386,7 @@ class TableExternalDataConfiguration(dict):
                extra columns are treated as bad records, and if there are too
                many bad records, an invalid error is returned in the job result.
                The default value is false.
+        :param str json_extension: Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
         :param 'TableExternalDataConfigurationJsonOptionsArgs' json_options: Additional properties to set if
                `source_format` is set to "JSON". Structure is documented below.
         :param int max_bad_records: The maximum number of bad records that
@@ -4430,6 +4434,8 @@ class TableExternalDataConfiguration(dict):
             pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         if ignore_unknown_values is not None:
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
+        if json_extension is not None:
+            pulumi.set(__self__, "json_extension", json_extension)
         if json_options is not None:
             pulumi.set(__self__, "json_options", json_options)
         if max_bad_records is not None:
@@ -4550,6 +4556,14 @@ class TableExternalDataConfiguration(dict):
         The default value is false.
         """
         return pulumi.get(self, "ignore_unknown_values")
+
+    @property
+    @pulumi.getter(name="jsonExtension")
+    def json_extension(self) -> Optional[str]:
+        """
+        Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+        """
+        return pulumi.get(self, "json_extension")
 
     @property
     @pulumi.getter(name="jsonOptions")

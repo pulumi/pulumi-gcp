@@ -320,7 +320,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__64336",
+            collection="chatrooms__34962",
             field="basic",
             index_config=gcp.firestore.FieldIndexConfigArgs(
                 indexes=[
@@ -375,7 +375,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__34962",
+            collection="chatrooms__74000",
             field="field_with_same_configuration_as_ancestor",
             index_config=gcp.firestore.FieldIndexConfigArgs(
                 indexes=[
@@ -464,7 +464,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__64336",
+            collection="chatrooms__34962",
             field="basic",
             index_config=gcp.firestore.FieldIndexConfigArgs(
                 indexes=[
@@ -519,7 +519,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__34962",
+            collection="chatrooms__74000",
             field="field_with_same_configuration_as_ancestor",
             index_config=gcp.firestore.FieldIndexConfigArgs(
                 indexes=[

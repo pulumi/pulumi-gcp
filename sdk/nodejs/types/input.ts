@@ -3820,6 +3820,41 @@ export namespace apphub {
     }
 }
 
+export namespace applicationintegration {
+    export interface ClientCloudKmsConfig {
+        /**
+         * A Cloud KMS key is a named object containing one or more key versions, along
+         * with metadata for the key. A key exists on exactly one key ring tied to a
+         * specific location.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Each version of a key contains key material used for encryption or signing.
+         * A key's version is represented by an integer, starting at 1. To decrypt data
+         * or verify a signature, you must use the same key version that was used to
+         * encrypt or sign the data.
+         */
+        keyVersion?: pulumi.Input<string>;
+        /**
+         * Location name of the key ring, e.g. "us-west1".
+         */
+        kmsLocation: pulumi.Input<string>;
+        /**
+         * The Google Cloud project id of the project where the kms key stored. If empty,
+         * the kms key is stored at the same project as customer's project and ecrypted
+         * with CMEK, otherwise, the kms key is stored in the tenant project and
+         * encrypted with GMEK.
+         */
+        kmsProjectId?: pulumi.Input<string>;
+        /**
+         * A key ring organizes keys in a specific Google Cloud location and allows you to
+         * manage access control on groups of keys. A key ring's name does not need to be
+         * unique across a Google Cloud project, but must be unique within a given location.
+         */
+        kmsRing: pulumi.Input<string>;
+    }
+}
+
 export namespace artifactregistry {
     export interface RepositoryCleanupPolicy {
         /**
@@ -5569,6 +5604,10 @@ export namespace bigquery {
          * The default value is false.
          */
         ignoreUnknownValues?: pulumi.Input<boolean>;
+        /**
+         * Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+         */
+        jsonExtension?: pulumi.Input<string>;
         /**
          * Additional properties to set if
          * `sourceFormat` is set to "JSON". Structure is documented below.
@@ -11266,6 +11305,39 @@ export namespace cloudidentity {
 }
 
 export namespace cloudquota {
+    export interface SQuotaPreferenceQuotaConfig {
+        /**
+         * The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+         * An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * Granted quota value.
+         */
+        grantedValue?: pulumi.Input<string>;
+        /**
+         * The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+         */
+        preferredValue: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The origin of the quota preference request.
+         *
+         * - - -
+         */
+        requestOrigin?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Optional details about the state of this quota preference.
+         */
+        stateDetail?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+         */
+        traceId?: pulumi.Input<string>;
+    }
 }
 
 export namespace cloudrun {
@@ -37816,6 +37888,25 @@ export namespace dataproc {
         scalingFactor?: pulumi.Input<number>;
     }
 
+    export interface MetastoreServiceScheduledBackup {
+        /**
+         * A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+         */
+        backupLocation: pulumi.Input<string>;
+        /**
+         * The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+         */
+        cronSchedule?: pulumi.Input<string>;
+        /**
+         * Defines whether the scheduled backup is enabled. The default value is false.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+         */
+        timeZone?: pulumi.Input<string>;
+    }
+
     export interface MetastoreServiceTelemetryConfig {
         /**
          * The output format of the Dataproc Metastore service's logs.
@@ -49833,6 +49924,8 @@ export namespace kms {
         /**
          * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
          * Structure is documented below.
+         *
+         * @deprecated `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
          */
         externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionAttestationExternalProtectionLevelOptions>;
         /**
@@ -49858,6 +49951,17 @@ export namespace kms {
     }
 
     export interface CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+        /**
+         * The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+         */
+        ekmConnectionKeyPath?: pulumi.Input<string>;
+        /**
+         * The URI for an external resource that this CryptoKeyVersion represents.
+         */
+        externalKeyUri?: pulumi.Input<string>;
+    }
+
+    export interface CryptoKeyVersionExternalProtectionLevelOptions {
         /**
          * The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
          */
@@ -60813,6 +60917,53 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName?: pulumi.Input<string>;
+    }
+
+    export interface AiDeploymentResourcePoolDedicatedResources {
+        /**
+         * A list of the metric specifications that overrides a resource utilization metric.
+         * Structure is documented below.
+         */
+        autoscalingMetricSpecs?: pulumi.Input<pulumi.Input<inputs.vertex.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>[]>;
+        /**
+         * The specification of a single machine used by the prediction
+         * Structure is documented below.
+         */
+        machineSpec: pulumi.Input<inputs.vertex.AiDeploymentResourcePoolDedicatedResourcesMachineSpec>;
+        /**
+         * The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use minReplicaCount as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for maxReplicaCount * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+         */
+        maxReplicaCount?: pulumi.Input<number>;
+        /**
+         * The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+         */
+        minReplicaCount: pulumi.Input<number>;
+    }
+
+    export interface AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec {
+        /**
+         * The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+         */
+        metricName: pulumi.Input<string>;
+        /**
+         * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         */
+        target?: pulumi.Input<number>;
+    }
+
+    export interface AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine.
+         */
+        acceleratorCount?: pulumi.Input<number>;
+        /**
+         * The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+         */
+        acceleratorType?: pulumi.Input<string>;
+        /**
+         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+         */
+        machineType?: pulumi.Input<string>;
     }
 
     export interface AiEndpointDeployedModel {
