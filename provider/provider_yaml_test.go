@@ -124,7 +124,8 @@ func TestConnectionProfileUpgradev7(t *testing.T) {
 		WithBaselineVersion("7.17.0"))
 }
 
-func TestConnectionProfile(t *testing.T) {
+// Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
+func TestRegress1874(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
@@ -136,7 +137,7 @@ func TestConnectionProfile(t *testing.T) {
 	)
 
 	test.Up()
-	// We always produce a diff and updating fails after.
+	// We would always produce a diff and updating fails after.
 	test.Up()
 }
 
