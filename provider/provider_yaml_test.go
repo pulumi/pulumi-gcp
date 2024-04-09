@@ -119,6 +119,11 @@ func TestConnectionProfileUpgrade(t *testing.T) {
 	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges))
 }
 
+func TestConnectionProfileUpgradev7(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
+		WithBaselineVersion("7.17.0"))
+}
+
 func TestConnectionProfile(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
