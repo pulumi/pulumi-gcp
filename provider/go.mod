@@ -7,7 +7,7 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.11
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.1-0.20240409124330-22980d505661
 	github.com/pulumi/pulumi/pkg/v3 v3.112.0
 	github.com/pulumi/pulumi/sdk/v3 v3.112.0
 	github.com/stretchr/testify v1.8.4

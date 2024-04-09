@@ -41,9 +41,10 @@ func TestUpgradeCoverage(t *testing.T) {
 }
 
 type UpgradeTestOpts struct {
-	baselineVersion string
-	assertFunc      func(*testing.T, auto.PreviewResult)
-	config          map[string]string
+	baselineVersion     string
+	assertFunc          func(*testing.T, auto.PreviewResult)
+	config              map[string]string
+	additionalProviders map[string]string
 }
 
 func WithBaselineVersion(baselineVersion string) func(opts *UpgradeTestOpts) {
@@ -64,17 +65,27 @@ func WithConfig(config map[string]string) func(opts *UpgradeTestOpts) {
 	}
 }
 
+func WithAdditionalProvider(provider, version string) func(opts *UpgradeTestOpts) {
+	return func(opts *UpgradeTestOpts) {
+		if opts.additionalProviders == nil {
+			opts.additionalProviders = map[string]string{}
+		}
+		opts.additionalProviders[provider] = version
+	}
+}
+
 func testProviderUpgrade(t *testing.T, dir string, opts ...func(*UpgradeTestOpts)) {
 	options := &UpgradeTestOpts{}
 	for _, o := range opts {
 		o(options)
 	}
-	testProviderUpgradeWithConfig(t, dir, options.baselineVersion, options.config, options.assertFunc)
+	testProviderUpgradeWithConfig(t, dir, options.baselineVersion, options.config, options.assertFunc,
+		options.additionalProviders)
 }
 
 func testProviderUpgradeWithConfig(
 	t *testing.T, dir, baselineVersion string, config map[string]string,
-	assertFunction func(*testing.T, auto.PreviewResult),
+	assertFunction func(*testing.T, auto.PreviewResult), additionalProviders map[string]string,
 ) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
@@ -84,10 +95,14 @@ func testProviderUpgradeWithConfig(
 	if baselineVersion == "" {
 		baselineVersion = defaultBaselineVersion
 	}
-	test := pulumitest.NewPulumiTest(t, dir,
+	opts := []opttest.Option{
 		opttest.DownloadProviderVersion(providerName, baselineVersion),
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
-	)
+	}
+	for prov, version := range additionalProviders {
+		opts = append(opts, opttest.DownloadProviderVersion(prov, version))
+	}
+	test := pulumitest.NewPulumiTest(t, dir, opts...)
 	test.SetConfig("gcp:config:project", testProject)
 	for k, v := range config {
 		test.SetConfig(k, v)

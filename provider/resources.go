@@ -450,7 +450,17 @@ var metadata []byte
 func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
-		shimv2.NewProvider(gcpProvider.Provider(), shimv2.WithDiffStrategy(shimv2.PlanState)),
+		shimv2.NewProvider(gcpProvider.Provider(),
+			shimv2.WithDiffStrategy(shimv2.PlanState),
+			shimv2.WithPlanResourceChange(func(s string) bool {
+				switch s {
+				case "google_datastream_connection_profile":
+					return true
+				default:
+					return false
+				}
+			}),
+		),
 		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
 
 	// We should only run the validation once to avoid duplicating the reported errors.

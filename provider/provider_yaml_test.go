@@ -28,6 +28,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
 )
@@ -112,6 +113,33 @@ func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testProviderUpgrade(t, "test-programs/topic-iam-binding", WithBaselineVersion("7.0.0"))
+}
+
+func TestConnectionProfileUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
+		WithAdditionalProvider("random", "4.16.0"))
+}
+
+func TestConnectionProfileUpgradev7(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
+		WithBaselineVersion("7.17.0"), WithAdditionalProvider("random", "4.16.0"))
+}
+
+// Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
+func TestRegress1874(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	test := pulumitest.NewPulumiTest(t, "test-programs/connection-profile",
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.DownloadProviderVersion("random", "4.16.0"),
+	)
+
+	test.Up()
+	// We would always produce a diff and updating fails after.
+	test.Up()
 }
 
 func TestWrongRegionWarning(t *testing.T) {
