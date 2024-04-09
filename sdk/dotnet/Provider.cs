@@ -321,6 +321,9 @@ namespace Pulumi.Gcp
         [Output("integrationConnectorsCustomEndpoint")]
         public Output<string?> IntegrationConnectorsCustomEndpoint { get; private set; } = null!;
 
+        [Output("integrationsCustomEndpoint")]
+        public Output<string?> IntegrationsCustomEndpoint { get; private set; } = null!;
+
         [Output("kmsCustomEndpoint")]
         public Output<string?> KmsCustomEndpoint { get; private set; } = null!;
 
@@ -850,6 +853,9 @@ namespace Pulumi.Gcp
 
         [Input("integrationConnectorsCustomEndpoint")]
         public Input<string>? IntegrationConnectorsCustomEndpoint { get; set; }
+
+        [Input("integrationsCustomEndpoint")]
+        public Input<string>? IntegrationsCustomEndpoint { get; set; }
 
         [Input("kmsCustomEndpoint")]
         public Input<string>? KmsCustomEndpoint { get; set; }

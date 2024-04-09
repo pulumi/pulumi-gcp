@@ -121,6 +121,7 @@ class ProviderArgs:
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  integration_connectors_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 integrations_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -396,6 +397,8 @@ class ProviderArgs:
             pulumi.set(__self__, "impersonate_service_account_delegates", impersonate_service_account_delegates)
         if integration_connectors_custom_endpoint is not None:
             pulumi.set(__self__, "integration_connectors_custom_endpoint", integration_connectors_custom_endpoint)
+        if integrations_custom_endpoint is not None:
+            pulumi.set(__self__, "integrations_custom_endpoint", integrations_custom_endpoint)
         if kms_custom_endpoint is not None:
             pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
         if logging_custom_endpoint is not None:
@@ -1478,6 +1481,15 @@ class ProviderArgs:
         pulumi.set(self, "integration_connectors_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="integrationsCustomEndpoint")
+    def integrations_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "integrations_custom_endpoint")
+
+    @integrations_custom_endpoint.setter
+    def integrations_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integrations_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="kmsCustomEndpoint")
     def kms_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kms_custom_endpoint")
@@ -2129,6 +2141,7 @@ class Provider(pulumi.ProviderResource):
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  integration_connectors_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 integrations_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2332,6 +2345,7 @@ class Provider(pulumi.ProviderResource):
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  integration_connectors_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 integrations_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2507,6 +2521,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["impersonate_service_account"] = impersonate_service_account
             __props__.__dict__["impersonate_service_account_delegates"] = pulumi.Output.from_input(impersonate_service_account_delegates).apply(pulumi.runtime.to_json) if impersonate_service_account_delegates is not None else None
             __props__.__dict__["integration_connectors_custom_endpoint"] = integration_connectors_custom_endpoint
+            __props__.__dict__["integrations_custom_endpoint"] = integrations_custom_endpoint
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
@@ -3083,6 +3098,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="integrationConnectorsCustomEndpoint")
     def integration_connectors_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "integration_connectors_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="integrationsCustomEndpoint")
+    def integrations_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "integrations_custom_endpoint")
 
     @property
     @pulumi.getter(name="kmsCustomEndpoint")

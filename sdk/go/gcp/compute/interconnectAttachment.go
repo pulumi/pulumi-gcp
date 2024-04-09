@@ -182,11 +182,17 @@ type InterconnectAttachment struct {
 	// IPv4 address + prefix length to be configured on Cloud Router
 	// Interface for this interconnect attachment.
 	CloudRouterIpAddress pulumi.StringOutput `pulumi:"cloudRouterIpAddress"`
+	// IPv6 address + prefix length to be configured on Cloud Router
+	// Interface for this interconnect attachment.
+	CloudRouterIpv6Address pulumi.StringOutput `pulumi:"cloudRouterIpv6Address"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// IPv4 address + prefix length to be configured on the customer
 	// router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringOutput `pulumi:"customerRouterIpAddress"`
+	// IPv6 address + prefix length to be configured on the customer
+	// router subinterface for this interconnect attachment.
+	CustomerRouterIpv6Address pulumi.StringOutput `pulumi:"customerRouterIpv6Address"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type
@@ -340,11 +346,17 @@ type interconnectAttachmentState struct {
 	// IPv4 address + prefix length to be configured on Cloud Router
 	// Interface for this interconnect attachment.
 	CloudRouterIpAddress *string `pulumi:"cloudRouterIpAddress"`
+	// IPv6 address + prefix length to be configured on Cloud Router
+	// Interface for this interconnect attachment.
+	CloudRouterIpv6Address *string `pulumi:"cloudRouterIpv6Address"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// IPv4 address + prefix length to be configured on the customer
 	// router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress *string `pulumi:"customerRouterIpAddress"`
+	// IPv6 address + prefix length to be configured on the customer
+	// router subinterface for this interconnect attachment.
+	CustomerRouterIpv6Address *string `pulumi:"customerRouterIpv6Address"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type
@@ -466,11 +478,17 @@ type InterconnectAttachmentState struct {
 	// IPv4 address + prefix length to be configured on Cloud Router
 	// Interface for this interconnect attachment.
 	CloudRouterIpAddress pulumi.StringPtrInput
+	// IPv6 address + prefix length to be configured on Cloud Router
+	// Interface for this interconnect attachment.
+	CloudRouterIpv6Address pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// IPv4 address + prefix length to be configured on the customer
 	// router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringPtrInput
+	// IPv6 address + prefix length to be configured on the customer
+	// router subinterface for this interconnect attachment.
+	CustomerRouterIpv6Address pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired availability domain for the attachment. Only available for type
@@ -893,6 +911,12 @@ func (o InterconnectAttachmentOutput) CloudRouterIpAddress() pulumi.StringOutput
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CloudRouterIpAddress }).(pulumi.StringOutput)
 }
 
+// IPv6 address + prefix length to be configured on Cloud Router
+// Interface for this interconnect attachment.
+func (o InterconnectAttachmentOutput) CloudRouterIpv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CloudRouterIpv6Address }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o InterconnectAttachmentOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -902,6 +926,12 @@ func (o InterconnectAttachmentOutput) CreationTimestamp() pulumi.StringOutput {
 // router subinterface for this interconnect attachment.
 func (o InterconnectAttachmentOutput) CustomerRouterIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CustomerRouterIpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address + prefix length to be configured on the customer
+// router subinterface for this interconnect attachment.
+func (o InterconnectAttachmentOutput) CustomerRouterIpv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CustomerRouterIpv6Address }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

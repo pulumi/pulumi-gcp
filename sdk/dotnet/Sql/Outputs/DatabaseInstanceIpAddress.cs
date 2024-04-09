@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class DatabaseInstanceIpAddress
     {
+        /// <summary>
+        /// The IPv4 address assigned.
+        /// </summary>
         public readonly string? IpAddress;
+        /// <summary>
+        /// The time this IP address will be retired, in RFC
+        /// 3339 format.
+        /// </summary>
         public readonly string? TimeToRetire;
+        /// <summary>
+        /// The type of this IP address.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

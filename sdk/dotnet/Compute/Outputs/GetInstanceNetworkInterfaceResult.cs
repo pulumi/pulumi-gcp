@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NetworkAttachment;
         /// <summary>
-        /// The private IP address assigned to the instance.
+        /// The internal ip address of the instance, either manually or dynamically assigned.
         /// </summary>
         public readonly string NetworkIp;
         /// <summary>

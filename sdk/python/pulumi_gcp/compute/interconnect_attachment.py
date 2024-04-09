@@ -413,8 +413,10 @@ class _InterconnectAttachmentState:
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cloud_router_ip_address: Optional[pulumi.Input[str]] = None,
+                 cloud_router_ipv6_address: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  customer_router_ip_address: Optional[pulumi.Input[str]] = None,
+                 customer_router_ipv6_address: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
                  encryption: Optional[pulumi.Input[str]] = None,
@@ -453,8 +455,12 @@ class _InterconnectAttachmentState:
                Google will randomly select an unused /29 from all of link-local space.
         :param pulumi.Input[str] cloud_router_ip_address: IPv4 address + prefix length to be configured on Cloud Router
                Interface for this interconnect attachment.
+        :param pulumi.Input[str] cloud_router_ipv6_address: IPv6 address + prefix length to be configured on Cloud Router
+               Interface for this interconnect attachment.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_router_ip_address: IPv4 address + prefix length to be configured on the customer
+               router subinterface for this interconnect attachment.
+        :param pulumi.Input[str] customer_router_ipv6_address: IPv6 address + prefix length to be configured on the customer
                router subinterface for this interconnect attachment.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
@@ -544,10 +550,14 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "candidate_subnets", candidate_subnets)
         if cloud_router_ip_address is not None:
             pulumi.set(__self__, "cloud_router_ip_address", cloud_router_ip_address)
+        if cloud_router_ipv6_address is not None:
+            pulumi.set(__self__, "cloud_router_ipv6_address", cloud_router_ipv6_address)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if customer_router_ip_address is not None:
             pulumi.set(__self__, "customer_router_ip_address", customer_router_ip_address)
+        if customer_router_ipv6_address is not None:
+            pulumi.set(__self__, "customer_router_ipv6_address", customer_router_ipv6_address)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
@@ -649,6 +659,19 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "cloud_router_ip_address", value)
 
     @property
+    @pulumi.getter(name="cloudRouterIpv6Address")
+    def cloud_router_ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 address + prefix length to be configured on Cloud Router
+        Interface for this interconnect attachment.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_address")
+
+    @cloud_router_ipv6_address.setter
+    def cloud_router_ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_router_ipv6_address", value)
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
         """
@@ -672,6 +695,19 @@ class _InterconnectAttachmentState:
     @customer_router_ip_address.setter
     def customer_router_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "customer_router_ip_address", value)
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6Address")
+    def customer_router_ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 address + prefix length to be configured on the customer
+        router subinterface for this interconnect attachment.
+        """
+        return pulumi.get(self, "customer_router_ipv6_address")
+
+    @customer_router_ipv6_address.setter
+    def customer_router_ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_router_ipv6_address", value)
 
     @property
     @pulumi.getter
@@ -1321,8 +1357,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
             __props__.__dict__["cloud_router_ip_address"] = None
+            __props__.__dict__["cloud_router_ipv6_address"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["customer_router_ip_address"] = None
+            __props__.__dict__["customer_router_ipv6_address"] = None
             __props__.__dict__["google_reference_id"] = None
             __props__.__dict__["pairing_key"] = None
             __props__.__dict__["partner_asn"] = None
@@ -1343,8 +1381,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[str]] = None,
             candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cloud_router_ip_address: Optional[pulumi.Input[str]] = None,
+            cloud_router_ipv6_address: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             customer_router_ip_address: Optional[pulumi.Input[str]] = None,
+            customer_router_ipv6_address: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             edge_availability_domain: Optional[pulumi.Input[str]] = None,
             encryption: Optional[pulumi.Input[str]] = None,
@@ -1388,8 +1428,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                Google will randomly select an unused /29 from all of link-local space.
         :param pulumi.Input[str] cloud_router_ip_address: IPv4 address + prefix length to be configured on Cloud Router
                Interface for this interconnect attachment.
+        :param pulumi.Input[str] cloud_router_ipv6_address: IPv6 address + prefix length to be configured on Cloud Router
+               Interface for this interconnect attachment.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_router_ip_address: IPv4 address + prefix length to be configured on the customer
+               router subinterface for this interconnect attachment.
+        :param pulumi.Input[str] customer_router_ipv6_address: IPv6 address + prefix length to be configured on the customer
                router subinterface for this interconnect attachment.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
@@ -1479,8 +1523,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["candidate_subnets"] = candidate_subnets
         __props__.__dict__["cloud_router_ip_address"] = cloud_router_ip_address
+        __props__.__dict__["cloud_router_ipv6_address"] = cloud_router_ipv6_address
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["customer_router_ip_address"] = customer_router_ip_address
+        __props__.__dict__["customer_router_ipv6_address"] = customer_router_ipv6_address
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_availability_domain"] = edge_availability_domain
         __props__.__dict__["encryption"] = encryption
@@ -1548,6 +1594,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "cloud_router_ip_address")
 
     @property
+    @pulumi.getter(name="cloudRouterIpv6Address")
+    def cloud_router_ipv6_address(self) -> pulumi.Output[str]:
+        """
+        IPv6 address + prefix length to be configured on Cloud Router
+        Interface for this interconnect attachment.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_address")
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
@@ -1563,6 +1618,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ip_address")
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6Address")
+    def customer_router_ipv6_address(self) -> pulumi.Output[str]:
+        """
+        IPv6 address + prefix length to be configured on the customer
+        router subinterface for this interconnect attachment.
+        """
+        return pulumi.get(self, "customer_router_ipv6_address")
 
     @property
     @pulumi.getter

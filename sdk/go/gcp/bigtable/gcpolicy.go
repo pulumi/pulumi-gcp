@@ -214,6 +214,10 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 // This is equivalent to running the following `cbt` command:
+//
+// ## Import
+//
+// This resource does not support import.
 type GCPolicy struct {
 	pulumi.CustomResourceState
 

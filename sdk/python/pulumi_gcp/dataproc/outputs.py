@@ -97,6 +97,7 @@ __all__ = [
     'MetastoreServiceNetworkConfig',
     'MetastoreServiceNetworkConfigConsumer',
     'MetastoreServiceScalingConfig',
+    'MetastoreServiceScheduledBackup',
     'MetastoreServiceTelemetryConfig',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
@@ -165,6 +166,7 @@ __all__ = [
     'GetMetastoreServiceNetworkConfigResult',
     'GetMetastoreServiceNetworkConfigConsumerResult',
     'GetMetastoreServiceScalingConfigResult',
+    'GetMetastoreServiceScheduledBackupResult',
     'GetMetastoreServiceTelemetryConfigResult',
 ]
 
@@ -653,7 +655,9 @@ class ClusterClusterConfig(dict):
                Structure defined below.
         :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupArgs'] auxiliary_node_groups: A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
                Structure defined below.
-        :param str bucket: The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        :param str bucket: The name of the cloud storage bucket ultimately used to house the staging data
+               for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+               it will be the auto generated name.
         :param 'ClusterClusterConfigDataprocMetricConfigArgs' dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param 'ClusterClusterConfigEncryptionConfigArgs' encryption_config: The Customer managed encryption keys settings for the cluster.
@@ -751,7 +755,9 @@ class ClusterClusterConfig(dict):
     @pulumi.getter
     def bucket(self) -> Optional[str]:
         """
-        The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        The name of the cloud storage bucket ultimately used to house the staging data
+        for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
+        it will be the auto generated name.
         """
         return pulumi.get(self, "bucket")
 
@@ -5305,10 +5311,10 @@ class JobStatus(dict):
                  state_start_time: Optional[str] = None,
                  substate: Optional[str] = None):
         """
-        :param str details: Output-only. Optional job state details, such as an error description if the state is ERROR
-        :param str state: Output-only. A state message specifying the overall job state
-        :param str state_start_time: Output-only. The time when this state was entered
-        :param str substate: Output-only. Additional state information, which includes status reported by the agent
+        :param str details: Optional job state details, such as an error description if the state is ERROR.
+        :param str state: A state message specifying the overall job state.
+        :param str state_start_time: The time when this state was entered.
+        :param str substate: Additional state information, which includes status reported by the agent.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -5323,7 +5329,7 @@ class JobStatus(dict):
     @pulumi.getter
     def details(self) -> Optional[str]:
         """
-        Output-only. Optional job state details, such as an error description if the state is ERROR
+        Optional job state details, such as an error description if the state is ERROR.
         """
         return pulumi.get(self, "details")
 
@@ -5331,7 +5337,7 @@ class JobStatus(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        Output-only. A state message specifying the overall job state
+        A state message specifying the overall job state.
         """
         return pulumi.get(self, "state")
 
@@ -5339,7 +5345,7 @@ class JobStatus(dict):
     @pulumi.getter(name="stateStartTime")
     def state_start_time(self) -> Optional[str]:
         """
-        Output-only. The time when this state was entered
+        The time when this state was entered.
         """
         return pulumi.get(self, "state_start_time")
 
@@ -5347,7 +5353,7 @@ class JobStatus(dict):
     @pulumi.getter
     def substate(self) -> Optional[str]:
         """
-        Output-only. Additional state information, which includes status reported by the agent
+        Additional state information, which includes status reported by the agent.
         """
         return pulumi.get(self, "substate")
 
@@ -6082,6 +6088,81 @@ class MetastoreServiceScalingConfig(dict):
         Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
         return pulumi.get(self, "scaling_factor")
+
+
+@pulumi.output_type
+class MetastoreServiceScheduledBackup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupLocation":
+            suggest = "backup_location"
+        elif key == "cronSchedule":
+            suggest = "cron_schedule"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceScheduledBackup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceScheduledBackup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceScheduledBackup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_location: str,
+                 cron_schedule: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 time_zone: Optional[str] = None):
+        """
+        :param str backup_location: A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+        :param str cron_schedule: The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        :param bool enabled: Defines whether the scheduled backup is enabled. The default value is false.
+        :param str time_zone: Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        """
+        pulumi.set(__self__, "backup_location", backup_location)
+        if cron_schedule is not None:
+            pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="backupLocation")
+    def backup_location(self) -> str:
+        """
+        A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+        """
+        return pulumi.get(self, "backup_location")
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> Optional[str]:
+        """
+        The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        """
+        return pulumi.get(self, "cron_schedule")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Defines whether the scheduled backup is enabled. The default value is false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        """
+        Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        """
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type
@@ -10483,6 +10564,57 @@ class GetMetastoreServiceScalingConfigResult(dict):
         Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
         """
         return pulumi.get(self, "scaling_factor")
+
+
+@pulumi.output_type
+class GetMetastoreServiceScheduledBackupResult(dict):
+    def __init__(__self__, *,
+                 backup_location: str,
+                 cron_schedule: str,
+                 enabled: bool,
+                 time_zone: str):
+        """
+        :param str backup_location: A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+        :param str cron_schedule: The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        :param bool enabled: Defines whether the scheduled backup is enabled. The default value is false.
+        :param str time_zone: Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        """
+        pulumi.set(__self__, "backup_location", backup_location)
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="backupLocation")
+    def backup_location(self) -> str:
+        """
+        A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
+        """
+        return pulumi.get(self, "backup_location")
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> str:
+        """
+        The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        """
+        return pulumi.get(self, "cron_schedule")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Defines whether the scheduled backup is enabled. The default value is false.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        """
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type

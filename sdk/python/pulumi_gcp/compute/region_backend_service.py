@@ -574,6 +574,7 @@ class _RegionBackendServiceState:
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input['RegionBackendServiceFailoverPolicyArgs']] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
+                 generated_id: Optional[pulumi.Input[int]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['RegionBackendServiceIapArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -626,6 +627,7 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
+        :param pulumi.Input[int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] health_checks: The set of URLs to HealthCheck resources for health checking
                this RegionBackendService. Currently at most one health
                check can be specified.
@@ -709,6 +711,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "failover_policy", failover_policy)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
+        if generated_id is not None:
+            pulumi.set(__self__, "generated_id", generated_id)
         if health_checks is not None:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
@@ -908,6 +912,18 @@ class _RegionBackendServiceState:
     @fingerprint.setter
     def fingerprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="generatedId")
+    def generated_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "generated_id")
+
+    @generated_id.setter
+    def generated_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "generated_id", value)
 
     @property
     @pulumi.getter(name="healthChecks")
@@ -1973,6 +1989,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["generated_id"] = None
             __props__.__dict__["self_link"] = None
         super(RegionBackendService, __self__).__init__(
             'gcp:compute/regionBackendService:RegionBackendService',
@@ -1996,6 +2013,7 @@ class RegionBackendService(pulumi.CustomResource):
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
+            generated_id: Optional[pulumi.Input[int]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
             iap: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceIapArgs']]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -2053,6 +2071,7 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
+        :param pulumi.Input[int] generated_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] health_checks: The set of URLs to HealthCheck resources for health checking
                this RegionBackendService. Currently at most one health
                check can be specified.
@@ -2128,6 +2147,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["enable_cdn"] = enable_cdn
         __props__.__dict__["failover_policy"] = failover_policy
         __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["generated_id"] = generated_id
         __props__.__dict__["health_checks"] = health_checks
         __props__.__dict__["iap"] = iap
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
@@ -2263,6 +2283,14 @@ class RegionBackendService(pulumi.CustomResource):
         object. This field is used in optimistic locking.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="generatedId")
+    def generated_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "generated_id")
 
     @property
     @pulumi.getter(name="healthChecks")

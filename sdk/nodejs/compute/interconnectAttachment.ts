@@ -165,6 +165,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudRouterIpAddress!: pulumi.Output<string>;
     /**
+     * IPv6 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
+     */
+    public /*out*/ readonly cloudRouterIpv6Address!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -173,6 +178,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * router subinterface for this interconnect attachment.
      */
     public /*out*/ readonly customerRouterIpAddress!: pulumi.Output<string>;
+    /**
+     * IPv6 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
+     */
+    public /*out*/ readonly customerRouterIpv6Address!: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
@@ -327,8 +337,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["candidateSubnets"] = state ? state.candidateSubnets : undefined;
             resourceInputs["cloudRouterIpAddress"] = state ? state.cloudRouterIpAddress : undefined;
+            resourceInputs["cloudRouterIpv6Address"] = state ? state.cloudRouterIpv6Address : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["customerRouterIpAddress"] = state ? state.customerRouterIpAddress : undefined;
+            resourceInputs["customerRouterIpv6Address"] = state ? state.customerRouterIpv6Address : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
             resourceInputs["encryption"] = state ? state.encryption : undefined;
@@ -370,8 +382,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["cloudRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
+            resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["pairingKey"] = undefined /*out*/;
             resourceInputs["partnerAsn"] = undefined /*out*/;
@@ -418,6 +432,11 @@ export interface InterconnectAttachmentState {
      */
     cloudRouterIpAddress?: pulumi.Input<string>;
     /**
+     * IPv6 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
+     */
+    cloudRouterIpv6Address?: pulumi.Input<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string>;
@@ -426,6 +445,11 @@ export interface InterconnectAttachmentState {
      * router subinterface for this interconnect attachment.
      */
     customerRouterIpAddress?: pulumi.Input<string>;
+    /**
+     * IPv6 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
+     */
+    customerRouterIpv6Address?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */

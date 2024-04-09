@@ -22,6 +22,32 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
         /// 
         /// Examples:
+        /// 
+        /// ```
+        /// maintenance_policy {
+        /// recurring_window {
+        /// start_time = "2019-01-01T00:00:00Z"
+        /// end_time = "2019-01-02T00:00:00Z"
+        /// recurrence = "FREQ=DAILY"
+        /// }
+        /// maintenance_exclusion{
+        /// exclusion_name = "batch job"
+        /// start_time = "2019-01-01T00:00:00Z"
+        /// end_time = "2019-01-02T00:00:00Z"
+        /// exclusion_options {
+        /// scope = "NO_UPGRADES"
+        /// }
+        /// }
+        /// maintenance_exclusion{
+        /// exclusion_name = "holiday data load"
+        /// start_time = "2019-05-01T00:00:00Z"
+        /// end_time = "2019-05-02T00:00:00Z"
+        /// exclusion_options {
+        /// scope = "NO_MINOR_UPGRADES"
+        /// }
+        /// }
+        /// }
+        /// ```
         /// </summary>
         public readonly string Scope;
 

@@ -90,6 +90,11 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable Boolean ignoreUnknownValues;
     /**
+     * @return Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+     * 
+     */
+    private @Nullable String jsonExtension;
+    /**
      * @return Additional properties to set if
      * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
      * 
@@ -244,6 +249,13 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.ignoreUnknownValues);
     }
     /**
+     * @return Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+     * 
+     */
+    public Optional<String> jsonExtension() {
+        return Optional.ofNullable(this.jsonExtension);
+    }
+    /**
      * @return Additional properties to set if
      * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
      * 
@@ -346,6 +358,7 @@ public final class TableExternalDataConfiguration {
         private @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions;
         private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
         private @Nullable Boolean ignoreUnknownValues;
+        private @Nullable String jsonExtension;
         private @Nullable TableExternalDataConfigurationJsonOptions jsonOptions;
         private @Nullable Integer maxBadRecords;
         private @Nullable String metadataCacheMode;
@@ -367,6 +380,7 @@ public final class TableExternalDataConfiguration {
     	      this.googleSheetsOptions = defaults.googleSheetsOptions;
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
     	      this.ignoreUnknownValues = defaults.ignoreUnknownValues;
+    	      this.jsonExtension = defaults.jsonExtension;
     	      this.jsonOptions = defaults.jsonOptions;
     	      this.maxBadRecords = defaults.maxBadRecords;
     	      this.metadataCacheMode = defaults.metadataCacheMode;
@@ -432,6 +446,12 @@ public final class TableExternalDataConfiguration {
         public Builder ignoreUnknownValues(@Nullable Boolean ignoreUnknownValues) {
 
             this.ignoreUnknownValues = ignoreUnknownValues;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jsonExtension(@Nullable String jsonExtension) {
+
+            this.jsonExtension = jsonExtension;
             return this;
         }
         @CustomType.Setter
@@ -504,6 +524,7 @@ public final class TableExternalDataConfiguration {
             _resultValue.googleSheetsOptions = googleSheetsOptions;
             _resultValue.hivePartitioningOptions = hivePartitioningOptions;
             _resultValue.ignoreUnknownValues = ignoreUnknownValues;
+            _resultValue.jsonExtension = jsonExtension;
             _resultValue.jsonOptions = jsonOptions;
             _resultValue.maxBadRecords = maxBadRecords;
             _resultValue.metadataCacheMode = metadataCacheMode;

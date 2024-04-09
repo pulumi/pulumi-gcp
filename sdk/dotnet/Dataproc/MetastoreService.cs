@@ -253,6 +253,54 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Dataproc Metastore Service Scheduled Backup
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "backup",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var backup = new Gcp.Dataproc.MetastoreService("backup", new()
+    ///     {
+    ///         ServiceId = "backup",
+    ///         Location = "us-central1",
+    ///         Port = 9080,
+    ///         Tier = "DEVELOPER",
+    ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
+    ///         {
+    ///             HourOfDay = 2,
+    ///             DayOfWeek = "SUNDAY",
+    ///         },
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "2.3.6",
+    ///         },
+    ///         ScheduledBackup = new Gcp.Dataproc.Inputs.MetastoreServiceScheduledBackupArgs
+    ///         {
+    ///             Enabled = true,
+    ///             CronSchedule = "0 0 * * *",
+    ///             TimeZone = "UTC",
+    ///             BackupLocation = bucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "env", "test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -408,6 +456,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("scalingConfig")]
         public Output<Outputs.MetastoreServiceScalingConfig?> ScalingConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration of scheduled backup for the metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scheduledBackup")]
+        public Output<Outputs.MetastoreServiceScheduledBackup?> ScheduledBackup { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -606,6 +661,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.MetastoreServiceScalingConfigArgs>? ScalingConfig { get; set; }
 
         /// <summary>
+        /// The configuration of scheduled backup for the metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduledBackup")]
+        public Input<Inputs.MetastoreServiceScheduledBackupArgs>? ScheduledBackup { get; set; }
+
+        /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
@@ -791,6 +853,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.MetastoreServiceScalingConfigGetArgs>? ScalingConfig { get; set; }
+
+        /// <summary>
+        /// The configuration of scheduled backup for the metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduledBackup")]
+        public Input<Inputs.MetastoreServiceScheduledBackupGetArgs>? ScheduledBackup { get; set; }
 
         /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

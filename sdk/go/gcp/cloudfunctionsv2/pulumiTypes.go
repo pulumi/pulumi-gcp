@@ -1652,7 +1652,7 @@ func (o FunctionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type FunctionServiceConfig struct {
-	// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+	// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 	AllTrafficOnLatestRevision *bool `pulumi:"allTrafficOnLatestRevision"`
 	// The number of CPUs used in a single container instance. Default value is calculated from available memory.
 	AvailableCpu *string `pulumi:"availableCpu"`
@@ -1713,7 +1713,7 @@ type FunctionServiceConfigInput interface {
 }
 
 type FunctionServiceConfigArgs struct {
-	// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+	// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 	AllTrafficOnLatestRevision pulumi.BoolPtrInput `pulumi:"allTrafficOnLatestRevision"`
 	// The number of CPUs used in a single container instance. Default value is calculated from available memory.
 	AvailableCpu pulumi.StringPtrInput `pulumi:"availableCpu"`
@@ -1839,7 +1839,7 @@ func (o FunctionServiceConfigOutput) ToFunctionServiceConfigPtrOutputWithContext
 	}).(FunctionServiceConfigPtrOutput)
 }
 
-// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 func (o FunctionServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolPtrOutput)
 }
@@ -1963,7 +1963,7 @@ func (o FunctionServiceConfigPtrOutput) Elem() FunctionServiceConfigOutput {
 	}).(FunctionServiceConfigOutput)
 }
 
-// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 func (o FunctionServiceConfigPtrOutput) AllTrafficOnLatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *bool {
 		if v == nil {
@@ -3366,7 +3366,7 @@ func (o GetFunctionEventTriggerEventFilterArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetFunctionServiceConfig struct {
-	// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+	// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 	AllTrafficOnLatestRevision bool `pulumi:"allTrafficOnLatestRevision"`
 	// The number of CPUs used in a single container instance. Default value is calculated from available memory.
 	AvailableCpu string `pulumi:"availableCpu"`
@@ -3420,7 +3420,7 @@ type GetFunctionServiceConfigInput interface {
 }
 
 type GetFunctionServiceConfigArgs struct {
-	// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+	// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 	AllTrafficOnLatestRevision pulumi.BoolInput `pulumi:"allTrafficOnLatestRevision"`
 	// The number of CPUs used in a single container instance. Default value is calculated from available memory.
 	AvailableCpu pulumi.StringInput `pulumi:"availableCpu"`
@@ -3513,7 +3513,7 @@ func (o GetFunctionServiceConfigOutput) ToGetFunctionServiceConfigOutputWithCont
 	return o
 }
 
-// Whether 100%!o(MISSING)f traffic is routed to the latest revision. Defaults to true.
+// Whether 100% of traffic is routed to the latest revision. Defaults to true.
 func (o GetFunctionServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfig) bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolOutput)
 }

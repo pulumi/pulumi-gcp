@@ -369,6 +369,26 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
+        /// ```
+        /// {
+        /// "google.subject":"assertion.arn",
+        /// "attribute.aws_role":
+        /// "assertion.arn.contains('assumed-role')"
+        /// " ? assertion.arn.extract('{account_arn}assumed-role/')"
+        /// "   + 'assumed-role/'"
+        /// "   + assertion.arn.extract('assumed-role/{role_name}/')"
+        /// " : assertion.arn",
+        /// }
+        /// ```
+        /// - If any custom attribute mappings are defined, they must include a mapping to the
+        /// `google.subject` attribute.
+        /// For OIDC providers, the following rules apply:
+        /// - Custom attribute mappings must be defined, and must include a mapping to the
+        /// `google.subject` attribute. For example, the following maps the `sub` claim of the
+        /// incoming credential to the `subject` attribute on a Google token.
+        /// ```
+        /// {"google.subject": "assertion.sub"}
+        /// ```
         /// </summary>
         [Output("attributeMapping")]
         public Output<ImmutableDictionary<string, string>?> AttributeMapping { get; private set; } = null!;
@@ -549,6 +569,26 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
+        /// ```
+        /// {
+        /// "google.subject":"assertion.arn",
+        /// "attribute.aws_role":
+        /// "assertion.arn.contains('assumed-role')"
+        /// " ? assertion.arn.extract('{account_arn}assumed-role/')"
+        /// "   + 'assumed-role/'"
+        /// "   + assertion.arn.extract('assumed-role/{role_name}/')"
+        /// " : assertion.arn",
+        /// }
+        /// ```
+        /// - If any custom attribute mappings are defined, they must include a mapping to the
+        /// `google.subject` attribute.
+        /// For OIDC providers, the following rules apply:
+        /// - Custom attribute mappings must be defined, and must include a mapping to the
+        /// `google.subject` attribute. For example, the following maps the `sub` claim of the
+        /// incoming credential to the `subject` attribute on a Google token.
+        /// ```
+        /// {"google.subject": "assertion.sub"}
+        /// ```
         /// </summary>
         public InputMap<string> AttributeMapping
         {
@@ -675,6 +715,26 @@ namespace Pulumi.Gcp.Iam
         /// the total size of all mapped attributes must not exceed 8KB.
         /// For AWS providers, the following rules apply:
         /// - If no attribute mapping is defined, the following default mapping applies:
+        /// ```
+        /// {
+        /// "google.subject":"assertion.arn",
+        /// "attribute.aws_role":
+        /// "assertion.arn.contains('assumed-role')"
+        /// " ? assertion.arn.extract('{account_arn}assumed-role/')"
+        /// "   + 'assumed-role/'"
+        /// "   + assertion.arn.extract('assumed-role/{role_name}/')"
+        /// " : assertion.arn",
+        /// }
+        /// ```
+        /// - If any custom attribute mappings are defined, they must include a mapping to the
+        /// `google.subject` attribute.
+        /// For OIDC providers, the following rules apply:
+        /// - Custom attribute mappings must be defined, and must include a mapping to the
+        /// `google.subject` attribute. For example, the following maps the `sub` claim of the
+        /// incoming credential to the `subject` attribute on a Google token.
+        /// ```
+        /// {"google.subject": "assertion.sub"}
+        /// ```
         /// </summary>
         public InputMap<string> AttributeMapping
         {

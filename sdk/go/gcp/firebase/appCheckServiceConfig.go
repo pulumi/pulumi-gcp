@@ -123,7 +123,7 @@ import (
 //			}
 //			_, err = firebase.NewAppCheckServiceConfig(ctx, "default", &firebase.AppCheckServiceConfigArgs{
 //				Project:         pulumi.String("my-project-name"),
-//				ServiceId:       pulumi.String("firebasedatabase.googleapis.com"),
+//				ServiceId:       pulumi.String("identitytoolkit.googleapis.com"),
 //				EnforcementMode: pulumi.String("UNENFORCED"),
 //			})
 //			if err != nil {

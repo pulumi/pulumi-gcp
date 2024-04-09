@@ -62,7 +62,7 @@ public final class GetInstanceNetworkInterface {
      */
     private String networkAttachment;
     /**
-     * @return The private IP address assigned to the instance.
+     * @return The internal ip address of the instance, either manually or dynamically assigned.
      * 
      */
     private String networkIp;
@@ -163,7 +163,7 @@ public final class GetInstanceNetworkInterface {
         return this.networkAttachment;
     }
     /**
-     * @return The private IP address assigned to the instance.
+     * @return The internal ip address of the instance, either manually or dynamically assigned.
      * 
      */
     public String networkIp() {

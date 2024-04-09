@@ -132,6 +132,12 @@ class DatabaseInstanceIpAddressArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  time_to_retire: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: The IPv4 address assigned.
+        :param pulumi.Input[str] time_to_retire: The time this IP address will be retired, in RFC
+               3339 format.
+        :param pulumi.Input[str] type: The type of this IP address.
+        """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if time_to_retire is not None:
@@ -142,6 +148,9 @@ class DatabaseInstanceIpAddressArgs:
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv4 address assigned.
+        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -151,6 +160,10 @@ class DatabaseInstanceIpAddressArgs:
     @property
     @pulumi.getter(name="timeToRetire")
     def time_to_retire(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time this IP address will be retired, in RFC
+        3339 format.
+        """
         return pulumi.get(self, "time_to_retire")
 
     @time_to_retire.setter
@@ -160,6 +173,9 @@ class DatabaseInstanceIpAddressArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of this IP address.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -573,7 +589,8 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param pulumi.Input[str] time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
-        :param pulumi.Input[int] version: Used to make sure changes to the settings block are atomic.
+        :param pulumi.Input[int] version: Used to make sure changes to the `settings` block are
+               atomic.
         """
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
@@ -926,7 +943,8 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
         """
-        Used to make sure changes to the settings block are atomic.
+        Used to make sure changes to the `settings` block are
+        atomic.
         """
         return pulumi.get(self, "version")
 

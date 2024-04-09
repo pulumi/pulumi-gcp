@@ -221,7 +221,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dimensions);
     }
     /**
-     * If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      * 
      */
@@ -229,7 +229,7 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return If the new quota would decrease the existing quota by more than 10%!,(MISSING) the request is rejected.
+     * @return If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      * 
      */

@@ -20,6 +20,23 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
     public static final CryptoKeyArgs Empty = new CryptoKeyArgs();
 
     /**
+     * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * 
+     */
+    @Import(name="cryptoKeyBackend")
+    private @Nullable Output<String> cryptoKeyBackend;
+
+    /**
+     * @return The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * 
+     */
+    public Optional<Output<String>> cryptoKeyBackend() {
+        return Optional.ofNullable(this.cryptoKeyBackend);
+    }
+
+    /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 24 hours.
      * 
@@ -187,6 +204,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
     private CryptoKeyArgs() {}
 
     private CryptoKeyArgs(CryptoKeyArgs $) {
+        this.cryptoKeyBackend = $.cryptoKeyBackend;
         this.destroyScheduledDuration = $.destroyScheduledDuration;
         this.importOnly = $.importOnly;
         this.keyRing = $.keyRing;
@@ -214,6 +232,29 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CryptoKeyArgs defaults) {
             $ = new CryptoKeyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cryptoKeyBackend The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+         * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyBackend(@Nullable Output<String> cryptoKeyBackend) {
+            $.cryptoKeyBackend = cryptoKeyBackend;
+            return this;
+        }
+
+        /**
+         * @param cryptoKeyBackend The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+         * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyBackend(String cryptoKeyBackend) {
+            return cryptoKeyBackend(Output.of(cryptoKeyBackend));
         }
 
         /**

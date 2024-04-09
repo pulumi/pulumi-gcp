@@ -154,8 +154,7 @@ public final class RegionBackendServiceOutlierDetectionArgs extends com.pulumi.r
 
     /**
      * Maximum percentage of hosts in the load balancing pool for the backend service
-     * that can be ejected. Defaults to 10%!
-     * (MISSING)
+     * that can be ejected. Defaults to 10%.
      * 
      */
     @Import(name="maxEjectionPercent")
@@ -163,8 +162,7 @@ public final class RegionBackendServiceOutlierDetectionArgs extends com.pulumi.r
 
     /**
      * @return Maximum percentage of hosts in the load balancing pool for the backend service
-     * that can be ejected. Defaults to 10%!
-     * (MISSING)
+     * that can be ejected. Defaults to 10%.
      * 
      */
     public Optional<Output<Integer>> maxEjectionPercent() {
@@ -453,8 +451,7 @@ public final class RegionBackendServiceOutlierDetectionArgs extends com.pulumi.r
 
         /**
          * @param maxEjectionPercent Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%!
-         * (MISSING)
+         * that can be ejected. Defaults to 10%.
          * 
          * @return builder
          * 
@@ -466,8 +463,7 @@ public final class RegionBackendServiceOutlierDetectionArgs extends com.pulumi.r
 
         /**
          * @param maxEjectionPercent Maximum percentage of hosts in the load balancing pool for the backend service
-         * that can be ejected. Defaults to 10%!
-         * (MISSING)
+         * that can be ejected. Defaults to 10%.
          * 
          * @return builder
          * 

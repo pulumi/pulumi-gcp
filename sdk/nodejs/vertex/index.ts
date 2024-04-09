@@ -10,6 +10,11 @@ export type AiDataset = import("./aiDataset").AiDataset;
 export const AiDataset: typeof import("./aiDataset").AiDataset = null as any;
 utilities.lazyLoad(exports, ["AiDataset"], () => require("./aiDataset"));
 
+export { AiDeploymentResourcePoolArgs, AiDeploymentResourcePoolState } from "./aiDeploymentResourcePool";
+export type AiDeploymentResourcePool = import("./aiDeploymentResourcePool").AiDeploymentResourcePool;
+export const AiDeploymentResourcePool: typeof import("./aiDeploymentResourcePool").AiDeploymentResourcePool = null as any;
+utilities.lazyLoad(exports, ["AiDeploymentResourcePool"], () => require("./aiDeploymentResourcePool"));
+
 export { AiEndpointArgs, AiEndpointState } from "./aiEndpoint";
 export type AiEndpoint = import("./aiEndpoint").AiEndpoint;
 export const AiEndpoint: typeof import("./aiEndpoint").AiEndpoint = null as any;
@@ -142,6 +147,8 @@ const _module = {
         switch (type) {
             case "gcp:vertex/aiDataset:AiDataset":
                 return new AiDataset(name, <any>undefined, { urn })
+            case "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool":
+                return new AiDeploymentResourcePool(name, <any>undefined, { urn })
             case "gcp:vertex/aiEndpoint:AiEndpoint":
                 return new AiEndpoint(name, <any>undefined, { urn })
             case "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding":
@@ -190,6 +197,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiDeploymentResourcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamMember", _module)

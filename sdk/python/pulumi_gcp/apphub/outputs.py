@@ -34,6 +34,13 @@ __all__ = [
     'WorkloadAttributesOperatorOwner',
     'WorkloadWorkloadProperty',
     'WorkloadWorkloadReference',
+    'GetApplicationAttributeResult',
+    'GetApplicationAttributeBusinessOwnerResult',
+    'GetApplicationAttributeCriticalityResult',
+    'GetApplicationAttributeDeveloperOwnerResult',
+    'GetApplicationAttributeEnvironmentResult',
+    'GetApplicationAttributeOperatorOwnerResult',
+    'GetApplicationScopeResult',
     'GetDiscoveredServiceServicePropertyResult',
     'GetDiscoveredServiceServiceReferenceResult',
     'GetDiscoveredWorkloadWorkloadPropertyResult',
@@ -1075,6 +1082,213 @@ class WorkloadWorkloadReference(dict):
         Output only. The underlying compute resource uri.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetApplicationAttributeResult(dict):
+    def __init__(__self__, *,
+                 business_owners: Sequence['outputs.GetApplicationAttributeBusinessOwnerResult'],
+                 criticalities: Sequence['outputs.GetApplicationAttributeCriticalityResult'],
+                 developer_owners: Sequence['outputs.GetApplicationAttributeDeveloperOwnerResult'],
+                 environments: Sequence['outputs.GetApplicationAttributeEnvironmentResult'],
+                 operator_owners: Sequence['outputs.GetApplicationAttributeOperatorOwnerResult']):
+        """
+        :param Sequence['GetApplicationAttributeBusinessOwnerArgs'] business_owners: Optional. Business team that ensures user needs are met and value is delivered
+        :param Sequence['GetApplicationAttributeCriticalityArgs'] criticalities: Criticality of the Application, Service, or Workload
+        :param Sequence['GetApplicationAttributeDeveloperOwnerArgs'] developer_owners: Optional. Developer team that owns development and coding.
+        :param Sequence['GetApplicationAttributeEnvironmentArgs'] environments: Environment of the Application, Service, or Workload
+        :param Sequence['GetApplicationAttributeOperatorOwnerArgs'] operator_owners: Optional. Operator team that ensures runtime and operations.
+        """
+        pulumi.set(__self__, "business_owners", business_owners)
+        pulumi.set(__self__, "criticalities", criticalities)
+        pulumi.set(__self__, "developer_owners", developer_owners)
+        pulumi.set(__self__, "environments", environments)
+        pulumi.set(__self__, "operator_owners", operator_owners)
+
+    @property
+    @pulumi.getter(name="businessOwners")
+    def business_owners(self) -> Sequence['outputs.GetApplicationAttributeBusinessOwnerResult']:
+        """
+        Optional. Business team that ensures user needs are met and value is delivered
+        """
+        return pulumi.get(self, "business_owners")
+
+    @property
+    @pulumi.getter
+    def criticalities(self) -> Sequence['outputs.GetApplicationAttributeCriticalityResult']:
+        """
+        Criticality of the Application, Service, or Workload
+        """
+        return pulumi.get(self, "criticalities")
+
+    @property
+    @pulumi.getter(name="developerOwners")
+    def developer_owners(self) -> Sequence['outputs.GetApplicationAttributeDeveloperOwnerResult']:
+        """
+        Optional. Developer team that owns development and coding.
+        """
+        return pulumi.get(self, "developer_owners")
+
+    @property
+    @pulumi.getter
+    def environments(self) -> Sequence['outputs.GetApplicationAttributeEnvironmentResult']:
+        """
+        Environment of the Application, Service, or Workload
+        """
+        return pulumi.get(self, "environments")
+
+    @property
+    @pulumi.getter(name="operatorOwners")
+    def operator_owners(self) -> Sequence['outputs.GetApplicationAttributeOperatorOwnerResult']:
+        """
+        Optional. Operator team that ensures runtime and operations.
+        """
+        return pulumi.get(self, "operator_owners")
+
+
+@pulumi.output_type
+class GetApplicationAttributeBusinessOwnerResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 email: str):
+        """
+        :param str display_name: Optional. Contact's name.
+        :param str email: Required. Email address of the contacts.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. Contact's name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Required. Email address of the contacts.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetApplicationAttributeCriticalityResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Criticality type. Possible values: ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"]
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetApplicationAttributeDeveloperOwnerResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 email: str):
+        """
+        :param str display_name: Optional. Contact's name.
+        :param str email: Required. Email address of the contacts.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. Contact's name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Required. Email address of the contacts.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetApplicationAttributeEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetApplicationAttributeOperatorOwnerResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 email: str):
+        """
+        :param str display_name: Optional. Contact's name.
+        :param str email: Required. Email address of the contacts.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. Contact's name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Required. Email address of the contacts.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetApplicationScopeResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: Required. Scope Type. 
+                Possible values:
+               REGIONAL Possible values: ["REGIONAL"]
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Required. Scope Type. 
+         Possible values:
+        REGIONAL Possible values: ["REGIONAL"]
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -148,6 +148,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:kms/cryptoKey:CryptoKey")
 public class CryptoKey extends com.pulumi.resources.CustomResource {
     /**
+     * The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * 
+     */
+    @Export(name="cryptoKeyBackend", refs={String.class}, tree="[0]")
+    private Output<String> cryptoKeyBackend;
+
+    /**
+     * @return The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+     * The resource name is in the format &#34;projects/*{@literal /}locations/*{@literal /}ekmConnections/*&#34; and only applies to &#34;EXTERNAL_VPC&#34; keys.
+     * 
+     */
+    public Output<String> cryptoKeyBackend() {
+        return this.cryptoKeyBackend;
+    }
+    /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 24 hours.
      * 

@@ -12,6 +12,9 @@ from . import outputs
 
 __all__ = [
     'AiDatasetEncryptionSpec',
+    'AiDeploymentResourcePoolDedicatedResources',
+    'AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec',
+    'AiDeploymentResourcePoolDedicatedResourcesMachineSpec',
     'AiEndpointDeployedModel',
     'AiEndpointDeployedModelAutomaticResource',
     'AiEndpointDeployedModelDedicatedResource',
@@ -104,6 +107,197 @@ class AiDatasetEncryptionSpec(dict):
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiDeploymentResourcePoolDedicatedResources(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineSpec":
+            suggest = "machine_spec"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+        elif key == "autoscalingMetricSpecs":
+            suggest = "autoscaling_metric_specs"
+        elif key == "maxReplicaCount":
+            suggest = "max_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiDeploymentResourcePoolDedicatedResources. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiDeploymentResourcePoolDedicatedResources.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiDeploymentResourcePoolDedicatedResources.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_spec: 'outputs.AiDeploymentResourcePoolDedicatedResourcesMachineSpec',
+                 min_replica_count: int,
+                 autoscaling_metric_specs: Optional[Sequence['outputs.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec']] = None,
+                 max_replica_count: Optional[int] = None):
+        """
+        :param 'AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs' machine_spec: The specification of a single machine used by the prediction
+               Structure is documented below.
+        :param int min_replica_count: The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+        :param Sequence['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs'] autoscaling_metric_specs: A list of the metric specifications that overrides a resource utilization metric.
+               Structure is documented below.
+        :param int max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        pulumi.set(__self__, "min_replica_count", min_replica_count)
+        if autoscaling_metric_specs is not None:
+            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+
+    @property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> 'outputs.AiDeploymentResourcePoolDedicatedResourcesMachineSpec':
+        """
+        The specification of a single machine used by the prediction
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> int:
+        """
+        The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @property
+    @pulumi.getter(name="autoscalingMetricSpecs")
+    def autoscaling_metric_specs(self) -> Optional[Sequence['outputs.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec']]:
+        """
+        A list of the metric specifications that overrides a resource utilization metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_metric_specs")
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[int]:
+        """
+        The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+        """
+        return pulumi.get(self, "max_replica_count")
+
+
+@pulumi.output_type
+class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricName":
+            suggest = "metric_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_name: str,
+                 target: Optional[int] = None):
+        """
+        :param str metric_name: The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        :param int target: The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        """
+        pulumi.set(__self__, "metric_name", metric_name)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[int]:
+        """
+        The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class AiDeploymentResourcePoolDedicatedResourcesMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiDeploymentResourcePoolDedicatedResourcesMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiDeploymentResourcePoolDedicatedResourcesMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiDeploymentResourcePoolDedicatedResourcesMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: Optional[int] = None,
+                 accelerator_type: Optional[str] = None,
+                 machine_type: Optional[str] = None):
+        """
+        :param int accelerator_count: The number of accelerators to attach to the machine.
+        :param str accelerator_type: The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        :param str machine_type: The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[int]:
+        """
+        The number of accelerators to attach to the machine.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[str]:
+        """
+        The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        """
+        The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
+        """
+        return pulumi.get(self, "machine_type")
 
 
 @pulumi.output_type
@@ -490,7 +684,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
         :param str metric_name: (Output)
                The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
         :param int target: (Output)
-               The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+               The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
@@ -511,7 +705,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
     def target(self) -> Optional[int]:
         """
         (Output)
-        The target resource utilization in percentage (1%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%!)(MISSING) if not provided.
+        The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         return pulumi.get(self, "target")
 
@@ -914,8 +1108,7 @@ class AiFeatureOnlineStoreBigtableAutoScaling(dict):
         """
         :param int max_node_count: The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
         :param int min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
-        :param int cpu_utilization_target: A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
-               (MISSING)
+        :param int cpu_utilization_target: A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
         """
         pulumi.set(__self__, "max_node_count", max_node_count)
         pulumi.set(__self__, "min_node_count", min_node_count)
@@ -942,8 +1135,7 @@ class AiFeatureOnlineStoreBigtableAutoScaling(dict):
     @pulumi.getter(name="cpuUtilizationTarget")
     def cpu_utilization_target(self) -> Optional[int]:
         """
-        A percentage of the cluster's CPU capacity. Can be from 10%!t(MISSING)o 80%! (MISSING)When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%!
-        (MISSING)
+        A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
         """
         return pulumi.get(self, "cpu_utilization_target")
 
@@ -2373,7 +2565,7 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
         """
         :param int leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
         :param int leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
-               range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+               range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
         if leaf_node_embedding_count is not None:
             pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
@@ -2393,7 +2585,7 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(dict):
     def leaf_nodes_to_search_percent(self) -> Optional[int]:
         """
         The default percentage of leaf nodes that any query may be searched. Must be in
-        range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+        range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
         return pulumi.get(self, "leaf_nodes_to_search_percent")
 
@@ -2767,7 +2959,7 @@ class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
         """
         :param int leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
         :param int leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
-               range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+               range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
         pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
         pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
@@ -2785,7 +2977,7 @@ class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
     def leaf_nodes_to_search_percent(self) -> int:
         """
         The default percentage of leaf nodes that any query may be searched. Must be in
-        range 1-100, inclusive. The default value is 10 (means 10%!)(MISSING) if not set.
+        range 1-100, inclusive. The default value is 10 (means 10%) if not set.
         """
         return pulumi.get(self, "leaf_nodes_to_search_percent")
 

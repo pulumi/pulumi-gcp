@@ -99,7 +99,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? UserLabels;
         /// <summary>
-        /// Used to make sure changes to the settings block are atomic.
+        /// Used to make sure changes to the `settings` block are
+        /// atomic.
         /// </summary>
         public readonly int? Version;
 

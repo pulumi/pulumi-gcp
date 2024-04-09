@@ -186,6 +186,10 @@ namespace Pulumi.Gcp.BigTable
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// This is equivalent to running the following `cbt` command:
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:bigtable/gCPolicy:GCPolicy")]
     public partial class GCPolicy : global::Pulumi.CustomResource

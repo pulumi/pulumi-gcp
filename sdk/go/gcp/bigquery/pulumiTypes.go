@@ -10981,6 +10981,8 @@ type TableExternalDataConfiguration struct {
 	// many bad records, an invalid error is returned in the job result.
 	// The default value is false.
 	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
+	// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+	JsonExtension *string `pulumi:"jsonExtension"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "JSON". Structure is documented below.
 	JsonOptions *TableExternalDataConfigurationJsonOptions `pulumi:"jsonOptions"`
@@ -11075,6 +11077,8 @@ type TableExternalDataConfigurationArgs struct {
 	// many bad records, an invalid error is returned in the job result.
 	// The default value is false.
 	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
+	// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+	JsonExtension pulumi.StringPtrInput `pulumi:"jsonExtension"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "JSON". Structure is documented below.
 	JsonOptions TableExternalDataConfigurationJsonOptionsPtrInput `pulumi:"jsonOptions"`
@@ -11265,6 +11269,11 @@ func (o TableExternalDataConfigurationOutput) HivePartitioningOptions() TableExt
 // The default value is false.
 func (o TableExternalDataConfigurationOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+func (o TableExternalDataConfigurationOutput) JsonExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.JsonExtension }).(pulumi.StringPtrOutput)
 }
 
 // Additional properties to set if
@@ -11472,6 +11481,16 @@ func (o TableExternalDataConfigurationPtrOutput) IgnoreUnknownValues() pulumi.Bo
 		}
 		return v.IgnoreUnknownValues
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+func (o TableExternalDataConfigurationPtrOutput) JsonExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonExtension
+	}).(pulumi.StringPtrOutput)
 }
 
 // Additional properties to set if

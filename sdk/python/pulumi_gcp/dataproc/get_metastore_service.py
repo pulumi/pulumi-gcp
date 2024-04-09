@@ -22,7 +22,7 @@ class GetMetastoreServiceResult:
     """
     A collection of values returned by getMetastoreService.
     """
-    def __init__(__self__, artifact_gcs_uri=None, database_type=None, effective_labels=None, encryption_configs=None, endpoint_uri=None, hive_metastore_configs=None, id=None, labels=None, location=None, maintenance_windows=None, metadata_integrations=None, name=None, network=None, network_configs=None, port=None, project=None, pulumi_labels=None, release_channel=None, scaling_configs=None, service_id=None, state=None, state_message=None, telemetry_configs=None, tier=None, uid=None):
+    def __init__(__self__, artifact_gcs_uri=None, database_type=None, effective_labels=None, encryption_configs=None, endpoint_uri=None, hive_metastore_configs=None, id=None, labels=None, location=None, maintenance_windows=None, metadata_integrations=None, name=None, network=None, network_configs=None, port=None, project=None, pulumi_labels=None, release_channel=None, scaling_configs=None, scheduled_backups=None, service_id=None, state=None, state_message=None, telemetry_configs=None, tier=None, uid=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
@@ -80,6 +80,9 @@ class GetMetastoreServiceResult:
         if scaling_configs and not isinstance(scaling_configs, list):
             raise TypeError("Expected argument 'scaling_configs' to be a list")
         pulumi.set(__self__, "scaling_configs", scaling_configs)
+        if scheduled_backups and not isinstance(scheduled_backups, list):
+            raise TypeError("Expected argument 'scheduled_backups' to be a list")
+        pulumi.set(__self__, "scheduled_backups", scheduled_backups)
         if service_id and not isinstance(service_id, str):
             raise TypeError("Expected argument 'service_id' to be a str")
         pulumi.set(__self__, "service_id", service_id)
@@ -198,6 +201,11 @@ class GetMetastoreServiceResult:
         return pulumi.get(self, "scaling_configs")
 
     @property
+    @pulumi.getter(name="scheduledBackups")
+    def scheduled_backups(self) -> Sequence['outputs.GetMetastoreServiceScheduledBackupResult']:
+        return pulumi.get(self, "scheduled_backups")
+
+    @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> str:
         return pulumi.get(self, "service_id")
@@ -253,6 +261,7 @@ class AwaitableGetMetastoreServiceResult(GetMetastoreServiceResult):
             pulumi_labels=self.pulumi_labels,
             release_channel=self.release_channel,
             scaling_configs=self.scaling_configs,
+            scheduled_backups=self.scheduled_backups,
             service_id=self.service_id,
             state=self.state,
             state_message=self.state_message,
@@ -305,6 +314,7 @@ def get_metastore_service(location: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         release_channel=pulumi.get(__ret__, 'release_channel'),
         scaling_configs=pulumi.get(__ret__, 'scaling_configs'),
+        scheduled_backups=pulumi.get(__ret__, 'scheduled_backups'),
         service_id=pulumi.get(__ret__, 'service_id'),
         state=pulumi.get(__ret__, 'state'),
         state_message=pulumi.get(__ret__, 'state_message'),

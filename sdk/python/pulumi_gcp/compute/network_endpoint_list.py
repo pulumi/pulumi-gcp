@@ -204,6 +204,10 @@ class NetworkEndpointList(pulumi.CustomResource):
         This resource is authoritative for a single NEG. Any endpoints not specified
         by this resource will be deleted when the resource configuration is applied.
 
+        > **NOTE** In case the Endpoint's Instance is recreated, it's needed to
+        perform `apply` twice. To avoid situations like this, please use this resource
+        with the lifecycle `update_triggered_by` method, with the passed Instance's ID.
+
         To get more information about NetworkEndpoints, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -335,6 +339,10 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         This resource is authoritative for a single NEG. Any endpoints not specified
         by this resource will be deleted when the resource configuration is applied.
+
+        > **NOTE** In case the Endpoint's Instance is recreated, it's needed to
+        perform `apply` twice. To avoid situations like this, please use this resource
+        with the lifecycle `update_triggered_by` method, with the passed Instance's ID.
 
         To get more information about NetworkEndpoints, see:
 

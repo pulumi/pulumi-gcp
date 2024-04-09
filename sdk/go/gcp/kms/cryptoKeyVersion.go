@@ -92,6 +92,9 @@ type CryptoKeyVersion struct {
 	//
 	// ***
 	CryptoKey pulumi.StringOutput `pulumi:"cryptoKey"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
+	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion key material was generated
 	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
 	// The resource name for this CryptoKeyVersion.
@@ -147,6 +150,9 @@ type cryptoKeyVersionState struct {
 	//
 	// ***
 	CryptoKey *string `pulumi:"cryptoKey"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
+	ExternalProtectionLevelOptions *CryptoKeyVersionExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion key material was generated
 	GenerateTime *string `pulumi:"generateTime"`
 	// The resource name for this CryptoKeyVersion.
@@ -170,6 +176,9 @@ type CryptoKeyVersionState struct {
 	//
 	// ***
 	CryptoKey pulumi.StringPtrInput
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
+	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrInput
 	// The time this CryptoKeyVersion key material was generated
 	GenerateTime pulumi.StringPtrInput
 	// The resource name for this CryptoKeyVersion.
@@ -191,6 +200,9 @@ type cryptoKeyVersionArgs struct {
 	//
 	// ***
 	CryptoKey string `pulumi:"cryptoKey"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
+	ExternalProtectionLevelOptions *CryptoKeyVersionExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	// The current state of the CryptoKeyVersion.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State *string `pulumi:"state"`
@@ -203,6 +215,9 @@ type CryptoKeyVersionArgs struct {
 	//
 	// ***
 	CryptoKey pulumi.StringInput
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
+	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrInput
 	// The current state of the CryptoKeyVersion.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringPtrInput
@@ -313,6 +328,14 @@ func (o CryptoKeyVersionOutput) Attestations() CryptoKeyVersionAttestationArrayO
 // ***
 func (o CryptoKeyVersionOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+// Structure is documented below.
+func (o CryptoKeyVersionOutput) ExternalProtectionLevelOptions() CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+		return v.ExternalProtectionLevelOptions
+	}).(CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput)
 }
 
 // The time this CryptoKeyVersion key material was generated

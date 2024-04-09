@@ -22,7 +22,10 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, primaries=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
+    def __init__(__self__, crypto_key_backend=None, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, primaries=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
+        if crypto_key_backend and not isinstance(crypto_key_backend, str):
+            raise TypeError("Expected argument 'crypto_key_backend' to be a str")
+        pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
         if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
             raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
@@ -62,6 +65,11 @@ class GetKMSCryptoKeyResult:
         if version_templates and not isinstance(version_templates, list):
             raise TypeError("Expected argument 'version_templates' to be a list")
         pulumi.set(__self__, "version_templates", version_templates)
+
+    @property
+    @pulumi.getter(name="cryptoKeyBackend")
+    def crypto_key_backend(self) -> str:
+        return pulumi.get(self, "crypto_key_backend")
 
     @property
     @pulumi.getter(name="destroyScheduledDuration")
@@ -146,6 +154,7 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
         if False:
             yield self
         return GetKMSCryptoKeyResult(
+            crypto_key_backend=self.crypto_key_backend,
             destroy_scheduled_duration=self.destroy_scheduled_duration,
             effective_labels=self.effective_labels,
             id=self.id,
@@ -199,6 +208,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts, typ=GetKMSCryptoKeyResult).value
 
     return AwaitableGetKMSCryptoKeyResult(
+        crypto_key_backend=pulumi.get(__ret__, 'crypto_key_backend'),
         destroy_scheduled_duration=pulumi.get(__ret__, 'destroy_scheduled_duration'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),

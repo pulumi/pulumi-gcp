@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'SQuotaPreferenceQuotaConfig',
     'GetSQuotaInfoDimensionsInfoResult',
     'GetSQuotaInfoDimensionsInfoDetailResult',
     'GetSQuotaInfoQuotaIncreaseEligibilityResult',
@@ -19,6 +20,123 @@ __all__ = [
     'GetSQuotaInfosQuotaInfoDimensionsInfoDetailResult',
     'GetSQuotaInfosQuotaInfoQuotaIncreaseEligibilityResult',
 ]
+
+@pulumi.output_type
+class SQuotaPreferenceQuotaConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preferredValue":
+            suggest = "preferred_value"
+        elif key == "grantedValue":
+            suggest = "granted_value"
+        elif key == "requestOrigin":
+            suggest = "request_origin"
+        elif key == "stateDetail":
+            suggest = "state_detail"
+        elif key == "traceId":
+            suggest = "trace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SQuotaPreferenceQuotaConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SQuotaPreferenceQuotaConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SQuotaPreferenceQuotaConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 preferred_value: str,
+                 annotations: Optional[Mapping[str, str]] = None,
+                 granted_value: Optional[str] = None,
+                 request_origin: Optional[str] = None,
+                 state_detail: Optional[str] = None,
+                 trace_id: Optional[str] = None):
+        """
+        :param str preferred_value: The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+        :param Mapping[str, str] annotations: The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+               An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param str granted_value: (Output)
+               Granted quota value.
+        :param str request_origin: (Output)
+               The origin of the quota preference request.
+               
+               - - -
+        :param str state_detail: (Output)
+               Optional details about the state of this quota preference.
+        :param str trace_id: (Output)
+               The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+        """
+        pulumi.set(__self__, "preferred_value", preferred_value)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if granted_value is not None:
+            pulumi.set(__self__, "granted_value", granted_value)
+        if request_origin is not None:
+            pulumi.set(__self__, "request_origin", request_origin)
+        if state_detail is not None:
+            pulumi.set(__self__, "state_detail", state_detail)
+        if trace_id is not None:
+            pulumi.set(__self__, "trace_id", trace_id)
+
+    @property
+    @pulumi.getter(name="preferredValue")
+    def preferred_value(self) -> str:
+        """
+        The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
+        """
+        return pulumi.get(self, "preferred_value")
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[Mapping[str, str]]:
+        """
+        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="grantedValue")
+    def granted_value(self) -> Optional[str]:
+        """
+        (Output)
+        Granted quota value.
+        """
+        return pulumi.get(self, "granted_value")
+
+    @property
+    @pulumi.getter(name="requestOrigin")
+    def request_origin(self) -> Optional[str]:
+        """
+        (Output)
+        The origin of the quota preference request.
+
+        - - -
+        """
+        return pulumi.get(self, "request_origin")
+
+    @property
+    @pulumi.getter(name="stateDetail")
+    def state_detail(self) -> Optional[str]:
+        """
+        (Output)
+        Optional details about the state of this quota preference.
+        """
+        return pulumi.get(self, "state_detail")
+
+    @property
+    @pulumi.getter(name="traceId")
+    def trace_id(self) -> Optional[str]:
+        """
+        (Output)
+        The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.
+        """
+        return pulumi.get(self, "trace_id")
+
 
 @pulumi.output_type
 class GetSQuotaInfoDimensionsInfoResult(dict):

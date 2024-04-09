@@ -75,14 +75,18 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * encoded SHA-256 hash of the [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
      * 
      */
     @Import(name="diskEncryptionKeySha256")
     private @Nullable Output<String> diskEncryptionKeySha256;
 
     /**
-     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * encoded SHA-256 hash of the [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeySha256() {
@@ -270,7 +274,9 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskEncryptionKeySha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * @param diskEncryptionKeySha256 The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          * 
          * @return builder
          * 
@@ -281,7 +287,9 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param diskEncryptionKeySha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * @param diskEncryptionKeySha256 The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          * 
          * @return builder
          * 

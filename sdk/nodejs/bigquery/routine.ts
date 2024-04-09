@@ -202,6 +202,29 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Bigquery Routine Data Governance Type
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_77884"});
+ * const customMaskingRoutine = new gcp.bigquery.Routine("custom_masking_routine", {
+ *     datasetId: test.datasetId,
+ *     routineId: "custom_masking_routine",
+ *     routineType: "SCALAR_FUNCTION",
+ *     language: "SQL",
+ *     dataGovernanceType: "DATA_MASKING",
+ *     definitionBody: "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+ *     arguments: [{
+ *         name: "ssn",
+ *         dataType: "{\"typeKind\" :  \"STRING\"}",
+ *     }],
+ *     returnType: "{\"typeKind\" :  \"STRING\"}",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  * ### Bigquery Routine Remote Function
  *
  * <!--Start PulumiCodeChooser -->
@@ -295,6 +318,11 @@ export class Routine extends pulumi.CustomResource {
      * epoch.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
+    /**
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     */
+    public readonly dataGovernanceType!: pulumi.Output<string | undefined>;
     /**
      * The ID of the dataset containing this routine
      */
@@ -390,6 +418,7 @@ export class Routine extends pulumi.CustomResource {
             const state = argsOrState as RoutineState | undefined;
             resourceInputs["arguments"] = state ? state.arguments : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
+            resourceInputs["dataGovernanceType"] = state ? state.dataGovernanceType : undefined;
             resourceInputs["datasetId"] = state ? state.datasetId : undefined;
             resourceInputs["definitionBody"] = state ? state.definitionBody : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -419,6 +448,7 @@ export class Routine extends pulumi.CustomResource {
                 throw new Error("Missing required property 'routineType'");
             }
             resourceInputs["arguments"] = args ? args.arguments : undefined;
+            resourceInputs["dataGovernanceType"] = args ? args.dataGovernanceType : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["definitionBody"] = args ? args.definitionBody : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -454,6 +484,11 @@ export interface RoutineState {
      * epoch.
      */
     creationTime?: pulumi.Input<number>;
+    /**
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     */
+    dataGovernanceType?: pulumi.Input<string>;
     /**
      * The ID of the dataset containing this routine
      */
@@ -544,6 +579,11 @@ export interface RoutineArgs {
      * Structure is documented below.
      */
     arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
+    /**
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * Possible values are: `DATA_MASKING`.
+     */
+    dataGovernanceType?: pulumi.Input<string>;
     /**
      * The ID of the dataset containing this routine
      */

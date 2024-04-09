@@ -110,13 +110,13 @@ namespace Pulumi.Gcp.Dataflow
     public partial class FlexTemplateJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         /// </summary>
         [Output("additionalExperiments")]
         public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
 
         /// <summary>
-        /// The algorithm to use for autoscaling
+        /// The algorithm to use for autoscaling.
         /// </summary>
         [Output("autoscalingAlgorithm")]
         public Output<string> AutoscalingAlgorithm { get; private set; } = null!;
@@ -138,13 +138,13 @@ namespace Pulumi.Gcp.Dataflow
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the job should use the streaming engine feature.
+        /// Immutable. Indicates if the job should use the streaming engine feature.
         /// </summary>
         [Output("enableStreamingEngine")]
         public Output<bool?> EnableStreamingEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Output("ipConfiguration")]
         public Output<string?> IpConfiguration { get; private set; } = null!;
@@ -156,8 +156,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> JobId { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the Cloud KMS key for the job. Key format is:
-        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string> KmsKeyName { get; private set; } = null!;
@@ -187,14 +186,13 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> MachineType { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-        /// 1000.
+        /// Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         /// </summary>
         [Output("maxWorkers")]
         public Output<int> MaxWorkers { get; private set; } = null!;
 
         /// <summary>
-        /// A unique name for the resource, required by Dataflow.
+        /// Immutable. A unique name for the resource, required by Dataflow.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -206,7 +204,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The initial number of Google Compute Engine instances for the job.
+        /// Immutable. The initial number of Google Compute Engine instances for the job.
         /// </summary>
         [Output("numWorkers")]
         public Output<int> NumWorkers { get; private set; } = null!;
@@ -240,14 +238,13 @@ namespace Pulumi.Gcp.Dataflow
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which the created job should run.
+        /// Immutable. The region in which the created job should run.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
-        /// the SDK. Note this field is only valid for portable pipelines.
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         /// </summary>
         [Output("sdkContainerImage")]
         public Output<string> SdkContainerImage { get; private set; } = null!;
@@ -279,7 +276,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Compute Engine subnetwork for launching instances to run your pipeline.
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
@@ -291,8 +288,7 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> TempLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-        /// corresponding name prefixes of the new job.
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         /// </summary>
         [Output("transformNameMapping")]
         public Output<ImmutableDictionary<string, object>?> TransformNameMapping { get; private set; } = null!;
@@ -358,7 +354,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {
@@ -367,7 +363,7 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
-        /// The algorithm to use for autoscaling
+        /// The algorithm to use for autoscaling.
         /// </summary>
         [Input("autoscalingAlgorithm")]
         public Input<string>? AutoscalingAlgorithm { get; set; }
@@ -382,20 +378,19 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string> ContainerSpecGcsPath { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if the job should use the streaming engine feature.
+        /// Immutable. Indicates if the job should use the streaming engine feature.
         /// </summary>
         [Input("enableStreamingEngine")]
         public Input<bool>? EnableStreamingEngine { get; set; }
 
         /// <summary>
-        /// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<string>? IpConfiguration { get; set; }
 
         /// <summary>
-        /// The name for the Cloud KMS key for the job. Key format is:
-        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -431,14 +426,13 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-        /// 1000.
+        /// Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         /// </summary>
         [Input("maxWorkers")]
         public Input<int>? MaxWorkers { get; set; }
 
         /// <summary>
-        /// A unique name for the resource, required by Dataflow.
+        /// Immutable. A unique name for the resource, required by Dataflow.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -450,7 +444,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The initial number of Google Compute Engine instances for the job.
+        /// Immutable. The initial number of Google Compute Engine instances for the job.
         /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
@@ -484,14 +478,13 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region in which the created job should run.
+        /// Immutable. The region in which the created job should run.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
-        /// the SDK. Note this field is only valid for portable pipelines.
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         /// </summary>
         [Input("sdkContainerImage")]
         public Input<string>? SdkContainerImage { get; set; }
@@ -517,7 +510,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? StagingLocation { get; set; }
 
         /// <summary>
-        /// Compute Engine subnetwork for launching instances to run your pipeline.
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -532,8 +525,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<object>? _transformNameMapping;
 
         /// <summary>
-        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-        /// corresponding name prefixes of the new job.
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         /// </summary>
         public InputMap<object> TransformNameMapping
         {
@@ -553,7 +545,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {
@@ -562,7 +554,7 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
-        /// The algorithm to use for autoscaling
+        /// The algorithm to use for autoscaling.
         /// </summary>
         [Input("autoscalingAlgorithm")]
         public Input<string>? AutoscalingAlgorithm { get; set; }
@@ -594,13 +586,13 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
-        /// Indicates if the job should use the streaming engine feature.
+        /// Immutable. Indicates if the job should use the streaming engine feature.
         /// </summary>
         [Input("enableStreamingEngine")]
         public Input<bool>? EnableStreamingEngine { get; set; }
 
         /// <summary>
-        /// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<string>? IpConfiguration { get; set; }
@@ -612,8 +604,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? JobId { get; set; }
 
         /// <summary>
-        /// The name for the Cloud KMS key for the job. Key format is:
-        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -649,14 +640,13 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-        /// 1000.
+        /// Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
         /// </summary>
         [Input("maxWorkers")]
         public Input<int>? MaxWorkers { get; set; }
 
         /// <summary>
-        /// A unique name for the resource, required by Dataflow.
+        /// Immutable. A unique name for the resource, required by Dataflow.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -668,7 +658,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The initial number of Google Compute Engine instances for the job.
+        /// Immutable. The initial number of Google Compute Engine instances for the job.
         /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
@@ -718,14 +708,13 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
-        /// The region in which the created job should run.
+        /// Immutable. The region in which the created job should run.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
-        /// the SDK. Note this field is only valid for portable pipelines.
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
         /// </summary>
         [Input("sdkContainerImage")]
         public Input<string>? SdkContainerImage { get; set; }
@@ -757,7 +746,7 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Compute Engine subnetwork for launching instances to run your pipeline.
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -772,8 +761,7 @@ namespace Pulumi.Gcp.Dataflow
         private InputMap<object>? _transformNameMapping;
 
         /// <summary>
-        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-        /// corresponding name prefixes of the new job.
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
         /// </summary>
         public InputMap<object> TransformNameMapping
         {

@@ -40,12 +40,12 @@ public final class InstanceCluster {
     private @Nullable String kmsKeyName;
     /**
      * @return The number of nodes in the cluster.
-     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     private @Nullable Integer numNodes;
     /**
-     * @return The state of the cluster
+     * @return describes the current state of the cluster.
      * 
      */
     private @Nullable String state;
@@ -96,14 +96,14 @@ public final class InstanceCluster {
     }
     /**
      * @return The number of nodes in the cluster.
-     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50%!s(MISSING)torage utilization.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     public Optional<Integer> numNodes() {
         return Optional.ofNullable(this.numNodes);
     }
     /**
-     * @return The state of the cluster
+     * @return describes the current state of the cluster.
      * 
      */
     public Optional<String> state() {

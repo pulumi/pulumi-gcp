@@ -98,6 +98,11 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     public readonly cryptoKey!: pulumi.Output<string>;
     /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     */
+    public readonly externalProtectionLevelOptions!: pulumi.Output<outputs.kms.CryptoKeyVersionExternalProtectionLevelOptions | undefined>;
+    /**
      * The time this CryptoKeyVersion key material was generated
      */
     public /*out*/ readonly generateTime!: pulumi.Output<string>;
@@ -131,6 +136,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["algorithm"] = state ? state.algorithm : undefined;
             resourceInputs["attestations"] = state ? state.attestations : undefined;
             resourceInputs["cryptoKey"] = state ? state.cryptoKey : undefined;
+            resourceInputs["externalProtectionLevelOptions"] = state ? state.externalProtectionLevelOptions : undefined;
             resourceInputs["generateTime"] = state ? state.generateTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
@@ -141,6 +147,7 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'cryptoKey'");
             }
             resourceInputs["cryptoKey"] = args ? args.cryptoKey : undefined;
+            resourceInputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["algorithm"] = undefined /*out*/;
             resourceInputs["attestations"] = undefined /*out*/;
@@ -176,6 +183,11 @@ export interface CryptoKeyVersionState {
      */
     cryptoKey?: pulumi.Input<string>;
     /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     */
+    externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions>;
+    /**
      * The time this CryptoKeyVersion key material was generated
      */
     generateTime?: pulumi.Input<string>;
@@ -206,6 +218,11 @@ export interface CryptoKeyVersionArgs {
      * - - -
      */
     cryptoKey: pulumi.Input<string>;
+    /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     */
+    externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionExternalProtectionLevelOptions>;
     /**
      * The current state of the CryptoKeyVersion.
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.

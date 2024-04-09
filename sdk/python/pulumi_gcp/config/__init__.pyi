@@ -222,6 +222,8 @@ impersonateServiceAccountDelegates: Optional[str]
 
 integrationConnectorsCustomEndpoint: Optional[str]
 
+integrationsCustomEndpoint: Optional[str]
+
 kmsCustomEndpoint: Optional[str]
 
 loggingCustomEndpoint: Optional[str]

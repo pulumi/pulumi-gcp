@@ -207,6 +207,21 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
+     * Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+     * 
+     */
+    @Import(name="jsonExtension")
+    private @Nullable Output<String> jsonExtension;
+
+    /**
+     * @return Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+     * 
+     */
+    public Optional<Output<String>> jsonExtension() {
+        return Optional.ofNullable(this.jsonExtension);
+    }
+
+    /**
      * Additional properties to set if
      * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
      * 
@@ -395,6 +410,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         this.googleSheetsOptions = $.googleSheetsOptions;
         this.hivePartitioningOptions = $.hivePartitioningOptions;
         this.ignoreUnknownValues = $.ignoreUnknownValues;
+        this.jsonExtension = $.jsonExtension;
         this.jsonOptions = $.jsonOptions;
         this.maxBadRecords = $.maxBadRecords;
         this.metadataCacheMode = $.metadataCacheMode;
@@ -657,6 +673,27 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          */
         public Builder ignoreUnknownValues(Boolean ignoreUnknownValues) {
             return ignoreUnknownValues(Output.of(ignoreUnknownValues));
+        }
+
+        /**
+         * @param jsonExtension Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonExtension(@Nullable Output<String> jsonExtension) {
+            $.jsonExtension = jsonExtension;
+            return this;
+        }
+
+        /**
+         * @param jsonExtension Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonExtension(String jsonExtension) {
+            return jsonExtension(Output.of(jsonExtension));
         }
 
         /**

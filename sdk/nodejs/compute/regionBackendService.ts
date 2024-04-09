@@ -433,6 +433,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly generatedId!: pulumi.Output<number>;
+    /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health
      * check can be specified.
@@ -567,6 +571,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
             resourceInputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["generatedId"] = state ? state.generatedId : undefined;
             resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
             resourceInputs["iap"] = state ? state.iap : undefined;
             resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
@@ -614,6 +619,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["generatedId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -694,6 +700,10 @@ export interface RegionBackendServiceState {
      * object. This field is used in optimistic locking.
      */
     fingerprint?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    generatedId?: pulumi.Input<number>;
     /**
      * The set of URLs to HealthCheck resources for health checking
      * this RegionBackendService. Currently at most one health

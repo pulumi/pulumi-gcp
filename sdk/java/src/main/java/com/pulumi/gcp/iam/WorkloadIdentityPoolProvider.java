@@ -475,6 +475,12 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      *   the total size of all mapped attributes must not exceed 8KB.
      *   For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
+     * - If any custom attribute mappings are defined, they must include a mapping to the
+     *   `google.subject` attribute.
+     *   For OIDC providers, the following rules apply:
+     * - Custom attribute mappings must be defined, and must include a mapping to the
+     *   `google.subject` attribute. For example, the following maps the `sub` claim of the
+     *   incoming credential to the `subject` attribute on a Google token.
      * 
      */
     @Export(name="attributeMapping", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -512,6 +518,12 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      *   the total size of all mapped attributes must not exceed 8KB.
      *   For AWS providers, the following rules apply:
      * - If no attribute mapping is defined, the following default mapping applies:
+     * - If any custom attribute mappings are defined, they must include a mapping to the
+     *   `google.subject` attribute.
+     *   For OIDC providers, the following rules apply:
+     * - Custom attribute mappings must be defined, and must include a mapping to the
+     *   `google.subject` attribute. For example, the following maps the `sub` claim of the
+     *   incoming credential to the `subject` attribute on a Google token.
      * 
      */
     public Output<Optional<Map<String,String>>> attributeMapping() {

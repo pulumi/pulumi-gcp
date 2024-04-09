@@ -300,7 +300,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             disable_on_destroy=False)
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
-            service_id="firebasedatabase.googleapis.com",
+            service_id="identitytoolkit.googleapis.com",
             enforcement_mode="UNENFORCED")
         ```
         <!--End PulumiCodeChooser -->
@@ -422,7 +422,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             disable_on_destroy=False)
         default = gcp.firebase.AppCheckServiceConfig("default",
             project="my-project-name",
-            service_id="firebasedatabase.googleapis.com",
+            service_id="identitytoolkit.googleapis.com",
             enforcement_mode="UNENFORCED")
         ```
         <!--End PulumiCodeChooser -->

@@ -139,28 +139,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dataflow/flexTemplateJob:FlexTemplateJob")
 public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
-     * List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
      * 
      */
     @Export(name="additionalExperiments", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> additionalExperiments;
 
     /**
-     * @return List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * @return List of experiments that should be used by the job. An example value is `[&#34;enable_stackdriver_agent_metrics&#34;]`.
      * 
      */
     public Output<List<String>> additionalExperiments() {
         return this.additionalExperiments;
     }
     /**
-     * The algorithm to use for autoscaling
+     * The algorithm to use for autoscaling.
      * 
      */
     @Export(name="autoscalingAlgorithm", refs={String.class}, tree="[0]")
     private Output<String> autoscalingAlgorithm;
 
     /**
-     * @return The algorithm to use for autoscaling
+     * @return The algorithm to use for autoscaling.
      * 
      */
     public Output<String> autoscalingAlgorithm() {
@@ -203,28 +203,28 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Indicates if the job should use the streaming engine feature.
+     * Immutable. Indicates if the job should use the streaming engine feature.
      * 
      */
     @Export(name="enableStreamingEngine", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableStreamingEngine;
 
     /**
-     * @return Indicates if the job should use the streaming engine feature.
+     * @return Immutable. Indicates if the job should use the streaming engine feature.
      * 
      */
     public Output<Optional<Boolean>> enableStreamingEngine() {
         return Codegen.optional(this.enableStreamingEngine);
     }
     /**
-     * The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * The configuration for VM IPs.  Options are `&#34;WORKER_IP_PUBLIC&#34;` or `&#34;WORKER_IP_PRIVATE&#34;`.
      * 
      */
     @Export(name="ipConfiguration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipConfiguration;
 
     /**
-     * @return The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * @return The configuration for VM IPs.  Options are `&#34;WORKER_IP_PUBLIC&#34;` or `&#34;WORKER_IP_PRIVATE&#34;`.
      * 
      */
     public Output<Optional<String>> ipConfiguration() {
@@ -245,16 +245,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.jobId;
     }
     /**
-     * The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyName;
 
     /**
-     * @return The name for the Cloud KMS key for the job. Key format is:
-     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * @return The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
      * 
      */
     public Output<String> kmsKeyName() {
@@ -315,30 +313,28 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.machineType;
     }
     /**
-     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      * 
      */
     @Export(name="maxWorkers", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxWorkers;
 
     /**
-     * @return The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
-     * 1000.
+     * @return Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
      * 
      */
     public Output<Integer> maxWorkers() {
         return this.maxWorkers;
     }
     /**
-     * A unique name for the resource, required by Dataflow.
+     * Immutable. A unique name for the resource, required by Dataflow.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A unique name for the resource, required by Dataflow.
+     * @return Immutable. A unique name for the resource, required by Dataflow.
      * 
      */
     public Output<String> name() {
@@ -359,14 +355,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
-     * The initial number of Google Compute Engine instances for the job.
+     * Immutable. The initial number of Google Compute Engine instances for the job.
      * 
      */
     @Export(name="numWorkers", refs={Integer.class}, tree="[0]")
     private Output<Integer> numWorkers;
 
     /**
-     * @return The initial number of Google Compute Engine instances for the job.
+     * @return Immutable. The initial number of Google Compute Engine instances for the job.
      * 
      */
     public Output<Integer> numWorkers() {
@@ -437,30 +433,28 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * The region in which the created job should run.
+     * Immutable. The region in which the created job should run.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region in which the created job should run.
+     * @return Immutable. The region in which the created job should run.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      * 
      */
     @Export(name="sdkContainerImage", refs={String.class}, tree="[0]")
     private Output<String> sdkContainerImage;
 
     /**
-     * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
-     * the SDK. Note this field is only valid for portable pipelines.
+     * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
      * 
      */
     public Output<String> sdkContainerImage() {
@@ -527,14 +521,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Compute Engine subnetwork for launching instances to run your pipeline.
+     * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
      * 
      */
     @Export(name="subnetwork", refs={String.class}, tree="[0]")
     private Output<String> subnetwork;
 
     /**
-     * @return Compute Engine subnetwork for launching instances to run your pipeline.
+     * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
      * 
      */
     public Output<String> subnetwork() {
@@ -555,16 +549,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.tempLocation;
     }
     /**
-     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
     @Export(name="transformNameMapping", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> transformNameMapping;
 
     /**
-     * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
-     * corresponding name prefixes of the new job.
+     * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
      * 
      */
     public Output<Optional<Map<String,Object>>> transformNameMapping() {

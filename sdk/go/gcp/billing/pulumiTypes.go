@@ -578,7 +578,7 @@ func (o BudgetAllUpdatesRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
 }
 
 type BudgetAmount struct {
-	// Configures a budget amount that is automatically set to 100%!o(MISSING)f
+	// Configures a budget amount that is automatically set to 100% of
 	// last period's spend.
 	// Boolean. Set value to true to use. Do not set to false, instead
 	// use the `specifiedAmount` block.
@@ -602,7 +602,7 @@ type BudgetAmountInput interface {
 }
 
 type BudgetAmountArgs struct {
-	// Configures a budget amount that is automatically set to 100%!o(MISSING)f
+	// Configures a budget amount that is automatically set to 100% of
 	// last period's spend.
 	// Boolean. Set value to true to use. Do not set to false, instead
 	// use the `specifiedAmount` block.
@@ -691,7 +691,7 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Conte
 	}).(BudgetAmountPtrOutput)
 }
 
-// Configures a budget amount that is automatically set to 100%!o(MISSING)f
+// Configures a budget amount that is automatically set to 100% of
 // last period's spend.
 // Boolean. Set value to true to use. Do not set to false, instead
 // use the `specifiedAmount` block.
@@ -731,7 +731,7 @@ func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
 	}).(BudgetAmountOutput)
 }
 
-// Configures a budget amount that is automatically set to 100%!o(MISSING)f
+// Configures a budget amount that is automatically set to 100% of
 // last period's spend.
 // Boolean. Set value to true to use. Do not set to false, instead
 // use the `specifiedAmount` block.
@@ -1910,7 +1910,7 @@ type BudgetThresholdRule struct {
 	// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
 	SpendBasis *string `pulumi:"spendBasis"`
 	// Send an alert when this threshold is exceeded. This is a
-	// 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
+	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
 	ThresholdPercent float64 `pulumi:"thresholdPercent"`
 }
 
@@ -1932,7 +1932,7 @@ type BudgetThresholdRuleArgs struct {
 	// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
 	SpendBasis pulumi.StringPtrInput `pulumi:"spendBasis"`
 	// Send an alert when this threshold is exceeded. This is a
-	// 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
+	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
 	ThresholdPercent pulumi.Float64Input `pulumi:"thresholdPercent"`
 }
 
@@ -1996,7 +1996,7 @@ func (o BudgetThresholdRuleOutput) SpendBasis() pulumi.StringPtrOutput {
 }
 
 // Send an alert when this threshold is exceeded. This is a
-// 1.0-based percentage, so 0.5 = 50%! (MISSING)Must be >= 0.
+// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
 func (o BudgetThresholdRuleOutput) ThresholdPercent() pulumi.Float64Output {
 	return o.ApplyT(func(v BudgetThresholdRule) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
 }

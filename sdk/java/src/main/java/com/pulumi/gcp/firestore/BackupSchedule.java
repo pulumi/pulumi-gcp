@@ -159,14 +159,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firestore/backupSchedule:BackupSchedule")
 public class BackupSchedule extends com.pulumi.resources.CustomResource {
     /**
-     * For a schedule that runs daily at a specified time.
+     * For a schedule that runs daily.
      * 
      */
     @Export(name="dailyRecurrence", refs={BackupScheduleDailyRecurrence.class}, tree="[0]")
     private Output</* @Nullable */ BackupScheduleDailyRecurrence> dailyRecurrence;
 
     /**
-     * @return For a schedule that runs daily at a specified time.
+     * @return For a schedule that runs daily.
      * 
      */
     public Output<Optional<BackupScheduleDailyRecurrence>> dailyRecurrence() {
@@ -241,7 +241,7 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
         return this.retention;
     }
     /**
-     * For a schedule that runs weekly on a specific day and time.
+     * For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      * 
      */
@@ -249,7 +249,7 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ BackupScheduleWeeklyRecurrence> weeklyRecurrence;
 
     /**
-     * @return For a schedule that runs weekly on a specific day and time.
+     * @return For a schedule that runs weekly on a specific day.
      * Structure is documented below.
      * 
      */

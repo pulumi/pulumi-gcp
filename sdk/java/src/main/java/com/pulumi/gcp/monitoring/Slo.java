@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * service. It consists of a service-level indicator (SLI), a performance
  * goal, and a period over which the objective is to be evaluated against
  * that goal. The SLO can use SLIs defined in a number of different manners.
- * Typical SLOs might include &#34;99%!o(MISSING)f requests in each rolling week have
- * latency below 200 milliseconds&#34; or &#34;99.5%!o(MISSING)f requests in each calendar
+ * Typical SLOs might include &#34;99% of requests in each rolling week have
+ * latency below 200 milliseconds&#34; or &#34;99.5% of requests in each calendar
  * month return successfully.&#34;
  * 
  * To get more information about Slo, see:

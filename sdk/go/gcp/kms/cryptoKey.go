@@ -127,6 +127,9 @@ import (
 type CryptoKey struct {
 	pulumi.CustomResourceState
 
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend pulumi.StringOutput `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
@@ -209,6 +212,9 @@ func GetCryptoKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKey resources.
 type cryptoKeyState struct {
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
@@ -254,6 +260,9 @@ type cryptoKeyState struct {
 }
 
 type CryptoKeyState struct {
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend pulumi.StringPtrInput
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
@@ -303,6 +312,9 @@ func (CryptoKeyState) ElementType() reflect.Type {
 }
 
 type cryptoKeyArgs struct {
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
@@ -340,6 +352,9 @@ type cryptoKeyArgs struct {
 
 // The set of arguments for constructing a CryptoKey resource.
 type CryptoKeyArgs struct {
+	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+	CryptoKeyBackend pulumi.StringPtrInput
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
@@ -460,6 +475,12 @@ func (o CryptoKeyOutput) ToCryptoKeyOutput() CryptoKeyOutput {
 
 func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput {
 	return o
+}
+
+// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+func (o CryptoKeyOutput) CryptoKeyBackend() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.CryptoKeyBackend }).(pulumi.StringOutput)
 }
 
 // The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.

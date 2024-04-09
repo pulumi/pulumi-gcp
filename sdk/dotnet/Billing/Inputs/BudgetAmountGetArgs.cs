@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Billing.Inputs
     public sealed class BudgetAmountGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configures a budget amount that is automatically set to 100%!o(MISSING)f
+        /// Configures a budget amount that is automatically set to 100% of
         /// last period's spend.
         /// Boolean. Set value to true to use. Do not set to false, instead
         /// use the `specified_amount` block.

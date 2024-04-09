@@ -47,7 +47,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        /// encoded SHA-256 hash of the [customer-supplied encryption key]
+        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         /// </summary>
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }

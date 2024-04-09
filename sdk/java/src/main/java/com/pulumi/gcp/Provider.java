@@ -628,6 +628,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> integrationConnectorsCustomEndpoint() {
         return Codegen.optional(this.integrationConnectorsCustomEndpoint);
     }
+    @Export(name="integrationsCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> integrationsCustomEndpoint;
+
+    public Output<Optional<String>> integrationsCustomEndpoint() {
+        return Codegen.optional(this.integrationsCustomEndpoint);
+    }
     @Export(name="kmsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsCustomEndpoint;
 

@@ -16,6 +16,7 @@ __all__ = [
     'CryptoKeyVersionAttestationArgs',
     'CryptoKeyVersionAttestationCertChainsArgs',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs',
+    'CryptoKeyVersionExternalProtectionLevelOptionsArgs',
     'CryptoKeyVersionTemplateArgs',
     'EkmConnectionServiceResolverArgs',
     'EkmConnectionServiceResolverServerCertificateArgs',
@@ -210,6 +211,9 @@ class CryptoKeyVersionAttestationArgs:
         if content is not None:
             pulumi.set(__self__, "content", content)
         if external_protection_level_options is not None:
+            warnings.warn("""`externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""", DeprecationWarning)
+            pulumi.log.warn("""external_protection_level_options is deprecated: `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""")
+        if external_protection_level_options is not None:
             pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         if format is not None:
             pulumi.set(__self__, "format", format)
@@ -247,6 +251,9 @@ class CryptoKeyVersionAttestationArgs:
         ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         Structure is documented below.
         """
+        warnings.warn("""`externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""", DeprecationWarning)
+        pulumi.log.warn("""external_protection_level_options is deprecated: `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.""")
+
         return pulumi.get(self, "external_protection_level_options")
 
     @external_protection_level_options.setter
@@ -324,6 +331,45 @@ class CryptoKeyVersionAttestationCertChainsArgs:
 
 @pulumi.input_type
 class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
+    def __init__(__self__, *,
+                 ekm_connection_key_path: Optional[pulumi.Input[str]] = None,
+                 external_key_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        :param pulumi.Input[str] external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
+        """
+        if ekm_connection_key_path is not None:
+            pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
+        if external_key_uri is not None:
+            pulumi.set(__self__, "external_key_uri", external_key_uri)
+
+    @property
+    @pulumi.getter(name="ekmConnectionKeyPath")
+    def ekm_connection_key_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        """
+        return pulumi.get(self, "ekm_connection_key_path")
+
+    @ekm_connection_key_path.setter
+    def ekm_connection_key_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_connection_key_path", value)
+
+    @property
+    @pulumi.getter(name="externalKeyUri")
+    def external_key_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI for an external resource that this CryptoKeyVersion represents.
+        """
+        return pulumi.get(self, "external_key_uri")
+
+    @external_key_uri.setter
+    def external_key_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_key_uri", value)
+
+
+@pulumi.input_type
+class CryptoKeyVersionExternalProtectionLevelOptionsArgs:
     def __init__(__self__, *,
                  ekm_connection_key_path: Optional[pulumi.Input[str]] = None,
                  external_key_uri: Optional[pulumi.Input[str]] = None):

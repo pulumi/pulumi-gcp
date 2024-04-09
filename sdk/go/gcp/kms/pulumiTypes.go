@@ -513,6 +513,8 @@ type CryptoKeyVersionAttestation struct {
 	Content *string `pulumi:"content"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
+	//
+	// Deprecated: `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
 	ExternalProtectionLevelOptions *CryptoKeyVersionAttestationExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
 	// (Output)
 	// The format of the attestation data.
@@ -539,6 +541,8 @@ type CryptoKeyVersionAttestationArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
+	//
+	// Deprecated: `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
 	ExternalProtectionLevelOptions CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput `pulumi:"externalProtectionLevelOptions"`
 	// (Output)
 	// The format of the attestation data.
@@ -610,6 +614,8 @@ func (o CryptoKeyVersionAttestationOutput) Content() pulumi.StringPtrOutput {
 
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 // Structure is documented below.
+//
+// Deprecated: `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
 func (o CryptoKeyVersionAttestationOutput) ExternalProtectionLevelOptions() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestation) *CryptoKeyVersionAttestationExternalProtectionLevelOptions {
 		return v.ExternalProtectionLevelOptions
@@ -968,6 +974,162 @@ func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) EkmC
 // The URI for an external resource that this CryptoKeyVersion represents.
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ExternalKeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionExternalProtectionLevelOptions struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+	EkmConnectionKeyPath *string `pulumi:"ekmConnectionKeyPath"`
+	// The URI for an external resource that this CryptoKeyVersion represents.
+	ExternalKeyUri *string `pulumi:"externalKeyUri"`
+}
+
+// CryptoKeyVersionExternalProtectionLevelOptionsInput is an input type that accepts CryptoKeyVersionExternalProtectionLevelOptionsArgs and CryptoKeyVersionExternalProtectionLevelOptionsOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionExternalProtectionLevelOptionsInput` via:
+//
+//	CryptoKeyVersionExternalProtectionLevelOptionsArgs{...}
+type CryptoKeyVersionExternalProtectionLevelOptionsInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionExternalProtectionLevelOptionsOutput() CryptoKeyVersionExternalProtectionLevelOptionsOutput
+	ToCryptoKeyVersionExternalProtectionLevelOptionsOutputWithContext(context.Context) CryptoKeyVersionExternalProtectionLevelOptionsOutput
+}
+
+type CryptoKeyVersionExternalProtectionLevelOptionsArgs struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+	EkmConnectionKeyPath pulumi.StringPtrInput `pulumi:"ekmConnectionKeyPath"`
+	// The URI for an external resource that this CryptoKeyVersion represents.
+	ExternalKeyUri pulumi.StringPtrInput `pulumi:"externalKeyUri"`
+}
+
+func (CryptoKeyVersionExternalProtectionLevelOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (i CryptoKeyVersionExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionExternalProtectionLevelOptionsOutput() CryptoKeyVersionExternalProtectionLevelOptionsOutput {
+	return i.ToCryptoKeyVersionExternalProtectionLevelOptionsOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionExternalProtectionLevelOptionsOutputWithContext(ctx context.Context) CryptoKeyVersionExternalProtectionLevelOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionExternalProtectionLevelOptionsOutput)
+}
+
+func (i CryptoKeyVersionExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return i.ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionExternalProtectionLevelOptionsOutput).ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(ctx)
+}
+
+// CryptoKeyVersionExternalProtectionLevelOptionsPtrInput is an input type that accepts CryptoKeyVersionExternalProtectionLevelOptionsArgs, CryptoKeyVersionExternalProtectionLevelOptionsPtr and CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionExternalProtectionLevelOptionsPtrInput` via:
+//
+//	        CryptoKeyVersionExternalProtectionLevelOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CryptoKeyVersionExternalProtectionLevelOptionsPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput
+	ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(context.Context) CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput
+}
+
+type cryptoKeyVersionExternalProtectionLevelOptionsPtrType CryptoKeyVersionExternalProtectionLevelOptionsArgs
+
+func CryptoKeyVersionExternalProtectionLevelOptionsPtr(v *CryptoKeyVersionExternalProtectionLevelOptionsArgs) CryptoKeyVersionExternalProtectionLevelOptionsPtrInput {
+	return (*cryptoKeyVersionExternalProtectionLevelOptionsPtrType)(v)
+}
+
+func (*cryptoKeyVersionExternalProtectionLevelOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersionExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (i *cryptoKeyVersionExternalProtectionLevelOptionsPtrType) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return i.ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyVersionExternalProtectionLevelOptionsPtrType) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput)
+}
+
+type CryptoKeyVersionExternalProtectionLevelOptionsOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionExternalProtectionLevelOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionExternalProtectionLevelOptionsOutput() CryptoKeyVersionExternalProtectionLevelOptionsOutput {
+	return o
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionExternalProtectionLevelOptionsOutputWithContext(ctx context.Context) CryptoKeyVersionExternalProtectionLevelOptionsOutput {
+	return o
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return o.ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionExternalProtectionLevelOptions) *CryptoKeyVersionExternalProtectionLevelOptions {
+		return &v
+	}).(CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput)
+}
+
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+func (o CryptoKeyVersionExternalProtectionLevelOptionsOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionExternalProtectionLevelOptions) *string { return v.EkmConnectionKeyPath }).(pulumi.StringPtrOutput)
+}
+
+// The URI for an external resource that this CryptoKeyVersion represents.
+func (o CryptoKeyVersionExternalProtectionLevelOptionsOutput) ExternalKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionExternalProtectionLevelOptions) *string { return v.ExternalKeyUri }).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersionExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput) ToCryptoKeyVersionExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput) Elem() CryptoKeyVersionExternalProtectionLevelOptionsOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionExternalProtectionLevelOptions) CryptoKeyVersionExternalProtectionLevelOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionExternalProtectionLevelOptions
+		return ret
+	}).(CryptoKeyVersionExternalProtectionLevelOptionsOutput)
+}
+
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+func (o CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionExternalProtectionLevelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EkmConnectionKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI for an external resource that this CryptoKeyVersion represents.
+func (o CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput) ExternalKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionExternalProtectionLevelOptions) *string {
 		if v == nil {
 			return nil
 		}
@@ -2406,6 +2568,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationCertChainsPtrInput)(nil)).Elem(), CryptoKeyVersionAttestationCertChainsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput)(nil)).Elem(), CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionExternalProtectionLevelOptionsInput)(nil)).Elem(), CryptoKeyVersionExternalProtectionLevelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), CryptoKeyVersionExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverInput)(nil)).Elem(), EkmConnectionServiceResolverArgs{})
@@ -2438,6 +2602,8 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationCertChainsPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionExternalProtectionLevelOptionsOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverOutput{})

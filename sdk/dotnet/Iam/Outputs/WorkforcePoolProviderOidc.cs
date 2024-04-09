@@ -33,6 +33,23 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         /// keys are supported. The JWK must use following format and include only
         /// the following fields:
+        /// ```
+        /// {
+        /// "keys": [
+        /// {
+        /// "kty": "RSA/EC",
+        /// "alg": "&lt;algorithm&gt;",
+        /// "use": "sig",
+        /// "kid": "&lt;key-id&gt;",
+        /// "n": "",
+        /// "e": "",
+        /// "x": "",
+        /// "y": "",
+        /// "crv": ""
+        /// }
+        /// ]
+        /// }
+        /// ```
         /// </summary>
         public readonly string? JwksJson;
         /// <summary>

@@ -180,6 +180,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CloudRouterIpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// IPv6 address + prefix length to be configured on Cloud Router
+        /// Interface for this interconnect attachment.
+        /// </summary>
+        [Output("cloudRouterIpv6Address")]
+        public Output<string> CloudRouterIpv6Address { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -191,6 +198,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("customerRouterIpAddress")]
         public Output<string> CustomerRouterIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 address + prefix length to be configured on the customer
+        /// router subinterface for this interconnect attachment.
+        /// </summary>
+        [Output("customerRouterIpv6Address")]
+        public Output<string> CustomerRouterIpv6Address { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -637,6 +651,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CloudRouterIpAddress { get; set; }
 
         /// <summary>
+        /// IPv6 address + prefix length to be configured on Cloud Router
+        /// Interface for this interconnect attachment.
+        /// </summary>
+        [Input("cloudRouterIpv6Address")]
+        public Input<string>? CloudRouterIpv6Address { get; set; }
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Input("creationTimestamp")]
@@ -648,6 +669,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("customerRouterIpAddress")]
         public Input<string>? CustomerRouterIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address + prefix length to be configured on the customer
+        /// router subinterface for this interconnect attachment.
+        /// </summary>
+        [Input("customerRouterIpv6Address")]
+        public Input<string>? CustomerRouterIpv6Address { get; set; }
 
         /// <summary>
         /// An optional description of this resource.

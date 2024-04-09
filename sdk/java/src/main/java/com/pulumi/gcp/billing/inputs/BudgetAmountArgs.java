@@ -17,7 +17,7 @@ public final class BudgetAmountArgs extends com.pulumi.resources.ResourceArgs {
     public static final BudgetAmountArgs Empty = new BudgetAmountArgs();
 
     /**
-     * Configures a budget amount that is automatically set to 100%!o(MISSING)f
+     * Configures a budget amount that is automatically set to 100% of
      * last period&#39;s spend.
      * Boolean. Set value to true to use. Do not set to false, instead
      * use the `specified_amount` block.
@@ -27,7 +27,7 @@ public final class BudgetAmountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> lastPeriodAmount;
 
     /**
-     * @return Configures a budget amount that is automatically set to 100%!o(MISSING)f
+     * @return Configures a budget amount that is automatically set to 100% of
      * last period&#39;s spend.
      * Boolean. Set value to true to use. Do not set to false, instead
      * use the `specified_amount` block.
@@ -84,7 +84,7 @@ public final class BudgetAmountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastPeriodAmount Configures a budget amount that is automatically set to 100%!o(MISSING)f
+         * @param lastPeriodAmount Configures a budget amount that is automatically set to 100% of
          * last period&#39;s spend.
          * Boolean. Set value to true to use. Do not set to false, instead
          * use the `specified_amount` block.
@@ -98,7 +98,7 @@ public final class BudgetAmountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastPeriodAmount Configures a budget amount that is automatically set to 100%!o(MISSING)f
+         * @param lastPeriodAmount Configures a budget amount that is automatically set to 100% of
          * last period&#39;s spend.
          * Boolean. Set value to true to use. Do not set to false, instead
          * use the `specified_amount` block.

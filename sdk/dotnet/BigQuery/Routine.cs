@@ -309,6 +309,44 @@ namespace Pulumi.Gcp.BigQuery
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Bigquery Routine Data Governance Type
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "tf_test_dataset_id_77884",
+    ///     });
+    /// 
+    ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "custom_masking_routine",
+    ///         RoutineType = "SCALAR_FUNCTION",
+    ///         Language = "SQL",
+    ///         DataGovernanceType = "DATA_MASKING",
+    ///         DefinitionBody = "SAFE.REGEXP_REPLACE(ssn, '[0-9]', 'X')",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "ssn",
+    ///                 DataType = "{\"typeKind\" :  \"STRING\"}",
+    ///             },
+    ///         },
+    ///         ReturnType = "{\"typeKind\" :  \"STRING\"}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Bigquery Routine Remote Function
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -395,6 +433,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        /// Possible values are: `DATA_MASKING`.
+        /// </summary>
+        [Output("dataGovernanceType")]
+        public Output<string?> DataGovernanceType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the dataset containing this routine
@@ -563,6 +608,13 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
+        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        /// Possible values are: `DATA_MASKING`.
+        /// </summary>
+        [Input("dataGovernanceType")]
+        public Input<string>? DataGovernanceType { get; set; }
+
+        /// <summary>
         /// The ID of the dataset containing this routine
         /// </summary>
         [Input("datasetId", required: true)]
@@ -695,6 +747,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
+
+        /// <summary>
+        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        /// Possible values are: `DATA_MASKING`.
+        /// </summary>
+        [Input("dataGovernanceType")]
+        public Input<string>? DataGovernanceType { get; set; }
 
         /// <summary>
         /// The ID of the dataset containing this routine

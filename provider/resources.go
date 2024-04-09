@@ -48,6 +48,7 @@ const (
 	gcpApiGateway               = "ApiGateway"               // ApiGateway resources
 	gcpApigee                   = "Apigee"                   // Apigee resources
 	gcpAppEngine                = "AppEngine"                // AppEngine resources
+	gcpApplicationIntegration   = "ApplicationIntegration"   // Application Integration
 	gcpArtifactRegistry         = "ArtifactRegistry"         // ArtifactRegistry resources
 	gcpAssuredWorkloads         = "AssuredWorkloads"         // AssuredWorkloads resources
 	gcpBackupDR                 = "BackupDisasterRecovery"   // Backup and Disaster Recovery resources
@@ -172,6 +173,7 @@ var moduleMapping = map[string]string{
 	"beyondcorp":                      gcpBeyondcorp,
 	"biglake":                         gcpBigLake,
 	"bigquery":                        gcpBigQuery,
+	"integrations":                    gcpApplicationIntegration,
 	"bigquery_analytics_hub":          gcpBigQueryAnalyticsHub,
 	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,
 	"bigtable":                        gcpBigTable,
@@ -3898,7 +3900,10 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/express":    "^4.16.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
+				"@types/node": "^18.0.0", // so we can access strongly typed node definitions.
+			},
+			Resolutions: map[string]string{
+				"@types/mime": "3.0.4",
 			},
 			Overlay: &tfbridge.OverlayInfo{
 				DestFiles: []string{

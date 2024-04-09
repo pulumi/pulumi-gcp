@@ -55,7 +55,11 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
+     * 
      */
+    @Deprecated /* `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead. */
     @Import(name="externalProtectionLevelOptions")
     private @Nullable Output<CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs> externalProtectionLevelOptions;
 
@@ -63,7 +67,11 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
      * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
+     * 
      */
+    @Deprecated /* `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead. */
     public Optional<Output<CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs>> externalProtectionLevelOptions() {
         return Optional.ofNullable(this.externalProtectionLevelOptions);
     }
@@ -164,7 +172,11 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
+         * 
          */
+        @Deprecated /* `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead. */
         public Builder externalProtectionLevelOptions(@Nullable Output<CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs> externalProtectionLevelOptions) {
             $.externalProtectionLevelOptions = externalProtectionLevelOptions;
             return this;
@@ -176,7 +188,11 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead.
+         * 
          */
+        @Deprecated /* `externalProtectionLevelOptions` is being un-nested from the `attestation` field. Please use the top level `externalProtectionLevelOptions` field instead. */
         public Builder externalProtectionLevelOptions(CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs externalProtectionLevelOptions) {
             return externalProtectionLevelOptions(Output.of(externalProtectionLevelOptions));
         }

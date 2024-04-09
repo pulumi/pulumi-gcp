@@ -329,6 +329,9 @@ func GetImpersonateServiceAccountDelegates(ctx *pulumi.Context) string {
 func GetIntegrationConnectorsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:integrationConnectorsCustomEndpoint")
 }
+func GetIntegrationsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:integrationsCustomEndpoint")
+}
 func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:kmsCustomEndpoint")
 }

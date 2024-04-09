@@ -15,6 +15,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKMSCryptoKeyResult {
+    private String cryptoKeyBackend;
     private String destroyScheduledDuration;
     private Map<String,String> effectiveLabels;
     /**
@@ -44,6 +45,9 @@ public final class GetKMSCryptoKeyResult {
     private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
 
     private GetKMSCryptoKeyResult() {}
+    public String cryptoKeyBackend() {
+        return this.cryptoKeyBackend;
+    }
     public String destroyScheduledDuration() {
         return this.destroyScheduledDuration;
     }
@@ -107,6 +111,7 @@ public final class GetKMSCryptoKeyResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String cryptoKeyBackend;
         private String destroyScheduledDuration;
         private Map<String,String> effectiveLabels;
         private String id;
@@ -123,6 +128,7 @@ public final class GetKMSCryptoKeyResult {
         public Builder() {}
         public Builder(GetKMSCryptoKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cryptoKeyBackend = defaults.cryptoKeyBackend;
     	      this.destroyScheduledDuration = defaults.destroyScheduledDuration;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
@@ -138,6 +144,14 @@ public final class GetKMSCryptoKeyResult {
     	      this.versionTemplates = defaults.versionTemplates;
         }
 
+        @CustomType.Setter
+        public Builder cryptoKeyBackend(String cryptoKeyBackend) {
+            if (cryptoKeyBackend == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "cryptoKeyBackend");
+            }
+            this.cryptoKeyBackend = cryptoKeyBackend;
+            return this;
+        }
         @CustomType.Setter
         public Builder destroyScheduledDuration(String destroyScheduledDuration) {
             if (destroyScheduledDuration == null) {
@@ -250,6 +264,7 @@ public final class GetKMSCryptoKeyResult {
         }
         public GetKMSCryptoKeyResult build() {
             final var _resultValue = new GetKMSCryptoKeyResult();
+            _resultValue.cryptoKeyBackend = cryptoKeyBackend;
             _resultValue.destroyScheduledDuration = destroyScheduledDuration;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;

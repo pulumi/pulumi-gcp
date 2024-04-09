@@ -762,6 +762,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.integrationConnectorsCustomEndpoint);
     }
 
+    @Import(name="integrationsCustomEndpoint")
+    private @Nullable Output<String> integrationsCustomEndpoint;
+
+    public Optional<Output<String>> integrationsCustomEndpoint() {
+        return Optional.ofNullable(this.integrationsCustomEndpoint);
+    }
+
     @Import(name="kmsCustomEndpoint")
     private @Nullable Output<String> kmsCustomEndpoint;
 
@@ -1291,6 +1298,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.impersonateServiceAccount = $.impersonateServiceAccount;
         this.impersonateServiceAccountDelegates = $.impersonateServiceAccountDelegates;
         this.integrationConnectorsCustomEndpoint = $.integrationConnectorsCustomEndpoint;
+        this.integrationsCustomEndpoint = $.integrationsCustomEndpoint;
         this.kmsCustomEndpoint = $.kmsCustomEndpoint;
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
@@ -2327,6 +2335,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder integrationConnectorsCustomEndpoint(String integrationConnectorsCustomEndpoint) {
             return integrationConnectorsCustomEndpoint(Output.of(integrationConnectorsCustomEndpoint));
+        }
+
+        public Builder integrationsCustomEndpoint(@Nullable Output<String> integrationsCustomEndpoint) {
+            $.integrationsCustomEndpoint = integrationsCustomEndpoint;
+            return this;
+        }
+
+        public Builder integrationsCustomEndpoint(String integrationsCustomEndpoint) {
+            return integrationsCustomEndpoint(Output.of(integrationsCustomEndpoint));
         }
 
         public Builder kmsCustomEndpoint(@Nullable Output<String> kmsCustomEndpoint) {

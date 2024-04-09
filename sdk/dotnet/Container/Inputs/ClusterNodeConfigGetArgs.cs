@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodeConfigEffectiveTaintGetArgs>? _effectiveTaints;
 
         /// <summary>
-        /// List of kubernetes taints applied to each node.
+        /// List of kubernetes taints applied to each node. Structure is documented above.
         /// </summary>
         public InputList<Inputs.ClusterNodeConfigEffectiveTaintGetArgs> EffectiveTaints
         {
@@ -134,6 +134,15 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Structure is documented below.
+        /// 
+        /// ```
+        /// kubelet_config {
+        /// cpu_manager_policy   = "static"
+        /// cpu_cfs_quota        = true
+        /// cpu_cfs_quota_period = "100us"
+        /// pod_pids_limit       = 1024
+        /// }
+        /// ```
         /// </summary>
         [Input("kubeletConfig")]
         public Input<Inputs.ClusterNodeConfigKubeletConfigGetArgs>? KubeletConfig { get; set; }
