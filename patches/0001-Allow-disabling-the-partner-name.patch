@@ -1,12 +1,12 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:09:59 +0000
-Subject: [PATCH 02/11] Allow disabling the partner name
+Subject: [PATCH 01/10] Allow disabling the partner name
 
 Add options to set or disable partner name.
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index 198d93cfa..2b94f0093 100644
+index 78672828a..5c45a2e63 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
 @@ -123,6 +123,19 @@ func Provider() *schema.Provider {
@@ -29,7 +29,7 @@ index 198d93cfa..2b94f0093 100644
  			"request_reason": {
  				Type:     schema.TypeString,
  				Optional: true,
-@@ -850,6 +863,21 @@ func ProviderConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -865,6 +878,21 @@ func ProviderConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		UserAgent:           p.UserAgent("terraform-provider-google-beta", version.ProviderVersion),
  	}
  
