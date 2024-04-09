@@ -116,12 +116,13 @@ func TestTopicIamBinding(t *testing.T) {
 }
 
 func TestConnectionProfileUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges))
+	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
+		WithAdditionalProvider("random", "4.16.0"))
 }
 
 func TestConnectionProfileUpgradev7(t *testing.T) {
 	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
-		WithBaselineVersion("7.17.0"))
+		WithBaselineVersion("7.17.0"), WithAdditionalProvider("random", "4.16.0"))
 }
 
 // Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
