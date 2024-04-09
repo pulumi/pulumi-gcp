@@ -15904,6 +15904,10 @@ export namespace cloudrunv2 {
          */
         name: string;
         /**
+         * NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         */
+        nfs: outputs.cloudrunv2.GetJobTemplateTemplateVolumeNf[];
+        /**
          * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
          */
         secrets: outputs.cloudrunv2.GetJobTemplateTemplateVolumeSecret[];
@@ -15936,6 +15940,21 @@ export namespace cloudrunv2 {
          * If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
          */
         readOnly: boolean;
+    }
+
+    export interface GetJobTemplateTemplateVolumeNf {
+        /**
+         * Path that is exported by the NFS server.
+         */
+        path: string;
+        /**
+         * If true, mount this volume as read-only in all mounts.
+         */
+        readOnly: boolean;
+        /**
+         * Hostname or IP address of the NFS server.
+         */
+        server: string;
     }
 
     export interface GetJobTemplateTemplateVolumeSecret {
@@ -16954,6 +16973,11 @@ export namespace cloudrunv2 {
          */
         name: string;
         /**
+         * NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Structure is documented below.
+         */
+        nfs?: outputs.cloudrunv2.JobTemplateTemplateVolumeNfs;
+        /**
          * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
          * Structure is documented below.
          */
@@ -16989,6 +17013,21 @@ export namespace cloudrunv2 {
          * If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
          */
         readOnly?: boolean;
+    }
+
+    export interface JobTemplateTemplateVolumeNfs {
+        /**
+         * Path that is exported by the NFS server.
+         */
+        path?: string;
+        /**
+         * If true, mount this volume as read-only in all mounts.
+         */
+        readOnly?: boolean;
+        /**
+         * Hostname or IP address of the NFS server.
+         */
+        server: string;
     }
 
     export interface JobTemplateTemplateVolumeSecret {
@@ -36493,6 +36532,10 @@ export namespace container {
          * The network tag config for the cluster's automatically provisioned node pools.
          */
         networkTags?: outputs.container.ClusterNodePoolAutoConfigNetworkTags;
+        /**
+         * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+         */
+        resourceManagerTags?: {[key: string]: any};
     }
 
     export interface ClusterNodePoolAutoConfigNetworkTags {
@@ -38438,6 +38481,10 @@ export namespace container {
          * Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
          */
         networkTags: outputs.container.GetClusterNodePoolAutoConfigNetworkTag[];
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
+        resourceManagerTags: {[key: string]: any};
     }
 
     export interface GetClusterNodePoolAutoConfigNetworkTag {

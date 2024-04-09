@@ -9,6 +9,7 @@ import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConnectionArgs;
 import com.pulumi.gcp.redis.inputs.ClusterStateInfoArgs;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -95,6 +96,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * 
+     */
+    @Import(name="nodeType")
+    private @Nullable Output<String> nodeType;
+
+    /**
+     * @return The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * 
+     */
+    public Optional<Output<String>> nodeType() {
+        return Optional.ofNullable(this.nodeType);
+    }
+
+    /**
+     * Output only. Redis memory precise size in GB for the entire cluster.
+     * 
+     */
+    @Import(name="preciseSizeGb")
+    private @Nullable Output<Double> preciseSizeGb;
+
+    /**
+     * @return Output only. Redis memory precise size in GB for the entire cluster.
+     * 
+     */
+    public Optional<Output<Double>> preciseSizeGb() {
+        return Optional.ofNullable(this.preciseSizeGb);
     }
 
     /**
@@ -287,6 +322,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.discoveryEndpoints = $.discoveryEndpoints;
         this.name = $.name;
+        this.nodeType = $.nodeType;
+        this.preciseSizeGb = $.preciseSizeGb;
         this.project = $.project;
         this.pscConfigs = $.pscConfigs;
         this.pscConnections = $.pscConnections;
@@ -429,6 +466,52 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeType The nodeType for the Redis cluster.
+         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeType(@Nullable Output<String> nodeType) {
+            $.nodeType = nodeType;
+            return this;
+        }
+
+        /**
+         * @param nodeType The nodeType for the Redis cluster.
+         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeType(String nodeType) {
+            return nodeType(Output.of(nodeType));
+        }
+
+        /**
+         * @param preciseSizeGb Output only. Redis memory precise size in GB for the entire cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preciseSizeGb(@Nullable Output<Double> preciseSizeGb) {
+            $.preciseSizeGb = preciseSizeGb;
+            return this;
+        }
+
+        /**
+         * @param preciseSizeGb Output only. Redis memory precise size in GB for the entire cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preciseSizeGb(Double preciseSizeGb) {
+            return preciseSizeGb(Output.of(preciseSizeGb));
         }
 
         /**

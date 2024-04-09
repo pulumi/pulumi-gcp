@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Looker
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
     ///         Name = "my-instance",
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
     ///         Region = "us-central1",
     ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
     ///         {
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Looker
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
     ///         Name = "my-instance",
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
     ///         Region = "us-central1",
     ///         PublicIpEnabled = true,
     ///         AdminSettings = new Gcp.Looker.Inputs.InstanceAdminSettingsArgs
@@ -70,12 +70,6 @@ namespace Pulumi.Gcp.Looker
     ///             {
     ///                 "google.com",
     ///             },
-    ///         },
-    ///         UserMetadata = new Gcp.Looker.Inputs.InstanceUserMetadataArgs
-    ///         {
-    ///             AdditionalDeveloperUserCount = 10,
-    ///             AdditionalStandardUserCount = 10,
-    ///             AdditionalViewerUserCount = 10,
     ///         },
     ///         MaintenanceWindow = new Gcp.Looker.Inputs.InstanceMaintenanceWindowArgs
     ///         {
@@ -241,7 +235,7 @@ namespace Pulumi.Gcp.Looker
     ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
     ///     {
     ///         Name = "my-instance",
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
     ///         Region = "us-central1",
     ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
     ///         {
@@ -394,8 +388,8 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-        /// - LOOKER_CORE_TRIAL: trial instance
-        /// - LOOKER_CORE_STANDARD: pay as you go standard instance
+        /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -569,8 +563,8 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-        /// - LOOKER_CORE_TRIAL: trial instance
-        /// - LOOKER_CORE_STANDARD: pay as you go standard instance
+        /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -736,8 +730,8 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-        /// - LOOKER_CORE_TRIAL: trial instance
-        /// - LOOKER_CORE_STANDARD: pay as you go standard instance
+        /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance

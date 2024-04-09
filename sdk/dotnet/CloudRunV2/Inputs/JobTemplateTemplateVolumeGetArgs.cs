@@ -40,6 +40,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nfs")]
+        public Input<Inputs.JobTemplateTemplateVolumeNfsGetArgs>? Nfs { get; set; }
+
+        /// <summary>
         /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         /// Structure is documented below.
         /// </summary>

@@ -58,7 +58,7 @@ import (
 //			_, err = firestore.NewBackupSchedule(ctx, "daily-backup", &firestore.BackupScheduleArgs{
 //				Project:         pulumi.String("my-project-name"),
 //				Database:        database.Name,
-//				Retention:       pulumi.String("604800s"),
+//				Retention:       pulumi.String("8467200s"),
 //				DailyRecurrence: nil,
 //			})
 //			if err != nil {
@@ -152,7 +152,7 @@ type BackupSchedule struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-	// For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+	// You can set this to a value up to 14 weeks.
 	//
 	// ***
 	Retention pulumi.StringOutput `pulumi:"retention"`
@@ -206,7 +206,7 @@ type backupScheduleState struct {
 	Project *string `pulumi:"project"`
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-	// For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+	// You can set this to a value up to 14 weeks.
 	//
 	// ***
 	Retention *string `pulumi:"retention"`
@@ -228,7 +228,7 @@ type BackupScheduleState struct {
 	Project pulumi.StringPtrInput
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-	// For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+	// You can set this to a value up to 14 weeks.
 	//
 	// ***
 	Retention pulumi.StringPtrInput
@@ -251,7 +251,7 @@ type backupScheduleArgs struct {
 	Project *string `pulumi:"project"`
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-	// For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+	// You can set this to a value up to 14 weeks.
 	//
 	// ***
 	Retention string `pulumi:"retention"`
@@ -271,7 +271,7 @@ type BackupScheduleArgs struct {
 	Project pulumi.StringPtrInput
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-	// For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+	// You can set this to a value up to 14 weeks.
 	//
 	// ***
 	Retention pulumi.StringInput
@@ -391,7 +391,7 @@ func (o BackupScheduleOutput) Project() pulumi.StringOutput {
 
 // At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 // A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-// For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+// You can set this to a value up to 14 weeks.
 //
 // ***
 func (o BackupScheduleOutput) Retention() pulumi.StringOutput {

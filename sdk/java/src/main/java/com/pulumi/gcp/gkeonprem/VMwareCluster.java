@@ -200,6 +200,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .vmTrackingEnabled(true)
  *             .enableControlPlaneV2(true)
+ *             .disableBundledIngress(true)
  *             .authorization(VMwareClusterAuthorizationArgs.builder()
  *                 .adminUsers(VMwareClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;testuser@gmail.com&#34;)
@@ -558,6 +559,20 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Disable bundled ingress.
+     * 
+     */
+    @Export(name="disableBundledIngress", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableBundledIngress;
+
+    /**
+     * @return Disable bundled ingress.
+     * 
+     */
+    public Output<Optional<Boolean>> disableBundledIngress() {
+        return Codegen.optional(this.disableBundledIngress);
     }
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through

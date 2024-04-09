@@ -2308,6 +2308,9 @@ type JobTemplateTemplateVolume struct {
 	Gcs *JobTemplateTemplateVolumeGcs `pulumi:"gcs"`
 	// Volume's name.
 	Name string `pulumi:"name"`
+	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Structure is documented below.
+	Nfs *JobTemplateTemplateVolumeNfs `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	// Structure is documented below.
 	Secret *JobTemplateTemplateVolumeSecret `pulumi:"secret"`
@@ -2336,6 +2339,9 @@ type JobTemplateTemplateVolumeArgs struct {
 	Gcs JobTemplateTemplateVolumeGcsPtrInput `pulumi:"gcs"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
+	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Structure is documented below.
+	Nfs JobTemplateTemplateVolumeNfsPtrInput `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	// Structure is documented below.
 	Secret JobTemplateTemplateVolumeSecretPtrInput `pulumi:"secret"`
@@ -2415,6 +2421,12 @@ func (o JobTemplateTemplateVolumeOutput) Gcs() JobTemplateTemplateVolumeGcsPtrOu
 // Volume's name.
 func (o JobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+// Structure is documented below.
+func (o JobTemplateTemplateVolumeOutput) Nfs() JobTemplateTemplateVolumeNfsPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeNfs { return v.Nfs }).(JobTemplateTemplateVolumeNfsPtrOutput)
 }
 
 // Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2898,6 +2910,181 @@ func (o JobTemplateTemplateVolumeGcsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 		}
 		return v.ReadOnly
 	}).(pulumi.BoolPtrOutput)
+}
+
+type JobTemplateTemplateVolumeNfs struct {
+	// Path that is exported by the NFS server.
+	Path *string `pulumi:"path"`
+	// If true, mount this volume as read-only in all mounts.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server string `pulumi:"server"`
+}
+
+// JobTemplateTemplateVolumeNfsInput is an input type that accepts JobTemplateTemplateVolumeNfsArgs and JobTemplateTemplateVolumeNfsOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVolumeNfsInput` via:
+//
+//	JobTemplateTemplateVolumeNfsArgs{...}
+type JobTemplateTemplateVolumeNfsInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVolumeNfsOutput() JobTemplateTemplateVolumeNfsOutput
+	ToJobTemplateTemplateVolumeNfsOutputWithContext(context.Context) JobTemplateTemplateVolumeNfsOutput
+}
+
+type JobTemplateTemplateVolumeNfsArgs struct {
+	// Path that is exported by the NFS server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// If true, mount this volume as read-only in all mounts.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (JobTemplateTemplateVolumeNfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateVolumeNfsArgs) ToJobTemplateTemplateVolumeNfsOutput() JobTemplateTemplateVolumeNfsOutput {
+	return i.ToJobTemplateTemplateVolumeNfsOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVolumeNfsArgs) ToJobTemplateTemplateVolumeNfsOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeNfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeNfsOutput)
+}
+
+func (i JobTemplateTemplateVolumeNfsArgs) ToJobTemplateTemplateVolumeNfsPtrOutput() JobTemplateTemplateVolumeNfsPtrOutput {
+	return i.ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVolumeNfsArgs) ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeNfsOutput).ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateVolumeNfsPtrInput is an input type that accepts JobTemplateTemplateVolumeNfsArgs, JobTemplateTemplateVolumeNfsPtr and JobTemplateTemplateVolumeNfsPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVolumeNfsPtrInput` via:
+//
+//	        JobTemplateTemplateVolumeNfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateVolumeNfsPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVolumeNfsPtrOutput() JobTemplateTemplateVolumeNfsPtrOutput
+	ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(context.Context) JobTemplateTemplateVolumeNfsPtrOutput
+}
+
+type jobTemplateTemplateVolumeNfsPtrType JobTemplateTemplateVolumeNfsArgs
+
+func JobTemplateTemplateVolumeNfsPtr(v *JobTemplateTemplateVolumeNfsArgs) JobTemplateTemplateVolumeNfsPtrInput {
+	return (*jobTemplateTemplateVolumeNfsPtrType)(v)
+}
+
+func (*jobTemplateTemplateVolumeNfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateVolumeNfsPtrType) ToJobTemplateTemplateVolumeNfsPtrOutput() JobTemplateTemplateVolumeNfsPtrOutput {
+	return i.ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateVolumeNfsPtrType) ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeNfsPtrOutput)
+}
+
+type JobTemplateTemplateVolumeNfsOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVolumeNfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVolumeNfsOutput) ToJobTemplateTemplateVolumeNfsOutput() JobTemplateTemplateVolumeNfsOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeNfsOutput) ToJobTemplateTemplateVolumeNfsOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeNfsOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeNfsOutput) ToJobTemplateTemplateVolumeNfsPtrOutput() JobTemplateTemplateVolumeNfsPtrOutput {
+	return o.ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateVolumeNfsOutput) ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeNfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeNfs) *JobTemplateTemplateVolumeNfs {
+		return &v
+	}).(JobTemplateTemplateVolumeNfsPtrOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o JobTemplateTemplateVolumeNfsOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeNfs) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// If true, mount this volume as read-only in all mounts.
+func (o JobTemplateTemplateVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server.
+func (o JobTemplateTemplateVolumeNfsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeNfs) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type JobTemplateTemplateVolumeNfsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVolumeNfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVolumeNfsPtrOutput) ToJobTemplateTemplateVolumeNfsPtrOutput() JobTemplateTemplateVolumeNfsPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeNfsPtrOutput) ToJobTemplateTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeNfsPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeNfsPtrOutput) Elem() JobTemplateTemplateVolumeNfsOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeNfs) JobTemplateTemplateVolumeNfs {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateVolumeNfs
+		return ret
+	}).(JobTemplateTemplateVolumeNfsOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o JobTemplateTemplateVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount this volume as read-only in all mounts.
+func (o JobTemplateTemplateVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeNfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server.
+func (o JobTemplateTemplateVolumeNfsPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTemplateTemplateVolumeSecret struct {
@@ -11236,6 +11423,8 @@ type GetJobTemplateTemplateVolume struct {
 	Gcs []GetJobTemplateTemplateVolumeGc `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
+	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	Nfs []GetJobTemplateTemplateVolumeNf `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets []GetJobTemplateTemplateVolumeSecret `pulumi:"secrets"`
 }
@@ -11260,6 +11449,8 @@ type GetJobTemplateTemplateVolumeArgs struct {
 	Gcs GetJobTemplateTemplateVolumeGcArrayInput `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
+	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	Nfs GetJobTemplateTemplateVolumeNfArrayInput `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets GetJobTemplateTemplateVolumeSecretArrayInput `pulumi:"secrets"`
 }
@@ -11335,6 +11526,11 @@ func (o GetJobTemplateTemplateVolumeOutput) Gcs() GetJobTemplateTemplateVolumeGc
 // The name of the Cloud Run v2 Job.
 func (o GetJobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+func (o GetJobTemplateTemplateVolumeOutput) Nfs() GetJobTemplateTemplateVolumeNfArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeNf { return v.Nfs }).(GetJobTemplateTemplateVolumeNfArrayOutput)
 }
 
 // Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -11669,6 +11865,121 @@ func (o GetJobTemplateTemplateVolumeGcArrayOutput) Index(i pulumi.IntInput) GetJ
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeGc {
 		return vs[0].([]GetJobTemplateTemplateVolumeGc)[vs[1].(int)]
 	}).(GetJobTemplateTemplateVolumeGcOutput)
+}
+
+type GetJobTemplateTemplateVolumeNf struct {
+	// Path that is exported by the NFS server.
+	Path string `pulumi:"path"`
+	// If true, mount this volume as read-only in all mounts.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server string `pulumi:"server"`
+}
+
+// GetJobTemplateTemplateVolumeNfInput is an input type that accepts GetJobTemplateTemplateVolumeNfArgs and GetJobTemplateTemplateVolumeNfOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeNfInput` via:
+//
+//	GetJobTemplateTemplateVolumeNfArgs{...}
+type GetJobTemplateTemplateVolumeNfInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeNfOutput() GetJobTemplateTemplateVolumeNfOutput
+	ToGetJobTemplateTemplateVolumeNfOutputWithContext(context.Context) GetJobTemplateTemplateVolumeNfOutput
+}
+
+type GetJobTemplateTemplateVolumeNfArgs struct {
+	// Path that is exported by the NFS server.
+	Path pulumi.StringInput `pulumi:"path"`
+	// If true, mount this volume as read-only in all mounts.
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (GetJobTemplateTemplateVolumeNfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeNf)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeNfArgs) ToGetJobTemplateTemplateVolumeNfOutput() GetJobTemplateTemplateVolumeNfOutput {
+	return i.ToGetJobTemplateTemplateVolumeNfOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeNfArgs) ToGetJobTemplateTemplateVolumeNfOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeNfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeNfOutput)
+}
+
+// GetJobTemplateTemplateVolumeNfArrayInput is an input type that accepts GetJobTemplateTemplateVolumeNfArray and GetJobTemplateTemplateVolumeNfArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateVolumeNfArrayInput` via:
+//
+//	GetJobTemplateTemplateVolumeNfArray{ GetJobTemplateTemplateVolumeNfArgs{...} }
+type GetJobTemplateTemplateVolumeNfArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateVolumeNfArrayOutput() GetJobTemplateTemplateVolumeNfArrayOutput
+	ToGetJobTemplateTemplateVolumeNfArrayOutputWithContext(context.Context) GetJobTemplateTemplateVolumeNfArrayOutput
+}
+
+type GetJobTemplateTemplateVolumeNfArray []GetJobTemplateTemplateVolumeNfInput
+
+func (GetJobTemplateTemplateVolumeNfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeNf)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateVolumeNfArray) ToGetJobTemplateTemplateVolumeNfArrayOutput() GetJobTemplateTemplateVolumeNfArrayOutput {
+	return i.ToGetJobTemplateTemplateVolumeNfArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateVolumeNfArray) ToGetJobTemplateTemplateVolumeNfArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeNfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateVolumeNfArrayOutput)
+}
+
+type GetJobTemplateTemplateVolumeNfOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeNfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateVolumeNf)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeNfOutput) ToGetJobTemplateTemplateVolumeNfOutput() GetJobTemplateTemplateVolumeNfOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeNfOutput) ToGetJobTemplateTemplateVolumeNfOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeNfOutput {
+	return o
+}
+
+// Path that is exported by the NFS server.
+func (o GetJobTemplateTemplateVolumeNfOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeNf) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, mount this volume as read-only in all mounts.
+func (o GetJobTemplateTemplateVolumeNfOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeNf) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Hostname or IP address of the NFS server.
+func (o GetJobTemplateTemplateVolumeNfOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeNf) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateVolumeNfArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateVolumeNfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateVolumeNf)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateVolumeNfArrayOutput) ToGetJobTemplateTemplateVolumeNfArrayOutput() GetJobTemplateTemplateVolumeNfArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeNfArrayOutput) ToGetJobTemplateTemplateVolumeNfArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateVolumeNfArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateVolumeNfArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateVolumeNfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateVolumeNf {
+		return vs[0].([]GetJobTemplateTemplateVolumeNf)[vs[1].(int)]
+	}).(GetJobTemplateTemplateVolumeNfOutput)
 }
 
 type GetJobTemplateTemplateVolumeSecret struct {
@@ -16575,6 +16886,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDirPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeGcsInput)(nil)).Elem(), JobTemplateTemplateVolumeGcsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeGcsPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeNfsInput)(nil)).Elem(), JobTemplateTemplateVolumeNfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeNfsPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeNfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretItemInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretItemArgs{})
@@ -16689,6 +17002,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeEmptyDirArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeEmptyDirArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeGcInput)(nil)).Elem(), GetJobTemplateTemplateVolumeGcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeGcArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeGcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeNfInput)(nil)).Elem(), GetJobTemplateTemplateVolumeNfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeNfArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeNfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretArrayInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVolumeSecretItemInput)(nil)).Elem(), GetJobTemplateTemplateVolumeSecretItemArgs{})
@@ -16803,6 +17118,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeEmptyDirPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeGcsOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeGcsPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVolumeNfsOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVolumeNfsPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretItemOutput{})
@@ -16917,6 +17234,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeEmptyDirArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeGcOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeGcArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeNfOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeNfArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVolumeSecretItemOutput{})

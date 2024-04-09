@@ -6,7 +6,10 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfigNetworkTag;
+import java.lang.Object;
+import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -16,6 +19,11 @@ public final class GetClusterNodePoolAutoConfig {
      * 
      */
     private List<GetClusterNodePoolAutoConfigNetworkTag> networkTags;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    private Map<String,Object> resourceManagerTags;
 
     private GetClusterNodePoolAutoConfig() {}
     /**
@@ -24,6 +32,13 @@ public final class GetClusterNodePoolAutoConfig {
      */
     public List<GetClusterNodePoolAutoConfigNetworkTag> networkTags() {
         return this.networkTags;
+    }
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    public Map<String,Object> resourceManagerTags() {
+        return this.resourceManagerTags;
     }
 
     public static Builder builder() {
@@ -36,10 +51,12 @@ public final class GetClusterNodePoolAutoConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolAutoConfigNetworkTag> networkTags;
+        private Map<String,Object> resourceManagerTags;
         public Builder() {}
         public Builder(GetClusterNodePoolAutoConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkTags = defaults.networkTags;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
         }
 
         @CustomType.Setter
@@ -53,9 +70,18 @@ public final class GetClusterNodePoolAutoConfig {
         public Builder networkTags(GetClusterNodePoolAutoConfigNetworkTag... networkTags) {
             return networkTags(List.of(networkTags));
         }
+        @CustomType.Setter
+        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+            if (resourceManagerTags == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoConfig", "resourceManagerTags");
+            }
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
         public GetClusterNodePoolAutoConfig build() {
             final var _resultValue = new GetClusterNodePoolAutoConfig();
             _resultValue.networkTags = networkTags;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             return _resultValue;
         }
     }

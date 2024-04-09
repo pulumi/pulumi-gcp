@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * const looker_instance = new gcp.looker.Instance("looker-instance", {
  *     name: "my-instance",
- *     platformEdition: "LOOKER_CORE_STANDARD",
+ *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
  *     region: "us-central1",
  *     oauthConfig: {
  *         clientId: "my-client-id",
@@ -45,16 +45,11 @@ import * as utilities from "../utilities";
  *
  * const looker_instance = new gcp.looker.Instance("looker-instance", {
  *     name: "my-instance",
- *     platformEdition: "LOOKER_CORE_STANDARD",
+ *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
  *     region: "us-central1",
  *     publicIpEnabled: true,
  *     adminSettings: {
  *         allowedEmailDomains: ["google.com"],
- *     },
- *     userMetadata: {
- *         additionalDeveloperUserCount: 10,
- *         additionalStandardUserCount: 10,
- *         additionalViewerUserCount: 10,
  *     },
  *     maintenanceWindow: {
  *         dayOfWeek: "THURSDAY",
@@ -173,7 +168,7 @@ import * as utilities from "../utilities";
  *
  * const looker_instance = new gcp.looker.Instance("looker-instance", {
  *     name: "my-instance",
- *     platformEdition: "LOOKER_CORE_STANDARD",
+ *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
  *     region: "us-central1",
  *     oauthConfig: {
  *         clientId: "my-client-id",
@@ -319,8 +314,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly oauthConfig!: pulumi.Output<outputs.looker.InstanceOauthConfig | undefined>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -511,8 +506,8 @@ export interface InstanceState {
     oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -614,8 +609,8 @@ export interface InstanceArgs {
     oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance

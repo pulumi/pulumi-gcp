@@ -120,6 +120,7 @@ import * as utilities from "../utilities";
  *     },
  *     vmTrackingEnabled: true,
  *     enableControlPlaneV2: true,
+ *     disableBundledIngress: true,
  *     authorization: {
  *         adminUsers: [{
  *             username: "testuser@gmail.com",
@@ -350,6 +351,10 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Disable bundled ingress.
+     */
+    public readonly disableBundledIngress!: pulumi.Output<boolean | undefined>;
+    /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      */
@@ -487,6 +492,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["dataplaneV2"] = state ? state.dataplaneV2 : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableBundledIngress"] = state ? state.disableBundledIngress : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["enableControlPlaneV2"] = state ? state.enableControlPlaneV2 : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
@@ -531,6 +537,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["controlPlaneNode"] = args ? args.controlPlaneNode : undefined;
             resourceInputs["dataplaneV2"] = args ? args.dataplaneV2 : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableBundledIngress"] = args ? args.disableBundledIngress : undefined;
             resourceInputs["enableControlPlaneV2"] = args ? args.enableControlPlaneV2 : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -624,6 +631,10 @@ export interface VMwareClusterState {
      * A human readable description of this VMware User Cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Disable bundled ingress.
+     */
+    disableBundledIngress?: pulumi.Input<boolean>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
@@ -795,6 +806,10 @@ export interface VMwareClusterArgs {
      * A human readable description of this VMware User Cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Disable bundled ingress.
+     */
+    disableBundledIngress?: pulumi.Input<boolean>;
     /**
      * Enable control plane V2. Default to false.
      */

@@ -271,7 +271,9 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.applicationintegration.Client("example", location="us-central1")
+        example = gcp.applicationintegration.Client("example",
+            location="us-central1",
+            provision_gmek=True)
         ```
         <!--End PulumiCodeChooser -->
         ### Integrations Client Advance
@@ -284,23 +286,25 @@ class Client(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         keyring = gcp.kms.KeyRing("keyring",
             name="my-keyring",
-            location="us-central1")
+            location="us-east1")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
             name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
+        service_account = gcp.serviceaccount.Account("service_account",
+            account_id="service-account-id",
+            display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
-            location="us-central1",
+            location="us-east1",
             create_sample_workflows=True,
-            provision_gmek=True,
-            run_as_service_account="radndom-service-account",
+            run_as_service_account=service_account.email,
             cloud_kms_config=gcp.applicationintegration.ClientCloudKmsConfigArgs(
-                kms_location="us-central1",
+                kms_location="us-east1",
                 kms_ring=keyring.id,
                 key=cryptokey.id,
                 key_version=test_key.id,
-                kms_project_id=test_project.id,
+                kms_project_id=test_project.project_id,
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -368,7 +372,9 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        example = gcp.applicationintegration.Client("example", location="us-central1")
+        example = gcp.applicationintegration.Client("example",
+            location="us-central1",
+            provision_gmek=True)
         ```
         <!--End PulumiCodeChooser -->
         ### Integrations Client Advance
@@ -381,23 +387,25 @@ class Client(pulumi.CustomResource):
         test_project = gcp.organizations.get_project()
         keyring = gcp.kms.KeyRing("keyring",
             name="my-keyring",
-            location="us-central1")
+            location="us-east1")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
             name="crypto-key-example",
             key_ring=keyring.id,
             rotation_period="7776000s")
         test_key = gcp.kms.CryptoKeyVersion("test_key", crypto_key=cryptokey.id)
+        service_account = gcp.serviceaccount.Account("service_account",
+            account_id="service-account-id",
+            display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
-            location="us-central1",
+            location="us-east1",
             create_sample_workflows=True,
-            provision_gmek=True,
-            run_as_service_account="radndom-service-account",
+            run_as_service_account=service_account.email,
             cloud_kms_config=gcp.applicationintegration.ClientCloudKmsConfigArgs(
-                kms_location="us-central1",
+                kms_location="us-east1",
                 kms_ring=keyring.id,
                 key=cryptokey.id,
                 key_version=test_key.id,
-                kms_project_id=test_project.id,
+                kms_project_id=test_project.project_id,
             ))
         ```
         <!--End PulumiCodeChooser -->

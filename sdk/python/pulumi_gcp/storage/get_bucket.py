@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -68,6 +68,9 @@ class GetBucketResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if project_number and not isinstance(project_number, int):
+            raise TypeError("Expected argument 'project_number' to be a int")
+        pulumi.set(__self__, "project_number", project_number)
         if public_access_prevention and not isinstance(public_access_prevention, str):
             raise TypeError("Expected argument 'public_access_prevention' to be a str")
         pulumi.set(__self__, "public_access_prevention", public_access_prevention)
@@ -180,8 +183,13 @@ class GetBucketResult:
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> int:
+        return pulumi.get(self, "project_number")
 
     @property
     @pulumi.getter(name="publicAccessPrevention")
@@ -265,6 +273,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             loggings=self.loggings,
             name=self.name,
             project=self.project,
+            project_number=self.project_number,
             public_access_prevention=self.public_access_prevention,
             pulumi_labels=self.pulumi_labels,
             requester_pays=self.requester_pays,
@@ -280,6 +289,7 @@ class AwaitableGetBucketResult(GetBucketResult):
 
 
 def get_bucket(name: Optional[str] = None,
+               project: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketResult:
     """
     Gets an existing bucket in Google Cloud Storage service (GCS).
@@ -300,9 +310,11 @@ def get_bucket(name: Optional[str] = None,
 
 
     :param str name: The name of the bucket.
+    :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:storage/getBucket:getBucket', __args__, opts=opts, typ=GetBucketResult).value
 
@@ -322,6 +334,7 @@ def get_bucket(name: Optional[str] = None,
         loggings=pulumi.get(__ret__, 'loggings'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        project_number=pulumi.get(__ret__, 'project_number'),
         public_access_prevention=pulumi.get(__ret__, 'public_access_prevention'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         requester_pays=pulumi.get(__ret__, 'requester_pays'),
@@ -338,6 +351,7 @@ def get_bucket(name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_bucket)
 def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketResult]:
     """
     Gets an existing bucket in Google Cloud Storage service (GCS).
@@ -358,5 +372,6 @@ def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of the bucket.
+    :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
     """
     ...

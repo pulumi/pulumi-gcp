@@ -28,6 +28,7 @@ __all__ = [
     'JobTemplateTemplateVolumeCloudSqlInstanceArgs',
     'JobTemplateTemplateVolumeEmptyDirArgs',
     'JobTemplateTemplateVolumeGcsArgs',
+    'JobTemplateTemplateVolumeNfsArgs',
     'JobTemplateTemplateVolumeSecretArgs',
     'JobTemplateTemplateVolumeSecretItemArgs',
     'JobTemplateTemplateVpcAccessArgs',
@@ -1035,6 +1036,7 @@ class JobTemplateTemplateVolumeArgs:
                  cloud_sql_instance: Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']] = None,
                  empty_dir: Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']] = None,
                  gcs: Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']] = None,
+                 nfs: Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']] = None,
                  secret: Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
@@ -1043,6 +1045,8 @@ class JobTemplateTemplateVolumeArgs:
         :param pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+               Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateVolumeNfsArgs'] nfs: NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -1054,6 +1058,8 @@ class JobTemplateTemplateVolumeArgs:
             pulumi.set(__self__, "empty_dir", empty_dir)
         if gcs is not None:
             pulumi.set(__self__, "gcs", gcs)
+        if nfs is not None:
+            pulumi.set(__self__, "nfs", nfs)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -1107,6 +1113,19 @@ class JobTemplateTemplateVolumeArgs:
     @gcs.setter
     def gcs(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']]):
         pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter
+    def nfs(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']]:
+        """
+        NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nfs")
+
+    @nfs.setter
+    def nfs(self, value: Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']]):
+        pulumi.set(self, "nfs", value)
 
     @property
     @pulumi.getter
@@ -1218,6 +1237,60 @@ class JobTemplateTemplateVolumeGcsArgs:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+@pulumi.input_type
+class JobTemplateTemplateVolumeNfsArgs:
+    def __init__(__self__, *,
+                 server: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] server: Hostname or IP address of the NFS server.
+        :param pulumi.Input[str] path: Path that is exported by the NFS server.
+        :param pulumi.Input[bool] read_only: If true, mount this volume as read-only in all mounts.
+        """
+        pulumi.set(__self__, "server", server)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[str]:
+        """
+        Hostname or IP address of the NFS server.
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path that is exported by the NFS server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, mount this volume as read-only in all mounts.
         """
         return pulumi.get(self, "read_only")
 

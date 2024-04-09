@@ -220,6 +220,21 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Disable bundled ingress.
+     * 
+     */
+    @Import(name="disableBundledIngress")
+    private @Nullable Output<Boolean> disableBundledIngress;
+
+    /**
+     * @return Disable bundled ingress.
+     * 
+     */
+    public Optional<Output<Boolean>> disableBundledIngress() {
+        return Optional.ofNullable(this.disableBundledIngress);
+    }
+
+    /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      * 
@@ -614,6 +629,7 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
         this.dataplaneV2 = $.dataplaneV2;
         this.deleteTime = $.deleteTime;
         this.description = $.description;
+        this.disableBundledIngress = $.disableBundledIngress;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.enableControlPlaneV2 = $.enableControlPlaneV2;
         this.endpoint = $.endpoint;
@@ -902,6 +918,27 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disableBundledIngress Disable bundled ingress.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableBundledIngress(@Nullable Output<Boolean> disableBundledIngress) {
+            $.disableBundledIngress = disableBundledIngress;
+            return this;
+        }
+
+        /**
+         * @param disableBundledIngress Disable bundled ingress.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableBundledIngress(Boolean disableBundledIngress) {
+            return disableBundledIngress(Output.of(disableBundledIngress));
         }
 
         /**

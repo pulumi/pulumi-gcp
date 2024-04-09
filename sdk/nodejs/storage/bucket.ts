@@ -222,6 +222,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The project number of the project in which the resource belongs.
+     */
+    public /*out*/ readonly projectNumber!: pulumi.Output<number>;
+    /**
      * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */
     public readonly publicAccessPrevention!: pulumi.Output<string>;
@@ -298,6 +302,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["logging"] = state ? state.logging : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["projectNumber"] = state ? state.projectNumber : undefined;
             resourceInputs["publicAccessPrevention"] = state ? state.publicAccessPrevention : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["requesterPays"] = state ? state.requesterPays : undefined;
@@ -338,6 +343,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["website"] = args ? args.website : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["projectNumber"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
@@ -415,6 +421,10 @@ export interface BucketState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The project number of the project in which the resource belongs.
+     */
+    projectNumber?: pulumi.Input<number>;
     /**
      * Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
      */

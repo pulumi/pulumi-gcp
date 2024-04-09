@@ -33,6 +33,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobTemplateTemplateVolumeNfs? Nfs;
+        /// <summary>
         /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         /// Structure is documented below.
         /// </summary>
@@ -48,12 +53,15 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string name,
 
+            Outputs.JobTemplateTemplateVolumeNfs? nfs,
+
             Outputs.JobTemplateTemplateVolumeSecret? secret)
         {
             CloudSqlInstance = cloudSqlInstance;
             EmptyDir = emptyDir;
             Gcs = gcs;
             Name = name;
+            Nfs = nfs;
             Secret = secret;
         }
     }

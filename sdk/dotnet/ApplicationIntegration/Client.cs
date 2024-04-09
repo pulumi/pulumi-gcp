@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///     var example = new Gcp.ApplicationIntegration.Client("example", new()
     ///     {
     ///         Location = "us-central1",
+    ///         ProvisionGmek = true,
     ///     });
     /// 
     /// });
@@ -56,7 +57,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
     ///     {
     ///         Name = "my-keyring",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///     });
     /// 
     ///     var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new()
@@ -71,19 +72,24 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///         CryptoKey = cryptokey.Id,
     ///     });
     /// 
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
+    ///     {
+    ///         AccountId = "service-account-id",
+    ///         DisplayName = "Service Account",
+    ///     });
+    /// 
     ///     var example = new Gcp.ApplicationIntegration.Client("example", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         CreateSampleWorkflows = true,
-    ///         ProvisionGmek = true,
-    ///         RunAsServiceAccount = "radndom-service-account",
+    ///         RunAsServiceAccount = serviceAccount.Email,
     ///         CloudKmsConfig = new Gcp.ApplicationIntegration.Inputs.ClientCloudKmsConfigArgs
     ///         {
-    ///             KmsLocation = "us-central1",
+    ///             KmsLocation = "us-east1",
     ///             KmsRing = keyring.Id,
     ///             Key = cryptokey.Id,
     ///             KeyVersion = testKey.Id,
-    ///             KmsProjectId = testProject.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///             KmsProjectId = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         },
     ///     });
     /// 

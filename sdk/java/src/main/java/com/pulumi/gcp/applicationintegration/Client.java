@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Client(&#34;example&#34;, ClientArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .provisionGmek(true)
  *             .build());
  * 
  *     }
@@ -77,6 +78,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.kms.CryptoKeyVersion;
  * import com.pulumi.gcp.kms.CryptoKeyVersionArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.applicationintegration.Client;
  * import com.pulumi.gcp.applicationintegration.ClientArgs;
  * import com.pulumi.gcp.applicationintegration.inputs.ClientCloudKmsConfigArgs;
@@ -97,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
  *             .name(&#34;my-keyring&#34;)
- *             .location(&#34;us-central1&#34;)
+ *             .location(&#34;us-east1&#34;)
  *             .build());
  * 
  *         var cryptokey = new CryptoKey(&#34;cryptokey&#34;, CryptoKeyArgs.builder()        
@@ -110,17 +113,21 @@ import javax.annotation.Nullable;
  *             .cryptoKey(cryptokey.id())
  *             .build());
  * 
+ *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;service-account-id&#34;)
+ *             .displayName(&#34;Service Account&#34;)
+ *             .build());
+ * 
  *         var example = new Client(&#34;example&#34;, ClientArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *             .location(&#34;us-east1&#34;)
  *             .createSampleWorkflows(true)
- *             .provisionGmek(true)
- *             .runAsServiceAccount(&#34;radndom-service-account&#34;)
+ *             .runAsServiceAccount(serviceAccount.email())
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
- *                 .kmsLocation(&#34;us-central1&#34;)
+ *                 .kmsLocation(&#34;us-east1&#34;)
  *                 .kmsRing(keyring.id())
  *                 .key(cryptokey.id())
  *                 .keyVersion(testKey.id())
- *                 .kmsProjectId(testProject.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *                 .kmsProjectId(testProject.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *                 .build())
  *             .build());
  * 

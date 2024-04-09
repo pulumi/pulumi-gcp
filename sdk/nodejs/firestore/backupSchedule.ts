@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * const daily_backup = new gcp.firestore.BackupSchedule("daily-backup", {
  *     project: "my-project-name",
  *     database: database.name,
- *     retention: "604800s",
+ *     retention: "8467200s",
  *     dailyRecurrence: {},
  * });
  * ```
@@ -146,7 +146,7 @@ export class BackupSchedule extends pulumi.CustomResource {
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-     * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+     * You can set this to a value up to 14 weeks.
      *
      *
      * - - -
@@ -219,7 +219,7 @@ export interface BackupScheduleState {
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-     * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+     * You can set this to a value up to 14 weeks.
      *
      *
      * - - -
@@ -252,7 +252,7 @@ export interface BackupScheduleArgs {
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-     * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+     * You can set this to a value up to 14 weeks.
      *
      *
      * - - -

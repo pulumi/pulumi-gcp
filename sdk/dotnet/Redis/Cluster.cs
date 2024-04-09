@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Redis
     ///         },
     ///         Region = "us-central1",
     ///         ReplicaCount = 1,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
     ///         AuthorizationMode = "AUTH_MODE_DISABLED",
     ///     });
@@ -146,6 +147,20 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The nodeType for the Redis cluster.
+        /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// </summary>
+        [Output("nodeType")]
+        public Output<string> NodeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Redis memory precise size in GB for the entire cluster.
+        /// </summary>
+        [Output("preciseSizeGb")]
+        public Output<double> PreciseSizeGb { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -284,6 +299,14 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The nodeType for the Redis cluster.
+        /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -377,6 +400,20 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The nodeType for the Redis cluster.
+        /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        /// <summary>
+        /// Output only. Redis memory precise size in GB for the entire cluster.
+        /// </summary>
+        [Input("preciseSizeGb")]
+        public Input<double>? PreciseSizeGb { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

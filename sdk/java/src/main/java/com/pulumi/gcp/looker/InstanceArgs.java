@@ -175,8 +175,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -189,8 +189,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -548,8 +548,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param platformEdition Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-         * - LOOKER_CORE_TRIAL: trial instance
-         * - LOOKER_CORE_STANDARD: pay as you go standard instance
+         * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+         * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
          * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
          * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
          * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -566,8 +566,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param platformEdition Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-         * - LOOKER_CORE_TRIAL: trial instance
-         * - LOOKER_CORE_STANDARD: pay as you go standard instance
+         * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+         * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
          * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
          * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
          * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance

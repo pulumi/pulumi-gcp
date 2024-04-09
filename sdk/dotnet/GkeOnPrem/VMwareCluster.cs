@@ -176,6 +176,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         },
     ///         VmTrackingEnabled = true,
     ///         EnableControlPlaneV2 = true,
+    ///         DisableBundledIngress = true,
     ///         Authorization = new Gcp.GkeOnPrem.Inputs.VMwareClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new[]
@@ -463,6 +464,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Disable bundled ingress.
+        /// </summary>
+        [Output("disableBundledIngress")]
+        public Output<bool?> DisableBundledIngress { get; private set; } = null!;
+
+        /// <summary>
         /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
         /// Terraform, other clients and services.
         /// </summary>
@@ -740,6 +747,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Disable bundled ingress.
+        /// </summary>
+        [Input("disableBundledIngress")]
+        public Input<bool>? DisableBundledIngress { get; set; }
+
+        /// <summary>
         /// Enable control plane V2. Default to false.
         /// </summary>
         [Input("enableControlPlaneV2")]
@@ -910,6 +923,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Disable bundled ingress.
+        /// </summary>
+        [Input("disableBundledIngress")]
+        public Input<bool>? DisableBundledIngress { get; set; }
 
         [Input("effectiveAnnotations")]
         private InputMap<string>? _effectiveAnnotations;

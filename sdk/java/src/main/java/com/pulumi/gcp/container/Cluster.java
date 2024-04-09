@@ -551,6 +551,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableAutopilot);
     }
     /**
+     * Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     * 
+     */
+    @Export(name="enableCiliumClusterwideNetworkPolicy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableCiliumClusterwideNetworkPolicy;
+
+    /**
+     * @return Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> enableCiliumClusterwideNetworkPolicy() {
+        return Codegen.optional(this.enableCiliumClusterwideNetworkPolicy);
+    }
+    /**
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */

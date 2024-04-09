@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetBucketArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +31,26 @@ public final class GetBucketArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    /**
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn&#39;t influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn&#39;t influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+     * 
+     */
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
+    }
+
     private GetBucketArgs() {}
 
     private GetBucketArgs(GetBucketArgs $) {
         this.name = $.name;
+        this.project = $.project;
     }
 
     public static Builder builder() {
@@ -72,6 +90,27 @@ public final class GetBucketArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn&#39;t influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn&#39;t influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         public GetBucketArgs build() {

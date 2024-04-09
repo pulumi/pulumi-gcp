@@ -25,7 +25,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.applicationintegration.Client("example", {location: "us-central1"});
+ * const example = new gcp.applicationintegration.Client("example", {
+ *     location: "us-central1",
+ *     provisionGmek: true,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  * ### Integrations Client Advance
@@ -38,7 +41,7 @@ import * as utilities from "../utilities";
  * const testProject = gcp.organizations.getProject({});
  * const keyring = new gcp.kms.KeyRing("keyring", {
  *     name: "my-keyring",
- *     location: "us-central1",
+ *     location: "us-east1",
  * });
  * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
  *     name: "crypto-key-example",
@@ -46,17 +49,20 @@ import * as utilities from "../utilities";
  *     rotationPeriod: "7776000s",
  * });
  * const testKey = new gcp.kms.CryptoKeyVersion("test_key", {cryptoKey: cryptokey.id});
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
  * const example = new gcp.applicationintegration.Client("example", {
- *     location: "us-central1",
+ *     location: "us-east1",
  *     createSampleWorkflows: true,
- *     provisionGmek: true,
- *     runAsServiceAccount: "radndom-service-account",
+ *     runAsServiceAccount: serviceAccount.email,
  *     cloudKmsConfig: {
- *         kmsLocation: "us-central1",
+ *         kmsLocation: "us-east1",
  *         kmsRing: keyring.id,
  *         key: cryptokey.id,
  *         keyVersion: testKey.id,
- *         kmsProjectId: testProject.then(testProject => testProject.id),
+ *         kmsProjectId: testProject.then(testProject => testProject.projectId),
  *     },
  * });
  * ```

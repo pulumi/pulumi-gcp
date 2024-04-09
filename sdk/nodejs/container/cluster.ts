@@ -261,6 +261,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableAutopilot!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     */
+    public readonly enableCiliumClusterwideNetworkPolicy!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */
     public readonly enableFqdnNetworkPolicy!: pulumi.Output<boolean | undefined>;
@@ -637,6 +641,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
             resourceInputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
+            resourceInputs["enableCiliumClusterwideNetworkPolicy"] = state ? state.enableCiliumClusterwideNetworkPolicy : undefined;
             resourceInputs["enableFqdnNetworkPolicy"] = state ? state.enableFqdnNetworkPolicy : undefined;
             resourceInputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
             resourceInputs["enableK8sBetaApis"] = state ? state.enableK8sBetaApis : undefined;
@@ -714,6 +719,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
             resourceInputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
+            resourceInputs["enableCiliumClusterwideNetworkPolicy"] = args ? args.enableCiliumClusterwideNetworkPolicy : undefined;
             resourceInputs["enableFqdnNetworkPolicy"] = args ? args.enableFqdnNetworkPolicy : undefined;
             resourceInputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
             resourceInputs["enableK8sBetaApis"] = args ? args.enableK8sBetaApis : undefined;
@@ -874,6 +880,10 @@ export interface ClusterState {
      * for available features.
      */
     enableAutopilot?: pulumi.Input<boolean>;
+    /**
+     * Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     */
+    enableCiliumClusterwideNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */
@@ -1318,6 +1328,10 @@ export interface ClusterArgs {
      * for available features.
      */
     enableAutopilot?: pulumi.Input<boolean>;
+    /**
+     * Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     */
+    enableCiliumClusterwideNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */

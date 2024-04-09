@@ -160,8 +160,9 @@ import (
 //					WindowsDataplaneV2Enabled: pulumi.Bool(true),
 //					AdvancedNetworking:        pulumi.Bool(true),
 //				},
-//				VmTrackingEnabled:    pulumi.Bool(true),
-//				EnableControlPlaneV2: pulumi.Bool(true),
+//				VmTrackingEnabled:     pulumi.Bool(true),
+//				EnableControlPlaneV2:  pulumi.Bool(true),
+//				DisableBundledIngress: pulumi.Bool(true),
 //				Authorization: &gkeonprem.VMwareClusterAuthorizationArgs{
 //					AdminUsers: gkeonprem.VMwareClusterAuthorizationAdminUserArray{
 //						&gkeonprem.VMwareClusterAuthorizationAdminUserArgs{
@@ -385,6 +386,8 @@ type VMwareCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Disable bundled ingress.
+	DisableBundledIngress pulumi.BoolPtrOutput `pulumi:"disableBundledIngress"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
@@ -538,6 +541,8 @@ type vmwareClusterState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
+	// Disable bundled ingress.
+	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
@@ -650,6 +655,8 @@ type VMwareClusterState struct {
 	DeleteTime pulumi.StringPtrInput
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
+	// Disable bundled ingress.
+	DisableBundledIngress pulumi.BoolPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
 	EffectiveAnnotations pulumi.StringMapInput
@@ -762,6 +769,8 @@ type vmwareClusterArgs struct {
 	DataplaneV2 *VMwareClusterDataplaneV2 `pulumi:"dataplaneV2"`
 	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
+	// Disable bundled ingress.
+	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// Load Balancer configuration.
@@ -830,6 +839,8 @@ type VMwareClusterArgs struct {
 	DataplaneV2 VMwareClusterDataplaneV2PtrInput
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
+	// Disable bundled ingress.
+	DisableBundledIngress pulumi.BoolPtrInput
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// Load Balancer configuration.
@@ -1015,6 +1026,11 @@ func (o VMwareClusterOutput) DeleteTime() pulumi.StringOutput {
 // A human readable description of this VMware User Cluster.
 func (o VMwareClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable bundled ingress.
+func (o VMwareClusterOutput) DisableBundledIngress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VMwareCluster) pulumi.BoolPtrOutput { return v.DisableBundledIngress }).(pulumi.BoolPtrOutput)
 }
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through

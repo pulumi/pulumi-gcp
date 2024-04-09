@@ -33,6 +33,7 @@ class ClusterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
+                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
@@ -127,6 +128,7 @@ class ClusterArgs:
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
+        :param pulumi.Input[bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input['ClusterEnableK8sBetaApisArgs'] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
@@ -323,6 +325,8 @@ class ClusterArgs:
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
+        if enable_cilium_clusterwide_network_policy is not None:
+            pulumi.set(__self__, "enable_cilium_clusterwide_network_policy", enable_cilium_clusterwide_network_policy)
         if enable_fqdn_network_policy is not None:
             pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intranode_visibility is not None:
@@ -653,6 +657,18 @@ class ClusterArgs:
     @enable_autopilot.setter
     def enable_autopilot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_autopilot", value)
+
+    @property
+    @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
+    def enable_cilium_clusterwide_network_policy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+        """
+        return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
+
+    @enable_cilium_clusterwide_network_policy.setter
+    def enable_cilium_clusterwide_network_policy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_cilium_clusterwide_network_policy", value)
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -1397,6 +1413,7 @@ class _ClusterState:
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
+                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
@@ -1498,6 +1515,7 @@ class _ClusterState:
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
+        :param pulumi.Input[bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input['ClusterEnableK8sBetaApisArgs'] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
@@ -1707,6 +1725,8 @@ class _ClusterState:
             pulumi.set(__self__, "dns_config", dns_config)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
+        if enable_cilium_clusterwide_network_policy is not None:
+            pulumi.set(__self__, "enable_cilium_clusterwide_network_policy", enable_cilium_clusterwide_network_policy)
         if enable_fqdn_network_policy is not None:
             pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intranode_visibility is not None:
@@ -2051,6 +2071,18 @@ class _ClusterState:
     @enable_autopilot.setter
     def enable_autopilot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_autopilot", value)
+
+    @property
+    @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
+    def enable_cilium_clusterwide_network_policy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+        """
+        return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
+
+    @enable_cilium_clusterwide_network_policy.setter
+    def enable_cilium_clusterwide_network_policy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_cilium_clusterwide_network_policy", value)
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -2885,6 +2917,7 @@ class Cluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
+                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
@@ -3107,6 +3140,7 @@ class Cluster(pulumi.CustomResource):
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
+        :param pulumi.Input[bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
@@ -3434,6 +3468,7 @@ class Cluster(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
+                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
@@ -3511,6 +3546,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
+            __props__.__dict__["enable_cilium_clusterwide_network_policy"] = enable_cilium_clusterwide_network_policy
             __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
             __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
             __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
@@ -3596,6 +3632,7 @@ class Cluster(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             dns_config: Optional[pulumi.Input[pulumi.InputType['ClusterDnsConfigArgs']]] = None,
             enable_autopilot: Optional[pulumi.Input[bool]] = None,
+            enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
             enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
             enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
@@ -3702,6 +3739,7 @@ class Cluster(pulumi.CustomResource):
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
+        :param pulumi.Input[bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
@@ -3898,6 +3936,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["enable_autopilot"] = enable_autopilot
+        __props__.__dict__["enable_cilium_clusterwide_network_policy"] = enable_cilium_clusterwide_network_policy
         __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
         __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
         __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
@@ -4117,6 +4156,14 @@ class Cluster(pulumi.CustomResource):
         for available features.
         """
         return pulumi.get(self, "enable_autopilot")
+
+    @property
+    @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
+    def enable_cilium_clusterwide_network_policy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+        """
+        return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")

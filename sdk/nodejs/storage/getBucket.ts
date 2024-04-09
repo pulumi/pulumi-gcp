@@ -30,6 +30,7 @@ export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getBucket:getBucket", {
         "name": args.name,
+        "project": args.project,
     }, opts);
 }
 
@@ -41,6 +42,10 @@ export interface GetBucketArgs {
      * The name of the bucket.
      */
     name: string;
+    /**
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+     */
+    project?: string;
 }
 
 /**
@@ -64,7 +69,8 @@ export interface GetBucketResult {
     readonly location: string;
     readonly loggings: outputs.storage.GetBucketLogging[];
     readonly name: string;
-    readonly project: string;
+    readonly project?: string;
+    readonly projectNumber: number;
     readonly publicAccessPrevention: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly requesterPays: boolean;
@@ -109,4 +115,8 @@ export interface GetBucketOutputArgs {
      * The name of the bucket.
      */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+     */
+    project?: pulumi.Input<string>;
 }

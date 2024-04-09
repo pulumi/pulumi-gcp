@@ -361,6 +361,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     * 
+     */
+    @Import(name="enableCiliumClusterwideNetworkPolicy")
+    private @Nullable Output<Boolean> enableCiliumClusterwideNetworkPolicy;
+
+    /**
+     * @return Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> enableCiliumClusterwideNetworkPolicy() {
+        return Optional.ofNullable(this.enableCiliumClusterwideNetworkPolicy);
+    }
+
+    /**
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
@@ -1365,6 +1380,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.dnsConfig = $.dnsConfig;
         this.enableAutopilot = $.enableAutopilot;
+        this.enableCiliumClusterwideNetworkPolicy = $.enableCiliumClusterwideNetworkPolicy;
         this.enableFqdnNetworkPolicy = $.enableFqdnNetworkPolicy;
         this.enableIntranodeVisibility = $.enableIntranodeVisibility;
         this.enableK8sBetaApis = $.enableK8sBetaApis;
@@ -1839,6 +1855,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableAutopilot(Boolean enableAutopilot) {
             return enableAutopilot(Output.of(enableAutopilot));
+        }
+
+        /**
+         * @param enableCiliumClusterwideNetworkPolicy Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableCiliumClusterwideNetworkPolicy(@Nullable Output<Boolean> enableCiliumClusterwideNetworkPolicy) {
+            $.enableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
+            return this;
+        }
+
+        /**
+         * @param enableCiliumClusterwideNetworkPolicy Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableCiliumClusterwideNetworkPolicy(Boolean enableCiliumClusterwideNetworkPolicy) {
+            return enableCiliumClusterwideNetworkPolicy(Output.of(enableCiliumClusterwideNetworkPolicy));
         }
 
         /**

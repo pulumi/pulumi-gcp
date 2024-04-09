@@ -71,6 +71,7 @@ public final class GetClusterResult {
     private String description;
     private List<GetClusterDnsConfig> dnsConfigs;
     private Boolean enableAutopilot;
+    private Boolean enableCiliumClusterwideNetworkPolicy;
     private Boolean enableFqdnNetworkPolicy;
     private Boolean enableIntranodeVisibility;
     private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
@@ -186,6 +187,9 @@ public final class GetClusterResult {
     }
     public Boolean enableAutopilot() {
         return this.enableAutopilot;
+    }
+    public Boolean enableCiliumClusterwideNetworkPolicy() {
+        return this.enableCiliumClusterwideNetworkPolicy;
     }
     public Boolean enableFqdnNetworkPolicy() {
         return this.enableFqdnNetworkPolicy;
@@ -395,6 +399,7 @@ public final class GetClusterResult {
         private String description;
         private List<GetClusterDnsConfig> dnsConfigs;
         private Boolean enableAutopilot;
+        private Boolean enableCiliumClusterwideNetworkPolicy;
         private Boolean enableFqdnNetworkPolicy;
         private Boolean enableIntranodeVisibility;
         private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
@@ -474,6 +479,7 @@ public final class GetClusterResult {
     	      this.description = defaults.description;
     	      this.dnsConfigs = defaults.dnsConfigs;
     	      this.enableAutopilot = defaults.enableAutopilot;
+    	      this.enableCiliumClusterwideNetworkPolicy = defaults.enableCiliumClusterwideNetworkPolicy;
     	      this.enableFqdnNetworkPolicy = defaults.enableFqdnNetworkPolicy;
     	      this.enableIntranodeVisibility = defaults.enableIntranodeVisibility;
     	      this.enableK8sBetaApis = defaults.enableK8sBetaApis;
@@ -699,6 +705,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "enableAutopilot");
             }
             this.enableAutopilot = enableAutopilot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableCiliumClusterwideNetworkPolicy(Boolean enableCiliumClusterwideNetworkPolicy) {
+            if (enableCiliumClusterwideNetworkPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "enableCiliumClusterwideNetworkPolicy");
+            }
+            this.enableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             return this;
         }
         @CustomType.Setter
@@ -1275,6 +1289,7 @@ public final class GetClusterResult {
             _resultValue.description = description;
             _resultValue.dnsConfigs = dnsConfigs;
             _resultValue.enableAutopilot = enableAutopilot;
+            _resultValue.enableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             _resultValue.enableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             _resultValue.enableIntranodeVisibility = enableIntranodeVisibility;
             _resultValue.enableK8sBetaApis = enableK8sBetaApis;

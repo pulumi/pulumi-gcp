@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
  *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
+ *             .platformEdition(&#34;LOOKER_CORE_STANDARD_ANNUAL&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
  *                 .clientId(&#34;my-client-id&#34;)
@@ -85,7 +85,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.looker.Instance;
  * import com.pulumi.gcp.looker.InstanceArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceAdminSettingsArgs;
- * import com.pulumi.gcp.looker.inputs.InstanceUserMetadataArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowStartTimeArgs;
  * import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
@@ -108,16 +107,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
  *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
+ *             .platformEdition(&#34;LOOKER_CORE_STANDARD_ANNUAL&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .publicIpEnabled(true)
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
  *                 .allowedEmailDomains(&#34;google.com&#34;)
- *                 .build())
- *             .userMetadata(InstanceUserMetadataArgs.builder()
- *                 .additionalDeveloperUserCount(10)
- *                 .additionalStandardUserCount(10)
- *                 .additionalViewerUserCount(10)
  *                 .build())
  *             .maintenanceWindow(InstanceMaintenanceWindowArgs.builder()
  *                 .dayOfWeek(&#34;THURSDAY&#34;)
@@ -304,7 +298,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var looker_instance = new Instance(&#34;looker-instance&#34;, InstanceArgs.builder()        
  *             .name(&#34;my-instance&#34;)
- *             .platformEdition(&#34;LOOKER_CORE_STANDARD&#34;)
+ *             .platformEdition(&#34;LOOKER_CORE_STANDARD_ANNUAL&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .oauthConfig(InstanceOauthConfigArgs.builder()
  *                 .clientId(&#34;my-client-id&#34;)
@@ -583,8 +577,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -597,8 +591,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance

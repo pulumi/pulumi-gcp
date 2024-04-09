@@ -26,6 +26,7 @@ class VMwareClusterArgs:
                  auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']] = None,
                  dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -66,6 +67,7 @@ class VMwareClusterArgs:
         :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input['VMwareClusterLoadBalancerArgs'] load_balancer: Load Balancer configuration.
                Structure is documented below.
@@ -99,6 +101,8 @@ class VMwareClusterArgs:
             pulumi.set(__self__, "dataplane_v2", dataplane_v2)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_bundled_ingress is not None:
+            pulumi.set(__self__, "disable_bundled_ingress", disable_bundled_ingress)
         if enable_control_plane_v2 is not None:
             pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
         if load_balancer is not None:
@@ -258,6 +262,18 @@ class VMwareClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="disableBundledIngress")
+    def disable_bundled_ingress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable bundled ingress.
+        """
+        return pulumi.get(self, "disable_bundled_ingress")
+
+    @disable_bundled_ingress.setter
+    def disable_bundled_ingress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_bundled_ingress", value)
+
+    @property
     @pulumi.getter(name="enableControlPlaneV2")
     def enable_control_plane_v2(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -386,6 +402,7 @@ class _VMwareClusterState:
                  dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
@@ -439,6 +456,7 @@ class _VMwareClusterState:
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
@@ -508,6 +526,8 @@ class _VMwareClusterState:
             pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_bundled_ingress is not None:
+            pulumi.set(__self__, "disable_bundled_ingress", disable_bundled_ingress)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if enable_control_plane_v2 is not None:
@@ -691,6 +711,18 @@ class _VMwareClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableBundledIngress")
+    def disable_bundled_ingress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable bundled ingress.
+        """
+        return pulumi.get(self, "disable_bundled_ingress")
+
+    @disable_bundled_ingress.setter
+    def disable_bundled_ingress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_bundled_ingress", value)
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -996,6 +1028,7 @@ class VMwareCluster(pulumi.CustomResource):
                  control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']]] = None,
                  dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1121,6 +1154,7 @@ class VMwareCluster(pulumi.CustomResource):
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
+            disable_bundled_ingress=True,
             authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
                 admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
                     username="testuser@gmail.com",
@@ -1290,6 +1324,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']] load_balancer: Load Balancer configuration.
                Structure is documented below.
@@ -1428,6 +1463,7 @@ class VMwareCluster(pulumi.CustomResource):
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
+            disable_bundled_ingress=True,
             authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
                 admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
                     username="testuser@gmail.com",
@@ -1591,6 +1627,7 @@ class VMwareCluster(pulumi.CustomResource):
                  control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']]] = None,
                  dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1623,6 +1660,7 @@ class VMwareCluster(pulumi.CustomResource):
             __props__.__dict__["control_plane_node"] = control_plane_node
             __props__.__dict__["dataplane_v2"] = dataplane_v2
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
             __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
@@ -1671,6 +1709,7 @@ class VMwareCluster(pulumi.CustomResource):
             dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
@@ -1729,6 +1768,7 @@ class VMwareCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
+        :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
@@ -1792,6 +1832,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["dataplane_v2"] = dataplane_v2
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
         __props__.__dict__["endpoint"] = endpoint
@@ -1914,6 +1955,14 @@ class VMwareCluster(pulumi.CustomResource):
         A human readable description of this VMware User Cluster.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableBundledIngress")
+    def disable_bundled_ingress(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable bundled ingress.
+        """
+        return pulumi.get(self, "disable_bundled_ingress")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")

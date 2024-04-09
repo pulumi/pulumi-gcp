@@ -16,6 +16,7 @@ import com.pulumi.gcp.storage.inputs.BucketSoftDeletePolicyArgs;
 import com.pulumi.gcp.storage.inputs.BucketVersioningArgs;
 import com.pulumi.gcp.storage.inputs.BucketWebsiteArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -251,6 +252,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The project number of the project in which the resource belongs.
+     * 
+     */
+    @Import(name="projectNumber")
+    private @Nullable Output<Integer> projectNumber;
+
+    /**
+     * @return The project number of the project in which the resource belongs.
+     * 
+     */
+    public Optional<Output<Integer>> projectNumber() {
+        return Optional.ofNullable(this.projectNumber);
+    }
+
+    /**
      * Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
      * 
      */
@@ -449,6 +465,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.logging = $.logging;
         this.name = $.name;
         this.project = $.project;
+        this.projectNumber = $.projectNumber;
         this.publicAccessPrevention = $.publicAccessPrevention;
         this.pulumiLabels = $.pulumiLabels;
         this.requesterPays = $.requesterPays;
@@ -805,6 +822,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param projectNumber The project number of the project in which the resource belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectNumber(@Nullable Output<Integer> projectNumber) {
+            $.projectNumber = projectNumber;
+            return this;
+        }
+
+        /**
+         * @param projectNumber The project number of the project in which the resource belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectNumber(Integer projectNumber) {
+            return projectNumber(Output.of(projectNumber));
         }
 
         /**
