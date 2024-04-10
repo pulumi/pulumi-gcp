@@ -268,6 +268,8 @@ type Cluster struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrOutput `pulumi:"enableAutopilot"`
+	// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+	EnableCiliumClusterwideNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -590,6 +592,8 @@ type clusterState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
+	// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+	EnableCiliumClusterwideNetworkPolicy *bool `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -883,6 +887,8 @@ type ClusterState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrInput
+	// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+	EnableCiliumClusterwideNetworkPolicy pulumi.BoolPtrInput
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1180,6 +1186,8 @@ type clusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
+	// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+	EnableCiliumClusterwideNetworkPolicy *bool `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1454,6 +1462,8 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrInput
+	// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+	EnableCiliumClusterwideNetworkPolicy pulumi.BoolPtrInput
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1862,6 +1872,11 @@ func (o ClusterOutput) DnsConfig() ClusterDnsConfigPtrOutput {
 // for available features.
 func (o ClusterOutput) EnableAutopilot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableAutopilot }).(pulumi.BoolPtrOutput)
+}
+
+// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
+func (o ClusterOutput) EnableCiliumClusterwideNetworkPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableCiliumClusterwideNetworkPolicy }).(pulumi.BoolPtrOutput)
 }
 
 // Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.

@@ -56,6 +56,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * 
+     */
+    @Import(name="nodeType")
+    private @Nullable Output<String> nodeType;
+
+    /**
+     * @return The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * 
+     */
+    public Optional<Output<String>> nodeType() {
+        return Optional.ofNullable(this.nodeType);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -164,6 +183,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs(ClusterArgs $) {
         this.authorizationMode = $.authorizationMode;
         this.name = $.name;
+        this.nodeType = $.nodeType;
         this.project = $.project;
         this.pscConfigs = $.pscConfigs;
         this.region = $.region;
@@ -236,6 +256,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeType The nodeType for the Redis cluster.
+         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeType(@Nullable Output<String> nodeType) {
+            $.nodeType = nodeType;
+            return this;
+        }
+
+        /**
+         * @param nodeType The nodeType for the Redis cluster.
+         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeType(String nodeType) {
+            return nodeType(Output.of(nodeType));
         }
 
         /**

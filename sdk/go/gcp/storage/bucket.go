@@ -223,6 +223,8 @@ type Bucket struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The project number of the project in which the resource belongs.
+	ProjectNumber pulumi.IntOutput `pulumi:"projectNumber"`
 	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention pulumi.StringOutput `pulumi:"publicAccessPrevention"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -322,6 +324,8 @@ type bucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The project number of the project in which the resource belongs.
+	ProjectNumber *int `pulumi:"projectNumber"`
 	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention *string `pulumi:"publicAccessPrevention"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -384,6 +388,8 @@ type BucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The project number of the project in which the resource belongs.
+	ProjectNumber pulumi.IntPtrInput
 	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -683,6 +689,11 @@ func (o BucketOutput) Name() pulumi.StringOutput {
 // is not provided, the provider project is used.
 func (o BucketOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The project number of the project in which the resource belongs.
+func (o BucketOutput) ProjectNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.IntOutput { return v.ProjectNumber }).(pulumi.IntOutput)
 }
 
 // Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".

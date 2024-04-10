@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeCloudSqlInstanceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeEmptyDirArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeGcsArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeNfsArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeSecretArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -87,6 +88,23 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nfs")
+    private @Nullable Output<JobTemplateTemplateVolumeNfsArgs> nfs;
+
+    /**
+     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobTemplateTemplateVolumeNfsArgs>> nfs() {
+        return Optional.ofNullable(this.nfs);
+    }
+
+    /**
      * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
      * Structure is documented below.
      * 
@@ -110,6 +128,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         this.emptyDir = $.emptyDir;
         this.gcs = $.gcs;
         this.name = $.name;
+        this.nfs = $.nfs;
         this.secret = $.secret;
     }
 
@@ -219,6 +238,29 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nfs NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfs(@Nullable Output<JobTemplateTemplateVolumeNfsArgs> nfs) {
+            $.nfs = nfs;
+            return this;
+        }
+
+        /**
+         * @param nfs NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfs(JobTemplateTemplateVolumeNfsArgs nfs) {
+            return nfs(Output.of(nfs));
         }
 
         /**

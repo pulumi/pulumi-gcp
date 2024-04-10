@@ -21,6 +21,7 @@ import com.pulumi.gcp.storage.outputs.BucketSoftDeletePolicy;
 import com.pulumi.gcp.storage.outputs.BucketVersioning;
 import com.pulumi.gcp.storage.outputs.BucketWebsite;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -425,6 +426,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The project number of the project in which the resource belongs.
+     * 
+     */
+    @Export(name="projectNumber", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectNumber;
+
+    /**
+     * @return The project number of the project in which the resource belongs.
+     * 
+     */
+    public Output<Integer> projectNumber() {
+        return this.projectNumber;
     }
     /**
      * Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.

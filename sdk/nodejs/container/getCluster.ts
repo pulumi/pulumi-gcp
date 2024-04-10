@@ -63,6 +63,7 @@ export interface GetClusterResult {
     readonly description: string;
     readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
     readonly enableAutopilot: boolean;
+    readonly enableCiliumClusterwideNetworkPolicy: boolean;
     readonly enableFqdnNetworkPolicy: boolean;
     readonly enableIntranodeVisibility: boolean;
     readonly enableK8sBetaApis: outputs.container.GetClusterEnableK8sBetaApi[];

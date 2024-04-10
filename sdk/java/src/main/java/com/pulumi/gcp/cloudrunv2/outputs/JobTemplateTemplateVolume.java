@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeEmptyDir;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeGcs;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeNfs;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeSecret;
 import java.lang.String;
 import java.util.Objects;
@@ -39,6 +40,12 @@ public final class JobTemplateTemplateVolume {
      * 
      */
     private String name;
+    /**
+     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable JobTemplateTemplateVolumeNfs nfs;
     /**
      * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
      * Structure is documented below.
@@ -79,6 +86,14 @@ public final class JobTemplateTemplateVolume {
         return this.name;
     }
     /**
+     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<JobTemplateTemplateVolumeNfs> nfs() {
+        return Optional.ofNullable(this.nfs);
+    }
+    /**
      * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
      * Structure is documented below.
      * 
@@ -100,6 +115,7 @@ public final class JobTemplateTemplateVolume {
         private @Nullable JobTemplateTemplateVolumeEmptyDir emptyDir;
         private @Nullable JobTemplateTemplateVolumeGcs gcs;
         private String name;
+        private @Nullable JobTemplateTemplateVolumeNfs nfs;
         private @Nullable JobTemplateTemplateVolumeSecret secret;
         public Builder() {}
         public Builder(JobTemplateTemplateVolume defaults) {
@@ -108,6 +124,7 @@ public final class JobTemplateTemplateVolume {
     	      this.emptyDir = defaults.emptyDir;
     	      this.gcs = defaults.gcs;
     	      this.name = defaults.name;
+    	      this.nfs = defaults.nfs;
     	      this.secret = defaults.secret;
         }
 
@@ -138,6 +155,12 @@ public final class JobTemplateTemplateVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder nfs(@Nullable JobTemplateTemplateVolumeNfs nfs) {
+
+            this.nfs = nfs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secret(@Nullable JobTemplateTemplateVolumeSecret secret) {
 
             this.secret = secret;
@@ -149,6 +172,7 @@ public final class JobTemplateTemplateVolume {
             _resultValue.emptyDir = emptyDir;
             _resultValue.gcs = gcs;
             _resultValue.name = name;
+            _resultValue.nfs = nfs;
             _resultValue.secret = secret;
             return _resultValue;
         }

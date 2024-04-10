@@ -188,6 +188,21 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Disable bundled ingress.
+     * 
+     */
+    @Import(name="disableBundledIngress")
+    private @Nullable Output<Boolean> disableBundledIngress;
+
+    /**
+     * @return Disable bundled ingress.
+     * 
+     */
+    public Optional<Output<Boolean>> disableBundledIngress() {
+        return Optional.ofNullable(this.disableBundledIngress);
+    }
+
+    /**
      * Enable control plane V2. Default to false.
      * 
      */
@@ -377,6 +392,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.controlPlaneNode = $.controlPlaneNode;
         this.dataplaneV2 = $.dataplaneV2;
         this.description = $.description;
+        this.disableBundledIngress = $.disableBundledIngress;
         this.enableControlPlaneV2 = $.enableControlPlaneV2;
         this.loadBalancer = $.loadBalancer;
         this.location = $.location;
@@ -612,6 +628,27 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disableBundledIngress Disable bundled ingress.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableBundledIngress(@Nullable Output<Boolean> disableBundledIngress) {
+            $.disableBundledIngress = disableBundledIngress;
+            return this;
+        }
+
+        /**
+         * @param disableBundledIngress Disable bundled ingress.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableBundledIngress(Boolean disableBundledIngress) {
+            return disableBundledIngress(Output.of(disableBundledIngress));
         }
 
         /**

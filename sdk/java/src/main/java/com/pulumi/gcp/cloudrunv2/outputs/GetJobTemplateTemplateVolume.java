@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeEmptyDir;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeGc;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeNf;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeSecret;
 import java.lang.String;
 import java.util.List;
@@ -35,6 +36,11 @@ public final class GetJobTemplateTemplateVolume {
      * 
      */
     private String name;
+    /**
+     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * 
+     */
+    private List<GetJobTemplateTemplateVolumeNf> nfs;
     /**
      * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
      * 
@@ -71,6 +77,13 @@ public final class GetJobTemplateTemplateVolume {
         return this.name;
     }
     /**
+     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * 
+     */
+    public List<GetJobTemplateTemplateVolumeNf> nfs() {
+        return this.nfs;
+    }
+    /**
      * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
      * 
      */
@@ -91,6 +104,7 @@ public final class GetJobTemplateTemplateVolume {
         private List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs;
         private List<GetJobTemplateTemplateVolumeGc> gcs;
         private String name;
+        private List<GetJobTemplateTemplateVolumeNf> nfs;
         private List<GetJobTemplateTemplateVolumeSecret> secrets;
         public Builder() {}
         public Builder(GetJobTemplateTemplateVolume defaults) {
@@ -99,6 +113,7 @@ public final class GetJobTemplateTemplateVolume {
     	      this.emptyDirs = defaults.emptyDirs;
     	      this.gcs = defaults.gcs;
     	      this.name = defaults.name;
+    	      this.nfs = defaults.nfs;
     	      this.secrets = defaults.secrets;
         }
 
@@ -144,6 +159,17 @@ public final class GetJobTemplateTemplateVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder nfs(List<GetJobTemplateTemplateVolumeNf> nfs) {
+            if (nfs == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "nfs");
+            }
+            this.nfs = nfs;
+            return this;
+        }
+        public Builder nfs(GetJobTemplateTemplateVolumeNf... nfs) {
+            return nfs(List.of(nfs));
+        }
+        @CustomType.Setter
         public Builder secrets(List<GetJobTemplateTemplateVolumeSecret> secrets) {
             if (secrets == null) {
               throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "secrets");
@@ -160,6 +186,7 @@ public final class GetJobTemplateTemplateVolume {
             _resultValue.emptyDirs = emptyDirs;
             _resultValue.gcs = gcs;
             _resultValue.name = name;
+            _resultValue.nfs = nfs;
             _resultValue.secrets = secrets;
             return _resultValue;
         }

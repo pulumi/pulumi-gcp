@@ -16,10 +16,13 @@ import com.pulumi.gcp.storage.outputs.GetBucketSoftDeletePolicy;
 import com.pulumi.gcp.storage.outputs.GetBucketVersioning;
 import com.pulumi.gcp.storage.outputs.GetBucketWebsite;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBucketResult {
@@ -41,7 +44,8 @@ public final class GetBucketResult {
     private String location;
     private List<GetBucketLogging> loggings;
     private String name;
-    private String project;
+    private @Nullable String project;
+    private Integer projectNumber;
     private String publicAccessPrevention;
     private Map<String,String> pulumiLabels;
     private Boolean requesterPays;
@@ -102,8 +106,11 @@ public final class GetBucketResult {
     public String name() {
         return this.name;
     }
-    public String project() {
-        return this.project;
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
+    }
+    public Integer projectNumber() {
+        return this.projectNumber;
     }
     public String publicAccessPrevention() {
         return this.publicAccessPrevention;
@@ -165,7 +172,8 @@ public final class GetBucketResult {
         private String location;
         private List<GetBucketLogging> loggings;
         private String name;
-        private String project;
+        private @Nullable String project;
+        private Integer projectNumber;
         private String publicAccessPrevention;
         private Map<String,String> pulumiLabels;
         private Boolean requesterPays;
@@ -196,6 +204,7 @@ public final class GetBucketResult {
     	      this.loggings = defaults.loggings;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.projectNumber = defaults.projectNumber;
     	      this.publicAccessPrevention = defaults.publicAccessPrevention;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.requesterPays = defaults.requesterPays;
@@ -341,11 +350,17 @@ public final class GetBucketResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            if (project == null) {
-              throw new MissingRequiredPropertyException("GetBucketResult", "project");
-            }
+        public Builder project(@Nullable String project) {
+
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectNumber(Integer projectNumber) {
+            if (projectNumber == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "projectNumber");
+            }
+            this.projectNumber = projectNumber;
             return this;
         }
         @CustomType.Setter
@@ -473,6 +488,7 @@ public final class GetBucketResult {
             _resultValue.loggings = loggings;
             _resultValue.name = name;
             _resultValue.project = project;
+            _resultValue.projectNumber = projectNumber;
             _resultValue.publicAccessPrevention = publicAccessPrevention;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.requesterPays = requesterPays;

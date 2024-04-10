@@ -23662,6 +23662,8 @@ func (o ClusterNodePoolArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolOutp
 type ClusterNodePoolAutoConfig struct {
 	// The network tag config for the cluster's automatically provisioned node pools.
 	NetworkTags *ClusterNodePoolAutoConfigNetworkTags `pulumi:"networkTags"`
+	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 }
 
 // ClusterNodePoolAutoConfigInput is an input type that accepts ClusterNodePoolAutoConfigArgs and ClusterNodePoolAutoConfigOutput values.
@@ -23678,6 +23680,8 @@ type ClusterNodePoolAutoConfigInput interface {
 type ClusterNodePoolAutoConfigArgs struct {
 	// The network tag config for the cluster's automatically provisioned node pools.
 	NetworkTags ClusterNodePoolAutoConfigNetworkTagsPtrInput `pulumi:"networkTags"`
+	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 }
 
 func (ClusterNodePoolAutoConfigArgs) ElementType() reflect.Type {
@@ -23762,6 +23766,11 @@ func (o ClusterNodePoolAutoConfigOutput) NetworkTags() ClusterNodePoolAutoConfig
 	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags { return v.NetworkTags }).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
 }
 
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+func (o ClusterNodePoolAutoConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
+}
+
 type ClusterNodePoolAutoConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodePoolAutoConfigPtrOutput) ElementType() reflect.Type {
@@ -23794,6 +23803,16 @@ func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoCon
 		}
 		return v.NetworkTags
 	}).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+func (o ClusterNodePoolAutoConfigPtrOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.MapOutput)
 }
 
 type ClusterNodePoolAutoConfigNetworkTags struct {
@@ -48184,6 +48203,8 @@ func (o GetClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetClusterNodePo
 type GetClusterNodePoolAutoConfig struct {
 	// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 	NetworkTags []GetClusterNodePoolAutoConfigNetworkTag `pulumi:"networkTags"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 }
 
 // GetClusterNodePoolAutoConfigInput is an input type that accepts GetClusterNodePoolAutoConfigArgs and GetClusterNodePoolAutoConfigOutput values.
@@ -48200,6 +48221,8 @@ type GetClusterNodePoolAutoConfigInput interface {
 type GetClusterNodePoolAutoConfigArgs struct {
 	// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 	NetworkTags GetClusterNodePoolAutoConfigNetworkTagArrayInput `pulumi:"networkTags"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 }
 
 func (GetClusterNodePoolAutoConfigArgs) ElementType() reflect.Type {
@@ -48256,6 +48279,11 @@ func (o GetClusterNodePoolAutoConfigOutput) ToGetClusterNodePoolAutoConfigOutput
 // Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 func (o GetClusterNodePoolAutoConfigOutput) NetworkTags() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) []GetClusterNodePoolAutoConfigNetworkTag { return v.NetworkTags }).(GetClusterNodePoolAutoConfigNetworkTagArrayOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o GetClusterNodePoolAutoConfigOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 type GetClusterNodePoolAutoConfigArrayOutput struct{ *pulumi.OutputState }

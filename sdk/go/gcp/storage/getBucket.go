@@ -57,6 +57,8 @@ func LookupBucket(ctx *pulumi.Context, args *LookupBucketArgs, opts ...pulumi.In
 type LookupBucketArgs struct {
 	// The name of the bucket.
 	Name string `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getBucket.
@@ -76,7 +78,8 @@ type LookupBucketResult struct {
 	Location                 string                      `pulumi:"location"`
 	Loggings                 []GetBucketLogging          `pulumi:"loggings"`
 	Name                     string                      `pulumi:"name"`
-	Project                  string                      `pulumi:"project"`
+	Project                  *string                     `pulumi:"project"`
+	ProjectNumber            int                         `pulumi:"projectNumber"`
 	PublicAccessPrevention   string                      `pulumi:"publicAccessPrevention"`
 	PulumiLabels             map[string]string           `pulumi:"pulumiLabels"`
 	RequesterPays            bool                        `pulumi:"requesterPays"`
@@ -108,6 +111,8 @@ func LookupBucketOutput(ctx *pulumi.Context, args LookupBucketOutputArgs, opts .
 type LookupBucketOutputArgs struct {
 	// The name of the bucket.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupBucketOutputArgs) ElementType() reflect.Type {
@@ -186,8 +191,12 @@ func (o LookupBucketResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupBucketResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBucketResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupBucketResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupBucketResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupBucketResultOutput) ProjectNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBucketResult) int { return v.ProjectNumber }).(pulumi.IntOutput)
 }
 
 func (o LookupBucketResultOutput) PublicAccessPrevention() pulumi.StringOutput {

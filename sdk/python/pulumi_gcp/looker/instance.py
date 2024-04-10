@@ -58,8 +58,8 @@ class InstanceArgs:
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-               - LOOKER_CORE_TRIAL: trial instance
-               - LOOKER_CORE_STANDARD: pay as you go standard instance
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -229,8 +229,8 @@ class InstanceArgs:
     def platform_edition(self) -> Optional[pulumi.Input[str]]:
         """
         Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-        - LOOKER_CORE_TRIAL: trial instance
-        - LOOKER_CORE_STANDARD: pay as you go standard instance
+        - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -384,8 +384,8 @@ class _InstanceState:
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-               - LOOKER_CORE_TRIAL: trial instance
-               - LOOKER_CORE_STANDARD: pay as you go standard instance
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -644,8 +644,8 @@ class _InstanceState:
     def platform_edition(self) -> Optional[pulumi.Input[str]]:
         """
         Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-        - LOOKER_CORE_TRIAL: trial instance
-        - LOOKER_CORE_STANDARD: pay as you go standard instance
+        - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -795,7 +795,7 @@ class Instance(pulumi.CustomResource):
 
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
@@ -812,16 +812,11 @@ class Instance(pulumi.CustomResource):
 
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             public_ip_enabled=True,
             admin_settings=gcp.looker.InstanceAdminSettingsArgs(
                 allowed_email_domains=["google.com"],
-            ),
-            user_metadata=gcp.looker.InstanceUserMetadataArgs(
-                additional_developer_user_count=10,
-                additional_standard_user_count=10,
-                additional_viewer_user_count=10,
             ),
             maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
                 day_of_week="THURSDAY",
@@ -935,7 +930,7 @@ class Instance(pulumi.CustomResource):
 
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
@@ -1004,8 +999,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-               - LOOKER_CORE_TRIAL: trial instance
-               - LOOKER_CORE_STANDARD: pay as you go standard instance
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -1054,7 +1049,7 @@ class Instance(pulumi.CustomResource):
 
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
@@ -1071,16 +1066,11 @@ class Instance(pulumi.CustomResource):
 
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             public_ip_enabled=True,
             admin_settings=gcp.looker.InstanceAdminSettingsArgs(
                 allowed_email_domains=["google.com"],
-            ),
-            user_metadata=gcp.looker.InstanceUserMetadataArgs(
-                additional_developer_user_count=10,
-                additional_standard_user_count=10,
-                additional_viewer_user_count=10,
             ),
             maintenance_window=gcp.looker.InstanceMaintenanceWindowArgs(
                 day_of_week="THURSDAY",
@@ -1194,7 +1184,7 @@ class Instance(pulumi.CustomResource):
 
         looker_instance = gcp.looker.Instance("looker-instance",
             name="my-instance",
-            platform_edition="LOOKER_CORE_STANDARD",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
             region="us-central1",
             oauth_config=gcp.looker.InstanceOauthConfigArgs(
                 client_id="my-client-id",
@@ -1368,8 +1358,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-               - LOOKER_CORE_TRIAL: trial instance
-               - LOOKER_CORE_STANDARD: pay as you go standard instance
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
@@ -1555,8 +1545,8 @@ class Instance(pulumi.CustomResource):
     def platform_edition(self) -> pulumi.Output[Optional[str]]:
         """
         Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-        - LOOKER_CORE_TRIAL: trial instance
-        - LOOKER_CORE_STANDARD: pay as you go standard instance
+        - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance

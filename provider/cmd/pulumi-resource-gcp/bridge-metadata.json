@@ -3434,6 +3434,9 @@
                                                         "gcs": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "nfs": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "secret": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -24987,6 +24990,9 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "gcs": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "nfs": {
                                                             "maxItemsOne": false
                                                         },
                                                         "secret": {

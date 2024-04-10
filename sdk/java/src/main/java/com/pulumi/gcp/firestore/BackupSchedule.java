@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var daily_backup = new BackupSchedule(&#34;daily-backup&#34;, BackupScheduleArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .database(database.name())
- *             .retention(&#34;604800s&#34;)
+ *             .retention(&#34;8467200s&#34;)
  *             .dailyRecurrence()
  *             .build());
  * 
@@ -221,7 +221,7 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+     * You can set this to a value up to 14 weeks.
      * 
      * ***
      * 
@@ -232,7 +232,7 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
     /**
      * @return At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
+     * You can set this to a value up to 14 weeks.
      * 
      * ***
      * 

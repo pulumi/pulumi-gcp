@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     }],
  *     region: "us-central1",
  *     replicaCount: 1,
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
  *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
  *     authorizationMode: "AUTH_MODE_DISABLED",
  * });
@@ -141,6 +142,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     */
+    public readonly nodeType!: pulumi.Output<string>;
+    /**
+     * Output only. Redis memory precise size in GB for the entire cluster.
+     */
+    public /*out*/ readonly preciseSizeGb!: pulumi.Output<number>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -211,6 +222,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
+            resourceInputs["preciseSizeGb"] = state ? state.preciseSizeGb : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscConfigs"] = state ? state.pscConfigs : undefined;
             resourceInputs["pscConnections"] = state ? state.pscConnections : undefined;
@@ -232,6 +245,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pscConfigs"] = args ? args.pscConfigs : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -240,6 +254,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
+            resourceInputs["preciseSizeGb"] = undefined /*out*/;
             resourceInputs["pscConnections"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -279,6 +294,16 @@ export interface ClusterState {
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     */
+    nodeType?: pulumi.Input<string>;
+    /**
+     * Output only. Redis memory precise size in GB for the entire cluster.
+     */
+    preciseSizeGb?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -349,6 +374,12 @@ export interface ClusterArgs {
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     */
+    nodeType?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

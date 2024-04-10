@@ -8273,6 +8273,8 @@ class ClusterNodePoolAutoConfig(dict):
         suggest = None
         if key == "networkTags":
             suggest = "network_tags"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolAutoConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8286,12 +8288,16 @@ class ClusterNodePoolAutoConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None):
+                 network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
         """
         :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: The network tag config for the cluster's automatically provisioned node pools.
+        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="networkTags")
@@ -8300,6 +8306,14 @@ class ClusterNodePoolAutoConfig(dict):
         The network tag config for the cluster's automatically provisioned node pools.
         """
         return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -16423,11 +16437,14 @@ class GetClusterNodePoolResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolAutoConfigResult(dict):
     def __init__(__self__, *,
-                 network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult']):
+                 network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult'],
+                 resource_manager_tags: Mapping[str, Any]):
         """
         :param Sequence['GetClusterNodePoolAutoConfigNetworkTagArgs'] network_tags: Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+        :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="networkTags")
@@ -16436,6 +16453,14 @@ class GetClusterNodePoolAutoConfigResult(dict):
         Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
         """
         return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, Any]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type

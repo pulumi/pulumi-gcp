@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Container
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
         public readonly bool EnableAutopilot;
+        public readonly bool EnableCiliumClusterwideNetworkPolicy;
         public readonly bool EnableFqdnNetworkPolicy;
         public readonly bool EnableIntranodeVisibility;
         public readonly ImmutableArray<Outputs.GetClusterEnableK8sBetaApiResult> EnableK8sBetaApis;
@@ -252,6 +253,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterDnsConfigResult> dnsConfigs,
 
             bool enableAutopilot,
+
+            bool enableCiliumClusterwideNetworkPolicy,
 
             bool enableFqdnNetworkPolicy,
 
@@ -388,6 +391,7 @@ namespace Pulumi.Gcp.Container
             Description = description;
             DnsConfigs = dnsConfigs;
             EnableAutopilot = enableAutopilot;
+            EnableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             EnableIntranodeVisibility = enableIntranodeVisibility;
             EnableK8sBetaApis = enableK8sBetaApis;

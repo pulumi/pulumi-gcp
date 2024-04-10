@@ -268,6 +268,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The project number of the project in which the resource belongs.
+        /// </summary>
+        [Output("projectNumber")]
+        public Output<int> ProjectNumber { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         /// </summary>
         [Output("publicAccessPrevention")]
@@ -672,6 +678,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The project number of the project in which the resource belongs.
+        /// </summary>
+        [Input("projectNumber")]
+        public Input<int>? ProjectNumber { get; set; }
 
         /// <summary>
         /// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".

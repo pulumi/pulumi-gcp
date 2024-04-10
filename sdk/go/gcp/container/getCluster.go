@@ -39,35 +39,36 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	AddonsConfigs              []GetClusterAddonsConfig              `pulumi:"addonsConfigs"`
-	AllowNetAdmin              bool                                  `pulumi:"allowNetAdmin"`
-	AuthenticatorGroupsConfigs []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
-	BinaryAuthorizations       []GetClusterBinaryAuthorization       `pulumi:"binaryAuthorizations"`
-	ClusterAutoscalings        []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
-	ClusterIpv4Cidr            string                                `pulumi:"clusterIpv4Cidr"`
-	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
-	ConfidentialNodes          []GetClusterConfidentialNode          `pulumi:"confidentialNodes"`
-	CostManagementConfigs      []GetClusterCostManagementConfig      `pulumi:"costManagementConfigs"`
-	DatabaseEncryptions        []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
-	DatapathProvider           string                                `pulumi:"datapathProvider"`
-	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
-	DefaultSnatStatuses        []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
-	DeletionProtection         bool                                  `pulumi:"deletionProtection"`
-	Description                string                                `pulumi:"description"`
-	DnsConfigs                 []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
-	EnableAutopilot            bool                                  `pulumi:"enableAutopilot"`
-	EnableFqdnNetworkPolicy    bool                                  `pulumi:"enableFqdnNetworkPolicy"`
-	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`
-	EnableK8sBetaApis          []GetClusterEnableK8sBetaApi          `pulumi:"enableK8sBetaApis"`
-	EnableKubernetesAlpha      bool                                  `pulumi:"enableKubernetesAlpha"`
-	EnableL4IlbSubsetting      bool                                  `pulumi:"enableL4IlbSubsetting"`
-	EnableLegacyAbac           bool                                  `pulumi:"enableLegacyAbac"`
-	EnableMultiNetworking      bool                                  `pulumi:"enableMultiNetworking"`
-	EnableShieldedNodes        bool                                  `pulumi:"enableShieldedNodes"`
-	EnableTpu                  bool                                  `pulumi:"enableTpu"`
-	Endpoint                   string                                `pulumi:"endpoint"`
-	Fleets                     []GetClusterFleet                     `pulumi:"fleets"`
-	GatewayApiConfigs          []GetClusterGatewayApiConfig          `pulumi:"gatewayApiConfigs"`
+	AddonsConfigs                        []GetClusterAddonsConfig              `pulumi:"addonsConfigs"`
+	AllowNetAdmin                        bool                                  `pulumi:"allowNetAdmin"`
+	AuthenticatorGroupsConfigs           []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
+	BinaryAuthorizations                 []GetClusterBinaryAuthorization       `pulumi:"binaryAuthorizations"`
+	ClusterAutoscalings                  []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
+	ClusterIpv4Cidr                      string                                `pulumi:"clusterIpv4Cidr"`
+	ClusterTelemetries                   []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
+	ConfidentialNodes                    []GetClusterConfidentialNode          `pulumi:"confidentialNodes"`
+	CostManagementConfigs                []GetClusterCostManagementConfig      `pulumi:"costManagementConfigs"`
+	DatabaseEncryptions                  []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
+	DatapathProvider                     string                                `pulumi:"datapathProvider"`
+	DefaultMaxPodsPerNode                int                                   `pulumi:"defaultMaxPodsPerNode"`
+	DefaultSnatStatuses                  []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
+	DeletionProtection                   bool                                  `pulumi:"deletionProtection"`
+	Description                          string                                `pulumi:"description"`
+	DnsConfigs                           []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
+	EnableAutopilot                      bool                                  `pulumi:"enableAutopilot"`
+	EnableCiliumClusterwideNetworkPolicy bool                                  `pulumi:"enableCiliumClusterwideNetworkPolicy"`
+	EnableFqdnNetworkPolicy              bool                                  `pulumi:"enableFqdnNetworkPolicy"`
+	EnableIntranodeVisibility            bool                                  `pulumi:"enableIntranodeVisibility"`
+	EnableK8sBetaApis                    []GetClusterEnableK8sBetaApi          `pulumi:"enableK8sBetaApis"`
+	EnableKubernetesAlpha                bool                                  `pulumi:"enableKubernetesAlpha"`
+	EnableL4IlbSubsetting                bool                                  `pulumi:"enableL4IlbSubsetting"`
+	EnableLegacyAbac                     bool                                  `pulumi:"enableLegacyAbac"`
+	EnableMultiNetworking                bool                                  `pulumi:"enableMultiNetworking"`
+	EnableShieldedNodes                  bool                                  `pulumi:"enableShieldedNodes"`
+	EnableTpu                            bool                                  `pulumi:"enableTpu"`
+	Endpoint                             string                                `pulumi:"endpoint"`
+	Fleets                               []GetClusterFleet                     `pulumi:"fleets"`
+	GatewayApiConfigs                    []GetClusterGatewayApiConfig          `pulumi:"gatewayApiConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
 	IdentityServiceConfigs          []GetClusterIdentityServiceConfig          `pulumi:"identityServiceConfigs"`
@@ -229,6 +230,10 @@ func (o LookupClusterResultOutput) DnsConfigs() GetClusterDnsConfigArrayOutput {
 
 func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableAutopilot }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableCiliumClusterwideNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableCiliumClusterwideNetworkPolicy }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) EnableFqdnNetworkPolicy() pulumi.BoolOutput {

@@ -401,6 +401,7 @@ class _BucketState:
                  logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 project_number: Optional[pulumi.Input[int]] = None,
                  public_access_prevention: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  requester_pays: Optional[pulumi.Input[bool]] = None,
@@ -435,6 +436,7 @@ class _BucketState:
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[int] project_number: The project number of the project in which the resource belongs.
         :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
@@ -477,6 +479,8 @@ class _BucketState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
         if public_access_prevention is not None:
             pulumi.set(__self__, "public_access_prevention", public_access_prevention)
         if pulumi_labels is not None:
@@ -675,6 +679,18 @@ class _BucketState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The project number of the project in which the resource belongs.
+        """
+        return pulumi.get(self, "project_number")
+
+    @project_number.setter
+    def project_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "project_number", value)
 
     @property
     @pulumi.getter(name="publicAccessPrevention")
@@ -1202,6 +1218,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["website"] = website
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["project_number"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["url"] = None
@@ -1231,6 +1248,7 @@ class Bucket(pulumi.CustomResource):
             logging: Optional[pulumi.Input[pulumi.InputType['BucketLoggingArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            project_number: Optional[pulumi.Input[int]] = None,
             public_access_prevention: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             requester_pays: Optional[pulumi.Input[bool]] = None,
@@ -1270,6 +1288,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[int] project_number: The project number of the project in which the resource belongs.
         :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
@@ -1302,6 +1321,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["logging"] = logging
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["project_number"] = project_number
         __props__.__dict__["public_access_prevention"] = public_access_prevention
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["requester_pays"] = requester_pays
@@ -1433,6 +1453,14 @@ class Bucket(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> pulumi.Output[int]:
+        """
+        The project number of the project in which the resource belongs.
+        """
+        return pulumi.get(self, "project_number")
 
     @property
     @pulumi.getter(name="publicAccessPrevention")

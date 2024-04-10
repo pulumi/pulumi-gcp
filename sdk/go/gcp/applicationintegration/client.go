@@ -39,7 +39,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := applicationintegration.NewClient(ctx, "example", &applicationintegration.ClientArgs{
-//				Location: pulumi.String("us-central1"),
+//				Location:      pulumi.String("us-central1"),
+//				ProvisionGmek: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -61,6 +62,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/applicationintegration"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,7 +75,7 @@ import (
 //			}
 //			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
 //				Name:     pulumi.String("my-keyring"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //			})
 //			if err != nil {
 //				return err
@@ -92,17 +94,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("service-account-id"),
+//				DisplayName: pulumi.String("Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = applicationintegration.NewClient(ctx, "example", &applicationintegration.ClientArgs{
-//				Location:              pulumi.String("us-central1"),
+//				Location:              pulumi.String("us-east1"),
 //				CreateSampleWorkflows: pulumi.Bool(true),
-//				ProvisionGmek:         pulumi.Bool(true),
-//				RunAsServiceAccount:   pulumi.String("radndom-service-account"),
+//				RunAsServiceAccount:   serviceAccount.Email,
 //				CloudKmsConfig: &applicationintegration.ClientCloudKmsConfigArgs{
-//					KmsLocation:  pulumi.String("us-central1"),
+//					KmsLocation:  pulumi.String("us-east1"),
 //					KmsRing:      keyring.ID(),
 //					Key:          cryptokey.ID(),
 //					KeyVersion:   testKey.ID(),
-//					KmsProjectId: pulumi.String(testProject.Id),
+//					KmsProjectId: pulumi.String(testProject.ProjectId),
 //				},
 //			})
 //			if err != nil {

@@ -14,6 +14,7 @@ import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
 import com.pulumi.gcp.redis.outputs.ClusterStateInfo;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -76,6 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .region(&#34;us-central1&#34;)
  *             .replicaCount(1)
+ *             .nodeType(&#34;REDIS_SHARED_CORE_NANO&#34;)
  *             .transitEncryptionMode(&#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;)
  *             .authorizationMode(&#34;AUTH_MODE_DISABLED&#34;)
  *             .build());
@@ -207,6 +209,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * 
+     */
+    @Export(name="nodeType", refs={String.class}, tree="[0]")
+    private Output<String> nodeType;
+
+    /**
+     * @return The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * 
+     */
+    public Output<String> nodeType() {
+        return this.nodeType;
+    }
+    /**
+     * Output only. Redis memory precise size in GB for the entire cluster.
+     * 
+     */
+    @Export(name="preciseSizeGb", refs={Double.class}, tree="[0]")
+    private Output<Double> preciseSizeGb;
+
+    /**
+     * @return Output only. Redis memory precise size in GB for the entire cluster.
+     * 
+     */
+    public Output<Double> preciseSizeGb() {
+        return this.preciseSizeGb;
     }
     /**
      * The ID of the project in which the resource belongs.

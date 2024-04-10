@@ -56,6 +56,7 @@ import (
 //				},
 //				Region:                pulumi.String("us-central1"),
 //				ReplicaCount:          pulumi.Int(1),
+//				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
 //			})
@@ -141,6 +142,12 @@ type Cluster struct {
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+	NodeType pulumi.StringOutput `pulumi:"nodeType"`
+	// Output only. Redis memory precise size in GB for the entire cluster.
+	PreciseSizeGb pulumi.Float64Output `pulumi:"preciseSizeGb"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -226,6 +233,12 @@ type clusterState struct {
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name *string `pulumi:"name"`
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+	NodeType *string `pulumi:"nodeType"`
+	// Output only. Redis memory precise size in GB for the entire cluster.
+	PreciseSizeGb *float64 `pulumi:"preciseSizeGb"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -276,6 +289,12 @@ type ClusterState struct {
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringPtrInput
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+	NodeType pulumi.StringPtrInput
+	// Output only. Redis memory precise size in GB for the entire cluster.
+	PreciseSizeGb pulumi.Float64PtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -321,6 +340,10 @@ type clusterArgs struct {
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name *string `pulumi:"name"`
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+	NodeType *string `pulumi:"nodeType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -351,6 +374,10 @@ type ClusterArgs struct {
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringPtrInput
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+	NodeType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -485,6 +512,18 @@ func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput 
 // projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The nodeType for the Redis cluster.
+// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+func (o ClusterOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Output only. Redis memory precise size in GB for the entire cluster.
+func (o ClusterOutput) PreciseSizeGb() pulumi.Float64Output {
+	return o.ApplyT(func(v *Cluster) pulumi.Float64Output { return v.PreciseSizeGb }).(pulumi.Float64Output)
 }
 
 // The ID of the project in which the resource belongs.

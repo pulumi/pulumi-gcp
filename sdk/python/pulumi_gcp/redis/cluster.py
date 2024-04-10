@@ -20,6 +20,7 @@ class ClusterArgs:
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
@@ -36,6 +37,9 @@ class ClusterArgs:
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
@@ -51,6 +55,8 @@ class ClusterArgs:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -115,6 +121,20 @@ class ClusterArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The nodeType for the Redis cluster.
+        If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_type", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -174,6 +194,8 @@ class _ClusterState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
+                 precise_size_gb: Optional[pulumi.Input[float]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
                  psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
@@ -199,6 +221,10 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
@@ -228,6 +254,10 @@ class _ClusterState:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if precise_size_gb is not None:
+            pulumi.set(__self__, "precise_size_gb", precise_size_gb)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if psc_configs is not None:
@@ -306,6 +336,32 @@ class _ClusterState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The nodeType for the Redis cluster.
+        If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_type", value)
+
+    @property
+    @pulumi.getter(name="preciseSizeGb")
+    def precise_size_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Output only. Redis memory precise size in GB for the entire cluster.
+        """
+        return pulumi.get(self, "precise_size_gb")
+
+    @precise_size_gb.setter
+    def precise_size_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "precise_size_gb", value)
 
     @property
     @pulumi.getter
@@ -456,6 +512,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -492,6 +549,7 @@ class Cluster(pulumi.CustomResource):
             )],
             region="us-central1",
             replica_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
             authorization_mode="AUTH_MODE_DISABLED")
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
@@ -548,6 +606,9 @@ class Cluster(pulumi.CustomResource):
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
@@ -597,6 +658,7 @@ class Cluster(pulumi.CustomResource):
             )],
             region="us-central1",
             replica_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
             authorization_mode="AUTH_MODE_DISABLED")
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
@@ -663,6 +725,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -680,6 +743,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["name"] = name
+            __props__.__dict__["node_type"] = node_type
             __props__.__dict__["project"] = project
             if psc_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'psc_configs'")
@@ -692,6 +756,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
+            __props__.__dict__["precise_size_gb"] = None
             __props__.__dict__["psc_connections"] = None
             __props__.__dict__["size_gb"] = None
             __props__.__dict__["state"] = None
@@ -711,6 +776,8 @@ class Cluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDiscoveryEndpointArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            node_type: Optional[pulumi.Input[str]] = None,
+            precise_size_gb: Optional[pulumi.Input[float]] = None,
             project: Optional[pulumi.Input[str]] = None,
             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]]] = None,
             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConnectionArgs']]]]] = None,
@@ -741,6 +808,10 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterPscConfigArgs']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
@@ -770,6 +841,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
         __props__.__dict__["name"] = name
+        __props__.__dict__["node_type"] = node_type
+        __props__.__dict__["precise_size_gb"] = precise_size_gb
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_configs"] = psc_configs
         __props__.__dict__["psc_connections"] = psc_connections
@@ -822,6 +895,24 @@ class Cluster(pulumi.CustomResource):
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Output[str]:
+        """
+        The nodeType for the Redis cluster.
+        If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        """
+        return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter(name="preciseSizeGb")
+    def precise_size_gb(self) -> pulumi.Output[float]:
+        """
+        Output only. Redis memory precise size in GB for the entire cluster.
+        """
+        return pulumi.get(self, "precise_size_gb")
 
     @property
     @pulumi.getter

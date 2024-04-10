@@ -81,6 +81,12 @@ namespace Pulumi.Gcp.Storage
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
         public GetBucketArgs()
         {
         }
@@ -94,6 +100,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetBucketInvokeArgs()
         {
@@ -122,7 +134,8 @@ namespace Pulumi.Gcp.Storage
         public readonly string Location;
         public readonly ImmutableArray<Outputs.GetBucketLoggingResult> Loggings;
         public readonly string Name;
-        public readonly string Project;
+        public readonly string? Project;
+        public readonly int ProjectNumber;
         public readonly string PublicAccessPrevention;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool RequesterPays;
@@ -166,7 +179,9 @@ namespace Pulumi.Gcp.Storage
 
             string name,
 
-            string project,
+            string? project,
+
+            int projectNumber,
 
             string publicAccessPrevention,
 
@@ -207,6 +222,7 @@ namespace Pulumi.Gcp.Storage
             Loggings = loggings;
             Name = name;
             Project = project;
+            ProjectNumber = projectNumber;
             PublicAccessPrevention = publicAccessPrevention;
             PulumiLabels = pulumiLabels;
             RequesterPays = requesterPays;
