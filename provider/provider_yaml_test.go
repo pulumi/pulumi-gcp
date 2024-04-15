@@ -18,6 +18,7 @@
 package gcp
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"os/exec"
@@ -849,4 +850,97 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 		}
 	}
 	]`, proj, proj))
+}
+
+func TestBucketIamBindingImportIdMatchesUpId(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "bucket-iam-binding"),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+	googleProj := getProject()
+	test.SetConfig("gcp:config:project", googleProj)
+
+	res := test.Up()
+	bucketID := res.Outputs["bucketId"].Value.(string)
+
+	stack := test.ExportStack()
+	data, err := stack.Deployment.MarshalJSON()
+	require.NoError(t, err)
+	stackJSON := make(map[string]interface{})
+	err = json.Unmarshal(data, &stackJSON)
+	require.NoError(t, err)
+	resourcesJSON := stackJSON["resources"].([]interface{})
+	// The binding is 4th - stack, provider, bucket, binding
+	bindingJSON := resourcesJSON[3].(map[string]interface{})
+	inputs := bindingJSON["inputs"].(map[string]interface{})
+	upBucketIDInput := inputs["bucket"].(string)
+
+	// Automation API can't import, so we work around that...
+	json := fmt.Sprintf(`
+	[
+		{
+			"method": "/pulumirpc.ResourceProvider/Configure",
+			"request": {
+				"variables": {
+					"gcp:config:project": "pulumi-development"
+				},
+				"args": {
+					"project": "pulumi-development",
+					"version": "7.18.0"
+				},
+				"acceptSecrets": true,
+				"acceptResources": true,
+				"sendsOldInputs": true,
+				"sendsOldInputsToDelete": true
+			},
+			"response": {
+				"supportsPreview": true
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
+		},
+		{
+			"method": "/pulumirpc.ResourceProvider/Read",
+			"request": {
+				"id": "%s roles/storage.objectAdmin",
+				"urn": "urn:pulumi:test1::gcp_bucket_import::gcp:storage/bucketIAMBinding:BucketIAMBinding::objectAdminBinding",
+				"properties": {}
+			},
+			"response": {
+				"id": "*",
+				"properties": {
+					"bucket": "*",
+					"condition": null,
+					"etag": "*",
+					"id": "*",
+					"members": [
+						"allAuthenticatedUsers"
+					],
+					"role": "roles/storage.objectAdmin"
+				},
+				"inputs": {
+					"__defaults": [],
+					"bucket": %q,
+					"members": [
+						"allAuthenticatedUsers"
+					],
+					"role": "roles/storage.objectAdmin"
+				}
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
+		}
+	]`, bucketID, upBucketIDInput)
+	replay.ReplaySequence(t, providerServer(t), json)
 }
