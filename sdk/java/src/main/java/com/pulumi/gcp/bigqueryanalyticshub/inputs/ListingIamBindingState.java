@@ -86,19 +86,9 @@ public final class ListingIamBindingState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.location);
     }
 
-    @Import(name="members")
-    private @Nullable Output<List<String>> members;
-
-    public Optional<Output<List<String>>> members() {
-        return Optional.ofNullable(this.members);
-    }
-
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -110,15 +100,12 @@ public final class ListingIamBindingState extends com.pulumi.resources.ResourceA
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Import(name="project")
-    private @Nullable Output<String> project;
+    @Import(name="members")
+    private @Nullable Output<List<String>> members;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -128,6 +115,23 @@ public final class ListingIamBindingState extends com.pulumi.resources.ResourceA
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
+    public Optional<Output<List<String>>> members() {
+        return Optional.ofNullable(this.members);
+    }
+
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -279,25 +283,9 @@ public final class ListingIamBindingState extends com.pulumi.resources.ResourceA
             return location(Output.of(location));
         }
 
-        public Builder members(@Nullable Output<List<String>> members) {
-            $.members = members;
-            return this;
-        }
-
-        public Builder members(List<String> members) {
-            return members(Output.of(members));
-        }
-
-        public Builder members(String... members) {
-            return members(List.of(members));
-        }
-
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -311,17 +299,14 @@ public final class ListingIamBindingState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder project(@Nullable Output<String> project) {
-            $.project = project;
+        public Builder members(@Nullable Output<List<String>> members) {
+            $.members = members;
             return this;
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -331,6 +316,49 @@ public final class ListingIamBindingState extends com.pulumi.resources.ResourceA
          * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
          * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
          * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder members(List<String> members) {
+            return members(Output.of(members));
+        }
+
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
+         * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
+         * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder members(String... members) {
+            return members(List.of(members));
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
          * 
          * @return builder
          * 

@@ -131,6 +131,115 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_bigtable\_table\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/bigtable.user",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigtable.NewTableIamPolicy(ctx, "editor", &bigtable.TableIamPolicyArgs{
+//				Project:    pulumi.String("your-project"),
+//				Instance:   pulumi.String("your-bigtable-instance"),
+//				Table:      pulumi.String("your-bigtable-table"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_bigtable\_table\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewTableIamBinding(ctx, "editor", &bigtable.TableIamBindingArgs{
+//				Table:    pulumi.String("your-bigtable-table"),
+//				Instance: pulumi.String("your-bigtable-instance"),
+//				Role:     pulumi.String("roles/bigtable.user"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_bigtable\_table\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigtable.NewTableIamMember(ctx, "editor", &bigtable.TableIamMemberArgs{
+//				Table:    pulumi.String("your-bigtable-table"),
+//				Instance: pulumi.String("your-bigtable-instance"),
+//				Role:     pulumi.String("roles/bigtable.user"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ### Importing IAM policies
@@ -163,8 +272,16 @@ type TableIamBinding struct {
 	// (Computed) The etag of the tables's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance pulumi.StringOutput      `pulumi:"instance"`
-	Members  pulumi.StringArrayOutput `pulumi:"members"`
+	Instance pulumi.StringOutput `pulumi:"instance"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the table belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -177,15 +294,6 @@ type TableIamBinding struct {
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
 	// For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Table pulumi.StringOutput `pulumi:"table"`
 }
 
@@ -235,8 +343,16 @@ type tableIamBindingState struct {
 	// (Computed) The etag of the tables's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance *string  `pulumi:"instance"`
-	Members  []string `pulumi:"members"`
+	Instance *string `pulumi:"instance"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members []string `pulumi:"members"`
 	// The project in which the table belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project *string `pulumi:"project"`
@@ -249,15 +365,6 @@ type tableIamBindingState struct {
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
 	// For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Table *string `pulumi:"table"`
 }
 
@@ -267,7 +374,15 @@ type TableIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringPtrInput
-	Members  pulumi.StringArrayInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayInput
 	// The project in which the table belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
@@ -280,15 +395,6 @@ type TableIamBindingState struct {
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
 	// For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Table pulumi.StringPtrInput
 }
 
@@ -299,8 +405,16 @@ func (TableIamBindingState) ElementType() reflect.Type {
 type tableIamBindingArgs struct {
 	Condition *TableIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance that owns the table.
-	Instance string   `pulumi:"instance"`
-	Members  []string `pulumi:"members"`
+	Instance string `pulumi:"instance"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members []string `pulumi:"members"`
 	// The project in which the table belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project *string `pulumi:"project"`
@@ -313,15 +427,6 @@ type tableIamBindingArgs struct {
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
 	// For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Table string `pulumi:"table"`
 }
 
@@ -330,7 +435,15 @@ type TableIamBindingArgs struct {
 	Condition TableIamBindingConditionPtrInput
 	// The name or relative resource id of the instance that owns the table.
 	Instance pulumi.StringInput
-	Members  pulumi.StringArrayInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayInput
 	// The project in which the table belongs. If it
 	// is not provided, this provider will use the provider default.
 	Project pulumi.StringPtrInput
@@ -343,15 +456,6 @@ type TableIamBindingArgs struct {
 	// The name or relative resource id of the table to manage IAM policies for.
 	//
 	// For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Table pulumi.StringInput
 }
 
@@ -456,6 +560,14 @@ func (o TableIamBindingOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o TableIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -478,15 +590,6 @@ func (o TableIamBindingOutput) Role() pulumi.StringOutput {
 // The name or relative resource id of the table to manage IAM policies for.
 //
 // For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o TableIamBindingOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableIamBinding) pulumi.StringOutput { return v.Table }).(pulumi.StringOutput)
 }

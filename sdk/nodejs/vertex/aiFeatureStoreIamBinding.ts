@@ -82,12 +82,8 @@ export class AiFeatureStoreIamBinding extends pulumi.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      */
     public readonly featurestore!: pulumi.Output<string>;
-    public readonly members!: pulumi.Output<string[]>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -98,6 +94,11 @@ export class AiFeatureStoreIamBinding extends pulumi.CustomResource {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -170,12 +171,8 @@ export interface AiFeatureStoreIamBindingState {
      * Used to find the parent resource to bind the IAM policy to
      */
     featurestore?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -186,6 +183,11 @@ export interface AiFeatureStoreIamBindingState {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -211,12 +213,8 @@ export interface AiFeatureStoreIamBindingArgs {
      * Used to find the parent resource to bind the IAM policy to
      */
     featurestore: pulumi.Input<string>;
-    members: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -227,6 +225,11 @@ export interface AiFeatureStoreIamBindingArgs {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    members: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

@@ -153,6 +153,129 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_bigquery\_dataset\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datasetDataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
+//				DatasetId:  datasetDataset.DatasetId,
+//				PolicyData: pulumi.String(owner.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_bigquery\_dataset\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataViewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_bigquery\_dataset\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+//				DatasetId: dataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataEditor"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ### Importing IAM policies
@@ -183,9 +306,11 @@ type DatasetIamBinding struct {
 
 	Condition DatasetIamBindingConditionPtrOutput `pulumi:"condition"`
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	// (Computed) The etag of the dataset's IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -193,9 +318,6 @@ type DatasetIamBinding struct {
 	// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
-	// (Computed) The etag of the dataset's IAM policy.
-	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -247,9 +369,11 @@ func GetDatasetIamBinding(ctx *pulumi.Context,
 type datasetIamBindingState struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	DatasetId *string `pulumi:"datasetId"`
+	// (Computed) The etag of the dataset's IAM policy.
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -257,9 +381,6 @@ type datasetIamBindingState struct {
 	// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	DatasetId *string `pulumi:"datasetId"`
-	// (Computed) The etag of the dataset's IAM policy.
-	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -273,9 +394,11 @@ type datasetIamBindingState struct {
 type DatasetIamBindingState struct {
 	Condition DatasetIamBindingConditionPtrInput
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	DatasetId pulumi.StringPtrInput
+	// (Computed) The etag of the dataset's IAM policy.
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -283,9 +406,6 @@ type DatasetIamBindingState struct {
 	// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	DatasetId pulumi.StringPtrInput
-	// (Computed) The etag of the dataset's IAM policy.
-	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,9 +423,9 @@ func (DatasetIamBindingState) ElementType() reflect.Type {
 type datasetIamBindingArgs struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	DatasetId string `pulumi:"datasetId"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -313,8 +433,7 @@ type datasetIamBindingArgs struct {
 	// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	DatasetId string   `pulumi:"datasetId"`
-	Members   []string `pulumi:"members"`
+	Members []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -328,9 +447,9 @@ type datasetIamBindingArgs struct {
 type DatasetIamBindingArgs struct {
 	Condition DatasetIamBindingConditionPtrInput
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	DatasetId pulumi.StringInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -338,8 +457,7 @@ type DatasetIamBindingArgs struct {
 	// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	DatasetId pulumi.StringInput
-	Members   pulumi.StringArrayInput
+	Members pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -441,16 +559,6 @@ func (o DatasetIamBindingOutput) Condition() DatasetIamBindingConditionPtrOutput
 }
 
 // The dataset ID.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 func (o DatasetIamBindingOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetIamBinding) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
@@ -460,6 +568,15 @@ func (o DatasetIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 func (o DatasetIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DatasetIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

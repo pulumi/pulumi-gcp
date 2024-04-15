@@ -74,6 +74,59 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_pubsub\_schema\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.pubsub.SchemaIamPolicy("policy", {
+ *     project: example.project,
+ *     schema: example.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_pubsub\_schema\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.pubsub.SchemaIamBinding("binding", {
+ *     project: example.project,
+ *     schema: example.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_pubsub\_schema\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.pubsub.SchemaIamMember("member", {
+ *     project: example.project,
+ *     schema: example.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -143,12 +196,8 @@ export class SchemaIamMember extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly member!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -159,6 +208,11 @@ export class SchemaIamMember extends pulumi.CustomResource {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    public readonly member!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -223,12 +277,8 @@ export interface SchemaIamMemberState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -239,6 +289,11 @@ export interface SchemaIamMemberState {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    member?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -258,12 +313,8 @@ export interface SchemaIamMemberState {
  */
 export interface SchemaIamMemberArgs {
     condition?: pulumi.Input<inputs.pubsub.SchemaIamMemberCondition>;
-    member: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -274,6 +325,11 @@ export interface SchemaIamMemberArgs {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    member: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

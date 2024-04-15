@@ -213,6 +213,196 @@ namespace Pulumi.Gcp.Spanner
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_spanner\_database\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "My Role",
+    ///                     Description = "Grant permissions on my_role",
+    ///                     Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_spanner\_database\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Spanner.DatabaseIAMBinding("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Spanner.DatabaseIAMBinding("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Spanner.Inputs.DatabaseIAMBindingConditionArgs
+    ///         {
+    ///             Title = "My Role",
+    ///             Description = "Grant permissions on my_role",
+    ///             Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_spanner\_database\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Spanner.DatabaseIAMMember("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Spanner.DatabaseIAMMember("database", new()
+    ///     {
+    ///         Instance = "your-instance-name",
+    ///         Database = "your-database-name",
+    ///         Role = "roles/compute.networkUser",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Spanner.Inputs.DatabaseIAMMemberConditionArgs
+    ///         {
+    ///             Title = "My Role",
+    ///             Description = "Grant permissions on my_role",
+    ///             Expression = "(resource.type == \"spanner.googleapis.com/DatabaseRole\" &amp;&amp; (resource.name.endsWith(\"/myrole\")))",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
@@ -263,8 +453,12 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The name of the Spanner instance the database belongs to.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Output("instance")]
+        public Output<string> Instance { get; private set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -273,9 +467,6 @@ namespace Pulumi.Gcp.Spanner
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Output("instance")]
-        public Output<string> Instance { get; private set; } = null!;
-
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -355,8 +546,12 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The name of the Spanner instance the database belongs to.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -365,9 +560,6 @@ namespace Pulumi.Gcp.Spanner
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
-
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -415,8 +607,12 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The name of the Spanner instance the database belongs to.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("instance")]
+        public Input<string>? Instance { get; set; }
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -425,9 +621,6 @@ namespace Pulumi.Gcp.Spanner
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("instance")]
-        public Input<string>? Instance { get; set; }
-
         [Input("member")]
         public Input<string>? Member { get; set; }
 

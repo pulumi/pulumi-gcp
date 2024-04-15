@@ -195,8 +195,14 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
      * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
      * the provider's project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly cryptoKeyId!: pulumi.Output<string>;
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -205,11 +211,6 @@ export class CryptoKeyIAMBinding extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly cryptoKeyId!: pulumi.Output<string>;
-    /**
-     * (Computed) The etag of the project's IAM policy.
-     */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Note that custom roles must be of the format
@@ -271,8 +272,14 @@ export interface CryptoKeyIAMBindingState {
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
      * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
      * the provider's project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    cryptoKeyId?: pulumi.Input<string>;
+    /**
+     * (Computed) The etag of the project's IAM policy.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -281,11 +288,6 @@ export interface CryptoKeyIAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    cryptoKeyId?: pulumi.Input<string>;
-    /**
-     * (Computed) The etag of the project's IAM policy.
-     */
-    etag?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Note that custom roles must be of the format
@@ -308,8 +310,10 @@ export interface CryptoKeyIAMBindingArgs {
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
      * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
      * the provider's project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    cryptoKeyId: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -318,7 +322,6 @@ export interface CryptoKeyIAMBindingArgs {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    cryptoKeyId: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Note that custom roles must be of the format

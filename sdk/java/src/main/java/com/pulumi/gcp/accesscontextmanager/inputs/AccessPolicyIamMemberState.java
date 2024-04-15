@@ -38,18 +38,9 @@ public final class AccessPolicyIamMemberState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.etag);
     }
 
-    @Import(name="member")
-    private @Nullable Output<String> member;
-
-    public Optional<Output<String>> member() {
-        return Optional.ofNullable(this.member);
-    }
-
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -61,14 +52,12 @@ public final class AccessPolicyIamMemberState extends com.pulumi.resources.Resou
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="member")
+    private @Nullable Output<String> member;
 
     /**
-     * @return Used to find the parent resource to bind the IAM policy to
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -78,6 +67,21 @@ public final class AccessPolicyIamMemberState extends com.pulumi.resources.Resou
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
+    public Optional<Output<String>> member() {
+        return Optional.ofNullable(this.member);
+    }
+
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Optional<Output<String>> name() {
@@ -161,20 +165,9 @@ public final class AccessPolicyIamMemberState extends com.pulumi.resources.Resou
             return etag(Output.of(etag));
         }
 
-        public Builder member(@Nullable Output<String> member) {
-            $.member = member;
-            return this;
-        }
-
-        public Builder member(String member) {
-            return member(Output.of(member));
-        }
-
         /**
-         * @param name Used to find the parent resource to bind the IAM policy to
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @param member Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -188,16 +181,14 @@ public final class AccessPolicyIamMemberState extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
+        public Builder member(@Nullable Output<String> member) {
+            $.member = member;
             return this;
         }
 
         /**
-         * @param name Used to find the parent resource to bind the IAM policy to
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @param member Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -207,6 +198,27 @@ public final class AccessPolicyIamMemberState extends com.pulumi.resources.Resou
          * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
          * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
          * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder member(String member) {
+            return member(Output.of(member));
+        }
+
+        /**
+         * @param name Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Used to find the parent resource to bind the IAM policy to
          * 
          * @return builder
          * 

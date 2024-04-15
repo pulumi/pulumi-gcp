@@ -129,6 +129,113 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_dataproc\_job\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewJobIAMPolicy(ctx, "editor", &dataproc.JobIAMPolicyArgs{
+//				Project:    pulumi.String("your-project"),
+//				Region:     pulumi.String("your-region"),
+//				JobId:      pulumi.String("your-dataproc-job"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_dataproc\_job\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewJobIAMBinding(ctx, "editor", &dataproc.JobIAMBindingArgs{
+//				JobId: pulumi.String("your-dataproc-job"),
+//				Role:  pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_dataproc\_job\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewJobIAMMember(ctx, "editor", &dataproc.JobIAMMemberArgs{
+//				JobId:  pulumi.String("your-dataproc-job"),
+//				Role:   pulumi.String("roles/editor"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ### Importing IAM policies
@@ -159,8 +266,16 @@ type JobIAMBinding struct {
 
 	Condition JobIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag    pulumi.StringOutput      `pulumi:"etag"`
-	JobId   pulumi.StringOutput      `pulumi:"jobId"`
+	Etag  pulumi.StringOutput `pulumi:"etag"`
+	JobId pulumi.StringOutput `pulumi:"jobId"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -217,8 +332,16 @@ func GetJobIAMBinding(ctx *pulumi.Context,
 type jobIAMBindingState struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag    *string  `pulumi:"etag"`
-	JobId   *string  `pulumi:"jobId"`
+	Etag  *string `pulumi:"etag"`
+	JobId *string `pulumi:"jobId"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -237,8 +360,16 @@ type jobIAMBindingState struct {
 type JobIAMBindingState struct {
 	Condition JobIAMBindingConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
-	Etag    pulumi.StringPtrInput
-	JobId   pulumi.StringPtrInput
+	Etag  pulumi.StringPtrInput
+	JobId pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
@@ -261,7 +392,15 @@ func (JobIAMBindingState) ElementType() reflect.Type {
 type jobIAMBindingArgs struct {
 	Condition *JobIAMBindingCondition `pulumi:"condition"`
 	JobId     string                  `pulumi:"jobId"`
-	Members   []string                `pulumi:"members"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members []string `pulumi:"members"`
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
@@ -280,7 +419,15 @@ type jobIAMBindingArgs struct {
 type JobIAMBindingArgs struct {
 	Condition JobIAMBindingConditionPtrInput
 	JobId     pulumi.StringInput
-	Members   pulumi.StringArrayInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayInput
 	// The project in which the job belongs. If it
 	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
@@ -395,6 +542,14 @@ func (o JobIAMBindingOutput) JobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMBinding) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o JobIAMBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

@@ -22,12 +22,7 @@ class IAMBindingArgs:
                  condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMBinding resource.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -35,6 +30,10 @@ class IAMBindingArgs:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
         :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
@@ -47,6 +46,16 @@ class IAMBindingArgs:
     @property
     @pulumi.getter
     def members(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -72,15 +81,6 @@ class IAMBindingArgs:
     def service_account_id(self) -> pulumi.Input[str]:
         """
         The fully-qualified name of the service account to apply policy to.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "service_account_id")
 
@@ -115,12 +115,7 @@ class _IAMBindingState:
         :param pulumi.Input['IAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the service account IAM policy.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -128,6 +123,10 @@ class _IAMBindingState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -168,6 +167,16 @@ class _IAMBindingState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -193,15 +202,6 @@ class _IAMBindingState:
     def service_account_id(self) -> Optional[pulumi.Input[str]]:
         """
         The fully-qualified name of the service account to apply policy to.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "service_account_id")
 
@@ -339,6 +339,112 @@ class IAMBinding(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ### Additional Examples
+
+        ### Service Account IAM Policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"],
+        )])
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can interact with")
+        admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
+            service_account_id=sa.name,
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Binding With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"],
+            condition=gcp.serviceaccount.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            member="user:jane@example.com")
+        # Allow SA service account use the default GCE account
+        gce_default_account_iam = gcp.serviceaccount.IAMMember("gce-default-account-iam",
+            service_account_id=default.name,
+            role="roles/iam.serviceAccountUser",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Member With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            member="user:jane@example.com",
+            condition=gcp.serviceaccount.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing with conditions:
@@ -357,12 +463,7 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -370,6 +471,10 @@ class IAMBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
         """
         ...
     @overload
@@ -391,6 +496,112 @@ class IAMBinding(pulumi.CustomResource):
         > **Note:** `serviceaccount.IAMBinding` resources **can be** used in conjunction with `serviceaccount.IAMMember` resources **only if** they do not grant privilege to the same role.
 
         ## Example Usage
+
+        ### Service Account IAM Policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"],
+        )])
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can interact with")
+        admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
+            service_account_id=sa.name,
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Binding With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"],
+            condition=gcp.serviceaccount.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            member="user:jane@example.com")
+        # Allow SA service account use the default GCE account
+        gce_default_account_iam = gcp.serviceaccount.IAMMember("gce-default-account-iam",
+            service_account_id=default.name,
+            role="roles/iam.serviceAccountUser",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Service Account IAM Member With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            member="user:jane@example.com",
+            condition=gcp.serviceaccount.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Additional Examples
 
         ### Service Account IAM Policy
 
@@ -576,12 +787,7 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the service account IAM policy.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -589,6 +795,10 @@ class IAMBinding(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `serviceaccount.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] service_account_id: The fully-qualified name of the service account to apply policy to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -621,6 +831,16 @@ class IAMBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @property
@@ -638,15 +858,6 @@ class IAMBinding(pulumi.CustomResource):
     def service_account_id(self) -> pulumi.Output[str]:
         """
         The fully-qualified name of the service account to apply policy to.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "service_account_id")
 

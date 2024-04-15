@@ -80,8 +80,10 @@ export class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly featurestore!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -93,7 +95,6 @@ export class AiFeatureStoreEntityTypeIamBinding extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly featurestore!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
@@ -162,8 +163,10 @@ export interface AiFeatureStoreEntityTypeIamBindingState {
     etag?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    featurestore?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -175,7 +178,6 @@ export interface AiFeatureStoreEntityTypeIamBindingState {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    featurestore?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
@@ -196,8 +198,10 @@ export interface AiFeatureStoreEntityTypeIamBindingArgs {
     entitytype: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    featurestore: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -209,7 +213,6 @@ export interface AiFeatureStoreEntityTypeIamBindingArgs {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    featurestore: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one

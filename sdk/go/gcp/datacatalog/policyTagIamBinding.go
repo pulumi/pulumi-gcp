@@ -131,6 +131,111 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_data\_catalog\_policy\_tag\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datacatalog.NewPolicyTagIamPolicy(ctx, "policy", &datacatalog.PolicyTagIamPolicyArgs{
+//				PolicyTag:  pulumi.Any(basicPolicyTag.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_data\_catalog\_policy\_tag\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.NewPolicyTagIamBinding(ctx, "binding", &datacatalog.PolicyTagIamBindingArgs{
+//				PolicyTag: pulumi.Any(basicPolicyTag.Name),
+//				Role:      pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_data\_catalog\_policy\_tag\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datacatalog"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datacatalog.NewPolicyTagIamMember(ctx, "member", &datacatalog.PolicyTagIamMemberArgs{
+//				PolicyTag: pulumi.Any(basicPolicyTag.Name),
+//				Role:      pulumi.String("roles/viewer"),
+//				Member:    pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -167,12 +272,9 @@ type PolicyTagIamBinding struct {
 
 	Condition PolicyTagIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag    pulumi.StringOutput      `pulumi:"etag"`
-	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -182,6 +284,8 @@ type PolicyTagIamBinding struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members pulumi.StringArrayOutput `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
 	PolicyTag pulumi.StringOutput `pulumi:"policyTag"`
 	// The role that should be applied. Only one
 	// `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
@@ -230,12 +334,9 @@ func GetPolicyTagIamBinding(ctx *pulumi.Context,
 type policyTagIamBindingState struct {
 	Condition *PolicyTagIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag    *string  `pulumi:"etag"`
-	Members []string `pulumi:"members"`
-	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -245,6 +346,8 @@ type policyTagIamBindingState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members []string `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
 	PolicyTag *string `pulumi:"policyTag"`
 	// The role that should be applied. Only one
 	// `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
@@ -255,12 +358,9 @@ type policyTagIamBindingState struct {
 type PolicyTagIamBindingState struct {
 	Condition PolicyTagIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag    pulumi.StringPtrInput
-	Members pulumi.StringArrayInput
-	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -270,6 +370,8 @@ type PolicyTagIamBindingState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members pulumi.StringArrayInput
+	// Used to find the parent resource to bind the IAM policy to
 	PolicyTag pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
@@ -283,11 +385,8 @@ func (PolicyTagIamBindingState) ElementType() reflect.Type {
 
 type policyTagIamBindingArgs struct {
 	Condition *PolicyTagIamBindingCondition `pulumi:"condition"`
-	Members   []string                      `pulumi:"members"`
-	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -297,6 +396,8 @@ type policyTagIamBindingArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members []string `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
 	PolicyTag string `pulumi:"policyTag"`
 	// The role that should be applied. Only one
 	// `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
@@ -307,11 +408,8 @@ type policyTagIamBindingArgs struct {
 // The set of arguments for constructing a PolicyTagIamBinding resource.
 type PolicyTagIamBindingArgs struct {
 	Condition PolicyTagIamBindingConditionPtrInput
-	Members   pulumi.StringArrayInput
-	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -321,6 +419,8 @@ type PolicyTagIamBindingArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members pulumi.StringArrayInput
+	// Used to find the parent resource to bind the IAM policy to
 	PolicyTag pulumi.StringInput
 	// The role that should be applied. Only one
 	// `datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
@@ -424,23 +524,22 @@ func (o PolicyTagIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyTagIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o PolicyTagIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyTagIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o PolicyTagIamBindingOutput) PolicyTag() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyTagIamBinding) pulumi.StringOutput { return v.PolicyTag }).(pulumi.StringOutput)
 }

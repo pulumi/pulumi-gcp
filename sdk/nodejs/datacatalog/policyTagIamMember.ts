@@ -71,6 +71,56 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_data\_catalog\_policy\_tag\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.datacatalog.PolicyTagIamPolicy("policy", {
+ *     policyTag: basicPolicyTag.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_data\_catalog\_policy\_tag\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.datacatalog.PolicyTagIamBinding("binding", {
+ *     policyTag: basicPolicyTag.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_data\_catalog\_policy\_tag\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.datacatalog.PolicyTagIamMember("member", {
+ *     policyTag: basicPolicyTag.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -136,11 +186,8 @@ export class PolicyTagIamMember extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
-    public readonly member!: pulumi.Output<string>;
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -151,6 +198,10 @@ export class PolicyTagIamMember extends pulumi.CustomResource {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    public readonly member!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
      */
     public readonly policyTag!: pulumi.Output<string>;
     /**
@@ -209,11 +260,8 @@ export interface PolicyTagIamMemberState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -224,6 +272,10 @@ export interface PolicyTagIamMemberState {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    member?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
      */
     policyTag?: pulumi.Input<string>;
     /**
@@ -239,11 +291,8 @@ export interface PolicyTagIamMemberState {
  */
 export interface PolicyTagIamMemberArgs {
     condition?: pulumi.Input<inputs.datacatalog.PolicyTagIamMemberCondition>;
-    member: pulumi.Input<string>;
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -254,6 +303,10 @@ export interface PolicyTagIamMemberArgs {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    member: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
      */
     policyTag: pulumi.Input<string>;
     /**

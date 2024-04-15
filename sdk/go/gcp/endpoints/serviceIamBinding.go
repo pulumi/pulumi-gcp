@@ -131,6 +131,111 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_endpoints\_service\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/endpoints"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = endpoints.NewServiceIamPolicy(ctx, "policy", &endpoints.ServiceIamPolicyArgs{
+//				ServiceName: pulumi.Any(endpointsService.ServiceName),
+//				PolicyData:  pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_endpoints\_service\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/endpoints"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := endpoints.NewServiceIamBinding(ctx, "binding", &endpoints.ServiceIamBindingArgs{
+//				ServiceName: pulumi.Any(endpointsService.ServiceName),
+//				Role:        pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_endpoints\_service\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/endpoints"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := endpoints.NewServiceIamMember(ctx, "member", &endpoints.ServiceIamMemberArgs{
+//				ServiceName: pulumi.Any(endpointsService.ServiceName),
+//				Role:        pulumi.String("roles/viewer"),
+//				Member:      pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -169,7 +274,18 @@ type ServiceIamBinding struct {
 
 	Condition ServiceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -219,7 +335,18 @@ func GetServiceIamBinding(ctx *pulumi.Context,
 type serviceIamBindingState struct {
 	Condition *ServiceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag    *string  `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -231,7 +358,18 @@ type serviceIamBindingState struct {
 type ServiceIamBindingState struct {
 	Condition ServiceIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag    pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -246,7 +384,18 @@ func (ServiceIamBindingState) ElementType() reflect.Type {
 
 type serviceIamBindingArgs struct {
 	Condition *ServiceIamBindingCondition `pulumi:"condition"`
-	Members   []string                    `pulumi:"members"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -257,7 +406,18 @@ type serviceIamBindingArgs struct {
 // The set of arguments for constructing a ServiceIamBinding resource.
 type ServiceIamBindingArgs struct {
 	Condition ServiceIamBindingConditionPtrInput
-	Members   pulumi.StringArrayInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -361,6 +521,17 @@ func (o ServiceIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o ServiceIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

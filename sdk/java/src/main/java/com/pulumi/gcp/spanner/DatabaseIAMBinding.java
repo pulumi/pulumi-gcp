@@ -279,6 +279,255 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## google\_spanner\_database\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/editor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
+ * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/editor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title(&#34;My Role&#34;)
+ *                     .description(&#34;Grant permissions on my_role&#34;)
+ *                     .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## google\_spanner\_database\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.DatabaseIAMBinding;
+ * import com.pulumi.gcp.spanner.DatabaseIAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.DatabaseIAMBinding;
+ * import com.pulumi.gcp.spanner.DatabaseIAMBindingArgs;
+ * import com.pulumi.gcp.spanner.inputs.DatabaseIAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .condition(DatabaseIAMBindingConditionArgs.builder()
+ *                 .title(&#34;My Role&#34;)
+ *                 .description(&#34;Grant permissions on my_role&#34;)
+ *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## google\_spanner\_database\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.DatabaseIAMMember;
+ * import com.pulumi.gcp.spanner.DatabaseIAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.DatabaseIAMMember;
+ * import com.pulumi.gcp.spanner.DatabaseIAMMemberArgs;
+ * import com.pulumi.gcp.spanner.inputs.DatabaseIAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
+ *             .instance(&#34;your-instance-name&#34;)
+ *             .database(&#34;your-database-name&#34;)
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .condition(DatabaseIAMMemberConditionArgs.builder()
+ *                 .title(&#34;My Role&#34;)
+ *                 .description(&#34;Grant permissions on my_role&#34;)
+ *                 .expression(&#34;(resource.type == \&#34;spanner.googleapis.com/DatabaseRole\&#34; &amp;&amp; (resource.name.endsWith(\&#34;/myrole\&#34;)))&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ### Importing IAM policies
@@ -355,15 +604,6 @@ public class DatabaseIAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Spanner instance the database belongs to.
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
@@ -371,8 +611,13 @@ public class DatabaseIAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the Spanner instance the database belongs to.
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     */
+    public Output<String> instance() {
+        return this.instance;
+    }
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -381,12 +626,20 @@ public class DatabaseIAMBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    public Output<String> instance() {
-        return this.instance;
-    }
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     public Output<List<String>> members() {
         return this.members;
     }

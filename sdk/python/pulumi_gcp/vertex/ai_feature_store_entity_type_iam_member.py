@@ -25,8 +25,7 @@ class AiFeatureStoreEntityTypeIamMemberArgs:
         The set of arguments for constructing a AiFeatureStoreEntityTypeIamMember resource.
         :param pulumi.Input[str] entitytype: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -65,8 +64,18 @@ class AiFeatureStoreEntityTypeIamMemberArgs:
     def featurestore(self) -> pulumi.Input[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "featurestore")
 
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+    @featurestore.setter
+    def featurestore(self, value: pulumi.Input[str]):
+        pulumi.set(self, "featurestore", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Input[str]:
+        """
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -78,15 +87,6 @@ class AiFeatureStoreEntityTypeIamMemberArgs:
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        return pulumi.get(self, "featurestore")
-
-    @featurestore.setter
-    def featurestore(self, value: pulumi.Input[str]):
-        pulumi.set(self, "featurestore", value)
-
-    @property
-    @pulumi.getter
-    def member(self) -> pulumi.Input[str]:
         return pulumi.get(self, "member")
 
     @member.setter
@@ -131,8 +131,7 @@ class _AiFeatureStoreEntityTypeIamMemberState:
         :param pulumi.Input[str] entitytype: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -198,8 +197,18 @@ class _AiFeatureStoreEntityTypeIamMemberState:
     def featurestore(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "featurestore")
 
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+    @featurestore.setter
+    def featurestore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "featurestore", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -211,15 +220,6 @@ class _AiFeatureStoreEntityTypeIamMemberState:
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        return pulumi.get(self, "featurestore")
-
-    @featurestore.setter
-    def featurestore(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "featurestore", value)
-
-    @property
-    @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "member")
 
     @member.setter
@@ -291,8 +291,7 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] entitytype: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -417,8 +416,7 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] entitytype: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -471,8 +469,14 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
     def featurestore(self) -> pulumi.Output[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
+        """
+        return pulumi.get(self, "featurestore")
 
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Output[str]:
+        """
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -484,11 +488,6 @@ class AiFeatureStoreEntityTypeIamMember(pulumi.CustomResource):
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
-        return pulumi.get(self, "featurestore")
-
-    @property
-    @pulumi.getter
-    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property

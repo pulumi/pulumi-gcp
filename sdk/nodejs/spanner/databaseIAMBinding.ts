@@ -141,6 +141,127 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_spanner\_database\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "My Role",
+ *             description: "Grant permissions on my_role",
+ *             expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *         },
+ *     }],
+ * });
+ * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_spanner\_database\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMBinding("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMBinding("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "My Role",
+ *         description: "Grant permissions on my_role",
+ *         expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_spanner\_database\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMMember("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.spanner.DatabaseIAMMember("database", {
+ *     instance: "your-instance-name",
+ *     database: "your-database-name",
+ *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "My Role",
+ *         description: "Grant permissions on my_role",
+ *         expression: "(resource.type == \"spanner.googleapis.com/DatabaseRole\" && (resource.name.endsWith(\"/myrole\")))",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -210,8 +331,10 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Spanner instance the database belongs to.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly instance!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -220,7 +343,6 @@ export class DatabaseIAMBinding extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly instance!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs. If it
@@ -300,8 +422,10 @@ export interface DatabaseIAMBindingState {
     etag?: pulumi.Input<string>;
     /**
      * The name of the Spanner instance the database belongs to.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    instance?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -310,7 +434,6 @@ export interface DatabaseIAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    instance?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs. If it
@@ -340,8 +463,10 @@ export interface DatabaseIAMBindingArgs {
     database: pulumi.Input<string>;
     /**
      * The name of the Spanner instance the database belongs to.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -350,7 +475,6 @@ export interface DatabaseIAMBindingArgs {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    instance: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs. If it

@@ -129,6 +129,113 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_dataproc\_cluster\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewClusterIAMPolicy(ctx, "editor", &dataproc.ClusterIAMPolicyArgs{
+//				Project:    pulumi.String("your-project"),
+//				Region:     pulumi.String("your-region"),
+//				Cluster:    pulumi.String("your-dataproc-cluster"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_dataproc\_cluster\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewClusterIAMBinding(ctx, "editor", &dataproc.ClusterIAMBindingArgs{
+//				Cluster: pulumi.String("your-dataproc-cluster"),
+//				Role:    pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_dataproc\_cluster\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewClusterIAMMember(ctx, "editor", &dataproc.ClusterIAMMemberArgs{
+//				Cluster: pulumi.String("your-dataproc-cluster"),
+//				Role:    pulumi.String("roles/editor"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ### Importing IAM policies
@@ -160,19 +267,18 @@ type ClusterIAMMember struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Cluster   pulumi.StringOutput                `pulumi:"cluster"`
+	Condition ClusterIAMMemberConditionPtrOutput `pulumi:"condition"`
+	// (Computed) The etag of the clusters's IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	Cluster   pulumi.StringOutput                `pulumi:"cluster"`
-	Condition ClusterIAMMemberConditionPtrOutput `pulumi:"condition"`
-	// (Computed) The etag of the clusters's IAM policy.
-	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -230,19 +336,18 @@ type clusterIAMMemberState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Cluster   *string                    `pulumi:"cluster"`
+	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
+	// (Computed) The etag of the clusters's IAM policy.
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	Cluster   *string                    `pulumi:"cluster"`
-	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
-	// (Computed) The etag of the clusters's IAM policy.
-	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -262,19 +367,18 @@ type ClusterIAMMemberState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Cluster   pulumi.StringPtrInput
+	Condition ClusterIAMMemberConditionPtrInput
+	// (Computed) The etag of the clusters's IAM policy.
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	Cluster   pulumi.StringPtrInput
-	Condition ClusterIAMMemberConditionPtrInput
-	// (Computed) The etag of the clusters's IAM policy.
-	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -298,18 +402,17 @@ type clusterIAMMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Cluster   string                     `pulumi:"cluster"`
+	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	Cluster   string                     `pulumi:"cluster"`
-	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
-	Member    string                     `pulumi:"member"`
+	Member string `pulumi:"member"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
 	Project *string `pulumi:"project"`
@@ -329,18 +432,17 @@ type ClusterIAMMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	Cluster   pulumi.StringInput
+	Condition ClusterIAMMemberConditionPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
 	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	Cluster   pulumi.StringInput
-	Condition ClusterIAMMemberConditionPtrInput
-	Member    pulumi.StringInput
+	Member pulumi.StringInput
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
 	Project pulumi.StringPtrInput
@@ -445,15 +547,6 @@ func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutputWithContext(ctx context.
 // The name or relative resource id of the cluster to manage IAM policies for.
 //
 // For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o ClusterIAMMemberOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -467,6 +560,14 @@ func (o ClusterIAMMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o ClusterIAMMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }

@@ -68,6 +68,57 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_bigtable\_instance\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigtable.user",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.bigtable.InstanceIamPolicy("editor", {
+ *     project: "your-project",
+ *     instance: "your-bigtable-instance",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_bigtable\_instance\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.bigtable.InstanceIamBinding("editor", {
+ *     instance: "your-bigtable-instance",
+ *     role: "roles/bigtable.user",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_bigtable\_instance\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.bigtable.InstanceIamMember("editor", {
+ *     instance: "your-bigtable-instance",
+ *     role: "roles/bigtable.user",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -131,8 +182,10 @@ export class InstanceIamMember extends pulumi.CustomResource {
      * The name or relative resource id of the instance to manage IAM policies for.
      *
      * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly instance!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -141,7 +194,6 @@ export class InstanceIamMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly instance!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
      * The project in which the instance belongs. If it
@@ -212,8 +264,10 @@ export interface InstanceIamMemberState {
      * The name or relative resource id of the instance to manage IAM policies for.
      *
      * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    instance?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -222,7 +276,6 @@ export interface InstanceIamMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    instance?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     /**
      * The project in which the instance belongs. If it
@@ -248,8 +301,10 @@ export interface InstanceIamMemberArgs {
      * The name or relative resource id of the instance to manage IAM policies for.
      *
      * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    instance: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -258,7 +313,6 @@ export interface InstanceIamMemberArgs {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    instance: pulumi.Input<string>;
     member: pulumi.Input<string>;
     /**
      * The project in which the instance belongs. If it
