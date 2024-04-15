@@ -14,6 +14,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		removeSecretsInPlainTextNote,
 		removeBetaFromDescriptionField,
 		substituteRandomSuffix,
+		rewritemembersField,
 	)
 }
 
@@ -88,3 +89,26 @@ var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 		},
 	}
 })()
+
+// Docs discovery gets tripped up on `member/members` fields for IAM-type properties and doesn't align the content correctly.
+
+var memberRegexp = regexp.MustCompile("`member/members`")
+
+var rewritemembersField = tfbridge.DocsEdit{
+	Path: "*iam.html.markdown",
+	Edit: func(path string, content []byte) ([]byte, error) {
+		membersByte := []byte("`members`")
+		memberByte := []byte("`member`")
+		var returnContent []byte
+		membersContent := memberRegexp.ReplaceAllLiteral(content, membersByte)
+		memberContent := memberRegexp.ReplaceAllLiteral(content, memberByte)
+		// Because the IamBinding property matches to a `members` field, while the `IAMMember` property matches to a
+		//`member` field, we need to create content for both `members` and `member` so the bridge can match each.
+		//The easiest way to do this is to duplicate the content in its entirety, once for `members` and once for
+		//`member`, and let the bridge figure it out.
+		// See https://github.com/pulumi/pulumi-gcp/issues/1920 for context.
+		returnContent = append(returnContent, membersContent...)
+		returnContent = append(returnContent, memberContent...)
+		return returnContent, nil
+	},
+}
