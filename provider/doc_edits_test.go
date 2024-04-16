@@ -124,3 +124,23 @@ func TestBetaDescription(t *testing.T) {
 		})
 	}
 }
+
+func TestRewriteMembersField(t *testing.T) {
+	t.Parallel()
+	tests := []struct{ text, expected string }{
+		{
+			"`member/members` - Identities that will be granted privileges\n",
+			"`members` - Identities that will be granted privileges\n" +
+				"`member` - Identities that will be granted privileges\n",
+		},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.text, func(t *testing.T) {
+			actual, err := rewritemembersField.Edit("doc.md", []byte(tt.text))
+			require.NoError(t, err)
+			assert.Equal(t, tt.expected, string(actual))
+		})
+	}
+}

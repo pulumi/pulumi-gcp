@@ -90,8 +90,8 @@ var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 	}
 })()
 
-// Docs discovery gets tripped up on `member/members` fields for IAM-type properties and doesn't align the content correctly.
-
+// Docs discovery gets tripped up on `member/members` fields for IAM-type properties and doesn't align the content
+// correctly.
 var memberRegexp = regexp.MustCompile("`member/members`")
 
 var rewritemembersField = tfbridge.DocsEdit{
