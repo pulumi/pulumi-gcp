@@ -138,6 +138,129 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_kms\_key\_ring\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("key_ring", {
+ *     keyRingId: keyring.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {
+ *     name: "keyring-example",
+ *     location: "global",
+ * });
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("key_ring", {
+ *     keyRingId: keyring.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_kms\_key\_ring\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     role: "roles/cloudkms.admin",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     role: "roles/cloudkms.admin",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_kms\_key\_ring\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     role: "roles/cloudkms.admin",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     role: "roles/cloudkms.admin",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -201,15 +324,6 @@ export class KeyRingIAMPolicy extends pulumi.CustomResource {
      * `{project_id}/{location_name}/{key_ring_name}` or
      * `{location_name}/{key_ring_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly keyRingId!: pulumi.Output<string>;
     /**
@@ -264,15 +378,6 @@ export interface KeyRingIAMPolicyState {
      * `{project_id}/{location_name}/{key_ring_name}` or
      * `{location_name}/{key_ring_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     keyRingId?: pulumi.Input<string>;
     /**
@@ -291,15 +396,6 @@ export interface KeyRingIAMPolicyArgs {
      * `{project_id}/{location_name}/{key_ring_name}` or
      * `{location_name}/{key_ring_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     keyRingId: pulumi.Input<string>;
     /**

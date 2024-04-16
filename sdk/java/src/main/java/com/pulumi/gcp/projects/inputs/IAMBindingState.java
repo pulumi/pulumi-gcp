@@ -49,9 +49,27 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     public Optional<Output<List<String>>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -164,15 +182,48 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(@Nullable Output<List<String>> members) {
             $.members = members;
             return this;
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(List<String> members) {
             return members(Output.of(members));
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(String... members) {
             return members(List.of(members));
         }

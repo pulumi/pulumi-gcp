@@ -126,6 +126,104 @@ namespace Pulumi.Gcp.BigQuery
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_bigquery\_dataset\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigquery.dataOwner",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new()
+    ///     {
+    ///         DatasetId = datasetDataset.DatasetId,
+    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_bigquery\_dataset\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var reader = new Gcp.BigQuery.DatasetIamBinding("reader", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataViewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_bigquery\_dataset\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigQuery.DatasetIamMember("editor", new()
+    ///     {
+    ///         DatasetId = dataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
@@ -160,16 +258,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The dataset ID.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -180,6 +268,17 @@ namespace Pulumi.Gcp.BigQuery
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
@@ -249,8 +348,15 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The dataset ID.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
+
+        [Input("members", required: true)]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -260,11 +366,6 @@ namespace Pulumi.Gcp.BigQuery
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// </summary>
-        [Input("datasetId", required: true)]
-        public Input<string> DatasetId { get; set; } = null!;
-
-        [Input("members", required: true)]
-        private InputList<string>? _members;
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -299,16 +400,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The dataset ID.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
@@ -321,6 +412,18 @@ namespace Pulumi.Gcp.BigQuery
 
         [Input("members")]
         private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// </summary>
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());

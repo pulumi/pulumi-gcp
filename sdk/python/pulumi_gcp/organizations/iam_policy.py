@@ -294,6 +294,147 @@ class IAMPolicy(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_organization\\_iam\\_policy
+
+        !> **Warning:** New organizations have several default policies which will,
+           without extreme caution, be **overwritten** by use of this resource.
+           The safest alternative is to use multiple `organizations.IAMBinding`
+           resources. This resource makes it easy to remove your own access to
+           an organization, which will require a call to Google Support to have
+           fixed, and can take multiple days to resolve.
+
+           In general, this resource should only be used with organizations
+           fully managed by this provider.I f you do use this resource,
+           the best way to be sure that you are not making dangerous changes is to start
+           by **importing** your existing policy, and examining the diff very closely.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_organization\\_iam\\_binding
+
+        > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_organization\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
+            condition=gcp.organizations.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_organization\\_iam\\_audit\\_config
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
+            service="allServices",
+            audit_log_configs=[
+                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                    log_type="ADMIN_READ",
+                ),
+                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                    log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
+                ),
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing Audit Configs
@@ -349,6 +490,147 @@ class IAMPolicy(pulumi.CustomResource):
         > **Note:** `organizations.IAMPolicy` **cannot** be used in conjunction with `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig` or they will fight over what your policy should be.
 
         > **Note:** `organizations.IAMBinding` resources **can be** used in conjunction with `organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_organization\\_iam\\_policy
+
+        !> **Warning:** New organizations have several default policies which will,
+           without extreme caution, be **overwritten** by use of this resource.
+           The safest alternative is to use multiple `organizations.IAMBinding`
+           resources. This resource makes it easy to remove your own access to
+           an organization, which will require a call to Google Support to have
+           fixed, and can take multiple days to resolve.
+
+           In general, this resource should only be used with organizations
+           fully managed by this provider.I f you do use this resource,
+           the best way to be sure that you are not making dangerous changes is to start
+           by **importing** your existing policy, and examining the diff very closely.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        organization = gcp.organizations.IAMPolicy("organization",
+            org_id="1234567890",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_organization\\_iam\\_binding
+
+        > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMBinding("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_organization\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IAMMember("organization",
+            org_id="1234567890",
+            role="roles/editor",
+            member="user:jane@example.com",
+            condition=gcp.organizations.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_organization\\_iam\\_audit\\_config
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        organization = gcp.organizations.IamAuditConfig("organization",
+            org_id="1234567890",
+            service="allServices",
+            audit_log_configs=[
+                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                    log_type="ADMIN_READ",
+                ),
+                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                    log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
+                ),
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_policy
 

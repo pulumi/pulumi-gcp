@@ -137,6 +137,117 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_gke\_hub\_feature\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureIamPolicy(ctx, "policy", &gkehub.FeatureIamPolicyArgs{
+//				Project:    pulumi.Any(feature.Project),
+//				Location:   pulumi.Any(feature.Location),
+//				Name:       pulumi.Any(feature.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_gke\_hub\_feature\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeatureIamBinding(ctx, "binding", &gkehub.FeatureIamBindingArgs{
+//				Project:  pulumi.Any(feature.Project),
+//				Location: pulumi.Any(feature.Location),
+//				Name:     pulumi.Any(feature.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_gke\_hub\_feature\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeatureIamMember(ctx, "member", &gkehub.FeatureIamMemberArgs{
+//				Project:  pulumi.Any(feature.Project),
+//				Location: pulumi.Any(feature.Location),
+//				Name:     pulumi.Any(feature.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -182,14 +293,8 @@ type FeatureIamMember struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringOutput `pulumi:"location"`
-	Member   pulumi.StringOutput `pulumi:"member"`
-	// Used to find the parent resource to bind the IAM policy to
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -199,6 +304,11 @@ type FeatureIamMember struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringOutput `pulumi:"member"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `gkehub.FeatureIamBinding` can be used per role. Note that custom roles must be of the format
@@ -247,14 +357,8 @@ type featureIamMemberState struct {
 	Etag *string `pulumi:"etag"`
 	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location *string `pulumi:"location"`
-	Member   *string `pulumi:"member"`
-	// Used to find the parent resource to bind the IAM policy to
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -264,6 +368,11 @@ type featureIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member *string `pulumi:"member"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `gkehub.FeatureIamBinding` can be used per role. Note that custom roles must be of the format
@@ -277,14 +386,8 @@ type FeatureIamMemberState struct {
 	Etag pulumi.StringPtrInput
 	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Member   pulumi.StringPtrInput
-	// Used to find the parent resource to bind the IAM policy to
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -294,6 +397,11 @@ type FeatureIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `gkehub.FeatureIamBinding` can be used per role. Note that custom roles must be of the format
@@ -309,14 +417,8 @@ type featureIamMemberArgs struct {
 	Condition *FeatureIamMemberCondition `pulumi:"condition"`
 	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location *string `pulumi:"location"`
-	Member   string  `pulumi:"member"`
-	// Used to find the parent resource to bind the IAM policy to
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -326,6 +428,11 @@ type featureIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member string `pulumi:"member"`
+	// Used to find the parent resource to bind the IAM policy to
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `gkehub.FeatureIamBinding` can be used per role. Note that custom roles must be of the format
@@ -338,14 +445,8 @@ type FeatureIamMemberArgs struct {
 	Condition FeatureIamMemberConditionPtrInput
 	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Member   pulumi.StringInput
-	// Used to find the parent resource to bind the IAM policy to
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -355,6 +456,11 @@ type FeatureIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `gkehub.FeatureIamBinding` can be used per role. Note that custom roles must be of the format
@@ -463,6 +569,17 @@ func (o FeatureIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o FeatureIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
@@ -474,18 +591,6 @@ func (o FeatureIamMemberOutput) Name() pulumi.StringOutput {
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o FeatureIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

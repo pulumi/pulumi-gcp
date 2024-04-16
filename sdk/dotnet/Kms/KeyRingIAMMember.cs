@@ -216,6 +216,202 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_kms\_key\_ring\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Name = "keyring-example",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("key_ring", new()
+    ///     {
+    ///         KeyRingId = keyring.Id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Name = "keyring-example",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("key_ring", new()
+    ///     {
+    ///         KeyRingId = keyring.Id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_kms\_key\_ring\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("key_ring", new()
+    ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("key_ring", new()
+    ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_kms\_key\_ring\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("key_ring", new()
+    ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("key_ring", new()
+    ///     {
+    ///         KeyRingId = "your-key-ring-id",
+    ///         Role = "roles/cloudkms.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
@@ -263,8 +459,12 @@ namespace Pulumi.Gcp.Kms
         /// `{project_id}/{location_name}/{key_ring_name}` or
         /// `{location_name}/{key_ring_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Output("keyRingId")]
+        public Output<string> KeyRingId { get; private set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -273,9 +473,6 @@ namespace Pulumi.Gcp.Kms
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Output("keyRingId")]
-        public Output<string> KeyRingId { get; private set; } = null!;
-
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -345,8 +542,12 @@ namespace Pulumi.Gcp.Kms
         /// `{project_id}/{location_name}/{key_ring_name}` or
         /// `{location_name}/{key_ring_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -355,9 +556,6 @@ namespace Pulumi.Gcp.Kms
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("keyRingId", required: true)]
-        public Input<string> KeyRingId { get; set; } = null!;
-
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -395,8 +593,12 @@ namespace Pulumi.Gcp.Kms
         /// `{project_id}/{location_name}/{key_ring_name}` or
         /// `{location_name}/{key_ring_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("keyRingId")]
+        public Input<string>? KeyRingId { get; set; }
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -405,9 +607,6 @@ namespace Pulumi.Gcp.Kms
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("keyRingId")]
-        public Input<string>? KeyRingId { get; set; }
-
         [Input("member")]
         public Input<string>? Member { get; set; }
 

@@ -143,6 +143,123 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## google\_bigtable\_table\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.bigtable.TableIamPolicy;
+ * import com.pulumi.gcp.bigtable.TableIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/bigtable.user&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var editor = new TableIamPolicy(&#34;editor&#34;, TableIamPolicyArgs.builder()        
+ *             .project(&#34;your-project&#34;)
+ *             .instance(&#34;your-bigtable-instance&#34;)
+ *             .table(&#34;your-bigtable-table&#34;)
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## google\_bigtable\_table\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigtable.TableIamBinding;
+ * import com.pulumi.gcp.bigtable.TableIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var editor = new TableIamBinding(&#34;editor&#34;, TableIamBindingArgs.builder()        
+ *             .table(&#34;your-bigtable-table&#34;)
+ *             .instance(&#34;your-bigtable-instance&#34;)
+ *             .role(&#34;roles/bigtable.user&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## google\_bigtable\_table\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigtable.TableIamMember;
+ * import com.pulumi.gcp.bigtable.TableIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var editor = new TableIamMember(&#34;editor&#34;, TableIamMemberArgs.builder()        
+ *             .table(&#34;your-bigtable-table&#34;)
+ *             .instance(&#34;your-bigtable-instance&#34;)
+ *             .role(&#34;roles/bigtable.user&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ### Importing IAM policies
@@ -206,9 +323,31 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> instance() {
         return this.instance;
     }
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     public Output<String> member() {
         return this.member;
     }
@@ -255,15 +394,6 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * 
      * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * 
      */
     @Export(name="table", refs={String.class}, tree="[0]")
     private Output<String> table;
@@ -272,15 +402,6 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * @return The name or relative resource id of the table to manage IAM policies for.
      * 
      * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
     public Output<String> table() {

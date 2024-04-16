@@ -77,6 +77,62 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_gke\_hub\_feature\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.gkehub.FeatureIamPolicy("policy", {
+ *     project: feature.project,
+ *     location: feature.location,
+ *     name: feature.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_gke\_hub\_feature\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.gkehub.FeatureIamBinding("binding", {
+ *     project: feature.project,
+ *     location: feature.location,
+ *     name: feature.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_gke\_hub\_feature\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.gkehub.FeatureIamMember("member", {
+ *     project: feature.project,
+ *     location: feature.location,
+ *     name: feature.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -152,16 +208,8 @@ export class FeatureIamMember extends pulumi.CustomResource {
      * The location for the resource Used to find the parent resource to bind the IAM policy to
      */
     public readonly location!: pulumi.Output<string>;
-    public readonly member!: pulumi.Output<string>;
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     */
-    public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -172,6 +220,15 @@ export class FeatureIamMember extends pulumi.CustomResource {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    public readonly member!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -235,16 +292,8 @@ export interface FeatureIamMemberState {
      * The location for the resource Used to find the parent resource to bind the IAM policy to
      */
     location?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -255,6 +304,15 @@ export interface FeatureIamMemberState {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    member?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -274,16 +332,8 @@ export interface FeatureIamMemberArgs {
      * The location for the resource Used to find the parent resource to bind the IAM policy to
      */
     location?: pulumi.Input<string>;
-    member: pulumi.Input<string>;
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -294,6 +344,15 @@ export interface FeatureIamMemberArgs {
      * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
+    member: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

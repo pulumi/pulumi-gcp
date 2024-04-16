@@ -134,6 +134,114 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_healthcare\_consent\_store\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewConsentStoreIamPolicy(ctx, "policy", &healthcare.ConsentStoreIamPolicyArgs{
+//				Dataset:        pulumi.Any(my_consent.Dataset),
+//				ConsentStoreId: pulumi.Any(my_consent.Name),
+//				PolicyData:     pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_healthcare\_consent\_store\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewConsentStoreIamBinding(ctx, "binding", &healthcare.ConsentStoreIamBindingArgs{
+//				Dataset:        pulumi.Any(my_consent.Dataset),
+//				ConsentStoreId: pulumi.Any(my_consent.Name),
+//				Role:           pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_healthcare\_consent\_store\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := healthcare.NewConsentStoreIamMember(ctx, "member", &healthcare.ConsentStoreIamMemberArgs{
+//				Dataset:        pulumi.Any(my_consent.Dataset),
+//				ConsentStoreId: pulumi.Any(my_consent.Name),
+//				Role:           pulumi.String("roles/viewer"),
+//				Member:         pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -175,18 +283,6 @@ type ConsentStoreIamPolicy struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -239,18 +335,6 @@ type consentStoreIamPolicyState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Dataset *string `pulumi:"dataset"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -265,18 +349,6 @@ type ConsentStoreIamPolicyState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Dataset pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
@@ -295,18 +367,6 @@ type consentStoreIamPolicyArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Dataset string `pulumi:"dataset"`
 	// The policy data generated by
 	// a `organizations.getIAMPolicy` data source.
@@ -320,18 +380,6 @@ type ConsentStoreIamPolicyArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Dataset pulumi.StringInput
 	// The policy data generated by
 	// a `organizations.getIAMPolicy` data source.
@@ -433,18 +481,6 @@ func (o ConsentStoreIamPolicyOutput) ConsentStoreId() pulumi.StringOutput {
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
 // Used to find the parent resource to bind the IAM policy to
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o ConsentStoreIamPolicyOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentStoreIamPolicy) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

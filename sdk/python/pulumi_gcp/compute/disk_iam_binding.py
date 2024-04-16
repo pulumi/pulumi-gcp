@@ -24,14 +24,7 @@ class DiskIamBindingArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DiskIamBinding resource.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -42,6 +35,12 @@ class DiskIamBindingArgs:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
                the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
                zone is specified, it is taken from the provider configuration.
@@ -60,6 +59,19 @@ class DiskIamBindingArgs:
     @property
     @pulumi.getter
     def members(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -107,18 +119,6 @@ class DiskIamBindingArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -154,11 +154,7 @@ class _DiskIamBindingState:
         """
         Input properties used for looking up and filtering DiskIamBinding resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -169,6 +165,9 @@ class _DiskIamBindingState:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -215,6 +214,19 @@ class _DiskIamBindingState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -239,18 +251,6 @@ class _DiskIamBindingState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -365,6 +365,57 @@ class DiskIamBinding(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_compute\\_disk\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.DiskIamPolicy("policy",
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_compute\\_disk\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.DiskIamBinding("binding",
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_compute\\_disk\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.DiskIamMember("member",
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -405,11 +456,7 @@ class DiskIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -420,6 +467,9 @@ class DiskIamBinding(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -447,6 +497,57 @@ class DiskIamBinding(pulumi.CustomResource):
         > **Note:** `compute.DiskIamPolicy` **cannot** be used in conjunction with `compute.DiskIamBinding` and `compute.DiskIamMember` or they will fight over what your policy should be.
 
         > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_compute\\_disk\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.DiskIamPolicy("policy",
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_compute\\_disk\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.DiskIamBinding("binding",
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_compute\\_disk\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.DiskIamMember("member",
+            project=default["project"],
+            zone=default["zone"],
+            name=default["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_disk\\_iam\\_policy
 
@@ -603,11 +704,7 @@ class DiskIamBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
-        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -618,6 +715,9 @@ class DiskIamBinding(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `compute.DiskIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -654,6 +754,19 @@ class DiskIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "members")
 
     @property
@@ -670,18 +783,6 @@ class DiskIamBinding(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 

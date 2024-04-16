@@ -273,6 +273,249 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Additional Examples
+ * 
+ * ### Service Account IAM Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMPolicy;
+ * import com.pulumi.gcp.serviceaccount.IAMPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/iam.serviceAccountUser&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-service-account&#34;)
+ *             .displayName(&#34;A service account that only Jane can interact with&#34;)
+ *             .build());
+ * 
+ *         var admin_account_iam = new IAMPolicy(&#34;admin-account-iam&#34;, IAMPolicyArgs.builder()        
+ *             .serviceAccountId(sa.name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Service Account IAM Binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMBinding;
+ * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-service-account&#34;)
+ *             .displayName(&#34;A service account that only Jane can use&#34;)
+ *             .build());
+ * 
+ *         var admin_account_iam = new IAMBinding(&#34;admin-account-iam&#34;, IAMBindingArgs.builder()        
+ *             .serviceAccountId(sa.name())
+ *             .role(&#34;roles/iam.serviceAccountUser&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Service Account IAM Binding With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMBinding;
+ * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
+ * import com.pulumi.gcp.serviceaccount.inputs.IAMBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-service-account&#34;)
+ *             .displayName(&#34;A service account that only Jane can use&#34;)
+ *             .build());
+ * 
+ *         var admin_account_iam = new IAMBinding(&#34;admin-account-iam&#34;, IAMBindingArgs.builder()        
+ *             .serviceAccountId(sa.name())
+ *             .role(&#34;roles/iam.serviceAccountUser&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .condition(IAMBindingConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Service Account IAM Member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMMember;
+ * import com.pulumi.gcp.serviceaccount.IAMMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ComputeFunctions.getDefaultServiceAccount();
+ * 
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-service-account&#34;)
+ *             .displayName(&#34;A service account that Jane can use&#34;)
+ *             .build());
+ * 
+ *         var admin_account_iam = new IAMMember(&#34;admin-account-iam&#34;, IAMMemberArgs.builder()        
+ *             .serviceAccountId(sa.name())
+ *             .role(&#34;roles/iam.serviceAccountUser&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *         // Allow SA service account use the default GCE account
+ *         var gce_default_account_iam = new IAMMember(&#34;gce-default-account-iam&#34;, IAMMemberArgs.builder()        
+ *             .serviceAccountId(default_.name())
+ *             .role(&#34;roles/iam.serviceAccountUser&#34;)
+ *             .member(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Service Account IAM Member With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMMember;
+ * import com.pulumi.gcp.serviceaccount.IAMMemberArgs;
+ * import com.pulumi.gcp.serviceaccount.inputs.IAMMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sa = new Account(&#34;sa&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-service-account&#34;)
+ *             .displayName(&#34;A service account that Jane can use&#34;)
+ *             .build());
+ * 
+ *         var admin_account_iam = new IAMMember(&#34;admin-account-iam&#34;, IAMMemberArgs.builder()        
+ *             .serviceAccountId(sa.name())
+ *             .role(&#34;roles/iam.serviceAccountUser&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .condition(IAMMemberConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ### Importing with conditions:
@@ -320,9 +563,31 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     public Output<List<String>> members() {
         return this.members;
     }
@@ -347,30 +612,12 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * The fully-qualified name of the service account to apply policy to.
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * 
      */
     @Export(name="serviceAccountId", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountId;
 
     /**
      * @return The fully-qualified name of the service account to apply policy to.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
     public Output<String> serviceAccountId() {

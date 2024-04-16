@@ -67,6 +67,58 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_dataproc\_job\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.dataproc.JobIAMPolicy("editor", {
+ *     project: "your-project",
+ *     region: "your-region",
+ *     jobId: "your-dataproc-job",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_dataproc\_job\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.dataproc.JobIAMBinding("editor", {
+ *     jobId: "your-dataproc-job",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_dataproc\_job\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.dataproc.JobIAMMember("editor", {
+ *     jobId: "your-dataproc-job",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies

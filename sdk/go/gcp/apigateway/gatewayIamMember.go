@@ -137,6 +137,117 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_api\_gateway\_gateway\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/apigateway.viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewGatewayIamPolicy(ctx, "policy", &apigateway.GatewayIamPolicyArgs{
+//				Project:    pulumi.Any(apiGw.Project),
+//				Region:     pulumi.Any(apiGw.Region),
+//				Gateway:    pulumi.Any(apiGw.GatewayId),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_api\_gateway\_gateway\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewGatewayIamBinding(ctx, "binding", &apigateway.GatewayIamBindingArgs{
+//				Project: pulumi.Any(apiGw.Project),
+//				Region:  pulumi.Any(apiGw.Region),
+//				Gateway: pulumi.Any(apiGw.GatewayId),
+//				Role:    pulumi.String("roles/apigateway.viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_api\_gateway\_gateway\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigateway.NewGatewayIamMember(ctx, "member", &apigateway.GatewayIamMemberArgs{
+//				Project: pulumi.Any(apiGw.Project),
+//				Region:  pulumi.Any(apiGw.Region),
+//				Gateway: pulumi.Any(apiGw.GatewayId),
+//				Role:    pulumi.String("roles/apigateway.viewer"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -181,12 +292,8 @@ type GatewayIamMember struct {
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringOutput `pulumi:"etag"`
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
-	Member  pulumi.StringOutput `pulumi:"member"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -196,6 +303,9 @@ type GatewayIamMember struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringOutput `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the gateway for the API.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -251,12 +361,8 @@ type gatewayIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag    *string `pulumi:"etag"`
 	Gateway *string `pulumi:"gateway"`
-	Member  *string `pulumi:"member"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -266,6 +372,9 @@ type gatewayIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member *string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region of the gateway for the API.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -283,12 +392,8 @@ type GatewayIamMemberState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringPtrInput
 	Gateway pulumi.StringPtrInput
-	Member  pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -298,6 +403,9 @@ type GatewayIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region of the gateway for the API.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -317,12 +425,8 @@ func (GatewayIamMemberState) ElementType() reflect.Type {
 type gatewayIamMemberArgs struct {
 	Condition *GatewayIamMemberCondition `pulumi:"condition"`
 	Gateway   string                     `pulumi:"gateway"`
-	Member    string                     `pulumi:"member"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -332,6 +436,9 @@ type gatewayIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region of the gateway for the API.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -348,12 +455,8 @@ type gatewayIamMemberArgs struct {
 type GatewayIamMemberArgs struct {
 	Condition GatewayIamMemberConditionPtrInput
 	Gateway   pulumi.StringInput
-	Member    pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -363,6 +466,9 @@ type GatewayIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region of the gateway for the API.
 	// Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -475,24 +581,23 @@ func (o GatewayIamMemberOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayIamMember) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o GatewayIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o GatewayIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

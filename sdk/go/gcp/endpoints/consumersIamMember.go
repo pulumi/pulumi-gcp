@@ -67,7 +67,18 @@ type ConsumersIamMember struct {
 	Condition       ConsumersIamMemberConditionPtrOutput `pulumi:"condition"`
 	ConsumerProject pulumi.StringOutput                  `pulumi:"consumerProject"`
 	// (Computed) The etag of the IAM policy.
-	Etag   pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
@@ -121,7 +132,18 @@ type consumersIamMemberState struct {
 	Condition       *ConsumersIamMemberCondition `pulumi:"condition"`
 	ConsumerProject *string                      `pulumi:"consumerProject"`
 	// (Computed) The etag of the IAM policy.
-	Etag   *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
@@ -134,7 +156,18 @@ type ConsumersIamMemberState struct {
 	Condition       ConsumersIamMemberConditionPtrInput
 	ConsumerProject pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag   pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
@@ -150,7 +183,18 @@ func (ConsumersIamMemberState) ElementType() reflect.Type {
 type consumersIamMemberArgs struct {
 	Condition       *ConsumersIamMemberCondition `pulumi:"condition"`
 	ConsumerProject string                       `pulumi:"consumerProject"`
-	Member          string                       `pulumi:"member"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member string `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -162,7 +206,18 @@ type consumersIamMemberArgs struct {
 type ConsumersIamMemberArgs struct {
 	Condition       ConsumersIamMemberConditionPtrInput
 	ConsumerProject pulumi.StringInput
-	Member          pulumi.StringInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringInput
 	// The role that should be applied. Only one
 	// `endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -270,6 +325,17 @@ func (o ConsumersIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumersIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o ConsumersIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumersIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }

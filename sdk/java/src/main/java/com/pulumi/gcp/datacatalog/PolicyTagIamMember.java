@@ -143,6 +143,119 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## google\_data\_catalog\_policy\_tag\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamPolicy;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/viewer&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new PolicyTagIamPolicy(&#34;policy&#34;, PolicyTagIamPolicyArgs.builder()        
+ *             .policyTag(basicPolicyTag.name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## google\_data\_catalog\_policy\_tag\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamBinding;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new PolicyTagIamBinding(&#34;binding&#34;, PolicyTagIamBindingArgs.builder()        
+ *             .policyTag(basicPolicyTag.name())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## google\_data\_catalog\_policy\_tag\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamMember;
+ * import com.pulumi.gcp.datacatalog.PolicyTagIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new PolicyTagIamMember(&#34;member&#34;, PolicyTagIamMemberArgs.builder()        
+ *             .policyTag(basicPolicyTag.name())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
@@ -198,17 +311,9 @@ public class PolicyTagIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
-    private Output<String> member;
-
-    public Output<String> member() {
-        return this.member;
-    }
     /**
-     * Used to find the parent resource to bind the IAM policy to
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -220,14 +325,12 @@ public class PolicyTagIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="policyTag", refs={String.class}, tree="[0]")
-    private Output<String> policyTag;
+    @Export(name="member", refs={String.class}, tree="[0]")
+    private Output<String> member;
 
     /**
-     * @return Used to find the parent resource to bind the IAM policy to
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -237,6 +340,20 @@ public class PolicyTagIamMember extends com.pulumi.resources.CustomResource {
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
+    public Output<String> member() {
+        return this.member;
+    }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
+    @Export(name="policyTag", refs={String.class}, tree="[0]")
+    private Output<String> policyTag;
+
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
      * 
      */
     public Output<String> policyTag() {

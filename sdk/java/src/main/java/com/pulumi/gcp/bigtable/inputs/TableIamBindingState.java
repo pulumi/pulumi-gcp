@@ -54,9 +54,31 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.instance);
     }
 
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * 
+     */
     public Optional<Output<List<String>>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -106,15 +128,6 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
      * 
      * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * 
      */
     @Import(name="table")
     private @Nullable Output<String> table;
@@ -123,15 +136,6 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
      * @return The name or relative resource id of the table to manage IAM policies for.
      * 
      * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
     public Optional<Output<String>> table() {
@@ -219,15 +223,54 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
             return instance(Output.of(instance));
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(@Nullable Output<List<String>> members) {
             $.members = members;
             return this;
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(List<String> members) {
             return members(Output.of(members));
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(String... members) {
             return members(List.of(members));
         }
@@ -289,15 +332,6 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
          * 
          * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
          * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-         * 
          * @return builder
          * 
          */
@@ -310,15 +344,6 @@ public final class TableIamBindingState extends com.pulumi.resources.ResourceArg
          * @param table The name or relative resource id of the table to manage IAM policies for.
          * 
          * For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          * 
          * @return builder
          * 

@@ -26,8 +26,7 @@ class KeyRingIAMBindingArgs:
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -55,15 +54,6 @@ class KeyRingIAMBindingArgs:
         `{project_id}/{location_name}/{key_ring_name}` or
         `{location_name}/{key_ring_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "key_ring_id")
 
@@ -74,6 +64,16 @@ class KeyRingIAMBindingArgs:
     @property
     @pulumi.getter
     def members(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -125,8 +125,7 @@ class _KeyRingIAMBindingState:
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -182,15 +181,6 @@ class _KeyRingIAMBindingState:
         `{project_id}/{location_name}/{key_ring_name}` or
         `{location_name}/{key_ring_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "key_ring_id")
 
@@ -201,6 +191,16 @@ class _KeyRingIAMBindingState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -354,6 +354,117 @@ class KeyRingIAMBinding(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_kms\\_key\\_ring\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
+            key_ring_id=keyring.id,
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
+            key_ring_id=keyring.id,
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_kms\\_key\\_ring\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMBinding("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMBinding("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            members=["user:jane@example.com"],
+            condition=gcp.kms.KeyRingIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_kms\\_key\\_ring\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMMember("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMMember("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            member="user:jane@example.com",
+            condition=gcp.kms.KeyRingIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing IAM policies
@@ -388,8 +499,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -417,6 +527,117 @@ class KeyRingIAMBinding(pulumi.CustomResource):
         > **Note:** `kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `kms.KeyRingIAMBinding` and `kms.KeyRingIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `kms.KeyRingIAMBinding` resources **can be** used in conjunction with `kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_kms\\_key\\_ring\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
+            key_ring_id=keyring.id,
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring",
+            name="keyring-example",
+            location="global")
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        key_ring = gcp.kms.KeyRingIAMPolicy("key_ring",
+            key_ring_id=keyring.id,
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_kms\\_key\\_ring\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMBinding("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMBinding("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            members=["user:jane@example.com"],
+            condition=gcp.kms.KeyRingIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_kms\\_key\\_ring\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMMember("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMMember("key_ring",
+            key_ring_id="your-key-ring-id",
+            role="roles/cloudkms.admin",
+            member="user:jane@example.com",
+            condition=gcp.kms.KeyRingIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_kms\\_key\\_ring\\_iam\\_policy
 
@@ -623,8 +844,7 @@ class KeyRingIAMBinding(pulumi.CustomResource):
                `{project_id}/{location_name}/{key_ring_name}` or
                `{location_name}/{key_ring_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -672,8 +892,14 @@ class KeyRingIAMBinding(pulumi.CustomResource):
         `{project_id}/{location_name}/{key_ring_name}` or
         `{location_name}/{key_ring_name}`. In the second form, the provider's
         project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "key_ring_id")
 
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+    @property
+    @pulumi.getter
+    def members(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -682,11 +908,6 @@ class KeyRingIAMBinding(pulumi.CustomResource):
         * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        return pulumi.get(self, "key_ring_id")
-
-    @property
-    @pulumi.getter
-    def members(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "members")
 
     @property

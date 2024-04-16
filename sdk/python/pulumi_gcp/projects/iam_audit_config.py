@@ -301,6 +301,141 @@ class IAMAuditConfig(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_project\\_iam\\_policy
+
+        !> **Be careful!** You can accidentally lock yourself out of your project
+           using this resource. Deleting a `projects.IAMPolicy` removes access
+           from anyone without organization-level access to the project. Proceed with caution.
+           It's not recommended to use `projects.IAMPolicy` with your provider project
+           to avoid locking yourself out, and it should generally only be used with projects
+           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           applying the change.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        project = gcp.projects.IAMPolicy("project",
+            project="your-project-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        project = gcp.projects.IAMPolicy("project",
+            project="your-project-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_project\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMBinding("project",
+            project="your-project-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMBinding("project",
+            project="your-project-id",
+            role="roles/container.admin",
+            members=["user:jane@example.com"],
+            condition=gcp.projects.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_project\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMMember("project",
+            project="your-project-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMMember("project",
+            project="your-project-id",
+            role="roles/firebase.admin",
+            member="user:jane@example.com",
+            condition=gcp.projects.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_project\\_iam\\_audit\\_config
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMAuditConfig("project",
+            project="your-project-id",
+            service="allServices",
+            audit_log_configs=[
+                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                    log_type="ADMIN_READ",
+                ),
+                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                    log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
+                ),
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing Audit Configs
@@ -354,6 +489,141 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
            IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
+
+        ## google\\_project\\_iam\\_policy
+
+        !> **Be careful!** You can accidentally lock yourself out of your project
+           using this resource. Deleting a `projects.IAMPolicy` removes access
+           from anyone without organization-level access to the project. Proceed with caution.
+           It's not recommended to use `projects.IAMPolicy` with your provider project
+           to avoid locking yourself out, and it should generally only be used with projects
+           fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+           applying the change.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        project = gcp.projects.IAMPolicy("project",
+            project="your-project-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.admin",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        project = gcp.projects.IAMPolicy("project",
+            project="your-project-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_project\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMBinding("project",
+            project="your-project-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMBinding("project",
+            project="your-project-id",
+            role="roles/container.admin",
+            members=["user:jane@example.com"],
+            condition=gcp.projects.IAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_project\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMMember("project",
+            project="your-project-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMMember("project",
+            project="your-project-id",
+            role="roles/firebase.admin",
+            member="user:jane@example.com",
+            condition=gcp.projects.IAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_project\\_iam\\_audit\\_config
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.IAMAuditConfig("project",
+            project="your-project-id",
+            service="allServices",
+            audit_log_configs=[
+                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                    log_type="ADMIN_READ",
+                ),
+                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                    log_type="DATA_READ",
+                    exempted_members=["user:joebloggs@example.com"],
+                ),
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_project\\_iam\\_policy
 

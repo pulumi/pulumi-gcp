@@ -26,18 +26,6 @@ class ApiConfigIamPolicyArgs:
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         pulumi.set(__self__, "api", api)
         pulumi.set(__self__, "api_config", api_config)
@@ -86,18 +74,6 @@ class ApiConfigIamPolicyArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -123,18 +99,6 @@ class _ApiConfigIamPolicyState:
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         if api is not None:
             pulumi.set(__self__, "api", api)
@@ -200,18 +164,6 @@ class _ApiConfigIamPolicyState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -244,6 +196,54 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         > **Note:** `apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `apigateway.ApiConfigIamBinding` and `apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigateway.ApiConfigIamPolicy("policy",
+            api=api_cfg["api"],
+            api_config=api_cfg["apiConfigId"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigateway.ApiConfigIamBinding("binding",
+            api=api_cfg["api"],
+            api_config=api_cfg["apiConfigId"],
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigateway.ApiConfigIamMember("member",
+            api=api_cfg["api"],
+            api_config=api_cfg["apiConfigId"],
+            role="roles/apigateway.viewer",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
@@ -339,18 +339,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         ...
     @overload
@@ -372,6 +360,54 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         > **Note:** `apigateway.ApiConfigIamPolicy` **cannot** be used in conjunction with `apigateway.ApiConfigIamBinding` and `apigateway.ApiConfigIamMember` or they will fight over what your policy should be.
 
         > **Note:** `apigateway.ApiConfigIamBinding` resources **can be** used in conjunction with `apigateway.ApiConfigIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.apigateway.ApiConfigIamPolicy("policy",
+            api=api_cfg["api"],
+            api_config=api_cfg["apiConfigId"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.apigateway.ApiConfigIamBinding("binding",
+            api=api_cfg["api"],
+            api_config=api_cfg["apiConfigId"],
+            role="roles/apigateway.viewer",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.apigateway.ApiConfigIamMember("member",
+            api=api_cfg["api"],
+            api_config=api_cfg["apiConfigId"],
+            role="roles/apigateway.viewer",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
@@ -527,18 +563,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -588,18 +612,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 

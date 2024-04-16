@@ -78,6 +78,59 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_bigquery\_dataset\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const owner = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigquery.dataOwner",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
+ *     datasetId: datasetDataset.datasetId,
+ *     policyData: owner.then(owner => owner.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_bigquery\_dataset\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const reader = new gcp.bigquery.DatasetIamBinding("reader", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataViewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_bigquery\_dataset\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const editor = new gcp.bigquery.DatasetIamMember("editor", {
+ *     datasetId: dataset.datasetId,
+ *     role: "roles/bigquery.dataEditor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -135,8 +188,14 @@ export class DatasetIamBinding extends pulumi.CustomResource {
     public readonly condition!: pulumi.Output<outputs.bigquery.DatasetIamBindingCondition | undefined>;
     /**
      * The dataset ID.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly datasetId!: pulumi.Output<string>;
+    /**
+     * (Computed) The etag of the dataset's IAM policy.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -146,11 +205,6 @@ export class DatasetIamBinding extends pulumi.CustomResource {
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */
-    public readonly datasetId!: pulumi.Output<string>;
-    /**
-     * (Computed) The etag of the dataset's IAM policy.
-     */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
@@ -213,8 +267,14 @@ export interface DatasetIamBindingState {
     condition?: pulumi.Input<inputs.bigquery.DatasetIamBindingCondition>;
     /**
      * The dataset ID.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    datasetId?: pulumi.Input<string>;
+    /**
+     * (Computed) The etag of the dataset's IAM policy.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -224,11 +284,6 @@ export interface DatasetIamBindingState {
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */
-    datasetId?: pulumi.Input<string>;
-    /**
-     * (Computed) The etag of the dataset's IAM policy.
-     */
-    etag?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
@@ -250,8 +305,10 @@ export interface DatasetIamBindingArgs {
     condition?: pulumi.Input<inputs.bigquery.DatasetIamBindingCondition>;
     /**
      * The dataset ID.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    datasetId: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -261,7 +318,6 @@ export interface DatasetIamBindingArgs {
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */
-    datasetId: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.

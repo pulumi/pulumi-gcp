@@ -67,6 +67,56 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_healthcare\_dataset\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const dataset = new gcp.healthcare.DatasetIamPolicy("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_healthcare\_dataset\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.DatasetIamBinding("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_healthcare\_dataset\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.DatasetIamMember("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -127,8 +177,14 @@ export class DatasetIamMember extends pulumi.CustomResource {
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly datasetId!: pulumi.Output<string>;
+    /**
+     * (Computed) The etag of the dataset's IAM policy.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -137,11 +193,6 @@ export class DatasetIamMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly datasetId!: pulumi.Output<string>;
-    /**
-     * (Computed) The etag of the dataset's IAM policy.
-     */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -200,8 +251,14 @@ export interface DatasetIamMemberState {
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    datasetId?: pulumi.Input<string>;
+    /**
+     * (Computed) The etag of the dataset's IAM policy.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -210,11 +267,6 @@ export interface DatasetIamMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    datasetId?: pulumi.Input<string>;
-    /**
-     * (Computed) The etag of the dataset's IAM policy.
-     */
-    etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -234,8 +286,10 @@ export interface DatasetIamMemberArgs {
      * `{project_id}/{location_name}/{dataset_name}` or
      * `{location_name}/{dataset_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    datasetId: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -244,7 +298,6 @@ export interface DatasetIamMemberArgs {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    datasetId: pulumi.Input<string>;
     member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

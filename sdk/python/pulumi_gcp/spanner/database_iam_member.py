@@ -26,8 +26,7 @@ class DatabaseIAMMemberArgs:
         The set of arguments for constructing a DatabaseIAMMember resource.
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -69,15 +68,6 @@ class DatabaseIAMMemberArgs:
     def instance(self) -> pulumi.Input[str]:
         """
         The name of the Spanner instance the database belongs to.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "instance")
 
@@ -88,6 +78,16 @@ class DatabaseIAMMemberArgs:
     @property
     @pulumi.getter
     def member(self) -> pulumi.Input[str]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -152,8 +152,7 @@ class _DatabaseIAMMemberState:
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] etag: (Computed) The etag of the database's IAM policy.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -224,15 +223,6 @@ class _DatabaseIAMMemberState:
     def instance(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Spanner instance the database belongs to.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "instance")
 
@@ -243,6 +233,16 @@ class _DatabaseIAMMemberState:
     @property
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -414,6 +414,117 @@ class DatabaseIAMMember(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_spanner\\_database\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ),
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_spanner\\_database\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.spanner.DatabaseIAMBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_spanner\\_database\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com",
+            condition=gcp.spanner.DatabaseIAMMemberConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing IAM policies
@@ -446,8 +557,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -480,6 +590,117 @@ class DatabaseIAMMember(pulumi.CustomResource):
         > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_spanner\\_database\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ),
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_spanner\\_database\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            members=["user:jane@example.com"],
+            condition=gcp.spanner.DatabaseIAMBindingConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_spanner\\_database\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            role="roles/compute.networkUser",
+            member="user:jane@example.com",
+            condition=gcp.spanner.DatabaseIAMMemberConditionArgs(
+                title="My Role",
+                description="Grant permissions on my_role",
+                expression="(resource.type == \\"spanner.googleapis.com/DatabaseRole\\" && (resource.name.endsWith(\\"/myrole\\")))",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
@@ -692,8 +913,7 @@ class DatabaseIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] etag: (Computed) The etag of the database's IAM policy.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -750,8 +970,14 @@ class DatabaseIAMMember(pulumi.CustomResource):
     def instance(self) -> pulumi.Output[str]:
         """
         The name of the Spanner instance the database belongs to.
+        """
+        return pulumi.get(self, "instance")
 
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Output[str]:
+        """
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -760,11 +986,6 @@ class DatabaseIAMMember(pulumi.CustomResource):
         * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        return pulumi.get(self, "instance")
-
-    @property
-    @pulumi.getter
-    def member(self) -> pulumi.Output[str]:
         return pulumi.get(self, "member")
 
     @property

@@ -134,6 +134,114 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_apigee\_environment\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewEnvironmentIamPolicy(ctx, "policy", &apigee.EnvironmentIamPolicyArgs{
+//				OrgId:      pulumi.Any(apigeeEnvironment.OrgId),
+//				EnvId:      pulumi.Any(apigeeEnvironment.Name),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_apigee\_environment\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigee"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigee.NewEnvironmentIamBinding(ctx, "binding", &apigee.EnvironmentIamBindingArgs{
+//				OrgId: pulumi.Any(apigeeEnvironment.OrgId),
+//				EnvId: pulumi.Any(apigeeEnvironment.Name),
+//				Role:  pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_apigee\_environment\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/apigee"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apigee.NewEnvironmentIamMember(ctx, "member", &apigee.EnvironmentIamMemberArgs{
+//				OrgId:  pulumi.Any(apigeeEnvironment.OrgId),
+//				EnvId:  pulumi.Any(apigeeEnvironment.Name),
+//				Role:   pulumi.String("roles/viewer"),
+//				Member: pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -171,18 +279,6 @@ type EnvironmentIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// (Computed) The etag of the IAM policy.
 	Etag  pulumi.StringOutput `pulumi:"etag"`
@@ -232,18 +328,6 @@ func GetEnvironmentIamPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EnvironmentIamPolicy resources.
 type environmentIamPolicyState struct {
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	EnvId *string `pulumi:"envId"`
 	// (Computed) The etag of the IAM policy.
 	Etag  *string `pulumi:"etag"`
@@ -255,18 +339,6 @@ type environmentIamPolicyState struct {
 
 type EnvironmentIamPolicyState struct {
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	EnvId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag  pulumi.StringPtrInput
@@ -282,18 +354,6 @@ func (EnvironmentIamPolicyState) ElementType() reflect.Type {
 
 type environmentIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	EnvId string `pulumi:"envId"`
 	OrgId string `pulumi:"orgId"`
 	// The policy data generated by
@@ -304,18 +364,6 @@ type environmentIamPolicyArgs struct {
 // The set of arguments for constructing a EnvironmentIamPolicy resource.
 type EnvironmentIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	EnvId pulumi.StringInput
 	OrgId pulumi.StringInput
 	// The policy data generated by
@@ -411,18 +459,6 @@ func (o EnvironmentIamPolicyOutput) ToEnvironmentIamPolicyOutputWithContext(ctx 
 }
 
 // Used to find the parent resource to bind the IAM policy to
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o EnvironmentIamPolicyOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentIamPolicy) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }

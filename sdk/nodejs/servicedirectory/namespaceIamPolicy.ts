@@ -69,6 +69,56 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_service\_directory\_namespace\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.servicedirectory.NamespaceIamPolicy("policy", {
+ *     name: example.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_service\_directory\_namespace\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.servicedirectory.NamespaceIamBinding("binding", {
+ *     name: example.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_service\_directory\_namespace\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.servicedirectory.NamespaceIamMember("member", {
+ *     name: example.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -139,18 +189,6 @@ export class NamespaceIamPolicy extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-     * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-     * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -199,18 +237,6 @@ export interface NamespaceIamPolicyState {
     etag?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-     * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-     * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     name?: pulumi.Input<string>;
     /**
@@ -226,18 +252,6 @@ export interface NamespaceIamPolicyState {
 export interface NamespaceIamPolicyArgs {
     /**
      * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-     * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-     * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
     name?: pulumi.Input<string>;
     /**

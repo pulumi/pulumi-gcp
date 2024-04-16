@@ -26,15 +26,7 @@ class WorkstationIamMemberArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkstationIamMember resource.
-        :param pulumi.Input[str] role: The role that should be applied. Only one
-               `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input[str] location: The location where the workstation parent resources reside.
-               Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -45,6 +37,13 @@ class WorkstationIamMemberArgs:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] location: The location where the workstation parent resources reside.
+               Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
         pulumi.set(__self__, "member", member)
         pulumi.set(__self__, "role", role)
@@ -61,6 +60,19 @@ class WorkstationIamMemberArgs:
     @property
     @pulumi.getter
     def member(self) -> pulumi.Input[str]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -136,18 +148,6 @@ class WorkstationIamMemberArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -173,10 +173,7 @@ class _WorkstationIamMemberState:
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
                Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -187,6 +184,8 @@ class _WorkstationIamMemberState:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -247,6 +246,19 @@ class _WorkstationIamMemberState:
     @property
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -259,18 +271,6 @@ class _WorkstationIamMemberState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -377,10 +377,7 @@ class WorkstationIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
                Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -391,6 +388,8 @@ class WorkstationIamMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -520,10 +519,7 @@ class WorkstationIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
                Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -534,6 +530,8 @@ class WorkstationIamMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -578,16 +576,8 @@ class WorkstationIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def member(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "member")
-
-    @property
-    @pulumi.getter
-    def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -598,6 +588,15 @@ class WorkstationIamMember(pulumi.CustomResource):
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        """
+        return pulumi.get(self, "member")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
         return pulumi.get(self, "project")
 

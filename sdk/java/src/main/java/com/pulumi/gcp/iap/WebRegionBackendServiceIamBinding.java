@@ -286,6 +286,259 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## google\_iap\_web\_region\_backend\_service\_iam\_policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicy;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicy;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                     .title(&#34;expires_after_2019_12_31&#34;)
+ *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new WebRegionBackendServiceIamPolicy(&#34;policy&#34;, WebRegionBackendServiceIamPolicyArgs.builder()        
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ## google\_iap\_web\_region\_backend\_service\_iam\_binding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamBinding;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
+ *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamBinding;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamBindingArgs;
+ * import com.pulumi.gcp.iap.inputs.WebRegionBackendServiceIamBindingConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new WebRegionBackendServiceIamBinding(&#34;binding&#34;, WebRegionBackendServiceIamBindingArgs.builder()        
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
+ *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .condition(WebRegionBackendServiceIamBindingConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ## google\_iap\_web\_region\_backend\_service\_iam\_member
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamMember;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
+ *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * With IAM Conditions:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamMember;
+ * import com.pulumi.gcp.iap.WebRegionBackendServiceIamMemberArgs;
+ * import com.pulumi.gcp.iap.inputs.WebRegionBackendServiceIamMemberConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new WebRegionBackendServiceIamMember(&#34;member&#34;, WebRegionBackendServiceIamMemberArgs.builder()        
+ *             .project(default_.project())
+ *             .region(default_.region())
+ *             .webRegionBackendService(default_.name())
+ *             .role(&#34;roles/iap.httpsResourceAccessor&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .condition(WebRegionBackendServiceIamMemberConditionArgs.builder()
+ *                 .title(&#34;expires_after_2019_12_31&#34;)
+ *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
+ *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms:
@@ -357,18 +610,9 @@ public class WebRegionBackendServiceIamBinding extends com.pulumi.resources.Cust
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> members;
-
-    public Output<List<String>> members() {
-        return this.members;
-    }
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -380,15 +624,12 @@ public class WebRegionBackendServiceIamBinding extends com.pulumi.resources.Cust
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
-    private Output<String> project;
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> members;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -398,6 +639,22 @@ public class WebRegionBackendServiceIamBinding extends com.pulumi.resources.Cust
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
+    public Output<List<String>> members() {
+        return this.members;
+    }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
+    @Export(name="project", refs={String.class}, tree="[0]")
+    private Output<String> project;
+
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     public Output<String> project() {

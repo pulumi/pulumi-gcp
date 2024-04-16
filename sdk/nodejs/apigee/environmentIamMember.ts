@@ -74,6 +74,59 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_apigee\_environment\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.apigee.EnvironmentIamPolicy("policy", {
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_apigee\_environment\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.apigee.EnvironmentIamBinding("binding", {
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
+ *     role: "roles/viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_apigee\_environment\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.apigee.EnvironmentIamMember("member", {
+ *     orgId: apigeeEnvironment.orgId,
+ *     envId: apigeeEnvironment.name,
+ *     role: "roles/viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -139,8 +192,14 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
     public readonly condition!: pulumi.Output<outputs.apigee.EnvironmentIamMemberCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly envId!: pulumi.Output<string>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -152,11 +211,6 @@ export class EnvironmentIamMember extends pulumi.CustomResource {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    public readonly envId!: pulumi.Output<string>;
-    /**
-     * (Computed) The etag of the IAM policy.
-     */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -218,8 +272,14 @@ export interface EnvironmentIamMemberState {
     condition?: pulumi.Input<inputs.apigee.EnvironmentIamMemberCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    envId?: pulumi.Input<string>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -231,11 +291,6 @@ export interface EnvironmentIamMemberState {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    envId?: pulumi.Input<string>;
-    /**
-     * (Computed) The etag of the IAM policy.
-     */
-    etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
@@ -253,8 +308,10 @@ export interface EnvironmentIamMemberArgs {
     condition?: pulumi.Input<inputs.apigee.EnvironmentIamMemberCondition>;
     /**
      * Used to find the parent resource to bind the IAM policy to
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    envId: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -266,7 +323,6 @@ export interface EnvironmentIamMemberArgs {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    envId: pulumi.Input<string>;
     member: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**

@@ -208,6 +208,188 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_storage\_bucket\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/storage.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Storage.BucketIAMPolicy("policy", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/storage.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Storage.BucketIAMPolicy("policy", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ## google\_storage\_bucket\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Storage.BucketIAMBinding("binding", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Storage.BucketIAMBinding("binding", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Storage.Inputs.BucketIAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ## google\_storage\_bucket\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Storage.BucketIAMMember("member", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Storage.BucketIAMMember("member", new()
+    ///     {
+    ///         Bucket = @default.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Storage.Inputs.BucketIAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -247,18 +429,6 @@ namespace Pulumi.Gcp.Storage
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -276,6 +446,19 @@ namespace Pulumi.Gcp.Storage
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -335,18 +518,6 @@ namespace Pulumi.Gcp.Storage
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -358,6 +529,19 @@ namespace Pulumi.Gcp.Storage
         [Input("condition")]
         public Input<Inputs.BucketIAMMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -379,18 +563,6 @@ namespace Pulumi.Gcp.Storage
     {
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
@@ -408,6 +580,19 @@ namespace Pulumi.Gcp.Storage
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }
 

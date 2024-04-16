@@ -127,6 +127,111 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_pubsub\_subscription\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
+//				Subscription: pulumi.String("your-subscription-name"),
+//				PolicyData:   pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_pubsub\_subscription\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewSubscriptionIAMBinding(ctx, "editor", &pubsub.SubscriptionIAMBindingArgs{
+//				Subscription: pulumi.String("your-subscription-name"),
+//				Role:         pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_pubsub\_subscription\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewSubscriptionIAMMember(ctx, "editor", &pubsub.SubscriptionIAMMemberArgs{
+//				Subscription: pulumi.String("your-subscription-name"),
+//				Role:         pulumi.String("roles/editor"),
+//				Member:       pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ### Importing IAM policies
@@ -157,7 +262,15 @@ type SubscriptionIAMMember struct {
 
 	Condition SubscriptionIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag   pulumi.StringOutput `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -167,15 +280,6 @@ type SubscriptionIAMMember struct {
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The subscription name or id to bind to attach IAM policy to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Subscription pulumi.StringOutput `pulumi:"subscription"`
 }
 
@@ -220,7 +324,15 @@ func GetSubscriptionIAMMember(ctx *pulumi.Context,
 type subscriptionIAMMemberState struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag   *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member *string `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -230,22 +342,21 @@ type subscriptionIAMMemberState struct {
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	// The subscription name or id to bind to attach IAM policy to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Subscription *string `pulumi:"subscription"`
 }
 
 type SubscriptionIAMMemberState struct {
 	Condition SubscriptionIAMMemberConditionPtrInput
 	// (Computed) The etag of the subscription's IAM policy.
-	Etag   pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -255,15 +366,6 @@ type SubscriptionIAMMemberState struct {
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	// The subscription name or id to bind to attach IAM policy to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Subscription pulumi.StringPtrInput
 }
 
@@ -273,7 +375,15 @@ func (SubscriptionIAMMemberState) ElementType() reflect.Type {
 
 type subscriptionIAMMemberArgs struct {
 	Condition *SubscriptionIAMMemberCondition `pulumi:"condition"`
-	Member    string                          `pulumi:"member"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Member string `pulumi:"member"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -282,22 +392,21 @@ type subscriptionIAMMemberArgs struct {
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	// The subscription name or id to bind to attach IAM policy to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Subscription string `pulumi:"subscription"`
 }
 
 // The set of arguments for constructing a SubscriptionIAMMember resource.
 type SubscriptionIAMMemberArgs struct {
 	Condition SubscriptionIAMMemberConditionPtrInput
-	Member    pulumi.StringInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Member pulumi.StringInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -306,15 +415,6 @@ type SubscriptionIAMMemberArgs struct {
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	// The subscription name or id to bind to attach IAM policy to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Subscription pulumi.StringInput
 }
 
@@ -414,6 +514,14 @@ func (o SubscriptionIAMMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubscriptionIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o SubscriptionIAMMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubscriptionIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
@@ -432,15 +540,6 @@ func (o SubscriptionIAMMemberOutput) Role() pulumi.StringOutput {
 }
 
 // The subscription name or id to bind to attach IAM policy to.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o SubscriptionIAMMemberOutput) Subscription() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubscriptionIAMMember) pulumi.StringOutput { return v.Subscription }).(pulumi.StringOutput)
 }

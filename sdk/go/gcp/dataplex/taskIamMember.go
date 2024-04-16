@@ -140,6 +140,120 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_dataplex\_task\_iam\_policy
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewTaskIamPolicy(ctx, "policy", &dataplex.TaskIamPolicyArgs{
+//				Project:    pulumi.Any(example.Project),
+//				Location:   pulumi.Any(example.Location),
+//				Lake:       pulumi.Any(example.Lake),
+//				TaskId:     pulumi.Any(example.TaskId),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_dataplex\_task\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewTaskIamBinding(ctx, "binding", &dataplex.TaskIamBindingArgs{
+//				Project:  pulumi.Any(example.Project),
+//				Location: pulumi.Any(example.Location),
+//				Lake:     pulumi.Any(example.Lake),
+//				TaskId:   pulumi.Any(example.TaskId),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_dataplex\_task\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewTaskIamMember(ctx, "member", &dataplex.TaskIamMemberArgs{
+//				Project:  pulumi.Any(example.Project),
+//				Location: pulumi.Any(example.Location),
+//				Lake:     pulumi.Any(example.Lake),
+//				TaskId:   pulumi.Any(example.TaskId),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -189,12 +303,8 @@ type TaskIamMember struct {
 	// The location in which the task will be created in.
 	// Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringOutput `pulumi:"location"`
-	Member   pulumi.StringOutput `pulumi:"member"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -204,6 +314,9 @@ type TaskIamMember struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringOutput `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
@@ -263,12 +376,8 @@ type taskIamMemberState struct {
 	// The location in which the task will be created in.
 	// Used to find the parent resource to bind the IAM policy to
 	Location *string `pulumi:"location"`
-	Member   *string `pulumi:"member"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -278,6 +387,9 @@ type taskIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member *string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
@@ -296,12 +408,8 @@ type TaskIamMemberState struct {
 	// The location in which the task will be created in.
 	// Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Member   pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -311,6 +419,9 @@ type TaskIamMemberState struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
@@ -331,12 +442,8 @@ type taskIamMemberArgs struct {
 	// The location in which the task will be created in.
 	// Used to find the parent resource to bind the IAM policy to
 	Location *string `pulumi:"location"`
-	Member   string  `pulumi:"member"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -346,6 +453,9 @@ type taskIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
@@ -363,12 +473,8 @@ type TaskIamMemberArgs struct {
 	// The location in which the task will be created in.
 	// Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
-	Member   pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
 	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
 	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -378,6 +484,9 @@ type TaskIamMemberArgs struct {
 	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Member pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
@@ -494,24 +603,23 @@ func (o TaskIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`.
+// Each entry can have one of the following values:
+// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o TaskIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o TaskIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

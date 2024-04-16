@@ -67,6 +67,56 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -131,8 +181,10 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
      * `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly hl7V2StoreId!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -141,7 +193,6 @@ export class Hl7StoreIamMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly hl7V2StoreId!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
@@ -204,8 +255,10 @@ export interface Hl7StoreIamMemberState {
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
      * `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    hl7V2StoreId?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -214,7 +267,6 @@ export interface Hl7StoreIamMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    hl7V2StoreId?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
@@ -234,8 +286,10 @@ export interface Hl7StoreIamMemberArgs {
      * `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
      * `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
      * project setting will be used as a fallback.
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    hl7V2StoreId: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -244,7 +298,6 @@ export interface Hl7StoreIamMemberArgs {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    hl7V2StoreId: pulumi.Input<string>;
     member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one

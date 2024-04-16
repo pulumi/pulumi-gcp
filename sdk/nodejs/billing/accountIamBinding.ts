@@ -67,6 +67,56 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_billing\_account\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/billing.viewer",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.billing.AccountIamPolicy("editor", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_billing\_account\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.billing.AccountIamBinding("editor", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     role: "roles/billing.viewer",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_billing\_account\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.billing.AccountIamMember("editor", {
+ *     billingAccountId: "00AA00-000AAA-00AA0A",
+ *     role: "roles/billing.viewer",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -125,13 +175,6 @@ export class AccountIamBinding extends pulumi.CustomResource {
      * The billing account id.
      *
      * For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly billingAccountId!: pulumi.Output<string>;
     public readonly condition!: pulumi.Output<outputs.billing.AccountIamBindingCondition | undefined>;
@@ -139,6 +182,14 @@ export class AccountIamBinding extends pulumi.CustomResource {
      * (Computed) The etag of the billing account's IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     public readonly members!: pulumi.Output<string[]>;
     /**
      * The role that should be applied. Only one
@@ -197,13 +248,6 @@ export interface AccountIamBindingState {
      * The billing account id.
      *
      * For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     billingAccountId?: pulumi.Input<string>;
     condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
@@ -211,6 +255,14 @@ export interface AccountIamBindingState {
      * (Computed) The etag of the billing account's IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one
@@ -230,16 +282,17 @@ export interface AccountIamBindingArgs {
      * The billing account id.
      *
      * For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    billingAccountId: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    billingAccountId: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.billing.AccountIamBindingCondition>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The role that should be applied. Only one

@@ -170,6 +170,158 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_organization\_iam\_policy
+ *
+ * !> **Warning:** New organizations have several default policies which will,
+ *    without extreme caution, be **overwritten** by use of this resource.
+ *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ *    resources. This resource makes it easy to remove your own access to
+ *    an organization, which will require a call to Google Support to have
+ *    fixed, and can take multiple days to resolve.
+ *
+ *    In general, this resource should only be used with organizations
+ *    fully managed by this provider.I f you do use this resource,
+ *    the best way to be sure that you are not making dangerous changes is to start
+ *    by **importing** your existing policy, and examining the diff very closely.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "1234567890",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const organization = new gcp.organizations.IAMPolicy("organization", {
+ *     orgId: "1234567890",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_organization\_iam\_binding
+ *
+ * > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMBinding("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_organization\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * With IAM Conditions:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IAMMember("organization", {
+ *     orgId: "1234567890",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_organization\_iam\_audit\_config
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const organization = new gcp.organizations.IamAuditConfig("organization", {
+ *     orgId: "1234567890",
+ *     service: "allServices",
+ *     auditLogConfigs: [
+ *         {
+ *             logType: "ADMIN_READ",
+ *         },
+ *         {
+ *             logType: "DATA_READ",
+ *             exemptedMembers: ["user:joebloggs@example.com"],
+ *         },
+ *     ],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing Audit Configs
@@ -233,6 +385,14 @@ export class IAMMember extends pulumi.CustomResource {
      * (Computed) The etag of the organization's IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     public readonly member!: pulumi.Output<string>;
     /**
      * The organization id of the target organization.
@@ -298,6 +458,14 @@ export interface IAMMemberState {
      * (Computed) The etag of the organization's IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     member?: pulumi.Input<string>;
     /**
      * The organization id of the target organization.
@@ -320,6 +488,14 @@ export interface IAMMemberArgs {
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     */
     member: pulumi.Input<string>;
     /**
      * The organization id of the target organization.

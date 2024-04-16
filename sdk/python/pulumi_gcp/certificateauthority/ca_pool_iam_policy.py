@@ -28,18 +28,6 @@ class CaPoolIamPolicyArgs:
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         pulumi.set(__self__, "ca_pool", ca_pool)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -93,18 +81,6 @@ class CaPoolIamPolicyArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -132,18 +108,6 @@ class _CaPoolIamPolicyState:
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         if ca_pool is not None:
             pulumi.set(__self__, "ca_pool", ca_pool)
@@ -213,18 +177,6 @@ class _CaPoolIamPolicyState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 
@@ -259,6 +211,109 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         > **Note:** `certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
+            ca_pool=default["id"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
+            ca_pool=default["id"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+        ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CaPoolIamBinding("binding",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CaPoolIamBinding("binding",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+            condition=gcp.certificateauthority.CaPoolIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ## google\\_privateca\\_ca\\_pool\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CaPoolIamMember("member",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CaPoolIamMember("member",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            member="user:jane@example.com",
+            condition=gcp.certificateauthority.CaPoolIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
 
@@ -409,18 +464,6 @@ class CaPoolIamPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         ...
     @overload
@@ -444,6 +487,109 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         > **Note:** `certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
+        ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
+            ca_pool=default["id"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ),
+        )])
+        policy = gcp.certificateauthority.CaPoolIamPolicy("policy",
+            ca_pool=default["id"],
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+        ## google\\_privateca\\_ca\\_pool\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CaPoolIamBinding("binding",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.certificateauthority.CaPoolIamBinding("binding",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            members=["user:jane@example.com"],
+            condition=gcp.certificateauthority.CaPoolIamBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ## google\\_privateca\\_ca\\_pool\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CaPoolIamMember("member",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        With IAM Conditions:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.certificateauthority.CaPoolIamMember("member",
+            ca_pool=default["id"],
+            role="roles/privateca.certificateManager",
+            member="user:jane@example.com",
+            condition=gcp.certificateauthority.CaPoolIamMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_privateca\\_ca\\_pool\\_iam\\_policy
 
@@ -652,18 +798,6 @@ class CaPoolIamPolicy(pulumi.CustomResource):
                a `organizations_get_iam_policy` data source.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-               * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-               * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -717,18 +851,6 @@ class CaPoolIamPolicy(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         """
         return pulumi.get(self, "project")
 

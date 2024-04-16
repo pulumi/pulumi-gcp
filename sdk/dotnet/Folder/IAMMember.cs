@@ -252,6 +252,234 @@ namespace Pulumi.Gcp.Folder
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_folder\_iam\_policy
+    /// 
+    /// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
+    ///    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+    ///    from anyone without permissions on its parent folder/organization. Proceed with caution.
+    ///    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+    ///    to avoid locking yourself out, and it should generally only be used with folders
+    ///    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+    ///    applying the change.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/compute.admin",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 {
+    ///                     Title = "expires_after_2019_12_31",
+    ///                     Description = "Expiring at midnight of 2019-12-31",
+    ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_folder\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/container.admin",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_folder\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Role = "roles/firebase.admin",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_folder\_iam\_audit\_config
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Folder.IamAuditConfig("folder", new()
+    ///     {
+    ///         Folder = "folders/1234567",
+    ///         Service = "allServices",
+    ///         AuditLogConfigs = new[]
+    ///         {
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "ADMIN_READ",
+    ///             },
+    ///             new Gcp.Folder.Inputs.IamAuditConfigAuditLogConfigArgs
+    ///             {
+    ///                 LogType = "DATA_READ",
+    ///                 ExemptedMembers = new[]
+    ///                 {
+    ///                     "user:joebloggs@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing Audit Configs
@@ -300,6 +528,14 @@ namespace Pulumi.Gcp.Folder
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -370,6 +606,14 @@ namespace Pulumi.Gcp.Folder
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -408,6 +652,14 @@ namespace Pulumi.Gcp.Folder
         [Input("folder")]
         public Input<string>? Folder { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }
 

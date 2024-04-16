@@ -69,6 +69,58 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ## google\_dataproc\_cluster\_iam\_policy
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.dataproc.ClusterIAMPolicy("editor", {
+ *     project: "your-project",
+ *     region: "your-region",
+ *     cluster: "your-dataproc-cluster",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_dataproc\_cluster\_iam\_binding
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.dataproc.ClusterIAMBinding("editor", {
+ *     cluster: "your-dataproc-cluster",
+ *     role: "roles/editor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## google\_dataproc\_cluster\_iam\_member
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.dataproc.ClusterIAMMember("editor", {
+ *     cluster: "your-dataproc-cluster",
+ *     role: "roles/editor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ### Importing IAM policies
@@ -127,8 +179,15 @@ export class ClusterIAMMember extends pulumi.CustomResource {
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
      * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    public readonly cluster!: pulumi.Output<string>;
+    public readonly condition!: pulumi.Output<outputs.dataproc.ClusterIAMMemberCondition | undefined>;
+    /**
+     * (Computed) The etag of the clusters's IAM policy.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -137,12 +196,6 @@ export class ClusterIAMMember extends pulumi.CustomResource {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    public readonly cluster!: pulumi.Output<string>;
-    public readonly condition!: pulumi.Output<outputs.dataproc.ClusterIAMMemberCondition | undefined>;
-    /**
-     * (Computed) The etag of the clusters's IAM policy.
-     */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
      * The project in which the cluster belongs. If it
@@ -215,8 +268,15 @@ export interface ClusterIAMMemberState {
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
      * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    cluster?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
+    /**
+     * (Computed) The etag of the clusters's IAM policy.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -225,12 +285,6 @@ export interface ClusterIAMMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    cluster?: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
-    /**
-     * (Computed) The etag of the clusters's IAM policy.
-     */
-    etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it
@@ -260,8 +314,11 @@ export interface ClusterIAMMemberArgs {
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
      * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
-     *
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     */
+    cluster: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
+    /**
+     * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -270,8 +327,6 @@ export interface ClusterIAMMemberArgs {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    cluster: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.dataproc.ClusterIAMMemberCondition>;
     member: pulumi.Input<string>;
     /**
      * The project in which the cluster belongs. If it

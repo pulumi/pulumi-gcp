@@ -301,6 +301,280 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ## google\_project\_iam\_policy
+//
+// !> **Be careful!** You can accidentally lock yourself out of your project
+//
+//	using this resource. Deleting a `projects.IAMPolicy` removes access
+//	from anyone without organization-level access to the project. Proceed with caution.
+//	It's not recommended to use `projects.IAMPolicy` with your provider project
+//	to avoid locking yourself out, and it should generally only be used with projects
+//	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+//	applying the change.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+//				Project:    pulumi.String("your-project-id"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// With IAM Conditions:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/compute.admin",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Condition: {
+//							Title:       "expires_after_2019_12_31",
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+//				Project:    pulumi.String("your-project-id"),
+//				PolicyData: pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_project\_iam\_binding
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/editor"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// With IAM Conditions:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/container.admin"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Condition: &projects.IAMBindingConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_project\_iam\_member
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/editor"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// With IAM Conditions:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Role:    pulumi.String("roles/firebase.admin"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//				Condition: &projects.IAMMemberConditionArgs{
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## google\_project\_iam\_audit\_config
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.NewIAMAuditConfig(ctx, "project", &projects.IAMAuditConfigArgs{
+//				Project: pulumi.String("your-project-id"),
+//				Service: pulumi.String("allServices"),
+//				AuditLogConfigs: projects.IAMAuditConfigAuditLogConfigArray{
+//					&projects.IAMAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
+//					&projects.IAMAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("DATA_READ"),
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ### Importing Audit Configs
@@ -333,7 +607,13 @@ type IAMBinding struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -387,7 +667,13 @@ type iambindingState struct {
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
-	Etag    *string  `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -403,7 +689,13 @@ type IAMBindingState struct {
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
 	// (Computed) The etag of the project's IAM policy.
-	Etag    pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -422,7 +714,13 @@ type iambindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMBindingCondition `pulumi:"condition"`
-	Members   []string             `pulumi:"members"`
+	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members []string `pulumi:"members"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project string `pulumi:"project"`
@@ -437,7 +735,13 @@ type IAMBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMBindingConditionPtrInput
-	Members   pulumi.StringArrayInput
+	// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayInput
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project pulumi.StringInput
@@ -545,6 +849,12 @@ func (o IAMBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Identities that will be granted the privilege in `role`. google\_project\_iam\_binding expects `members` field while google\_project\_iam\_member expects `member` field.
+// Each entry can have one of the following values:
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o IAMBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

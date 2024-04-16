@@ -206,6 +206,190 @@ namespace Pulumi.Gcp.ServiceAccount
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ### Additional Examples
+    /// 
+    /// ### Service Account IAM Policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/iam.serviceAccountUser",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can interact with",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMPolicy("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Service Account IAM Binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Service Account IAM Binding With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that only Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Service Account IAM Member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetDefaultServiceAccount.Invoke();
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    ///     // Allow SA service account use the default GCE account
+    ///     var gce_default_account_iam = new Gcp.ServiceAccount.IAMMember("gce-default-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Name)),
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = sa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Service Account IAM Member With IAM Conditions:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-service-account",
+    ///         DisplayName = "A service account that Jane can use",
+    ///     });
+    /// 
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     {
+    ///         ServiceAccountId = sa.Name,
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = "user:jane@example.com",
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMMemberConditionArgs
+    ///         {
+    ///             Title = "expires_after_2019_12_31",
+    ///             Description = "Expiring at midnight of 2019-12-31",
+    ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing with conditions:
@@ -236,6 +420,16 @@ namespace Pulumi.Gcp.ServiceAccount
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -249,15 +443,6 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The fully-qualified name of the service account to apply policy to.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Output("serviceAccountId")]
         public Output<string> ServiceAccountId { get; private set; } = null!;
@@ -319,6 +504,16 @@ namespace Pulumi.Gcp.ServiceAccount
         [Input("condition")]
         public Input<Inputs.IAMMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -332,15 +527,6 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The fully-qualified name of the service account to apply policy to.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Input("serviceAccountId", required: true)]
         public Input<string> ServiceAccountId { get; set; } = null!;
@@ -366,6 +552,16 @@ namespace Pulumi.Gcp.ServiceAccount
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }
 
@@ -379,15 +575,6 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The fully-qualified name of the service account to apply policy to.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Input("serviceAccountId")]
         public Input<string>? ServiceAccountId { get; set; }

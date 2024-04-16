@@ -26,8 +26,7 @@ class Hl7StoreIamBindingArgs:
                `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
                `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -53,15 +52,6 @@ class Hl7StoreIamBindingArgs:
         `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "hl7_v2_store_id")
 
@@ -72,6 +62,16 @@ class Hl7StoreIamBindingArgs:
     @property
     @pulumi.getter
     def members(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -117,8 +117,7 @@ class _Hl7StoreIamBindingState:
                `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
                `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -170,15 +169,6 @@ class _Hl7StoreIamBindingState:
         `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "hl7_v2_store_id")
 
@@ -189,6 +179,16 @@ class _Hl7StoreIamBindingState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -276,6 +276,51 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7_v2_store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing IAM policies
@@ -308,8 +353,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
                `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
                `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -337,6 +381,51 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         > **Note:** `healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `healthcare.Hl7StoreIamBinding` and `healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
 
         > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamPolicy("hl7_v2_store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hl7_v2_store = gcp.healthcare.Hl7StoreIamMember("hl7_v2_store",
+            hl7_v2_store_id="your-hl7-v2-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_hl7\\_v2\\_store\\_iam\\_policy
 
@@ -475,8 +564,7 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
                `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
                `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -520,8 +608,14 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "hl7_v2_store_id")
 
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+    @property
+    @pulumi.getter
+    def members(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -530,11 +624,6 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
         * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
-        return pulumi.get(self, "hl7_v2_store_id")
-
-    @property
-    @pulumi.getter
-    def members(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "members")
 
     @property

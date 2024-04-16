@@ -104,6 +104,90 @@ namespace Pulumi.Gcp.BigTable
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_bigtable\_instance\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigtable.user",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var editor = new Gcp.BigTable.InstanceIamPolicy("editor", new()
+    ///     {
+    ///         Project = "your-project",
+    ///         Instance = "your-bigtable-instance",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_bigtable\_instance\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.BigTable.InstanceIamBinding("editor", new()
+    ///     {
+    ///         Instance = "your-bigtable-instance",
+    ///         Role = "roles/bigtable.user",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_bigtable\_instance\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var editor = new Gcp.BigTable.InstanceIamMember("editor", new()
+    ///     {
+    ///         Instance = "your-bigtable-instance",
+    ///         Role = "roles/bigtable.user",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
@@ -146,8 +230,12 @@ namespace Pulumi.Gcp.BigTable
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// 
         /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Output("instance")]
+        public Output<string> Instance { get; private set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -156,9 +244,6 @@ namespace Pulumi.Gcp.BigTable
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Output("instance")]
-        public Output<string> Instance { get; private set; } = null!;
-
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
@@ -232,8 +317,15 @@ namespace Pulumi.Gcp.BigTable
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// 
         /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("instance", required: true)]
+        public Input<string> Instance { get; set; } = null!;
+
+        [Input("members", required: true)]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -242,11 +334,6 @@ namespace Pulumi.Gcp.BigTable
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("instance", required: true)]
-        public Input<string> Instance { get; set; } = null!;
-
-        [Input("members", required: true)]
-        private InputList<string>? _members;
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -291,8 +378,15 @@ namespace Pulumi.Gcp.BigTable
         /// The name or relative resource id of the instance to manage IAM policies for.
         /// 
         /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("instance")]
+        public Input<string>? Instance { get; set; }
+
+        [Input("members")]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -301,11 +395,6 @@ namespace Pulumi.Gcp.BigTable
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("instance")]
-        public Input<string>? Instance { get; set; }
-
-        [Input("members")]
-        private InputList<string>? _members;
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());

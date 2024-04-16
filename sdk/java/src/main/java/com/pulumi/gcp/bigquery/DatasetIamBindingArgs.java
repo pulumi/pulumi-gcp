@@ -28,16 +28,6 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
     /**
      * The dataset ID.
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * 
      */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
@@ -45,8 +35,14 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return The dataset ID.
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     */
+    public Output<String> datasetId() {
+        return this.datasetId;
+    }
+
+    /**
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -56,13 +52,21 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      * 
      */
-    public Output<String> datasetId() {
-        return this.datasetId;
-    }
-
     @Import(name="members", required=true)
     private Output<List<String>> members;
 
+    /**
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * 
+     */
     public Output<List<String>> members() {
         return this.members;
     }
@@ -143,16 +147,6 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param datasetId The dataset ID.
          * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * 
          * @return builder
          * 
          */
@@ -164,8 +158,16 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param datasetId The dataset ID.
          * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @return builder
+         * 
+         */
+        public Builder datasetId(String datasetId) {
+            return datasetId(Output.of(datasetId));
+        }
+
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
@@ -177,19 +179,43 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder datasetId(String datasetId) {
-            return datasetId(Output.of(datasetId));
-        }
-
         public Builder members(Output<List<String>> members) {
             $.members = members;
             return this;
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(List<String> members) {
             return members(Output.of(members));
         }
 
+        /**
+         * @param members Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(String... members) {
             return members(List.of(members));
         }

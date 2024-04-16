@@ -110,6 +110,92 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_healthcare\_consent\_store\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Healthcare.ConsentStoreIamPolicy("policy", new()
+    ///     {
+    ///         Dataset = my_consent.Dataset,
+    ///         ConsentStoreId = my_consent.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_healthcare\_consent\_store\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Healthcare.ConsentStoreIamBinding("binding", new()
+    ///     {
+    ///         Dataset = my_consent.Dataset,
+    ///         ConsentStoreId = my_consent.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_healthcare\_consent\_store\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Healthcare.ConsentStoreIamMember("member", new()
+    ///     {
+    ///         Dataset = my_consent.Dataset,
+    ///         ConsentStoreId = my_consent.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -160,8 +246,18 @@ namespace Pulumi.Gcp.Healthcare
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
         /// Used to find the parent resource to bind the IAM policy to
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Output("dataset")]
+        public Output<string> Dataset { get; private set; } = null!;
+
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -173,15 +269,6 @@ namespace Pulumi.Gcp.Healthcare
         /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
-        [Output("dataset")]
-        public Output<string> Dataset { get; private set; } = null!;
-
-        /// <summary>
-        /// (Computed) The etag of the IAM policy.
-        /// </summary>
-        [Output("etag")]
-        public Output<string> Etag { get; private set; } = null!;
-
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -252,8 +339,12 @@ namespace Pulumi.Gcp.Healthcare
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
         /// Used to find the parent resource to bind the IAM policy to
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("dataset", required: true)]
+        public Input<string> Dataset { get; set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -265,9 +356,6 @@ namespace Pulumi.Gcp.Healthcare
         /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
-        [Input("dataset", required: true)]
-        public Input<string> Dataset { get; set; } = null!;
-
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -300,8 +388,18 @@ namespace Pulumi.Gcp.Healthcare
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
         /// Used to find the parent resource to bind the IAM policy to
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("dataset")]
+        public Input<string>? Dataset { get; set; }
+
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -313,15 +411,6 @@ namespace Pulumi.Gcp.Healthcare
         /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
         /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
-        [Input("dataset")]
-        public Input<string>? Dataset { get; set; }
-
-        /// <summary>
-        /// (Computed) The etag of the IAM policy.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
         [Input("member")]
         public Input<string>? Member { get; set; }
 

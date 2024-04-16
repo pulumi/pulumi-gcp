@@ -53,19 +53,9 @@ public final class AiFeatureStoreIamMemberState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.featurestore);
     }
 
-    @Import(name="member")
-    private @Nullable Output<String> member;
-
-    public Optional<Output<String>> member() {
-        return Optional.ofNullable(this.member);
-    }
-
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -77,15 +67,12 @@ public final class AiFeatureStoreIamMemberState extends com.pulumi.resources.Res
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Import(name="project")
-    private @Nullable Output<String> project;
+    @Import(name="member")
+    private @Nullable Output<String> member;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
+     * @return Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -95,6 +82,23 @@ public final class AiFeatureStoreIamMemberState extends com.pulumi.resources.Res
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+     * 
+     */
+    public Optional<Output<String>> member() {
+        return Optional.ofNullable(this.member);
+    }
+
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -220,21 +224,9 @@ public final class AiFeatureStoreIamMemberState extends com.pulumi.resources.Res
             return featurestore(Output.of(featurestore));
         }
 
-        public Builder member(@Nullable Output<String> member) {
-            $.member = member;
-            return this;
-        }
-
-        public Builder member(String member) {
-            return member(Output.of(member));
-        }
-
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @param member Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -248,17 +240,14 @@ public final class AiFeatureStoreIamMemberState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder project(@Nullable Output<String> project) {
-            $.project = project;
+        public Builder member(@Nullable Output<String> member) {
+            $.member = member;
             return this;
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
+         * @param member Identities that will be granted the privilege in `role`.
+         * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -268,6 +257,29 @@ public final class AiFeatureStoreIamMemberState extends com.pulumi.resources.Res
          * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
          * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
          * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder member(String member) {
+            return member(Output.of(member));
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
          * 
          * @return builder
          * 

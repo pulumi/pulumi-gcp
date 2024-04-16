@@ -113,6 +113,95 @@ namespace Pulumi.Gcp.CloudRunV2
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_cloud\_run\_v2\_job\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.CloudRunV2.JobIamPolicy("policy", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         Name = @default.Name,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_cloud\_run\_v2\_job\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.CloudRunV2.JobIamBinding("binding", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         Name = @default.Name,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_cloud\_run\_v2\_job\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.CloudRunV2.JobIamMember("member", new()
+    ///     {
+    ///         Project = @default.Project,
+    ///         Location = @default.Location,
+    ///         Name = @default.Name,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -169,6 +258,19 @@ namespace Pulumi.Gcp.CloudRunV2
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Output("member")]
         public Output<string> Member { get; private set; } = null!;
 
@@ -181,18 +283,6 @@ namespace Pulumi.Gcp.CloudRunV2
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -260,6 +350,19 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Input("member", required: true)]
         public Input<string> Member { get; set; } = null!;
 
@@ -272,18 +375,6 @@ namespace Pulumi.Gcp.CloudRunV2
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -319,6 +410,19 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Input("member")]
         public Input<string>? Member { get; set; }
 
@@ -331,18 +435,6 @@ namespace Pulumi.Gcp.CloudRunV2
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        /// Each entry can have one of the following values:
-        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
-        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
-        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

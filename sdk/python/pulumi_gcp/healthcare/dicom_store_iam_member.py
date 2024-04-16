@@ -26,8 +26,7 @@ class DicomStoreIamMemberArgs:
                `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
                `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -53,15 +52,6 @@ class DicomStoreIamMemberArgs:
         `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
         `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "dicom_store_id")
 
@@ -72,6 +62,16 @@ class DicomStoreIamMemberArgs:
     @property
     @pulumi.getter
     def member(self) -> pulumi.Input[str]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -116,8 +116,8 @@ class _DicomStoreIamMemberState:
                `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
                `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] etag: (Computed) The etag of the DICOM store's IAM policy.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -125,7 +125,6 @@ class _DicomStoreIamMemberState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] etag: (Computed) The etag of the DICOM store's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -158,15 +157,6 @@ class _DicomStoreIamMemberState:
         `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
         `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "dicom_store_id")
 
@@ -189,6 +179,16 @@ class _DicomStoreIamMemberState:
     @property
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -276,6 +276,51 @@ class DicomStoreIamMember(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicom_store",
+            dicom_store_id="your-dicom-store-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicom_store",
+            dicom_store_id="your-dicom-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dicom_store = gcp.healthcare.DicomStoreIamMember("dicom_store",
+            dicom_store_id="your-dicom-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing IAM policies
@@ -308,8 +353,7 @@ class DicomStoreIamMember(pulumi.CustomResource):
                `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
                `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -337,6 +381,51 @@ class DicomStoreIamMember(pulumi.CustomResource):
         > **Note:** `healthcare.DicomStoreIamPolicy` **cannot** be used in conjunction with `healthcare.DicomStoreIamBinding` and `healthcare.DicomStoreIamMember` or they will fight over what your policy should be.
 
         > **Note:** `healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        dicom_store = gcp.healthcare.DicomStoreIamPolicy("dicom_store",
+            dicom_store_id="your-dicom-store-id",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_dicom\\_store\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dicom_store = gcp.healthcare.DicomStoreIamBinding("dicom_store",
+            dicom_store_id="your-dicom-store-id",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_healthcare\\_dicom\\_store\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dicom_store = gcp.healthcare.DicomStoreIamMember("dicom_store",
+            dicom_store_id="your-dicom-store-id",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_dicom\\_store\\_iam\\_policy
 
@@ -474,8 +563,8 @@ class DicomStoreIamMember(pulumi.CustomResource):
                `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
                `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
                project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] etag: (Computed) The etag of the DICOM store's IAM policy.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -483,7 +572,6 @@ class DicomStoreIamMember(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] etag: (Computed) The etag of the DICOM store's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -512,15 +600,6 @@ class DicomStoreIamMember(pulumi.CustomResource):
         `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
         `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's
         project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "dicom_store_id")
 
@@ -535,6 +614,16 @@ class DicomStoreIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def member(self) -> pulumi.Output[str]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @property

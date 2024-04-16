@@ -27,8 +27,7 @@ class ClusterIAMMemberArgs:
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -63,15 +62,6 @@ class ClusterIAMMemberArgs:
         The name or relative resource id of the cluster to manage IAM policies for.
 
         For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "cluster")
 
@@ -82,6 +72,16 @@ class ClusterIAMMemberArgs:
     @property
     @pulumi.getter
     def member(self) -> pulumi.Input[str]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -155,8 +155,8 @@ class _ClusterIAMMemberState:
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] etag: (Computed) The etag of the clusters's IAM policy.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -164,7 +164,6 @@ class _ClusterIAMMemberState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] etag: (Computed) The etag of the clusters's IAM policy.
         :param pulumi.Input[str] project: The project in which the cluster belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
@@ -197,15 +196,6 @@ class _ClusterIAMMemberState:
         The name or relative resource id of the cluster to manage IAM policies for.
 
         For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "cluster")
 
@@ -237,6 +227,16 @@ class _ClusterIAMMemberState:
     @property
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -356,6 +356,53 @@ class ClusterIAMMember(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## google\\_dataproc\\_cluster\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.dataproc.ClusterIAMPolicy("editor",
+            project="your-project",
+            region="your-region",
+            cluster="your-dataproc-cluster",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_dataproc\\_cluster\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.ClusterIAMBinding("editor",
+            cluster="your-dataproc-cluster",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_dataproc\\_cluster\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.ClusterIAMMember("editor",
+            cluster="your-dataproc-cluster",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ### Importing IAM policies
@@ -387,8 +434,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -422,6 +468,53 @@ class ClusterIAMMember(pulumi.CustomResource):
         > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
 
         > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataproc\\_cluster\\_iam\\_policy
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.dataproc.ClusterIAMPolicy("editor",
+            project="your-project",
+            region="your-region",
+            cluster="your-dataproc-cluster",
+            policy_data=admin.policy_data)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_dataproc\\_cluster\\_iam\\_binding
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.ClusterIAMBinding("editor",
+            cluster="your-dataproc-cluster",
+            role="roles/editor",
+            members=["user:jane@example.com"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## google\\_dataproc\\_cluster\\_iam\\_member
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.dataproc.ClusterIAMMember("editor",
+            cluster="your-dataproc-cluster",
+            role="roles/editor",
+            member="user:jane@example.com")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_cluster\\_iam\\_policy
 
@@ -566,8 +659,8 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
                For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        :param pulumi.Input[str] etag: (Computed) The etag of the clusters's IAM policy.
+        :param pulumi.Input[str] member: Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -575,7 +668,6 @@ class ClusterIAMMember(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] etag: (Computed) The etag of the clusters's IAM policy.
         :param pulumi.Input[str] project: The project in which the cluster belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
@@ -606,15 +698,6 @@ class ClusterIAMMember(pulumi.CustomResource):
         The name or relative resource id of the cluster to manage IAM policies for.
 
         For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "cluster")
 
@@ -634,6 +717,16 @@ class ClusterIAMMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def member(self) -> pulumi.Output[str]:
+        """
+        Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
         return pulumi.get(self, "member")
 
     @property

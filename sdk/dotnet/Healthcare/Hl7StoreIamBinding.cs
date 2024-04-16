@@ -103,6 +103,89 @@ namespace Pulumi.Gcp.Healthcare
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/editor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamPolicy("hl7_v2_store", new()
+    ///     {
+    ///         Hl7V2StoreId = "your-hl7-v2-store-id",
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamBinding("hl7_v2_store", new()
+    ///     {
+    ///         Hl7V2StoreId = "your-hl7-v2-store-id",
+    ///         Role = "roles/editor",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamMember("hl7_v2_store", new()
+    ///     {
+    ///         Hl7V2StoreId = "your-hl7-v2-store-id",
+    ///         Role = "roles/editor",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ### Importing IAM policies
@@ -146,8 +229,12 @@ namespace Pulumi.Gcp.Healthcare
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Output("hl7V2StoreId")]
+        public Output<string> Hl7V2StoreId { get; private set; } = null!;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -156,9 +243,6 @@ namespace Pulumi.Gcp.Healthcare
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Output("hl7V2StoreId")]
-        public Output<string> Hl7V2StoreId { get; private set; } = null!;
-
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
@@ -224,8 +308,15 @@ namespace Pulumi.Gcp.Healthcare
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("hl7V2StoreId", required: true)]
+        public Input<string> Hl7V2StoreId { get; set; } = null!;
+
+        [Input("members", required: true)]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -234,11 +325,6 @@ namespace Pulumi.Gcp.Healthcare
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("hl7V2StoreId", required: true)]
-        public Input<string> Hl7V2StoreId { get; set; } = null!;
-
-        [Input("members", required: true)]
-        private InputList<string>? _members;
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -275,8 +361,15 @@ namespace Pulumi.Gcp.Healthcare
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
-        /// 
-        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// </summary>
+        [Input("hl7V2StoreId")]
+        public Input<string>? Hl7V2StoreId { get; set; }
+
+        [Input("members")]
+        private InputList<string>? _members;
+
+        /// <summary>
+        /// Identities that will be granted the privilege in `role`.
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -285,11 +378,6 @@ namespace Pulumi.Gcp.Healthcare
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
-        [Input("hl7V2StoreId")]
-        public Input<string>? Hl7V2StoreId { get; set; }
-
-        [Input("members")]
-        private InputList<string>? _members;
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
