@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Venelin <venelin@pulumi.com>
+Date: Wed, 17 Apr 2024 11:01:08 +0100
+Subject: [PATCH 11/11] iam bindings import bucket as on b/
+
+
+diff --git a/google-beta/services/storage/iam_storage_bucket.go b/google-beta/services/storage/iam_storage_bucket.go
+index ff692fa25..d2007b049 100644
+--- a/google-beta/services/storage/iam_storage_bucket.go
++++ b/google-beta/services/storage/iam_storage_bucket.go
+@@ -182,7 +182,7 @@ func (u *StorageBucketIamUpdater) qualifyBucketUrl(methodIdentifier string) (str
+ }
+ 
+ func (u *StorageBucketIamUpdater) GetResourceId() string {
+-	return fmt.Sprintf("b/%s", u.bucket)
++	return u.bucket
+ }
+ 
+ func (u *StorageBucketIamUpdater) GetMutexKey() string {
