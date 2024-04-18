@@ -29,7 +29,7 @@ public final class RecordSetRoutingPolicyPrimaryBackup {
     private @Nullable Boolean enableGeoFencingForBackups;
     /**
      * @return The list of global primary targets to be health checked.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     private RecordSetRoutingPolicyPrimaryBackupPrimary primary;
@@ -57,7 +57,7 @@ public final class RecordSetRoutingPolicyPrimaryBackup {
     }
     /**
      * @return The list of global primary targets to be health checked.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public RecordSetRoutingPolicyPrimaryBackupPrimary primary() {

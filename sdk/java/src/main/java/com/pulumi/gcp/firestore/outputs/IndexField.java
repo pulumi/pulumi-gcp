@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.firestore.outputs.IndexFieldVectorConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,11 +13,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class IndexField {
     /**
-     * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-     * be specified.
+     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified.
      * Possible values are: `CONTAINS`.
-     * 
-     * ***
      * 
      */
     private @Nullable String arrayConfig;
@@ -27,19 +26,24 @@ public final class IndexField {
     private @Nullable String fieldPath;
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-     * Only one of `order` and `arrayConfig` can be specified.
+     * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
      * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable IndexFieldVectorConfig vectorConfig;
 
     private IndexField() {}
     /**
-     * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-     * be specified.
+     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified.
      * Possible values are: `CONTAINS`.
-     * 
-     * ***
      * 
      */
     public Optional<String> arrayConfig() {
@@ -54,12 +58,21 @@ public final class IndexField {
     }
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-     * Only one of `order` and `arrayConfig` can be specified.
+     * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
      * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
+    }
+    /**
+     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<IndexFieldVectorConfig> vectorConfig() {
+        return Optional.ofNullable(this.vectorConfig);
     }
 
     public static Builder builder() {
@@ -74,12 +87,14 @@ public final class IndexField {
         private @Nullable String arrayConfig;
         private @Nullable String fieldPath;
         private @Nullable String order;
+        private @Nullable IndexFieldVectorConfig vectorConfig;
         public Builder() {}
         public Builder(IndexField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arrayConfig = defaults.arrayConfig;
     	      this.fieldPath = defaults.fieldPath;
     	      this.order = defaults.order;
+    	      this.vectorConfig = defaults.vectorConfig;
         }
 
         @CustomType.Setter
@@ -100,11 +115,18 @@ public final class IndexField {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
+        public Builder vectorConfig(@Nullable IndexFieldVectorConfig vectorConfig) {
+
+            this.vectorConfig = vectorConfig;
+            return this;
+        }
         public IndexField build() {
             final var _resultValue = new IndexField();
             _resultValue.arrayConfig = arrayConfig;
             _resultValue.fieldPath = fieldPath;
             _resultValue.order = order;
+            _resultValue.vectorConfig = vectorConfig;
             return _resultValue;
         }
     }

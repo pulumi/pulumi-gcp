@@ -21,9 +21,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// .
         /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-        /// 
-        /// 
-        /// This example `addons_config` disables two addons:
         /// </summary>
         [Input("configConnectorConfig")]
         public Input<Inputs.ClusterAddonsConfigConfigConnectorConfigGetArgs>? ConfigConnectorConfig { get; set; }
@@ -115,6 +112,16 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("networkPolicyConfig")]
         public Input<Inputs.ClusterAddonsConfigNetworkPolicyConfigGetArgs>? NetworkPolicyConfig { get; set; }
+
+        /// <summary>
+        /// .
+        /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+        /// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// </summary>
+        [Input("statefulHaConfig")]
+        public Input<Inputs.ClusterAddonsConfigStatefulHaConfigGetArgs>? StatefulHaConfig { get; set; }
 
         public ClusterAddonsConfigGetArgs()
         {

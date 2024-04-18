@@ -17,6 +17,7 @@ class FirewallEndpointAssociationArgs:
                  firewall_endpoint: pulumi.Input[str],
                  location: pulumi.Input[str],
                  network: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,9 @@ class FirewallEndpointAssociationArgs:
                
                - - -
         :param pulumi.Input[str] network: The URL of the network that is being associated.
+        :param pulumi.Input[bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
+               > **Note:** The API will reject the request if this value is set to true when creating the resource,
+               otherwise on an update the association can be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -41,6 +45,8 @@ class FirewallEndpointAssociationArgs:
         pulumi.set(__self__, "firewall_endpoint", firewall_endpoint)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -88,6 +94,20 @@ class FirewallEndpointAssociationArgs:
     @network.setter
     def network(self, value: pulumi.Input[str]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the association is disabled. True indicates that traffic will not be intercepted.
+        > **Note:** The API will reject the request if this value is set to true when creating the resource,
+        otherwise on an update the association can be disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter
@@ -146,6 +166,7 @@ class FirewallEndpointAssociationArgs:
 class _FirewallEndpointAssociationState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  firewall_endpoint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -162,6 +183,9 @@ class _FirewallEndpointAssociationState:
         """
         Input properties used for looking up and filtering FirewallEndpointAssociation resources.
         :param pulumi.Input[str] create_time: Time the firewall endpoint was created in UTC.
+        :param pulumi.Input[bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
+               > **Note:** The API will reject the request if this value is set to true when creating the resource,
+               otherwise on an update the association can be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] firewall_endpoint: The URL of the firewall endpoint that is being associated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
@@ -186,6 +210,8 @@ class _FirewallEndpointAssociationState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if firewall_endpoint is not None:
@@ -224,6 +250,20 @@ class _FirewallEndpointAssociationState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the association is disabled. True indicates that traffic will not be intercepted.
+        > **Note:** The API will reject the request if this value is set to true when creating the resource,
+        otherwise on an update the association can be disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -395,6 +435,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  firewall_endpoint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -444,6 +485,9 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
+               > **Note:** The API will reject the request if this value is set to true when creating the resource,
+               otherwise on an update the association can be disabled.
         :param pulumi.Input[str] firewall_endpoint: The URL of the firewall endpoint that is being associated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
                
@@ -519,6 +563,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  firewall_endpoint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -535,6 +580,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FirewallEndpointAssociationArgs.__new__(FirewallEndpointAssociationArgs)
 
+            __props__.__dict__["disabled"] = disabled
             if firewall_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'firewall_endpoint'")
             __props__.__dict__["firewall_endpoint"] = firewall_endpoint
@@ -568,6 +614,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            disabled: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             firewall_endpoint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -589,6 +636,9 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the firewall endpoint was created in UTC.
+        :param pulumi.Input[bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
+               > **Note:** The API will reject the request if this value is set to true when creating the resource,
+               otherwise on an update the association can be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] firewall_endpoint: The URL of the firewall endpoint that is being associated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
@@ -616,6 +666,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         __props__ = _FirewallEndpointAssociationState.__new__(_FirewallEndpointAssociationState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["disabled"] = disabled
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["firewall_endpoint"] = firewall_endpoint
         __props__.__dict__["labels"] = labels
@@ -638,6 +689,16 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         Time the firewall endpoint was created in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the association is disabled. True indicates that traffic will not be intercepted.
+        > **Note:** The API will reject the request if this value is set to true when creating the resource,
+        otherwise on an update the association can be disabled.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="effectiveLabels")

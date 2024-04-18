@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHttpLoadBalancingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigIstioConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigKalmConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigStatefulHaConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,8 +46,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * .
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
      * 
-     * This example `addons_config` disables two addons:
-     * 
      */
     @Import(name="configConnectorConfig")
     private @Nullable Output<ClusterAddonsConfigConfigConnectorConfigArgs> configConnectorConfig;
@@ -54,8 +53,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     /**
      * @return .
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigConfigConnectorConfigArgs>> configConnectorConfig() {
@@ -268,6 +265,29 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.networkPolicyConfig);
     }
 
+    /**
+     * .
+     * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+     * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    @Import(name="statefulHaConfig")
+    private @Nullable Output<ClusterAddonsConfigStatefulHaConfigArgs> statefulHaConfig;
+
+    /**
+     * @return .
+     * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+     * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigStatefulHaConfigArgs>> statefulHaConfig() {
+        return Optional.ofNullable(this.statefulHaConfig);
+    }
+
     private ClusterAddonsConfigArgs() {}
 
     private ClusterAddonsConfigArgs(ClusterAddonsConfigArgs $) {
@@ -283,6 +303,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.istioConfig = $.istioConfig;
         this.kalmConfig = $.kalmConfig;
         this.networkPolicyConfig = $.networkPolicyConfig;
+        this.statefulHaConfig = $.statefulHaConfig;
     }
 
     public static Builder builder() {
@@ -328,8 +349,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * @param configConnectorConfig .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
          * 
-         * This example `addons_config` disables two addons:
-         * 
          * @return builder
          * 
          */
@@ -341,8 +360,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param configConnectorConfig .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-         * 
-         * This example `addons_config` disables two addons:
          * 
          * @return builder
          * 
@@ -615,6 +632,35 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder networkPolicyConfig(ClusterAddonsConfigNetworkPolicyConfigArgs networkPolicyConfig) {
             return networkPolicyConfig(Output.of(networkPolicyConfig));
+        }
+
+        /**
+         * @param statefulHaConfig .
+         * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+         * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulHaConfig(@Nullable Output<ClusterAddonsConfigStatefulHaConfigArgs> statefulHaConfig) {
+            $.statefulHaConfig = statefulHaConfig;
+            return this;
+        }
+
+        /**
+         * @param statefulHaConfig .
+         * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+         * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder statefulHaConfig(ClusterAddonsConfigStatefulHaConfigArgs statefulHaConfig) {
+            return statefulHaConfig(Output.of(statefulHaConfig));
         }
 
         public ClusterAddonsConfigArgs build() {

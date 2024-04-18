@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class RecordSetRoutingPolicyWrrHealthCheckedTargets {
     /**
      * @return The list of internal load balancers to health check.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     private List<RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers;
@@ -21,7 +21,7 @@ public final class RecordSetRoutingPolicyWrrHealthCheckedTargets {
     private RecordSetRoutingPolicyWrrHealthCheckedTargets() {}
     /**
      * @return The list of internal load balancers to health check.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public List<RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers() {

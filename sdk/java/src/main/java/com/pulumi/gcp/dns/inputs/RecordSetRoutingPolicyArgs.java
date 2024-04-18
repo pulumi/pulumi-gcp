@@ -36,7 +36,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * The configuration for Geolocation based routing policy.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     @Import(name="geos")
@@ -44,7 +44,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The configuration for Geolocation based routing policy.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RecordSetRoutingPolicyGeoArgs>>> geos() {
@@ -53,7 +53,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     @Import(name="primaryBackup")
@@ -61,7 +61,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RecordSetRoutingPolicyPrimaryBackupArgs>> primaryBackup() {
@@ -70,7 +70,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * The configuration for Weighted Round Robin based routing policy.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     @Import(name="wrrs")
@@ -78,7 +78,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The configuration for Weighted Round Robin based routing policy.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RecordSetRoutingPolicyWrrArgs>>> wrrs() {
@@ -135,7 +135,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param geos The configuration for Geolocation based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param geos The configuration for Geolocation based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param geos The configuration for Geolocation based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param primaryBackup The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param primaryBackup The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param wrrs The configuration for Weighted Round Robin based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param wrrs The configuration for Weighted Round Robin based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param wrrs The configuration for Weighted Round Robin based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -1072,6 +1072,8 @@ type DatabaseInstanceSettings struct {
 	DiskType *string `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition *string `pulumi:"edition"`
+	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+	EnableGoogleMlIntegration *bool `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
 	InsightsConfig     *DatabaseInstanceSettingsInsightsConfig     `pulumi:"insightsConfig"`
 	IpConfiguration    *DatabaseInstanceSettingsIpConfiguration    `pulumi:"ipConfiguration"`
@@ -1140,6 +1142,8 @@ type DatabaseInstanceSettingsArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+	EnableGoogleMlIntegration pulumi.BoolPtrInput `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
 	InsightsConfig     DatabaseInstanceSettingsInsightsConfigPtrInput     `pulumi:"insightsConfig"`
 	IpConfiguration    DatabaseInstanceSettingsIpConfigurationPtrInput    `pulumi:"ipConfiguration"`
@@ -1327,6 +1331,11 @@ func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 // The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 func (o DatabaseInstanceSettingsOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+func (o DatabaseInstanceSettingsOutput) EnableGoogleMlIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration of Query Insights.
@@ -1574,6 +1583,16 @@ func (o DatabaseInstanceSettingsPtrOutput) Edition() pulumi.StringPtrOutput {
 		}
 		return v.Edition
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+func (o DatabaseInstanceSettingsPtrOutput) EnableGoogleMlIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGoogleMlIntegration
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Configuration of Query Insights.
@@ -5631,6 +5650,8 @@ type GetDatabaseInstanceSetting struct {
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
+	// Enables Vertex AI Integration.
+	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
 	InsightsConfigs     []GetDatabaseInstanceSettingInsightsConfig     `pulumi:"insightsConfigs"`
 	IpConfigurations    []GetDatabaseInstanceSettingIpConfiguration    `pulumi:"ipConfigurations"`
@@ -5695,6 +5716,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
+	// Enables Vertex AI Integration.
+	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
 	InsightsConfigs     GetDatabaseInstanceSettingInsightsConfigArrayInput     `pulumi:"insightsConfigs"`
 	IpConfigurations    GetDatabaseInstanceSettingIpConfigurationArrayInput    `pulumi:"ipConfigurations"`
@@ -5854,6 +5877,11 @@ func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 // The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 func (o GetDatabaseInstanceSettingOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Enables Vertex AI Integration.
+func (o GetDatabaseInstanceSettingOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
 }
 
 // Configuration of Query Insights.
@@ -8708,6 +8736,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
+	// Enables Vertex AI Integration.
+	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
 	InsightsConfigs     []GetDatabaseInstancesInstanceSettingInsightsConfig     `pulumi:"insightsConfigs"`
 	IpConfigurations    []GetDatabaseInstancesInstanceSettingIpConfiguration    `pulumi:"ipConfigurations"`
@@ -8772,6 +8802,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
+	// Enables Vertex AI Integration.
+	EnableGoogleMlIntegration pulumi.BoolInput `pulumi:"enableGoogleMlIntegration"`
 	// Configuration of Query Insights.
 	InsightsConfigs     GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput     `pulumi:"insightsConfigs"`
 	IpConfigurations    GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput    `pulumi:"ipConfigurations"`
@@ -8933,6 +8965,11 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutpu
 // The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 func (o GetDatabaseInstancesInstanceSettingOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Enables Vertex AI Integration.
+func (o GetDatabaseInstancesInstanceSettingOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
 }
 
 // Configuration of Query Insights.

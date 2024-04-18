@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *             .name(&#34;my-firewall-endpoint&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
  *             .location(&#34;us-central1-a&#34;)
+ *             .billingProjectId(&#34;my-project-name&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build());
  * 

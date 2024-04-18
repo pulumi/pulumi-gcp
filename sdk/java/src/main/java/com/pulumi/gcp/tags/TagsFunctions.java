@@ -12,14 +12,20 @@ import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
 import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
 import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyPlainArgs;
 import com.pulumi.gcp.tags.inputs.GetTagKeyPlainArgs;
+import com.pulumi.gcp.tags.inputs.GetTagKeysArgs;
+import com.pulumi.gcp.tags.inputs.GetTagKeysPlainArgs;
 import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
 import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
 import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyPlainArgs;
 import com.pulumi.gcp.tags.inputs.GetTagValuePlainArgs;
+import com.pulumi.gcp.tags.inputs.GetTagValuesArgs;
+import com.pulumi.gcp.tags.inputs.GetTagValuesPlainArgs;
 import com.pulumi.gcp.tags.outputs.GetTagKeyIamPolicyResult;
 import com.pulumi.gcp.tags.outputs.GetTagKeyResult;
+import com.pulumi.gcp.tags.outputs.GetTagKeysResult;
 import com.pulumi.gcp.tags.outputs.GetTagValueIamPolicyResult;
 import com.pulumi.gcp.tags.outputs.GetTagValueResult;
+import com.pulumi.gcp.tags.outputs.GetTagValuesResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class TagsFunctions {
@@ -220,6 +226,42 @@ public final class TagsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", TypeShape.of(GetTagKeyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get tag keys by org or project `parent`.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTagKeysResult> getTagKeys(GetTagKeysArgs args) {
+        return getTagKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get tag keys by org or project `parent`.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTagKeysResult> getTagKeysPlain(GetTagKeysPlainArgs args) {
+        return getTagKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get tag keys by org or project `parent`.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTagKeysResult> getTagKeys(GetTagKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:tags/getTagKeys:getTagKeys", TypeShape.of(GetTagKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get tag keys by org or project `parent`.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTagKeysResult> getTagKeysPlain(GetTagKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:tags/getTagKeys:getTagKeys", TypeShape.of(GetTagKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get a tag value by `parent` key and `short_name`.
      * 
      * ## Example Usage
@@ -414,5 +456,41 @@ public final class TagsFunctions {
      */
     public static CompletableFuture<GetTagValueIamPolicyResult> getTagValueIamPolicyPlain(GetTagValueIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", TypeShape.of(GetTagValueIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get tag values from a `parent` key.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTagValuesResult> getTagValues(GetTagValuesArgs args) {
+        return getTagValues(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get tag values from a `parent` key.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTagValuesResult> getTagValuesPlain(GetTagValuesPlainArgs args) {
+        return getTagValuesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get tag values from a `parent` key.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTagValuesResult> getTagValues(GetTagValuesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:tags/getTagValues:getTagValues", TypeShape.of(GetTagValuesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get tag values from a `parent` key.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTagValuesResult> getTagValuesPlain(GetTagValuesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:tags/getTagValues:getTagValues", TypeShape.of(GetTagValuesResult.class), args, Utilities.withVersion(options));
     }
 }

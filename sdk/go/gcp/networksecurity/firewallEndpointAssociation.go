@@ -74,6 +74,10 @@ type FirewallEndpointAssociation struct {
 
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether the association is disabled. True indicates that traffic will not be intercepted.
+	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
+	// otherwise on an update the association can be disabled.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The URL of the firewall endpoint that is being associated.
@@ -155,6 +159,10 @@ func GetFirewallEndpointAssociation(ctx *pulumi.Context,
 type firewallEndpointAssociationState struct {
 	// Time the firewall endpoint was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether the association is disabled. True indicates that traffic will not be intercepted.
+	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
+	// otherwise on an update the association can be disabled.
+	Disabled *bool `pulumi:"disabled"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The URL of the firewall endpoint that is being associated.
@@ -193,6 +201,10 @@ type firewallEndpointAssociationState struct {
 type FirewallEndpointAssociationState struct {
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether the association is disabled. True indicates that traffic will not be intercepted.
+	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
+	// otherwise on an update the association can be disabled.
+	Disabled pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The URL of the firewall endpoint that is being associated.
@@ -233,6 +245,10 @@ func (FirewallEndpointAssociationState) ElementType() reflect.Type {
 }
 
 type firewallEndpointAssociationArgs struct {
+	// Whether the association is disabled. True indicates that traffic will not be intercepted.
+	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
+	// otherwise on an update the association can be disabled.
+	Disabled *bool `pulumi:"disabled"`
 	// The URL of the firewall endpoint that is being associated.
 	FirewallEndpoint string `pulumi:"firewallEndpoint"`
 	// A map of key/value label pairs to assign to the resource.
@@ -257,6 +273,10 @@ type firewallEndpointAssociationArgs struct {
 
 // The set of arguments for constructing a FirewallEndpointAssociation resource.
 type FirewallEndpointAssociationArgs struct {
+	// Whether the association is disabled. True indicates that traffic will not be intercepted.
+	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
+	// otherwise on an update the association can be disabled.
+	Disabled pulumi.BoolPtrInput
 	// The URL of the firewall endpoint that is being associated.
 	FirewallEndpoint pulumi.StringInput
 	// A map of key/value label pairs to assign to the resource.
@@ -369,6 +389,13 @@ func (o FirewallEndpointAssociationOutput) ToFirewallEndpointAssociationOutputWi
 // Time the firewall endpoint was created in UTC.
 func (o FirewallEndpointAssociationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether the association is disabled. True indicates that traffic will not be intercepted.
+// > **Note:** The API will reject the request if this value is set to true when creating the resource,
+// otherwise on an update the association can be disabled.
+func (o FirewallEndpointAssociationOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

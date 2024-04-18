@@ -797,10 +797,17 @@ func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) Namespaces() pulumi.S
 type BackupPlanBackupSchedule struct {
 	// A standard cron string that defines a repeating schedule for
 	// creating Backups via this BackupPlan.
+	// This is mutually exclusive with the rpoConfig field since at most one
+	// schedule can be defined for a BackupPlan.
 	// If this is defined, then backupRetainDays must also be defined.
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// This flag denotes whether automatic Backup creation is paused for this BackupPlan.
 	Paused *bool `pulumi:"paused"`
+	// Defines the RPO schedule configuration for this BackupPlan. This is mutually
+	// exclusive with the cronSchedule field since at most one schedule can be defined
+	// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+	// Structure is documented below.
+	RpoConfig *BackupPlanBackupScheduleRpoConfig `pulumi:"rpoConfig"`
 }
 
 // BackupPlanBackupScheduleInput is an input type that accepts BackupPlanBackupScheduleArgs and BackupPlanBackupScheduleOutput values.
@@ -817,10 +824,17 @@ type BackupPlanBackupScheduleInput interface {
 type BackupPlanBackupScheduleArgs struct {
 	// A standard cron string that defines a repeating schedule for
 	// creating Backups via this BackupPlan.
+	// This is mutually exclusive with the rpoConfig field since at most one
+	// schedule can be defined for a BackupPlan.
 	// If this is defined, then backupRetainDays must also be defined.
 	CronSchedule pulumi.StringPtrInput `pulumi:"cronSchedule"`
 	// This flag denotes whether automatic Backup creation is paused for this BackupPlan.
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
+	// Defines the RPO schedule configuration for this BackupPlan. This is mutually
+	// exclusive with the cronSchedule field since at most one schedule can be defined
+	// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+	// Structure is documented below.
+	RpoConfig BackupPlanBackupScheduleRpoConfigPtrInput `pulumi:"rpoConfig"`
 }
 
 func (BackupPlanBackupScheduleArgs) ElementType() reflect.Type {
@@ -902,6 +916,8 @@ func (o BackupPlanBackupScheduleOutput) ToBackupPlanBackupSchedulePtrOutputWithC
 
 // A standard cron string that defines a repeating schedule for
 // creating Backups via this BackupPlan.
+// This is mutually exclusive with the rpoConfig field since at most one
+// schedule can be defined for a BackupPlan.
 // If this is defined, then backupRetainDays must also be defined.
 func (o BackupPlanBackupScheduleOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupPlanBackupSchedule) *string { return v.CronSchedule }).(pulumi.StringPtrOutput)
@@ -910,6 +926,14 @@ func (o BackupPlanBackupScheduleOutput) CronSchedule() pulumi.StringPtrOutput {
 // This flag denotes whether automatic Backup creation is paused for this BackupPlan.
 func (o BackupPlanBackupScheduleOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackupPlanBackupSchedule) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the RPO schedule configuration for this BackupPlan. This is mutually
+// exclusive with the cronSchedule field since at most one schedule can be defined
+// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+// Structure is documented below.
+func (o BackupPlanBackupScheduleOutput) RpoConfig() BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupSchedule) *BackupPlanBackupScheduleRpoConfig { return v.RpoConfig }).(BackupPlanBackupScheduleRpoConfigPtrOutput)
 }
 
 type BackupPlanBackupSchedulePtrOutput struct{ *pulumi.OutputState }
@@ -938,6 +962,8 @@ func (o BackupPlanBackupSchedulePtrOutput) Elem() BackupPlanBackupScheduleOutput
 
 // A standard cron string that defines a repeating schedule for
 // creating Backups via this BackupPlan.
+// This is mutually exclusive with the rpoConfig field since at most one
+// schedule can be defined for a BackupPlan.
 // If this is defined, then backupRetainDays must also be defined.
 func (o BackupPlanBackupSchedulePtrOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPlanBackupSchedule) *string {
@@ -956,6 +982,789 @@ func (o BackupPlanBackupSchedulePtrOutput) Paused() pulumi.BoolPtrOutput {
 		}
 		return v.Paused
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the RPO schedule configuration for this BackupPlan. This is mutually
+// exclusive with the cronSchedule field since at most one schedule can be defined
+// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+// Structure is documented below.
+func (o BackupPlanBackupSchedulePtrOutput) RpoConfig() BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupSchedule) *BackupPlanBackupScheduleRpoConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RpoConfig
+	}).(BackupPlanBackupScheduleRpoConfigPtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfig struct {
+	// User specified time windows during which backup can NOT happen for this BackupPlan.
+	// Backups should start and finish outside of any given exclusion window. Note: backup
+	// jobs will be scheduled to start and finish outside the duration of the window as
+	// much as possible, but running jobs will not get canceled when it runs into the window.
+	// All the time and date values in exclusionWindows entry in the API are in UTC. We
+	// only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+	// restriction on number of single occurrence windows.
+	// Structure is documented below.
+	ExclusionWindows []BackupPlanBackupScheduleRpoConfigExclusionWindow `pulumi:"exclusionWindows"`
+	// Defines the target RPO for the BackupPlan in minutes, which means the target
+	// maximum data loss in time that is acceptable for this BackupPlan. This must be
+	// at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+	TargetRpoMinutes int `pulumi:"targetRpoMinutes"`
+}
+
+// BackupPlanBackupScheduleRpoConfigInput is an input type that accepts BackupPlanBackupScheduleRpoConfigArgs and BackupPlanBackupScheduleRpoConfigOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigInput` via:
+//
+//	BackupPlanBackupScheduleRpoConfigArgs{...}
+type BackupPlanBackupScheduleRpoConfigInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigOutput() BackupPlanBackupScheduleRpoConfigOutput
+	ToBackupPlanBackupScheduleRpoConfigOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigOutput
+}
+
+type BackupPlanBackupScheduleRpoConfigArgs struct {
+	// User specified time windows during which backup can NOT happen for this BackupPlan.
+	// Backups should start and finish outside of any given exclusion window. Note: backup
+	// jobs will be scheduled to start and finish outside the duration of the window as
+	// much as possible, but running jobs will not get canceled when it runs into the window.
+	// All the time and date values in exclusionWindows entry in the API are in UTC. We
+	// only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+	// restriction on number of single occurrence windows.
+	// Structure is documented below.
+	ExclusionWindows BackupPlanBackupScheduleRpoConfigExclusionWindowArrayInput `pulumi:"exclusionWindows"`
+	// Defines the target RPO for the BackupPlan in minutes, which means the target
+	// maximum data loss in time that is acceptable for this BackupPlan. This must be
+	// at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+	TargetRpoMinutes pulumi.IntInput `pulumi:"targetRpoMinutes"`
+}
+
+func (BackupPlanBackupScheduleRpoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfig)(nil)).Elem()
+}
+
+func (i BackupPlanBackupScheduleRpoConfigArgs) ToBackupPlanBackupScheduleRpoConfigOutput() BackupPlanBackupScheduleRpoConfigOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigArgs) ToBackupPlanBackupScheduleRpoConfigOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigOutput)
+}
+
+func (i BackupPlanBackupScheduleRpoConfigArgs) ToBackupPlanBackupScheduleRpoConfigPtrOutput() BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigArgs) ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigOutput).ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(ctx)
+}
+
+// BackupPlanBackupScheduleRpoConfigPtrInput is an input type that accepts BackupPlanBackupScheduleRpoConfigArgs, BackupPlanBackupScheduleRpoConfigPtr and BackupPlanBackupScheduleRpoConfigPtrOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigPtrInput` via:
+//
+//	        BackupPlanBackupScheduleRpoConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanBackupScheduleRpoConfigPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigPtrOutput() BackupPlanBackupScheduleRpoConfigPtrOutput
+	ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigPtrOutput
+}
+
+type backupPlanBackupScheduleRpoConfigPtrType BackupPlanBackupScheduleRpoConfigArgs
+
+func BackupPlanBackupScheduleRpoConfigPtr(v *BackupPlanBackupScheduleRpoConfigArgs) BackupPlanBackupScheduleRpoConfigPtrInput {
+	return (*backupPlanBackupScheduleRpoConfigPtrType)(v)
+}
+
+func (*backupPlanBackupScheduleRpoConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupScheduleRpoConfig)(nil)).Elem()
+}
+
+func (i *backupPlanBackupScheduleRpoConfigPtrType) ToBackupPlanBackupScheduleRpoConfigPtrOutput() BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanBackupScheduleRpoConfigPtrType) ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigPtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfig)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigOutput) ToBackupPlanBackupScheduleRpoConfigOutput() BackupPlanBackupScheduleRpoConfigOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigOutput) ToBackupPlanBackupScheduleRpoConfigOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigOutput) ToBackupPlanBackupScheduleRpoConfigPtrOutput() BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return o.ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanBackupScheduleRpoConfigOutput) ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupScheduleRpoConfig) *BackupPlanBackupScheduleRpoConfig {
+		return &v
+	}).(BackupPlanBackupScheduleRpoConfigPtrOutput)
+}
+
+// User specified time windows during which backup can NOT happen for this BackupPlan.
+// Backups should start and finish outside of any given exclusion window. Note: backup
+// jobs will be scheduled to start and finish outside the duration of the window as
+// much as possible, but running jobs will not get canceled when it runs into the window.
+// All the time and date values in exclusionWindows entry in the API are in UTC. We
+// only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+// restriction on number of single occurrence windows.
+// Structure is documented below.
+func (o BackupPlanBackupScheduleRpoConfigOutput) ExclusionWindows() BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfig) []BackupPlanBackupScheduleRpoConfigExclusionWindow {
+		return v.ExclusionWindows
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput)
+}
+
+// Defines the target RPO for the BackupPlan in minutes, which means the target
+// maximum data loss in time that is acceptable for this BackupPlan. This must be
+// at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+func (o BackupPlanBackupScheduleRpoConfigOutput) TargetRpoMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfig) int { return v.TargetRpoMinutes }).(pulumi.IntOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupScheduleRpoConfig)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigPtrOutput) ToBackupPlanBackupScheduleRpoConfigPtrOutput() BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigPtrOutput) ToBackupPlanBackupScheduleRpoConfigPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigPtrOutput) Elem() BackupPlanBackupScheduleRpoConfigOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfig) BackupPlanBackupScheduleRpoConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanBackupScheduleRpoConfig
+		return ret
+	}).(BackupPlanBackupScheduleRpoConfigOutput)
+}
+
+// User specified time windows during which backup can NOT happen for this BackupPlan.
+// Backups should start and finish outside of any given exclusion window. Note: backup
+// jobs will be scheduled to start and finish outside the duration of the window as
+// much as possible, but running jobs will not get canceled when it runs into the window.
+// All the time and date values in exclusionWindows entry in the API are in UTC. We
+// only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+// restriction on number of single occurrence windows.
+// Structure is documented below.
+func (o BackupPlanBackupScheduleRpoConfigPtrOutput) ExclusionWindows() BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfig) []BackupPlanBackupScheduleRpoConfigExclusionWindow {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusionWindows
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput)
+}
+
+// Defines the target RPO for the BackupPlan in minutes, which means the target
+// maximum data loss in time that is acceptable for this BackupPlan. This must be
+// at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+func (o BackupPlanBackupScheduleRpoConfigPtrOutput) TargetRpoMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetRpoMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindow struct {
+	// The exclusion window occurs every day if set to "True".
+	// Specifying this field to "False" is an error.
+	// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+	Daily *bool `pulumi:"daily"`
+	// The exclusion window occurs on these days of each week in UTC.
+	// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+	// Structure is documented below.
+	DaysOfWeek *BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek `pulumi:"daysOfWeek"`
+	// Specifies duration of the window in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+	// recurrence type to allow some time for backup to happen:
+	// - single_occurrence_date:  no restriction
+	// - daily window: duration < 24 hours
+	// - weekly window:
+	// - days of week includes all seven days of a week: duration < 24 hours
+	// - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+	Duration string `pulumi:"duration"`
+	// No recurrence. The exclusion window occurs only once and on this date in UTC.
+	// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+	// Structure is documented below.
+	SingleOccurrenceDate *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate `pulumi:"singleOccurrenceDate"`
+	// Specifies the start time of the window using time of the day in UTC.
+	// Structure is documented below.
+	StartTime BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime `pulumi:"startTime"`
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowArgs and BackupPlanBackupScheduleRpoConfigExclusionWindowOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowInput` via:
+//
+//	BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{...}
+type BackupPlanBackupScheduleRpoConfigExclusionWindowInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowOutput
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowArgs struct {
+	// The exclusion window occurs every day if set to "True".
+	// Specifying this field to "False" is an error.
+	// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+	Daily pulumi.BoolPtrInput `pulumi:"daily"`
+	// The exclusion window occurs on these days of each week in UTC.
+	// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+	// Structure is documented below.
+	DaysOfWeek BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrInput `pulumi:"daysOfWeek"`
+	// Specifies duration of the window in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+	// recurrence type to allow some time for backup to happen:
+	// - single_occurrence_date:  no restriction
+	// - daily window: duration < 24 hours
+	// - weekly window:
+	// - days of week includes all seven days of a week: duration < 24 hours
+	// - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// No recurrence. The exclusion window occurs only once and on this date in UTC.
+	// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+	// Structure is documented below.
+	SingleOccurrenceDate BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrInput `pulumi:"singleOccurrenceDate"`
+	// Specifies the start time of the window using time of the day in UTC.
+	// Structure is documented below.
+	StartTime BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeInput `pulumi:"startTime"`
+}
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindow)(nil)).Elem()
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowOutput)
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowArrayInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowArray and BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowArrayInput` via:
+//
+//	BackupPlanBackupScheduleRpoConfigExclusionWindowArray{ BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{...} }
+type BackupPlanBackupScheduleRpoConfigExclusionWindowArrayInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowArray []BackupPlanBackupScheduleRpoConfigExclusionWindowInput
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanBackupScheduleRpoConfigExclusionWindow)(nil)).Elem()
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowArray) ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowArray) ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindow)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowOutput {
+	return o
+}
+
+// The exclusion window occurs every day if set to "True".
+// Specifying this field to "False" is an error.
+// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) Daily() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindow) *bool { return v.Daily }).(pulumi.BoolPtrOutput)
+}
+
+// The exclusion window occurs on these days of each week in UTC.
+// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+// Structure is documented below.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) DaysOfWeek() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindow) *BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
+		return v.DaysOfWeek
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput)
+}
+
+// Specifies duration of the window in seconds with up to nine fractional digits,
+// terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+// recurrence type to allow some time for backup to happen:
+// - single_occurrence_date:  no restriction
+// - daily window: duration < 24 hours
+// - weekly window:
+// - days of week includes all seven days of a week: duration < 24 hours
+// - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// No recurrence. The exclusion window occurs only once and on this date in UTC.
+// Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+// Structure is documented below.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) SingleOccurrenceDate() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindow) *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
+		return v.SingleOccurrenceDate
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput)
+}
+
+// Specifies the start time of the window using time of the day in UTC.
+// Structure is documented below.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowOutput) StartTime() BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindow) BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
+		return v.StartTime
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanBackupScheduleRpoConfigExclusionWindow)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput) Index(i pulumi.IntInput) BackupPlanBackupScheduleRpoConfigExclusionWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlanBackupScheduleRpoConfigExclusionWindow {
+		return vs[0].([]BackupPlanBackupScheduleRpoConfigExclusionWindow)[vs[1].(int)]
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek struct {
+	// A list of days of week.
+	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs and BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekInput` via:
+//
+//	BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs{...}
+type BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs struct {
+	// A list of days of week.
+	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+}
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek)(nil)).Elem()
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput)
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput).ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(ctx)
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs, BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtr and BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrInput` via:
+//
+//	        BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput
+}
+
+type backupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrType BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs
+
+func BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtr(v *BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrInput {
+	return (*backupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrType)(v)
+}
+
+func (*backupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek)(nil)).Elem()
+}
+
+func (i *backupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrType) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrType) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return o.ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek) *BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
+		return &v
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput)
+}
+
+// A list of days of week.
+// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput) Elem() BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek) BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek
+		return ret
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput)
+}
+
+// A list of days of week.
+// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfWeeks
+	}).(pulumi.StringArrayOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate struct {
+	// Day of a month.
+	Day *int `pulumi:"day"`
+	// Month of a year.
+	Month *int `pulumi:"month"`
+	// Year of the date.
+	Year *int `pulumi:"year"`
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs and BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateInput` via:
+//
+//	BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{...}
+type BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs struct {
+	// Day of a month.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate)(nil)).Elem()
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput)
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput).ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(ctx)
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs, BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtr and BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrInput` via:
+//
+//	        BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput
+}
+
+type backupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrType BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs
+
+func BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtr(v *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrInput {
+	return (*backupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrType)(v)
+}
+
+func (*backupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate)(nil)).Elem()
+}
+
+func (i *backupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrType) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrType) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return o.ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
+		return &v
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput)
+}
+
+// Day of a month.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) Elem() BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate
+		return ret
+	}).(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput)
+}
+
+// Day of a month.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime struct {
+	// Hours of day in 24 hour format.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeInput is an input type that accepts BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs and BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput values.
+// You can construct a concrete instance of `BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeInput` via:
+//
+//	BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{...}
+type BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput
+	ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutputWithContext(context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs struct {
+	// Hours of day in 24 hour format.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime)(nil)).Elem()
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput {
+	return i.ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs) ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput)
+}
+
+type BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime)(nil)).Elem()
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput() BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput {
+	return o
+}
+
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) ToBackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutputWithContext(ctx context.Context) BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time.
+func (o BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
 }
 
 type BackupPlanIamBindingCondition struct {
@@ -1301,7 +2110,9 @@ type BackupPlanRetentionPolicy struct {
 	// existing Backups under it. Backups created AFTER a successful update
 	// will automatically pick up the new value.
 	// NOTE: backupRetainDays must be >= backupDeleteLockDays.
-	// If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+	// If cronSchedule is defined, then this must be <= 360 * the creation interval.
+	// If rpoConfig is defined, then this must be
+	// <= 360 * targetRpoMinutes/(1440minutes/day)
 	BackupRetainDays *int `pulumi:"backupRetainDays"`
 	// This flag denotes whether the retention policy of this BackupPlan is locked.
 	// If set to True, no further update is allowed on this policy, including
@@ -1337,7 +2148,9 @@ type BackupPlanRetentionPolicyArgs struct {
 	// existing Backups under it. Backups created AFTER a successful update
 	// will automatically pick up the new value.
 	// NOTE: backupRetainDays must be >= backupDeleteLockDays.
-	// If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+	// If cronSchedule is defined, then this must be <= 360 * the creation interval.
+	// If rpoConfig is defined, then this must be
+	// <= 360 * targetRpoMinutes/(1440minutes/day)
 	BackupRetainDays pulumi.IntPtrInput `pulumi:"backupRetainDays"`
 	// This flag denotes whether the retention policy of this BackupPlan is locked.
 	// If set to True, no further update is allowed on this policy, including
@@ -1441,7 +2254,9 @@ func (o BackupPlanRetentionPolicyOutput) BackupDeleteLockDays() pulumi.IntPtrOut
 // existing Backups under it. Backups created AFTER a successful update
 // will automatically pick up the new value.
 // NOTE: backupRetainDays must be >= backupDeleteLockDays.
-// If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+// If cronSchedule is defined, then this must be <= 360 * the creation interval.
+// If rpoConfig is defined, then this must be
+// <= 360 * targetRpoMinutes/(1440minutes/day)
 func (o BackupPlanRetentionPolicyOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackupPlanRetentionPolicy) *int { return v.BackupRetainDays }).(pulumi.IntPtrOutput)
 }
@@ -1501,7 +2316,9 @@ func (o BackupPlanRetentionPolicyPtrOutput) BackupDeleteLockDays() pulumi.IntPtr
 // existing Backups under it. Backups created AFTER a successful update
 // will automatically pick up the new value.
 // NOTE: backupRetainDays must be >= backupDeleteLockDays.
-// If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+// If cronSchedule is defined, then this must be <= 360 * the creation interval.
+// If rpoConfig is defined, then this must be
+// <= 360 * targetRpoMinutes/(1440minutes/day)
 func (o BackupPlanRetentionPolicyPtrOutput) BackupRetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackupPlanRetentionPolicy) *int {
 		if v == nil {
@@ -3955,6 +4772,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigSelectedNamespacesPtrInput)(nil)).Elem(), BackupPlanBackupConfigSelectedNamespacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleInput)(nil)).Elem(), BackupPlanBackupScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupSchedulePtrInput)(nil)).Elem(), BackupPlanBackupScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigPtrInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowArrayInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeInput)(nil)).Elem(), BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamBindingConditionInput)(nil)).Elem(), BackupPlanIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamBindingConditionPtrInput)(nil)).Elem(), BackupPlanIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamMemberConditionInput)(nil)).Elem(), BackupPlanIamMemberConditionArgs{})
@@ -4001,6 +4827,15 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanBackupConfigSelectedNamespacesPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupScheduleOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupSchedulePtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowArrayOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDatePtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(BackupPlanIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(BackupPlanIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanIamMemberConditionOutput{})

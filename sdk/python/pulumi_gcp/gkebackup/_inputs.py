@@ -16,6 +16,11 @@ __all__ = [
     'BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs',
     'BackupPlanBackupConfigSelectedNamespacesArgs',
     'BackupPlanBackupScheduleArgs',
+    'BackupPlanBackupScheduleRpoConfigArgs',
+    'BackupPlanBackupScheduleRpoConfigExclusionWindowArgs',
+    'BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs',
+    'BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs',
+    'BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs',
     'BackupPlanIamBindingConditionArgs',
     'BackupPlanIamMemberConditionArgs',
     'BackupPlanRetentionPolicyArgs',
@@ -259,17 +264,26 @@ class BackupPlanBackupConfigSelectedNamespacesArgs:
 class BackupPlanBackupScheduleArgs:
     def __init__(__self__, *,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 paused: Optional[pulumi.Input[bool]] = None):
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 rpo_config: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs']] = None):
         """
         :param pulumi.Input[str] cron_schedule: A standard cron string that defines a repeating schedule for
                creating Backups via this BackupPlan.
+               This is mutually exclusive with the rpoConfig field since at most one
+               schedule can be defined for a BackupPlan.
                If this is defined, then backupRetainDays must also be defined.
         :param pulumi.Input[bool] paused: This flag denotes whether automatic Backup creation is paused for this BackupPlan.
+        :param pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs'] rpo_config: Defines the RPO schedule configuration for this BackupPlan. This is mutually
+               exclusive with the cronSchedule field since at most one schedule can be defined
+               for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+               Structure is documented below.
         """
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
+        if rpo_config is not None:
+            pulumi.set(__self__, "rpo_config", rpo_config)
 
     @property
     @pulumi.getter(name="cronSchedule")
@@ -277,6 +291,8 @@ class BackupPlanBackupScheduleArgs:
         """
         A standard cron string that defines a repeating schedule for
         creating Backups via this BackupPlan.
+        This is mutually exclusive with the rpoConfig field since at most one
+        schedule can be defined for a BackupPlan.
         If this is defined, then backupRetainDays must also be defined.
         """
         return pulumi.get(self, "cron_schedule")
@@ -296,6 +312,341 @@ class BackupPlanBackupScheduleArgs:
     @paused.setter
     def paused(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter(name="rpoConfig")
+    def rpo_config(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs']]:
+        """
+        Defines the RPO schedule configuration for this BackupPlan. This is mutually
+        exclusive with the cronSchedule field since at most one schedule can be defined
+        for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rpo_config")
+
+    @rpo_config.setter
+    def rpo_config(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs']]):
+        pulumi.set(self, "rpo_config", value)
+
+
+@pulumi.input_type
+class BackupPlanBackupScheduleRpoConfigArgs:
+    def __init__(__self__, *,
+                 target_rpo_minutes: pulumi.Input[int],
+                 exclusion_windows: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]] = None):
+        """
+        :param pulumi.Input[int] target_rpo_minutes: Defines the target RPO for the BackupPlan in minutes, which means the target
+               maximum data loss in time that is acceptable for this BackupPlan. This must be
+               at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]] exclusion_windows: User specified time windows during which backup can NOT happen for this BackupPlan.
+               Backups should start and finish outside of any given exclusion window. Note: backup
+               jobs will be scheduled to start and finish outside the duration of the window as
+               much as possible, but running jobs will not get canceled when it runs into the window.
+               All the time and date values in exclusionWindows entry in the API are in UTC. We
+               only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+               restriction on number of single occurrence windows.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "target_rpo_minutes", target_rpo_minutes)
+        if exclusion_windows is not None:
+            pulumi.set(__self__, "exclusion_windows", exclusion_windows)
+
+    @property
+    @pulumi.getter(name="targetRpoMinutes")
+    def target_rpo_minutes(self) -> pulumi.Input[int]:
+        """
+        Defines the target RPO for the BackupPlan in minutes, which means the target
+        maximum data loss in time that is acceptable for this BackupPlan. This must be
+        at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+        """
+        return pulumi.get(self, "target_rpo_minutes")
+
+    @target_rpo_minutes.setter
+    def target_rpo_minutes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "target_rpo_minutes", value)
+
+    @property
+    @pulumi.getter(name="exclusionWindows")
+    def exclusion_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]:
+        """
+        User specified time windows during which backup can NOT happen for this BackupPlan.
+        Backups should start and finish outside of any given exclusion window. Note: backup
+        jobs will be scheduled to start and finish outside the duration of the window as
+        much as possible, but running jobs will not get canceled when it runs into the window.
+        All the time and date values in exclusionWindows entry in the API are in UTC. We
+        only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+        restriction on number of single occurrence windows.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclusion_windows")
+
+    @exclusion_windows.setter
+    def exclusion_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]):
+        pulumi.set(self, "exclusion_windows", value)
+
+
+@pulumi.input_type
+class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[str],
+                 start_time: pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs'],
+                 daily: Optional[pulumi.Input[bool]] = None,
+                 days_of_week: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']] = None,
+                 single_occurrence_date: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']] = None):
+        """
+        :param pulumi.Input[str] duration: Specifies duration of the window in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+               recurrence type to allow some time for backup to happen:
+               - single_occurrence_date:  no restriction
+               - daily window: duration < 24 hours
+               - weekly window:
+               - days of week includes all seven days of a week: duration < 24 hours
+               - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+        :param pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs'] start_time: Specifies the start time of the window using time of the day in UTC.
+               Structure is documented below.
+        :param pulumi.Input[bool] daily: The exclusion window occurs every day if set to "True".
+               Specifying this field to "False" is an error.
+               Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+        :param pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs'] days_of_week: The exclusion window occurs on these days of each week in UTC.
+               Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+               Structure is documented below.
+        :param pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs'] single_occurrence_date: No recurrence. The exclusion window occurs only once and on this date in UTC.
+               Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_time", start_time)
+        if daily is not None:
+            pulumi.set(__self__, "daily", daily)
+        if days_of_week is not None:
+            pulumi.set(__self__, "days_of_week", days_of_week)
+        if single_occurrence_date is not None:
+            pulumi.set(__self__, "single_occurrence_date", single_occurrence_date)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[str]:
+        """
+        Specifies duration of the window in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+        recurrence type to allow some time for backup to happen:
+        - single_occurrence_date:  no restriction
+        - daily window: duration < 24 hours
+        - weekly window:
+        - days of week includes all seven days of a week: duration < 24 hours
+        - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[str]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs']:
+        """
+        Specifies the start time of the window using time of the day in UTC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def daily(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The exclusion window occurs every day if set to "True".
+        Specifying this field to "False" is an error.
+        Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+        """
+        return pulumi.get(self, "daily")
+
+    @daily.setter
+    def daily(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "daily", value)
+
+    @property
+    @pulumi.getter(name="daysOfWeek")
+    def days_of_week(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]:
+        """
+        The exclusion window occurs on these days of each week in UTC.
+        Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "days_of_week")
+
+    @days_of_week.setter
+    def days_of_week(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]):
+        pulumi.set(self, "days_of_week", value)
+
+    @property
+    @pulumi.getter(name="singleOccurrenceDate")
+    def single_occurrence_date(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]:
+        """
+        No recurrence. The exclusion window occurs only once and on this date in UTC.
+        Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "single_occurrence_date")
+
+    @single_occurrence_date.setter
+    def single_occurrence_date(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]):
+        pulumi.set(self, "single_occurrence_date", value)
+
+
+@pulumi.input_type
+class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs:
+    def __init__(__self__, *,
+                 days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] days_of_weeks: A list of days of week.
+               Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+
+    @property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of days of week.
+        Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @days_of_weeks.setter
+    def days_of_weeks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "days_of_weeks", value)
+
+
+@pulumi.input_type
+class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[int]] = None,
+                 month: Optional[pulumi.Input[int]] = None,
+                 year: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] day: Day of a month.
+        :param pulumi.Input[int] month: Month of a year.
+        :param pulumi.Input[int] year: Year of the date.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[int]]:
+        """
+        Day of a month.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[pulumi.Input[int]]:
+        """
+        Month of a year.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[pulumi.Input[int]]:
+        """
+        Year of the date.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hours: Hours of day in 24 hour format.
+        :param pulumi.Input[int] minutes: Minutes of hour of day.
+        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds.
+        :param pulumi.Input[int] seconds: Seconds of minutes of the time.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hours of day in 24 hour format.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minutes of hour of day.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Fractions of seconds in nanoseconds.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds of minutes of the time.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds", value)
 
 
 @pulumi.input_type
@@ -398,7 +749,9 @@ class BackupPlanRetentionPolicyArgs:
                existing Backups under it. Backups created AFTER a successful update
                will automatically pick up the new value.
                NOTE: backupRetainDays must be >= backupDeleteLockDays.
-               If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+               If cronSchedule is defined, then this must be <= 360 * the creation interval.
+               If rpo_config is defined, then this must be
+               <= 360 * targetRpoMinutes/(1440minutes/day)
         :param pulumi.Input[bool] locked: This flag denotes whether the retention policy of this BackupPlan is locked.
                If set to True, no further update is allowed on this policy, including
                the locked field itself.
@@ -440,7 +793,9 @@ class BackupPlanRetentionPolicyArgs:
         existing Backups under it. Backups created AFTER a successful update
         will automatically pick up the new value.
         NOTE: backupRetainDays must be >= backupDeleteLockDays.
-        If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+        If cronSchedule is defined, then this must be <= 360 * the creation interval.
+        If rpo_config is defined, then this must be
+        <= 360 * targetRpoMinutes/(1440minutes/day)
         """
         return pulumi.get(self, "backup_retain_days")
 

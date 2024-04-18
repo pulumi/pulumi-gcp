@@ -69,6 +69,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? Edition;
         /// <summary>
+        /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        /// </summary>
+        public readonly bool? EnableGoogleMlIntegration;
+        /// <summary>
         /// Configuration of Query Insights.
         /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsInsightsConfig? InsightsConfig;
@@ -138,6 +142,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? edition,
 
+            bool? enableGoogleMlIntegration,
+
             Outputs.DatabaseInstanceSettingsInsightsConfig? insightsConfig,
 
             Outputs.DatabaseInstanceSettingsIpConfiguration? ipConfiguration,
@@ -176,6 +182,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskSize = diskSize;
             DiskType = diskType;
             Edition = edition;
+            EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;
             LocationPreference = locationPreference;

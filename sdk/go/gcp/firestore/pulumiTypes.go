@@ -910,18 +910,20 @@ func (o FieldTtlConfigPtrOutput) State() pulumi.StringPtrOutput {
 }
 
 type IndexField struct {
-	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-	// be specified.
+	// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+	// `vectorConfig` can be specified.
 	// Possible values are: `CONTAINS`.
-	//
-	// ***
 	ArrayConfig *string `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath *string `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-	// Only one of `order` and `arrayConfig` can be specified.
+	// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
 	// Possible values are: `ASCENDING`, `DESCENDING`.
 	Order *string `pulumi:"order"`
+	// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+	// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+	// Structure is documented below.
+	VectorConfig *IndexFieldVectorConfig `pulumi:"vectorConfig"`
 }
 
 // IndexFieldInput is an input type that accepts IndexFieldArgs and IndexFieldOutput values.
@@ -936,18 +938,20 @@ type IndexFieldInput interface {
 }
 
 type IndexFieldArgs struct {
-	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-	// be specified.
+	// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+	// `vectorConfig` can be specified.
 	// Possible values are: `CONTAINS`.
-	//
-	// ***
 	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-	// Only one of `order` and `arrayConfig` can be specified.
+	// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
 	// Possible values are: `ASCENDING`, `DESCENDING`.
 	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+	// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+	// Structure is documented below.
+	VectorConfig IndexFieldVectorConfigPtrInput `pulumi:"vectorConfig"`
 }
 
 func (IndexFieldArgs) ElementType() reflect.Type {
@@ -1001,11 +1005,9 @@ func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) Ind
 	return o
 }
 
-// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-// be specified.
+// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+// `vectorConfig` can be specified.
 // Possible values are: `CONTAINS`.
-//
-// ***
 func (o IndexFieldOutput) ArrayConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexField) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
 }
@@ -1016,10 +1018,17 @@ func (o IndexFieldOutput) FieldPath() pulumi.StringPtrOutput {
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-// Only one of `order` and `arrayConfig` can be specified.
+// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
 // Possible values are: `ASCENDING`, `DESCENDING`.
 func (o IndexFieldOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexField) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+// Structure is documented below.
+func (o IndexFieldOutput) VectorConfig() IndexFieldVectorConfigPtrOutput {
+	return o.ApplyT(func(v IndexField) *IndexFieldVectorConfig { return v.VectorConfig }).(IndexFieldVectorConfigPtrOutput)
 }
 
 type IndexFieldArrayOutput struct{ *pulumi.OutputState }
@@ -1042,6 +1051,292 @@ func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
 	}).(IndexFieldOutput)
 }
 
+type IndexFieldVectorConfig struct {
+	// The resulting index will only include vectors of this dimension, and can be used for vector search
+	// with the same dimension.
+	Dimension *int `pulumi:"dimension"`
+	// Indicates the vector index is a flat index.
+	//
+	// ***
+	Flat *IndexFieldVectorConfigFlat `pulumi:"flat"`
+}
+
+// IndexFieldVectorConfigInput is an input type that accepts IndexFieldVectorConfigArgs and IndexFieldVectorConfigOutput values.
+// You can construct a concrete instance of `IndexFieldVectorConfigInput` via:
+//
+//	IndexFieldVectorConfigArgs{...}
+type IndexFieldVectorConfigInput interface {
+	pulumi.Input
+
+	ToIndexFieldVectorConfigOutput() IndexFieldVectorConfigOutput
+	ToIndexFieldVectorConfigOutputWithContext(context.Context) IndexFieldVectorConfigOutput
+}
+
+type IndexFieldVectorConfigArgs struct {
+	// The resulting index will only include vectors of this dimension, and can be used for vector search
+	// with the same dimension.
+	Dimension pulumi.IntPtrInput `pulumi:"dimension"`
+	// Indicates the vector index is a flat index.
+	//
+	// ***
+	Flat IndexFieldVectorConfigFlatPtrInput `pulumi:"flat"`
+}
+
+func (IndexFieldVectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldVectorConfig)(nil)).Elem()
+}
+
+func (i IndexFieldVectorConfigArgs) ToIndexFieldVectorConfigOutput() IndexFieldVectorConfigOutput {
+	return i.ToIndexFieldVectorConfigOutputWithContext(context.Background())
+}
+
+func (i IndexFieldVectorConfigArgs) ToIndexFieldVectorConfigOutputWithContext(ctx context.Context) IndexFieldVectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldVectorConfigOutput)
+}
+
+func (i IndexFieldVectorConfigArgs) ToIndexFieldVectorConfigPtrOutput() IndexFieldVectorConfigPtrOutput {
+	return i.ToIndexFieldVectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IndexFieldVectorConfigArgs) ToIndexFieldVectorConfigPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldVectorConfigOutput).ToIndexFieldVectorConfigPtrOutputWithContext(ctx)
+}
+
+// IndexFieldVectorConfigPtrInput is an input type that accepts IndexFieldVectorConfigArgs, IndexFieldVectorConfigPtr and IndexFieldVectorConfigPtrOutput values.
+// You can construct a concrete instance of `IndexFieldVectorConfigPtrInput` via:
+//
+//	        IndexFieldVectorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexFieldVectorConfigPtrInput interface {
+	pulumi.Input
+
+	ToIndexFieldVectorConfigPtrOutput() IndexFieldVectorConfigPtrOutput
+	ToIndexFieldVectorConfigPtrOutputWithContext(context.Context) IndexFieldVectorConfigPtrOutput
+}
+
+type indexFieldVectorConfigPtrType IndexFieldVectorConfigArgs
+
+func IndexFieldVectorConfigPtr(v *IndexFieldVectorConfigArgs) IndexFieldVectorConfigPtrInput {
+	return (*indexFieldVectorConfigPtrType)(v)
+}
+
+func (*indexFieldVectorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldVectorConfig)(nil)).Elem()
+}
+
+func (i *indexFieldVectorConfigPtrType) ToIndexFieldVectorConfigPtrOutput() IndexFieldVectorConfigPtrOutput {
+	return i.ToIndexFieldVectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *indexFieldVectorConfigPtrType) ToIndexFieldVectorConfigPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldVectorConfigPtrOutput)
+}
+
+type IndexFieldVectorConfigOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldVectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldVectorConfig)(nil)).Elem()
+}
+
+func (o IndexFieldVectorConfigOutput) ToIndexFieldVectorConfigOutput() IndexFieldVectorConfigOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigOutput) ToIndexFieldVectorConfigOutputWithContext(ctx context.Context) IndexFieldVectorConfigOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigOutput) ToIndexFieldVectorConfigPtrOutput() IndexFieldVectorConfigPtrOutput {
+	return o.ToIndexFieldVectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IndexFieldVectorConfigOutput) ToIndexFieldVectorConfigPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexFieldVectorConfig) *IndexFieldVectorConfig {
+		return &v
+	}).(IndexFieldVectorConfigPtrOutput)
+}
+
+// The resulting index will only include vectors of this dimension, and can be used for vector search
+// with the same dimension.
+func (o IndexFieldVectorConfigOutput) Dimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IndexFieldVectorConfig) *int { return v.Dimension }).(pulumi.IntPtrOutput)
+}
+
+// Indicates the vector index is a flat index.
+//
+// ***
+func (o IndexFieldVectorConfigOutput) Flat() IndexFieldVectorConfigFlatPtrOutput {
+	return o.ApplyT(func(v IndexFieldVectorConfig) *IndexFieldVectorConfigFlat { return v.Flat }).(IndexFieldVectorConfigFlatPtrOutput)
+}
+
+type IndexFieldVectorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldVectorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldVectorConfig)(nil)).Elem()
+}
+
+func (o IndexFieldVectorConfigPtrOutput) ToIndexFieldVectorConfigPtrOutput() IndexFieldVectorConfigPtrOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigPtrOutput) ToIndexFieldVectorConfigPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigPtrOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigPtrOutput) Elem() IndexFieldVectorConfigOutput {
+	return o.ApplyT(func(v *IndexFieldVectorConfig) IndexFieldVectorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IndexFieldVectorConfig
+		return ret
+	}).(IndexFieldVectorConfigOutput)
+}
+
+// The resulting index will only include vectors of this dimension, and can be used for vector search
+// with the same dimension.
+func (o IndexFieldVectorConfigPtrOutput) Dimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IndexFieldVectorConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Dimension
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates the vector index is a flat index.
+//
+// ***
+func (o IndexFieldVectorConfigPtrOutput) Flat() IndexFieldVectorConfigFlatPtrOutput {
+	return o.ApplyT(func(v *IndexFieldVectorConfig) *IndexFieldVectorConfigFlat {
+		if v == nil {
+			return nil
+		}
+		return v.Flat
+	}).(IndexFieldVectorConfigFlatPtrOutput)
+}
+
+type IndexFieldVectorConfigFlat struct {
+}
+
+// IndexFieldVectorConfigFlatInput is an input type that accepts IndexFieldVectorConfigFlatArgs and IndexFieldVectorConfigFlatOutput values.
+// You can construct a concrete instance of `IndexFieldVectorConfigFlatInput` via:
+//
+//	IndexFieldVectorConfigFlatArgs{...}
+type IndexFieldVectorConfigFlatInput interface {
+	pulumi.Input
+
+	ToIndexFieldVectorConfigFlatOutput() IndexFieldVectorConfigFlatOutput
+	ToIndexFieldVectorConfigFlatOutputWithContext(context.Context) IndexFieldVectorConfigFlatOutput
+}
+
+type IndexFieldVectorConfigFlatArgs struct {
+}
+
+func (IndexFieldVectorConfigFlatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldVectorConfigFlat)(nil)).Elem()
+}
+
+func (i IndexFieldVectorConfigFlatArgs) ToIndexFieldVectorConfigFlatOutput() IndexFieldVectorConfigFlatOutput {
+	return i.ToIndexFieldVectorConfigFlatOutputWithContext(context.Background())
+}
+
+func (i IndexFieldVectorConfigFlatArgs) ToIndexFieldVectorConfigFlatOutputWithContext(ctx context.Context) IndexFieldVectorConfigFlatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldVectorConfigFlatOutput)
+}
+
+func (i IndexFieldVectorConfigFlatArgs) ToIndexFieldVectorConfigFlatPtrOutput() IndexFieldVectorConfigFlatPtrOutput {
+	return i.ToIndexFieldVectorConfigFlatPtrOutputWithContext(context.Background())
+}
+
+func (i IndexFieldVectorConfigFlatArgs) ToIndexFieldVectorConfigFlatPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigFlatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldVectorConfigFlatOutput).ToIndexFieldVectorConfigFlatPtrOutputWithContext(ctx)
+}
+
+// IndexFieldVectorConfigFlatPtrInput is an input type that accepts IndexFieldVectorConfigFlatArgs, IndexFieldVectorConfigFlatPtr and IndexFieldVectorConfigFlatPtrOutput values.
+// You can construct a concrete instance of `IndexFieldVectorConfigFlatPtrInput` via:
+//
+//	        IndexFieldVectorConfigFlatArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexFieldVectorConfigFlatPtrInput interface {
+	pulumi.Input
+
+	ToIndexFieldVectorConfigFlatPtrOutput() IndexFieldVectorConfigFlatPtrOutput
+	ToIndexFieldVectorConfigFlatPtrOutputWithContext(context.Context) IndexFieldVectorConfigFlatPtrOutput
+}
+
+type indexFieldVectorConfigFlatPtrType IndexFieldVectorConfigFlatArgs
+
+func IndexFieldVectorConfigFlatPtr(v *IndexFieldVectorConfigFlatArgs) IndexFieldVectorConfigFlatPtrInput {
+	return (*indexFieldVectorConfigFlatPtrType)(v)
+}
+
+func (*indexFieldVectorConfigFlatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldVectorConfigFlat)(nil)).Elem()
+}
+
+func (i *indexFieldVectorConfigFlatPtrType) ToIndexFieldVectorConfigFlatPtrOutput() IndexFieldVectorConfigFlatPtrOutput {
+	return i.ToIndexFieldVectorConfigFlatPtrOutputWithContext(context.Background())
+}
+
+func (i *indexFieldVectorConfigFlatPtrType) ToIndexFieldVectorConfigFlatPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigFlatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexFieldVectorConfigFlatPtrOutput)
+}
+
+type IndexFieldVectorConfigFlatOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldVectorConfigFlatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexFieldVectorConfigFlat)(nil)).Elem()
+}
+
+func (o IndexFieldVectorConfigFlatOutput) ToIndexFieldVectorConfigFlatOutput() IndexFieldVectorConfigFlatOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigFlatOutput) ToIndexFieldVectorConfigFlatOutputWithContext(ctx context.Context) IndexFieldVectorConfigFlatOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigFlatOutput) ToIndexFieldVectorConfigFlatPtrOutput() IndexFieldVectorConfigFlatPtrOutput {
+	return o.ToIndexFieldVectorConfigFlatPtrOutputWithContext(context.Background())
+}
+
+func (o IndexFieldVectorConfigFlatOutput) ToIndexFieldVectorConfigFlatPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigFlatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexFieldVectorConfigFlat) *IndexFieldVectorConfigFlat {
+		return &v
+	}).(IndexFieldVectorConfigFlatPtrOutput)
+}
+
+type IndexFieldVectorConfigFlatPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexFieldVectorConfigFlatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexFieldVectorConfigFlat)(nil)).Elem()
+}
+
+func (o IndexFieldVectorConfigFlatPtrOutput) ToIndexFieldVectorConfigFlatPtrOutput() IndexFieldVectorConfigFlatPtrOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigFlatPtrOutput) ToIndexFieldVectorConfigFlatPtrOutputWithContext(ctx context.Context) IndexFieldVectorConfigFlatPtrOutput {
+	return o
+}
+
+func (o IndexFieldVectorConfigFlatPtrOutput) Elem() IndexFieldVectorConfigFlatOutput {
+	return o.ApplyT(func(v *IndexFieldVectorConfigFlat) IndexFieldVectorConfigFlat {
+		if v != nil {
+			return *v
+		}
+		var ret IndexFieldVectorConfigFlat
+		return ret
+	}).(IndexFieldVectorConfigFlatOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrenceInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrencePtrInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
@@ -1057,6 +1352,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldTtlConfigPtrInput)(nil)).Elem(), FieldTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldInput)(nil)).Elem(), IndexFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldArrayInput)(nil)).Elem(), IndexFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigInput)(nil)).Elem(), IndexFieldVectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigPtrInput)(nil)).Elem(), IndexFieldVectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldVectorConfigFlatPtrInput)(nil)).Elem(), IndexFieldVectorConfigFlatArgs{})
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrenceOutput{})
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrenceOutput{})
@@ -1071,4 +1370,8 @@ func init() {
 	pulumi.RegisterOutputType(FieldTtlConfigPtrOutput{})
 	pulumi.RegisterOutputType(IndexFieldOutput{})
 	pulumi.RegisterOutputType(IndexFieldArrayOutput{})
+	pulumi.RegisterOutputType(IndexFieldVectorConfigOutput{})
+	pulumi.RegisterOutputType(IndexFieldVectorConfigPtrOutput{})
+	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatOutput{})
+	pulumi.RegisterOutputType(IndexFieldVectorConfigFlatPtrOutput{})
 }

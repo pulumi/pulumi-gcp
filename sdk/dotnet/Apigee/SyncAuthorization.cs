@@ -58,14 +58,11 @@ namespace Pulumi.Gcp.Apigee
     ///         DisplayName = "Service Account",
     ///     });
     /// 
-    ///     var synchronizer_iam = new Gcp.Projects.IAMBinding("synchronizer-iam", new()
+    ///     var synchronizer_iam = new Gcp.Projects.IAMMember("synchronizer-iam", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         Role = "roles/apigee.synchronizerManager",
-    ///         Members = new[]
-    ///         {
-    ///             serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
+    ///         Member = serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
     ///     var apigeeSyncAuthorization = new Gcp.Apigee.SyncAuthorization("apigee_sync_authorization", new()

@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.datastore.DataStoreIndex;
  * import com.pulumi.gcp.datastore.DataStoreIndexArgs;
  * import com.pulumi.gcp.datastore.inputs.DataStoreIndexPropertyArgs;
@@ -58,6 +60,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;(default)&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build());
+ * 
  *         var default_ = new DataStoreIndex(&#34;default&#34;, DataStoreIndexArgs.builder()        
  *             .kind(&#34;foo&#34;)
  *             .properties(            

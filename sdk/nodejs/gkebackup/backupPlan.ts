@@ -192,6 +192,157 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ * ### Gkebackup Backupplan Rpo Daily Window
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "rpo-daily-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const rpoDailyWindow = new gcp.gkebackup.BackupPlan("rpo_daily_window", {
+ *     name: "rpo-daily-window",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     retentionPolicy: {
+ *         backupDeleteLockDays: 30,
+ *         backupRetainDays: 180,
+ *     },
+ *     backupSchedule: {
+ *         paused: true,
+ *         rpoConfig: {
+ *             targetRpoMinutes: 1440,
+ *             exclusionWindows: [
+ *                 {
+ *                     startTime: {
+ *                         hours: 12,
+ *                     },
+ *                     duration: "7200s",
+ *                     daily: true,
+ *                 },
+ *                 {
+ *                     startTime: {
+ *                         hours: 8,
+ *                         minutes: 40,
+ *                         seconds: 1,
+ *                         nanos: 100,
+ *                     },
+ *                     duration: "3600s",
+ *                     singleOccurrenceDate: {
+ *                         year: 2024,
+ *                         month: 3,
+ *                         day: 16,
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ * ### Gkebackup Backupplan Rpo Weekly Window
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "rpo-weekly-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     workloadIdentityConfig: {
+ *         workloadPool: "my-project-name.svc.id.goog",
+ *     },
+ *     addonsConfig: {
+ *         gkeBackupAgentConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
+ * });
+ * const rpoWeeklyWindow = new gcp.gkebackup.BackupPlan("rpo_weekly_window", {
+ *     name: "rpo-weekly-window",
+ *     cluster: primary.id,
+ *     location: "us-central1",
+ *     retentionPolicy: {
+ *         backupDeleteLockDays: 30,
+ *         backupRetainDays: 180,
+ *     },
+ *     backupSchedule: {
+ *         paused: true,
+ *         rpoConfig: {
+ *             targetRpoMinutes: 1440,
+ *             exclusionWindows: [
+ *                 {
+ *                     startTime: {
+ *                         hours: 1,
+ *                         minutes: 23,
+ *                     },
+ *                     duration: "1800s",
+ *                     daysOfWeek: {
+ *                         daysOfWeeks: [
+ *                             "MONDAY",
+ *                             "THURSDAY",
+ *                         ],
+ *                     },
+ *                 },
+ *                 {
+ *                     startTime: {
+ *                         hours: 12,
+ *                     },
+ *                     duration: "3600s",
+ *                     singleOccurrenceDate: {
+ *                         year: 2024,
+ *                         month: 3,
+ *                         day: 17,
+ *                     },
+ *                 },
+ *                 {
+ *                     startTime: {
+ *                         hours: 8,
+ *                         minutes: 40,
+ *                     },
+ *                     duration: "600s",
+ *                     singleOccurrenceDate: {
+ *                         year: 2024,
+ *                         month: 3,
+ *                         day: 18,
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     backupConfig: {
+ *         includeVolumeData: true,
+ *         includeSecrets: true,
+ *         allNamespaces: true,
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

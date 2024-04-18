@@ -19,17 +19,17 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly bool? EnableGeoFencing;
         /// <summary>
         /// The configuration for Geolocation based routing policy.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyGeo> Geos;
         /// <summary>
         /// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RecordSetRoutingPolicyPrimaryBackup? PrimaryBackup;
         /// <summary>
         /// The configuration for Weighted Round Robin based routing policy.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyWrr> Wrrs;
 

@@ -553,6 +553,7 @@ class DatabaseInstanceSettingsArgs:
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 enable_google_ml_integration: Optional[pulumi.Input[bool]] = None,
                  insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
                  location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
@@ -584,6 +585,7 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param pulumi.Input[str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param pulumi.Input[bool] enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         :param pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs'] insights_config: Configuration of Query Insights.
         :param pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs'] maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
@@ -625,6 +627,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if enable_google_ml_integration is not None:
+            pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         if insights_config is not None:
             pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
@@ -842,6 +846,18 @@ class DatabaseInstanceSettingsArgs:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="enableGoogleMlIntegration")
+    def enable_google_ml_integration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_google_ml_integration")
+
+    @enable_google_ml_integration.setter
+    def enable_google_ml_integration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_google_ml_integration", value)
 
     @property
     @pulumi.getter(name="insightsConfig")

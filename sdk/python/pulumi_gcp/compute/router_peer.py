@@ -25,12 +25,15 @@ class RouterPeerArgs:
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
+                 peer_ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -65,9 +68,11 @@ class RouterPeerArgs:
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
+        :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
+        :param pulumi.Input[str] ipv4_nexthop_address: IPv4 address of the interface inside Google Cloud Platform.
         :param pulumi.Input[str] ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -82,6 +87,7 @@ class RouterPeerArgs:
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
                Only IPv4 is supported. Required if `ip_address` is set.
+        :param pulumi.Input[str] peer_ipv4_nexthop_address: IPv4 address of the BGP interface outside Google Cloud Platform.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -110,10 +116,14 @@ class RouterPeerArgs:
             pulumi.set(__self__, "bfd", bfd)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
+        if enable_ipv4 is not None:
+            pulumi.set(__self__, "enable_ipv4", enable_ipv4)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ipv4_nexthop_address is not None:
+            pulumi.set(__self__, "ipv4_nexthop_address", ipv4_nexthop_address)
         if ipv6_nexthop_address is not None:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
         if md5_authentication_key is not None:
@@ -122,6 +132,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "name", name)
         if peer_ip_address is not None:
             pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+        if peer_ipv4_nexthop_address is not None:
+            pulumi.set(__self__, "peer_ipv4_nexthop_address", peer_ipv4_nexthop_address)
         if peer_ipv6_nexthop_address is not None:
             pulumi.set(__self__, "peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
         if project is not None:
@@ -259,6 +271,18 @@ class RouterPeerArgs:
         pulumi.set(self, "enable", value)
 
     @property
+    @pulumi.getter(name="enableIpv4")
+    def enable_ipv4(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        """
+        return pulumi.get(self, "enable_ipv4")
+
+    @enable_ipv4.setter
+    def enable_ipv4(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipv4", value)
+
+    @property
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -282,6 +306,18 @@ class RouterPeerArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipv4NexthopAddress")
+    def ipv4_nexthop_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 address of the interface inside Google Cloud Platform.
+        """
+        return pulumi.get(self, "ipv4_nexthop_address")
+
+    @ipv4_nexthop_address.setter
+    def ipv4_nexthop_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_nexthop_address", value)
 
     @property
     @pulumi.getter(name="ipv6NexthopAddress")
@@ -340,6 +376,18 @@ class RouterPeerArgs:
     @peer_ip_address.setter
     def peer_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peer_ip_address", value)
+
+    @property
+    @pulumi.getter(name="peerIpv4NexthopAddress")
+    def peer_ipv4_nexthop_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 address of the BGP interface outside Google Cloud Platform.
+        """
+        return pulumi.get(self, "peer_ipv4_nexthop_address")
+
+    @peer_ipv4_nexthop_address.setter
+    def peer_ipv4_nexthop_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_ipv4_nexthop_address", value)
 
     @property
     @pulumi.getter(name="peerIpv6NexthopAddress")
@@ -407,15 +455,18 @@ class _RouterPeerState:
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  management_type: Optional[pulumi.Input[str]] = None,
                  md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
+                 peer_ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -444,10 +495,12 @@ class _RouterPeerState:
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
+        :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
+        :param pulumi.Input[str] ipv4_nexthop_address: IPv4 address of the interface inside Google Cloud Platform.
         :param pulumi.Input[str] ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -465,6 +518,7 @@ class _RouterPeerState:
                Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
                Only IPv4 is supported. Required if `ip_address` is set.
+        :param pulumi.Input[str] peer_ipv4_nexthop_address: IPv4 address of the BGP interface outside Google Cloud Platform.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -494,12 +548,16 @@ class _RouterPeerState:
             pulumi.set(__self__, "bfd", bfd)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
+        if enable_ipv4 is not None:
+            pulumi.set(__self__, "enable_ipv4", enable_ipv4)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ipv4_nexthop_address is not None:
+            pulumi.set(__self__, "ipv4_nexthop_address", ipv4_nexthop_address)
         if ipv6_nexthop_address is not None:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
         if management_type is not None:
@@ -512,6 +570,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "peer_asn", peer_asn)
         if peer_ip_address is not None:
             pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+        if peer_ipv4_nexthop_address is not None:
+            pulumi.set(__self__, "peer_ipv4_nexthop_address", peer_ipv4_nexthop_address)
         if peer_ipv6_nexthop_address is not None:
             pulumi.set(__self__, "peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
         if project is not None:
@@ -611,6 +671,18 @@ class _RouterPeerState:
         pulumi.set(self, "enable", value)
 
     @property
+    @pulumi.getter(name="enableIpv4")
+    def enable_ipv4(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        """
+        return pulumi.get(self, "enable_ipv4")
+
+    @enable_ipv4.setter
+    def enable_ipv4(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ipv4", value)
+
+    @property
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -646,6 +718,18 @@ class _RouterPeerState:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipv4NexthopAddress")
+    def ipv4_nexthop_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 address of the interface inside Google Cloud Platform.
+        """
+        return pulumi.get(self, "ipv4_nexthop_address")
+
+    @ipv4_nexthop_address.setter
+    def ipv4_nexthop_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_nexthop_address", value)
 
     @property
     @pulumi.getter(name="ipv6NexthopAddress")
@@ -731,6 +815,18 @@ class _RouterPeerState:
         pulumi.set(self, "peer_ip_address", value)
 
     @property
+    @pulumi.getter(name="peerIpv4NexthopAddress")
+    def peer_ipv4_nexthop_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 address of the BGP interface outside Google Cloud Platform.
+        """
+        return pulumi.get(self, "peer_ipv4_nexthop_address")
+
+    @peer_ipv4_nexthop_address.setter
+    def peer_ipv4_nexthop_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_ipv4_nexthop_address", value)
+
+    @property
     @pulumi.getter(name="peerIpv6NexthopAddress")
     def peer_ipv6_nexthop_address(self) -> Optional[pulumi.Input[str]]:
         """
@@ -813,14 +909,17 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
+                 peer_ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1038,10 +1137,12 @@ class RouterPeer(pulumi.CustomResource):
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
+        :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
+        :param pulumi.Input[str] ipv4_nexthop_address: IPv4 address of the interface inside Google Cloud Platform.
         :param pulumi.Input[str] ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -1058,6 +1159,7 @@ class RouterPeer(pulumi.CustomResource):
                Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
                Only IPv4 is supported. Required if `ip_address` is set.
+        :param pulumi.Input[str] peer_ipv4_nexthop_address: IPv4 address of the BGP interface outside Google Cloud Platform.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -1290,14 +1392,17 @@ class RouterPeer(pulumi.CustomResource):
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
+                 enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
+                 peer_ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -1318,11 +1423,13 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["advertised_route_priority"] = advertised_route_priority
             __props__.__dict__["bfd"] = bfd
             __props__.__dict__["enable"] = enable
+            __props__.__dict__["enable_ipv4"] = enable_ipv4
             __props__.__dict__["enable_ipv6"] = enable_ipv6
             if interface is None and not opts.urn:
                 raise TypeError("Missing required property 'interface'")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["ip_address"] = ip_address
+            __props__.__dict__["ipv4_nexthop_address"] = ipv4_nexthop_address
             __props__.__dict__["ipv6_nexthop_address"] = ipv6_nexthop_address
             __props__.__dict__["md5_authentication_key"] = md5_authentication_key
             __props__.__dict__["name"] = name
@@ -1330,6 +1437,7 @@ class RouterPeer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'peer_asn'")
             __props__.__dict__["peer_asn"] = peer_asn
             __props__.__dict__["peer_ip_address"] = peer_ip_address
+            __props__.__dict__["peer_ipv4_nexthop_address"] = peer_ipv4_nexthop_address
             __props__.__dict__["peer_ipv6_nexthop_address"] = peer_ipv6_nexthop_address
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -1354,15 +1462,18 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority: Optional[pulumi.Input[int]] = None,
             bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
+            enable_ipv4: Optional[pulumi.Input[bool]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
+            ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
             ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
             management_type: Optional[pulumi.Input[str]] = None,
             md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             peer_asn: Optional[pulumi.Input[int]] = None,
             peer_ip_address: Optional[pulumi.Input[str]] = None,
+            peer_ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
             peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1396,10 +1507,12 @@ class RouterPeer(pulumi.CustomResource):
                with the peer is terminated and all associated routing information is removed.
                If set to true, the peer connection can be established with routing information.
                The default is true.
+        :param pulumi.Input[bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
+        :param pulumi.Input[str] ipv4_nexthop_address: IPv4 address of the interface inside Google Cloud Platform.
         :param pulumi.Input[str] ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -1417,6 +1530,7 @@ class RouterPeer(pulumi.CustomResource):
                Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
                Only IPv4 is supported. Required if `ip_address` is set.
+        :param pulumi.Input[str] peer_ipv4_nexthop_address: IPv4 address of the BGP interface outside Google Cloud Platform.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -1444,15 +1558,18 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["advertised_route_priority"] = advertised_route_priority
         __props__.__dict__["bfd"] = bfd
         __props__.__dict__["enable"] = enable
+        __props__.__dict__["enable_ipv4"] = enable_ipv4
         __props__.__dict__["enable_ipv6"] = enable_ipv6
         __props__.__dict__["interface"] = interface
         __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["ipv4_nexthop_address"] = ipv4_nexthop_address
         __props__.__dict__["ipv6_nexthop_address"] = ipv6_nexthop_address
         __props__.__dict__["management_type"] = management_type
         __props__.__dict__["md5_authentication_key"] = md5_authentication_key
         __props__.__dict__["name"] = name
         __props__.__dict__["peer_asn"] = peer_asn
         __props__.__dict__["peer_ip_address"] = peer_ip_address
+        __props__.__dict__["peer_ipv4_nexthop_address"] = peer_ipv4_nexthop_address
         __props__.__dict__["peer_ipv6_nexthop_address"] = peer_ipv6_nexthop_address
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
@@ -1524,6 +1641,14 @@ class RouterPeer(pulumi.CustomResource):
         return pulumi.get(self, "enable")
 
     @property
+    @pulumi.getter(name="enableIpv4")
+    def enable_ipv4(self) -> pulumi.Output[bool]:
+        """
+        Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        """
+        return pulumi.get(self, "enable_ipv4")
+
+    @property
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1547,6 +1672,14 @@ class RouterPeer(pulumi.CustomResource):
         Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipv4NexthopAddress")
+    def ipv4_nexthop_address(self) -> pulumi.Output[str]:
+        """
+        IPv4 address of the interface inside Google Cloud Platform.
+        """
+        return pulumi.get(self, "ipv4_nexthop_address")
 
     @property
     @pulumi.getter(name="ipv6NexthopAddress")
@@ -1606,6 +1739,14 @@ class RouterPeer(pulumi.CustomResource):
         Only IPv4 is supported. Required if `ip_address` is set.
         """
         return pulumi.get(self, "peer_ip_address")
+
+    @property
+    @pulumi.getter(name="peerIpv4NexthopAddress")
+    def peer_ipv4_nexthop_address(self) -> pulumi.Output[str]:
+        """
+        IPv4 address of the BGP interface outside Google Cloud Platform.
+        """
+        return pulumi.get(self, "peer_ipv4_nexthop_address")
 
     @property
     @pulumi.getter(name="peerIpv6NexthopAddress")

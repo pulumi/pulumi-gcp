@@ -384,6 +384,9 @@ public final class Config {
     public Optional<String> osLoginCustomEndpoint() {
         return Codegen.stringProp("osLoginCustomEndpoint").config(config).get();
     }
+    public Optional<String> parallelstoreCustomEndpoint() {
+        return Codegen.stringProp("parallelstoreCustomEndpoint").config(config).get();
+    }
     public Optional<String> privatecaCustomEndpoint() {
         return Codegen.stringProp("privatecaCustomEndpoint").config(config).get();
     }

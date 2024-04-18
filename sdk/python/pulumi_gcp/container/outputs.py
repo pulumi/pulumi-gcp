@@ -91,6 +91,7 @@ __all__ = [
     'ClusterAddonsConfigIstioConfig',
     'ClusterAddonsConfigKalmConfig',
     'ClusterAddonsConfigNetworkPolicyConfig',
+    'ClusterAddonsConfigStatefulHaConfig',
     'ClusterAuthenticatorGroupsConfig',
     'ClusterBinaryAuthorization',
     'ClusterClusterAutoscaling',
@@ -259,6 +260,7 @@ __all__ = [
     'GetClusterAddonsConfigIstioConfigResult',
     'GetClusterAddonsConfigKalmConfigResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
+    'GetClusterAddonsConfigStatefulHaConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
     'GetClusterBinaryAuthorizationResult',
     'GetClusterClusterAutoscalingResult',
@@ -3720,6 +3722,8 @@ class ClusterAddonsConfig(dict):
             suggest = "kalm_config"
         elif key == "networkPolicyConfig":
             suggest = "network_policy_config"
+        elif key == "statefulHaConfig":
+            suggest = "stateful_ha_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterAddonsConfig. Access the value via the '{suggest}' property getter instead.")
@@ -3744,14 +3748,12 @@ class ClusterAddonsConfig(dict):
                  http_load_balancing: Optional['outputs.ClusterAddonsConfigHttpLoadBalancing'] = None,
                  istio_config: Optional['outputs.ClusterAddonsConfigIstioConfig'] = None,
                  kalm_config: Optional['outputs.ClusterAddonsConfigKalmConfig'] = None,
-                 network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None):
+                 network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None,
+                 stateful_ha_config: Optional['outputs.ClusterAddonsConfigStatefulHaConfig'] = None):
         """
         :param 'ClusterAddonsConfigCloudrunConfigArgs' cloudrun_config: . Structure is documented below.
         :param 'ClusterAddonsConfigConfigConnectorConfigArgs' config_connector_config: .
                The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-               
-               
-               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigDnsCacheConfigArgs' dns_cache_config: .
                The status of the NodeLocal DNSCache addon. It is disabled by default.
                Set `enabled = true` to enable.
@@ -3790,6 +3792,11 @@ class ClusterAddonsConfig(dict):
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param 'ClusterAddonsConfigStatefulHaConfigArgs' stateful_ha_config: .
+               The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+               It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+               
+               This example `addons_config` disables two addons:
         """
         if cloudrun_config is not None:
             pulumi.set(__self__, "cloudrun_config", cloudrun_config)
@@ -3815,6 +3822,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "kalm_config", kalm_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if stateful_ha_config is not None:
+            pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
     @property
     @pulumi.getter(name="cloudrunConfig")
@@ -3830,9 +3839,6 @@ class ClusterAddonsConfig(dict):
         """
         .
         The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "config_connector_config")
 
@@ -3943,6 +3949,18 @@ class ClusterAddonsConfig(dict):
         Defaults to disabled; set `disabled = false` to enable.
         """
         return pulumi.get(self, "network_policy_config")
+
+    @property
+    @pulumi.getter(name="statefulHaConfig")
+    def stateful_ha_config(self) -> Optional['outputs.ClusterAddonsConfigStatefulHaConfig']:
+        """
+        .
+        The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+        It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "stateful_ha_config")
 
 
 @pulumi.output_type
@@ -4216,6 +4234,24 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
         <a name="nested_cluster_telemetry"></a>The `cluster_telemetry` block supports
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigStatefulHaConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -13657,7 +13693,8 @@ class GetClusterAddonsConfigResult(dict):
                  http_load_balancings: Sequence['outputs.GetClusterAddonsConfigHttpLoadBalancingResult'],
                  istio_configs: Sequence['outputs.GetClusterAddonsConfigIstioConfigResult'],
                  kalm_configs: Sequence['outputs.GetClusterAddonsConfigKalmConfigResult'],
-                 network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult']):
+                 network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult'],
+                 stateful_ha_configs: Sequence['outputs.GetClusterAddonsConfigStatefulHaConfigResult']):
         """
         :param Sequence['GetClusterAddonsConfigCloudrunConfigArgs'] cloudrun_configs: The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
         :param Sequence['GetClusterAddonsConfigConfigConnectorConfigArgs'] config_connector_configs: The of the Config Connector addon.
@@ -13671,6 +13708,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigIstioConfigArgs'] istio_configs: The status of the Istio addon.
         :param Sequence['GetClusterAddonsConfigKalmConfigArgs'] kalm_configs: Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_configs: Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+        :param Sequence['GetClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_configs: The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         """
         pulumi.set(__self__, "cloudrun_configs", cloudrun_configs)
         pulumi.set(__self__, "config_connector_configs", config_connector_configs)
@@ -13684,6 +13722,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "istio_configs", istio_configs)
         pulumi.set(__self__, "kalm_configs", kalm_configs)
         pulumi.set(__self__, "network_policy_configs", network_policy_configs)
+        pulumi.set(__self__, "stateful_ha_configs", stateful_ha_configs)
 
     @property
     @pulumi.getter(name="cloudrunConfigs")
@@ -13780,6 +13819,14 @@ class GetClusterAddonsConfigResult(dict):
         Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         """
         return pulumi.get(self, "network_policy_configs")
+
+    @property
+    @pulumi.getter(name="statefulHaConfigs")
+    def stateful_ha_configs(self) -> Sequence['outputs.GetClusterAddonsConfigStatefulHaConfigResult']:
+        """
+        The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "stateful_ha_configs")
 
 
 @pulumi.output_type
@@ -13948,6 +13995,18 @@ class GetClusterAddonsConfigNetworkPolicyConfigResult(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigStatefulHaConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

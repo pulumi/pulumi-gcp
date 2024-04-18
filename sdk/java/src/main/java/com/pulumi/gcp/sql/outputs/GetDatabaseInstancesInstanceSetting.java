@@ -92,6 +92,11 @@ public final class GetDatabaseInstancesInstanceSetting {
      */
     private String edition;
     /**
+     * @return Enables Vertex AI Integration.
+     * 
+     */
+    private Boolean enableGoogleMlIntegration;
+    /**
      * @return Configuration of Query Insights.
      * 
      */
@@ -230,6 +235,13 @@ public final class GetDatabaseInstancesInstanceSetting {
         return this.edition;
     }
     /**
+     * @return Enables Vertex AI Integration.
+     * 
+     */
+    public Boolean enableGoogleMlIntegration() {
+        return this.enableGoogleMlIntegration;
+    }
+    /**
      * @return Configuration of Query Insights.
      * 
      */
@@ -316,6 +328,7 @@ public final class GetDatabaseInstancesInstanceSetting {
         private Integer diskSize;
         private String diskType;
         private String edition;
+        private Boolean enableGoogleMlIntegration;
         private List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs;
         private List<GetDatabaseInstancesInstanceSettingIpConfiguration> ipConfigurations;
         private List<GetDatabaseInstancesInstanceSettingLocationPreference> locationPreferences;
@@ -346,6 +359,7 @@ public final class GetDatabaseInstancesInstanceSetting {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfigs = defaults.insightsConfigs;
     	      this.ipConfigurations = defaults.ipConfigurations;
     	      this.locationPreferences = defaults.locationPreferences;
@@ -506,6 +520,14 @@ public final class GetDatabaseInstancesInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder enableGoogleMlIntegration(Boolean enableGoogleMlIntegration) {
+            if (enableGoogleMlIntegration == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "enableGoogleMlIntegration");
+            }
+            this.enableGoogleMlIntegration = enableGoogleMlIntegration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder insightsConfigs(List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs) {
             if (insightsConfigs == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSetting", "insightsConfigs");
@@ -629,6 +651,7 @@ public final class GetDatabaseInstancesInstanceSetting {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfigs = insightsConfigs;
             _resultValue.ipConfigurations = ipConfigurations;
             _resultValue.locationPreferences = locationPreferences;

@@ -463,6 +463,26 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return this.enableEndpointIndependentMapping;
     }
     /**
+     * Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     * 
+     */
+    @Export(name="endpointTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> endpointTypes;
+
+    /**
+     * @return Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     * 
+     */
+    public Output<List<String>> endpointTypes() {
+        return this.endpointTypes;
+    }
+    /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      * 
      */

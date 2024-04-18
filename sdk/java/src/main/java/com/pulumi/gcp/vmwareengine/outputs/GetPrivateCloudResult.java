@@ -30,7 +30,9 @@ public final class GetPrivateCloudResult {
     private String name;
     private List<GetPrivateCloudNetworkConfig> networkConfigs;
     private List<GetPrivateCloudNsx> nsxes;
+    private String preferredZone;
     private @Nullable String project;
+    private String secondaryZone;
     private String state;
     private String type;
     private String uid;
@@ -65,8 +67,14 @@ public final class GetPrivateCloudResult {
     public List<GetPrivateCloudNsx> nsxes() {
         return this.nsxes;
     }
+    public String preferredZone() {
+        return this.preferredZone;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public String secondaryZone() {
+        return this.secondaryZone;
     }
     public String state() {
         return this.state;
@@ -98,7 +106,9 @@ public final class GetPrivateCloudResult {
         private String name;
         private List<GetPrivateCloudNetworkConfig> networkConfigs;
         private List<GetPrivateCloudNsx> nsxes;
+        private String preferredZone;
         private @Nullable String project;
+        private String secondaryZone;
         private String state;
         private String type;
         private String uid;
@@ -114,7 +124,9 @@ public final class GetPrivateCloudResult {
     	      this.name = defaults.name;
     	      this.networkConfigs = defaults.networkConfigs;
     	      this.nsxes = defaults.nsxes;
+    	      this.preferredZone = defaults.preferredZone;
     	      this.project = defaults.project;
+    	      this.secondaryZone = defaults.secondaryZone;
     	      this.state = defaults.state;
     	      this.type = defaults.type;
     	      this.uid = defaults.uid;
@@ -198,9 +210,25 @@ public final class GetPrivateCloudResult {
             return nsxes(List.of(nsxes));
         }
         @CustomType.Setter
+        public Builder preferredZone(String preferredZone) {
+            if (preferredZone == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "preferredZone");
+            }
+            this.preferredZone = preferredZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secondaryZone(String secondaryZone) {
+            if (secondaryZone == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "secondaryZone");
+            }
+            this.secondaryZone = secondaryZone;
             return this;
         }
         @CustomType.Setter
@@ -248,7 +276,9 @@ public final class GetPrivateCloudResult {
             _resultValue.name = name;
             _resultValue.networkConfigs = networkConfigs;
             _resultValue.nsxes = nsxes;
+            _resultValue.preferredZone = preferredZone;
             _resultValue.project = project;
+            _resultValue.secondaryZone = secondaryZone;
             _resultValue.state = state;
             _resultValue.type = type;
             _resultValue.uid = uid;

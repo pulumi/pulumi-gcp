@@ -23882,6 +23882,12 @@ type GetRouterBgp struct {
 	// this router resource. All VPN tunnels that link to this router
 	// will have the same local ASN.
 	Asn int `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router.
+	// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+	// size at least /30, even if the BGP sessions are over IPv6. It must
+	// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+	// call this router ID.
+	IdentifierRange string `pulumi:"identifierRange"`
 	// The interval in seconds between BGP keepalive messages that are sent
 	// to the peer. Hold time is three times the interval at which keepalive
 	// messages are sent, and the hold time is the maximum number of seconds
@@ -23928,6 +23934,12 @@ type GetRouterBgpArgs struct {
 	// this router resource. All VPN tunnels that link to this router
 	// will have the same local ASN.
 	Asn pulumi.IntInput `pulumi:"asn"`
+	// Explicitly specifies a range of valid BGP Identifiers for this Router.
+	// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+	// size at least /30, even if the BGP sessions are over IPv6. It must
+	// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+	// call this router ID.
+	IdentifierRange pulumi.StringInput `pulumi:"identifierRange"`
 	// The interval in seconds between BGP keepalive messages that are sent
 	// to the peer. Hold time is three times the interval at which keepalive
 	// messages are sent, and the hold time is the maximum number of seconds
@@ -24023,6 +24035,15 @@ func (o GetRouterBgpOutput) AdvertisedIpRanges() GetRouterBgpAdvertisedIpRangeAr
 // will have the same local ASN.
 func (o GetRouterBgpOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouterBgp) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+// Explicitly specifies a range of valid BGP Identifiers for this Router.
+// It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+// size at least /30, even if the BGP sessions are over IPv6. It must
+// not overlap with any IPv4 BGP session ranges. Other vendors commonly
+// call this router ID.
+func (o GetRouterBgpOutput) IdentifierRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterBgp) string { return v.IdentifierRange }).(pulumi.StringOutput)
 }
 
 // The interval in seconds between BGP keepalive messages that are sent

@@ -840,11 +840,11 @@ class RecordSetRoutingPolicy(dict):
         """
         :param bool enable_geo_fencing: Specifies whether to enable fencing for geo queries.
         :param Sequence['RecordSetRoutingPolicyGeoArgs'] geos: The configuration for Geolocation based routing policy.
-               Structure is document below.
+               Structure is documented below.
         :param 'RecordSetRoutingPolicyPrimaryBackupArgs' primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-               Structure is document below.
+               Structure is documented below.
         :param Sequence['RecordSetRoutingPolicyWrrArgs'] wrrs: The configuration for Weighted Round Robin based routing policy.
-               Structure is document below.
+               Structure is documented below.
         """
         if enable_geo_fencing is not None:
             pulumi.set(__self__, "enable_geo_fencing", enable_geo_fencing)
@@ -868,7 +868,7 @@ class RecordSetRoutingPolicy(dict):
     def geos(self) -> Optional[Sequence['outputs.RecordSetRoutingPolicyGeo']]:
         """
         The configuration for Geolocation based routing policy.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "geos")
 
@@ -877,7 +877,7 @@ class RecordSetRoutingPolicy(dict):
     def primary_backup(self) -> Optional['outputs.RecordSetRoutingPolicyPrimaryBackup']:
         """
         The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "primary_backup")
 
@@ -886,7 +886,7 @@ class RecordSetRoutingPolicy(dict):
     def wrrs(self) -> Optional[Sequence['outputs.RecordSetRoutingPolicyWrr']]:
         """
         The configuration for Weighted Round Robin based routing policy.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "wrrs")
 
@@ -917,7 +917,7 @@ class RecordSetRoutingPolicyGeo(dict):
         """
         :param str location: The location name defined in Google Cloud.
         :param 'RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-               Structure is document below.
+               Structure is documented below.
         :param Sequence[str] rrdatas: Same as `rrdatas` above.
         """
         pulumi.set(__self__, "location", location)
@@ -939,7 +939,7 @@ class RecordSetRoutingPolicyGeo(dict):
     def health_checked_targets(self) -> Optional['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets']:
         """
         For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "health_checked_targets")
 
@@ -975,7 +975,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer']):
         """
         :param Sequence['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
-               Structure is document below.
+               Structure is documented below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
@@ -984,7 +984,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets(dict):
     def internal_load_balancers(self) -> Sequence['outputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer']:
         """
         The list of internal load balancers to health check.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "internal_load_balancers")
 
@@ -1129,7 +1129,7 @@ class RecordSetRoutingPolicyPrimaryBackup(dict):
         :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs'] backup_geos: The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
                Structure is document above.
         :param 'RecordSetRoutingPolicyPrimaryBackupPrimaryArgs' primary: The list of global primary targets to be health checked.
-               Structure is document below.
+               Structure is documented below.
         :param bool enable_geo_fencing_for_backups: Specifies whether to enable fencing for backup geo queries.
         :param float trickle_ratio: Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
         """
@@ -1154,7 +1154,7 @@ class RecordSetRoutingPolicyPrimaryBackup(dict):
     def primary(self) -> 'outputs.RecordSetRoutingPolicyPrimaryBackupPrimary':
         """
         The list of global primary targets to be health checked.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "primary")
 
@@ -1201,7 +1201,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
         """
         :param str location: The location name defined in Google Cloud.
         :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-               Structure is document below.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if health_checked_targets is not None:
@@ -1222,7 +1222,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
     def health_checked_targets(self) -> Optional['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets']:
         """
         For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "health_checked_targets")
 
@@ -1255,7 +1255,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer']):
         """
         :param Sequence['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
-               Structure is document below.
+               Structure is documented below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
@@ -1264,7 +1264,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets(dict):
     def internal_load_balancers(self) -> Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer']:
         """
         The list of internal load balancers to health check.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "internal_load_balancers")
 
@@ -1400,7 +1400,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer']):
         """
         :param Sequence['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
-               Structure is document below.
+               Structure is documented below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
@@ -1409,7 +1409,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
     def internal_load_balancers(self) -> Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer']:
         """
         The list of internal load balancers to health check.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "internal_load_balancers")
 
@@ -1548,7 +1548,7 @@ class RecordSetRoutingPolicyWrr(dict):
         """
         :param float weight: The ratio of traffic routed to the target.
         :param 'RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs' health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-               Structure is document below.
+               Structure is documented below.
         :param Sequence[str] rrdatas: Same as `rrdatas` above.
         """
         pulumi.set(__self__, "weight", weight)
@@ -1570,7 +1570,7 @@ class RecordSetRoutingPolicyWrr(dict):
     def health_checked_targets(self) -> Optional['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets']:
         """
         The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "health_checked_targets")
 
@@ -1606,7 +1606,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer']):
         """
         :param Sequence['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
-               Structure is document below.
+               Structure is documented below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
@@ -1615,7 +1615,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargets(dict):
     def internal_load_balancers(self) -> Sequence['outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer']:
         """
         The list of internal load balancers to health check.
-        Structure is document below.
+        Structure is documented below.
         """
         return pulumi.get(self, "internal_load_balancers")
 

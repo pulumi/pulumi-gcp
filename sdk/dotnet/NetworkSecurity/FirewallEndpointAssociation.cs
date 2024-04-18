@@ -71,6 +71,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the association is disabled. True indicates that traffic will not be intercepted.
+        /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+        /// otherwise on an update the association can be disabled.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -208,6 +216,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class FirewallEndpointAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the association is disabled. True indicates that traffic will not be intercepted.
+        /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+        /// otherwise on an update the association can be disabled.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// The URL of the firewall endpoint that is being associated.
         /// </summary>
         [Input("firewallEndpoint", required: true)]
@@ -275,6 +291,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether the association is disabled. True indicates that traffic will not be intercepted.
+        /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+        /// otherwise on an update the association can be disabled.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

@@ -17,6 +17,7 @@ class RouterInterfaceArgs:
                  router: pulumi.Input[str],
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class RouterInterfaceArgs:
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] ip_version: IP version of this interface. Can be either IPV4 or IPV6.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
         :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
@@ -58,6 +60,8 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         if ip_range is not None:
             pulumi.set(__self__, "ip_range", ip_range)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if private_ip_address is not None:
@@ -116,6 +120,18 @@ class RouterInterfaceArgs:
     @ip_range.setter
     def ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_range", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP version of this interface. Can be either IPV4 or IPV6.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
 
     @property
     @pulumi.getter
@@ -215,6 +231,7 @@ class _RouterInterfaceState:
     def __init__(__self__, *,
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -230,6 +247,7 @@ class _RouterInterfaceState:
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] ip_version: IP version of this interface. Can be either IPV4 or IPV6.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
         :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
@@ -256,6 +274,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         if ip_range is not None:
             pulumi.set(__self__, "ip_range", ip_range)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if private_ip_address is not None:
@@ -299,6 +319,18 @@ class _RouterInterfaceState:
     @ip_range.setter
     def ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_range", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP version of this interface. Can be either IPV4 or IPV6.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
 
     @property
     @pulumi.getter
@@ -417,6 +449,7 @@ class RouterInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -473,6 +506,7 @@ class RouterInterface(pulumi.CustomResource):
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] ip_version: IP version of this interface. Can be either IPV4 or IPV6.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
         :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
@@ -558,6 +592,7 @@ class RouterInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -577,6 +612,7 @@ class RouterInterface(pulumi.CustomResource):
 
             __props__.__dict__["interconnect_attachment"] = interconnect_attachment
             __props__.__dict__["ip_range"] = ip_range
+            __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["name"] = name
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["project"] = project
@@ -599,6 +635,7 @@ class RouterInterface(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             interconnect_attachment: Optional[pulumi.Input[str]] = None,
             ip_range: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -619,6 +656,7 @@ class RouterInterface(pulumi.CustomResource):
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] ip_version: IP version of this interface. Can be either IPV4 or IPV6.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
         :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
@@ -647,6 +685,7 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__.__dict__["interconnect_attachment"] = interconnect_attachment
         __props__.__dict__["ip_range"] = ip_range
+        __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["name"] = name
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["project"] = project
@@ -675,6 +714,14 @@ class RouterInterface(pulumi.CustomResource):
         in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "ip_range")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[str]:
+        """
+        IP version of this interface. Can be either IPV4 or IPV6.
+        """
+        return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter

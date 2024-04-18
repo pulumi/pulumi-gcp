@@ -33,6 +33,25 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
     }
 
     /**
+     * Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -245,6 +264,7 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
 
     private FirewallEndpointAssociationState(FirewallEndpointAssociationState $) {
         this.createTime = $.createTime;
+        this.disabled = $.disabled;
         this.effectiveLabels = $.effectiveLabels;
         this.firewallEndpoint = $.firewallEndpoint;
         this.labels = $.labels;
@@ -297,6 +317,31 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param disabled Whether the association is disabled. True indicates that traffic will not be intercepted.
+         * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+         * otherwise on an update the association can be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether the association is disabled. True indicates that traffic will not be intercepted.
+         * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+         * otherwise on an update the association can be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

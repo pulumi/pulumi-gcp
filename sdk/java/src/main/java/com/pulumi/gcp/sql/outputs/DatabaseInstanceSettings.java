@@ -95,6 +95,11 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable String edition;
     /**
+     * @return Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean enableGoogleMlIntegration;
+    /**
      * @return Configuration of Query Insights.
      * 
      */
@@ -237,6 +242,13 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.edition);
     }
     /**
+     * @return Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> enableGoogleMlIntegration() {
+        return Optional.ofNullable(this.enableGoogleMlIntegration);
+    }
+    /**
      * @return Configuration of Query Insights.
      * 
      */
@@ -326,6 +338,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable Integer diskSize;
         private @Nullable String diskType;
         private @Nullable String edition;
+        private @Nullable Boolean enableGoogleMlIntegration;
         private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
         private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
         private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
@@ -356,6 +369,7 @@ public final class DatabaseInstanceSettings {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.edition = defaults.edition;
+    	      this.enableGoogleMlIntegration = defaults.enableGoogleMlIntegration;
     	      this.insightsConfig = defaults.insightsConfig;
     	      this.ipConfiguration = defaults.ipConfiguration;
     	      this.locationPreference = defaults.locationPreference;
@@ -469,6 +483,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder enableGoogleMlIntegration(@Nullable Boolean enableGoogleMlIntegration) {
+
+            this.enableGoogleMlIntegration = enableGoogleMlIntegration;
+            return this;
+        }
+        @CustomType.Setter
         public Builder insightsConfig(@Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig) {
 
             this.insightsConfig = insightsConfig;
@@ -554,6 +574,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;
             _resultValue.edition = edition;
+            _resultValue.enableGoogleMlIntegration = enableGoogleMlIntegration;
             _resultValue.insightsConfig = insightsConfig;
             _resultValue.ipConfiguration = ipConfiguration;
             _resultValue.locationPreference = locationPreference;

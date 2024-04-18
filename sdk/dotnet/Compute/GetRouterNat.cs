@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<string> DrainNatIps;
         public readonly bool EnableDynamicPortAllocation;
         public readonly bool EnableEndpointIndependentMapping;
+        public readonly ImmutableArray<string> EndpointTypes;
         public readonly int IcmpIdleTimeoutSec;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -184,6 +185,8 @@ namespace Pulumi.Gcp.Compute
             bool enableDynamicPortAllocation,
 
             bool enableEndpointIndependentMapping,
+
+            ImmutableArray<string> endpointTypes,
 
             int icmpIdleTimeoutSec,
 
@@ -226,6 +229,7 @@ namespace Pulumi.Gcp.Compute
             DrainNatIps = drainNatIps;
             EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;
+            EndpointTypes = endpointTypes;
             IcmpIdleTimeoutSec = icmpIdleTimeoutSec;
             Id = id;
             LogConfigs = logConfigs;

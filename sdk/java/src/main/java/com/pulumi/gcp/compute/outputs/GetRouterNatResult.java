@@ -21,6 +21,7 @@ public final class GetRouterNatResult {
     private List<String> drainNatIps;
     private Boolean enableDynamicPortAllocation;
     private Boolean enableEndpointIndependentMapping;
+    private List<String> endpointTypes;
     private Integer icmpIdleTimeoutSec;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -54,6 +55,9 @@ public final class GetRouterNatResult {
     }
     public Boolean enableEndpointIndependentMapping() {
         return this.enableEndpointIndependentMapping;
+    }
+    public List<String> endpointTypes() {
+        return this.endpointTypes;
     }
     public Integer icmpIdleTimeoutSec() {
         return this.icmpIdleTimeoutSec;
@@ -129,6 +133,7 @@ public final class GetRouterNatResult {
         private List<String> drainNatIps;
         private Boolean enableDynamicPortAllocation;
         private Boolean enableEndpointIndependentMapping;
+        private List<String> endpointTypes;
         private Integer icmpIdleTimeoutSec;
         private String id;
         private List<GetRouterNatLogConfig> logConfigs;
@@ -154,6 +159,7 @@ public final class GetRouterNatResult {
     	      this.drainNatIps = defaults.drainNatIps;
     	      this.enableDynamicPortAllocation = defaults.enableDynamicPortAllocation;
     	      this.enableEndpointIndependentMapping = defaults.enableEndpointIndependentMapping;
+    	      this.endpointTypes = defaults.endpointTypes;
     	      this.icmpIdleTimeoutSec = defaults.icmpIdleTimeoutSec;
     	      this.id = defaults.id;
     	      this.logConfigs = defaults.logConfigs;
@@ -201,6 +207,17 @@ public final class GetRouterNatResult {
             }
             this.enableEndpointIndependentMapping = enableEndpointIndependentMapping;
             return this;
+        }
+        @CustomType.Setter
+        public Builder endpointTypes(List<String> endpointTypes) {
+            if (endpointTypes == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "endpointTypes");
+            }
+            this.endpointTypes = endpointTypes;
+            return this;
+        }
+        public Builder endpointTypes(String... endpointTypes) {
+            return endpointTypes(List.of(endpointTypes));
         }
         @CustomType.Setter
         public Builder icmpIdleTimeoutSec(Integer icmpIdleTimeoutSec) {
@@ -367,6 +384,7 @@ public final class GetRouterNatResult {
             _resultValue.drainNatIps = drainNatIps;
             _resultValue.enableDynamicPortAllocation = enableDynamicPortAllocation;
             _resultValue.enableEndpointIndependentMapping = enableEndpointIndependentMapping;
+            _resultValue.endpointTypes = endpointTypes;
             _resultValue.icmpIdleTimeoutSec = icmpIdleTimeoutSec;
             _resultValue.id = id;
             _resultValue.logConfigs = logConfigs;

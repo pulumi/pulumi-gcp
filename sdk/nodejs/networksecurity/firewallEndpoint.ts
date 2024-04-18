@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  *     name: "my-firewall-endpoint",
  *     parent: "organizations/123456789",
  *     location: "us-central1-a",
+ *     billingProjectId: "my-project-name",
  *     labels: {
  *         foo: "bar",
  *     },

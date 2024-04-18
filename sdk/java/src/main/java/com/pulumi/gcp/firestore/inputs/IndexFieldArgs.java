@@ -5,6 +5,7 @@ package com.pulumi.gcp.firestore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.firestore.inputs.IndexFieldVectorConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,22 +17,18 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
     public static final IndexFieldArgs Empty = new IndexFieldArgs();
 
     /**
-     * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-     * be specified.
+     * Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified.
      * Possible values are: `CONTAINS`.
-     * 
-     * ***
      * 
      */
     @Import(name="arrayConfig")
     private @Nullable Output<String> arrayConfig;
 
     /**
-     * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-     * be specified.
+     * @return Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified.
      * Possible values are: `CONTAINS`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> arrayConfig() {
@@ -55,7 +52,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-     * Only one of `order` and `arrayConfig` can be specified.
+     * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
      * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
@@ -64,12 +61,31 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-     * Only one of `order` and `arrayConfig` can be specified.
+     * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
      * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     public Optional<Output<String>> order() {
         return Optional.ofNullable(this.order);
+    }
+
+    /**
+     * Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vectorConfig")
+    private @Nullable Output<IndexFieldVectorConfigArgs> vectorConfig;
+
+    /**
+     * @return Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+     * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<IndexFieldVectorConfigArgs>> vectorConfig() {
+        return Optional.ofNullable(this.vectorConfig);
     }
 
     private IndexFieldArgs() {}
@@ -78,6 +94,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         this.arrayConfig = $.arrayConfig;
         this.fieldPath = $.fieldPath;
         this.order = $.order;
+        this.vectorConfig = $.vectorConfig;
     }
 
     public static Builder builder() {
@@ -99,11 +116,9 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-         * be specified.
+         * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified.
          * Possible values are: `CONTAINS`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -114,11 +129,9 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-         * be specified.
+         * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified.
          * Possible values are: `CONTAINS`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -150,7 +163,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param order Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-         * Only one of `order` and `arrayConfig` can be specified.
+         * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
          * Possible values are: `ASCENDING`, `DESCENDING`.
          * 
          * @return builder
@@ -163,7 +176,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param order Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-         * Only one of `order` and `arrayConfig` can be specified.
+         * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
          * Possible values are: `ASCENDING`, `DESCENDING`.
          * 
          * @return builder
@@ -171,6 +184,31 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder order(String order) {
             return order(Output.of(order));
+        }
+
+        /**
+         * @param vectorConfig Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vectorConfig(@Nullable Output<IndexFieldVectorConfigArgs> vectorConfig) {
+            $.vectorConfig = vectorConfig;
+            return this;
+        }
+
+        /**
+         * @param vectorConfig Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vectorConfig(IndexFieldVectorConfigArgs vectorConfig) {
+            return vectorConfig(Output.of(vectorConfig));
         }
 
         public IndexFieldArgs build() {

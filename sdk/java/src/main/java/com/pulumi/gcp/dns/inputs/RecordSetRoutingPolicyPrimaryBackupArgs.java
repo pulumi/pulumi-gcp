@@ -54,7 +54,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupArgs extends com.pulumi.re
 
     /**
      * The list of global primary targets to be health checked.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     @Import(name="primary", required=true)
@@ -62,7 +62,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupArgs extends com.pulumi.re
 
     /**
      * @return The list of global primary targets to be health checked.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Output<RecordSetRoutingPolicyPrimaryBackupPrimaryArgs> primary() {
@@ -168,7 +168,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupArgs extends com.pulumi.re
 
         /**
          * @param primary The list of global primary targets to be health checked.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupArgs extends com.pulumi.re
 
         /**
          * @param primary The list of global primary targets to be health checked.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 

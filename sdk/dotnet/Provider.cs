@@ -372,6 +372,9 @@ namespace Pulumi.Gcp
         [Output("osLoginCustomEndpoint")]
         public Output<string?> OsLoginCustomEndpoint { get; private set; } = null!;
 
+        [Output("parallelstoreCustomEndpoint")]
+        public Output<string?> ParallelstoreCustomEndpoint { get; private set; } = null!;
+
         [Output("privatecaCustomEndpoint")]
         public Output<string?> PrivatecaCustomEndpoint { get; private set; } = null!;
 
@@ -904,6 +907,9 @@ namespace Pulumi.Gcp
 
         [Input("osLoginCustomEndpoint")]
         public Input<string>? OsLoginCustomEndpoint { get; set; }
+
+        [Input("parallelstoreCustomEndpoint")]
+        public Input<string>? ParallelstoreCustomEndpoint { get; set; }
 
         [Input("privatecaCustomEndpoint")]
         public Input<string>? PrivatecaCustomEndpoint { get; set; }

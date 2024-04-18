@@ -509,6 +509,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('osLoginCustomEndpoint')
 
     @property
+    def parallelstore_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('parallelstoreCustomEndpoint')
+
+    @property
     def privateca_custom_endpoint(self) -> Optional[str]:
         return __config__.get('privatecaCustomEndpoint')
 

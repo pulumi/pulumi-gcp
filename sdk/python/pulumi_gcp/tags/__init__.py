@@ -7,8 +7,10 @@ import typing
 # Export this package's modules as members:
 from .get_tag_key import *
 from .get_tag_key_iam_policy import *
+from .get_tag_keys import *
 from .get_tag_value import *
 from .get_tag_value_iam_policy import *
+from .get_tag_values import *
 from .location_tag_binding import *
 from .tag_binding import *
 from .tag_key import *

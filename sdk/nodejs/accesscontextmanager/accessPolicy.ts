@@ -46,8 +46,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "acm-test-proj-123",
- *     name: "acm-test-proj-123",
+ *     projectId: "my-project-name",
+ *     name: "my-project-name",
  *     orgId: "123456789",
  * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {

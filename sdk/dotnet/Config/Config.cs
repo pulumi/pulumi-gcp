@@ -893,6 +893,13 @@ namespace Pulumi.Gcp
             set => _osLoginCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _parallelstoreCustomEndpoint = new __Value<string?>(() => __config.Get("parallelstoreCustomEndpoint"));
+        public static string? ParallelstoreCustomEndpoint
+        {
+            get => _parallelstoreCustomEndpoint.Get();
+            set => _parallelstoreCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _privatecaCustomEndpoint = new __Value<string?>(() => __config.Get("privatecaCustomEndpoint"));
         public static string? PrivatecaCustomEndpoint
         {

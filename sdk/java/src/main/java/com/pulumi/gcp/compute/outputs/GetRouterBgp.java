@@ -47,6 +47,15 @@ public final class GetRouterBgp {
      */
     private Integer asn;
     /**
+     * @return Explicitly specifies a range of valid BGP Identifiers for this Router.
+     * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+     * size at least /30, even if the BGP sessions are over IPv6. It must
+     * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+     * call this router ID.
+     * 
+     */
+    private String identifierRange;
+    /**
      * @return The interval in seconds between BGP keepalive messages that are sent
      * to the peer. Hold time is three times the interval at which keepalive
      * messages are sent, and the hold time is the maximum number of seconds
@@ -104,6 +113,17 @@ public final class GetRouterBgp {
         return this.asn;
     }
     /**
+     * @return Explicitly specifies a range of valid BGP Identifiers for this Router.
+     * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+     * size at least /30, even if the BGP sessions are over IPv6. It must
+     * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+     * call this router ID.
+     * 
+     */
+    public String identifierRange() {
+        return this.identifierRange;
+    }
+    /**
      * @return The interval in seconds between BGP keepalive messages that are sent
      * to the peer. Hold time is three times the interval at which keepalive
      * messages are sent, and the hold time is the maximum number of seconds
@@ -133,6 +153,7 @@ public final class GetRouterBgp {
         private List<String> advertisedGroups;
         private List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges;
         private Integer asn;
+        private String identifierRange;
         private Integer keepaliveInterval;
         public Builder() {}
         public Builder(GetRouterBgp defaults) {
@@ -141,6 +162,7 @@ public final class GetRouterBgp {
     	      this.advertisedGroups = defaults.advertisedGroups;
     	      this.advertisedIpRanges = defaults.advertisedIpRanges;
     	      this.asn = defaults.asn;
+    	      this.identifierRange = defaults.identifierRange;
     	      this.keepaliveInterval = defaults.keepaliveInterval;
         }
 
@@ -183,6 +205,14 @@ public final class GetRouterBgp {
             return this;
         }
         @CustomType.Setter
+        public Builder identifierRange(String identifierRange) {
+            if (identifierRange == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgp", "identifierRange");
+            }
+            this.identifierRange = identifierRange;
+            return this;
+        }
+        @CustomType.Setter
         public Builder keepaliveInterval(Integer keepaliveInterval) {
             if (keepaliveInterval == null) {
               throw new MissingRequiredPropertyException("GetRouterBgp", "keepaliveInterval");
@@ -196,6 +226,7 @@ public final class GetRouterBgp {
             _resultValue.advertisedGroups = advertisedGroups;
             _resultValue.advertisedIpRanges = advertisedIpRanges;
             _resultValue.asn = asn;
+            _resultValue.identifierRange = identifierRange;
             _resultValue.keepaliveInterval = keepaliveInterval;
             return _resultValue;
         }

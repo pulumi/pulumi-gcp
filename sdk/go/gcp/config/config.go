@@ -380,6 +380,9 @@ func GetOsConfigCustomEndpoint(ctx *pulumi.Context) string {
 func GetOsLoginCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:osLoginCustomEndpoint")
 }
+func GetParallelstoreCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:parallelstoreCustomEndpoint")
+}
 func GetPrivatecaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:privatecaCustomEndpoint")
 }

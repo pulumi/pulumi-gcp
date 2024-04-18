@@ -280,6 +280,195 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+// ### Gkebackup Backupplan Rpo Daily Window
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("rpo-daily-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewBackupPlan(ctx, "rpo_daily_window", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("rpo-daily-window"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
+//					BackupDeleteLockDays: pulumi.Int(30),
+//					BackupRetainDays:     pulumi.Int(180),
+//				},
+//				BackupSchedule: &gkebackup.BackupPlanBackupScheduleArgs{
+//					Paused: pulumi.Bool(true),
+//					RpoConfig: &gkebackup.BackupPlanBackupScheduleRpoConfigArgs{
+//						TargetRpoMinutes: pulumi.Int(1440),
+//						ExclusionWindows: gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArray{
+//							&gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{
+//								StartTime: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{
+//									Hours: pulumi.Int(12),
+//								},
+//								Duration: pulumi.String("7200s"),
+//								Daily:    pulumi.Bool(true),
+//							},
+//							&gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{
+//								StartTime: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{
+//									Hours:   pulumi.Int(8),
+//									Minutes: pulumi.Int(40),
+//									Seconds: pulumi.Int(1),
+//									Nanos:   pulumi.Int(100),
+//								},
+//								Duration: pulumi.String("3600s"),
+//								SingleOccurrenceDate: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{
+//									Year:  pulumi.Int(2024),
+//									Month: pulumi.Int(3),
+//									Day:   pulumi.Int(16),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					AllNamespaces:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+// ### Gkebackup Backupplan Rpo Weekly Window
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("rpo-weekly-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
+//					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
+//				},
+//				AddonsConfig: &container.ClusterAddonsConfigArgs{
+//					GkeBackupAgentConfig: &container.ClusterAddonsConfigGkeBackupAgentConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkebackup.NewBackupPlan(ctx, "rpo_weekly_window", &gkebackup.BackupPlanArgs{
+//				Name:     pulumi.String("rpo-weekly-window"),
+//				Cluster:  primary.ID(),
+//				Location: pulumi.String("us-central1"),
+//				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
+//					BackupDeleteLockDays: pulumi.Int(30),
+//					BackupRetainDays:     pulumi.Int(180),
+//				},
+//				BackupSchedule: &gkebackup.BackupPlanBackupScheduleArgs{
+//					Paused: pulumi.Bool(true),
+//					RpoConfig: &gkebackup.BackupPlanBackupScheduleRpoConfigArgs{
+//						TargetRpoMinutes: pulumi.Int(1440),
+//						ExclusionWindows: gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArray{
+//							&gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{
+//								StartTime: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{
+//									Hours:   pulumi.Int(1),
+//									Minutes: pulumi.Int(23),
+//								},
+//								Duration: pulumi.String("1800s"),
+//								DaysOfWeek: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs{
+//									DaysOfWeeks: pulumi.StringArray{
+//										pulumi.String("MONDAY"),
+//										pulumi.String("THURSDAY"),
+//									},
+//								},
+//							},
+//							&gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{
+//								StartTime: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{
+//									Hours: pulumi.Int(12),
+//								},
+//								Duration: pulumi.String("3600s"),
+//								SingleOccurrenceDate: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{
+//									Year:  pulumi.Int(2024),
+//									Month: pulumi.Int(3),
+//									Day:   pulumi.Int(17),
+//								},
+//							},
+//							&gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs{
+//								StartTime: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs{
+//									Hours:   pulumi.Int(8),
+//									Minutes: pulumi.Int(40),
+//								},
+//								Duration: pulumi.String("600s"),
+//								SingleOccurrenceDate: &gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs{
+//									Year:  pulumi.Int(2024),
+//									Month: pulumi.Int(3),
+//									Day:   pulumi.Int(18),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
+//					IncludeVolumeData: pulumi.Bool(true),
+//					IncludeSecrets:    pulumi.Bool(true),
+//					AllNamespaces:     pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkebackup.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,6 +20,8 @@ public final class BackupPlanBackupScheduleArgs extends com.pulumi.resources.Res
     /**
      * A standard cron string that defines a repeating schedule for
      * creating Backups via this BackupPlan.
+     * This is mutually exclusive with the rpoConfig field since at most one
+     * schedule can be defined for a BackupPlan.
      * If this is defined, then backupRetainDays must also be defined.
      * 
      */
@@ -28,6 +31,8 @@ public final class BackupPlanBackupScheduleArgs extends com.pulumi.resources.Res
     /**
      * @return A standard cron string that defines a repeating schedule for
      * creating Backups via this BackupPlan.
+     * This is mutually exclusive with the rpoConfig field since at most one
+     * schedule can be defined for a BackupPlan.
      * If this is defined, then backupRetainDays must also be defined.
      * 
      */
@@ -50,11 +55,33 @@ public final class BackupPlanBackupScheduleArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.paused);
     }
 
+    /**
+     * Defines the RPO schedule configuration for this BackupPlan. This is mutually
+     * exclusive with the cronSchedule field since at most one schedule can be defined
+     * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rpoConfig")
+    private @Nullable Output<BackupPlanBackupScheduleRpoConfigArgs> rpoConfig;
+
+    /**
+     * @return Defines the RPO schedule configuration for this BackupPlan. This is mutually
+     * exclusive with the cronSchedule field since at most one schedule can be defined
+     * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupPlanBackupScheduleRpoConfigArgs>> rpoConfig() {
+        return Optional.ofNullable(this.rpoConfig);
+    }
+
     private BackupPlanBackupScheduleArgs() {}
 
     private BackupPlanBackupScheduleArgs(BackupPlanBackupScheduleArgs $) {
         this.cronSchedule = $.cronSchedule;
         this.paused = $.paused;
+        this.rpoConfig = $.rpoConfig;
     }
 
     public static Builder builder() {
@@ -78,6 +105,8 @@ public final class BackupPlanBackupScheduleArgs extends com.pulumi.resources.Res
         /**
          * @param cronSchedule A standard cron string that defines a repeating schedule for
          * creating Backups via this BackupPlan.
+         * This is mutually exclusive with the rpoConfig field since at most one
+         * schedule can be defined for a BackupPlan.
          * If this is defined, then backupRetainDays must also be defined.
          * 
          * @return builder
@@ -91,6 +120,8 @@ public final class BackupPlanBackupScheduleArgs extends com.pulumi.resources.Res
         /**
          * @param cronSchedule A standard cron string that defines a repeating schedule for
          * creating Backups via this BackupPlan.
+         * This is mutually exclusive with the rpoConfig field since at most one
+         * schedule can be defined for a BackupPlan.
          * If this is defined, then backupRetainDays must also be defined.
          * 
          * @return builder
@@ -119,6 +150,33 @@ public final class BackupPlanBackupScheduleArgs extends com.pulumi.resources.Res
          */
         public Builder paused(Boolean paused) {
             return paused(Output.of(paused));
+        }
+
+        /**
+         * @param rpoConfig Defines the RPO schedule configuration for this BackupPlan. This is mutually
+         * exclusive with the cronSchedule field since at most one schedule can be defined
+         * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpoConfig(@Nullable Output<BackupPlanBackupScheduleRpoConfigArgs> rpoConfig) {
+            $.rpoConfig = rpoConfig;
+            return this;
+        }
+
+        /**
+         * @param rpoConfig Defines the RPO schedule configuration for this BackupPlan. This is mutually
+         * exclusive with the cronSchedule field since at most one schedule can be defined
+         * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpoConfig(BackupPlanBackupScheduleRpoConfigArgs rpoConfig) {
+            return rpoConfig(Output.of(rpoConfig));
         }
 
         public BackupPlanBackupScheduleArgs build() {

@@ -455,6 +455,20 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enable);
     }
     /**
+     * Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     * 
+     */
+    @Export(name="enableIpv4", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableIpv4;
+
+    /**
+     * @return Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     * 
+     */
+    public Output<Boolean> enableIpv4() {
+        return this.enableIpv4;
+    }
+    /**
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      * 
      */
@@ -497,6 +511,20 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ipAddress() {
         return this.ipAddress;
+    }
+    /**
+     * IPv4 address of the interface inside Google Cloud Platform.
+     * 
+     */
+    @Export(name="ipv4NexthopAddress", refs={String.class}, tree="[0]")
+    private Output<String> ipv4NexthopAddress;
+
+    /**
+     * @return IPv4 address of the interface inside Google Cloud Platform.
+     * 
+     */
+    public Output<String> ipv4NexthopAddress() {
+        return this.ipv4NexthopAddress;
     }
     /**
      * IPv6 address of the interface inside Google Cloud Platform.
@@ -603,6 +631,20 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> peerIpAddress() {
         return this.peerIpAddress;
+    }
+    /**
+     * IPv4 address of the BGP interface outside Google Cloud Platform.
+     * 
+     */
+    @Export(name="peerIpv4NexthopAddress", refs={String.class}, tree="[0]")
+    private Output<String> peerIpv4NexthopAddress;
+
+    /**
+     * @return IPv4 address of the BGP interface outside Google Cloud Platform.
+     * 
+     */
+    public Output<String> peerIpv4NexthopAddress() {
+        return this.peerIpv4NexthopAddress;
     }
     /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.

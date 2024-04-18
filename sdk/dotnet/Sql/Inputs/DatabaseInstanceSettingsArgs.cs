@@ -105,6 +105,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? Edition { get; set; }
 
         /// <summary>
+        /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+        /// </summary>
+        [Input("enableGoogleMlIntegration")]
+        public Input<bool>? EnableGoogleMlIntegration { get; set; }
+
+        /// <summary>
         /// Configuration of Query Insights.
         /// </summary>
         [Input("insightsConfig")]

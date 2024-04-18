@@ -76,6 +76,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpRange { get; private set; } = null!;
 
         /// <summary>
+        /// IP version of this interface. Can be either IPV4 or IPV6.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string> IpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// A unique name for the interface, required by GCE. Changing
         /// this forces a new interface to be created.
         /// </summary>
@@ -198,6 +204,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpRange { get; set; }
 
         /// <summary>
+        /// IP version of this interface. Can be either IPV4 or IPV6.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
         /// A unique name for the interface, required by GCE. Changing
         /// this forces a new interface to be created.
         /// </summary>
@@ -280,6 +292,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipRange")]
         public Input<string>? IpRange { get; set; }
+
+        /// <summary>
+        /// IP version of this interface. Can be either IPV4 or IPV6.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
 
         /// <summary>
         /// A unique name for the interface, required by GCE. Changing

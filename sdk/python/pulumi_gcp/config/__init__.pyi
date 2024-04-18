@@ -256,6 +256,8 @@ osConfigCustomEndpoint: Optional[str]
 
 osLoginCustomEndpoint: Optional[str]
 
+parallelstoreCustomEndpoint: Optional[str]
+
 privatecaCustomEndpoint: Optional[str]
 
 project: Optional[str]

@@ -260,6 +260,206 @@ namespace Pulumi.Gcp.GkeBackup
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Gkebackup Backupplan Rpo Daily Window
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "rpo-daily-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var rpoDailyWindow = new Gcp.GkeBackup.BackupPlan("rpo_daily_window", new()
+    ///     {
+    ///         Name = "rpo-daily-window",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
+    ///         {
+    ///             BackupDeleteLockDays = 30,
+    ///             BackupRetainDays = 180,
+    ///         },
+    ///         BackupSchedule = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleArgs
+    ///         {
+    ///             Paused = true,
+    ///             RpoConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigArgs
+    ///             {
+    ///                 TargetRpoMinutes = 1440,
+    ///                 ExclusionWindows = new[]
+    ///                 {
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs
+    ///                     {
+    ///                         StartTime = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 12,
+    ///                         },
+    ///                         Duration = "7200s",
+    ///                         Daily = true,
+    ///                     },
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs
+    ///                     {
+    ///                         StartTime = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 8,
+    ///                             Minutes = 40,
+    ///                             Seconds = 1,
+    ///                             Nanos = 100,
+    ///                         },
+    ///                         Duration = "3600s",
+    ///                         SingleOccurrenceDate = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs
+    ///                         {
+    ///                             Year = 2024,
+    ///                             Month = 3,
+    ///                             Day = 16,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             AllNamespaces = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Gkebackup Backupplan Rpo Weekly Window
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "rpo-weekly-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
+    ///         {
+    ///             WorkloadPool = "my-project-name.svc.id.goog",
+    ///         },
+    ///         AddonsConfig = new Gcp.Container.Inputs.ClusterAddonsConfigArgs
+    ///         {
+    ///             GkeBackupAgentConfig = new Gcp.Container.Inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
+    ///     });
+    /// 
+    ///     var rpoWeeklyWindow = new Gcp.GkeBackup.BackupPlan("rpo_weekly_window", new()
+    ///     {
+    ///         Name = "rpo-weekly-window",
+    ///         Cluster = primary.Id,
+    ///         Location = "us-central1",
+    ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
+    ///         {
+    ///             BackupDeleteLockDays = 30,
+    ///             BackupRetainDays = 180,
+    ///         },
+    ///         BackupSchedule = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleArgs
+    ///         {
+    ///             Paused = true,
+    ///             RpoConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigArgs
+    ///             {
+    ///                 TargetRpoMinutes = 1440,
+    ///                 ExclusionWindows = new[]
+    ///                 {
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs
+    ///                     {
+    ///                         StartTime = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 1,
+    ///                             Minutes = 23,
+    ///                         },
+    ///                         Duration = "1800s",
+    ///                         DaysOfWeek = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs
+    ///                         {
+    ///                             DaysOfWeeks = new[]
+    ///                             {
+    ///                                 "MONDAY",
+    ///                                 "THURSDAY",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs
+    ///                     {
+    ///                         StartTime = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 12,
+    ///                         },
+    ///                         Duration = "3600s",
+    ///                         SingleOccurrenceDate = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs
+    ///                         {
+    ///                             Year = 2024,
+    ///                             Month = 3,
+    ///                             Day = 17,
+    ///                         },
+    ///                     },
+    ///                     new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs
+    ///                     {
+    ///                         StartTime = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs
+    ///                         {
+    ///                             Hours = 8,
+    ///                             Minutes = 40,
+    ///                         },
+    ///                         Duration = "600s",
+    ///                         SingleOccurrenceDate = new Gcp.GkeBackup.Inputs.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs
+    ///                         {
+    ///                             Year = 2024,
+    ///                             Month = 3,
+    ///                             Day = 18,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
+    ///         {
+    ///             IncludeVolumeData = true,
+    ///             IncludeSecrets = true,
+    ///             AllNamespaces = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

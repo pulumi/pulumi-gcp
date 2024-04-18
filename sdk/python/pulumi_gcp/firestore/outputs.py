@@ -18,6 +18,8 @@ __all__ = [
     'FieldIndexConfigIndex',
     'FieldTtlConfig',
     'IndexField',
+    'IndexFieldVectorConfig',
+    'IndexFieldVectorConfigFlat',
 ]
 
 @pulumi.output_type
@@ -255,6 +257,8 @@ class IndexField(dict):
             suggest = "array_config"
         elif key == "fieldPath":
             suggest = "field_path"
+        elif key == "vectorConfig":
+            suggest = "vector_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in IndexField. Access the value via the '{suggest}' property getter instead.")
@@ -270,17 +274,19 @@ class IndexField(dict):
     def __init__(__self__, *,
                  array_config: Optional[str] = None,
                  field_path: Optional[str] = None,
-                 order: Optional[str] = None):
+                 order: Optional[str] = None,
+                 vector_config: Optional['outputs.IndexFieldVectorConfig'] = None):
         """
-        :param str array_config: Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-               be specified.
+        :param str array_config: Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+               `vectorConfig` can be specified.
                Possible values are: `CONTAINS`.
-               
-               - - -
         :param str field_path: Name of the field.
         :param str order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-               Only one of `order` and `arrayConfig` can be specified.
+               Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
                Possible values are: `ASCENDING`, `DESCENDING`.
+        :param 'IndexFieldVectorConfigArgs' vector_config: Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+               `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+               Structure is documented below.
         """
         if array_config is not None:
             pulumi.set(__self__, "array_config", array_config)
@@ -288,16 +294,16 @@ class IndexField(dict):
             pulumi.set(__self__, "field_path", field_path)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if vector_config is not None:
+            pulumi.set(__self__, "vector_config", vector_config)
 
     @property
     @pulumi.getter(name="arrayConfig")
     def array_config(self) -> Optional[str]:
         """
-        Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-        be specified.
+        Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        `vectorConfig` can be specified.
         Possible values are: `CONTAINS`.
-
-        - - -
         """
         return pulumi.get(self, "array_config")
 
@@ -314,9 +320,62 @@ class IndexField(dict):
     def order(self) -> Optional[str]:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-        Only one of `order` and `arrayConfig` can be specified.
+        Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
         Possible values are: `ASCENDING`, `DESCENDING`.
         """
         return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter(name="vectorConfig")
+    def vector_config(self) -> Optional['outputs.IndexFieldVectorConfig']:
+        """
+        Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vector_config")
+
+
+@pulumi.output_type
+class IndexFieldVectorConfig(dict):
+    def __init__(__self__, *,
+                 dimension: Optional[int] = None,
+                 flat: Optional['outputs.IndexFieldVectorConfigFlat'] = None):
+        """
+        :param int dimension: The resulting index will only include vectors of this dimension, and can be used for vector search
+               with the same dimension.
+        :param 'IndexFieldVectorConfigFlatArgs' flat: Indicates the vector index is a flat index.
+               
+               - - -
+        """
+        if dimension is not None:
+            pulumi.set(__self__, "dimension", dimension)
+        if flat is not None:
+            pulumi.set(__self__, "flat", flat)
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> Optional[int]:
+        """
+        The resulting index will only include vectors of this dimension, and can be used for vector search
+        with the same dimension.
+        """
+        return pulumi.get(self, "dimension")
+
+    @property
+    @pulumi.getter
+    def flat(self) -> Optional['outputs.IndexFieldVectorConfigFlat']:
+        """
+        Indicates the vector index is a flat index.
+
+        - - -
+        """
+        return pulumi.get(self, "flat")
+
+
+@pulumi.output_type
+class IndexFieldVectorConfigFlat(dict):
+    def __init__(__self__):
+        pass
 
 

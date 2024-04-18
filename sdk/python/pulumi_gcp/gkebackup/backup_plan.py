@@ -723,6 +723,153 @@ class BackupPlan(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
+        ### Gkebackup Backupplan Rpo Daily Window
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="rpo-daily-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        rpo_daily_window = gcp.gkebackup.BackupPlan("rpo_daily_window",
+            name="rpo-daily-window",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                paused=True,
+                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
+                    target_rpo_minutes=1440,
+                    exclusion_windows=[
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=12,
+                            ),
+                            duration="7200s",
+                            daily=True,
+                        ),
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=8,
+                                minutes=40,
+                                seconds=1,
+                                nanos=100,
+                            ),
+                            duration="3600s",
+                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
+                                year=2024,
+                                month=3,
+                                day=16,
+                            ),
+                        ),
+                    ],
+                ),
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Gkebackup Backupplan Rpo Weekly Window
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="rpo-weekly-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        rpo_weekly_window = gcp.gkebackup.BackupPlan("rpo_weekly_window",
+            name="rpo-weekly-window",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                paused=True,
+                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
+                    target_rpo_minutes=1440,
+                    exclusion_windows=[
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=1,
+                                minutes=23,
+                            ),
+                            duration="1800s",
+                            days_of_week=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs(
+                                days_of_weeks=[
+                                    "MONDAY",
+                                    "THURSDAY",
+                                ],
+                            ),
+                        ),
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=12,
+                            ),
+                            duration="3600s",
+                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
+                                year=2024,
+                                month=3,
+                                day=17,
+                            ),
+                        ),
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=8,
+                                minutes=40,
+                            ),
+                            duration="600s",
+                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
+                                year=2024,
+                                month=3,
+                                day=18,
+                            ),
+                        ),
+                    ],
+                ),
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -955,6 +1102,153 @@ class BackupPlan(pulumi.CustomResource):
                         ),
                     ],
                 ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Gkebackup Backupplan Rpo Daily Window
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="rpo-daily-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        rpo_daily_window = gcp.gkebackup.BackupPlan("rpo_daily_window",
+            name="rpo-daily-window",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                paused=True,
+                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
+                    target_rpo_minutes=1440,
+                    exclusion_windows=[
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=12,
+                            ),
+                            duration="7200s",
+                            daily=True,
+                        ),
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=8,
+                                minutes=40,
+                                seconds=1,
+                                nanos=100,
+                            ),
+                            duration="3600s",
+                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
+                                year=2024,
+                                month=3,
+                                day=16,
+                            ),
+                        ),
+                    ],
+                ),
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+        ### Gkebackup Backupplan Rpo Weekly Window
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="rpo-weekly-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
+                workload_pool="my-project-name.svc.id.goog",
+            ),
+            addons_config=gcp.container.ClusterAddonsConfigArgs(
+                gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
+        rpo_weekly_window = gcp.gkebackup.BackupPlan("rpo_weekly_window",
+            name="rpo-weekly-window",
+            cluster=primary.id,
+            location="us-central1",
+            retention_policy=gcp.gkebackup.BackupPlanRetentionPolicyArgs(
+                backup_delete_lock_days=30,
+                backup_retain_days=180,
+            ),
+            backup_schedule=gcp.gkebackup.BackupPlanBackupScheduleArgs(
+                paused=True,
+                rpo_config=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigArgs(
+                    target_rpo_minutes=1440,
+                    exclusion_windows=[
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=1,
+                                minutes=23,
+                            ),
+                            duration="1800s",
+                            days_of_week=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs(
+                                days_of_weeks=[
+                                    "MONDAY",
+                                    "THURSDAY",
+                                ],
+                            ),
+                        ),
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=12,
+                            ),
+                            duration="3600s",
+                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
+                                year=2024,
+                                month=3,
+                                day=17,
+                            ),
+                        ),
+                        gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowArgs(
+                            start_time=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs(
+                                hours=8,
+                                minutes=40,
+                            ),
+                            duration="600s",
+                            single_occurrence_date=gcp.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs(
+                                year=2024,
+                                month=3,
+                                day=18,
+                            ),
+                        ),
+                    ],
+                ),
+            ),
+            backup_config=gcp.gkebackup.BackupPlanBackupConfigArgs(
+                include_volume_data=True,
+                include_secrets=True,
+                all_namespaces=True,
             ))
         ```
         <!--End PulumiCodeChooser -->

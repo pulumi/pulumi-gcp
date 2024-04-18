@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         public readonly bool? EnableGeoFencingForBackups;
         /// <summary>
         /// The list of global primary targets to be health checked.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RecordSetRoutingPolicyPrimaryBackupPrimary Primary;
         /// <summary>

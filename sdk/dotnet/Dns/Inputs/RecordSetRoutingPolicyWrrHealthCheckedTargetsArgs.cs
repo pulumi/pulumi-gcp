@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Dns.Inputs
 
         /// <summary>
         /// The list of internal load balancers to health check.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs> InternalLoadBalancers
         {

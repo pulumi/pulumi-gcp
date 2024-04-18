@@ -110,6 +110,29 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Explicitly specifies a range of valid BGP Identifiers for this Router.
+     * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+     * size at least /30, even if the BGP sessions are over IPv6. It must
+     * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+     * call this router ID.
+     * 
+     */
+    @Import(name="identifierRange")
+    private @Nullable Output<String> identifierRange;
+
+    /**
+     * @return Explicitly specifies a range of valid BGP Identifiers for this Router.
+     * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+     * size at least /30, even if the BGP sessions are over IPv6. It must
+     * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+     * call this router ID.
+     * 
+     */
+    public Optional<Output<String>> identifierRange() {
+        return Optional.ofNullable(this.identifierRange);
+    }
+
+    /**
      * The interval in seconds between BGP keepalive messages that are sent
      * to the peer. Hold time is three times the interval at which keepalive
      * messages are sent, and the hold time is the maximum number of seconds
@@ -147,6 +170,7 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
         this.advertisedGroups = $.advertisedGroups;
         this.advertisedIpRanges = $.advertisedIpRanges;
         this.asn = $.asn;
+        this.identifierRange = $.identifierRange;
         this.keepaliveInterval = $.keepaliveInterval;
     }
 
@@ -310,6 +334,35 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder asn(Integer asn) {
             return asn(Output.of(asn));
+        }
+
+        /**
+         * @param identifierRange Explicitly specifies a range of valid BGP Identifiers for this Router.
+         * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+         * size at least /30, even if the BGP sessions are over IPv6. It must
+         * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+         * call this router ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifierRange(@Nullable Output<String> identifierRange) {
+            $.identifierRange = identifierRange;
+            return this;
+        }
+
+        /**
+         * @param identifierRange Explicitly specifies a range of valid BGP Identifiers for this Router.
+         * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+         * size at least /30, even if the BGP sessions are over IPv6. It must
+         * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+         * call this router ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifierRange(String identifierRange) {
+            return identifierRange(Output.of(identifierRange));
         }
 
         /**

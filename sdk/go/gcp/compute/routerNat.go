@@ -414,6 +414,11 @@ type RouterNat struct {
 	// Enable endpoint independent mapping.
 	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolOutput `pulumi:"enableEndpointIndependentMapping"`
+	// Specifies the endpoint Types supported by the NAT Gateway.
+	// Supported values include:
+	// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+	// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+	EndpointTypes pulumi.StringArrayOutput `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"icmpIdleTimeoutSec"`
 	// Configuration for logging on NAT
@@ -532,6 +537,11 @@ type routerNatState struct {
 	// Enable endpoint independent mapping.
 	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
+	// Specifies the endpoint Types supported by the NAT Gateway.
+	// Supported values include:
+	// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+	// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+	EndpointTypes []string `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
 	// Configuration for logging on NAT
@@ -615,6 +625,11 @@ type RouterNatState struct {
 	// Enable endpoint independent mapping.
 	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput
+	// Specifies the endpoint Types supported by the NAT Gateway.
+	// Supported values include:
+	// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+	// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+	EndpointTypes pulumi.StringArrayInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
 	// Configuration for logging on NAT
@@ -702,6 +717,11 @@ type routerNatArgs struct {
 	// Enable endpoint independent mapping.
 	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
+	// Specifies the endpoint Types supported by the NAT Gateway.
+	// Supported values include:
+	// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+	// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+	EndpointTypes []string `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
 	// Configuration for logging on NAT
@@ -786,6 +806,11 @@ type RouterNatArgs struct {
 	// Enable endpoint independent mapping.
 	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput
+	// Specifies the endpoint Types supported by the NAT Gateway.
+	// Supported values include:
+	// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+	// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+	EndpointTypes pulumi.StringArrayInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
 	// Configuration for logging on NAT
@@ -962,6 +987,14 @@ func (o RouterNatOutput) EnableDynamicPortAllocation() pulumi.BoolOutput {
 // For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
 func (o RouterNatOutput) EnableEndpointIndependentMapping() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.BoolOutput { return v.EnableEndpointIndependentMapping }).(pulumi.BoolOutput)
+}
+
+// Specifies the endpoint Types supported by the NAT Gateway.
+// Supported values include:
+// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+func (o RouterNatOutput) EndpointTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.StringArrayOutput { return v.EndpointTypes }).(pulumi.StringArrayOutput)
 }
 
 // Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
