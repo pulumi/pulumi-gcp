@@ -21,7 +21,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
 
     /**
      * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     @Import(name="healthCheckedTargets")
@@ -29,7 +29,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
 
     /**
      * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs>> healthCheckedTargets() {
@@ -94,7 +94,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
 
         /**
          * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
 
         /**
          * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 

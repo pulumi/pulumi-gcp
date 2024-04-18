@@ -340,6 +340,8 @@ type RouterPeer struct {
 	// If set to true, the peer connection can be established with routing information.
 	// The default is true.
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 pulumi.BoolOutput `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
@@ -347,6 +349,8 @@ type RouterPeer struct {
 	// IP address of the interface inside Google Cloud Platform.
 	// Only IPv4 is supported.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress pulumi.StringOutput `pulumi:"ipv4NexthopAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -370,6 +374,8 @@ type RouterPeer struct {
 	// IP address of the BGP interface outside Google Cloud Platform.
 	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress pulumi.StringOutput `pulumi:"peerIpv4NexthopAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -458,6 +464,8 @@ type routerPeerState struct {
 	// If set to true, the peer connection can be established with routing information.
 	// The default is true.
 	Enable *bool `pulumi:"enable"`
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
@@ -465,6 +473,8 @@ type routerPeerState struct {
 	// IP address of the interface inside Google Cloud Platform.
 	// Only IPv4 is supported.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress *string `pulumi:"ipv4NexthopAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -488,6 +498,8 @@ type routerPeerState struct {
 	// IP address of the BGP interface outside Google Cloud Platform.
 	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress *string `pulumi:"peerIpv4NexthopAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -538,6 +550,8 @@ type RouterPeerState struct {
 	// If set to true, the peer connection can be established with routing information.
 	// The default is true.
 	Enable pulumi.BoolPtrInput
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 pulumi.BoolPtrInput
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrInput
 	// Name of the interface the BGP peer is associated with.
@@ -545,6 +559,8 @@ type RouterPeerState struct {
 	// IP address of the interface inside Google Cloud Platform.
 	// Only IPv4 is supported.
 	IpAddress pulumi.StringPtrInput
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress pulumi.StringPtrInput
 	// IPv6 address of the interface inside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -568,6 +584,8 @@ type RouterPeerState struct {
 	// IP address of the BGP interface outside Google Cloud Platform.
 	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress pulumi.StringPtrInput
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress pulumi.StringPtrInput
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -622,6 +640,8 @@ type routerPeerArgs struct {
 	// If set to true, the peer connection can be established with routing information.
 	// The default is true.
 	Enable *bool `pulumi:"enable"`
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Name of the interface the BGP peer is associated with.
@@ -629,6 +649,8 @@ type routerPeerArgs struct {
 	// IP address of the interface inside Google Cloud Platform.
 	// Only IPv4 is supported.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress *string `pulumi:"ipv4NexthopAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -650,6 +672,8 @@ type routerPeerArgs struct {
 	// IP address of the BGP interface outside Google Cloud Platform.
 	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress *string `pulumi:"peerIpv4NexthopAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -701,6 +725,8 @@ type RouterPeerArgs struct {
 	// If set to true, the peer connection can be established with routing information.
 	// The default is true.
 	Enable pulumi.BoolPtrInput
+	// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+	EnableIpv4 pulumi.BoolPtrInput
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrInput
 	// Name of the interface the BGP peer is associated with.
@@ -708,6 +734,8 @@ type RouterPeerArgs struct {
 	// IP address of the interface inside Google Cloud Platform.
 	// Only IPv4 is supported.
 	IpAddress pulumi.StringPtrInput
+	// IPv4 address of the interface inside Google Cloud Platform.
+	Ipv4NexthopAddress pulumi.StringPtrInput
 	// IPv6 address of the interface inside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -729,6 +757,8 @@ type RouterPeerArgs struct {
 	// IP address of the BGP interface outside Google Cloud Platform.
 	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress pulumi.StringPtrInput
+	// IPv4 address of the BGP interface outside Google Cloud Platform.
+	PeerIpv4NexthopAddress pulumi.StringPtrInput
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -883,6 +913,11 @@ func (o RouterPeerOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.BoolPtrOutput { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
+// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+func (o RouterPeerOutput) EnableIpv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.BoolOutput { return v.EnableIpv4 }).(pulumi.BoolOutput)
+}
+
 // Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 func (o RouterPeerOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
@@ -897,6 +932,11 @@ func (o RouterPeerOutput) Interface() pulumi.StringOutput {
 // Only IPv4 is supported.
 func (o RouterPeerOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv4 address of the interface inside Google Cloud Platform.
+func (o RouterPeerOutput) Ipv4NexthopAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.Ipv4NexthopAddress }).(pulumi.StringOutput)
 }
 
 // IPv6 address of the interface inside Google Cloud Platform.
@@ -938,6 +978,11 @@ func (o RouterPeerOutput) PeerAsn() pulumi.IntOutput {
 // Only IPv4 is supported. Required if `ipAddress` is set.
 func (o RouterPeerOutput) PeerIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.PeerIpAddress }).(pulumi.StringOutput)
+}
+
+// IPv4 address of the BGP interface outside Google Cloud Platform.
+func (o RouterPeerOutput) PeerIpv4NexthopAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.PeerIpv4NexthopAddress }).(pulumi.StringOutput)
 }
 
 // IPv6 address of the BGP interface outside Google Cloud Platform.

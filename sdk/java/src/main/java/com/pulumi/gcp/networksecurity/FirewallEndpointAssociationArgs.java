@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class FirewallEndpointAssociationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FirewallEndpointAssociationArgs Empty = new FirewallEndpointAssociationArgs();
+
+    /**
+     * Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
 
     /**
      * The URL of the firewall endpoint that is being associated.
@@ -137,6 +157,7 @@ public final class FirewallEndpointAssociationArgs extends com.pulumi.resources.
     private FirewallEndpointAssociationArgs() {}
 
     private FirewallEndpointAssociationArgs(FirewallEndpointAssociationArgs $) {
+        this.disabled = $.disabled;
         this.firewallEndpoint = $.firewallEndpoint;
         this.labels = $.labels;
         this.location = $.location;
@@ -162,6 +183,31 @@ public final class FirewallEndpointAssociationArgs extends com.pulumi.resources.
 
         public Builder(FirewallEndpointAssociationArgs defaults) {
             $ = new FirewallEndpointAssociationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disabled Whether the association is disabled. True indicates that traffic will not be intercepted.
+         * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+         * otherwise on an update the association can be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether the association is disabled. True indicates that traffic will not be intercepted.
+         * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+         * otherwise on an update the association can be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

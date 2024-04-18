@@ -25,12 +25,12 @@ class IndexArgs:
         """
         The set of arguments for constructing a Index resource.
         :param pulumi.Input[str] collection: The collection being indexed.
-        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last field entry is always for
-               the field path `__name__`. If, on creation, `__name__` was not
-               specified as the last field, it will be added automatically with the
-               same direction as that of the last field defined. If the final field
-               in a composite index is not directional, the `__name__` will be
-               ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
+               always for the field path `__name__`. If, on creation, `__name__` was not
+               specified as the last field, it will be added automatically with the same
+               direction as that of the last field defined. If the final field in a
+               composite index is not directional, the `__name__` will be ordered
+               `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
         :param pulumi.Input[str] api_scope: The API scope at which a query is run.
                Default value is `ANY_API`.
@@ -69,12 +69,12 @@ class IndexArgs:
     @pulumi.getter
     def fields(self) -> pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]:
         """
-        The fields supported by this index. The last field entry is always for
-        the field path `__name__`. If, on creation, `__name__` was not
-        specified as the last field, it will be added automatically with the
-        same direction as that of the last field defined. If the final field
-        in a composite index is not directional, the `__name__` will be
-        ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        The fields supported by this index. The last non-stored field entry is
+        always for the field path `__name__`. If, on creation, `__name__` was not
+        specified as the last field, it will be added automatically with the same
+        direction as that of the last field defined. If the final field in a
+        composite index is not directional, the `__name__` will be ordered
+        `"ASCENDING"` (unless explicitly specified otherwise).
         Structure is documented below.
         """
         return pulumi.get(self, "fields")
@@ -154,12 +154,12 @@ class _IndexState:
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last field entry is always for
-               the field path `__name__`. If, on creation, `__name__` was not
-               specified as the last field, it will be added automatically with the
-               same direction as that of the last field defined. If the final field
-               in a composite index is not directional, the `__name__` will be
-               ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
+               always for the field path `__name__`. If, on creation, `__name__` was not
+               specified as the last field, it will be added automatically with the same
+               direction as that of the last field defined. If the final field in a
+               composite index is not directional, the `__name__` will be ordered
+               `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
@@ -226,12 +226,12 @@ class _IndexState:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]]]:
         """
-        The fields supported by this index. The last field entry is always for
-        the field path `__name__`. If, on creation, `__name__` was not
-        specified as the last field, it will be added automatically with the
-        same direction as that of the last field defined. If the final field
-        in a composite index is not directional, the `__name__` will be
-        ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        The fields supported by this index. The last non-stored field entry is
+        always for the field path `__name__`. If, on creation, `__name__` was not
+        specified as the last field, it will be added automatically with the same
+        direction as that of the last field defined. If the final field in a
+        composite index is not directional, the `__name__` will be ordered
+        `"ASCENDING"` (unless explicitly specified otherwise).
         Structure is documented below.
         """
         return pulumi.get(self, "fields")
@@ -376,6 +376,43 @@ class Index(pulumi.CustomResource):
             ])
         ```
         <!--End PulumiCodeChooser -->
+        ### Firestore Index Vector
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-vector",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="field_name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="__name__",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    vector_config=gcp.firestore.IndexFieldVectorConfigArgs(
+                        dimension=128,
+                        flat=gcp.firestore.IndexFieldVectorConfigFlatArgs(),
+                    ),
+                ),
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -396,12 +433,12 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
-               the field path `__name__`. If, on creation, `__name__` was not
-               specified as the last field, it will be added automatically with the
-               same direction as that of the last field defined. If the final field
-               in a composite index is not directional, the `__name__` will be
-               ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last non-stored field entry is
+               always for the field path `__name__`. If, on creation, `__name__` was not
+               specified as the last field, it will be added automatically with the same
+               direction as that of the last field defined. If the final field in a
+               composite index is not directional, the `__name__` will be ordered
+               `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -498,6 +535,43 @@ class Index(pulumi.CustomResource):
             ])
         ```
         <!--End PulumiCodeChooser -->
+        ### Firestore Index Vector
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-vector",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="field_name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="__name__",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    vector_config=gcp.firestore.IndexFieldVectorConfigArgs(
+                        dimension=128,
+                        flat=gcp.firestore.IndexFieldVectorConfigFlatArgs(),
+                    ),
+                ),
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -581,12 +655,12 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`.
         :param pulumi.Input[str] collection: The collection being indexed.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last field entry is always for
-               the field path `__name__`. If, on creation, `__name__` was not
-               specified as the last field, it will be added automatically with the
-               same direction as that of the last field defined. If the final field
-               in a composite index is not directional, the `__name__` will be
-               ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexFieldArgs']]]] fields: The fields supported by this index. The last non-stored field entry is
+               always for the field path `__name__`. If, on creation, `__name__` was not
+               specified as the last field, it will be added automatically with the same
+               direction as that of the last field defined. If the final field in a
+               composite index is not directional, the `__name__` will be ordered
+               `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
@@ -639,12 +713,12 @@ class Index(pulumi.CustomResource):
     @pulumi.getter
     def fields(self) -> pulumi.Output[Sequence['outputs.IndexField']]:
         """
-        The fields supported by this index. The last field entry is always for
-        the field path `__name__`. If, on creation, `__name__` was not
-        specified as the last field, it will be added automatically with the
-        same direction as that of the last field defined. If the final field
-        in a composite index is not directional, the `__name__` will be
-        ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        The fields supported by this index. The last non-stored field entry is
+        always for the field path `__name__`. If, on creation, `__name__` was not
+        specified as the last field, it will be added automatically with the same
+        direction as that of the last field defined. If the final field in a
+        composite index is not directional, the `__name__` will be ordered
+        `"ASCENDING"` (unless explicitly specified otherwise).
         Structure is documented below.
         """
         return pulumi.get(self, "fields")

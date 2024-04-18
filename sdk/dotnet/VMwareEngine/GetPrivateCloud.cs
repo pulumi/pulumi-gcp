@@ -146,7 +146,9 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetPrivateCloudNetworkConfigResult> NetworkConfigs;
         public readonly ImmutableArray<Outputs.GetPrivateCloudNsxResult> Nsxes;
+        public readonly string PreferredZone;
         public readonly string? Project;
+        public readonly string SecondaryZone;
         public readonly string State;
         public readonly string Type;
         public readonly string Uid;
@@ -170,7 +172,11 @@ namespace Pulumi.Gcp.VMwareEngine
 
             ImmutableArray<Outputs.GetPrivateCloudNsxResult> nsxes,
 
+            string preferredZone,
+
             string? project,
+
+            string secondaryZone,
 
             string state,
 
@@ -188,7 +194,9 @@ namespace Pulumi.Gcp.VMwareEngine
             Name = name;
             NetworkConfigs = networkConfigs;
             Nsxes = nsxes;
+            PreferredZone = preferredZone;
             Project = project;
+            SecondaryZone = secondaryZone;
             State = state;
             Type = type;
             Uid = uid;

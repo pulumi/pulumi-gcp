@@ -61,6 +61,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> NetworkPolicyConfigs;
+        /// <summary>
+        /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> StatefulHaConfigs;
 
         [OutputConstructor]
         private GetClusterAddonsConfigResult(
@@ -86,7 +90,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigKalmConfigResult> kalmConfigs,
 
-            ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> networkPolicyConfigs)
+            ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> networkPolicyConfigs,
+
+            ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> statefulHaConfigs)
         {
             CloudrunConfigs = cloudrunConfigs;
             ConfigConnectorConfigs = configConnectorConfigs;
@@ -100,6 +106,7 @@ namespace Pulumi.Gcp.Container.Outputs
             IstioConfigs = istioConfigs;
             KalmConfigs = kalmConfigs;
             NetworkPolicyConfigs = networkPolicyConfigs;
+            StatefulHaConfigs = statefulHaConfigs;
         }
     }
 }

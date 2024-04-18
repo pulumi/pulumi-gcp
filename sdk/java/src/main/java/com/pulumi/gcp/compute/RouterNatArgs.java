@@ -82,6 +82,27 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     * 
+     */
+    @Import(name="endpointTypes")
+    private @Nullable Output<List<String>> endpointTypes;
+
+    /**
+     * @return Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     * 
+     */
+    public Optional<Output<List<String>>> endpointTypes() {
+        return Optional.ofNullable(this.endpointTypes);
+    }
+
+    /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      * 
      */
@@ -419,6 +440,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         this.drainNatIps = $.drainNatIps;
         this.enableDynamicPortAllocation = $.enableDynamicPortAllocation;
         this.enableEndpointIndependentMapping = $.enableEndpointIndependentMapping;
+        this.endpointTypes = $.endpointTypes;
         this.icmpIdleTimeoutSec = $.icmpIdleTimeoutSec;
         this.logConfig = $.logConfig;
         this.maxPortsPerVm = $.maxPortsPerVm;
@@ -543,6 +565,46 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableEndpointIndependentMapping(Boolean enableEndpointIndependentMapping) {
             return enableEndpointIndependentMapping(Output.of(enableEndpointIndependentMapping));
+        }
+
+        /**
+         * @param endpointTypes Specifies the endpoint Types supported by the NAT Gateway.
+         * Supported values include:
+         * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+         * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointTypes(@Nullable Output<List<String>> endpointTypes) {
+            $.endpointTypes = endpointTypes;
+            return this;
+        }
+
+        /**
+         * @param endpointTypes Specifies the endpoint Types supported by the NAT Gateway.
+         * Supported values include:
+         * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+         * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointTypes(List<String> endpointTypes) {
+            return endpointTypes(Output.of(endpointTypes));
+        }
+
+        /**
+         * @param endpointTypes Specifies the endpoint Types supported by the NAT Gateway.
+         * Supported values include:
+         * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+         * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointTypes(String... endpointTypes) {
+            return endpointTypes(List.of(endpointTypes));
         }
 
         /**

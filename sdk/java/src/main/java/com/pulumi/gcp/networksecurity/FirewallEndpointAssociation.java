@@ -95,6 +95,24 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
         return this.createTime;
     }
     /**
+     * Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     * 
+     */
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disabled;
+
+    /**
+     * @return Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     * 
+     */
+    public Output<Optional<Boolean>> disabled() {
+        return Codegen.optional(this.disabled);
+    }
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */

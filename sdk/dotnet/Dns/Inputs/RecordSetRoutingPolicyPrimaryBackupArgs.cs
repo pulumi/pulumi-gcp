@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dns.Inputs
 
         /// <summary>
         /// The list of global primary targets to be health checked.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         [Input("primary", required: true)]
         public Input<Inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs> Primary { get; set; } = null!;

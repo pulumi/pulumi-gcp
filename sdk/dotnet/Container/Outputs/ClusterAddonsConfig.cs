@@ -20,9 +20,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// .
         /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-        /// 
-        /// 
-        /// This example `addons_config` disables two addons:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigConfigConnectorConfig? ConfigConnectorConfig;
         /// <summary>
@@ -93,6 +90,14 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Defaults to disabled; set `disabled = false` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigNetworkPolicyConfig? NetworkPolicyConfig;
+        /// <summary>
+        /// .
+        /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+        /// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigStatefulHaConfig? StatefulHaConfig;
 
         [OutputConstructor]
         private ClusterAddonsConfig(
@@ -118,7 +123,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigKalmConfig? kalmConfig,
 
-            Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig)
+            Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig,
+
+            Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
         {
             CloudrunConfig = cloudrunConfig;
             ConfigConnectorConfig = configConnectorConfig;
@@ -132,6 +139,7 @@ namespace Pulumi.Gcp.Container.Outputs
             IstioConfig = istioConfig;
             KalmConfig = kalmConfig;
             NetworkPolicyConfig = networkPolicyConfig;
+            StatefulHaConfig = statefulHaConfig;
         }
     }
 }

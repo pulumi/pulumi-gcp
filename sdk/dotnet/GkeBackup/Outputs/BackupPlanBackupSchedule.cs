@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// <summary>
         /// A standard cron string that defines a repeating schedule for
         /// creating Backups via this BackupPlan.
+        /// This is mutually exclusive with the rpoConfig field since at most one
+        /// schedule can be defined for a BackupPlan.
         /// If this is defined, then backupRetainDays must also be defined.
         /// </summary>
         public readonly string? CronSchedule;
@@ -23,15 +25,25 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// This flag denotes whether automatic Backup creation is paused for this BackupPlan.
         /// </summary>
         public readonly bool? Paused;
+        /// <summary>
+        /// Defines the RPO schedule configuration for this BackupPlan. This is mutually
+        /// exclusive with the cronSchedule field since at most one schedule can be defined
+        /// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BackupPlanBackupScheduleRpoConfig? RpoConfig;
 
         [OutputConstructor]
         private BackupPlanBackupSchedule(
             string? cronSchedule,
 
-            bool? paused)
+            bool? paused,
+
+            Outputs.BackupPlanBackupScheduleRpoConfig? rpoConfig)
         {
             CronSchedule = cronSchedule;
             Paused = paused;
+            RpoConfig = rpoConfig;
         }
     }
 }

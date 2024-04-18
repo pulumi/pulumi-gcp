@@ -76,6 +76,8 @@ type RouterInterface struct {
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange pulumi.StringOutput `pulumi:"ipRange"`
+	// IP version of this interface. Can be either IPV4 or IPV6.
+	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// A unique name for the interface, required by GCE. Changing
 	// this forces a new interface to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -147,6 +149,8 @@ type routerInterfaceState struct {
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange *string `pulumi:"ipRange"`
+	// IP version of this interface. Can be either IPV4 or IPV6.
+	IpVersion *string `pulumi:"ipVersion"`
 	// A unique name for the interface, required by GCE. Changing
 	// this forces a new interface to be created.
 	Name *string `pulumi:"name"`
@@ -186,6 +190,8 @@ type RouterInterfaceState struct {
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange pulumi.StringPtrInput
+	// IP version of this interface. Can be either IPV4 or IPV6.
+	IpVersion pulumi.StringPtrInput
 	// A unique name for the interface, required by GCE. Changing
 	// this forces a new interface to be created.
 	Name pulumi.StringPtrInput
@@ -229,6 +235,8 @@ type routerInterfaceArgs struct {
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange *string `pulumi:"ipRange"`
+	// IP version of this interface. Can be either IPV4 or IPV6.
+	IpVersion *string `pulumi:"ipVersion"`
 	// A unique name for the interface, required by GCE. Changing
 	// this forces a new interface to be created.
 	Name *string `pulumi:"name"`
@@ -269,6 +277,8 @@ type RouterInterfaceArgs struct {
 	// IP address and range of the interface. The IP range must be
 	// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 	IpRange pulumi.StringPtrInput
+	// IP version of this interface. Can be either IPV4 or IPV6.
+	IpVersion pulumi.StringPtrInput
 	// A unique name for the interface, required by GCE. Changing
 	// this forces a new interface to be created.
 	Name pulumi.StringPtrInput
@@ -398,6 +408,11 @@ func (o RouterInterfaceOutput) InterconnectAttachment() pulumi.StringPtrOutput {
 // in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
 func (o RouterInterfaceOutput) IpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.IpRange }).(pulumi.StringOutput)
+}
+
+// IP version of this interface. Can be either IPV4 or IPV6.
+func (o RouterInterfaceOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // A unique name for the interface, required by GCE. Changing

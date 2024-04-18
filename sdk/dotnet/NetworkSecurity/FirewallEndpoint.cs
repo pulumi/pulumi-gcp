@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Name = "my-firewall-endpoint",
     ///         Parent = "organizations/123456789",
     ///         Location = "us-central1-a",
+    ///         BillingProjectId = "my-project-name",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },

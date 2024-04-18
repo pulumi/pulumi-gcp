@@ -51,7 +51,9 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
      * existing Backups under it. Backups created AFTER a successful update
      * will automatically pick up the new value.
      * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
-     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.]
+     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
+     * If rpo_config is defined, then this must be
+     * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
      * 
      */
     @Import(name="backupRetainDays")
@@ -67,7 +69,9 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
      * existing Backups under it. Backups created AFTER a successful update
      * will automatically pick up the new value.
      * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
-     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.]
+     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
+     * If rpo_config is defined, then this must be
+     * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
      * 
      */
     public Optional<Output<Integer>> backupRetainDays() {
@@ -160,7 +164,9 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
          * existing Backups under it. Backups created AFTER a successful update
          * will automatically pick up the new value.
          * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
-         * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.]
+         * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
+         * If rpo_config is defined, then this must be
+         * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
          * 
          * @return builder
          * 
@@ -180,7 +186,9 @@ public final class BackupPlanRetentionPolicyArgs extends com.pulumi.resources.Re
          * existing Backups under it. Backups created AFTER a successful update
          * will automatically pick up the new value.
          * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
-         * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.]
+         * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
+         * If rpo_config is defined, then this must be
+         * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
          * 
          * @return builder
          * 

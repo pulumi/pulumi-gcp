@@ -85,6 +85,10 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     public readonly ipRange!: pulumi.Output<string>;
     /**
+     * IP version of this interface. Can be either IPV4 or IPV6.
+     */
+    public readonly ipVersion!: pulumi.Output<string>;
+    /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
      */
@@ -145,6 +149,7 @@ export class RouterInterface extends pulumi.CustomResource {
             const state = argsOrState as RouterInterfaceState | undefined;
             resourceInputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
             resourceInputs["ipRange"] = state ? state.ipRange : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -160,6 +165,7 @@ export class RouterInterface extends pulumi.CustomResource {
             }
             resourceInputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
             resourceInputs["ipRange"] = args ? args.ipRange : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -189,6 +195,10 @@ export interface RouterInterfaceState {
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      */
     ipRange?: pulumi.Input<string>;
+    /**
+     * IP version of this interface. Can be either IPV4 or IPV6.
+     */
+    ipVersion?: pulumi.Input<string>;
     /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
@@ -251,6 +261,10 @@ export interface RouterInterfaceArgs {
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      */
     ipRange?: pulumi.Input<string>;
+    /**
+     * IP version of this interface. Can be either IPV4 or IPV6.
+     */
+    ipVersion?: pulumi.Input<string>;
     /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.

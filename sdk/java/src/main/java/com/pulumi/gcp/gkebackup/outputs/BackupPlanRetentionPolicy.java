@@ -32,7 +32,9 @@ public final class BackupPlanRetentionPolicy {
      * existing Backups under it. Backups created AFTER a successful update
      * will automatically pick up the new value.
      * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
-     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.]
+     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
+     * If rpo_config is defined, then this must be
+     * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
      * 
      */
     private @Nullable Integer backupRetainDays;
@@ -67,7 +69,9 @@ public final class BackupPlanRetentionPolicy {
      * existing Backups under it. Backups created AFTER a successful update
      * will automatically pick up the new value.
      * NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
-     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.]
+     * If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
+     * If rpo_config is defined, then this must be
+     * &lt;= 360 * targetRpoMinutes/(1440minutes/day)
      * 
      */
     public Optional<Integer> backupRetainDays() {

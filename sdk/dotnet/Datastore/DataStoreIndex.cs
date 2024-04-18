@@ -37,6 +37,16 @@ namespace Pulumi.Gcp.Datastore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "(default)",
+    ///         LocationId = "nam5",
+    ///         Type = "DATASTORE_MODE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
     ///     var @default = new Gcp.Datastore.DataStoreIndex("default", new()
     ///     {
     ///         Kind = "foo",

@@ -37,13 +37,25 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/datastore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datastore.NewDataStoreIndex(ctx, "default", &datastore.DataStoreIndexArgs{
+//			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("(default)"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("DATASTORE_MODE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_DISABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastore.NewDataStoreIndex(ctx, "default", &datastore.DataStoreIndexArgs{
 //				Kind: pulumi.String("foo"),
 //				Properties: datastore.DataStoreIndexPropertyArray{
 //					&datastore.DataStoreIndexPropertyArgs{

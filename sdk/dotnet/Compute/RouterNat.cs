@@ -389,6 +389,15 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> EnableEndpointIndependentMapping { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the endpoint Types supported by the NAT Gateway.
+        /// Supported values include:
+        /// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+        /// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+        /// </summary>
+        [Output("endpointTypes")]
+        public Output<ImmutableArray<string>> EndpointTypes { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         /// </summary>
         [Output("icmpIdleTimeoutSec")]
@@ -605,6 +614,21 @@ namespace Pulumi.Gcp.Compute
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }
 
+        [Input("endpointTypes")]
+        private InputList<string>? _endpointTypes;
+
+        /// <summary>
+        /// Specifies the endpoint Types supported by the NAT Gateway.
+        /// Supported values include:
+        /// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+        /// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+        /// </summary>
+        public InputList<string> EndpointTypes
+        {
+            get => _endpointTypes ?? (_endpointTypes = new InputList<string>());
+            set => _endpointTypes = value;
+        }
+
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         /// </summary>
@@ -801,6 +825,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }
+
+        [Input("endpointTypes")]
+        private InputList<string>? _endpointTypes;
+
+        /// <summary>
+        /// Specifies the endpoint Types supported by the NAT Gateway.
+        /// Supported values include:
+        /// `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+        /// `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+        /// </summary>
+        public InputList<string> EndpointTypes
+        {
+            get => _endpointTypes ?? (_endpointTypes = new InputList<string>());
+            set => _endpointTypes = value;
+        }
 
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.

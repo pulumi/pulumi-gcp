@@ -71,6 +71,7 @@ export interface GetRouterNatResult {
     readonly drainNatIps: string[];
     readonly enableDynamicPortAllocation: boolean;
     readonly enableEndpointIndependentMapping: boolean;
+    readonly endpointTypes: string[];
     readonly icmpIdleTimeoutSec: number;
     /**
      * The provider-assigned unique ID for this managed resource.

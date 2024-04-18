@@ -20,7 +20,7 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
 
     /**
      * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     @Import(name="healthCheckedTargets")
@@ -28,7 +28,7 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
 
     /**
      * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs>> healthCheckedTargets() {
@@ -93,7 +93,7 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
 
         /**
          * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
 
         /**
          * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is document below.
+         * Structure is documented below.
          * 
          * @return builder
          * 

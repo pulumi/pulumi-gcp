@@ -76,6 +76,7 @@ type LookupRouterNatResult struct {
 	DrainNatIps                      []string `pulumi:"drainNatIps"`
 	EnableDynamicPortAllocation      bool     `pulumi:"enableDynamicPortAllocation"`
 	EnableEndpointIndependentMapping bool     `pulumi:"enableEndpointIndependentMapping"`
+	EndpointTypes                    []string `pulumi:"endpointTypes"`
 	IcmpIdleTimeoutSec               int      `pulumi:"icmpIdleTimeoutSec"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                   `pulumi:"id"`
@@ -156,6 +157,10 @@ func (o LookupRouterNatResultOutput) EnableDynamicPortAllocation() pulumi.BoolOu
 
 func (o LookupRouterNatResultOutput) EnableEndpointIndependentMapping() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) bool { return v.EnableEndpointIndependentMapping }).(pulumi.BoolOutput)
+}
+
+func (o LookupRouterNatResultOutput) EndpointTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) []string { return v.EndpointTypes }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupRouterNatResultOutput) IcmpIdleTimeoutSec() pulumi.IntOutput {

@@ -245,6 +245,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+     * 
+     */
+    @Import(name="enableGoogleMlIntegration")
+    private @Nullable Output<Boolean> enableGoogleMlIntegration;
+
+    /**
+     * @return Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableGoogleMlIntegration() {
+        return Optional.ofNullable(this.enableGoogleMlIntegration);
+    }
+
+    /**
      * Configuration of Query Insights.
      * 
      */
@@ -402,6 +417,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
         this.edition = $.edition;
+        this.enableGoogleMlIntegration = $.enableGoogleMlIntegration;
         this.insightsConfig = $.insightsConfig;
         this.ipConfiguration = $.ipConfiguration;
         this.locationPreference = $.locationPreference;
@@ -723,6 +739,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder edition(String edition) {
             return edition(Output.of(edition));
+        }
+
+        /**
+         * @param enableGoogleMlIntegration Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGoogleMlIntegration(@Nullable Output<Boolean> enableGoogleMlIntegration) {
+            $.enableGoogleMlIntegration = enableGoogleMlIntegration;
+            return this;
+        }
+
+        /**
+         * @param enableGoogleMlIntegration Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGoogleMlIntegration(Boolean enableGoogleMlIntegration) {
+            return enableGoogleMlIntegration(Output.of(enableGoogleMlIntegration));
         }
 
         /**

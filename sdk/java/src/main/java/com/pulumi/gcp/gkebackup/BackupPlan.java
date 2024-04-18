@@ -325,6 +325,214 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkebackup Backupplan Rpo Daily Window
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;rpo-daily-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
+ *             .build());
+ * 
+ *         var rpoDailyWindow = new BackupPlan(&#34;rpoDailyWindow&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;rpo-daily-window&#34;)
+ *             .cluster(primary.id())
+ *             .location(&#34;us-central1&#34;)
+ *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
+ *                 .backupDeleteLockDays(30)
+ *                 .backupRetainDays(180)
+ *                 .build())
+ *             .backupSchedule(BackupPlanBackupScheduleArgs.builder()
+ *                 .paused(true)
+ *                 .rpoConfig(BackupPlanBackupScheduleRpoConfigArgs.builder()
+ *                     .targetRpoMinutes(1440)
+ *                     .exclusionWindows(                    
+ *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
+ *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
+ *                                 .hours(12)
+ *                                 .build())
+ *                             .duration(&#34;7200s&#34;)
+ *                             .daily(true)
+ *                             .build(),
+ *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
+ *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
+ *                                 .hours(8)
+ *                                 .minutes(40)
+ *                                 .seconds(1)
+ *                                 .nanos(100)
+ *                                 .build())
+ *                             .duration(&#34;3600s&#34;)
+ *                             .singleOccurrenceDate(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs.builder()
+ *                                 .year(2024)
+ *                                 .month(3)
+ *                                 .day(16)
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .allNamespaces(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Gkebackup Backupplan Rpo Weekly Window
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+ * import com.pulumi.gcp.gkebackup.BackupPlan;
+ * import com.pulumi.gcp.gkebackup.BackupPlanArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleRpoConfigArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .name(&#34;rpo-weekly-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .initialNodeCount(1)
+ *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
+ *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
+ *                 .build())
+ *             .addonsConfig(ClusterAddonsConfigArgs.builder()
+ *                 .gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
+ *             .build());
+ * 
+ *         var rpoWeeklyWindow = new BackupPlan(&#34;rpoWeeklyWindow&#34;, BackupPlanArgs.builder()        
+ *             .name(&#34;rpo-weekly-window&#34;)
+ *             .cluster(primary.id())
+ *             .location(&#34;us-central1&#34;)
+ *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
+ *                 .backupDeleteLockDays(30)
+ *                 .backupRetainDays(180)
+ *                 .build())
+ *             .backupSchedule(BackupPlanBackupScheduleArgs.builder()
+ *                 .paused(true)
+ *                 .rpoConfig(BackupPlanBackupScheduleRpoConfigArgs.builder()
+ *                     .targetRpoMinutes(1440)
+ *                     .exclusionWindows(                    
+ *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
+ *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
+ *                                 .hours(1)
+ *                                 .minutes(23)
+ *                                 .build())
+ *                             .duration(&#34;1800s&#34;)
+ *                             .daysOfWeek(BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs.builder()
+ *                                 .daysOfWeeks(                                
+ *                                     &#34;MONDAY&#34;,
+ *                                     &#34;THURSDAY&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
+ *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
+ *                                 .hours(12)
+ *                                 .build())
+ *                             .duration(&#34;3600s&#34;)
+ *                             .singleOccurrenceDate(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs.builder()
+ *                                 .year(2024)
+ *                                 .month(3)
+ *                                 .day(17)
+ *                                 .build())
+ *                             .build(),
+ *                         BackupPlanBackupScheduleRpoConfigExclusionWindowArgs.builder()
+ *                             .startTime(BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs.builder()
+ *                                 .hours(8)
+ *                                 .minutes(40)
+ *                                 .build())
+ *                             .duration(&#34;600s&#34;)
+ *                             .singleOccurrenceDate(BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs.builder()
+ *                                 .year(2024)
+ *                                 .month(3)
+ *                                 .day(18)
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .backupConfig(BackupPlanBackupConfigArgs.builder()
+ *                 .includeVolumeData(true)
+ *                 .includeSecrets(true)
+ *                 .allNamespaces(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

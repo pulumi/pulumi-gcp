@@ -113,6 +113,20 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return this.ipRange;
     }
     /**
+     * IP version of this interface. Can be either IPV4 or IPV6.
+     * 
+     */
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
+    private Output<String> ipVersion;
+
+    /**
+     * @return IP version of this interface. Can be either IPV4 or IPV6.
+     * 
+     */
+    public Output<String> ipVersion() {
+        return this.ipVersion;
+    }
+    /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
      * 

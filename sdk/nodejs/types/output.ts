@@ -7697,7 +7697,7 @@ export namespace certificateauthority {
          * but not pem certificate for this CA itself.
          * Structure is documented below.
          */
-        pemIssuerChain?: outputs.certificateauthority.AuthoritySubordinateConfigPemIssuerChain;
+        pemIssuerChain: outputs.certificateauthority.AuthoritySubordinateConfigPemIssuerChain;
     }
 
     export interface AuthoritySubordinateConfigPemIssuerChain {
@@ -23861,6 +23861,14 @@ export namespace compute {
          */
         asn: number;
         /**
+         * Explicitly specifies a range of valid BGP Identifiers for this Router.
+         * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+         * size at least /30, even if the BGP sessions are over IPv6. It must
+         * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+         * call this router ID.
+         */
+        identifierRange: string;
+        /**
          * The interval in seconds between BGP keepalive messages that are sent
          * to the peer. Hold time is three times the interval at which keepalive
          * messages are sent, and the hold time is the maximum number of seconds
@@ -31395,6 +31403,14 @@ export namespace compute {
          */
         asn: number;
         /**
+         * Explicitly specifies a range of valid BGP Identifiers for this Router.
+         * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+         * size at least /30, even if the BGP sessions are over IPv6. It must
+         * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+         * call this router ID.
+         */
+        identifierRange: string;
+        /**
          * The interval in seconds between BGP keepalive messages that are sent
          * to the peer. Hold time is three times the interval at which keepalive
          * messages are sent, and the hold time is the maximum number of seconds
@@ -35191,9 +35207,6 @@ export namespace container {
         /**
          * .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-         *
-         *
-         * This example `addonsConfig` disables two addons:
          */
         configConnectorConfig: outputs.container.ClusterAddonsConfigConfigConnectorConfig;
         /**
@@ -35264,6 +35277,14 @@ export namespace container {
          * Defaults to disabled; set `disabled = false` to enable.
          */
         networkPolicyConfig: outputs.container.ClusterAddonsConfigNetworkPolicyConfig;
+        /**
+         * .
+         * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+         * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+         *
+         * This example `addonsConfig` disables two addons:
+         */
+        statefulHaConfig: outputs.container.ClusterAddonsConfigStatefulHaConfig;
     }
 
     export interface ClusterAddonsConfigCloudrunConfig {
@@ -35364,6 +35385,13 @@ export namespace container {
          * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigStatefulHaConfig {
+        /**
+         * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterAuthenticatorGroupsConfig {
@@ -37498,6 +37526,10 @@ export namespace container {
          * Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
          */
         networkPolicyConfigs: outputs.container.GetClusterAddonsConfigNetworkPolicyConfig[];
+        /**
+         * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+         */
+        statefulHaConfigs: outputs.container.GetClusterAddonsConfigStatefulHaConfig[];
     }
 
     export interface GetClusterAddonsConfigCloudrunConfig {
@@ -37554,6 +37586,10 @@ export namespace container {
 
     export interface GetClusterAddonsConfigNetworkPolicyConfig {
         disabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigStatefulHaConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterAuthenticatorGroupsConfig {
@@ -53648,17 +53684,17 @@ export namespace dns {
         enableGeoFencing?: boolean;
         /**
          * The configuration for Geolocation based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          */
         geos?: outputs.dns.RecordSetRoutingPolicyGeo[];
         /**
          * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-         * Structure is document below.
+         * Structure is documented below.
          */
         primaryBackup?: outputs.dns.RecordSetRoutingPolicyPrimaryBackup;
         /**
          * The configuration for Weighted Round Robin based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          */
         wrrs?: outputs.dns.RecordSetRoutingPolicyWrr[];
     }
@@ -53666,7 +53702,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyGeo {
         /**
          * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is document below.
+         * Structure is documented below.
          */
         healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargets;
         /**
@@ -53682,7 +53718,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyGeoHealthCheckedTargets {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer[];
     }
@@ -53730,7 +53766,7 @@ export namespace dns {
         enableGeoFencingForBackups?: boolean;
         /**
          * The list of global primary targets to be health checked.
-         * Structure is document below.
+         * Structure is documented below.
          */
         primary: outputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimary;
         /**
@@ -53742,7 +53778,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeo {
         /**
          * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is document below.
+         * Structure is documented below.
          */
         healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets;
         /**
@@ -53755,7 +53791,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer[];
     }
@@ -53794,7 +53830,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyPrimaryBackupPrimary {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer[];
     }
@@ -53833,7 +53869,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyWrr {
         /**
          * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
-         * Structure is document below.
+         * Structure is documented below.
          */
         healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargets;
         /**
@@ -53849,7 +53885,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyWrrHealthCheckedTargets {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer[];
     }
@@ -55451,11 +55487,9 @@ export namespace firestore {
 
     export interface IndexField {
         /**
-         * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-         * be specified.
+         * Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified.
          * Possible values are: `CONTAINS`.
-         *
-         * - - -
          */
         arrayConfig?: string;
         /**
@@ -55464,10 +55498,33 @@ export namespace firestore {
         fieldPath?: string;
         /**
          * Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-         * Only one of `order` and `arrayConfig` can be specified.
+         * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
          * Possible values are: `ASCENDING`, `DESCENDING`.
          */
         order?: string;
+        /**
+         * Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+         * Structure is documented below.
+         */
+        vectorConfig?: outputs.firestore.IndexFieldVectorConfig;
+    }
+
+    export interface IndexFieldVectorConfig {
+        /**
+         * The resulting index will only include vectors of this dimension, and can be used for vector search
+         * with the same dimension.
+         */
+        dimension?: number;
+        /**
+         * Indicates the vector index is a flat index.
+         *
+         * - - -
+         */
+        flat?: outputs.firestore.IndexFieldVectorConfigFlat;
+    }
+
+    export interface IndexFieldVectorConfigFlat {
     }
 
 }
@@ -55732,6 +55789,8 @@ export namespace gkebackup {
         /**
          * A standard cron string that defines a repeating schedule for
          * creating Backups via this BackupPlan.
+         * This is mutually exclusive with the rpoConfig field since at most one
+         * schedule can be defined for a BackupPlan.
          * If this is defined, then backupRetainDays must also be defined.
          */
         cronSchedule?: string;
@@ -55739,6 +55798,112 @@ export namespace gkebackup {
          * This flag denotes whether automatic Backup creation is paused for this BackupPlan.
          */
         paused: boolean;
+        /**
+         * Defines the RPO schedule configuration for this BackupPlan. This is mutually
+         * exclusive with the cronSchedule field since at most one schedule can be defined
+         * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+         * Structure is documented below.
+         */
+        rpoConfig?: outputs.gkebackup.BackupPlanBackupScheduleRpoConfig;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfig {
+        /**
+         * User specified time windows during which backup can NOT happen for this BackupPlan.
+         * Backups should start and finish outside of any given exclusion window. Note: backup
+         * jobs will be scheduled to start and finish outside the duration of the window as
+         * much as possible, but running jobs will not get canceled when it runs into the window.
+         * All the time and date values in exclusionWindows entry in the API are in UTC. We
+         * only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+         * restriction on number of single occurrence windows.
+         * Structure is documented below.
+         */
+        exclusionWindows?: outputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindow[];
+        /**
+         * Defines the target RPO for the BackupPlan in minutes, which means the target
+         * maximum data loss in time that is acceptable for this BackupPlan. This must be
+         * at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+         */
+        targetRpoMinutes: number;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindow {
+        /**
+         * The exclusion window occurs every day if set to "True".
+         * Specifying this field to "False" is an error.
+         * Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+         */
+        daily?: boolean;
+        /**
+         * The exclusion window occurs on these days of each week in UTC.
+         * Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+         * Structure is documented below.
+         */
+        daysOfWeek?: outputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek;
+        /**
+         * Specifies duration of the window in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+         * recurrence type to allow some time for backup to happen:
+         * - single_occurrence_date:  no restriction
+         * - daily window: duration < 24 hours
+         * - weekly window:
+         * - days of week includes all seven days of a week: duration < 24 hours
+         * - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+         */
+        duration: string;
+        /**
+         * No recurrence. The exclusion window occurs only once and on this date in UTC.
+         * Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+         * Structure is documented below.
+         */
+        singleOccurrenceDate?: outputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate;
+        /**
+         * Specifies the start time of the window using time of the day in UTC.
+         * Structure is documented below.
+         */
+        startTime: outputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
+        /**
+         * A list of days of week.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        daysOfWeeks?: string[];
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
+        /**
+         * Day of a month.
+         */
+        day?: number;
+        /**
+         * Month of a year.
+         */
+        month?: number;
+        /**
+         * Year of the date.
+         */
+        year?: number;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
+        /**
+         * Hours of day in 24 hour format.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time.
+         */
+        seconds?: number;
     }
 
     export interface BackupPlanIamBindingCondition {
@@ -55773,7 +55938,9 @@ export namespace gkebackup {
          * existing Backups under it. Backups created AFTER a successful update
          * will automatically pick up the new value.
          * NOTE: backupRetainDays must be >= backupDeleteLockDays.
-         * If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+         * If cronSchedule is defined, then this must be <= 360 * the creation interval.
+         * If rpoConfig is defined, then this must be
+         * <= 360 * targetRpoMinutes/(1440minutes/day)
          */
         backupRetainDays: number;
         /**
@@ -71924,6 +72091,10 @@ export namespace sql {
          */
         edition?: string;
         /**
+         * Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+         */
+        enableGoogleMlIntegration?: boolean;
+        /**
          * Configuration of Query Insights.
          */
         insightsConfig?: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
@@ -72424,6 +72595,10 @@ export namespace sql {
          * The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
          */
         edition: string;
+        /**
+         * Enables Vertex AI Integration.
+         */
+        enableGoogleMlIntegration: boolean;
         /**
          * Configuration of Query Insights.
          */
@@ -72936,6 +73111,10 @@ export namespace sql {
          * The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
          */
         edition: string;
+        /**
+         * Enables Vertex AI Integration.
+         */
+        enableGoogleMlIntegration: boolean;
         /**
          * Configuration of Query Insights.
          */
@@ -74202,6 +74381,80 @@ export namespace storage {
 }
 
 export namespace tags {
+    export interface GetTagKeysKey {
+        /**
+         * Creation time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        createTime: string;
+        /**
+         * User-assigned description of the TagKey.
+         */
+        description: string;
+        /**
+         * an identifier for the resource with format `tagKeys/{{name}}`
+         */
+        name: string;
+        /**
+         * Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
+         */
+        namespacedName: string;
+        /**
+         * The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
+         */
+        parent: string;
+        /**
+         * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines.
+         */
+        purpose: string;
+        /**
+         * Purpose data corresponds to the policy system that the tag is intended for. See documentation for Purpose for formatting of this field.
+         */
+        purposeData: {[key: string]: string};
+        /**
+         * The user friendly name for a TagKey. The short name should be unique for TagKeys wihting the same tag namespace.
+         */
+        shortName: string;
+        /**
+         * Update time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        updateTime: string;
+    }
+
+    export interface GetTagValuesValue {
+        /**
+         * Creation time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        createTime: string;
+        /**
+         * User-assigned description of the TagValue.
+         */
+        description: string;
+        /**
+         * an identifier for the resource with format `tagValues/{{name}}`
+         */
+        name: string;
+        /**
+         * Namespaced name of the TagValue.
+         */
+        namespacedName: string;
+        /**
+         * The resource name of the parent tagKey in format `tagKey/{name}`.
+         */
+        parent: string;
+        /**
+         * User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+         */
+        shortName: string;
+        /**
+         * Update time.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        updateTime: string;
+    }
+
     export interface TagKeyIamBindingCondition {
         description?: string;
         expression: string;

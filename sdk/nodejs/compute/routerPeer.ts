@@ -276,6 +276,10 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly enable!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     */
+    public readonly enableIpv4!: pulumi.Output<boolean>;
+    /**
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
@@ -288,6 +292,10 @@ export class RouterPeer extends pulumi.CustomResource {
      * Only IPv4 is supported.
      */
     public readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * IPv4 address of the interface inside Google Cloud Platform.
+     */
+    public readonly ipv4NexthopAddress!: pulumi.Output<string>;
     /**
      * IPv6 address of the interface inside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -323,6 +331,10 @@ export class RouterPeer extends pulumi.CustomResource {
      * Only IPv4 is supported. Required if `ipAddress` is set.
      */
     public readonly peerIpAddress!: pulumi.Output<string>;
+    /**
+     * IPv4 address of the BGP interface outside Google Cloud Platform.
+     */
+    public readonly peerIpv4NexthopAddress!: pulumi.Output<string>;
     /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -374,15 +386,18 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
             resourceInputs["bfd"] = state ? state.bfd : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["enableIpv4"] = state ? state.enableIpv4 : undefined;
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
             resourceInputs["interface"] = state ? state.interface : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipv4NexthopAddress"] = state ? state.ipv4NexthopAddress : undefined;
             resourceInputs["ipv6NexthopAddress"] = state ? state.ipv6NexthopAddress : undefined;
             resourceInputs["managementType"] = state ? state.managementType : undefined;
             resourceInputs["md5AuthenticationKey"] = state ? state.md5AuthenticationKey : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["peerAsn"] = state ? state.peerAsn : undefined;
             resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
+            resourceInputs["peerIpv4NexthopAddress"] = state ? state.peerIpv4NexthopAddress : undefined;
             resourceInputs["peerIpv6NexthopAddress"] = state ? state.peerIpv6NexthopAddress : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -405,14 +420,17 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
             resourceInputs["bfd"] = args ? args.bfd : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["enableIpv4"] = args ? args.enableIpv4 : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipv4NexthopAddress"] = args ? args.ipv4NexthopAddress : undefined;
             resourceInputs["ipv6NexthopAddress"] = args ? args.ipv6NexthopAddress : undefined;
             resourceInputs["md5AuthenticationKey"] = args ? args.md5AuthenticationKey : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
             resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
+            resourceInputs["peerIpv4NexthopAddress"] = args ? args.peerIpv4NexthopAddress : undefined;
             resourceInputs["peerIpv6NexthopAddress"] = args ? args.peerIpv6NexthopAddress : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -469,6 +487,10 @@ export interface RouterPeerState {
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     */
+    enableIpv4?: pulumi.Input<boolean>;
+    /**
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
     enableIpv6?: pulumi.Input<boolean>;
@@ -481,6 +503,10 @@ export interface RouterPeerState {
      * Only IPv4 is supported.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * IPv4 address of the interface inside Google Cloud Platform.
+     */
+    ipv4NexthopAddress?: pulumi.Input<string>;
     /**
      * IPv6 address of the interface inside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -516,6 +542,10 @@ export interface RouterPeerState {
      * Only IPv4 is supported. Required if `ipAddress` is set.
      */
     peerIpAddress?: pulumi.Input<string>;
+    /**
+     * IPv4 address of the BGP interface outside Google Cloud Platform.
+     */
+    peerIpv4NexthopAddress?: pulumi.Input<string>;
     /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -593,6 +623,10 @@ export interface RouterPeerArgs {
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     */
+    enableIpv4?: pulumi.Input<boolean>;
+    /**
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      */
     enableIpv6?: pulumi.Input<boolean>;
@@ -605,6 +639,10 @@ export interface RouterPeerArgs {
      * Only IPv4 is supported.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * IPv4 address of the interface inside Google Cloud Platform.
+     */
+    ipv4NexthopAddress?: pulumi.Input<string>;
     /**
      * IPv6 address of the interface inside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -636,6 +674,10 @@ export interface RouterPeerArgs {
      * Only IPv4 is supported. Required if `ipAddress` is set.
      */
     peerIpAddress?: pulumi.Input<string>;
+    /**
+     * IPv4 address of the BGP interface outside Google Cloud Platform.
+     */
+    peerIpv4NexthopAddress?: pulumi.Input<string>;
     /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.

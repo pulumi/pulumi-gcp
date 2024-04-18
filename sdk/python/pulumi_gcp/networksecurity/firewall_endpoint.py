@@ -373,6 +373,7 @@ class FirewallEndpoint(pulumi.CustomResource):
             name="my-firewall-endpoint",
             parent="organizations/123456789",
             location="us-central1-a",
+            billing_project_id="my-project-name",
             labels={
                 "foo": "bar",
             })
@@ -426,6 +427,7 @@ class FirewallEndpoint(pulumi.CustomResource):
             name="my-firewall-endpoint",
             parent="organizations/123456789",
             location="us-central1-a",
+            billing_project_id="my-project-name",
             labels={
                 "foo": "bar",
             })

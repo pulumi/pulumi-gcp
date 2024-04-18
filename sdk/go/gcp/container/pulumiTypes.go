@@ -10439,8 +10439,6 @@ type ClusterAddonsConfig struct {
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-	//
-	// This example `addonsConfig` disables two addons:
 	ConfigConnectorConfig *ClusterAddonsConfigConfigConnectorConfig `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -10490,6 +10488,12 @@ type ClusterAddonsConfig struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig *ClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfig"`
+	// .
+	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+	// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+	//
+	// This example `addonsConfig` disables two addons:
+	StatefulHaConfig *ClusterAddonsConfigStatefulHaConfig `pulumi:"statefulHaConfig"`
 }
 
 // ClusterAddonsConfigInput is an input type that accepts ClusterAddonsConfigArgs and ClusterAddonsConfigOutput values.
@@ -10508,8 +10512,6 @@ type ClusterAddonsConfigArgs struct {
 	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-	//
-	// This example `addonsConfig` disables two addons:
 	ConfigConnectorConfig ClusterAddonsConfigConfigConnectorConfigPtrInput `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -10559,6 +10561,12 @@ type ClusterAddonsConfigArgs struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig ClusterAddonsConfigNetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
+	// .
+	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+	// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+	//
+	// This example `addonsConfig` disables two addons:
+	StatefulHaConfig ClusterAddonsConfigStatefulHaConfigPtrInput `pulumi:"statefulHaConfig"`
 }
 
 func (ClusterAddonsConfigArgs) ElementType() reflect.Type {
@@ -10645,8 +10653,6 @@ func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunC
 
 // .
 // The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig { return v.ConfigConnectorConfig }).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
 }
@@ -10737,6 +10743,15 @@ func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetw
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// .
+// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigOutput) StatefulHaConfig() ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigStatefulHaConfig { return v.StatefulHaConfig }).(ClusterAddonsConfigStatefulHaConfigPtrOutput)
+}
+
 type ClusterAddonsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterAddonsConfigPtrOutput) ElementType() reflect.Type {
@@ -10773,8 +10788,6 @@ func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudr
 
 // .
 // The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigPtrOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig {
 		if v == nil {
@@ -10910,6 +10923,20 @@ func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigN
 		}
 		return v.NetworkPolicyConfig
 	}).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
+}
+
+// .
+// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigPtrOutput) StatefulHaConfig() ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigStatefulHaConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StatefulHaConfig
+	}).(ClusterAddonsConfigStatefulHaConfigPtrOutput)
 }
 
 type ClusterAddonsConfigCloudrunConfig struct {
@@ -12623,6 +12650,143 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolP
 			return nil
 		}
 		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigStatefulHaConfig struct {
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigStatefulHaConfigInput is an input type that accepts ClusterAddonsConfigStatefulHaConfigArgs and ClusterAddonsConfigStatefulHaConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigStatefulHaConfigInput` via:
+//
+//	ClusterAddonsConfigStatefulHaConfigArgs{...}
+type ClusterAddonsConfigStatefulHaConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigStatefulHaConfigOutput() ClusterAddonsConfigStatefulHaConfigOutput
+	ToClusterAddonsConfigStatefulHaConfigOutputWithContext(context.Context) ClusterAddonsConfigStatefulHaConfigOutput
+}
+
+type ClusterAddonsConfigStatefulHaConfigArgs struct {
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigStatefulHaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigStatefulHaConfigArgs) ToClusterAddonsConfigStatefulHaConfigOutput() ClusterAddonsConfigStatefulHaConfigOutput {
+	return i.ToClusterAddonsConfigStatefulHaConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigStatefulHaConfigArgs) ToClusterAddonsConfigStatefulHaConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigStatefulHaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigStatefulHaConfigOutput)
+}
+
+func (i ClusterAddonsConfigStatefulHaConfigArgs) ToClusterAddonsConfigStatefulHaConfigPtrOutput() ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return i.ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigStatefulHaConfigArgs) ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigStatefulHaConfigOutput).ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigStatefulHaConfigPtrInput is an input type that accepts ClusterAddonsConfigStatefulHaConfigArgs, ClusterAddonsConfigStatefulHaConfigPtr and ClusterAddonsConfigStatefulHaConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigStatefulHaConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigStatefulHaConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigStatefulHaConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigStatefulHaConfigPtrOutput() ClusterAddonsConfigStatefulHaConfigPtrOutput
+	ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigStatefulHaConfigPtrOutput
+}
+
+type clusterAddonsConfigStatefulHaConfigPtrType ClusterAddonsConfigStatefulHaConfigArgs
+
+func ClusterAddonsConfigStatefulHaConfigPtr(v *ClusterAddonsConfigStatefulHaConfigArgs) ClusterAddonsConfigStatefulHaConfigPtrInput {
+	return (*clusterAddonsConfigStatefulHaConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigStatefulHaConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigStatefulHaConfigPtrType) ToClusterAddonsConfigStatefulHaConfigPtrOutput() ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return i.ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigStatefulHaConfigPtrType) ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigStatefulHaConfigPtrOutput)
+}
+
+type ClusterAddonsConfigStatefulHaConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigStatefulHaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigOutput) ToClusterAddonsConfigStatefulHaConfigOutput() ClusterAddonsConfigStatefulHaConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigOutput) ToClusterAddonsConfigStatefulHaConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigStatefulHaConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigOutput) ToClusterAddonsConfigStatefulHaConfigPtrOutput() ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return o.ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigOutput) ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigStatefulHaConfig) *ClusterAddonsConfigStatefulHaConfig {
+		return &v
+	}).(ClusterAddonsConfigStatefulHaConfigPtrOutput)
+}
+
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+func (o ClusterAddonsConfigStatefulHaConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigStatefulHaConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigStatefulHaConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigStatefulHaConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigPtrOutput) ToClusterAddonsConfigStatefulHaConfigPtrOutput() ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigPtrOutput) ToClusterAddonsConfigStatefulHaConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigStatefulHaConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigStatefulHaConfigPtrOutput) Elem() ClusterAddonsConfigStatefulHaConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigStatefulHaConfig) ClusterAddonsConfigStatefulHaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigStatefulHaConfig
+		return ret
+	}).(ClusterAddonsConfigStatefulHaConfigOutput)
+}
+
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+func (o ClusterAddonsConfigStatefulHaConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigStatefulHaConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -39565,6 +39729,8 @@ type GetClusterAddonsConfig struct {
 	KalmConfigs []GetClusterAddonsConfigKalmConfig `pulumi:"kalmConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs []GetClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfigs"`
+	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+	StatefulHaConfigs []GetClusterAddonsConfigStatefulHaConfig `pulumi:"statefulHaConfigs"`
 }
 
 // GetClusterAddonsConfigInput is an input type that accepts GetClusterAddonsConfigArgs and GetClusterAddonsConfigOutput values.
@@ -39603,6 +39769,8 @@ type GetClusterAddonsConfigArgs struct {
 	KalmConfigs GetClusterAddonsConfigKalmConfigArrayInput `pulumi:"kalmConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs GetClusterAddonsConfigNetworkPolicyConfigArrayInput `pulumi:"networkPolicyConfigs"`
+	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+	StatefulHaConfigs GetClusterAddonsConfigStatefulHaConfigArrayInput `pulumi:"statefulHaConfigs"`
 }
 
 func (GetClusterAddonsConfigArgs) ElementType() reflect.Type {
@@ -39728,6 +39896,11 @@ func (o GetClusterAddonsConfigOutput) NetworkPolicyConfigs() GetClusterAddonsCon
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigNetworkPolicyConfig {
 		return v.NetworkPolicyConfigs
 	}).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
+}
+
+// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigOutput) StatefulHaConfigs() GetClusterAddonsConfigStatefulHaConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigStatefulHaConfig { return v.StatefulHaConfigs }).(GetClusterAddonsConfigStatefulHaConfigArrayOutput)
 }
 
 type GetClusterAddonsConfigArrayOutput struct{ *pulumi.OutputState }
@@ -40894,6 +41067,100 @@ func (o GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigNetworkPolicyConfig {
 		return vs[0].([]GetClusterAddonsConfigNetworkPolicyConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigNetworkPolicyConfigOutput)
+}
+
+type GetClusterAddonsConfigStatefulHaConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigStatefulHaConfigInput is an input type that accepts GetClusterAddonsConfigStatefulHaConfigArgs and GetClusterAddonsConfigStatefulHaConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigStatefulHaConfigInput` via:
+//
+//	GetClusterAddonsConfigStatefulHaConfigArgs{...}
+type GetClusterAddonsConfigStatefulHaConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigStatefulHaConfigOutput() GetClusterAddonsConfigStatefulHaConfigOutput
+	ToGetClusterAddonsConfigStatefulHaConfigOutputWithContext(context.Context) GetClusterAddonsConfigStatefulHaConfigOutput
+}
+
+type GetClusterAddonsConfigStatefulHaConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigStatefulHaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigStatefulHaConfigArgs) ToGetClusterAddonsConfigStatefulHaConfigOutput() GetClusterAddonsConfigStatefulHaConfigOutput {
+	return i.ToGetClusterAddonsConfigStatefulHaConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigStatefulHaConfigArgs) ToGetClusterAddonsConfigStatefulHaConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigStatefulHaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigStatefulHaConfigOutput)
+}
+
+// GetClusterAddonsConfigStatefulHaConfigArrayInput is an input type that accepts GetClusterAddonsConfigStatefulHaConfigArray and GetClusterAddonsConfigStatefulHaConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigStatefulHaConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigStatefulHaConfigArray{ GetClusterAddonsConfigStatefulHaConfigArgs{...} }
+type GetClusterAddonsConfigStatefulHaConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigStatefulHaConfigArrayOutput() GetClusterAddonsConfigStatefulHaConfigArrayOutput
+	ToGetClusterAddonsConfigStatefulHaConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigStatefulHaConfigArrayOutput
+}
+
+type GetClusterAddonsConfigStatefulHaConfigArray []GetClusterAddonsConfigStatefulHaConfigInput
+
+func (GetClusterAddonsConfigStatefulHaConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigStatefulHaConfigArray) ToGetClusterAddonsConfigStatefulHaConfigArrayOutput() GetClusterAddonsConfigStatefulHaConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigStatefulHaConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigStatefulHaConfigArray) ToGetClusterAddonsConfigStatefulHaConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigStatefulHaConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigStatefulHaConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigStatefulHaConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigStatefulHaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigStatefulHaConfigOutput) ToGetClusterAddonsConfigStatefulHaConfigOutput() GetClusterAddonsConfigStatefulHaConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigStatefulHaConfigOutput) ToGetClusterAddonsConfigStatefulHaConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigStatefulHaConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigStatefulHaConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigStatefulHaConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigStatefulHaConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigStatefulHaConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigStatefulHaConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigStatefulHaConfigArrayOutput) ToGetClusterAddonsConfigStatefulHaConfigArrayOutput() GetClusterAddonsConfigStatefulHaConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigStatefulHaConfigArrayOutput) ToGetClusterAddonsConfigStatefulHaConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigStatefulHaConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigStatefulHaConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigStatefulHaConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigStatefulHaConfig {
+		return vs[0].([]GetClusterAddonsConfigStatefulHaConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigStatefulHaConfigOutput)
 }
 
 type GetClusterAuthenticatorGroupsConfig struct {
@@ -54826,6 +55093,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigKalmConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigKalmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfigInput)(nil)).Elem(), ClusterAddonsConfigStatefulHaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigStatefulHaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigPtrInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBinaryAuthorizationInput)(nil)).Elem(), ClusterBinaryAuthorizationArgs{})
@@ -55162,6 +55431,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigKalmConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigKalmConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfigInput)(nil)).Elem(), GetClusterAddonsConfigStatefulHaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigStatefulHaConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigArrayInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterBinaryAuthorizationInput)(nil)).Elem(), GetClusterBinaryAuthorizationArgs{})
@@ -55562,6 +55833,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigStatefulHaConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigStatefulHaConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterBinaryAuthorizationOutput{})
@@ -55898,6 +56171,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigStatefulHaConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigStatefulHaConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterBinaryAuthorizationOutput{})

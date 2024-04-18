@@ -234,6 +234,13 @@ class DataStoreIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="(default)",
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
         default = gcp.datastore.DataStoreIndex("default",
             kind="foo",
             properties=[
@@ -317,6 +324,13 @@ class DataStoreIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="(default)",
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
         default = gcp.datastore.DataStoreIndex("default",
             kind="foo",
             properties=[

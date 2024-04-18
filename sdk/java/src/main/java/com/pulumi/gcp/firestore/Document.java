@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
  * `gcp.appengine.Application` resource with `database_type` set to
  * `&#34;CLOUD_FIRESTORE&#34;`. Your Firestore location will be the same as
  * the App Engine location specified.
- * Note: The surface does not support configurable database id. Only `(default)`
- * is allowed for the database parameter.
  * 
  * ## Example Usage
  * 

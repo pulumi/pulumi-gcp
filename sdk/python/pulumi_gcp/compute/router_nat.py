@@ -21,6 +21,7 @@ class RouterNatArgs:
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -64,6 +65,10 @@ class RouterNatArgs:
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
                For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
+               Supported values include:
+               `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+               `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -108,6 +113,8 @@ class RouterNatArgs:
             pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
             pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+        if endpoint_types is not None:
+            pulumi.set(__self__, "endpoint_types", endpoint_types)
         if icmp_idle_timeout_sec is not None:
             pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
         if log_config is not None:
@@ -220,6 +227,21 @@ class RouterNatArgs:
     @enable_endpoint_independent_mapping.setter
     def enable_endpoint_independent_mapping(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_endpoint_independent_mapping", value)
+
+    @property
+    @pulumi.getter(name="endpointTypes")
+    def endpoint_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the endpoint Types supported by the NAT Gateway.
+        Supported values include:
+        `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+        `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+        """
+        return pulumi.get(self, "endpoint_types")
+
+    @endpoint_types.setter
+    def endpoint_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "endpoint_types", value)
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")
@@ -439,6 +461,7 @@ class _RouterNatState:
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -469,6 +492,10 @@ class _RouterNatState:
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
                For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
+               Supported values include:
+               `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+               `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -526,6 +553,8 @@ class _RouterNatState:
             pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         if enable_endpoint_independent_mapping is not None:
             pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+        if endpoint_types is not None:
+            pulumi.set(__self__, "endpoint_types", endpoint_types)
         if icmp_idle_timeout_sec is not None:
             pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
         if log_config is not None:
@@ -605,6 +634,21 @@ class _RouterNatState:
     @enable_endpoint_independent_mapping.setter
     def enable_endpoint_independent_mapping(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_endpoint_independent_mapping", value)
+
+    @property
+    @pulumi.getter(name="endpointTypes")
+    def endpoint_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the endpoint Types supported by the NAT Gateway.
+        Supported values include:
+        `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+        `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+        """
+        return pulumi.get(self, "endpoint_types")
+
+    @endpoint_types.setter
+    def endpoint_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "endpoint_types", value)
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")
@@ -863,6 +907,7 @@ class RouterNat(pulumi.CustomResource):
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -1112,6 +1157,10 @@ class RouterNat(pulumi.CustomResource):
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
                For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
+               Supported values include:
+               `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+               `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -1405,6 +1454,7 @@ class RouterNat(pulumi.CustomResource):
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+                 endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -1435,6 +1485,7 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["drain_nat_ips"] = drain_nat_ips
             __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
+            __props__.__dict__["endpoint_types"] = endpoint_types
             __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
@@ -1470,6 +1521,7 @@ class RouterNat(pulumi.CustomResource):
             drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
+            endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
             log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
             max_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -1505,6 +1557,10 @@ class RouterNat(pulumi.CustomResource):
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
                For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
+               Supported values include:
+               `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+               `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -1563,6 +1619,7 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["drain_nat_ips"] = drain_nat_ips
         __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
         __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
+        __props__.__dict__["endpoint_types"] = endpoint_types
         __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
@@ -1613,6 +1670,17 @@ class RouterNat(pulumi.CustomResource):
         For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
+
+    @property
+    @pulumi.getter(name="endpointTypes")
+    def endpoint_types(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Specifies the endpoint Types supported by the NAT Gateway.
+        Supported values include:
+        `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+        `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+        """
+        return pulumi.get(self, "endpoint_types")
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")

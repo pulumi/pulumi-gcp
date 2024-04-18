@@ -665,6 +665,338 @@ func (o TagValueIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetTagKeysKey struct {
+	// Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime string `pulumi:"createTime"`
+	// User-assigned description of the TagKey.
+	Description string `pulumi:"description"`
+	// an identifier for the resource with format `tagKeys/{{name}}`
+	Name string `pulumi:"name"`
+	// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
+	NamespacedName string `pulumi:"namespacedName"`
+	// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
+	Parent string `pulumi:"parent"`
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines.
+	Purpose string `pulumi:"purpose"`
+	// Purpose data corresponds to the policy system that the tag is intended for. See documentation for Purpose for formatting of this field.
+	PurposeData map[string]string `pulumi:"purposeData"`
+	// The user friendly name for a TagKey. The short name should be unique for TagKeys wihting the same tag namespace.
+	ShortName string `pulumi:"shortName"`
+	// Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetTagKeysKeyInput is an input type that accepts GetTagKeysKeyArgs and GetTagKeysKeyOutput values.
+// You can construct a concrete instance of `GetTagKeysKeyInput` via:
+//
+//	GetTagKeysKeyArgs{...}
+type GetTagKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetTagKeysKeyOutput() GetTagKeysKeyOutput
+	ToGetTagKeysKeyOutputWithContext(context.Context) GetTagKeysKeyOutput
+}
+
+type GetTagKeysKeyArgs struct {
+	// Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// User-assigned description of the TagKey.
+	Description pulumi.StringInput `pulumi:"description"`
+	// an identifier for the resource with format `tagKeys/{{name}}`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
+	NamespacedName pulumi.StringInput `pulumi:"namespacedName"`
+	// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines.
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// Purpose data corresponds to the policy system that the tag is intended for. See documentation for Purpose for formatting of this field.
+	PurposeData pulumi.StringMapInput `pulumi:"purposeData"`
+	// The user friendly name for a TagKey. The short name should be unique for TagKeys wihting the same tag namespace.
+	ShortName pulumi.StringInput `pulumi:"shortName"`
+	// Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetTagKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagKeysKey)(nil)).Elem()
+}
+
+func (i GetTagKeysKeyArgs) ToGetTagKeysKeyOutput() GetTagKeysKeyOutput {
+	return i.ToGetTagKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetTagKeysKeyArgs) ToGetTagKeysKeyOutputWithContext(ctx context.Context) GetTagKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagKeysKeyOutput)
+}
+
+// GetTagKeysKeyArrayInput is an input type that accepts GetTagKeysKeyArray and GetTagKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetTagKeysKeyArrayInput` via:
+//
+//	GetTagKeysKeyArray{ GetTagKeysKeyArgs{...} }
+type GetTagKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetTagKeysKeyArrayOutput() GetTagKeysKeyArrayOutput
+	ToGetTagKeysKeyArrayOutputWithContext(context.Context) GetTagKeysKeyArrayOutput
+}
+
+type GetTagKeysKeyArray []GetTagKeysKeyInput
+
+func (GetTagKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagKeysKey)(nil)).Elem()
+}
+
+func (i GetTagKeysKeyArray) ToGetTagKeysKeyArrayOutput() GetTagKeysKeyArrayOutput {
+	return i.ToGetTagKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagKeysKeyArray) ToGetTagKeysKeyArrayOutputWithContext(ctx context.Context) GetTagKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagKeysKeyArrayOutput)
+}
+
+type GetTagKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetTagKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagKeysKey)(nil)).Elem()
+}
+
+func (o GetTagKeysKeyOutput) ToGetTagKeysKeyOutput() GetTagKeysKeyOutput {
+	return o
+}
+
+func (o GetTagKeysKeyOutput) ToGetTagKeysKeyOutputWithContext(ctx context.Context) GetTagKeysKeyOutput {
+	return o
+}
+
+// Creation time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o GetTagKeysKeyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User-assigned description of the TagKey.
+func (o GetTagKeysKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// an identifier for the resource with format `tagKeys/{{name}}`
+func (o GetTagKeysKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
+func (o GetTagKeysKeyOutput) NamespacedName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.NamespacedName }).(pulumi.StringOutput)
+}
+
+// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
+func (o GetTagKeysKeyOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines.
+func (o GetTagKeysKeyOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// Purpose data corresponds to the policy system that the tag is intended for. See documentation for Purpose for formatting of this field.
+func (o GetTagKeysKeyOutput) PurposeData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTagKeysKey) map[string]string { return v.PurposeData }).(pulumi.StringMapOutput)
+}
+
+// The user friendly name for a TagKey. The short name should be unique for TagKeys wihting the same tag namespace.
+func (o GetTagKeysKeyOutput) ShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.ShortName }).(pulumi.StringOutput)
+}
+
+// Update time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o GetTagKeysKeyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetTagKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagKeysKey)(nil)).Elem()
+}
+
+func (o GetTagKeysKeyArrayOutput) ToGetTagKeysKeyArrayOutput() GetTagKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetTagKeysKeyArrayOutput) ToGetTagKeysKeyArrayOutputWithContext(ctx context.Context) GetTagKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetTagKeysKeyArrayOutput) Index(i pulumi.IntInput) GetTagKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagKeysKey {
+		return vs[0].([]GetTagKeysKey)[vs[1].(int)]
+	}).(GetTagKeysKeyOutput)
+}
+
+type GetTagValuesValue struct {
+	// Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime string `pulumi:"createTime"`
+	// User-assigned description of the TagValue.
+	Description string `pulumi:"description"`
+	// an identifier for the resource with format `tagValues/{{name}}`
+	Name string `pulumi:"name"`
+	// Namespaced name of the TagValue.
+	NamespacedName string `pulumi:"namespacedName"`
+	// The resource name of the parent tagKey in format `tagKey/{name}`.
+	Parent string `pulumi:"parent"`
+	// User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+	ShortName string `pulumi:"shortName"`
+	// Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetTagValuesValueInput is an input type that accepts GetTagValuesValueArgs and GetTagValuesValueOutput values.
+// You can construct a concrete instance of `GetTagValuesValueInput` via:
+//
+//	GetTagValuesValueArgs{...}
+type GetTagValuesValueInput interface {
+	pulumi.Input
+
+	ToGetTagValuesValueOutput() GetTagValuesValueOutput
+	ToGetTagValuesValueOutputWithContext(context.Context) GetTagValuesValueOutput
+}
+
+type GetTagValuesValueArgs struct {
+	// Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// User-assigned description of the TagValue.
+	Description pulumi.StringInput `pulumi:"description"`
+	// an identifier for the resource with format `tagValues/{{name}}`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespaced name of the TagValue.
+	NamespacedName pulumi.StringInput `pulumi:"namespacedName"`
+	// The resource name of the parent tagKey in format `tagKey/{name}`.
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+	ShortName pulumi.StringInput `pulumi:"shortName"`
+	// Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetTagValuesValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagValuesValue)(nil)).Elem()
+}
+
+func (i GetTagValuesValueArgs) ToGetTagValuesValueOutput() GetTagValuesValueOutput {
+	return i.ToGetTagValuesValueOutputWithContext(context.Background())
+}
+
+func (i GetTagValuesValueArgs) ToGetTagValuesValueOutputWithContext(ctx context.Context) GetTagValuesValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagValuesValueOutput)
+}
+
+// GetTagValuesValueArrayInput is an input type that accepts GetTagValuesValueArray and GetTagValuesValueArrayOutput values.
+// You can construct a concrete instance of `GetTagValuesValueArrayInput` via:
+//
+//	GetTagValuesValueArray{ GetTagValuesValueArgs{...} }
+type GetTagValuesValueArrayInput interface {
+	pulumi.Input
+
+	ToGetTagValuesValueArrayOutput() GetTagValuesValueArrayOutput
+	ToGetTagValuesValueArrayOutputWithContext(context.Context) GetTagValuesValueArrayOutput
+}
+
+type GetTagValuesValueArray []GetTagValuesValueInput
+
+func (GetTagValuesValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagValuesValue)(nil)).Elem()
+}
+
+func (i GetTagValuesValueArray) ToGetTagValuesValueArrayOutput() GetTagValuesValueArrayOutput {
+	return i.ToGetTagValuesValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagValuesValueArray) ToGetTagValuesValueArrayOutputWithContext(ctx context.Context) GetTagValuesValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagValuesValueArrayOutput)
+}
+
+type GetTagValuesValueOutput struct{ *pulumi.OutputState }
+
+func (GetTagValuesValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagValuesValue)(nil)).Elem()
+}
+
+func (o GetTagValuesValueOutput) ToGetTagValuesValueOutput() GetTagValuesValueOutput {
+	return o
+}
+
+func (o GetTagValuesValueOutput) ToGetTagValuesValueOutputWithContext(ctx context.Context) GetTagValuesValueOutput {
+	return o
+}
+
+// Creation time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o GetTagValuesValueOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User-assigned description of the TagValue.
+func (o GetTagValuesValueOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// an identifier for the resource with format `tagValues/{{name}}`
+func (o GetTagValuesValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespaced name of the TagValue.
+func (o GetTagValuesValueOutput) NamespacedName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.NamespacedName }).(pulumi.StringOutput)
+}
+
+// The resource name of the parent tagKey in format `tagKey/{name}`.
+func (o GetTagValuesValueOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+func (o GetTagValuesValueOutput) ShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.ShortName }).(pulumi.StringOutput)
+}
+
+// Update time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o GetTagValuesValueOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagValuesValue) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetTagValuesValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagValuesValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagValuesValue)(nil)).Elem()
+}
+
+func (o GetTagValuesValueArrayOutput) ToGetTagValuesValueArrayOutput() GetTagValuesValueArrayOutput {
+	return o
+}
+
+func (o GetTagValuesValueArrayOutput) ToGetTagValuesValueArrayOutputWithContext(ctx context.Context) GetTagValuesValueArrayOutput {
+	return o
+}
+
+func (o GetTagValuesValueArrayOutput) Index(i pulumi.IntInput) GetTagValuesValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagValuesValue {
+		return vs[0].([]GetTagValuesValue)[vs[1].(int)]
+	}).(GetTagValuesValueOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingConditionInput)(nil)).Elem(), TagKeyIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyIamBindingConditionPtrInput)(nil)).Elem(), TagKeyIamBindingConditionArgs{})
@@ -674,6 +1006,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamBindingConditionPtrInput)(nil)).Elem(), TagValueIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamMemberConditionInput)(nil)).Elem(), TagValueIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagValueIamMemberConditionPtrInput)(nil)).Elem(), TagValueIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagKeysKeyInput)(nil)).Elem(), GetTagKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagKeysKeyArrayInput)(nil)).Elem(), GetTagKeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagValuesValueInput)(nil)).Elem(), GetTagValuesValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagValuesValueArrayInput)(nil)).Elem(), GetTagValuesValueArray{})
 	pulumi.RegisterOutputType(TagKeyIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(TagKeyIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TagKeyIamMemberConditionOutput{})
@@ -682,4 +1018,8 @@ func init() {
 	pulumi.RegisterOutputType(TagValueIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TagValueIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(TagValueIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetTagKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetTagKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTagValuesValueOutput{})
+	pulumi.RegisterOutputType(GetTagValuesValueArrayOutput{})
 }

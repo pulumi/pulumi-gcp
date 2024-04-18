@@ -331,6 +331,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> Enable { get; private set; } = null!;
 
         /// <summary>
+        /// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        /// </summary>
+        [Output("enableIpv4")]
+        public Output<bool> EnableIpv4 { get; private set; } = null!;
+
+        /// <summary>
         /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         /// </summary>
         [Output("enableIpv6")]
@@ -348,6 +354,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv4 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        [Output("ipv4NexthopAddress")]
+        public Output<string> Ipv4NexthopAddress { get; private set; } = null!;
 
         /// <summary>
         /// IPv6 address of the interface inside Google Cloud Platform.
@@ -395,6 +407,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("peerIpAddress")]
         public Output<string> PeerIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv4 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        [Output("peerIpv4NexthopAddress")]
+        public Output<string> PeerIpv4NexthopAddress { get; private set; } = null!;
 
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.
@@ -547,6 +565,12 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        /// </summary>
+        [Input("enableIpv4")]
+        public Input<bool>? EnableIpv4 { get; set; }
+
+        /// <summary>
         /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         /// </summary>
         [Input("enableIpv6")]
@@ -564,6 +588,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        [Input("ipv4NexthopAddress")]
+        public Input<string>? Ipv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the interface inside Google Cloud Platform.
@@ -605,6 +635,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        [Input("peerIpv4NexthopAddress")]
+        public Input<string>? PeerIpv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.
@@ -719,6 +755,12 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+        /// </summary>
+        [Input("enableIpv4")]
+        public Input<bool>? EnableIpv4 { get; set; }
+
+        /// <summary>
         /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         /// </summary>
         [Input("enableIpv6")]
@@ -736,6 +778,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the interface inside Google Cloud Platform.
+        /// </summary>
+        [Input("ipv4NexthopAddress")]
+        public Input<string>? Ipv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the interface inside Google Cloud Platform.
@@ -783,6 +831,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv4 address of the BGP interface outside Google Cloud Platform.
+        /// </summary>
+        [Input("peerIpv4NexthopAddress")]
+        public Input<string>? PeerIpv4NexthopAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.

@@ -28038,6 +28038,7 @@ class RouterBgpArgs:
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]] = None,
+                 identifier_range: Optional[pulumi.Input[str]] = None,
                  keepalive_interval: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] asn: Local BGP Autonomous System Number (ASN). Must be an RFC6996
@@ -28059,6 +28060,11 @@ class RouterBgpArgs:
                ranges will be advertised in addition to any specified groups.
                Leave this field blank to advertise no custom IP ranges.
                Structure is documented below.
+        :param pulumi.Input[str] identifier_range: Explicitly specifies a range of valid BGP Identifiers for this Router.
+               It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+               size at least /30, even if the BGP sessions are over IPv6. It must
+               not overlap with any IPv4 BGP session ranges. Other vendors commonly
+               call this router ID.
         :param pulumi.Input[int] keepalive_interval: The interval in seconds between BGP keepalive messages that are sent
                to the peer. Hold time is three times the interval at which keepalive
                messages are sent, and the hold time is the maximum number of seconds
@@ -28076,6 +28082,8 @@ class RouterBgpArgs:
             pulumi.set(__self__, "advertised_groups", advertised_groups)
         if advertised_ip_ranges is not None:
             pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+        if identifier_range is not None:
+            pulumi.set(__self__, "identifier_range", identifier_range)
         if keepalive_interval is not None:
             pulumi.set(__self__, "keepalive_interval", keepalive_interval)
 
@@ -28141,6 +28149,22 @@ class RouterBgpArgs:
     @advertised_ip_ranges.setter
     def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpAdvertisedIpRangeArgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="identifierRange")
+    def identifier_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Explicitly specifies a range of valid BGP Identifiers for this Router.
+        It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+        size at least /30, even if the BGP sessions are over IPv6. It must
+        not overlap with any IPv4 BGP session ranges. Other vendors commonly
+        call this router ID.
+        """
+        return pulumi.get(self, "identifier_range")
+
+    @identifier_range.setter
+    def identifier_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identifier_range", value)
 
     @property
     @pulumi.getter(name="keepaliveInterval")

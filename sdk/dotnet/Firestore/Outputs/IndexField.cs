@@ -14,11 +14,9 @@ namespace Pulumi.Gcp.Firestore.Outputs
     public sealed class IndexField
     {
         /// <summary>
-        /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-        /// be specified.
+        /// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+        /// `vectorConfig` can be specified.
         /// Possible values are: `CONTAINS`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? ArrayConfig;
         /// <summary>
@@ -27,10 +25,16 @@ namespace Pulumi.Gcp.Firestore.Outputs
         public readonly string? FieldPath;
         /// <summary>
         /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
-        /// Only one of `order` and `arrayConfig` can be specified.
+        /// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
         /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         public readonly string? Order;
+        /// <summary>
+        /// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+        /// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.IndexFieldVectorConfig? VectorConfig;
 
         [OutputConstructor]
         private IndexField(
@@ -38,11 +42,14 @@ namespace Pulumi.Gcp.Firestore.Outputs
 
             string? fieldPath,
 
-            string? order)
+            string? order,
+
+            Outputs.IndexFieldVectorConfig? vectorConfig)
         {
             ArrayConfig = arrayConfig;
             FieldPath = fieldPath;
             Order = order;
+            VectorConfig = vectorConfig;
         }
     }
 }

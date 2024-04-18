@@ -292,6 +292,13 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly enableEndpointIndependentMapping!: pulumi.Output<boolean>;
     /**
+     * Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     */
+    public readonly endpointTypes!: pulumi.Output<string[]>;
+    /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
     public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
@@ -412,6 +419,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["drainNatIps"] = state ? state.drainNatIps : undefined;
             resourceInputs["enableDynamicPortAllocation"] = state ? state.enableDynamicPortAllocation : undefined;
             resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
+            resourceInputs["endpointTypes"] = state ? state.endpointTypes : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["maxPortsPerVm"] = state ? state.maxPortsPerVm : undefined;
@@ -441,6 +449,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["drainNatIps"] = args ? args.drainNatIps : undefined;
             resourceInputs["enableDynamicPortAllocation"] = args ? args.enableDynamicPortAllocation : undefined;
             resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
+            resourceInputs["endpointTypes"] = args ? args.endpointTypes : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["maxPortsPerVm"] = args ? args.maxPortsPerVm : undefined;
@@ -488,6 +497,13 @@ export interface RouterNatState {
      * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
     enableEndpointIndependentMapping?: pulumi.Input<boolean>;
+    /**
+     * Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     */
+    endpointTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
@@ -617,6 +633,13 @@ export interface RouterNatArgs {
      * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      */
     enableEndpointIndependentMapping?: pulumi.Input<boolean>;
+    /**
+     * Specifies the endpoint Types supported by the NAT Gateway.
+     * Supported values include:
+     * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
+     * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
+     */
+    endpointTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */

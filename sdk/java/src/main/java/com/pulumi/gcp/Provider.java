@@ -730,6 +730,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> osLoginCustomEndpoint() {
         return Codegen.optional(this.osLoginCustomEndpoint);
     }
+    @Export(name="parallelstoreCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parallelstoreCustomEndpoint;
+
+    public Output<Optional<String>> parallelstoreCustomEndpoint() {
+        return Codegen.optional(this.parallelstoreCustomEndpoint);
+    }
     @Export(name="privatecaCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privatecaCustomEndpoint;
 

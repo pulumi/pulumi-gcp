@@ -15,6 +15,11 @@ export const getTagKeyIamPolicy: typeof import("./getTagKeyIamPolicy").getTagKey
 export const getTagKeyIamPolicyOutput: typeof import("./getTagKeyIamPolicy").getTagKeyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getTagKeyIamPolicy","getTagKeyIamPolicyOutput"], () => require("./getTagKeyIamPolicy"));
 
+export { GetTagKeysArgs, GetTagKeysResult, GetTagKeysOutputArgs } from "./getTagKeys";
+export const getTagKeys: typeof import("./getTagKeys").getTagKeys = null as any;
+export const getTagKeysOutput: typeof import("./getTagKeys").getTagKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getTagKeys","getTagKeysOutput"], () => require("./getTagKeys"));
+
 export { GetTagValueArgs, GetTagValueResult, GetTagValueOutputArgs } from "./getTagValue";
 export const getTagValue: typeof import("./getTagValue").getTagValue = null as any;
 export const getTagValueOutput: typeof import("./getTagValue").getTagValueOutput = null as any;
@@ -24,6 +29,11 @@ export { GetTagValueIamPolicyArgs, GetTagValueIamPolicyResult, GetTagValueIamPol
 export const getTagValueIamPolicy: typeof import("./getTagValueIamPolicy").getTagValueIamPolicy = null as any;
 export const getTagValueIamPolicyOutput: typeof import("./getTagValueIamPolicy").getTagValueIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getTagValueIamPolicy","getTagValueIamPolicyOutput"], () => require("./getTagValueIamPolicy"));
+
+export { GetTagValuesArgs, GetTagValuesResult, GetTagValuesOutputArgs } from "./getTagValues";
+export const getTagValues: typeof import("./getTagValues").getTagValues = null as any;
+export const getTagValuesOutput: typeof import("./getTagValues").getTagValuesOutput = null as any;
+utilities.lazyLoad(exports, ["getTagValues","getTagValuesOutput"], () => require("./getTagValues"));
 
 export { LocationTagBindingArgs, LocationTagBindingState } from "./locationTagBinding";
 export type LocationTagBinding = import("./locationTagBinding").LocationTagBinding;

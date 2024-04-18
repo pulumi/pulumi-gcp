@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigStatefulHaConfig;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,8 +31,6 @@ public final class ClusterAddonsConfig {
     /**
      * @return .
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     private @Nullable ClusterAddonsConfigConfigConnectorConfig configConnectorConfig;
@@ -113,6 +112,15 @@ public final class ClusterAddonsConfig {
      * 
      */
     private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
+    /**
+     * @return .
+     * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+     * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
 
     private ClusterAddonsConfig() {}
     /**
@@ -125,8 +133,6 @@ public final class ClusterAddonsConfig {
     /**
      * @return .
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<ClusterAddonsConfigConfigConnectorConfig> configConnectorConfig() {
@@ -230,6 +236,17 @@ public final class ClusterAddonsConfig {
     public Optional<ClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfig() {
         return Optional.ofNullable(this.networkPolicyConfig);
     }
+    /**
+     * @return .
+     * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+     * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public Optional<ClusterAddonsConfigStatefulHaConfig> statefulHaConfig() {
+        return Optional.ofNullable(this.statefulHaConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -252,6 +269,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigIstioConfig istioConfig;
         private @Nullable ClusterAddonsConfigKalmConfig kalmConfig;
         private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
+        private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
         public Builder() {}
         public Builder(ClusterAddonsConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -267,6 +285,7 @@ public final class ClusterAddonsConfig {
     	      this.istioConfig = defaults.istioConfig;
     	      this.kalmConfig = defaults.kalmConfig;
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
+    	      this.statefulHaConfig = defaults.statefulHaConfig;
         }
 
         @CustomType.Setter
@@ -341,6 +360,12 @@ public final class ClusterAddonsConfig {
             this.networkPolicyConfig = networkPolicyConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder statefulHaConfig(@Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig) {
+
+            this.statefulHaConfig = statefulHaConfig;
+            return this;
+        }
         public ClusterAddonsConfig build() {
             final var _resultValue = new ClusterAddonsConfig();
             _resultValue.cloudrunConfig = cloudrunConfig;
@@ -355,6 +380,7 @@ public final class ClusterAddonsConfig {
             _resultValue.istioConfig = istioConfig;
             _resultValue.kalmConfig = kalmConfig;
             _resultValue.networkPolicyConfig = networkPolicyConfig;
+            _resultValue.statefulHaConfig = statefulHaConfig;
             return _resultValue;
         }
     }

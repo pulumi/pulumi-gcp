@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
 import java.util.Objects;
 
@@ -82,6 +83,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+    /**
+     * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
 
     private GetClusterAddonsConfig() {}
     /**
@@ -168,6 +174,13 @@ public final class GetClusterAddonsConfig {
     public List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs() {
         return this.networkPolicyConfigs;
     }
+    /**
+     * @return The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs() {
+        return this.statefulHaConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -190,6 +203,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
         private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+        private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
         public Builder() {}
         public Builder(GetClusterAddonsConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -205,6 +219,7 @@ public final class GetClusterAddonsConfig {
     	      this.istioConfigs = defaults.istioConfigs;
     	      this.kalmConfigs = defaults.kalmConfigs;
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
+    	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
 
         @CustomType.Setter
@@ -339,6 +354,17 @@ public final class GetClusterAddonsConfig {
         public Builder networkPolicyConfigs(GetClusterAddonsConfigNetworkPolicyConfig... networkPolicyConfigs) {
             return networkPolicyConfigs(List.of(networkPolicyConfigs));
         }
+        @CustomType.Setter
+        public Builder statefulHaConfigs(List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs) {
+            if (statefulHaConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "statefulHaConfigs");
+            }
+            this.statefulHaConfigs = statefulHaConfigs;
+            return this;
+        }
+        public Builder statefulHaConfigs(GetClusterAddonsConfigStatefulHaConfig... statefulHaConfigs) {
+            return statefulHaConfigs(List.of(statefulHaConfigs));
+        }
         public GetClusterAddonsConfig build() {
             final var _resultValue = new GetClusterAddonsConfig();
             _resultValue.cloudrunConfigs = cloudrunConfigs;
@@ -353,6 +379,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.istioConfigs = istioConfigs;
             _resultValue.kalmConfigs = kalmConfigs;
             _resultValue.networkPolicyConfigs = networkPolicyConfigs;
+            _resultValue.statefulHaConfigs = statefulHaConfigs;
             return _resultValue;
         }
     }

@@ -142,6 +142,21 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     * 
+     */
+    @Import(name="enableIpv4")
+    private @Nullable Output<Boolean> enableIpv4;
+
+    /**
+     * @return Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+     * 
+     */
+    public Optional<Output<Boolean>> enableIpv4() {
+        return Optional.ofNullable(this.enableIpv4);
+    }
+
+    /**
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      * 
      */
@@ -186,6 +201,21 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
+     * IPv4 address of the interface inside Google Cloud Platform.
+     * 
+     */
+    @Import(name="ipv4NexthopAddress")
+    private @Nullable Output<String> ipv4NexthopAddress;
+
+    /**
+     * @return IPv4 address of the interface inside Google Cloud Platform.
+     * 
+     */
+    public Optional<Output<String>> ipv4NexthopAddress() {
+        return Optional.ofNullable(this.ipv4NexthopAddress);
     }
 
     /**
@@ -301,6 +331,21 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * IPv4 address of the BGP interface outside Google Cloud Platform.
+     * 
+     */
+    @Import(name="peerIpv4NexthopAddress")
+    private @Nullable Output<String> peerIpv4NexthopAddress;
+
+    /**
+     * @return IPv4 address of the BGP interface outside Google Cloud Platform.
+     * 
+     */
+    public Optional<Output<String>> peerIpv4NexthopAddress() {
+        return Optional.ofNullable(this.peerIpv4NexthopAddress);
+    }
+
+    /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
      * If you do not specify the next hop addresses, Google Cloud automatically
@@ -404,15 +449,18 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.advertisedRoutePriority = $.advertisedRoutePriority;
         this.bfd = $.bfd;
         this.enable = $.enable;
+        this.enableIpv4 = $.enableIpv4;
         this.enableIpv6 = $.enableIpv6;
         this.interface_ = $.interface_;
         this.ipAddress = $.ipAddress;
+        this.ipv4NexthopAddress = $.ipv4NexthopAddress;
         this.ipv6NexthopAddress = $.ipv6NexthopAddress;
         this.managementType = $.managementType;
         this.md5AuthenticationKey = $.md5AuthenticationKey;
         this.name = $.name;
         this.peerAsn = $.peerAsn;
         this.peerIpAddress = $.peerIpAddress;
+        this.peerIpv4NexthopAddress = $.peerIpv4NexthopAddress;
         this.peerIpv6NexthopAddress = $.peerIpv6NexthopAddress;
         this.project = $.project;
         this.region = $.region;
@@ -621,6 +669,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableIpv4 Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv4(@Nullable Output<Boolean> enableIpv4) {
+            $.enableIpv4 = enableIpv4;
+            return this;
+        }
+
+        /**
+         * @param enableIpv4 Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv4(Boolean enableIpv4) {
+            return enableIpv4(Output.of(enableIpv4));
+        }
+
+        /**
          * @param enableIpv6 Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
          * 
          * @return builder
@@ -683,6 +752,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipv4NexthopAddress IPv4 address of the interface inside Google Cloud Platform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4NexthopAddress(@Nullable Output<String> ipv4NexthopAddress) {
+            $.ipv4NexthopAddress = ipv4NexthopAddress;
+            return this;
+        }
+
+        /**
+         * @param ipv4NexthopAddress IPv4 address of the interface inside Google Cloud Platform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4NexthopAddress(String ipv4NexthopAddress) {
+            return ipv4NexthopAddress(Output.of(ipv4NexthopAddress));
         }
 
         /**
@@ -831,6 +921,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder peerIpAddress(String peerIpAddress) {
             return peerIpAddress(Output.of(peerIpAddress));
+        }
+
+        /**
+         * @param peerIpv4NexthopAddress IPv4 address of the BGP interface outside Google Cloud Platform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerIpv4NexthopAddress(@Nullable Output<String> peerIpv4NexthopAddress) {
+            $.peerIpv4NexthopAddress = peerIpv4NexthopAddress;
+            return this;
+        }
+
+        /**
+         * @param peerIpv4NexthopAddress IPv4 address of the BGP interface outside Google Cloud Platform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerIpv4NexthopAddress(String peerIpv4NexthopAddress) {
+            return peerIpv4NexthopAddress(Output.of(peerIpv4NexthopAddress));
         }
 
         /**

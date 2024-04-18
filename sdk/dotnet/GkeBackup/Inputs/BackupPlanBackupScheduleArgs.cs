@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// <summary>
         /// A standard cron string that defines a repeating schedule for
         /// creating Backups via this BackupPlan.
+        /// This is mutually exclusive with the rpoConfig field since at most one
+        /// schedule can be defined for a BackupPlan.
         /// If this is defined, then backupRetainDays must also be defined.
         /// </summary>
         [Input("cronSchedule")]
@@ -25,6 +27,15 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
+
+        /// <summary>
+        /// Defines the RPO schedule configuration for this BackupPlan. This is mutually
+        /// exclusive with the cronSchedule field since at most one schedule can be defined
+        /// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("rpoConfig")]
+        public Input<Inputs.BackupPlanBackupScheduleRpoConfigArgs>? RpoConfig { get; set; }
 
         public BackupPlanBackupScheduleArgs()
         {

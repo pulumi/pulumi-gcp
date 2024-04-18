@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class RecordSetRoutingPolicyGeo {
     /**
      * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     private @Nullable RecordSetRoutingPolicyGeoHealthCheckedTargets healthCheckedTargets;
@@ -34,7 +34,7 @@ public final class RecordSetRoutingPolicyGeo {
     private RecordSetRoutingPolicyGeo() {}
     /**
      * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-     * Structure is document below.
+     * Structure is documented below.
      * 
      */
     public Optional<RecordSetRoutingPolicyGeoHealthCheckedTargets> healthCheckedTargets() {

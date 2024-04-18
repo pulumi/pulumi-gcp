@@ -138,6 +138,7 @@ class ProviderArgs:
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -431,6 +432,8 @@ class ProviderArgs:
             pulumi.set(__self__, "os_config_custom_endpoint", os_config_custom_endpoint)
         if os_login_custom_endpoint is not None:
             pulumi.set(__self__, "os_login_custom_endpoint", os_login_custom_endpoint)
+        if parallelstore_custom_endpoint is not None:
+            pulumi.set(__self__, "parallelstore_custom_endpoint", parallelstore_custom_endpoint)
         if privateca_custom_endpoint is not None:
             pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
         if project is None:
@@ -1634,6 +1637,15 @@ class ProviderArgs:
         pulumi.set(self, "os_login_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="parallelstoreCustomEndpoint")
+    def parallelstore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parallelstore_custom_endpoint")
+
+    @parallelstore_custom_endpoint.setter
+    def parallelstore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parallelstore_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="privatecaCustomEndpoint")
     def privateca_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "privateca_custom_endpoint")
@@ -2158,6 +2170,7 @@ class Provider(pulumi.ProviderResource):
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2362,6 +2375,7 @@ class Provider(pulumi.ProviderResource):
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2538,6 +2552,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["org_policy_custom_endpoint"] = org_policy_custom_endpoint
             __props__.__dict__["os_config_custom_endpoint"] = os_config_custom_endpoint
             __props__.__dict__["os_login_custom_endpoint"] = os_login_custom_endpoint
+            __props__.__dict__["parallelstore_custom_endpoint"] = parallelstore_custom_endpoint
             __props__.__dict__["privateca_custom_endpoint"] = privateca_custom_endpoint
             if project is None:
                 project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
@@ -3183,6 +3198,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="osLoginCustomEndpoint")
     def os_login_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "os_login_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="parallelstoreCustomEndpoint")
+    def parallelstore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "parallelstore_custom_endpoint")
 
     @property
     @pulumi.getter(name="privatecaCustomEndpoint")

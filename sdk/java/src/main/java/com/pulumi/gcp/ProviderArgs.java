@@ -881,6 +881,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.osLoginCustomEndpoint);
     }
 
+    @Import(name="parallelstoreCustomEndpoint")
+    private @Nullable Output<String> parallelstoreCustomEndpoint;
+
+    public Optional<Output<String>> parallelstoreCustomEndpoint() {
+        return Optional.ofNullable(this.parallelstoreCustomEndpoint);
+    }
+
     @Import(name="privatecaCustomEndpoint")
     private @Nullable Output<String> privatecaCustomEndpoint;
 
@@ -1315,6 +1322,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.orgPolicyCustomEndpoint = $.orgPolicyCustomEndpoint;
         this.osConfigCustomEndpoint = $.osConfigCustomEndpoint;
         this.osLoginCustomEndpoint = $.osLoginCustomEndpoint;
+        this.parallelstoreCustomEndpoint = $.parallelstoreCustomEndpoint;
         this.privatecaCustomEndpoint = $.privatecaCustomEndpoint;
         this.project = $.project;
         this.publicCaCustomEndpoint = $.publicCaCustomEndpoint;
@@ -2488,6 +2496,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder osLoginCustomEndpoint(String osLoginCustomEndpoint) {
             return osLoginCustomEndpoint(Output.of(osLoginCustomEndpoint));
+        }
+
+        public Builder parallelstoreCustomEndpoint(@Nullable Output<String> parallelstoreCustomEndpoint) {
+            $.parallelstoreCustomEndpoint = parallelstoreCustomEndpoint;
+            return this;
+        }
+
+        public Builder parallelstoreCustomEndpoint(String parallelstoreCustomEndpoint) {
+            return parallelstoreCustomEndpoint(Output.of(parallelstoreCustomEndpoint));
         }
 
         public Builder privatecaCustomEndpoint(@Nullable Output<String> privatecaCustomEndpoint) {

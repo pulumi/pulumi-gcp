@@ -239,8 +239,8 @@ class AccessPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="acm-test-proj-123",
-            name="acm-test-proj-123",
+            project_id="my-project-name",
+            name="my-project-name",
             org_id="123456789")
         access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
             parent="organizations/123456789",
@@ -319,8 +319,8 @@ class AccessPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="acm-test-proj-123",
-            name="acm-test-proj-123",
+            project_id="my-project-name",
+            name="my-project-name",
             org_id="123456789")
         access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
             parent="organizations/123456789",

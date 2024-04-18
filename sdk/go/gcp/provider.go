@@ -136,6 +136,7 @@ type Provider struct {
 	OrgPolicyCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"osLoginCustomEndpoint"`
+	ParallelstoreCustomEndpoint               pulumi.StringPtrOutput `pulumi:"parallelstoreCustomEndpoint"`
 	PrivatecaCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"privatecaCustomEndpoint"`
 	Project                                   pulumi.StringPtrOutput `pulumi:"project"`
 	PublicCaCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"publicCaCustomEndpoint"`
@@ -335,6 +336,7 @@ type providerArgs struct {
 	OrgPolicyCustomEndpoint                   *string           `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                    *string           `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                     *string           `pulumi:"osLoginCustomEndpoint"`
+	ParallelstoreCustomEndpoint               *string           `pulumi:"parallelstoreCustomEndpoint"`
 	PrivatecaCustomEndpoint                   *string           `pulumi:"privatecaCustomEndpoint"`
 	Project                                   *string           `pulumi:"project"`
 	PublicCaCustomEndpoint                    *string           `pulumi:"publicCaCustomEndpoint"`
@@ -506,6 +508,7 @@ type ProviderArgs struct {
 	OrgPolicyCustomEndpoint                   pulumi.StringPtrInput
 	OsConfigCustomEndpoint                    pulumi.StringPtrInput
 	OsLoginCustomEndpoint                     pulumi.StringPtrInput
+	ParallelstoreCustomEndpoint               pulumi.StringPtrInput
 	PrivatecaCustomEndpoint                   pulumi.StringPtrInput
 	Project                                   pulumi.StringPtrInput
 	PublicCaCustomEndpoint                    pulumi.StringPtrInput
@@ -1059,6 +1062,10 @@ func (o ProviderOutput) OsConfigCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) OsLoginCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OsLoginCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ParallelstoreCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ParallelstoreCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) PrivatecaCustomEndpoint() pulumi.StringPtrOutput {

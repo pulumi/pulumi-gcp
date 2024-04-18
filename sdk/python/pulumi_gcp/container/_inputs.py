@@ -90,6 +90,7 @@ __all__ = [
     'ClusterAddonsConfigIstioConfigArgs',
     'ClusterAddonsConfigKalmConfigArgs',
     'ClusterAddonsConfigNetworkPolicyConfigArgs',
+    'ClusterAddonsConfigStatefulHaConfigArgs',
     'ClusterAuthenticatorGroupsConfigArgs',
     'ClusterBinaryAuthorizationArgs',
     'ClusterClusterAutoscalingArgs',
@@ -3154,14 +3155,12 @@ class ClusterAddonsConfigArgs:
                  http_load_balancing: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']] = None,
                  istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
                  kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
-                 network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None):
+                 network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None,
+                 stateful_ha_config: Optional[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: . Structure is documented below.
         :param pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs'] config_connector_config: .
                The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-               
-               
-               This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs'] dns_cache_config: .
                The status of the NodeLocal DNSCache addon. It is disabled by default.
                Set `enabled = true` to enable.
@@ -3200,6 +3199,11 @@ class ClusterAddonsConfigArgs:
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
+               The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+               It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+               
+               This example `addons_config` disables two addons:
         """
         if cloudrun_config is not None:
             pulumi.set(__self__, "cloudrun_config", cloudrun_config)
@@ -3225,6 +3229,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "kalm_config", kalm_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if stateful_ha_config is not None:
+            pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
     @property
     @pulumi.getter(name="cloudrunConfig")
@@ -3244,9 +3250,6 @@ class ClusterAddonsConfigArgs:
         """
         .
         The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "config_connector_config")
 
@@ -3401,6 +3404,22 @@ class ClusterAddonsConfigArgs:
     @network_policy_config.setter
     def network_policy_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']]):
         pulumi.set(self, "network_policy_config", value)
+
+    @property
+    @pulumi.getter(name="statefulHaConfig")
+    def stateful_ha_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs']]:
+        """
+        .
+        The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+        It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "stateful_ha_config")
+
+    @stateful_ha_config.setter
+    def stateful_ha_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs']]):
+        pulumi.set(self, "stateful_ha_config", value)
 
 
 @pulumi.input_type
@@ -3713,6 +3732,28 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
+class ClusterAddonsConfigStatefulHaConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

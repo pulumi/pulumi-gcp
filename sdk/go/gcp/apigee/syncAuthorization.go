@@ -73,14 +73,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMBinding(ctx, "synchronizer-iam", &projects.IAMBindingArgs{
+//			_, err = projects.NewIAMMember(ctx, "synchronizer-iam", &projects.IAMMemberArgs{
 //				Project: project.ProjectId,
 //				Role:    pulumi.String("roles/apigee.synchronizerManager"),
-//				Members: pulumi.StringArray{
-//					serviceAccount.Email.ApplyT(func(email string) (string, error) {
-//						return fmt.Sprintf("serviceAccount:%v", email), nil
-//					}).(pulumi.StringOutput),
-//				},
+//				Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

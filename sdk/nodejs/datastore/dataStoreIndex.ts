@@ -30,6 +30,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "(default)",
+ *     locationId: "nam5",
+ *     type: "DATASTORE_MODE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
  * const _default = new gcp.datastore.DataStoreIndex("default", {
  *     kind: "foo",
  *     properties: [

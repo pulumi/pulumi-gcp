@@ -120,6 +120,59 @@ namespace Pulumi.Gcp.Firestore
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// ### Firestore Index Vector
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-vector",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "field_name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "__name__",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 VectorConfig = new Gcp.Firestore.Inputs.IndexFieldVectorConfigArgs
+    ///                 {
+    ///                     Dimension = 128,
+    ///                     Flat = null,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -157,12 +210,12 @@ namespace Pulumi.Gcp.Firestore
         public Output<string?> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The fields supported by this index. The last field entry is always for
-        /// the field path `__name__`. If, on creation, `__name__` was not
-        /// specified as the last field, it will be added automatically with the
-        /// same direction as that of the last field defined. If the final field
-        /// in a composite index is not directional, the `__name__` will be
-        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        /// The fields supported by this index. The last non-stored field entry is
+        /// always for the field path `__name__`. If, on creation, `__name__` was not
+        /// specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in a
+        /// composite index is not directional, the `__name__` will be ordered
+        /// `"ASCENDING"` (unless explicitly specified otherwise).
         /// Structure is documented below.
         /// </summary>
         [Output("fields")]
@@ -260,12 +313,12 @@ namespace Pulumi.Gcp.Firestore
         private InputList<Inputs.IndexFieldArgs>? _fields;
 
         /// <summary>
-        /// The fields supported by this index. The last field entry is always for
-        /// the field path `__name__`. If, on creation, `__name__` was not
-        /// specified as the last field, it will be added automatically with the
-        /// same direction as that of the last field defined. If the final field
-        /// in a composite index is not directional, the `__name__` will be
-        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        /// The fields supported by this index. The last non-stored field entry is
+        /// always for the field path `__name__`. If, on creation, `__name__` was not
+        /// specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in a
+        /// composite index is not directional, the `__name__` will be ordered
+        /// `"ASCENDING"` (unless explicitly specified otherwise).
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.IndexFieldArgs> Fields
@@ -321,12 +374,12 @@ namespace Pulumi.Gcp.Firestore
         private InputList<Inputs.IndexFieldGetArgs>? _fields;
 
         /// <summary>
-        /// The fields supported by this index. The last field entry is always for
-        /// the field path `__name__`. If, on creation, `__name__` was not
-        /// specified as the last field, it will be added automatically with the
-        /// same direction as that of the last field defined. If the final field
-        /// in a composite index is not directional, the `__name__` will be
-        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        /// The fields supported by this index. The last non-stored field entry is
+        /// always for the field path `__name__`. If, on creation, `__name__` was not
+        /// specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in a
+        /// composite index is not directional, the `__name__` will be ordered
+        /// `"ASCENDING"` (unless explicitly specified otherwise).
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.IndexFieldGetArgs> Fields

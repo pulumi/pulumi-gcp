@@ -53,6 +53,21 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * IP version of this interface. Can be either IPV4 or IPV6.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return IP version of this interface. Can be either IPV4 or IPV6.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
      * 
@@ -203,6 +218,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     private RouterInterfaceArgs(RouterInterfaceArgs $) {
         this.interconnectAttachment = $.interconnectAttachment;
         this.ipRange = $.ipRange;
+        this.ipVersion = $.ipVersion;
         this.name = $.name;
         this.privateIpAddress = $.privateIpAddress;
         this.project = $.project;
@@ -277,6 +293,27 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipRange(String ipRange) {
             return ipRange(Output.of(ipRange));
+        }
+
+        /**
+         * @param ipVersion IP version of this interface. Can be either IPV4 or IPV6.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion IP version of this interface. Can be either IPV4 or IPV6.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
         }
 
         /**

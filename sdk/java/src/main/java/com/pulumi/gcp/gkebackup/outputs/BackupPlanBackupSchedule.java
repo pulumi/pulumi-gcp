@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkebackup.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gkebackup.outputs.BackupPlanBackupScheduleRpoConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,8 @@ public final class BackupPlanBackupSchedule {
     /**
      * @return A standard cron string that defines a repeating schedule for
      * creating Backups via this BackupPlan.
+     * This is mutually exclusive with the rpoConfig field since at most one
+     * schedule can be defined for a BackupPlan.
      * If this is defined, then backupRetainDays must also be defined.
      * 
      */
@@ -24,11 +27,21 @@ public final class BackupPlanBackupSchedule {
      * 
      */
     private @Nullable Boolean paused;
+    /**
+     * @return Defines the RPO schedule configuration for this BackupPlan. This is mutually
+     * exclusive with the cronSchedule field since at most one schedule can be defined
+     * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BackupPlanBackupScheduleRpoConfig rpoConfig;
 
     private BackupPlanBackupSchedule() {}
     /**
      * @return A standard cron string that defines a repeating schedule for
      * creating Backups via this BackupPlan.
+     * This is mutually exclusive with the rpoConfig field since at most one
+     * schedule can be defined for a BackupPlan.
      * If this is defined, then backupRetainDays must also be defined.
      * 
      */
@@ -42,6 +55,16 @@ public final class BackupPlanBackupSchedule {
     public Optional<Boolean> paused() {
         return Optional.ofNullable(this.paused);
     }
+    /**
+     * @return Defines the RPO schedule configuration for this BackupPlan. This is mutually
+     * exclusive with the cronSchedule field since at most one schedule can be defined
+     * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BackupPlanBackupScheduleRpoConfig> rpoConfig() {
+        return Optional.ofNullable(this.rpoConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +77,13 @@ public final class BackupPlanBackupSchedule {
     public static final class Builder {
         private @Nullable String cronSchedule;
         private @Nullable Boolean paused;
+        private @Nullable BackupPlanBackupScheduleRpoConfig rpoConfig;
         public Builder() {}
         public Builder(BackupPlanBackupSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronSchedule = defaults.cronSchedule;
     	      this.paused = defaults.paused;
+    	      this.rpoConfig = defaults.rpoConfig;
         }
 
         @CustomType.Setter
@@ -73,10 +98,17 @@ public final class BackupPlanBackupSchedule {
             this.paused = paused;
             return this;
         }
+        @CustomType.Setter
+        public Builder rpoConfig(@Nullable BackupPlanBackupScheduleRpoConfig rpoConfig) {
+
+            this.rpoConfig = rpoConfig;
+            return this;
+        }
         public BackupPlanBackupSchedule build() {
             final var _resultValue = new BackupPlanBackupSchedule();
             _resultValue.cronSchedule = cronSchedule;
             _resultValue.paused = paused;
+            _resultValue.rpoConfig = rpoConfig;
             return _resultValue;
         }
     }

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     {
         /// <summary>
         /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        /// Structure is document below.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets? HealthCheckedTargets;
         /// <summary>

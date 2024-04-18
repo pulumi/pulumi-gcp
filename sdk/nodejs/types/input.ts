@@ -22605,6 +22605,14 @@ export namespace compute {
          */
         asn: pulumi.Input<number>;
         /**
+         * Explicitly specifies a range of valid BGP Identifiers for this Router.
+         * It is provided as a link-local IPv4 range (from 169.254.0.0/16), of
+         * size at least /30, even if the BGP sessions are over IPv6. It must
+         * not overlap with any IPv4 BGP session ranges. Other vendors commonly
+         * call this router ID.
+         */
+        identifierRange?: pulumi.Input<string>;
+        /**
          * The interval in seconds between BGP keepalive messages that are sent
          * to the peer. Hold time is three times the interval at which keepalive
          * messages are sent, and the hold time is the maximum number of seconds
@@ -26203,9 +26211,6 @@ export namespace container {
         /**
          * .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-         *
-         *
-         * This example `addonsConfig` disables two addons:
          */
         configConnectorConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigConfigConnectorConfig>;
         /**
@@ -26276,6 +26281,14 @@ export namespace container {
          * Defaults to disabled; set `disabled = false` to enable.
          */
         networkPolicyConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigNetworkPolicyConfig>;
+        /**
+         * .
+         * The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
+         * It is disabled by default for Standard clusters. Set `enabled = true` to enable.
+         *
+         * This example `addonsConfig` disables two addons:
+         */
+        statefulHaConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigStatefulHaConfig>;
     }
 
     export interface ClusterAddonsConfigCloudrunConfig {
@@ -26376,6 +26389,13 @@ export namespace container {
          * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigStatefulHaConfig {
+        /**
+         * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAuthenticatorGroupsConfig {
@@ -42609,17 +42629,17 @@ export namespace dns {
         enableGeoFencing?: pulumi.Input<boolean>;
         /**
          * The configuration for Geolocation based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          */
         geos?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeo>[]>;
         /**
          * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-         * Structure is document below.
+         * Structure is documented below.
          */
         primaryBackup?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackup>;
         /**
          * The configuration for Weighted Round Robin based routing policy.
-         * Structure is document below.
+         * Structure is documented below.
          */
         wrrs?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrr>[]>;
     }
@@ -42627,7 +42647,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyGeo {
         /**
          * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is document below.
+         * Structure is documented below.
          */
         healthCheckedTargets?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargets>;
         /**
@@ -42643,7 +42663,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyGeoHealthCheckedTargets {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
     }
@@ -42691,7 +42711,7 @@ export namespace dns {
         enableGeoFencingForBackups?: pulumi.Input<boolean>;
         /**
          * The list of global primary targets to be health checked.
-         * Structure is document below.
+         * Structure is documented below.
          */
         primary: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimary>;
         /**
@@ -42703,7 +42723,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeo {
         /**
          * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-         * Structure is document below.
+         * Structure is documented below.
          */
         healthCheckedTargets?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets>;
         /**
@@ -42716,7 +42736,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
     }
@@ -42755,7 +42775,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyPrimaryBackupPrimary {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>[]>;
     }
@@ -42794,7 +42814,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyWrr {
         /**
          * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
-         * Structure is document below.
+         * Structure is documented below.
          */
         healthCheckedTargets?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargets>;
         /**
@@ -42810,7 +42830,7 @@ export namespace dns {
     export interface RecordSetRoutingPolicyWrrHealthCheckedTargets {
         /**
          * The list of internal load balancers to health check.
-         * Structure is document below.
+         * Structure is documented below.
          */
         internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>[]>;
     }
@@ -44321,11 +44341,9 @@ export namespace firestore {
 
     export interface IndexField {
         /**
-         * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
-         * be specified.
+         * Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified.
          * Possible values are: `CONTAINS`.
-         *
-         * - - -
          */
         arrayConfig?: pulumi.Input<string>;
         /**
@@ -44334,10 +44352,33 @@ export namespace firestore {
         fieldPath?: pulumi.Input<string>;
         /**
          * Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-         * Only one of `order` and `arrayConfig` can be specified.
+         * Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
          * Possible values are: `ASCENDING`, `DESCENDING`.
          */
         order?: pulumi.Input<string>;
+        /**
+         * Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
+         * `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
+         * Structure is documented below.
+         */
+        vectorConfig?: pulumi.Input<inputs.firestore.IndexFieldVectorConfig>;
+    }
+
+    export interface IndexFieldVectorConfig {
+        /**
+         * The resulting index will only include vectors of this dimension, and can be used for vector search
+         * with the same dimension.
+         */
+        dimension?: pulumi.Input<number>;
+        /**
+         * Indicates the vector index is a flat index.
+         *
+         * - - -
+         */
+        flat?: pulumi.Input<inputs.firestore.IndexFieldVectorConfigFlat>;
+    }
+
+    export interface IndexFieldVectorConfigFlat {
     }
 }
 
@@ -44545,6 +44586,8 @@ export namespace gkebackup {
         /**
          * A standard cron string that defines a repeating schedule for
          * creating Backups via this BackupPlan.
+         * This is mutually exclusive with the rpoConfig field since at most one
+         * schedule can be defined for a BackupPlan.
          * If this is defined, then backupRetainDays must also be defined.
          */
         cronSchedule?: pulumi.Input<string>;
@@ -44552,6 +44595,112 @@ export namespace gkebackup {
          * This flag denotes whether automatic Backup creation is paused for this BackupPlan.
          */
         paused?: pulumi.Input<boolean>;
+        /**
+         * Defines the RPO schedule configuration for this BackupPlan. This is mutually
+         * exclusive with the cronSchedule field since at most one schedule can be defined
+         * for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
+         * Structure is documented below.
+         */
+        rpoConfig?: pulumi.Input<inputs.gkebackup.BackupPlanBackupScheduleRpoConfig>;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfig {
+        /**
+         * User specified time windows during which backup can NOT happen for this BackupPlan.
+         * Backups should start and finish outside of any given exclusion window. Note: backup
+         * jobs will be scheduled to start and finish outside the duration of the window as
+         * much as possible, but running jobs will not get canceled when it runs into the window.
+         * All the time and date values in exclusionWindows entry in the API are in UTC. We
+         * only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no
+         * restriction on number of single occurrence windows.
+         * Structure is documented below.
+         */
+        exclusionWindows?: pulumi.Input<pulumi.Input<inputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindow>[]>;
+        /**
+         * Defines the target RPO for the BackupPlan in minutes, which means the target
+         * maximum data loss in time that is acceptable for this BackupPlan. This must be
+         * at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+         */
+        targetRpoMinutes: pulumi.Input<number>;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindow {
+        /**
+         * The exclusion window occurs every day if set to "True".
+         * Specifying this field to "False" is an error.
+         * Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+         */
+        daily?: pulumi.Input<boolean>;
+        /**
+         * The exclusion window occurs on these days of each week in UTC.
+         * Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+         * Structure is documented below.
+         */
+        daysOfWeek?: pulumi.Input<inputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek>;
+        /**
+         * Specifies duration of the window in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s". Restrictions for duration based on the
+         * recurrence type to allow some time for backup to happen:
+         * - single_occurrence_date:  no restriction
+         * - daily window: duration < 24 hours
+         * - weekly window:
+         * - days of week includes all seven days of a week: duration < 24 hours
+         * - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * No recurrence. The exclusion window occurs only once and on this date in UTC.
+         * Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
+         * Structure is documented below.
+         */
+        singleOccurrenceDate?: pulumi.Input<inputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate>;
+        /**
+         * Specifies the start time of the window using time of the day in UTC.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.gkebackup.BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime>;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
+        /**
+         * A list of days of week.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDate {
+        /**
+         * Day of a month.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
+        /**
+         * Hours of day in 24 hour format.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time.
+         */
+        seconds?: pulumi.Input<number>;
     }
 
     export interface BackupPlanIamBindingCondition {
@@ -44586,7 +44735,9 @@ export namespace gkebackup {
          * existing Backups under it. Backups created AFTER a successful update
          * will automatically pick up the new value.
          * NOTE: backupRetainDays must be >= backupDeleteLockDays.
-         * If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+         * If cronSchedule is defined, then this must be <= 360 * the creation interval.
+         * If rpoConfig is defined, then this must be
+         * <= 360 * targetRpoMinutes/(1440minutes/day)
          */
         backupRetainDays?: pulumi.Input<number>;
         /**
@@ -59718,6 +59869,10 @@ export namespace sql {
          * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
          */
         edition?: pulumi.Input<string>;
+        /**
+         * Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
+         */
+        enableGoogleMlIntegration?: pulumi.Input<boolean>;
         /**
          * Configuration of Query Insights.
          */

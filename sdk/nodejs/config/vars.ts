@@ -993,6 +993,14 @@ Object.defineProperty(exports, "osLoginCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const parallelstoreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "parallelstoreCustomEndpoint", {
+    get() {
+        return __config.get("parallelstoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const privatecaCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "privatecaCustomEndpoint", {
     get() {

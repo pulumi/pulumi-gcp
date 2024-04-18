@@ -2430,13 +2430,13 @@ type RecordSetRoutingPolicy struct {
 	// Specifies whether to enable fencing for geo queries.
 	EnableGeoFencing *bool `pulumi:"enableGeoFencing"`
 	// The configuration for Geolocation based routing policy.
-	// Structure is document below.
+	// Structure is documented below.
 	Geos []RecordSetRoutingPolicyGeo `pulumi:"geos"`
 	// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-	// Structure is document below.
+	// Structure is documented below.
 	PrimaryBackup *RecordSetRoutingPolicyPrimaryBackup `pulumi:"primaryBackup"`
 	// The configuration for Weighted Round Robin based routing policy.
-	// Structure is document below.
+	// Structure is documented below.
 	Wrrs []RecordSetRoutingPolicyWrr `pulumi:"wrrs"`
 }
 
@@ -2455,13 +2455,13 @@ type RecordSetRoutingPolicyArgs struct {
 	// Specifies whether to enable fencing for geo queries.
 	EnableGeoFencing pulumi.BoolPtrInput `pulumi:"enableGeoFencing"`
 	// The configuration for Geolocation based routing policy.
-	// Structure is document below.
+	// Structure is documented below.
 	Geos RecordSetRoutingPolicyGeoArrayInput `pulumi:"geos"`
 	// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-	// Structure is document below.
+	// Structure is documented below.
 	PrimaryBackup RecordSetRoutingPolicyPrimaryBackupPtrInput `pulumi:"primaryBackup"`
 	// The configuration for Weighted Round Robin based routing policy.
-	// Structure is document below.
+	// Structure is documented below.
 	Wrrs RecordSetRoutingPolicyWrrArrayInput `pulumi:"wrrs"`
 }
 
@@ -2548,19 +2548,19 @@ func (o RecordSetRoutingPolicyOutput) EnableGeoFencing() pulumi.BoolPtrOutput {
 }
 
 // The configuration for Geolocation based routing policy.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyOutput) Geos() RecordSetRoutingPolicyGeoArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo { return v.Geos }).(RecordSetRoutingPolicyGeoArrayOutput)
 }
 
 // The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicy) *RecordSetRoutingPolicyPrimaryBackup { return v.PrimaryBackup }).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
 }
 
 // The configuration for Weighted Round Robin based routing policy.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyOutput) Wrrs() RecordSetRoutingPolicyWrrArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyWrr { return v.Wrrs }).(RecordSetRoutingPolicyWrrArrayOutput)
 }
@@ -2600,7 +2600,7 @@ func (o RecordSetRoutingPolicyPtrOutput) EnableGeoFencing() pulumi.BoolPtrOutput
 }
 
 // The configuration for Geolocation based routing policy.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo {
 		if v == nil {
@@ -2611,7 +2611,7 @@ func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOu
 }
 
 // The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPtrOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicy) *RecordSetRoutingPolicyPrimaryBackup {
 		if v == nil {
@@ -2622,7 +2622,7 @@ func (o RecordSetRoutingPolicyPtrOutput) PrimaryBackup() RecordSetRoutingPolicyP
 }
 
 // The configuration for Weighted Round Robin based routing policy.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPtrOutput) Wrrs() RecordSetRoutingPolicyWrrArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicy) []RecordSetRoutingPolicyWrr {
 		if v == nil {
@@ -2634,7 +2634,7 @@ func (o RecordSetRoutingPolicyPtrOutput) Wrrs() RecordSetRoutingPolicyWrrArrayOu
 
 type RecordSetRoutingPolicyGeo struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-	// Structure is document below.
+	// Structure is documented below.
 	HealthCheckedTargets *RecordSetRoutingPolicyGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location string `pulumi:"location"`
@@ -2655,7 +2655,7 @@ type RecordSetRoutingPolicyGeoInput interface {
 
 type RecordSetRoutingPolicyGeoArgs struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-	// Structure is document below.
+	// Structure is documented below.
 	HealthCheckedTargets RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location pulumi.StringInput `pulumi:"location"`
@@ -2715,7 +2715,7 @@ func (o RecordSetRoutingPolicyGeoOutput) ToRecordSetRoutingPolicyGeoOutputWithCo
 }
 
 // For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyGeo) *RecordSetRoutingPolicyGeoHealthCheckedTargets {
 		return v.HealthCheckedTargets
@@ -2754,7 +2754,7 @@ func (o RecordSetRoutingPolicyGeoArrayOutput) Index(i pulumi.IntInput) RecordSet
 
 type RecordSetRoutingPolicyGeoHealthCheckedTargets struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
 }
 
@@ -2771,7 +2771,7 @@ type RecordSetRoutingPolicyGeoHealthCheckedTargetsInput interface {
 
 type RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
 }
 
@@ -2853,7 +2853,7 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingP
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargets) []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
 		return v.InternalLoadBalancers
@@ -2885,7 +2885,7 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) Elem() RecordSet
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicyGeoHealthCheckedTargets) []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
 		if v == nil {
@@ -3055,7 +3055,7 @@ type RecordSetRoutingPolicyPrimaryBackup struct {
 	// Specifies whether to enable fencing for backup geo queries.
 	EnableGeoFencingForBackups *bool `pulumi:"enableGeoFencingForBackups"`
 	// The list of global primary targets to be health checked.
-	// Structure is document below.
+	// Structure is documented below.
 	Primary RecordSetRoutingPolicyPrimaryBackupPrimary `pulumi:"primary"`
 	// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
 	TrickleRatio *float64 `pulumi:"trickleRatio"`
@@ -3079,7 +3079,7 @@ type RecordSetRoutingPolicyPrimaryBackupArgs struct {
 	// Specifies whether to enable fencing for backup geo queries.
 	EnableGeoFencingForBackups pulumi.BoolPtrInput `pulumi:"enableGeoFencingForBackups"`
 	// The list of global primary targets to be health checked.
-	// Structure is document below.
+	// Structure is documented below.
 	Primary RecordSetRoutingPolicyPrimaryBackupPrimaryInput `pulumi:"primary"`
 	// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
 	TrickleRatio pulumi.Float64PtrInput `pulumi:"trickleRatio"`
@@ -3176,7 +3176,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupOutput) EnableGeoFencingForBackups() 
 }
 
 // The list of global primary targets to be health checked.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupOutput) Primary() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackup) RecordSetRoutingPolicyPrimaryBackupPrimary {
 		return v.Primary
@@ -3234,7 +3234,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) EnableGeoFencingForBackups
 }
 
 // The list of global primary targets to be health checked.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) Primary() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackup) *RecordSetRoutingPolicyPrimaryBackupPrimary {
 		if v == nil {
@@ -3256,7 +3256,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) TrickleRatio() pulumi.Floa
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeo struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-	// Structure is document below.
+	// Structure is documented below.
 	HealthCheckedTargets *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location string   `pulumi:"location"`
@@ -3276,7 +3276,7 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoInput interface {
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs struct {
 	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-	// Structure is document below.
+	// Structure is documented below.
 	HealthCheckedTargets RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location pulumi.StringInput      `pulumi:"location"`
@@ -3335,7 +3335,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPo
 }
 
 // For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
 		return v.HealthCheckedTargets
@@ -3373,7 +3373,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) Index(i pulumi.
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
 }
 
@@ -3390,7 +3390,7 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInput inter
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
 }
 
@@ -3472,7 +3472,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) 
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
 		return v.InternalLoadBalancers
@@ -3504,7 +3504,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutpu
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
 		if v == nil {
@@ -3681,7 +3681,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 
 type RecordSetRoutingPolicyPrimaryBackupPrimary struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer `pulumi:"internalLoadBalancers"`
 }
 
@@ -3698,7 +3698,7 @@ type RecordSetRoutingPolicyPrimaryBackupPrimaryInput interface {
 
 type RecordSetRoutingPolicyPrimaryBackupPrimaryArgs struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
 }
 
@@ -3780,7 +3780,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPoli
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
 		return v.InternalLoadBalancers
@@ -3812,7 +3812,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) Elem() RecordSetRou
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
 		if v == nil {
@@ -3977,7 +3977,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutpu
 
 type RecordSetRoutingPolicyWrr struct {
 	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
-	// Structure is document below.
+	// Structure is documented below.
 	HealthCheckedTargets *RecordSetRoutingPolicyWrrHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// Same as `rrdatas` above.
 	Rrdatas []string `pulumi:"rrdatas"`
@@ -3998,7 +3998,7 @@ type RecordSetRoutingPolicyWrrInput interface {
 
 type RecordSetRoutingPolicyWrrArgs struct {
 	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
-	// Structure is document below.
+	// Structure is documented below.
 	HealthCheckedTargets RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// Same as `rrdatas` above.
 	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
@@ -4058,7 +4058,7 @@ func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutputWithCo
 }
 
 // The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyWrrOutput) HealthCheckedTargets() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyWrr) *RecordSetRoutingPolicyWrrHealthCheckedTargets {
 		return v.HealthCheckedTargets
@@ -4097,7 +4097,7 @@ func (o RecordSetRoutingPolicyWrrArrayOutput) Index(i pulumi.IntInput) RecordSet
 
 type RecordSetRoutingPolicyWrrHealthCheckedTargets struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
 }
 
@@ -4114,7 +4114,7 @@ type RecordSetRoutingPolicyWrrHealthCheckedTargetsInput interface {
 
 type RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs struct {
 	// The list of internal load balancers to health check.
-	// Structure is document below.
+	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
 }
 
@@ -4196,7 +4196,7 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingP
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargets) []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
 		return v.InternalLoadBalancers
@@ -4228,7 +4228,7 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) Elem() RecordSet
 }
 
 // The list of internal load balancers to health check.
-// Structure is document below.
+// Structure is documented below.
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v *RecordSetRoutingPolicyWrrHealthCheckedTargets) []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
 		if v == nil {

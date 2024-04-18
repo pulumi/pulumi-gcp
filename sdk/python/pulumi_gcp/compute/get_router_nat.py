@@ -22,7 +22,7 @@ class GetRouterNatResult:
     """
     A collection of values returned by getRouterNat.
     """
-    def __init__(__self__, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
+    def __init__(__self__, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
         if drain_nat_ips and not isinstance(drain_nat_ips, list):
             raise TypeError("Expected argument 'drain_nat_ips' to be a list")
         pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
@@ -32,6 +32,9 @@ class GetRouterNatResult:
         if enable_endpoint_independent_mapping and not isinstance(enable_endpoint_independent_mapping, bool):
             raise TypeError("Expected argument 'enable_endpoint_independent_mapping' to be a bool")
         pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+        if endpoint_types and not isinstance(endpoint_types, list):
+            raise TypeError("Expected argument 'endpoint_types' to be a list")
+        pulumi.set(__self__, "endpoint_types", endpoint_types)
         if icmp_idle_timeout_sec and not isinstance(icmp_idle_timeout_sec, int):
             raise TypeError("Expected argument 'icmp_idle_timeout_sec' to be a int")
         pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
@@ -104,6 +107,11 @@ class GetRouterNatResult:
     @pulumi.getter(name="enableEndpointIndependentMapping")
     def enable_endpoint_independent_mapping(self) -> bool:
         return pulumi.get(self, "enable_endpoint_independent_mapping")
+
+    @property
+    @pulumi.getter(name="endpointTypes")
+    def endpoint_types(self) -> Sequence[str]:
+        return pulumi.get(self, "endpoint_types")
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")
@@ -213,6 +221,7 @@ class AwaitableGetRouterNatResult(GetRouterNatResult):
             drain_nat_ips=self.drain_nat_ips,
             enable_dynamic_port_allocation=self.enable_dynamic_port_allocation,
             enable_endpoint_independent_mapping=self.enable_endpoint_independent_mapping,
+            endpoint_types=self.endpoint_types,
             icmp_idle_timeout_sec=self.icmp_idle_timeout_sec,
             id=self.id,
             log_configs=self.log_configs,
@@ -280,6 +289,7 @@ def get_router_nat(name: Optional[str] = None,
         drain_nat_ips=pulumi.get(__ret__, 'drain_nat_ips'),
         enable_dynamic_port_allocation=pulumi.get(__ret__, 'enable_dynamic_port_allocation'),
         enable_endpoint_independent_mapping=pulumi.get(__ret__, 'enable_endpoint_independent_mapping'),
+        endpoint_types=pulumi.get(__ret__, 'endpoint_types'),
         icmp_idle_timeout_sec=pulumi.get(__ret__, 'icmp_idle_timeout_sec'),
         id=pulumi.get(__ret__, 'id'),
         log_configs=pulumi.get(__ret__, 'log_configs'),

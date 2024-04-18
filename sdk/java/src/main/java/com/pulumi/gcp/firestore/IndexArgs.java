@@ -68,12 +68,12 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fields supported by this index. The last field entry is always for
-     * the field path `__name__`. If, on creation, `__name__` was not
-     * specified as the last field, it will be added automatically with the
-     * same direction as that of the last field defined. If the final field
-     * in a composite index is not directional, the `__name__` will be
-     * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+     * The fields supported by this index. The last non-stored field entry is
+     * always for the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the same
+     * direction as that of the last field defined. If the final field in a
+     * composite index is not directional, the `__name__` will be ordered
+     * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
      * Structure is documented below.
      * 
      */
@@ -81,12 +81,12 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     private Output<List<IndexFieldArgs>> fields;
 
     /**
-     * @return The fields supported by this index. The last field entry is always for
-     * the field path `__name__`. If, on creation, `__name__` was not
-     * specified as the last field, it will be added automatically with the
-     * same direction as that of the last field defined. If the final field
-     * in a composite index is not directional, the `__name__` will be
-     * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+     * @return The fields supported by this index. The last non-stored field entry is
+     * always for the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the same
+     * direction as that of the last field defined. If the final field in a
+     * composite index is not directional, the `__name__` will be ordered
+     * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
      * Structure is documented below.
      * 
      */
@@ -227,12 +227,12 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fields The fields supported by this index. The last field entry is always for
-         * the field path `__name__`. If, on creation, `__name__` was not
-         * specified as the last field, it will be added automatically with the
-         * same direction as that of the last field defined. If the final field
-         * in a composite index is not directional, the `__name__` will be
-         * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+         * @param fields The fields supported by this index. The last non-stored field entry is
+         * always for the field path `__name__`. If, on creation, `__name__` was not
+         * specified as the last field, it will be added automatically with the same
+         * direction as that of the last field defined. If the final field in a
+         * composite index is not directional, the `__name__` will be ordered
+         * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
          * Structure is documented below.
          * 
          * @return builder
@@ -244,12 +244,12 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fields The fields supported by this index. The last field entry is always for
-         * the field path `__name__`. If, on creation, `__name__` was not
-         * specified as the last field, it will be added automatically with the
-         * same direction as that of the last field defined. If the final field
-         * in a composite index is not directional, the `__name__` will be
-         * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+         * @param fields The fields supported by this index. The last non-stored field entry is
+         * always for the field path `__name__`. If, on creation, `__name__` was not
+         * specified as the last field, it will be added automatically with the same
+         * direction as that of the last field defined. If the final field in a
+         * composite index is not directional, the `__name__` will be ordered
+         * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
          * Structure is documented below.
          * 
          * @return builder
@@ -260,12 +260,12 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fields The fields supported by this index. The last field entry is always for
-         * the field path `__name__`. If, on creation, `__name__` was not
-         * specified as the last field, it will be added automatically with the
-         * same direction as that of the last field defined. If the final field
-         * in a composite index is not directional, the `__name__` will be
-         * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+         * @param fields The fields supported by this index. The last non-stored field entry is
+         * always for the field path `__name__`. If, on creation, `__name__` was not
+         * specified as the last field, it will be added automatically with the same
+         * direction as that of the last field defined. If the final field in a
+         * composite index is not directional, the `__name__` will be ordered
+         * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
          * Structure is documented below.
          * 
          * @return builder

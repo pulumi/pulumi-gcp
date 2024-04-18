@@ -149,6 +149,70 @@ import javax.annotation.Nullable;
  * }
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Index Vector
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldVectorConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldVectorConfigFlatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .name(&#34;database-id-vector&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_DISABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build());
+ * 
+ *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .database(database.name())
+ *             .collection(&#34;atestcollection&#34;)
+ *             .fields(            
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;field_name&#34;)
+ *                     .order(&#34;ASCENDING&#34;)
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;__name__&#34;)
+ *                     .order(&#34;ASCENDING&#34;)
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath(&#34;description&#34;)
+ *                     .vectorConfig(IndexFieldVectorConfigArgs.builder()
+ *                         .dimension(128)
+ *                         .flat()
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -212,12 +276,12 @@ public class Index extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.database);
     }
     /**
-     * The fields supported by this index. The last field entry is always for
-     * the field path `__name__`. If, on creation, `__name__` was not
-     * specified as the last field, it will be added automatically with the
-     * same direction as that of the last field defined. If the final field
-     * in a composite index is not directional, the `__name__` will be
-     * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+     * The fields supported by this index. The last non-stored field entry is
+     * always for the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the same
+     * direction as that of the last field defined. If the final field in a
+     * composite index is not directional, the `__name__` will be ordered
+     * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
      * Structure is documented below.
      * 
      */
@@ -225,12 +289,12 @@ public class Index extends com.pulumi.resources.CustomResource {
     private Output<List<IndexField>> fields;
 
     /**
-     * @return The fields supported by this index. The last field entry is always for
-     * the field path `__name__`. If, on creation, `__name__` was not
-     * specified as the last field, it will be added automatically with the
-     * same direction as that of the last field defined. If the final field
-     * in a composite index is not directional, the `__name__` will be
-     * ordered `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
+     * @return The fields supported by this index. The last non-stored field entry is
+     * always for the field path `__name__`. If, on creation, `__name__` was not
+     * specified as the last field, it will be added automatically with the same
+     * direction as that of the last field defined. If the final field in a
+     * composite index is not directional, the `__name__` will be ordered
+     * `&#34;ASCENDING&#34;` (unless explicitly specified otherwise).
      * Structure is documented below.
      * 
      */

@@ -78,6 +78,12 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * > **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     */
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -152,6 +158,7 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FirewallEndpointAssociationState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["firewallEndpoint"] = state ? state.firewallEndpoint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -176,6 +183,7 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["firewallEndpoint"] = args ? args.firewallEndpoint : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -206,6 +214,12 @@ export interface FirewallEndpointAssociationState {
      * Time the firewall endpoint was created in UTC.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * > **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -272,6 +286,12 @@ export interface FirewallEndpointAssociationState {
  * The set of arguments for constructing a FirewallEndpointAssociation resource.
  */
 export interface FirewallEndpointAssociationArgs {
+    /**
+     * Whether the association is disabled. True indicates that traffic will not be intercepted.
+     * > **Note:** The API will reject the request if this value is set to true when creating the resource,
+     * otherwise on an update the association can be disabled.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * The URL of the firewall endpoint that is being associated.
      */
