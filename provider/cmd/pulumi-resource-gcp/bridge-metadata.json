@@ -7606,6 +7606,9 @@
                     "drain_nat_ips": {
                         "maxItemsOne": false
                     },
+                    "endpoint_types": {
+                        "maxItemsOne": false
+                    },
                     "log_config": {
                         "maxItemsOne": true
                     },
@@ -8990,6 +8993,9 @@
                                     "maxItemsOne": true
                                 },
                                 "network_policy_config": {
+                                    "maxItemsOne": true
+                                },
+                                "stateful_ha_config": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -15574,7 +15580,21 @@
                 "majorVersion": 7,
                 "fields": {
                     "fields": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "vector_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "flat": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -15709,7 +15729,41 @@
                         }
                     },
                     "backup_schedule": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rpo_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "exclusion_windows": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "days_of_week": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "days_of_week": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "single_occurrence_date": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "start_time": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "retention_policy": {
                         "maxItemsOne": true
@@ -20888,6 +20942,15 @@
             "google_os_login_ssh_public_key": {
                 "current": "gcp:oslogin/sshPublicKey:SshPublicKey",
                 "majorVersion": 7
+            },
+            "google_parallelstore_instance": {
+                "current": "gcp:parallelstore/instance:Instance",
+                "majorVersion": 7,
+                "fields": {
+                    "access_points": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_privateca_ca_pool": {
                 "current": "gcp:certificateauthority/caPool:CaPool",
@@ -26699,6 +26762,9 @@
                     "drain_nat_ips": {
                         "maxItemsOne": false
                     },
+                    "endpoint_types": {
+                        "maxItemsOne": false
+                    },
                     "log_config": {
                         "maxItemsOne": false
                     },
@@ -26945,6 +27011,9 @@
                                     "maxItemsOne": false
                                 },
                                 "network_policy_config": {
+                                    "maxItemsOne": false
+                                },
+                                "stateful_ha_config": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -29168,6 +29237,15 @@
                 "current": "gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy",
                 "majorVersion": 7
             },
+            "google_tags_tag_keys": {
+                "current": "gcp:tags/getTagKeys:getTagKeys",
+                "majorVersion": 7,
+                "fields": {
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_tags_tag_value": {
                 "current": "gcp:tags/getTagValue:getTagValue",
                 "majorVersion": 7
@@ -29175,6 +29253,15 @@
             "google_tags_tag_value_iam_policy": {
                 "current": "gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy",
                 "majorVersion": 7
+            },
+            "google_tags_tag_values": {
+                "current": "gcp:tags/getTagValues:getTagValues",
+                "majorVersion": 7,
+                "fields": {
+                    "values": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_tpu_tensorflow_versions": {
                 "current": "gcp:tpu/getTensorflowVersions:getTensorflowVersions",
@@ -29958,6 +30045,10 @@
                 "terraform_labels"
             ],
             "google_notebooks_runtime": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_parallelstore_instance": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -30972,6 +31063,7 @@
             "gcp:osconfig/osPolicyAssignment:OsPolicyAssignment": 0,
             "gcp:osconfig/patchDeployment:PatchDeployment": 0,
             "gcp:oslogin/sshPublicKey:SshPublicKey": 0,
+            "gcp:parallelstore/instance:Instance": 0,
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:projects/apiKey:ApiKey": 0,
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": 0,
@@ -31410,8 +31502,10 @@
             "gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount": 0,
             "gcp:tags/getTagKey:getTagKey": 0,
             "gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy": 0,
+            "gcp:tags/getTagKeys:getTagKeys": 0,
             "gcp:tags/getTagValue:getTagValue": 0,
             "gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy": 0,
+            "gcp:tags/getTagValues:getTagValues": 0,
             "gcp:tpu/getTensorflowVersions:getTensorflowVersions": 0,
             "gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes": 0,
             "gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions": 0,
