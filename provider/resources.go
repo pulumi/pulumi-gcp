@@ -130,6 +130,7 @@ const (
 	gcpOrganization             = "Organizations"            // Organization resources
 	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
 	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
+	gcpParallelStore            = "ParallelStore"            // ParallelStore resources
 	gcpProject                  = "Projects"                 // Project resources
 	gcpPubSub                   = "PubSub"                   // PubSub resources
 	gcpRecaptcha                = "Recaptcha"                // Recaptcha resources
@@ -252,6 +253,7 @@ var moduleMapping = map[string]string{
 	"organization":               gcpOrganization,
 	"os_config":                  gcpOsConfig,
 	"os_login":                   gcpOsLogin,
+	"parallelstore":              gcpParallelStore,
 	"privateca":                  gcpCertificateAuthority,
 	"project":                    gcpProject,
 	"public":                     gcpCompute,
