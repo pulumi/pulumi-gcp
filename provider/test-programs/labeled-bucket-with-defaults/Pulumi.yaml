@@ -1,0 +1,7 @@
+name: labeled-bucket-with-defaults
+runtime: nodejs
+description: A minimal Google Cloud TypeScript Pulumi program
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: gcp-typescript

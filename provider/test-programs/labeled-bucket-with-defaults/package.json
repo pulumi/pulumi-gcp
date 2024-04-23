@@ -1,0 +1,12 @@
+{
+    "name": "labeled-bucket-with-defaults",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18"
+    },
+    "dependencies": {
+        "@pulumi/gcp": "^7.0.0",
+        "@pulumi/pulumi": "^3.113.0",
+        "typescript": "^5.0.0"
+    }
+}

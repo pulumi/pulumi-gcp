@@ -962,3 +962,119 @@ func TestBucketImportedWithLabels(t *testing.T) {
 	]`, bucketID)
 	replay.ReplaySequence(t, providerServer(t), json)
 }
+
+//nolint:lll
+func TestBucketImportedWithLabelsAndDefaultLabels(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "labeled-bucket-with-defaults"),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+	googleProj := getProject()
+	test.SetConfig("gcp:config:project", googleProj)
+
+	res := test.Up()
+	bucketID := res.Outputs["bucketId"].Value.(string)
+
+	// Automation API can't import, so we work around that...
+	json := fmt.Sprintf(`
+	[
+		{
+			"method": "/pulumirpc.ResourceProvider/Configure",
+			"request": {
+				"variables": {
+					"gcp:config:project": "pulumi-development"
+				},
+				"args": {
+					"project": "pulumi-development",
+					"version": "7.18.0"
+				},
+				"acceptSecrets": true,
+				"acceptResources": true,
+				"sendsOldInputs": true,
+				"sendsOldInputsToDelete": true
+			},
+			"response": {
+				"supportsPreview": true
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
+		},
+		{
+			"method": "/pulumirpc.ResourceProvider/Read",
+			"request": {
+				"id": %q,
+				"urn": "urn:pulumi:test1::gcp_bucket_import::gcp:storage/bucket:Bucket::my-bucket-zbuchheit",
+				"properties": {}
+			},
+			"response": {
+				"id": "*",
+				"properties": {
+					"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"read\":240000000000,\"update\":240000000000},\"schema_version\":\"1\"}",
+					"autoclass": null,
+					"cors": [],
+					"customPlacementConfig": null,
+					"defaultEventBasedHold": false,
+					"effectiveLabels": {
+						"app": "my-bucket",
+						"def": "defaultlabel"
+					},
+					"enableObjectRetention": false,
+					"encryption": null,
+					"forceDestroy": false,
+					"id": "*",
+					"labels": {
+						"app": "my-bucket",
+						"def": "defaultlabel"
+					},
+					"lifecycleRules": [],
+					"location": "US",
+					"logging": null,
+					"name": "*",
+					"project": "*",
+					"projectNumber": "*",
+					"publicAccessPrevention": "inherited",
+					"pulumiLabels": {
+						"app": "my-bucket",
+						"def": "defaultlabel"
+					},
+					"requesterPays": false,
+					"retentionPolicy": null,
+					"rpo": "DEFAULT",
+					"selfLink": "*",
+					"softDeletePolicy": {
+						"effectiveTime": "*",
+						"retentionDurationSeconds": 604800
+					},
+					"storageClass": "STANDARD",
+					"uniformBucketLevelAccess": false,
+					"url": "*",
+					"versioning": null,
+					"website": null
+				},
+				"inputs": {
+					"__defaults": [],
+					"labels": "*",
+					"location": "US",
+					"name": "*",
+					"project": "*",
+					"publicAccessPrevention": "inherited",
+					"rpo": "DEFAULT"
+				}
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
+		}
+	]`, bucketID)
+	replay.ReplaySequence(t, providerServer(t), json)
+}
