@@ -1812,16 +1812,44 @@
                                     }
                                 },
                                 "docker_repository": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "maven_repository": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "npm_repository": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "python_repository": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "upstream_credentials": {
                                     "maxItemsOne": true,
@@ -5796,6 +5824,9 @@
                     "named_port": {
                         "maxItemsOne": false
                     },
+                    "params": {
+                        "maxItemsOne": true
+                    },
                     "stateful_disk": {
                         "maxItemsOne": false
                     },
@@ -6668,6 +6699,9 @@
                     },
                     "named_port": {
                         "maxItemsOne": false
+                    },
+                    "params": {
+                        "maxItemsOne": true
                     },
                     "stateful_disk": {
                         "maxItemsOne": false
@@ -21782,6 +21816,10 @@
                     }
                 }
             },
+            "google_project_iam_member_remove": {
+                "current": "gcp:projects/iamMemberRemove:IamMemberRemove",
+                "majorVersion": 7
+            },
             "google_project_iam_policy": {
                 "current": "gcp:projects/iAMPolicy:IAMPolicy",
                 "majorVersion": 7
@@ -23934,6 +23972,9 @@
                             "fields": {
                                 "node_type_configs": {
                                     "maxItemsOne": false
+                                },
+                                "stretched_cluster_config": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -24428,16 +24469,44 @@
                                     }
                                 },
                                 "docker_repository": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "maven_repository": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "npm_repository": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "python_repository": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_repository": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "upstream_credentials": {
                                     "maxItemsOne": false,
@@ -26193,6 +26262,9 @@
                         "maxItemsOne": false
                     },
                     "named_port": {
+                        "maxItemsOne": false
+                    },
+                    "params": {
                         "maxItemsOne": false
                     },
                     "stateful_disk": {
@@ -29414,6 +29486,9 @@
                             "fields": {
                                 "node_type_configs": {
                                     "maxItemsOne": false
+                                },
+                                "stretched_cluster_config": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -31072,6 +31147,7 @@
             "gcp:projects/iAMCustomRole:IAMCustomRole": 0,
             "gcp:projects/iAMMember:IAMMember": 0,
             "gcp:projects/iAMPolicy:IAMPolicy": 0,
+            "gcp:projects/iamMemberRemove:IamMemberRemove": 0,
             "gcp:projects/organizationPolicy:OrganizationPolicy": 0,
             "gcp:projects/service:Service": 0,
             "gcp:projects/serviceIdentity:ServiceIdentity": 0,
@@ -31376,11 +31452,11 @@
             "gcp:dataproc/getMetastoreService:getMetastoreService": 0,
             "gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy": 0,
             "gcp:datastream/getStaticIps:getStaticIps": 0,
-            "gcp:dns/getKeys:getKeys": 1,
-            "gcp:dns/getManagedZone:getManagedZone": 1,
+            "gcp:dns/getKeys:getKeys": 0,
+            "gcp:dns/getManagedZone:getManagedZone": 0,
             "gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy": 0,
-            "gcp:dns/getManagedZones:getManagedZones": 1,
-            "gcp:dns/getRecordSet:getRecordSet": 1,
+            "gcp:dns/getManagedZones:getManagedZones": 0,
+            "gcp:dns/getRecordSet:getRecordSet": 0,
             "gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy": 0,
             "gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy": 0,
             "gcp:filestore/getInstance:getInstance": 0,

@@ -7,7 +7,7 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.11
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.1-0.20240409124330-22980d505661
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
 	github.com/pulumi/pulumi/pkg/v3 v3.112.0
 	github.com/pulumi/pulumi/sdk/v3 v3.112.0
 	github.com/stretchr/testify v1.8.4
@@ -25,10 +25,10 @@ require (
 	bitbucket.org/creachadair/stringset v0.0.8 // indirect
 	cloud.google.com/go v0.112.0 // indirect
 	cloud.google.com/go/bigtable v1.19.0 // indirect
-	cloud.google.com/go/compute v1.23.4 // indirect
+	cloud.google.com/go/compute v1.24.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/iam v1.1.6 // indirect
-	cloud.google.com/go/kms v1.15.6 // indirect
+	cloud.google.com/go/kms v1.15.7 // indirect
 	cloud.google.com/go/logging v1.9.0 // indirect
 	cloud.google.com/go/longrunning v0.5.5 // indirect
 	cloud.google.com/go/storage v1.36.0 // indirect
@@ -83,7 +83,6 @@ require (
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
-	github.com/cncf/udpa/go v0.0.0-20220112060539-c52dc94e7fbe // indirect
 	github.com/cncf/xds/go v0.0.0-20231128003011-0fa0005c9caa // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
@@ -151,9 +150,9 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-json v0.21.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.7.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.8.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.22.1 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.22.2 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
@@ -249,23 +248,23 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.36.0 // indirect
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
-	golang.org/x/crypto v0.21.0 // indirect
-	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa // indirect
-	golang.org/x/mod v0.15.0 // indirect
-	golang.org/x/net v0.22.0 // indirect
+	golang.org/x/crypto v0.22.0 // indirect
+	golang.org/x/exp v0.0.0-20240409090435-93d18d7e34b8 // indirect
+	golang.org/x/mod v0.17.0 // indirect
+	golang.org/x/net v0.24.0 // indirect
 	golang.org/x/oauth2 v0.18.0 // indirect
-	golang.org/x/sync v0.6.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
-	golang.org/x/term v0.18.0 // indirect
+	golang.org/x/sync v0.7.0 // indirect
+	golang.org/x/sys v0.19.0 // indirect
+	golang.org/x/term v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
-	golang.org/x/tools v0.15.0 // indirect
+	golang.org/x/tools v0.20.0 // indirect
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/genproto v0.0.0-20240205150955-31a09d347014 // indirect
+	google.golang.org/genproto v0.0.0-20240227224415-6ceb2ff114de // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240311132316-a219d84964c2 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240314234333-6e1732d8331c // indirect
-	google.golang.org/grpc v1.62.1 // indirect
+	google.golang.org/grpc v1.63.2 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
