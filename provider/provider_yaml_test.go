@@ -980,6 +980,13 @@ func TestBucketImportedWithLabelsAndDefaultLabels(t *testing.T) {
 	res := test.Up()
 	bucketID := res.Outputs["bucketId"].Value.(string)
 
+	bucketLabels := res.Outputs["bucketLabels"].Value.(map[string]interface{})
+	require.Equal(t, bucketLabels["app"], "my-bucket")
+
+	bucketPulumiLabels := res.Outputs["bucketPulumiLabels"].Value.(map[string]interface{})
+	require.Equal(t, bucketPulumiLabels["app"], "my-bucket")
+	require.Equal(t, bucketPulumiLabels["def"], "defaultlabel")
+
 	// Automation API can't import, so we work around that...
 	json := fmt.Sprintf(`
 	[
@@ -987,11 +994,13 @@ func TestBucketImportedWithLabelsAndDefaultLabels(t *testing.T) {
 			"method": "/pulumirpc.ResourceProvider/Configure",
 			"request": {
 				"variables": {
+					"gcp:config:defaultLabels": "{\"def\":\"defaultlabel\"}",
 					"gcp:config:project": "pulumi-development"
 				},
 				"args": {
 					"project": "pulumi-development",
-					"version": "7.18.0"
+					"version": "7.18.0",
+					"defaultLabels": "{\"def\":\"defaultlabel\"}"
 				},
 				"acceptSecrets": true,
 				"acceptResources": true,
@@ -1031,8 +1040,7 @@ func TestBucketImportedWithLabelsAndDefaultLabels(t *testing.T) {
 					"forceDestroy": false,
 					"id": "*",
 					"labels": {
-						"app": "my-bucket",
-						"def": "defaultlabel"
+						"app": "my-bucket"
 					},
 					"lifecycleRules": [],
 					"location": "US",

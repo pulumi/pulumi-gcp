@@ -5,15 +5,21 @@ Subject: [PATCH] fix labels import
 
 
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index 3baddab29..b20906f57 100644
+index 3baddab29..4a28e8e0c 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
-@@ -1778,11 +1778,11 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
+@@ -1778,11 +1778,17 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
  	if err := d.Set("lifecycle_rule", flattenBucketLifecycle(d, res.Lifecycle)); err != nil {
  		return fmt.Errorf("Error setting lifecycle_rule: %s", err)
  	}
 -	if err := tpgresource.SetLabels(res.Labels, d, "labels"); err != nil {
-+	if err := d.Set("labels", res.Labels); err != nil {
++	resourceLabels := make(map[string]string)
++	for k, v := range res.Labels {
++		if _, ok := config.DefaultLabels[k]; !ok {
++			resourceLabels[k] = v
++		}
++	}
++	if err := d.Set("labels", resourceLabels); err != nil {
  		return fmt.Errorf("Error setting labels: %s", err)
  	}
 -	if err := tpgresource.SetLabels(res.Labels, d, "terraform_labels"); err != nil {
