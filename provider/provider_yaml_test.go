@@ -851,6 +851,7 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 	]`, proj, proj))
 }
 
+//nolint:lll
 func TestBucketImportedWithLabels(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
