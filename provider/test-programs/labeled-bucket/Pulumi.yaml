@@ -1,0 +1,14 @@
+name: labeled-bucket
+runtime: yaml
+description: A minimal Google Cloud Pulumi YAML program
+outputs:
+  # Export the DNS name of the bucket
+  bucketId: ${my-bucket.id}
+resources:
+  # Create a GCP resource (Storage Bucket)
+  my-bucket:
+    properties:
+      location: US
+      labels:
+        app: my-bucket
+    type: gcp:storage:Bucket
