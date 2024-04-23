@@ -22,7 +22,7 @@ class GetInstanceGroupManagerResult:
     """
     A collection of values returned by getInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, project=None, self_link=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, self_link=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -62,6 +62,9 @@ class GetInstanceGroupManagerResult:
         if operation and not isinstance(operation, str):
             raise TypeError("Expected argument 'operation' to be a str")
         pulumi.set(__self__, "operation", operation)
+        if params and not isinstance(params, list):
+            raise TypeError("Expected argument 'params' to be a list")
+        pulumi.set(__self__, "params", params)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -172,6 +175,11 @@ class GetInstanceGroupManagerResult:
 
     @property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.GetInstanceGroupManagerParamResult']:
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
 
@@ -255,6 +263,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             name=self.name,
             named_ports=self.named_ports,
             operation=self.operation,
+            params=self.params,
             project=self.project,
             self_link=self.self_link,
             stateful_disks=self.stateful_disks,
@@ -321,6 +330,7 @@ def get_instance_group_manager(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         named_ports=pulumi.get(__ret__, 'named_ports'),
         operation=pulumi.get(__ret__, 'operation'),
+        params=pulumi.get(__ret__, 'params'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
         stateful_disks=pulumi.get(__ret__, 'stateful_disks'),

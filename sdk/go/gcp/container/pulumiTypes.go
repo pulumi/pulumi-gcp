@@ -44745,7 +44745,7 @@ func (o GetClusterMasterAuthClientCertificateConfigArrayOutput) Index(i pulumi.I
 type GetClusterMasterAuthorizedNetworksConfig struct {
 	// External networks that can access the Kubernetes cluster master through HTTPS.
 	CidrBlocks []GetClusterMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
-	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled bool `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
@@ -44763,7 +44763,7 @@ type GetClusterMasterAuthorizedNetworksConfigInput interface {
 type GetClusterMasterAuthorizedNetworksConfigArgs struct {
 	// External networks that can access the Kubernetes cluster master through HTTPS.
 	CidrBlocks GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
-	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled pulumi.BoolInput `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
@@ -44825,7 +44825,7 @@ func (o GetClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetClusterM
 	}).(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
-// Whether master is accessbile via Google Compute Engine Public IP addresses.
+// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
 func (o GetClusterMasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfig) bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolOutput)
 }
@@ -54430,7 +54430,7 @@ func (o GetClusterSecurityPostureConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClusterServiceExternalIpsConfig struct {
-	// When enabled, services with exterenal ips specified will be allowed.
+	// When enabled, services with external ips specified will be allowed.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -54446,7 +54446,7 @@ type GetClusterServiceExternalIpsConfigInput interface {
 }
 
 type GetClusterServiceExternalIpsConfigArgs struct {
-	// When enabled, services with exterenal ips specified will be allowed.
+	// When enabled, services with external ips specified will be allowed.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -54501,7 +54501,7 @@ func (o GetClusterServiceExternalIpsConfigOutput) ToGetClusterServiceExternalIps
 	return o
 }
 
-// When enabled, services with exterenal ips specified will be allowed.
+// When enabled, services with external ips specified will be allowed.
 func (o GetClusterServiceExternalIpsConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterServiceExternalIpsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

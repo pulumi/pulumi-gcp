@@ -212,6 +212,10 @@ type Table struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrOutput `pulumi:"requirePartitionFilter"`
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -374,6 +378,10 @@ type tableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -496,6 +504,10 @@ type TableState struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -589,6 +601,10 @@ type tableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -674,6 +690,10 @@ type TableArgs struct {
 	// require a partition filter that can be used for partition elimination to be
 	// specified.
 	RequirePartitionFilter pulumi.BoolPtrInput
+	// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+	// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+	// tag key. Tag value is expected to be the short name, for example "Production".
+	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -944,6 +964,13 @@ func (o TableOutput) RangePartitioning() TableRangePartitioningPtrOutput {
 // specified.
 func (o TableOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+}
+
+// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+// tag key. Tag value is expected to be the short name, for example "Production".
+func (o TableOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 // A JSON schema for the external table. Schema is required

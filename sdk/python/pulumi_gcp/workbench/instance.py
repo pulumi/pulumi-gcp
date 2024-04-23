@@ -601,8 +601,8 @@ class Instance(pulumi.CustomResource):
                     core_count="1",
                 )],
                 vm_image=gcp.workbench.InstanceGceSetupVmImageArgs(
-                    project="deeplearning-platform-release",
-                    family="tf-latest-gpu",
+                    project="cloud-notebooks-managed",
+                    family="workbench-instances",
                 ),
             ))
         ```
@@ -811,8 +811,8 @@ class Instance(pulumi.CustomResource):
                     core_count="1",
                 )],
                 vm_image=gcp.workbench.InstanceGceSetupVmImageArgs(
-                    project="deeplearning-platform-release",
-                    family="tf-latest-gpu",
+                    project="cloud-notebooks-managed",
+                    family="workbench-instances",
                 ),
             ))
         ```

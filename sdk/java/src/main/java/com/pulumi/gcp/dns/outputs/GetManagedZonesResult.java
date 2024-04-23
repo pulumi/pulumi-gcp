@@ -19,7 +19,7 @@ public final class GetManagedZonesResult {
      * @return A list of managed zones.
      * 
      */
-    private @Nullable List<GetManagedZonesManagedZone> managedZones;
+    private List<GetManagedZonesManagedZone> managedZones;
     private @Nullable String project;
 
     private GetManagedZonesResult() {}
@@ -31,7 +31,7 @@ public final class GetManagedZonesResult {
      * 
      */
     public List<GetManagedZonesManagedZone> managedZones() {
-        return this.managedZones == null ? List.of() : this.managedZones;
+        return this.managedZones;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -47,7 +47,7 @@ public final class GetManagedZonesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable List<GetManagedZonesManagedZone> managedZones;
+        private List<GetManagedZonesManagedZone> managedZones;
         private @Nullable String project;
         public Builder() {}
         public Builder(GetManagedZonesResult defaults) {
@@ -66,8 +66,10 @@ public final class GetManagedZonesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder managedZones(@Nullable List<GetManagedZonesManagedZone> managedZones) {
-
+        public Builder managedZones(List<GetManagedZonesManagedZone> managedZones) {
+            if (managedZones == null) {
+              throw new MissingRequiredPropertyException("GetManagedZonesResult", "managedZones");
+            }
             this.managedZones = managedZones;
             return this;
         }

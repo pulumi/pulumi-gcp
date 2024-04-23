@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IAMMember{}
 	case "gcp:projects/iAMPolicy:IAMPolicy":
 		r = &IAMPolicy{}
+	case "gcp:projects/iamMemberRemove:IamMemberRemove":
+		r = &IamMemberRemove{}
 	case "gcp:projects/organizationPolicy:OrganizationPolicy":
 		r = &OrganizationPolicy{}
 	case "gcp:projects/service:Service":
@@ -96,6 +98,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"projects/iAMPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"projects/iamMemberRemove",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

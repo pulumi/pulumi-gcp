@@ -314,6 +314,12 @@ type Organization struct {
 
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrOutput `pulumi:"analyticsRegion"`
+	// Cloud KMS key name used for encrypting API consumer data.
+	ApiConsumerDataEncryptionKeyName pulumi.StringPtrOutput `pulumi:"apiConsumerDataEncryptionKeyName"`
+	// This field is needed only for customers using non-default data residency regions.
+	// Apigee stores some control plane data only in single region.
+	// This field determines which single region Apigee should use.
+	ApiConsumerDataLocation pulumi.StringPtrOutput `pulumi:"apiConsumerDataLocation"`
 	// Output only. Project ID of the Apigee Tenant Project.
 	ApigeeProjectId pulumi.StringOutput `pulumi:"apigeeProjectId"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
@@ -325,6 +331,9 @@ type Organization struct {
 	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
 	// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
+	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+	// Only used for the data residency region "US" or "EU".
+	ControlPlaneEncryptionKeyName pulumi.StringPtrOutput `pulumi:"controlPlaneEncryptionKeyName"`
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -400,6 +409,12 @@ func GetOrganization(ctx *pulumi.Context,
 type organizationState struct {
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion *string `pulumi:"analyticsRegion"`
+	// Cloud KMS key name used for encrypting API consumer data.
+	ApiConsumerDataEncryptionKeyName *string `pulumi:"apiConsumerDataEncryptionKeyName"`
+	// This field is needed only for customers using non-default data residency regions.
+	// Apigee stores some control plane data only in single region.
+	// This field determines which single region Apigee should use.
+	ApiConsumerDataLocation *string `pulumi:"apiConsumerDataLocation"`
 	// Output only. Project ID of the Apigee Tenant Project.
 	ApigeeProjectId *string `pulumi:"apigeeProjectId"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
@@ -411,6 +426,9 @@ type organizationState struct {
 	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
 	// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 	CaCertificate *string `pulumi:"caCertificate"`
+	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+	// Only used for the data residency region "US" or "EU".
+	ControlPlaneEncryptionKeyName *string `pulumi:"controlPlaneEncryptionKeyName"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -454,6 +472,12 @@ type organizationState struct {
 type OrganizationState struct {
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrInput
+	// Cloud KMS key name used for encrypting API consumer data.
+	ApiConsumerDataEncryptionKeyName pulumi.StringPtrInput
+	// This field is needed only for customers using non-default data residency regions.
+	// Apigee stores some control plane data only in single region.
+	// This field determines which single region Apigee should use.
+	ApiConsumerDataLocation pulumi.StringPtrInput
 	// Output only. Project ID of the Apigee Tenant Project.
 	ApigeeProjectId pulumi.StringPtrInput
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
@@ -465,6 +489,9 @@ type OrganizationState struct {
 	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
 	// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 	CaCertificate pulumi.StringPtrInput
+	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+	// Only used for the data residency region "US" or "EU".
+	ControlPlaneEncryptionKeyName pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -512,12 +539,21 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion *string `pulumi:"analyticsRegion"`
+	// Cloud KMS key name used for encrypting API consumer data.
+	ApiConsumerDataEncryptionKeyName *string `pulumi:"apiConsumerDataEncryptionKeyName"`
+	// This field is needed only for customers using non-default data residency regions.
+	// Apigee stores some control plane data only in single region.
+	// This field determines which single region Apigee should use.
+	ApiConsumerDataLocation *string `pulumi:"apiConsumerDataLocation"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
 	BillingType *string `pulumi:"billingType"`
+	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+	// Only used for the data residency region "US" or "EU".
+	ControlPlaneEncryptionKeyName *string `pulumi:"controlPlaneEncryptionKeyName"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -557,12 +593,21 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrInput
+	// Cloud KMS key name used for encrypting API consumer data.
+	ApiConsumerDataEncryptionKeyName pulumi.StringPtrInput
+	// This field is needed only for customers using non-default data residency regions.
+	// Apigee stores some control plane data only in single region.
+	// This field determines which single region Apigee should use.
+	ApiConsumerDataLocation pulumi.StringPtrInput
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
 	BillingType pulumi.StringPtrInput
+	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+	// Only used for the data residency region "US" or "EU".
+	ControlPlaneEncryptionKeyName pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
 	// Flag that specifies whether the VPC Peering through Private Google Access should be
@@ -690,6 +735,18 @@ func (o OrganizationOutput) AnalyticsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.AnalyticsRegion }).(pulumi.StringPtrOutput)
 }
 
+// Cloud KMS key name used for encrypting API consumer data.
+func (o OrganizationOutput) ApiConsumerDataEncryptionKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.ApiConsumerDataEncryptionKeyName }).(pulumi.StringPtrOutput)
+}
+
+// This field is needed only for customers using non-default data residency regions.
+// Apigee stores some control plane data only in single region.
+// This field determines which single region Apigee should use.
+func (o OrganizationOutput) ApiConsumerDataLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.ApiConsumerDataLocation }).(pulumi.StringPtrOutput)
+}
+
 // Output only. Project ID of the Apigee Tenant Project.
 func (o OrganizationOutput) ApigeeProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.ApigeeProjectId }).(pulumi.StringOutput)
@@ -711,6 +768,12 @@ func (o OrganizationOutput) BillingType() pulumi.StringOutput {
 // Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 func (o OrganizationOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+// Only used for the data residency region "US" or "EU".
+func (o OrganizationOutput) ControlPlaneEncryptionKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.ControlPlaneEncryptionKeyName }).(pulumi.StringPtrOutput)
 }
 
 // Description of the Apigee organization.

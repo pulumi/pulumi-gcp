@@ -401,6 +401,10 @@ type Budget struct {
 	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ownership scope of the budget. The ownership scope and users'
+	// IAM permissions determine who has full access to the budget's data.
+	// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+	OwnershipScope pulumi.StringPtrOutput `pulumi:"ownershipScope"`
 	// Rules that trigger alerts (notifications of thresholds being
 	// crossed) when spend exceeds the specified percentages of the
 	// budget.
@@ -464,6 +468,10 @@ type budgetState struct {
 	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name *string `pulumi:"name"`
+	// The ownership scope of the budget. The ownership scope and users'
+	// IAM permissions determine who has full access to the budget's data.
+	// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+	OwnershipScope *string `pulumi:"ownershipScope"`
 	// Rules that trigger alerts (notifications of thresholds being
 	// crossed) when spend exceeds the specified percentages of the
 	// budget.
@@ -492,6 +500,10 @@ type BudgetState struct {
 	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name pulumi.StringPtrInput
+	// The ownership scope of the budget. The ownership scope and users'
+	// IAM permissions determine who has full access to the budget's data.
+	// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+	OwnershipScope pulumi.StringPtrInput
 	// Rules that trigger alerts (notifications of thresholds being
 	// crossed) when spend exceeds the specified percentages of the
 	// budget.
@@ -520,6 +532,10 @@ type budgetArgs struct {
 	BudgetFilter *BudgetBudgetFilter `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName *string `pulumi:"displayName"`
+	// The ownership scope of the budget. The ownership scope and users'
+	// IAM permissions determine who has full access to the budget's data.
+	// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+	OwnershipScope *string `pulumi:"ownershipScope"`
 	// Rules that trigger alerts (notifications of thresholds being
 	// crossed) when spend exceeds the specified percentages of the
 	// budget.
@@ -545,6 +561,10 @@ type BudgetArgs struct {
 	BudgetFilter BudgetBudgetFilterPtrInput
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrInput
+	// The ownership scope of the budget. The ownership scope and users'
+	// IAM permissions determine who has full access to the budget's data.
+	// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+	OwnershipScope pulumi.StringPtrInput
 	// Rules that trigger alerts (notifications of thresholds being
 	// crossed) when spend exceeds the specified percentages of the
 	// budget.
@@ -675,6 +695,13 @@ func (o BudgetOutput) DisplayName() pulumi.StringPtrOutput {
 // billingAccounts/{billingAccountId}/budgets/{budgetId}.
 func (o BudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ownership scope of the budget. The ownership scope and users'
+// IAM permissions determine who has full access to the budget's data.
+// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+func (o BudgetOutput) OwnershipScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringPtrOutput { return v.OwnershipScope }).(pulumi.StringPtrOutput)
 }
 
 // Rules that trigger alerts (notifications of thresholds being

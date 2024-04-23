@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RepositoryRemoteRepositoryConfigMavenRepositoryArgs Empty = new RepositoryRemoteRepositoryConfigMavenRepositoryArgs();
+
+    /**
+     * Settings for a remote repository with a custom uri.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customRepository")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs> customRepository;
+
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs>> customRepository() {
+        return Optional.ofNullable(this.customRepository);
+    }
 
     /**
      * Address of the remote repository.
@@ -37,6 +55,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
     private RepositoryRemoteRepositoryConfigMavenRepositoryArgs() {}
 
     private RepositoryRemoteRepositoryConfigMavenRepositoryArgs(RepositoryRemoteRepositoryConfigMavenRepositoryArgs $) {
+        this.customRepository = $.customRepository;
         this.publicRepository = $.publicRepository;
     }
 
@@ -56,6 +75,29 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
 
         public Builder(RepositoryRemoteRepositoryConfigMavenRepositoryArgs defaults) {
             $ = new RepositoryRemoteRepositoryConfigMavenRepositoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customRepository Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customRepository(@Nullable Output<RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs> customRepository) {
+            $.customRepository = customRepository;
+            return this;
+        }
+
+        /**
+         * @param customRepository Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customRepository(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs customRepository) {
+            return customRepository(Output.of(customRepository));
         }
 
         /**

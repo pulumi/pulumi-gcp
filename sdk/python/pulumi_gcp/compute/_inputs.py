@@ -128,6 +128,7 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPoliciesArgs',
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerNamedPortArgs',
+    'InstanceGroupManagerParamsArgs',
     'InstanceGroupManagerStatefulDiskArgs',
     'InstanceGroupManagerStatefulExternalIpArgs',
     'InstanceGroupManagerStatefulInternalIpArgs',
@@ -259,6 +260,7 @@ __all__ = [
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
     'RegionInstanceGroupManagerNamedPortArgs',
+    'RegionInstanceGroupManagerParamsArgs',
     'RegionInstanceGroupManagerStatefulDiskArgs',
     'RegionInstanceGroupManagerStatefulExternalIpArgs',
     'RegionInstanceGroupManagerStatefulInternalIpArgs',
@@ -9429,6 +9431,29 @@ class InstanceGroupManagerNamedPortArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class InstanceGroupManagerParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type
@@ -18679,6 +18704,29 @@ class RegionInstanceGroupManagerNamedPortArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class RegionInstanceGroupManagerParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type

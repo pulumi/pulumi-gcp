@@ -201,6 +201,10 @@ type RegionInstanceGroupManager struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params RegionInstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -213,8 +217,6 @@ type RegionInstanceGroupManager struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayOutput `pulumi:"statefulExternalIps"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayOutput `pulumi:"statefulInternalIps"`
@@ -325,6 +327,10 @@ type regionInstanceGroupManagerState struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []RegionInstanceGroupManagerNamedPort `pulumi:"namedPorts"`
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params *RegionInstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -337,8 +343,6 @@ type regionInstanceGroupManagerState struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps []RegionInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps []RegionInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
@@ -414,6 +418,10 @@ type RegionInstanceGroupManagerState struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayInput
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params RegionInstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -426,8 +434,6 @@ type RegionInstanceGroupManagerState struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayInput
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayInput
@@ -501,6 +507,10 @@ type regionInstanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []RegionInstanceGroupManagerNamedPort `pulumi:"namedPorts"`
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params *RegionInstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -511,8 +521,6 @@ type regionInstanceGroupManagerArgs struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps []RegionInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps []RegionInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
@@ -581,6 +589,10 @@ type RegionInstanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayInput
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params RegionInstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -591,8 +603,6 @@ type RegionInstanceGroupManagerArgs struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayInput
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayInput
@@ -799,6 +809,13 @@ func (o RegionInstanceGroupManagerOutput) NamedPorts() RegionInstanceGroupManage
 	}).(RegionInstanceGroupManagerNamedPortArrayOutput)
 }
 
+// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+//
+// ***
+func (o RegionInstanceGroupManagerOutput) Params() RegionInstanceGroupManagerParamsPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerParamsPtrOutput { return v.Params }).(RegionInstanceGroupManagerParamsPtrOutput)
+}
+
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
 func (o RegionInstanceGroupManagerOutput) Project() pulumi.StringOutput {
@@ -825,8 +842,6 @@ func (o RegionInstanceGroupManagerOutput) StatefulDisks() RegionInstanceGroupMan
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-//
-// ***
 func (o RegionInstanceGroupManagerOutput) StatefulExternalIps() RegionInstanceGroupManagerStatefulExternalIpArrayOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerStatefulExternalIpArrayOutput {
 		return v.StatefulExternalIps

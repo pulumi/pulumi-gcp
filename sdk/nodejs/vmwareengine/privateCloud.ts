@@ -165,18 +165,10 @@ export class PrivateCloud extends pulumi.CustomResource {
      */
     public /*out*/ readonly nsxes!: pulumi.Output<outputs.vmwareengine.PrivateCloudNsx[]>;
     /**
-     * The preferred single failure domain within a region.
-     */
-    public readonly preferredZone!: pulumi.Output<string | undefined>;
-    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    /**
-     * The secondary single failure domain within a region.
-     */
-    public readonly secondaryZone!: pulumi.Output<string | undefined>;
     /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
@@ -217,9 +209,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["nsxes"] = state ? state.nsxes : undefined;
-            resourceInputs["preferredZone"] = state ? state.preferredZone : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["secondaryZone"] = state ? state.secondaryZone : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
@@ -240,9 +230,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["managementCluster"] = args ? args.managementCluster : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
-            resourceInputs["preferredZone"] = args ? args.preferredZone : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["secondaryZone"] = args ? args.secondaryZone : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["hcxes"] = undefined /*out*/;
             resourceInputs["nsxes"] = undefined /*out*/;
@@ -292,18 +280,10 @@ export interface PrivateCloudState {
      */
     nsxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudNsx>[]>;
     /**
-     * The preferred single failure domain within a region.
-     */
-    preferredZone?: pulumi.Input<string>;
-    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    /**
-     * The secondary single failure domain within a region.
-     */
-    secondaryZone?: pulumi.Input<string>;
     /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
@@ -352,18 +332,10 @@ export interface PrivateCloudArgs {
      */
     networkConfig: pulumi.Input<inputs.vmwareengine.PrivateCloudNetworkConfig>;
     /**
-     * The preferred single failure domain within a region.
-     */
-    preferredZone?: pulumi.Input<string>;
-    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    /**
-     * The secondary single failure domain within a region.
-     */
-    secondaryZone?: pulumi.Input<string>;
     /**
      * Initial type of the private cloud.
      * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.

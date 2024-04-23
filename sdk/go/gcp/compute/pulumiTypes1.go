@@ -13,6 +13,673 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherRouteRuleRouteAction struct {
+	// The specification for allowing client side cross-origin requests. Please see W3C
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
+	CorsPolicy *URLMapPathMatcherRouteRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// The specification for fault injection introduced into traffic to test the
+	// resiliency of clients to backend service failure. As part of fault injection,
+	// when clients send requests to a backend service, delays can be introduced by
+	// Loadbalancer on a percentage of requests before sending those request to the
+	// backend service. Similarly requests from clients can be aborted by the
+	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
+	FaultInjectionPolicy *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the policy on how requests intended for the route's backends are
+	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+	// responses from the shadow service. Prior to sending traffic to the shadow
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
+	RequestMirrorPolicy *URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy *URLMapPathMatcherRouteRuleRouteActionRetryPolicy `pulumi:"retryPolicy"`
+	// Specifies the timeout for the selected route. Timeout is computed from the time
+	// the request is has been fully processed (i.e. end-of-stream) up until the
+	// response has been completely processed. Timeout includes all retries. If not
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
+	Timeout *URLMapPathMatcherRouteRuleRouteActionTimeout `pulumi:"timeout"`
+	// The spec to modify the URL of the request, prior to forwarding the request to
+	// the matched service
+	// Structure is documented below.
+	UrlRewrite *URLMapPathMatcherRouteRuleRouteActionUrlRewrite `pulumi:"urlRewrite"`
+	// A list of weighted backend services to send traffic to when a route match
+	// occurs. The weights determine the fraction of traffic that flows to their
+	// corresponding backend service. If all traffic needs to go to a single backend
+	// service, there must be one  weightedBackendService with weight set to a non 0
+	// number. Once a backendService is identified and before forwarding the request to
+	// the backend service, advanced routing actions like Url rewrites and header
+	// transformations are applied depending on additional settings specified in this
+	// HttpRouteAction.
+	// Structure is documented below.
+	WeightedBackendServices []URLMapPathMatcherRouteRuleRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionArgs and URLMapPathMatcherRouteRuleRouteActionOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionOutput() URLMapPathMatcherRouteRuleRouteActionOutput
+	ToURLMapPathMatcherRouteRuleRouteActionOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionArgs struct {
+	// The specification for allowing client side cross-origin requests. Please see W3C
+	// Recommendation for Cross Origin Resource Sharing
+	// Structure is documented below.
+	CorsPolicy URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// The specification for fault injection introduced into traffic to test the
+	// resiliency of clients to backend service failure. As part of fault injection,
+	// when clients send requests to a backend service, delays can be introduced by
+	// Loadbalancer on a percentage of requests before sending those request to the
+	// backend service. Similarly requests from clients can be aborted by the
+	// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+	// ignored by clients that are configured with a fault_injection_policy.
+	// Structure is documented below.
+	FaultInjectionPolicy URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the policy on how requests intended for the route's backends are
+	// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+	// responses from the shadow service. Prior to sending traffic to the shadow
+	// service, the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
+	RequestMirrorPolicy URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Specifies the timeout for the selected route. Timeout is computed from the time
+	// the request is has been fully processed (i.e. end-of-stream) up until the
+	// response has been completely processed. Timeout includes all retries. If not
+	// specified, the default value is 15 seconds.
+	// Structure is documented below.
+	Timeout URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput `pulumi:"timeout"`
+	// The spec to modify the URL of the request, prior to forwarding the request to
+	// the matched service
+	// Structure is documented below.
+	UrlRewrite URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
+	// A list of weighted backend services to send traffic to when a route match
+	// occurs. The weights determine the fraction of traffic that flows to their
+	// corresponding backend service. If all traffic needs to go to a single backend
+	// service, there must be one  weightedBackendService with weight set to a non 0
+	// number. Once a backendService is identified and before forwarding the request to
+	// the backend service, advanced routing actions like Url rewrites and header
+	// transformations are applied depending on additional settings specified in this
+	// HttpRouteAction.
+	// Structure is documented below.
+	WeightedBackendServices URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteAction)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionArgs) ToURLMapPathMatcherRouteRuleRouteActionOutput() URLMapPathMatcherRouteRuleRouteActionOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionArgs) ToURLMapPathMatcherRouteRuleRouteActionOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionArgs) ToURLMapPathMatcherRouteRuleRouteActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionArgs) ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionOutput).ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionArgs, URLMapPathMatcherRouteRuleRouteActionPtr and URLMapPathMatcherRouteRuleRouteActionPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionPtrType URLMapPathMatcherRouteRuleRouteActionArgs
+
+func URLMapPathMatcherRouteRuleRouteActionPtr(v *URLMapPathMatcherRouteRuleRouteActionArgs) URLMapPathMatcherRouteRuleRouteActionPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteAction)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionPtrType) ToURLMapPathMatcherRouteRuleRouteActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionPtrType) ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) ToURLMapPathMatcherRouteRuleRouteActionOutput() URLMapPathMatcherRouteRuleRouteActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) ToURLMapPathMatcherRouteRuleRouteActionOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) ToURLMapPathMatcherRouteRuleRouteActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteAction {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionPtrOutput)
+}
+
+// The specification for allowing client side cross-origin requests. Please see W3C
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) CorsPolicy() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+		return v.CorsPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the
+// resiliency of clients to backend service failure. As part of fault injection,
+// when clients send requests to a backend service, delays can be introduced by
+// Loadbalancer on a percentage of requests before sending those request to the
+// backend service. Similarly requests from clients can be aborted by the
+// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+		return v.FaultInjectionPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the route's backends are
+// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+// responses from the shadow service. Prior to sending traffic to the shadow
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) RequestMirrorPolicy() URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+		return v.RequestMirrorPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) RetryPolicy() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+		return v.RetryPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for the selected route. Timeout is computed from the time
+// the request is has been fully processed (i.e. end-of-stream) up until the
+// response has been completely processed. Timeout includes all retries. If not
+// specified, the default value is 15 seconds.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) Timeout() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionTimeout {
+		return v.Timeout
+	}).(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput)
+}
+
+// The spec to modify the URL of the request, prior to forwarding the request to
+// the matched service
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) UrlRewrite() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+		return v.UrlRewrite
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
+}
+
+// A list of weighted backend services to send traffic to when a route match
+// occurs. The weights determine the fraction of traffic that flows to their
+// corresponding backend service. If all traffic needs to go to a single backend
+// service, there must be one  weightedBackendService with weight set to a non 0
+// number. Once a backendService is identified and before forwarding the request to
+// the backend service, advanced routing actions like Url rewrites and header
+// transformations are applied depending on additional settings specified in this
+// HttpRouteAction.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) WeightedBackendServices() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+		return v.WeightedBackendServices
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) URLMapPathMatcherRouteRuleRouteAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteAction
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionOutput)
+}
+
+// The specification for allowing client side cross-origin requests. Please see W3C
+// Recommendation for Cross Origin Resource Sharing
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) CorsPolicy() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.CorsPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the
+// resiliency of clients to backend service failure. As part of fault injection,
+// when clients send requests to a backend service, delays can be introduced by
+// Loadbalancer on a percentage of requests before sending those request to the
+// backend service. Similarly requests from clients can be aborted by the
+// Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+// ignored by clients that are configured with a fault_injection_policy.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FaultInjectionPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the route's backends are
+// shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+// responses from the shadow service. Prior to sending traffic to the shadow
+// service, the host / authority header is suffixed with -shadow.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) RequestMirrorPolicy() URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RequestMirrorPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) RetryPolicy() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for the selected route. Timeout is computed from the time
+// the request is has been fully processed (i.e. end-of-stream) up until the
+// response has been completely processed. Timeout includes all retries. If not
+// specified, the default value is 15 seconds.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) Timeout() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput)
+}
+
+// The spec to modify the URL of the request, prior to forwarding the request to
+// the matched service
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) UrlRewrite() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.UrlRewrite
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
+}
+
+// A list of weighted backend services to send traffic to when a route match
+// occurs. The weights determine the fraction of traffic that flows to their
+// corresponding backend service. If all traffic needs to go to a single backend
+// service, there must be one  weightedBackendService with weight set to a non 0
+// number. Once a backendService is identified and before forwarding the request to
+// the backend service, advanced routing actions like Url rewrites and header
+// transformations are applied depending on additional settings specified in this
+// HttpRouteAction.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) WeightedBackendServices() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+		if v == nil {
+			return nil
+		}
+		return v.WeightedBackendServices
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionCorsPolicy struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	// This translates to the Access-Control-Allow-Credentials header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// Specifies the content for the Access-Control-Allow-Headers header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// Specifies the content for the Access-Control-Allow-Methods header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+	// please see en.cppreference.com/w/cpp/regex/ecmascript
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled *bool `pulumi:"disabled"`
+	// Specifies the content for the Access-Control-Expose-Headers header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Specifies how long results of a preflight request can be cached in seconds.
+	// This translates to the Access-Control-Max-Age header.
+	MaxAge *int `pulumi:"maxAge"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionCorsPolicyInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs and URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionCorsPolicyInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionCorsPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput
+	ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	// This translates to the Access-Control-Allow-Credentials header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// Specifies the content for the Access-Control-Allow-Headers header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// Specifies the content for the Access-Control-Allow-Methods header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+	// please see en.cppreference.com/w/cpp/regex/ecmascript
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Specifies the content for the Access-Control-Expose-Headers header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Specifies how long results of a preflight request can be cached in seconds.
+	// This translates to the Access-Control-Max-Age header.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput).ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs, URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtr and URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionCorsPolicyPtrType URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs
+
+func URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtr(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs) URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionCorsPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionCorsPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionCorsPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionCorsPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+// This translates to the Access-Control-Allow-Credentials header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Headers header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Methods header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+// please see en.cppreference.com/w/cpp/regex/ecmascript
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
+}
+
+// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Expose-Headers header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long results of a preflight request can be cached in seconds.
+// This translates to the Access-Control-Max-Age header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionCorsPolicy
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+// This translates to the Access-Control-Allow-Credentials header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Headers header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Methods header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+// please see en.cppreference.com/w/cpp/regex/ecmascript
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOriginRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Expose-Headers header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long results of a preflight request can be cached in seconds.
+// This translates to the Access-Control-Max-Age header.
+func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionCorsPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	// Structure is documented below.
@@ -11016,6 +11683,103 @@ func (o GetInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerNamedPort {
 		return vs[0].([]GetInstanceGroupManagerNamedPort)[vs[1].(int)]
 	}).(GetInstanceGroupManagerNamedPortOutput)
+}
+
+type GetInstanceGroupManagerParam struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
+}
+
+// GetInstanceGroupManagerParamInput is an input type that accepts GetInstanceGroupManagerParamArgs and GetInstanceGroupManagerParamOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerParamInput` via:
+//
+//	GetInstanceGroupManagerParamArgs{...}
+type GetInstanceGroupManagerParamInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerParamOutput() GetInstanceGroupManagerParamOutput
+	ToGetInstanceGroupManagerParamOutputWithContext(context.Context) GetInstanceGroupManagerParamOutput
+}
+
+type GetInstanceGroupManagerParamArgs struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetInstanceGroupManagerParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerParamArgs) ToGetInstanceGroupManagerParamOutput() GetInstanceGroupManagerParamOutput {
+	return i.ToGetInstanceGroupManagerParamOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerParamArgs) ToGetInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerParamOutput)
+}
+
+// GetInstanceGroupManagerParamArrayInput is an input type that accepts GetInstanceGroupManagerParamArray and GetInstanceGroupManagerParamArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGroupManagerParamArrayInput` via:
+//
+//	GetInstanceGroupManagerParamArray{ GetInstanceGroupManagerParamArgs{...} }
+type GetInstanceGroupManagerParamArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGroupManagerParamArrayOutput() GetInstanceGroupManagerParamArrayOutput
+	ToGetInstanceGroupManagerParamArrayOutputWithContext(context.Context) GetInstanceGroupManagerParamArrayOutput
+}
+
+type GetInstanceGroupManagerParamArray []GetInstanceGroupManagerParamInput
+
+func (GetInstanceGroupManagerParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetInstanceGroupManagerParamArray) ToGetInstanceGroupManagerParamArrayOutput() GetInstanceGroupManagerParamArrayOutput {
+	return i.ToGetInstanceGroupManagerParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGroupManagerParamArray) ToGetInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGroupManagerParamArrayOutput)
+}
+
+type GetInstanceGroupManagerParamOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerParamOutput) ToGetInstanceGroupManagerParamOutput() GetInstanceGroupManagerParamOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerParamOutput) ToGetInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamOutput {
+	return o
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+func (o GetInstanceGroupManagerParamOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstanceGroupManagerParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
+}
+
+type GetInstanceGroupManagerParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGroupManagerParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetInstanceGroupManagerParamArrayOutput) ToGetInstanceGroupManagerParamArrayOutput() GetInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerParamArrayOutput) ToGetInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceGroupManagerParamArrayOutput) Index(i pulumi.IntInput) GetInstanceGroupManagerParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGroupManagerParam {
+		return vs[0].([]GetInstanceGroupManagerParam)[vs[1].(int)]
+	}).(GetInstanceGroupManagerParamOutput)
 }
 
 type GetInstanceGroupManagerStatefulDisk struct {
@@ -25756,6 +26520,10 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{})
@@ -25890,6 +26658,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerInstanceLifecyclePolicyArrayInput)(nil)).Elem(), GetInstanceGroupManagerInstanceLifecyclePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetInstanceGroupManagerNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamInput)(nil)).Elem(), GetInstanceGroupManagerParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetInstanceGroupManagerParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetInstanceGroupManagerStatefulDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulDiskArrayInput)(nil)).Elem(), GetInstanceGroupManagerStatefulDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupManagerStatefulExternalIpInput)(nil)).Elem(), GetInstanceGroupManagerStatefulExternalIpArgs{})
@@ -26114,6 +26884,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput{})
@@ -26248,6 +27022,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerParamOutput{})
+	pulumi.RegisterOutputType(GetInstanceGroupManagerParamArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulDiskOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGroupManagerStatefulExternalIpOutput{})

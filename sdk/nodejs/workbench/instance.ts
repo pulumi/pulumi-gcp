@@ -60,8 +60,8 @@ import * as utilities from "../utilities";
  *             coreCount: "1",
  *         }],
  *         vmImage: {
- *             project: "deeplearning-platform-release",
- *             family: "tf-latest-gpu",
+ *             project: "cloud-notebooks-managed",
+ *             family: "workbench-instances",
  *         },
  *     },
  * });

@@ -397,6 +397,14 @@ namespace Pulumi.Gcp.Billing
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The ownership scope of the budget. The ownership scope and users'
+        /// IAM permissions determine who has full access to the budget's data.
+        /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+        /// </summary>
+        [Output("ownershipScope")]
+        public Output<string?> OwnershipScope { get; private set; } = null!;
+
+        /// <summary>
         /// Rules that trigger alerts (notifications of thresholds being
         /// crossed) when spend exceeds the specified percentages of the
         /// budget.
@@ -487,6 +495,14 @@ namespace Pulumi.Gcp.Billing
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// The ownership scope of the budget. The ownership scope and users'
+        /// IAM permissions determine who has full access to the budget's data.
+        /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+        /// </summary>
+        [Input("ownershipScope")]
+        public Input<string>? OwnershipScope { get; set; }
+
         [Input("thresholdRules")]
         private InputList<Inputs.BudgetThresholdRuleArgs>? _thresholdRules;
 
@@ -553,6 +569,14 @@ namespace Pulumi.Gcp.Billing
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ownership scope of the budget. The ownership scope and users'
+        /// IAM permissions determine who has full access to the budget's data.
+        /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
+        /// </summary>
+        [Input("ownershipScope")]
+        public Input<string>? OwnershipScope { get; set; }
 
         [Input("thresholdRules")]
         private InputList<Inputs.BudgetThresholdRuleGetArgs>? _thresholdRules;

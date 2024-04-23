@@ -4146,6 +4146,11 @@ export namespace artifactregistry {
          */
         description: string;
         /**
+         * If true, the remote repository upstream and upstream credentials will
+         * not be validated.
+         */
+        disableUpstreamValidation: boolean;
+        /**
          * Specific settings for a Docker remote repository.
          */
         dockerRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigDockerRepository[];
@@ -4191,30 +4196,74 @@ export namespace artifactregistry {
 
     export interface GetRepositoryRemoteRepositoryConfigDockerRepository {
         /**
+         * Settings for a remote repository with a custom uri.
+         */
+        customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository[];
+        /**
          * Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
          */
         publicRepository: string;
     }
 
+    export interface GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
+         */
+        uri: string;
+    }
+
     export interface GetRepositoryRemoteRepositoryConfigMavenRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         */
+        customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository[];
         /**
          * Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
          */
         publicRepository: string;
     }
 
+    export interface GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
+         */
+        uri: string;
+    }
+
     export interface GetRepositoryRemoteRepositoryConfigNpmRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         */
+        customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository[];
         /**
          * Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
          */
         publicRepository: string;
     }
 
+    export interface GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. '"https://registry.npmjs.org"'
+         */
+        uri: string;
+    }
+
     export interface GetRepositoryRemoteRepositoryConfigPythonRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         */
+        customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository[];
         /**
          * Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
          */
         publicRepository: string;
+    }
+
+    export interface GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. '"https://pypi.io"'
+         */
+        uri: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigUpstreamCredential {
@@ -4386,6 +4435,11 @@ export namespace artifactregistry {
          */
         description?: string;
         /**
+         * If true, the remote repository upstream and upstream credentials will
+         * not be validated.
+         */
+        disableUpstreamValidation?: boolean;
+        /**
          * Specific settings for a Docker remote repository.
          * Structure is documented below.
          */
@@ -4439,6 +4493,11 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfigDockerRepository {
         /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository;
+        /**
          * Address of the remote repository.
          * Default value is `DOCKER_HUB`.
          * Possible values are: `DOCKER_HUB`.
@@ -4446,7 +4505,19 @@ export namespace artifactregistry {
         publicRepository?: string;
     }
 
+    export interface RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: string;
+    }
+
     export interface RepositoryRemoteRepositoryConfigMavenRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository;
         /**
          * Address of the remote repository.
          * Default value is `MAVEN_CENTRAL`.
@@ -4455,7 +4526,19 @@ export namespace artifactregistry {
         publicRepository?: string;
     }
 
+    export interface RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: string;
+    }
+
     export interface RepositoryRemoteRepositoryConfigNpmRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository;
         /**
          * Address of the remote repository.
          * Default value is `NPMJS`.
@@ -4464,13 +4547,32 @@ export namespace artifactregistry {
         publicRepository?: string;
     }
 
+    export interface RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: string;
+    }
+
     export interface RepositoryRemoteRepositoryConfigPythonRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository;
         /**
          * Address of the remote repository.
          * Default value is `PYPI`.
          * Possible values are: `PYPI`.
          */
         publicRepository?: string;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: string;
     }
 
     export interface RepositoryRemoteRepositoryConfigUpstreamCredentials {
@@ -12886,6 +12988,10 @@ export namespace cloudfunctionsv2 {
          */
         runtime?: string;
         /**
+         * The fully-qualified name of the service account to be used for building the container.
+         */
+        serviceAccount: string;
+        /**
          * The location of the function source code.
          * Structure is documented below.
          */
@@ -13194,6 +13300,10 @@ export namespace cloudfunctionsv2 {
          * function, optional when updating an existing function.
          */
         runtime: string;
+        /**
+         * The fully-qualified name of the service account to be used for building the container.
+         */
+        serviceAccount: string;
         /**
          * The location of the function source code.
          */
@@ -21912,6 +22022,13 @@ export namespace compute {
         port: number;
     }
 
+    export interface GetInstanceGroupManagerParam {
+        /**
+         * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+         */
+        resourceManagerTags: {[key: string]: any};
+    }
+
     export interface GetInstanceGroupManagerStatefulDisk {
         /**
          * A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
@@ -25673,6 +25790,13 @@ export namespace compute {
         port: number;
     }
 
+    export interface InstanceGroupManagerParams {
+        /**
+         * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+         */
+        resourceManagerTags?: {[key: string]: any};
+    }
+
     export interface InstanceGroupManagerStatefulDisk {
         /**
          * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
@@ -28491,6 +28615,13 @@ export namespace compute {
          * - - -
          */
         port: number;
+    }
+
+    export interface RegionInstanceGroupManagerParams {
+        /**
+         * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+         */
+        resourceManagerTags?: {[key: string]: any};
     }
 
     export interface RegionInstanceGroupManagerStatefulDisk {
@@ -37996,7 +38127,7 @@ export namespace container {
          */
         cidrBlocks: outputs.container.GetClusterMasterAuthorizedNetworksConfigCidrBlock[];
         /**
-         * Whether master is accessbile via Google Compute Engine Public IP addresses.
+         * Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
          */
         gcpPublicCidrsAccessEnabled: boolean;
     }
@@ -39251,7 +39382,7 @@ export namespace container {
 
     export interface GetClusterServiceExternalIpsConfig {
         /**
-         * When enabled, services with exterenal ips specified will be allowed.
+         * When enabled, services with external ips specified will be allowed.
          */
         enabled: boolean;
     }
@@ -53406,11 +53537,11 @@ export namespace dns {
         /**
          * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
          */
-        digest: string;
+        digest?: string;
         /**
          * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
-        type: string;
+        type?: string;
     }
 
     export interface GetKeysZoneSigningKey {
@@ -53456,45 +53587,24 @@ export namespace dns {
         /**
          * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
          */
-        digest: string;
+        digest?: string;
         /**
          * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
-        type: string;
+        type?: string;
     }
 
     export interface GetManagedZonesManagedZone {
-        /**
-         * A textual description field.
-         */
         description: string;
-        /**
-         * The fully qualified DNS name of this zone.
-         */
         dnsName: string;
-        /**
-         * DNS managed zone identifier
-         */
         id: string;
-        /**
-         * Unique identifier for the resource; defined by the server.
-         */
         managedZoneId: number;
-        /**
-         * A unique name for the resource.
-         */
-        name: string;
-        /**
-         * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-         */
+        name?: string;
         nameServers: string[];
         /**
          * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
          */
-        project: string;
-        /**
-         * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-         */
+        project?: string;
         visibility: string;
     }
 
@@ -75580,6 +75690,10 @@ export namespace vmwareengine {
          * where the key is canonical identifier of the node type (corresponds to the NodeType).
          */
         nodeTypeConfigs: outputs.vmwareengine.GetPrivateCloudManagementClusterNodeTypeConfig[];
+        /**
+         * The stretched cluster configuration for the private cloud.
+         */
+        stretchedClusterConfigs: outputs.vmwareengine.GetPrivateCloudManagementClusterStretchedClusterConfig[];
     }
 
     export interface GetPrivateCloudManagementClusterNodeTypeConfig {
@@ -75595,6 +75709,17 @@ export namespace vmwareengine {
          */
         nodeCount: number;
         nodeTypeId: string;
+    }
+
+    export interface GetPrivateCloudManagementClusterStretchedClusterConfig {
+        /**
+         * Zone that will remain operational when connection between the two zones is lost.
+         */
+        preferredLocation: string;
+        /**
+         * Additional zone for a higher level of availability and load balancing.
+         */
+        secondaryLocation: string;
     }
 
     export interface GetPrivateCloudNetworkConfig {
@@ -75751,6 +75876,11 @@ export namespace vmwareengine {
          * Structure is documented below.
          */
         nodeTypeConfigs?: outputs.vmwareengine.PrivateCloudManagementClusterNodeTypeConfig[];
+        /**
+         * The stretched cluster configuration for the private cloud.
+         * Structure is documented below.
+         */
+        stretchedClusterConfig?: outputs.vmwareengine.PrivateCloudManagementClusterStretchedClusterConfig;
     }
 
     export interface PrivateCloudManagementClusterNodeTypeConfig {
@@ -75759,8 +75889,6 @@ export namespace vmwareengine {
          * This number must always be one of `nodeType.availableCustomCoreCounts`.
          * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
          * This cannot be changed once the PrivateCloud is created.
-         *
-         * - - -
          */
         customCoreCount?: number;
         /**
@@ -75771,6 +75899,19 @@ export namespace vmwareengine {
          * The identifier for this object. Format specified above.
          */
         nodeTypeId: string;
+    }
+
+    export interface PrivateCloudManagementClusterStretchedClusterConfig {
+        /**
+         * Zone that will remain operational when connection between the two zones is lost.
+         */
+        preferredLocation?: string;
+        /**
+         * Additional zone for a higher level of availability and load balancing.
+         *
+         * - - -
+         */
+        secondaryLocation?: string;
     }
 
     export interface PrivateCloudNetworkConfig {

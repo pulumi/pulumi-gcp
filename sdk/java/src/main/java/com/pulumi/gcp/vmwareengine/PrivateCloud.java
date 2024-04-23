@@ -278,20 +278,6 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
         return this.nsxes;
     }
     /**
-     * The preferred single failure domain within a region.
-     * 
-     */
-    @Export(name="preferredZone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> preferredZone;
-
-    /**
-     * @return The preferred single failure domain within a region.
-     * 
-     */
-    public Output<Optional<String>> preferredZone() {
-        return Codegen.optional(this.preferredZone);
-    }
-    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -306,20 +292,6 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
-    }
-    /**
-     * The secondary single failure domain within a region.
-     * 
-     */
-    @Export(name="secondaryZone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> secondaryZone;
-
-    /**
-     * @return The secondary single failure domain within a region.
-     * 
-     */
-    public Output<Optional<String>> secondaryZone() {
-        return Codegen.optional(this.secondaryZone);
     }
     /**
      * State of the appliance.

@@ -251,6 +251,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
+        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceGroupManagerParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -303,9 +311,7 @@ namespace Pulumi.Gcp.Compute
         public Output<int> TargetSize { get; private set; } = null!;
 
         /// <summary>
-        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-        /// 
-        /// - - -
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.InstanceGroupManagerUpdatePolicy> UpdatePolicy { get; private set; } = null!;
@@ -463,6 +469,14 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceGroupManagerParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -527,9 +541,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-        /// 
-        /// - - -
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyArgs>? UpdatePolicy { get; set; }
@@ -676,6 +688,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Operation { get; set; }
 
         /// <summary>
+        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceGroupManagerParamsGetArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -758,9 +778,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TargetSize { get; set; }
 
         /// <summary>
-        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-        /// 
-        /// - - -
+        /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyGetArgs>? UpdatePolicy { get; set; }

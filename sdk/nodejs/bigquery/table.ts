@@ -255,6 +255,12 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly requirePartitionFilter!: pulumi.Output<boolean | undefined>;
     /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+     * example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+     * tag key. Tag value is expected to be the short name, for example "Production".
+     */
+    public readonly resourceTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
      * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -342,6 +348,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
             resourceInputs["requirePartitionFilter"] = state ? state.requirePartitionFilter : undefined;
+            resourceInputs["resourceTags"] = state ? state.resourceTags : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
@@ -372,6 +379,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             resourceInputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
+            resourceInputs["resourceTags"] = args ? args.resourceTags : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
@@ -532,6 +540,12 @@ export interface TableState {
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
     /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+     * example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+     * tag key. Tag value is expected to be the short name, for example "Production".
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
      * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
@@ -667,6 +681,12 @@ export interface TableArgs {
      * specified.
      */
     requirePartitionFilter?: pulumi.Input<boolean>;
+    /**
+     * The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+     * example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+     * tag key. Tag value is expected to be the short name, for example "Production".
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed

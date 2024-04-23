@@ -169,13 +169,9 @@ type PrivateCloud struct {
 	// Details about a NSX Manager appliance.
 	// Structure is documented below.
 	Nsxes PrivateCloudNsxArrayOutput `pulumi:"nsxes"`
-	// The preferred single failure domain within a region.
-	PreferredZone pulumi.StringPtrOutput `pulumi:"preferredZone"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The secondary single failure domain within a region.
-	SecondaryZone pulumi.StringPtrOutput `pulumi:"secondaryZone"`
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -246,13 +242,9 @@ type privateCloudState struct {
 	// Details about a NSX Manager appliance.
 	// Structure is documented below.
 	Nsxes []PrivateCloudNsx `pulumi:"nsxes"`
-	// The preferred single failure domain within a region.
-	PreferredZone *string `pulumi:"preferredZone"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The secondary single failure domain within a region.
-	SecondaryZone *string `pulumi:"secondaryZone"`
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State *string `pulumi:"state"`
@@ -285,13 +277,9 @@ type PrivateCloudState struct {
 	// Details about a NSX Manager appliance.
 	// Structure is documented below.
 	Nsxes PrivateCloudNsxArrayInput
-	// The preferred single failure domain within a region.
-	PreferredZone pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The secondary single failure domain within a region.
-	SecondaryZone pulumi.StringPtrInput
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringPtrInput
@@ -322,13 +310,9 @@ type privateCloudArgs struct {
 	// Network configuration in the consumer project with which the peering has to be done.
 	// Structure is documented below.
 	NetworkConfig PrivateCloudNetworkConfig `pulumi:"networkConfig"`
-	// The preferred single failure domain within a region.
-	PreferredZone *string `pulumi:"preferredZone"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The secondary single failure domain within a region.
-	SecondaryZone *string `pulumi:"secondaryZone"`
 	// Initial type of the private cloud.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type *string `pulumi:"type"`
@@ -348,13 +332,9 @@ type PrivateCloudArgs struct {
 	// Network configuration in the consumer project with which the peering has to be done.
 	// Structure is documented below.
 	NetworkConfig PrivateCloudNetworkConfigInput
-	// The preferred single failure domain within a region.
-	PreferredZone pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The secondary single failure domain within a region.
-	SecondaryZone pulumi.StringPtrInput
 	// Initial type of the private cloud.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type pulumi.StringPtrInput
@@ -486,20 +466,10 @@ func (o PrivateCloudOutput) Nsxes() PrivateCloudNsxArrayOutput {
 	return o.ApplyT(func(v *PrivateCloud) PrivateCloudNsxArrayOutput { return v.Nsxes }).(PrivateCloudNsxArrayOutput)
 }
 
-// The preferred single failure domain within a region.
-func (o PrivateCloudOutput) PreferredZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.PreferredZone }).(pulumi.StringPtrOutput)
-}
-
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o PrivateCloudOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
-}
-
-// The secondary single failure domain within a region.
-func (o PrivateCloudOutput) SecondaryZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
 
 // State of the appliance.

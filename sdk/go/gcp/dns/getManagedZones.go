@@ -54,8 +54,6 @@ func GetManagedZones(ctx *pulumi.Context, args *GetManagedZonesArgs, opts ...pul
 
 // A collection of arguments for invoking getManagedZones.
 type GetManagedZonesArgs struct {
-	// A list of managed zones.
-	ManagedZones []GetManagedZonesManagedZone `pulumi:"managedZones"`
 	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
 	Project *string `pulumi:"project"`
 }
@@ -83,8 +81,6 @@ func GetManagedZonesOutput(ctx *pulumi.Context, args GetManagedZonesOutputArgs, 
 
 // A collection of arguments for invoking getManagedZones.
 type GetManagedZonesOutputArgs struct {
-	// A list of managed zones.
-	ManagedZones GetManagedZonesManagedZoneArrayInput `pulumi:"managedZones"`
 	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }

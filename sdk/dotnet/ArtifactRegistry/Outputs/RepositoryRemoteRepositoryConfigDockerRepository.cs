@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class RepositoryRemoteRepositoryConfigDockerRepository
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository? CustomRepository;
+        /// <summary>
         /// Address of the remote repository.
         /// Default value is `DOCKER_HUB`.
         /// Possible values are: `DOCKER_HUB`.
@@ -21,8 +26,12 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         public readonly string? PublicRepository;
 
         [OutputConstructor]
-        private RepositoryRemoteRepositoryConfigDockerRepository(string? publicRepository)
+        private RepositoryRemoteRepositoryConfigDockerRepository(
+            Outputs.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository? customRepository,
+
+            string? publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

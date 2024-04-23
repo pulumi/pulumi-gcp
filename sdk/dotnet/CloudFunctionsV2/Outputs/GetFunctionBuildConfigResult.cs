@@ -40,6 +40,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly string Runtime;
         /// <summary>
+        /// The fully-qualified name of the service account to be used for building the container.
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
         /// The location of the function source code.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionBuildConfigSourceResult> Sources;
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             string runtime,
 
+            string serviceAccount,
+
             ImmutableArray<Outputs.GetFunctionBuildConfigSourceResult> sources,
 
             string workerPool)
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
             Runtime = runtime;
+            ServiceAccount = serviceAccount;
             Sources = sources;
             WorkerPool = workerPool;
         }

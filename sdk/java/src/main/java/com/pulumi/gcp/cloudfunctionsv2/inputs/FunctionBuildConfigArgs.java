@@ -107,6 +107,21 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The fully-qualified name of the service account to be used for building the container.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return The fully-qualified name of the service account to be used for building the container.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
      * The location of the function source code.
      * Structure is documented below.
      * 
@@ -146,6 +161,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         this.entryPoint = $.entryPoint;
         this.environmentVariables = $.environmentVariables;
         this.runtime = $.runtime;
+        this.serviceAccount = $.serviceAccount;
         this.source = $.source;
         this.workerPool = $.workerPool;
     }
@@ -285,6 +301,27 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder runtime(String runtime) {
             return runtime(Output.of(runtime));
+        }
+
+        /**
+         * @param serviceAccount The fully-qualified name of the service account to be used for building the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The fully-qualified name of the service account to be used for building the container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

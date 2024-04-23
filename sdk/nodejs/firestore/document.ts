@@ -170,7 +170,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly fields!: pulumi.Output<string>;
     /**
-     * A server defined name for this index. Format:
+     * A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -264,7 +264,7 @@ export interface DocumentState {
      */
     fields?: pulumi.Input<string>;
     /**
-     * A server defined name for this index. Format:
+     * A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      */
     name?: pulumi.Input<string>;

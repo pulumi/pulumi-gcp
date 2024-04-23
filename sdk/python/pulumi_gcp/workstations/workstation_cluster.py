@@ -207,6 +207,7 @@ class _WorkstationClusterState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationClusterConditionArgs']]]] = None,
+                 control_plane_ip: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  degraded: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -231,6 +232,8 @@ class _WorkstationClusterState:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationClusterConditionArgs']]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
+        :param pulumi.Input[str] control_plane_ip: The private IP address of the control plane for this workstation cluster.
+               Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
@@ -267,6 +270,8 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "annotations", annotations)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if control_plane_ip is not None:
+            pulumi.set(__self__, "control_plane_ip", control_plane_ip)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if degraded is not None:
@@ -328,6 +333,19 @@ class _WorkstationClusterState:
     @conditions.setter
     def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationClusterConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneIp")
+    def control_plane_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address of the control plane for this workstation cluster.
+        Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        """
+        return pulumi.get(self, "control_plane_ip")
+
+    @control_plane_ip.setter
+    def control_plane_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_ip", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -894,6 +912,7 @@ class WorkstationCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
             __props__.__dict__["conditions"] = None
+            __props__.__dict__["control_plane_ip"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["degraded"] = None
             __props__.__dict__["effective_annotations"] = None
@@ -916,6 +935,7 @@ class WorkstationCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationClusterConditionArgs']]]]] = None,
+            control_plane_ip: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             degraded: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -945,6 +965,8 @@ class WorkstationCluster(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationClusterConditionArgs']]]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
+        :param pulumi.Input[str] control_plane_ip: The private IP address of the control plane for this workstation cluster.
+               Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
@@ -983,6 +1005,7 @@ class WorkstationCluster(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["conditions"] = conditions
+        __props__.__dict__["control_plane_ip"] = control_plane_ip
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
         __props__.__dict__["display_name"] = display_name
@@ -1020,6 +1043,15 @@ class WorkstationCluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="controlPlaneIp")
+    def control_plane_ip(self) -> pulumi.Output[str]:
+        """
+        The private IP address of the control plane for this workstation cluster.
+        Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        """
+        return pulumi.get(self, "control_plane_ip")
 
     @property
     @pulumi.getter(name="createTime")

@@ -105,8 +105,8 @@ import (
 //						},
 //					},
 //					VmImage: &workbench.InstanceGceSetupVmImageArgs{
-//						Project: pulumi.String("deeplearning-platform-release"),
-//						Family:  pulumi.String("tf-latest-gpu"),
+//						Project: pulumi.String("cloud-notebooks-managed"),
+//						Family:  pulumi.String("workbench-instances"),
 //					},
 //				},
 //			})

@@ -78,9 +78,7 @@ type LookupPrivateCloudResult struct {
 	Name               string                             `pulumi:"name"`
 	NetworkConfigs     []GetPrivateCloudNetworkConfig     `pulumi:"networkConfigs"`
 	Nsxes              []GetPrivateCloudNsx               `pulumi:"nsxes"`
-	PreferredZone      string                             `pulumi:"preferredZone"`
 	Project            *string                            `pulumi:"project"`
-	SecondaryZone      string                             `pulumi:"secondaryZone"`
 	State              string                             `pulumi:"state"`
 	Type               string                             `pulumi:"type"`
 	Uid                string                             `pulumi:"uid"`
@@ -165,16 +163,8 @@ func (o LookupPrivateCloudResultOutput) Nsxes() GetPrivateCloudNsxArrayOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) []GetPrivateCloudNsx { return v.Nsxes }).(GetPrivateCloudNsxArrayOutput)
 }
 
-func (o LookupPrivateCloudResultOutput) PreferredZone() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.PreferredZone }).(pulumi.StringOutput)
-}
-
 func (o LookupPrivateCloudResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupPrivateCloudResultOutput) SecondaryZone() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.SecondaryZone }).(pulumi.StringOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) State() pulumi.StringOutput {

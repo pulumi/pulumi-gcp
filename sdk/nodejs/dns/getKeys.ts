@@ -68,7 +68,7 @@ export interface GetKeysArgs {
  */
 export interface GetKeysResult {
     /**
-     * Unique identifier for the resource; defined by the server.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**

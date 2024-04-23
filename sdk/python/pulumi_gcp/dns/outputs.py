@@ -2020,18 +2020,20 @@ class GetKeysKeySigningKeyResult(dict):
 @pulumi.output_type
 class GetKeysKeySigningKeyDigestResult(dict):
     def __init__(__self__, *,
-                 digest: str,
-                 type: str):
+                 digest: Optional[str] = None,
+                 type: Optional[str] = None):
         """
         :param str digest: The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         :param str type: Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
-        pulumi.set(__self__, "digest", digest)
-        pulumi.set(__self__, "type", type)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def digest(self) -> str:
+    def digest(self) -> Optional[str]:
         """
         The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         """
@@ -2039,7 +2041,7 @@ class GetKeysKeySigningKeyDigestResult(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
         """
         Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
@@ -2155,18 +2157,20 @@ class GetKeysZoneSigningKeyResult(dict):
 @pulumi.output_type
 class GetKeysZoneSigningKeyDigestResult(dict):
     def __init__(__self__, *,
-                 digest: str,
-                 type: str):
+                 digest: Optional[str] = None,
+                 type: Optional[str] = None):
         """
         :param str digest: The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         :param str type: Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
-        pulumi.set(__self__, "digest", digest)
-        pulumi.set(__self__, "type", type)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def digest(self) -> str:
+    def digest(self) -> Optional[str]:
         """
         The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         """
@@ -2174,7 +2178,7 @@ class GetKeysZoneSigningKeyDigestResult(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
         """
         Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
@@ -2188,91 +2192,65 @@ class GetManagedZonesManagedZoneResult(dict):
                  dns_name: str,
                  id: str,
                  managed_zone_id: int,
-                 name: str,
                  name_servers: Sequence[str],
-                 project: str,
-                 visibility: str):
+                 visibility: str,
+                 name: Optional[str] = None,
+                 project: Optional[str] = None):
         """
-        :param str description: A textual description field.
-        :param str dns_name: The fully qualified DNS name of this zone.
-        :param str id: DNS managed zone identifier
-        :param int managed_zone_id: Unique identifier for the resource; defined by the server.
-        :param str name: A unique name for the resource.
-        :param Sequence[str] name_servers: The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
         :param str project: The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-        :param str visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "managed_zone_id", managed_zone_id)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "name_servers", name_servers)
-        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "visibility", visibility)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        A textual description field.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
-        """
-        The fully qualified DNS name of this zone.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        DNS managed zone identifier
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="managedZoneId")
     def managed_zone_id(self) -> int:
-        """
-        Unique identifier for the resource; defined by the server.
-        """
         return pulumi.get(self, "managed_zone_id")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        A unique name for the resource.
-        """
-        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Sequence[str]:
-        """
-        The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-        """
         return pulumi.get(self, "name_servers")
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def visibility(self) -> str:
+        return pulumi.get(self, "visibility")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
         """
         The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         """
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter
-    def visibility(self) -> str:
-        """
-        The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-        """
-        return pulumi.get(self, "visibility")
 
 

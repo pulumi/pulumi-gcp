@@ -58,6 +58,23 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The private IP address of the control plane for this workstation cluster.
+     * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     * 
+     */
+    @Import(name="controlPlaneIp")
+    private @Nullable Output<String> controlPlaneIp;
+
+    /**
+     * @return The private IP address of the control plane for this workstation cluster.
+     * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     * 
+     */
+    public Optional<Output<String>> controlPlaneIp() {
+        return Optional.ofNullable(this.controlPlaneIp);
+    }
+
+    /**
      * Time when this resource was created.
      * 
      */
@@ -343,6 +360,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     private WorkstationClusterState(WorkstationClusterState $) {
         this.annotations = $.annotations;
         this.conditions = $.conditions;
+        this.controlPlaneIp = $.controlPlaneIp;
         this.createTime = $.createTime;
         this.degraded = $.degraded;
         this.displayName = $.displayName;
@@ -437,6 +455,29 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
          */
         public Builder conditions(WorkstationClusterConditionArgs... conditions) {
             return conditions(List.of(conditions));
+        }
+
+        /**
+         * @param controlPlaneIp The private IP address of the control plane for this workstation cluster.
+         * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneIp(@Nullable Output<String> controlPlaneIp) {
+            $.controlPlaneIp = controlPlaneIp;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneIp The private IP address of the control plane for this workstation cluster.
+         * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneIp(String controlPlaneIp) {
+            return controlPlaneIp(Output.of(controlPlaneIp));
         }
 
         /**

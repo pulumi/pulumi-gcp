@@ -21,9 +21,7 @@ class PrivateCloudArgs:
                  network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_zone: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PrivateCloud resource.
@@ -34,10 +32,8 @@ class PrivateCloudArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
-        :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
         :param pulumi.Input[str] type: Initial type of the private cloud.
                Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
@@ -48,12 +44,8 @@ class PrivateCloudArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if preferred_zone is not None:
-            pulumi.set(__self__, "preferred_zone", preferred_zone)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if secondary_zone is not None:
-            pulumi.set(__self__, "secondary_zone", secondary_zone)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -120,18 +112,6 @@ class PrivateCloudArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The preferred single failure domain within a region.
-        """
-        return pulumi.get(self, "preferred_zone")
-
-    @preferred_zone.setter
-    def preferred_zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "preferred_zone", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -143,18 +123,6 @@ class PrivateCloudArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The secondary single failure domain within a region.
-        """
-        return pulumi.get(self, "secondary_zone")
-
-    @secondary_zone.setter
-    def secondary_zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secondary_zone", value)
 
     @property
     @pulumi.getter
@@ -180,9 +148,7 @@ class _PrivateCloudState:
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['PrivateCloudNetworkConfigArgs']] = None,
                  nsxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]] = None,
-                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_zone: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -200,10 +166,8 @@ class _PrivateCloudState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
-        :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud.
@@ -226,12 +190,8 @@ class _PrivateCloudState:
             pulumi.set(__self__, "network_config", network_config)
         if nsxes is not None:
             pulumi.set(__self__, "nsxes", nsxes)
-        if preferred_zone is not None:
-            pulumi.set(__self__, "preferred_zone", preferred_zone)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if secondary_zone is not None:
-            pulumi.set(__self__, "secondary_zone", secondary_zone)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
@@ -330,18 +290,6 @@ class _PrivateCloudState:
         pulumi.set(self, "nsxes", value)
 
     @property
-    @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The preferred single failure domain within a region.
-        """
-        return pulumi.get(self, "preferred_zone")
-
-    @preferred_zone.setter
-    def preferred_zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "preferred_zone", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -353,18 +301,6 @@ class _PrivateCloudState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The secondary single failure domain within a region.
-        """
-        return pulumi.get(self, "secondary_zone")
-
-    @secondary_zone.setter
-    def secondary_zone(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secondary_zone", value)
 
     @property
     @pulumi.getter
@@ -428,9 +364,7 @@ class PrivateCloud(pulumi.CustomResource):
                  management_cluster: Optional[pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
-                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_zone: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -536,10 +470,8 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
         :param pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
-        :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
         :param pulumi.Input[str] type: Initial type of the private cloud.
                Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
@@ -663,9 +595,7 @@ class PrivateCloud(pulumi.CustomResource):
                  management_cluster: Optional[pulumi.Input[pulumi.InputType['PrivateCloudManagementClusterArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
-                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_zone: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -687,9 +617,7 @@ class PrivateCloud(pulumi.CustomResource):
             if network_config is None and not opts.urn:
                 raise TypeError("Missing required property 'network_config'")
             __props__.__dict__["network_config"] = network_config
-            __props__.__dict__["preferred_zone"] = preferred_zone
             __props__.__dict__["project"] = project
-            __props__.__dict__["secondary_zone"] = secondary_zone
             __props__.__dict__["type"] = type
             __props__.__dict__["hcxes"] = None
             __props__.__dict__["nsxes"] = None
@@ -713,9 +641,7 @@ class PrivateCloud(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
             nsxes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudNsxArgs']]]]] = None,
-            preferred_zone: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            secondary_zone: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -738,10 +664,8 @@ class PrivateCloud(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudNsxArgs']]]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
-        :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud.
@@ -761,9 +685,7 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["nsxes"] = nsxes
-        __props__.__dict__["preferred_zone"] = preferred_zone
         __props__.__dict__["project"] = project
-        __props__.__dict__["secondary_zone"] = secondary_zone
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
@@ -831,14 +753,6 @@ class PrivateCloud(pulumi.CustomResource):
         return pulumi.get(self, "nsxes")
 
     @property
-    @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The preferred single failure domain within a region.
-        """
-        return pulumi.get(self, "preferred_zone")
-
-    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
@@ -846,14 +760,6 @@ class PrivateCloud(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The secondary single failure domain within a region.
-        """
-        return pulumi.get(self, "secondary_zone")
 
     @property
     @pulumi.getter

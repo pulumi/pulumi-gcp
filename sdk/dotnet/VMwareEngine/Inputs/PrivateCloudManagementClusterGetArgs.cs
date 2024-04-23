@@ -37,6 +37,13 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
             set => _nodeTypeConfigs = value;
         }
 
+        /// <summary>
+        /// The stretched cluster configuration for the private cloud.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("stretchedClusterConfig")]
+        public Input<Inputs.PrivateCloudManagementClusterStretchedClusterConfigGetArgs>? StretchedClusterConfig { get; set; }
+
         public PrivateCloudManagementClusterGetArgs()
         {
         }

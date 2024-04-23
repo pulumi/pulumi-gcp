@@ -208,6 +208,10 @@ type InstanceGroupManager struct {
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
 	Operation  pulumi.StringOutput                      `pulumi:"operation"`
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params InstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -228,9 +232,7 @@ type InstanceGroupManager struct {
 	// The target number of running instances for this managed instance group. This value should always be explicitly set
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
 	UpdatePolicy InstanceGroupManagerUpdatePolicyOutput `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -329,6 +331,10 @@ type instanceGroupManagerState struct {
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	Operation  *string                         `pulumi:"operation"`
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -349,9 +355,7 @@ type instanceGroupManagerState struct {
 	// The target number of running instances for this managed instance group. This value should always be explicitly set
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -415,6 +419,10 @@ type InstanceGroupManagerState struct {
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
 	Operation  pulumi.StringPtrInput
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -435,9 +443,7 @@ type InstanceGroupManagerState struct {
 	// The target number of running instances for this managed instance group. This value should always be explicitly set
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -498,6 +504,10 @@ type instanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -514,9 +524,7 @@ type instanceGroupManagerArgs struct {
 	// The target number of running instances for this managed instance group. This value should always be explicitly set
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -574,6 +582,10 @@ type InstanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
+	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	//
+	// ***
+	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -590,9 +602,7 @@ type InstanceGroupManagerArgs struct {
 	// The target number of running instances for this managed instance group. This value should always be explicitly set
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
-	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
+	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -784,6 +794,13 @@ func (o InstanceGroupManagerOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
 }
 
+// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+//
+// ***
+func (o InstanceGroupManagerOutput) Params() InstanceGroupManagerParamsPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerParamsPtrOutput { return v.Params }).(InstanceGroupManagerParamsPtrOutput)
+}
+
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
 func (o InstanceGroupManagerOutput) Project() pulumi.StringOutput {
@@ -832,9 +849,7 @@ func (o InstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
 }
 
-// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-//
-// ***
+// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
 func (o InstanceGroupManagerOutput) UpdatePolicy() InstanceGroupManagerUpdatePolicyOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerUpdatePolicyOutput { return v.UpdatePolicy }).(InstanceGroupManagerUpdatePolicyOutput)
 }

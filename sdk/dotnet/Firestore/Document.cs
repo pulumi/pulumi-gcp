@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Fields { get; private set; } = null!;
 
         /// <summary>
-        /// A server defined name for this index. Format:
+        /// A server defined name for this document. Format:
         /// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
         /// </summary>
         [Output("name")]
@@ -345,7 +345,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Fields { get; set; }
 
         /// <summary>
-        /// A server defined name for this index. Format:
+        /// A server defined name for this document. Format:
         /// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
         /// </summary>
         [Input("name")]
