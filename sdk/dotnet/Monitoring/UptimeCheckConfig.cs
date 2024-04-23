@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ### Uptime Check Config Http
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,10 +78,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Uptime Check Config Status Code
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -145,10 +142,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Uptime Check Config Https
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -194,10 +189,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Uptime Check Tcp
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -233,10 +226,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Uptime Check Config Synthetic Monitor
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -299,7 +290,6 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -353,7 +343,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigMonitoredResource?> MonitoredResource { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified name of the cloud function resource.
+        /// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -625,7 +615,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigMonitoredResourceGetArgs>? MonitoredResource { get; set; }
 
         /// <summary>
-        /// The fully qualified name of the cloud function resource.
+        /// A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

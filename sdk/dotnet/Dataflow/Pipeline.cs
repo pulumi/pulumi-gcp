@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// ### Data Pipeline Pipeline
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -92,7 +91,6 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

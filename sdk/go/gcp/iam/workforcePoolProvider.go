@@ -27,7 +27,6 @@ import (
 //
 // ### Iam Workforce Pool Provider Saml Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,10 +66,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workforce Pool Provider Saml Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,10 +111,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workforce Pool Provider Oidc Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,10 +162,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workforce Pool Provider Oidc Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -228,7 +221,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

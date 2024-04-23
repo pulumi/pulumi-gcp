@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// ### Alloydb User Builtin
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -89,10 +88,8 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Alloydb User Iam
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -158,7 +155,6 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

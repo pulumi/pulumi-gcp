@@ -900,7 +900,6 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ### With Top Level Instance Template (`Google` Provider)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -941,10 +940,8 @@ class InstanceGroupManager(pulumi.CustomResource):
                 initial_delay_sec=300,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### With Multiple Versions (`Google-Beta` Provider)
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -968,7 +965,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1074,7 +1070,6 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ### With Top Level Instance Template (`Google` Provider)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1115,10 +1110,8 @@ class InstanceGroupManager(pulumi.CustomResource):
                 initial_delay_sec=300,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### With Multiple Versions (`Google-Beta` Provider)
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1142,7 +1135,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ import (
 //
 // ### Firebase Extentions Instance Resize Image
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,7 +75,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -107,8 +105,7 @@ type ExtensionsInstance struct {
 	// The current Config of the Extension Instance.
 	// Structure is documented below.
 	Config ExtensionsInstanceConfigOutput `pulumi:"config"`
-	// (Output)
-	// The time at which the Extension Instance Config was created.
+	// The time at which the Extension Instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If this Instance has `state: ERRORED`, the error messages
 	// will be found here.
@@ -126,11 +123,8 @@ type ExtensionsInstance struct {
 	LastOperationName pulumi.StringOutput `pulumi:"lastOperationName"`
 	// The type of the last operation that acted on the Extension Instance.
 	LastOperationType pulumi.StringOutput `pulumi:"lastOperationType"`
-	// (Output)
-	// The unique identifier for this configuration.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The fully-qualified resource name of the Extension Instance.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Data set by the extension instance at runtime.
 	// Structure is documented below.
@@ -183,8 +177,7 @@ type extensionsInstanceState struct {
 	// The current Config of the Extension Instance.
 	// Structure is documented below.
 	Config *ExtensionsInstanceConfig `pulumi:"config"`
-	// (Output)
-	// The time at which the Extension Instance Config was created.
+	// The time at which the Extension Instance was created.
 	CreateTime *string `pulumi:"createTime"`
 	// If this Instance has `state: ERRORED`, the error messages
 	// will be found here.
@@ -202,11 +195,8 @@ type extensionsInstanceState struct {
 	LastOperationName *string `pulumi:"lastOperationName"`
 	// The type of the last operation that acted on the Extension Instance.
 	LastOperationType *string `pulumi:"lastOperationType"`
-	// (Output)
-	// The unique identifier for this configuration.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The fully-qualified resource name of the Extension Instance.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Data set by the extension instance at runtime.
 	// Structure is documented below.
@@ -224,8 +214,7 @@ type ExtensionsInstanceState struct {
 	// The current Config of the Extension Instance.
 	// Structure is documented below.
 	Config ExtensionsInstanceConfigPtrInput
-	// (Output)
-	// The time at which the Extension Instance Config was created.
+	// The time at which the Extension Instance was created.
 	CreateTime pulumi.StringPtrInput
 	// If this Instance has `state: ERRORED`, the error messages
 	// will be found here.
@@ -243,11 +232,8 @@ type ExtensionsInstanceState struct {
 	LastOperationName pulumi.StringPtrInput
 	// The type of the last operation that acted on the Extension Instance.
 	LastOperationType pulumi.StringPtrInput
-	// (Output)
-	// The unique identifier for this configuration.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The fully-qualified resource name of the Extension Instance.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Data set by the extension instance at runtime.
 	// Structure is documented below.
@@ -271,10 +257,8 @@ type extensionsInstanceArgs struct {
 	Config ExtensionsInstanceConfig `pulumi:"config"`
 	// The ID to use for the Extension Instance, which will become the final
 	// component of the instance's name.
-	InstanceId string `pulumi:"instanceId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	InstanceId string  `pulumi:"instanceId"`
+	Project    *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ExtensionsInstance resource.
@@ -285,9 +269,7 @@ type ExtensionsInstanceArgs struct {
 	// The ID to use for the Extension Instance, which will become the final
 	// component of the instance's name.
 	InstanceId pulumi.StringInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
 }
 
 func (ExtensionsInstanceArgs) ElementType() reflect.Type {
@@ -383,8 +365,7 @@ func (o ExtensionsInstanceOutput) Config() ExtensionsInstanceConfigOutput {
 	return o.ApplyT(func(v *ExtensionsInstance) ExtensionsInstanceConfigOutput { return v.Config }).(ExtensionsInstanceConfigOutput)
 }
 
-// (Output)
-// The time at which the Extension Instance Config was created.
+// The time at which the Extension Instance was created.
 func (o ExtensionsInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExtensionsInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -420,14 +401,11 @@ func (o ExtensionsInstanceOutput) LastOperationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExtensionsInstance) pulumi.StringOutput { return v.LastOperationType }).(pulumi.StringOutput)
 }
 
-// (Output)
-// The unique identifier for this configuration.
+// The fully-qualified resource name of the Extension Instance.
 func (o ExtensionsInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExtensionsInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ExtensionsInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExtensionsInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

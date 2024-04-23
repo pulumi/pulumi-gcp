@@ -95,7 +95,6 @@ def get_secret_iam_policy(project: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -103,7 +102,6 @@ def get_secret_iam_policy(project: Optional[str] = None,
     policy = gcp.secretmanager.get_secret_iam_policy(project=secret_basic["project"],
         secret_id=secret_basic["secretId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -132,7 +130,6 @@ def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -140,7 +137,6 @@ def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     policy = gcp.secretmanager.get_secret_iam_policy(project=secret_basic["project"],
         secret_id=secret_basic["secretId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

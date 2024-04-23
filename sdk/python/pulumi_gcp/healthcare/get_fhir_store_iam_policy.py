@@ -84,14 +84,12 @@ def get_fhir_store_iam_policy(fhir_store_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=fhir_store["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str fhir_store_id: The FHIR store ID, in the form
@@ -119,14 +117,12 @@ def get_fhir_store_iam_policy_output(fhir_store_id: Optional[pulumi.Input[str]] 
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_fhir_store_iam_policy(fhir_store_id=fhir_store["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str fhir_store_id: The FHIR store ID, in the form

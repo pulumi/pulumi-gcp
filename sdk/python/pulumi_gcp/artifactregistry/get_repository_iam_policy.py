@@ -105,7 +105,6 @@ def get_repository_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_repository_iam_policy(location: Optional[str] = None,
         location=my_repo["location"],
         repository=my_repo["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The name of the location this repository is located in.
@@ -149,7 +147,6 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -158,7 +155,6 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
         location=my_repo["location"],
         repository=my_repo["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The name of the location this repository is located in.

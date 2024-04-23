@@ -274,7 +274,6 @@ class NoteIamMember(pulumi.CustomResource):
 
         ## google\\_container\\_analysis\\_note\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -288,11 +287,9 @@ class NoteIamMember(pulumi.CustomResource):
             note=note["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,11 +300,9 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -318,11 +313,9 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,11 +329,9 @@ class NoteIamMember(pulumi.CustomResource):
             note=note["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -351,11 +342,9 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,7 +355,6 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -447,7 +435,6 @@ class NoteIamMember(pulumi.CustomResource):
 
         ## google\\_container\\_analysis\\_note\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,11 +448,9 @@ class NoteIamMember(pulumi.CustomResource):
             note=note["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -476,11 +461,9 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -491,11 +474,9 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -509,11 +490,9 @@ class NoteIamMember(pulumi.CustomResource):
             note=note["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,11 +503,9 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_container\\_analysis\\_note\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -539,7 +516,6 @@ class NoteIamMember(pulumi.CustomResource):
             role="roles/containeranalysis.notes.occurrences.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

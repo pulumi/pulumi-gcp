@@ -14,16 +14,15 @@ import javax.annotation.Nullable;
 public final class InstanceTemplateSchedulingMaxRunDuration {
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond
-     * resolution. Durations less than one second are represented with a 0
-     * `seconds` field and a positive `nanos` field. Must be from 0 to
-     * 999,999,999 inclusive.
+     * resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must
+     * be from 0 to 999,999,999 inclusive.
      * 
      */
     private @Nullable Integer nanos;
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to
-     * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
-     * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+     * @return Span of time at a resolution of a second.
+     * Must be from 0 to 315,576,000,000 inclusive.
      * 
      */
     private Integer seconds;
@@ -31,18 +30,17 @@ public final class InstanceTemplateSchedulingMaxRunDuration {
     private InstanceTemplateSchedulingMaxRunDuration() {}
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond
-     * resolution. Durations less than one second are represented with a 0
-     * `seconds` field and a positive `nanos` field. Must be from 0 to
-     * 999,999,999 inclusive.
+     * resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must
+     * be from 0 to 999,999,999 inclusive.
      * 
      */
     public Optional<Integer> nanos() {
         return Optional.ofNullable(this.nanos);
     }
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to
-     * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
-     * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+     * @return Span of time at a resolution of a second.
+     * Must be from 0 to 315,576,000,000 inclusive.
      * 
      */
     public Integer seconds() {

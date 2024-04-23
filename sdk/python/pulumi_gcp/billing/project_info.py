@@ -135,7 +135,6 @@ class ProjectInfo(pulumi.CustomResource):
 
         ### Billing Project Info Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -148,7 +147,6 @@ class ProjectInfo(pulumi.CustomResource):
             project=project.project_id,
             billing_account="000000-0000000-0000000-000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -198,7 +196,6 @@ class ProjectInfo(pulumi.CustomResource):
 
         ### Billing Project Info Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -211,7 +208,6 @@ class ProjectInfo(pulumi.CustomResource):
             project=project.project_id,
             billing_account="000000-0000000-0000000-000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ import (
 //
 // ### Android_key
 // A basic test of recaptcha enterprise key that can be used by Android apps
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,10 +52,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Ios_key
 // A basic test of recaptcha enterprise key that can be used by iOS apps
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,10 +88,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Minimal_key
 // A minimal test of recaptcha enterprise key
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,10 +119,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Waf_key
 // A basic test of recaptcha enterprise key that includes WAF settings
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,10 +162,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Web_key
 // A basic test of recaptcha enterprise key that can be used by websites
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -210,10 +201,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Web_score_key
 // A basic test of recaptcha enterprise key with score integration type that can be used by websites
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -250,7 +239,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

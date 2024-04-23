@@ -129,7 +129,6 @@ def get_network(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -137,7 +136,6 @@ def get_network(location: Optional[str] = None,
     my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
         location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the resource.
@@ -178,7 +176,6 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -186,7 +183,6 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
     my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
         location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the resource.

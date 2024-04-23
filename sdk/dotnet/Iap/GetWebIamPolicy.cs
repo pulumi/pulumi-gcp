@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWebIamPolicyResult> InvokeAsync(GetWebIamPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebIamPolicyResult>("gcp:iap/getWebIamPolicy:getWebIamPolicy", args ?? new GetWebIamPolicyArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWebIamPolicyResult> Invoke(GetWebIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebIamPolicyResult>("gcp:iap/getWebIamPolicy:getWebIamPolicy", args ?? new GetWebIamPolicyInvokeArgs(), options.WithDefaults());

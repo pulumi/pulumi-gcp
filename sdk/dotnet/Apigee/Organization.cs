@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// ### Apigee Organization Cloud Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,10 +65,8 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apigee Organization Cloud Basic Disable Vpc Peering
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,10 +87,8 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apigee Organization Cloud Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -165,10 +160,8 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Apigee Organization Cloud Full Disable Vpc Peering
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -216,7 +209,6 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -295,7 +287,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the property.
+        /// Output only. Name of the Apigee organization.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -547,7 +539,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Name of the property.
+        /// Output only. Name of the Apigee organization.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

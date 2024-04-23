@@ -16,20 +16,18 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     public static final CertificateManagedAuthorizationAttemptInfoArgs Empty = new CertificateManagedAuthorizationAttemptInfoArgs();
 
     /**
-     * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
-     * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+     * Not guaranteed to be stable. For programmatic access use &#39;failure_reason&#39; field.
      * 
      */
     @Import(name="details")
     private @Nullable Output<String> details;
 
     /**
-     * @return (Output)
-     * Human readable explanation for reaching the state. Provided to help
+     * @return Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
-     * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+     * Not guaranteed to be stable. For programmatic access use &#39;failure_reason&#39; field.
      * 
      */
     public Optional<Output<String>> details() {
@@ -37,7 +35,6 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     }
 
     /**
-     * (Output)
      * Domain name of the authorization attempt.
      * 
      */
@@ -45,8 +42,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> domain;
 
     /**
-     * @return (Output)
-     * Domain name of the authorization attempt.
+     * @return Domain name of the authorization attempt.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -54,7 +50,6 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     }
 
     /**
-     * (Output)
      * Reason for failure of the authorization attempt for the domain.
      * 
      */
@@ -62,8 +57,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> failureReason;
 
     /**
-     * @return (Output)
-     * Reason for failure of the authorization attempt for the domain.
+     * @return Reason for failure of the authorization attempt for the domain.
      * 
      */
     public Optional<Output<String>> failureReason() {
@@ -71,7 +65,6 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     }
 
     /**
-     * (Output)
      * State of the domain for managed certificate issuance.
      * 
      */
@@ -79,8 +72,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> state;
 
     /**
-     * @return (Output)
-     * State of the domain for managed certificate issuance.
+     * @return State of the domain for managed certificate issuance.
      * 
      */
     public Optional<Output<String>> state() {
@@ -115,10 +107,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param details (Output)
-         * Human readable explanation for reaching the state. Provided to help
+         * @param details Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
-         * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+         * Not guaranteed to be stable. For programmatic access use &#39;failure_reason&#39; field.
          * 
          * @return builder
          * 
@@ -129,10 +120,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param details (Output)
-         * Human readable explanation for reaching the state. Provided to help
+         * @param details Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
-         * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
+         * Not guaranteed to be stable. For programmatic access use &#39;failure_reason&#39; field.
          * 
          * @return builder
          * 
@@ -142,8 +132,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param domain (Output)
-         * Domain name of the authorization attempt.
+         * @param domain Domain name of the authorization attempt.
          * 
          * @return builder
          * 
@@ -154,8 +143,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param domain (Output)
-         * Domain name of the authorization attempt.
+         * @param domain Domain name of the authorization attempt.
          * 
          * @return builder
          * 
@@ -165,8 +153,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param failureReason (Output)
-         * Reason for failure of the authorization attempt for the domain.
+         * @param failureReason Reason for failure of the authorization attempt for the domain.
          * 
          * @return builder
          * 
@@ -177,8 +164,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param failureReason (Output)
-         * Reason for failure of the authorization attempt for the domain.
+         * @param failureReason Reason for failure of the authorization attempt for the domain.
          * 
          * @return builder
          * 
@@ -188,8 +174,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param state (Output)
-         * State of the domain for managed certificate issuance.
+         * @param state State of the domain for managed certificate issuance.
          * 
          * @return builder
          * 
@@ -200,8 +185,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param state (Output)
-         * State of the domain for managed certificate issuance.
+         * @param state State of the domain for managed certificate issuance.
          * 
          * @return builder
          * 

@@ -556,7 +556,6 @@ class Instance(pulumi.CustomResource):
 
         ### Workbench Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -565,10 +564,8 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -583,10 +580,8 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Gpu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -606,10 +601,8 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Labels Stopped
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -637,10 +630,8 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -704,7 +695,6 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="ACTIVE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -766,7 +756,6 @@ class Instance(pulumi.CustomResource):
 
         ### Workbench Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -775,10 +764,8 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -793,10 +780,8 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Basic Gpu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -816,10 +801,8 @@ class Instance(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Labels Stopped
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -847,10 +830,8 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Workbench Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -914,7 +895,6 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="ACTIVE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

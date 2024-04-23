@@ -467,7 +467,6 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -479,7 +478,6 @@ class RouterInterface(pulumi.CustomResource):
             ip_range="169.254.1.1/30",
             vpn_tunnel="tunnel-1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -543,7 +541,6 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -555,7 +552,6 @@ class RouterInterface(pulumi.CustomResource):
             ip_range="169.254.1.1/30",
             vpn_tunnel="tunnel-1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

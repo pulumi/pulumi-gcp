@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Kms Config Create
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

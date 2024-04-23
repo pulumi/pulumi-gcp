@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     caPool: _default.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCaPoolIamPolicy(args: GetCaPoolIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCaPoolIamPolicyResult> {
 
@@ -77,7 +75,6 @@ export interface GetCaPoolIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,7 +83,6 @@ export interface GetCaPoolIamPolicyResult {
  *     caPool: _default.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getCaPoolIamPolicy(a, opts))

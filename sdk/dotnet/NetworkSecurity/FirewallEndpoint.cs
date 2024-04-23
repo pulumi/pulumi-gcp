@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ### Network Security Firewall Endpoint Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

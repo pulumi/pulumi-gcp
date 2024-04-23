@@ -412,7 +412,6 @@ class SecurityProfile(pulumi.CustomResource):
 
         ### Network Security Security Profile Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -426,10 +425,8 @@ class SecurityProfile(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Security Profile Overrides
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -456,7 +453,6 @@ class SecurityProfile(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -501,7 +497,6 @@ class SecurityProfile(pulumi.CustomResource):
 
         ### Network Security Security Profile Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -515,10 +510,8 @@ class SecurityProfile(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Security Profile Overrides
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -545,7 +538,6 @@ class SecurityProfile(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

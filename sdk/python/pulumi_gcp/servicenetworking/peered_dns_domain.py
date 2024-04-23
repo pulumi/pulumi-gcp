@@ -219,7 +219,6 @@ class PeeredDnsDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -231,7 +230,6 @@ class PeeredDnsDomain(pulumi.CustomResource):
             dns_suffix="example.com.",
             service="peering-service")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -274,7 +272,6 @@ class PeeredDnsDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,7 +283,6 @@ class PeeredDnsDomain(pulumi.CustomResource):
             dns_suffix="example.com.",
             service="peering-service")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

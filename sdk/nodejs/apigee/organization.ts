@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Apigee Organization Cloud Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -44,10 +43,8 @@ import * as utilities from "../utilities";
  *     authorizedNetwork: apigeeNetwork.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,10 +57,8 @@ import * as utilities from "../utilities";
  *     disableVpcPeering: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -108,10 +103,8 @@ import * as utilities from "../utilities";
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -143,7 +136,6 @@ import * as utilities from "../utilities";
  *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -231,7 +223,7 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -372,7 +364,7 @@ export interface OrganizationState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      */
     name?: pulumi.Input<string>;
     /**

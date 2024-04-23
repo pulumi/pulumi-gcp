@@ -265,7 +265,6 @@ class BackupSchedule(pulumi.CustomResource):
 
         ### Firestore Backup Schedule Daily
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -283,10 +282,8 @@ class BackupSchedule(pulumi.CustomResource):
             retention="8467200s",
             daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs())
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Backup Schedule Weekly
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -306,7 +303,6 @@ class BackupSchedule(pulumi.CustomResource):
                 day="SUNDAY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -373,7 +369,6 @@ class BackupSchedule(pulumi.CustomResource):
 
         ### Firestore Backup Schedule Daily
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -391,10 +386,8 @@ class BackupSchedule(pulumi.CustomResource):
             retention="8467200s",
             daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs())
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Backup Schedule Weekly
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -414,7 +407,6 @@ class BackupSchedule(pulumi.CustomResource):
                 day="SUNDAY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

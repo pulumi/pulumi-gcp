@@ -24,7 +24,6 @@ import (
 //
 // ### Apigee Organization Cloud Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,10 +82,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Organization Cloud Basic Disable Vpc Peering
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,10 +115,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Organization Cloud Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,10 +213,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Organization Cloud Full Disable Vpc Peering
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -290,7 +283,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -335,7 +327,7 @@ type Organization struct {
 	DisableVpcPeering pulumi.BoolPtrOutput `pulumi:"disableVpcPeering"`
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Name of the property.
+	// Output only. Name of the Apigee organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
 	//
@@ -421,7 +413,7 @@ type organizationState struct {
 	DisableVpcPeering *bool `pulumi:"disableVpcPeering"`
 	// The display name of the Apigee organization.
 	DisplayName *string `pulumi:"displayName"`
-	// Name of the property.
+	// Output only. Name of the Apigee organization.
 	Name *string `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
 	//
@@ -475,7 +467,7 @@ type OrganizationState struct {
 	DisableVpcPeering pulumi.BoolPtrInput
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrInput
-	// Name of the property.
+	// Output only. Name of the Apigee organization.
 	Name pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
 	//
@@ -732,7 +724,7 @@ func (o OrganizationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the property.
+// Output only. Name of the Apigee organization.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

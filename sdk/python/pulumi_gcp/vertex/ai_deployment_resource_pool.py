@@ -215,7 +215,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
 
         ### Vertex Ai Deployment Resource Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -237,7 +236,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -299,7 +297,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
 
         ### Vertex Ai Deployment Resource Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,7 +318,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

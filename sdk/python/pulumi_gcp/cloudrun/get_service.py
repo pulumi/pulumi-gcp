@@ -128,7 +128,6 @@ def get_service(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -136,7 +135,6 @@ def get_service(location: Optional[str] = None,
     run_service = gcp.cloudrun.get_service(name="my-service",
         location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the cloud run instance. eg us-central1
@@ -177,7 +175,6 @@ def get_service_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -185,7 +182,6 @@ def get_service_output(location: Optional[pulumi.Input[str]] = None,
     run_service = gcp.cloudrun.get_service(name="my-service",
         location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the cloud run instance. eg us-central1

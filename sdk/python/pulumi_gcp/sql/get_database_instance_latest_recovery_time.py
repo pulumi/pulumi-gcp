@@ -91,7 +91,6 @@ def get_database_instance_latest_recovery_time(instance: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -99,7 +98,6 @@ def get_database_instance_latest_recovery_time(instance: Optional[str] = None,
     default = gcp.sql.get_database_instance_latest_recovery_time(instance="sample-instance")
     pulumi.export("latestRecoveryTime", default)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the instance.
@@ -130,7 +128,6 @@ def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -138,7 +135,6 @@ def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.
     default = gcp.sql.get_database_instance_latest_recovery_time(instance="sample-instance")
     pulumi.export("latestRecoveryTime", default)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance: The name of the instance.

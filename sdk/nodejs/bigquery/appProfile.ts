@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Bigtable App Profile Anycluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,10 +52,8 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigtable App Profile Singlecluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,10 +78,8 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigtable App Profile Multicluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -124,10 +119,8 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Bigtable App Profile Priority
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -155,7 +148,6 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

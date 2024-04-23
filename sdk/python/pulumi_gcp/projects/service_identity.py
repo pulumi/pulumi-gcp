@@ -144,7 +144,6 @@ class ServiceIdentity(pulumi.CustomResource):
 
         ### Service Identity Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -158,7 +157,6 @@ class ServiceIdentity(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -196,7 +194,6 @@ class ServiceIdentity(pulumi.CustomResource):
 
         ### Service Identity Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -210,7 +207,6 @@ class ServiceIdentity(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

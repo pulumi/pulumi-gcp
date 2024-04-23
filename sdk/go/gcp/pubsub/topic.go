@@ -26,7 +26,6 @@ import (
 //
 // ### Pubsub Topic Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Geo Restricted
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,10 +124,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Schema Settings
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -184,10 +177,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Topic Ingestion Kinesis
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -219,7 +210,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

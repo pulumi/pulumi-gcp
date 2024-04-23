@@ -486,7 +486,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         ### Network Security Gateway Security Policy Rules Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,10 +504,8 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Gateway Security Policy Rules Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -529,7 +526,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             tls_inspection_enabled=False,
             basic_profile="ALLOW")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -594,7 +590,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         ### Network Security Gateway Security Policy Rules Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -613,10 +608,8 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             session_matcher="host() == 'example.com'",
             basic_profile="ALLOW")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Gateway Security Policy Rules Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -637,7 +630,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             tls_inspection_enabled=False,
             basic_profile="ALLOW")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

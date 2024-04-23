@@ -136,7 +136,6 @@ def get_external_address(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -144,7 +143,6 @@ def get_external_address(name: Optional[str] = None,
     my_external_address = gcp.vmwareengine.get_external_address(name="my-external-address",
         parent="project/my-project/locations/us-west1-a/privateClouds/my-cloud")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.
@@ -181,7 +179,6 @@ def get_external_address_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -189,7 +186,6 @@ def get_external_address_output(name: Optional[pulumi.Input[str]] = None,
     my_external_address = gcp.vmwareengine.get_external_address(name="my-external-address",
         parent="project/my-project/locations/us-west1-a/privateClouds/my-cloud")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Name of the resource.

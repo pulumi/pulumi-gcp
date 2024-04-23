@@ -250,7 +250,6 @@ class PolicyTag(pulumi.CustomResource):
 
         ### Data Catalog Taxonomies Policy Tag Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -264,10 +263,8 @@ class PolicyTag(pulumi.CustomResource):
             display_name="Low security",
             description="A policy tag normally associated with low security items")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Taxonomies Policy Tag Child Policies
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,7 +288,6 @@ class PolicyTag(pulumi.CustomResource):
             description="The users date of birth",
             parent_policy_tag=parent_policy.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -341,7 +337,6 @@ class PolicyTag(pulumi.CustomResource):
 
         ### Data Catalog Taxonomies Policy Tag Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -355,10 +350,8 @@ class PolicyTag(pulumi.CustomResource):
             display_name="Low security",
             description="A policy tag normally associated with low security items")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Taxonomies Policy Tag Child Policies
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -382,7 +375,6 @@ class PolicyTag(pulumi.CustomResource):
             description="The users date of birth",
             parent_policy_tag=parent_policy.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

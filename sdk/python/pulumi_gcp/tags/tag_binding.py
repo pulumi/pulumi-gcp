@@ -138,7 +138,6 @@ class TagBinding(pulumi.CustomResource):
 
         ### Tag Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -159,7 +158,6 @@ class TagBinding(pulumi.CustomResource):
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -206,7 +204,6 @@ class TagBinding(pulumi.CustomResource):
 
         ### Tag Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -227,7 +224,6 @@ class TagBinding(pulumi.CustomResource):
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

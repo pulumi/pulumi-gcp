@@ -197,7 +197,6 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     }
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     @Export(name="memberKey", refs={GroupMembershipMemberKey.class}, tree="[0]")
@@ -205,23 +204,20 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
 
     /**
      * @return EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     public Output<GroupMembershipMemberKey> memberKey() {
         return this.memberKey;
     }
     /**
-     * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+     * The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+     * @return The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
      * 
      */
     public Output<String> name() {
@@ -229,7 +225,6 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     }
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     @Export(name="preferredMemberKey", refs={GroupMembershipPreferredMemberKey.class}, tree="[0]")
@@ -237,7 +232,6 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
 
     /**
      * @return EntityKey of the member.
-     * Structure is documented below.
      * 
      */
     public Output<GroupMembershipPreferredMemberKey> preferredMemberKey() {

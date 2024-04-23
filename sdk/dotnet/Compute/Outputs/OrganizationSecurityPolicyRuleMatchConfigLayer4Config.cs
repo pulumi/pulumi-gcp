@@ -26,10 +26,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// is only applicable for UDP or TCP protocol. Each entry must be
         /// either an integer or a range. If not specified, this rule
         /// applies to connections through any port.
+        /// 
         /// Example inputs include: ["22"], ["80","443"], and
         /// ["12345-12349"].
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Ports;
 

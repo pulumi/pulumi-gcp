@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ### Clouddeploy Custom Target Type Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,10 +55,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Clouddeploy Custom Target Type Git Skaffold Modules
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,10 +95,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Clouddeploy Custom Target Type Gcs Skaffold Modules
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -139,7 +134,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -232,7 +232,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
         ### Instance Group Named Port Gke
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -267,7 +266,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             name="https",
             port=4443)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,7 +332,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
         ### Instance Group Named Port Gke
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -369,7 +366,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             name="https",
             port=4443)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

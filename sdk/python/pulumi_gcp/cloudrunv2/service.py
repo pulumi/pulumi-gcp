@@ -36,38 +36,41 @@ class ServiceArgs:
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-               Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-               All system annotations in v1 now have a corresponding field in v2 Service.
-               This field follows Kubernetes annotations' namespacing, limits, and rules.
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+               should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+               'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+               resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+               annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+               present on the resource.
         :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
-               Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
-        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-               Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-               environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-               Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-               All system labels in v1 now have a corresponding field in v2 Service.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-               Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+               INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+               "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+               Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+               state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+               https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+               'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+               will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch
+               Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+               specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+               stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+               input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+               ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         :param pulumi.Input[str] name: Name of the Service.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+               provided, defaults to 100% traffic to the latest Ready Revision.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "template", template)
@@ -127,12 +130,13 @@ class ServiceArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-        Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-        All system annotations in v1 now have a corresponding field in v2 Service.
-        This field follows Kubernetes annotations' namespacing, limits, and rules.
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+        should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+        'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+        resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+        annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -145,7 +149,6 @@ class ServiceArgs:
     def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
-        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -181,8 +184,9 @@ class ServiceArgs:
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
 
@@ -206,8 +210,9 @@ class ServiceArgs:
     @pulumi.getter
     def ingress(self) -> Optional[pulumi.Input[str]]:
         """
-        Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+        INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+        "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         """
         return pulumi.get(self, "ingress")
 
@@ -219,12 +224,14 @@ class ServiceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-        environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-        Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-        All system labels in v1 now have a corresponding field in v2 Service.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+        Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+        state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+        will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -236,10 +243,12 @@ class ServiceArgs:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-        Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        The launch stage as defined by [Google Cloud Platform Launch
+        Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+        specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+        stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+        input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+        ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         """
         return pulumi.get(self, "launch_stage")
 
@@ -262,10 +271,6 @@ class ServiceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -277,7 +282,6 @@ class ServiceArgs:
     def scaling(self) -> Optional[pulumi.Input['ServiceScalingArgs']]:
         """
         Scaling settings that apply to the whole service
-        Structure is documented below.
         """
         return pulumi.get(self, "scaling")
 
@@ -289,8 +293,8 @@ class ServiceArgs:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
-        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-        Structure is documented below.
+        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+        provided, defaults to 100% traffic to the latest Ready Revision.
         """
         return pulumi.get(self, "traffics")
 
@@ -339,22 +343,23 @@ class _ServiceState:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-               Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-               All system annotations in v1 now have a corresponding field in v2 Service.
-               This field follows Kubernetes annotations' namespacing, limits, and rules.
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+               should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+               'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+               resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+               annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+               present on the resource.
         :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
-               Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -363,26 +368,29 @@ class _ServiceState:
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-               Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-               environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-               Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-               All system labels in v1 now have a corresponding field in v2 Service.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+               INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+               "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+               Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+               state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+               https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+               'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+               will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[str] latest_created_revision: Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] latest_ready_revision: Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-               Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch
+               Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+               specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+               stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+               input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+               ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
@@ -390,15 +398,14 @@ class _ServiceState:
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
-               Structure is documented below.
         :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+               provided, defaults to 100% traffic to the latest Ready Revision.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
         :param pulumi.Input[str] uri: (Output)
@@ -479,12 +486,13 @@ class _ServiceState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-        Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-        All system annotations in v1 now have a corresponding field in v2 Service.
-        This field follows Kubernetes annotations' namespacing, limits, and rules.
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+        should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+        'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+        resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+        annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -497,7 +505,6 @@ class _ServiceState:
     def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
-        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -570,8 +577,9 @@ class _ServiceState:
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
 
@@ -668,8 +676,9 @@ class _ServiceState:
     @pulumi.getter
     def ingress(self) -> Optional[pulumi.Input[str]]:
         """
-        Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+        INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+        "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         """
         return pulumi.get(self, "ingress")
 
@@ -681,12 +690,14 @@ class _ServiceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-        environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-        Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-        All system labels in v1 now have a corresponding field in v2 Service.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+        Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+        state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+        will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -734,10 +745,12 @@ class _ServiceState:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-        Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        The launch stage as defined by [Google Cloud Platform Launch
+        Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+        specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+        stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+        input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+        ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         """
         return pulumi.get(self, "launch_stage")
 
@@ -784,10 +797,6 @@ class _ServiceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -827,7 +836,6 @@ class _ServiceState:
     def scaling(self) -> Optional[pulumi.Input['ServiceScalingArgs']]:
         """
         Scaling settings that apply to the whole service
-        Structure is documented below.
         """
         return pulumi.get(self, "scaling")
 
@@ -878,8 +886,8 @@ class _ServiceState:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
-        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-        Structure is documented below.
+        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+        provided, defaults to 100% traffic to the latest Ready Revision.
         """
         return pulumi.get(self, "traffics")
 
@@ -959,7 +967,6 @@ class Service(pulumi.CustomResource):
 
         ### Cloudrunv2 Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -974,10 +981,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Limits
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -998,10 +1003,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Sql
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1069,10 +1072,8 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Vpcaccess
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1107,10 +1108,8 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Directvpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1137,10 +1136,8 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Probes
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1168,10 +1165,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1214,10 +1209,8 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Multicontainer
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1264,10 +1257,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Gcs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1297,10 +1288,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Nfs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1347,7 +1336,6 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1375,41 +1363,44 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-               Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-               All system annotations in v1 now have a corresponding field in v2 Service.
-               This field follows Kubernetes annotations' namespacing, limits, and rules.
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+               should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+               'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+               resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+               annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+               present on the resource.
         :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
-               Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
-        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-               Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-               environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-               Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-               All system labels in v1 now have a corresponding field in v2 Service.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-               Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+               INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+               "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+               Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+               state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+               https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+               'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+               will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch
+               Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+               specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+               stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+               input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+               ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ServiceScalingArgs']] scaling: Scaling settings that apply to the whole service
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+               provided, defaults to 100% traffic to the latest Ready Revision.
         """
         ...
     @overload
@@ -1430,7 +1421,6 @@ class Service(pulumi.CustomResource):
 
         ### Cloudrunv2 Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1445,10 +1435,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Limits
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1469,10 +1457,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Sql
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1540,10 +1526,8 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Vpcaccess
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1578,10 +1562,8 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Directvpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1608,10 +1590,8 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Probes
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1639,10 +1619,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1685,10 +1663,8 @@ class Service(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Multicontainer
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1735,10 +1711,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Gcs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1768,10 +1742,8 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudrunv2 Service Mount Nfs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1818,7 +1790,6 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1976,22 +1947,23 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-               Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-               All system annotations in v1 now have a corresponding field in v2 Service.
-               This field follows Kubernetes annotations' namespacing, limits, and rules.
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+               should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+               'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+               resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+               annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+               present on the resource.
         :param pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
-               Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -2000,26 +1972,29 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-               Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-               environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-               Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-               All system labels in v1 now have a corresponding field in v2 Service.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+               INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+               "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+               Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+               state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+               https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+               'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+               will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+               'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[str] latest_created_revision: Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] latest_ready_revision: Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-               Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch
+               Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+               specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+               stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+               input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+               ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
         :param pulumi.Input[str] observed_generation: The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[bool] reconciling: Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
@@ -2027,15 +2002,14 @@ class Service(pulumi.CustomResource):
                If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         :param pulumi.Input[pulumi.InputType['ServiceScalingArgs']] scaling: Scaling settings that apply to the whole service
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTerminalConditionArgs']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]] traffic_statuses: Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+               provided, defaults to 100% traffic to the latest Ready Revision.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: The last-modified time.
         :param pulumi.Input[str] uri: (Output)
@@ -2086,12 +2060,13 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-        Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-        All system annotations in v1 now have a corresponding field in v2 Service.
-        This field follows Kubernetes annotations' namespacing, limits, and rules.
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+        should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+        'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+        resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+        annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -2100,7 +2075,6 @@ class Service(pulumi.CustomResource):
     def binary_authorization(self) -> pulumi.Output[Optional['outputs.ServiceBinaryAuthorization']]:
         """
         Settings for the Binary Authorization feature.
-        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -2149,8 +2123,9 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
 
@@ -2215,8 +2190,9 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def ingress(self) -> pulumi.Output[str]:
         """
-        Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+        INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+        "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         """
         return pulumi.get(self, "ingress")
 
@@ -2224,12 +2200,14 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-        environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-        Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-        All system labels in v1 now have a corresponding field in v2 Service.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+        Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+        state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+        will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2261,10 +2239,12 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> pulumi.Output[str]:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-        Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        The launch stage as defined by [Google Cloud Platform Launch
+        Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+        specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+        stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+        input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+        ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         """
         return pulumi.get(self, "launch_stage")
 
@@ -2295,10 +2275,6 @@ class Service(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -2326,7 +2302,6 @@ class Service(pulumi.CustomResource):
     def scaling(self) -> pulumi.Output[Optional['outputs.ServiceScaling']]:
         """
         Scaling settings that apply to the whole service
-        Structure is documented below.
         """
         return pulumi.get(self, "scaling")
 
@@ -2361,8 +2336,8 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def traffics(self) -> pulumi.Output[Sequence['outputs.ServiceTraffic']]:
         """
-        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-        Structure is documented below.
+        Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+        provided, defaults to 100% traffic to the latest Ready Revision.
         """
         return pulumi.get(self, "traffics")
 

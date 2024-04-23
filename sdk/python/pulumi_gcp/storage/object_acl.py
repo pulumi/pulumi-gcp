@@ -192,7 +192,6 @@ class ObjectACL(pulumi.CustomResource):
 
         Create an object ACL with one owner and one reader.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -212,7 +211,6 @@ class ObjectACL(pulumi.CustomResource):
                 "READER:group-mygroup",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,7 +249,6 @@ class ObjectACL(pulumi.CustomResource):
 
         Create an object ACL with one owner and one reader.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -271,7 +268,6 @@ class ObjectACL(pulumi.CustomResource):
                 "READER:group-mygroup",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

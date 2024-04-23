@@ -33,10 +33,7 @@ public final class ClusterNodePoolNetworkConfig {
      */
     private @Nullable Boolean createPodRange;
     /**
-     * @return Enables the private cluster feature,
-     * creating a private endpoint on the cluster. In a private cluster, nodes only
-     * have RFC 1918 private addresses and communicate with the master&#39;s private
-     * endpoint via private networking.
+     * @return Whether nodes have internal IP addresses only.
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
@@ -84,10 +81,7 @@ public final class ClusterNodePoolNetworkConfig {
         return Optional.ofNullable(this.createPodRange);
     }
     /**
-     * @return Enables the private cluster feature,
-     * creating a private endpoint on the cluster. In a private cluster, nodes only
-     * have RFC 1918 private addresses and communicate with the master&#39;s private
-     * endpoint via private networking.
+     * @return Whether nodes have internal IP addresses only.
      * 
      */
     public Optional<Boolean> enablePrivateNodes() {

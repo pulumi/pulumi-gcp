@@ -24,7 +24,6 @@ import (
 //
 // ### Dialogflowcx Page Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -794,7 +793,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -846,8 +844,8 @@ type CxPage struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
-	// (Output)
-	// The unique identifier of this event handler.
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The flow to create a page for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -932,8 +930,8 @@ type cxPageState struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
-	// (Output)
-	// The unique identifier of this event handler.
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name *string `pulumi:"name"`
 	// The flow to create a page for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -986,8 +984,8 @@ type CxPageState struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
-	// (Output)
-	// The unique identifier of this event handler.
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	Name pulumi.StringPtrInput
 	// The flow to create a page for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -1251,8 +1249,8 @@ func (o CxPageOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// The unique identifier of this event handler.
+// The unique identifier of the page.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 func (o CxPageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

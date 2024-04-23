@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Monitoring Cluster Istio Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  *     serviceName: "istio-policy",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterIstioService(args: GetClusterIstioServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIstioServiceResult> {
 
@@ -135,7 +133,6 @@ export interface GetClusterIstioServiceResult {
  *
  * ### Monitoring Cluster Istio Service
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -148,7 +145,6 @@ export interface GetClusterIstioServiceResult {
  *     serviceName: "istio-policy",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {
     return pulumi.output(args).apply((a: any) => getClusterIstioService(a, opts))

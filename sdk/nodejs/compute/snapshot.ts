@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  *
  * ### Snapshot Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,10 +55,8 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Snapshot Chainname
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,7 +83,6 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigGcfsConfig
     {
         /// <summary>
-        /// Enable Confidential GKE Nodes for this cluster, to
-        /// enforce encryption of data in-use.
+        /// Whether or not GCFS is enabled
         /// </summary>
         public readonly bool Enabled;
 

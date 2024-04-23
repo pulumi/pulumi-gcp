@@ -41,7 +41,6 @@ import (
 //
 // ### Managed Ssl Certificate Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -137,7 +136,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ## Import
 //
 // ManagedSslCertificate can be imported using any of these accepted formats:

@@ -434,7 +434,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         ### Region Target Https Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -481,10 +480,8 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Target Https Proxy Certificate Manager Certificate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -512,7 +509,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -594,7 +590,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         ### Region Target Https Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -641,10 +636,8 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Target Https Proxy Certificate Manager Certificate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -672,7 +665,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

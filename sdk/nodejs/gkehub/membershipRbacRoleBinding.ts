@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Gkehub Membership Rbac Role Binding Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,7 +42,6 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -121,10 +119,6 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
      * The resource name for the RBAC Role Binding
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Role to bind to the principal.
@@ -240,10 +234,6 @@ export interface MembershipRbacRoleBindingState {
      * The resource name for the RBAC Role Binding
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Role to bind to the principal.
@@ -288,10 +278,6 @@ export interface MembershipRbacRoleBindingArgs {
      * The client-provided identifier of the RBAC Role Binding.
      */
     membershipRbacRoleBindingId: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Role to bind to the principal.

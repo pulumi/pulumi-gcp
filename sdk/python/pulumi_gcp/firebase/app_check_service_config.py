@@ -256,7 +256,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         ### Firebase App Check Service Config Off
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -269,10 +268,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             project="my-project-name",
             service_id="firestore.googleapis.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Enforced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,10 +283,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="firebasestorage.googleapis.com",
             enforcement_mode="ENFORCED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Unenforced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -303,7 +298,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="identitytoolkit.googleapis.com",
             enforcement_mode="UNENFORCED")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -378,7 +372,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         ### Firebase App Check Service Config Off
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -391,10 +384,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             project="my-project-name",
             service_id="firestore.googleapis.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Enforced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -408,10 +399,8 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="firebasestorage.googleapis.com",
             enforcement_mode="ENFORCED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase App Check Service Config Unenforced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,7 +414,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
             service_id="identitytoolkit.googleapis.com",
             enforcement_mode="UNENFORCED")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

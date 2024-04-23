@@ -29,7 +29,6 @@ import (
 //
 // ### Monitoring Mesh Istio Service
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMeshIstioService(ctx *pulumi.Context, args *GetMeshIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetMeshIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMeshIstioServiceResult

@@ -136,7 +136,6 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -147,7 +146,6 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         key_ring=my_key_ring.id)
     my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=my_key["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
@@ -185,7 +183,6 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -196,7 +193,6 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
         key_ring=my_key_ring.id)
     my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=my_key["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 

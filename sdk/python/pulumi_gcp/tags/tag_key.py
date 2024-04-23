@@ -305,7 +305,6 @@ class TagKey(pulumi.CustomResource):
 
         ### Tag Key Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -315,7 +314,6 @@ class TagKey(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -369,7 +367,6 @@ class TagKey(pulumi.CustomResource):
 
         ### Tag Key Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -379,7 +376,6 @@ class TagKey(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

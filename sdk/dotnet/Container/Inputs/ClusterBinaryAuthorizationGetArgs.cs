@@ -13,14 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterBinaryAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        /// Enable Binary Authorization for this cluster.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        /// Mode of operation for Binary Authorization policy evaluation.
         /// </summary>
         [Input("evaluationMode")]
         public Input<string>? EvaluationMode { get; set; }

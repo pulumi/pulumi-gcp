@@ -153,7 +153,6 @@ class SyncAuthorization(pulumi.CustomResource):
 
         ### Apigee Sync Authorization Basic Test
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -181,7 +180,6 @@ class SyncAuthorization(pulumi.CustomResource):
             name=apigee_org.name,
             identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -231,7 +229,6 @@ class SyncAuthorization(pulumi.CustomResource):
 
         ### Apigee Sync Authorization Basic Test
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -259,7 +256,6 @@ class SyncAuthorization(pulumi.CustomResource):
             name=apigee_org.name,
             identities=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

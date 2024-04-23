@@ -567,7 +567,6 @@ class Workflow(pulumi.CustomResource):
 
         ### Workflow Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -615,7 +614,6 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -669,7 +667,6 @@ class Workflow(pulumi.CustomResource):
 
         ### Workflow Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -717,7 +714,6 @@ class Workflow(pulumi.CustomResource):
             return: ${wikiResult.body[1]}
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

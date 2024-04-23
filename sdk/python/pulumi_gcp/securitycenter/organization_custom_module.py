@@ -119,7 +119,8 @@ class _OrganizationCustomModuleState:
         :param pulumi.Input[str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] last_editor: The editor that last updated the custom module.
-        :param pulumi.Input[str] name: Name of the property for the custom output.
+        :param pulumi.Input[str] name: The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+               The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -214,7 +215,8 @@ class _OrganizationCustomModuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the property for the custom output.
+        The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+        The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         """
         return pulumi.get(self, "name")
 
@@ -276,7 +278,6 @@ class OrganizationCustomModule(pulumi.CustomResource):
 
         ### Scc Organization Custom Module Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,10 +298,8 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 severity="MEDIUM",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scc Organization Custom Module Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -335,7 +334,6 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 recommendation="Steps to resolve violation",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -391,7 +389,6 @@ class OrganizationCustomModule(pulumi.CustomResource):
 
         ### Scc Organization Custom Module Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -412,10 +409,8 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 severity="MEDIUM",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scc Organization Custom Module Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,7 +445,6 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 recommendation="Steps to resolve violation",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -552,7 +546,8 @@ class OrganizationCustomModule(pulumi.CustomResource):
         :param pulumi.Input[str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] last_editor: The editor that last updated the custom module.
-        :param pulumi.Input[str] name: Name of the property for the custom output.
+        :param pulumi.Input[str] name: The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+               The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -624,7 +619,8 @@ class OrganizationCustomModule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the property for the custom output.
+        The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+        The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         """
         return pulumi.get(self, "name")
 

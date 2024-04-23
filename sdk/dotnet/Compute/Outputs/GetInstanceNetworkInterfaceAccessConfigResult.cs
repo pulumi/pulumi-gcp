@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetInstanceNetworkInterfaceAccessConfigResult
     {
         /// <summary>
-        /// The IP address that is be 1:1 mapped to the instance's
-        /// network ip.
+        /// If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn't provide one).
         /// </summary>
         public readonly string NatIp;
         /// <summary>

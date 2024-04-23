@@ -152,7 +152,6 @@ class IamAuditConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -165,7 +164,6 @@ class IamAuditConfig(pulumi.CustomResource):
                 exempted_members=["user:joebloggs@example.com"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -192,7 +190,6 @@ class IamAuditConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -205,7 +202,6 @@ class IamAuditConfig(pulumi.CustomResource):
                 exempted_members=["user:joebloggs@example.com"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

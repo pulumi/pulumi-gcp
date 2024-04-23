@@ -466,7 +466,6 @@ class Subnet(pulumi.CustomResource):
 
         ### Edgenetwork Subnet
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -488,10 +487,8 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgenetwork Subnet With Vlan Id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,7 +511,6 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -589,7 +585,6 @@ class Subnet(pulumi.CustomResource):
 
         ### Edgenetwork Subnet
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -611,10 +606,8 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Edgenetwork Subnet With Vlan Id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -637,7 +630,6 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

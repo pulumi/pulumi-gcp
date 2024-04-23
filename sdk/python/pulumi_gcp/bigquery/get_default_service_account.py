@@ -93,7 +93,6 @@ def get_default_service_account(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -104,7 +103,6 @@ def get_default_service_account(project: Optional[str] = None,
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         member=f"serviceAccount:{bq_sa.email}")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
@@ -137,7 +135,6 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -148,7 +145,6 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         member=f"serviceAccount:{bq_sa.email}")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.

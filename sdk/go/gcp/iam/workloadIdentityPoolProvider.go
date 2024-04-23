@@ -24,7 +24,6 @@ import (
 //
 // ### Iam Workload Identity Pool Provider Aws Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,10 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Aws Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -104,10 +101,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Oidc Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -144,10 +139,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Oidc Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,10 +187,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Saml Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -243,10 +234,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Saml Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -295,10 +284,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Iam Workload Identity Pool Provider Oidc Upload Key
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -346,7 +333,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -300,7 +300,6 @@ class Document(pulumi.CustomResource):
 
         ### Firestore Document Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -326,10 +325,8 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Document Nested Document
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -367,7 +364,6 @@ class Document(pulumi.CustomResource):
             document_id="asecret",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -422,7 +418,6 @@ class Document(pulumi.CustomResource):
 
         ### Firestore Document Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,10 +443,8 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Document Nested Document
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,7 +482,6 @@ class Document(pulumi.CustomResource):
             document_id="asecret",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"secret\\":{\\"stringValue\\":\\"hithere\\"}}}}}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

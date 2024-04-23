@@ -16,7 +16,6 @@ import (
 //
 // ### Firebasehosting Release In Site
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,10 +63,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Release In Channel
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,10 +120,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebasehosting Release Disable
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -159,7 +154,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

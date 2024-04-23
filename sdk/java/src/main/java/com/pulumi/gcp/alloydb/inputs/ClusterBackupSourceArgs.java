@@ -16,14 +16,14 @@ public final class ClusterBackupSourceArgs extends com.pulumi.resources.Resource
     public static final ClusterBackupSourceArgs Empty = new ClusterBackupSourceArgs();
 
     /**
-     * The name of the backup that this cluster is restored from.
+     * The name of the backup resource.
      * 
      */
     @Import(name="backupName")
     private @Nullable Output<String> backupName;
 
     /**
-     * @return The name of the backup that this cluster is restored from.
+     * @return The name of the backup resource.
      * 
      */
     public Optional<Output<String>> backupName() {
@@ -55,7 +55,7 @@ public final class ClusterBackupSourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param backupName The name of the backup that this cluster is restored from.
+         * @param backupName The name of the backup resource.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterBackupSourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param backupName The name of the backup that this cluster is restored from.
+         * @param backupName The name of the backup resource.
          * 
          * @return builder
          * 

@@ -30,17 +30,14 @@ import * as utilities from "../utilities";
  *
  * ### Address Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const ipAddress = new gcp.compute.Address("ip_address", {name: "my-address"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Address With Subnetwork
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,10 +57,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Address With Gce Endpoint
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -74,10 +69,8 @@ import * as utilities from "../utilities";
  *     purpose: "GCE_ENDPOINT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Instance With Ip
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -104,10 +97,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Compute Address Ipsec Interconnect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -125,7 +116,6 @@ import * as utilities from "../utilities";
  *     network: network.selfLink,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

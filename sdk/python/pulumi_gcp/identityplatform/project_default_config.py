@@ -140,7 +140,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
 
         ### Identity Platform Project Default Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -162,7 +161,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
             ),
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,7 +214,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
 
         ### Identity Platform Project Default Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -238,7 +235,6 @@ class ProjectDefaultConfig(pulumi.CustomResource):
             ),
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

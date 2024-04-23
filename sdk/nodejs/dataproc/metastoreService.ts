@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dataproc Metastore Service Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,10 +40,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Service Cmek Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -69,10 +66,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Service Private Service Connect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,10 +96,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Service Private Service Connect Custom Routes
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -134,10 +127,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Service Dpms2
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -154,10 +145,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Service Dpms2 Scaling Factor
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -174,10 +163,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Service Scheduled Backup
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -209,7 +196,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -284,7 +270,6 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
-     * (Output)
      * The URI of the endpoint used to access the metastore service.
      */
     public /*out*/ readonly endpointUri!: pulumi.Output<string>;
@@ -493,7 +478,6 @@ export interface MetastoreServiceState {
      */
     encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
     /**
-     * (Output)
      * The URI of the endpoint used to access the metastore service.
      */
     endpointUri?: pulumi.Input<string>;

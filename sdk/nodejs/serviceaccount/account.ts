@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * This snippet creates a service account in a project.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  *     displayName: "Service Account",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

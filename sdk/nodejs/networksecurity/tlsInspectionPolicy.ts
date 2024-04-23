@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Security Tls Inspection Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,7 +84,6 @@ import * as utilities from "../utilities";
  *     excludePublicCaSet: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const version = policy.then(policy => policy.version);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
 
@@ -73,7 +71,6 @@ export interface GetOrganizationPolicyResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -84,7 +81,6 @@ export interface GetOrganizationPolicyResult {
  * });
  * export const version = policy.then(policy => policy.version);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationPolicy(a, opts))

@@ -494,7 +494,6 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionConfig);
     }
     /**
-     * (Output)
      * The URI of the endpoint used to access the metastore service.
      * 
      */
@@ -502,8 +501,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     private Output<String> endpointUri;
 
     /**
-     * @return (Output)
-     * The URI of the endpoint used to access the metastore service.
+     * @return The URI of the endpoint used to access the metastore service.
      * 
      */
     public Output<String> endpointUri() {

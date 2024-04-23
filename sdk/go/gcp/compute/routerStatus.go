@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
 func RouterStatus(ctx *pulumi.Context, args *RouterStatusArgs, opts ...pulumi.InvokeOption) (*RouterStatusResult, error) {

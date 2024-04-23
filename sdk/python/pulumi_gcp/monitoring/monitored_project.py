@@ -139,7 +139,6 @@ class MonitoredProject(pulumi.CustomResource):
 
         ### Monitoring Monitored Project Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -152,7 +151,6 @@ class MonitoredProject(pulumi.CustomResource):
             metrics_scope="my-project-name",
             name=basic.project_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -199,7 +197,6 @@ class MonitoredProject(pulumi.CustomResource):
 
         ### Monitoring Monitored Project Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -212,7 +209,6 @@ class MonitoredProject(pulumi.CustomResource):
             metrics_scope="my-project-name",
             name=basic.project_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

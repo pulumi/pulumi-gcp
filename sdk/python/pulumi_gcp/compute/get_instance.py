@@ -484,7 +484,6 @@ def get_instance(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -492,7 +491,6 @@ def get_instance(name: Optional[str] = None,
     appserver = gcp.compute.get_instance(name="primary-application-server",
         zone="us-central1-a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance. One of `name` or `self_link` must be provided.
@@ -569,7 +567,6 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -577,7 +574,6 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     appserver = gcp.compute.get_instance(name="primary-application-server",
         zone="us-central1-a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the instance. One of `name` or `self_link` must be provided.

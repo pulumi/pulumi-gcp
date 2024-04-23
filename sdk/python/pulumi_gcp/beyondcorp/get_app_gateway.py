@@ -162,14 +162,12 @@ def get_app_gateway(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_beyondcorp_app_gateway = gcp.beyondcorp.get_app_gateway(name="my-beyondcorp-app-gateway")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the App Gateway.
@@ -213,14 +211,12 @@ def get_app_gateway_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_beyondcorp_app_gateway = gcp.beyondcorp.get_app_gateway(name="my-beyondcorp-app-gateway")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the App Gateway.

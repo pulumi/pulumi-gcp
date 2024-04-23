@@ -49,31 +49,20 @@ class AttachedClusterArgs:
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same
-               restrictions as Kubernetes annotations. The total size of all keys and
-               values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-               and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
-               Structure is documented below.
         :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
-               Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
-        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
-               than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
-               Structure is documented below.
         :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['AttachedClusterProxyConfigArgs'] proxy_config: Support for proxy configuration.
-               Structure is documented below.
         """
         pulumi.set(__self__, "distribution", distribution)
         pulumi.set(__self__, "fleet", fleet)
@@ -176,15 +165,12 @@ class AttachedClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same
-        restrictions as Kubernetes annotations. The total size of all keys and
-        values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-        and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -197,7 +183,6 @@ class AttachedClusterArgs:
     def authorization(self) -> Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]:
         """
         Configuration related to the cluster RBAC settings.
-        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -210,7 +195,6 @@ class AttachedClusterArgs:
     def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]:
         """
         Binary Authorization configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -234,8 +218,7 @@ class AttachedClusterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human readable description of this attached cluster. Cannot be longer
-        than 255 UTF-8 encoded bytes.
+        A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         """
         return pulumi.get(self, "description")
 
@@ -248,7 +231,6 @@ class AttachedClusterArgs:
     def logging_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']]:
         """
         Logging configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "logging_config")
 
@@ -261,7 +243,6 @@ class AttachedClusterArgs:
     def monitoring_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']]:
         """
         Monitoring configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "monitoring_config")
 
@@ -284,10 +265,6 @@ class AttachedClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -299,7 +276,6 @@ class AttachedClusterArgs:
     def proxy_config(self) -> Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]:
         """
         Support for proxy configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "proxy_config")
 
@@ -338,26 +314,20 @@ class _AttachedClusterState:
                  workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering AttachedCluster resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same
-               restrictions as Kubernetes annotations. The total size of all keys and
-               values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-               and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
-               Structure is documented below.
         :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
-               Structure is documented below.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
-        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
-               than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -369,9 +339,7 @@ class _AttachedClusterState:
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
-               Structure is documented below.
         :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AttachedClusterOidcConfigArgs'] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -384,10 +352,7 @@ class _AttachedClusterState:
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['AttachedClusterProxyConfigArgs'] proxy_config: Support for proxy configuration.
-               Structure is documented below.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -452,15 +417,12 @@ class _AttachedClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Annotations on the cluster. This field has the same
-        restrictions as Kubernetes annotations. The total size of all keys and
-        values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-        and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -473,7 +435,6 @@ class _AttachedClusterState:
     def authorization(self) -> Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]:
         """
         Configuration related to the cluster RBAC settings.
-        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -486,7 +447,6 @@ class _AttachedClusterState:
     def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]:
         """
         Binary Authorization configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -536,8 +496,7 @@ class _AttachedClusterState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human readable description of this attached cluster. Cannot be longer
-        than 255 UTF-8 encoded bytes.
+        A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         """
         return pulumi.get(self, "description")
 
@@ -626,7 +585,6 @@ class _AttachedClusterState:
     def logging_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']]:
         """
         Logging configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "logging_config")
 
@@ -639,7 +597,6 @@ class _AttachedClusterState:
     def monitoring_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']]:
         """
         Monitoring configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "monitoring_config")
 
@@ -695,10 +652,6 @@ class _AttachedClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -710,7 +663,6 @@ class _AttachedClusterState:
     def proxy_config(self) -> Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]:
         """
         Support for proxy configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "proxy_config")
 
@@ -817,7 +769,6 @@ class AttachedCluster(pulumi.CustomResource):
 
         ### Container Attached Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -839,10 +790,8 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -901,10 +850,8 @@ class AttachedCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Ignore Errors
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -927,7 +874,6 @@ class AttachedCluster(pulumi.CustomResource):
             ),
             deletion_policy="DELETE_IGNORE_ERRORS")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -955,31 +901,23 @@ class AttachedCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same
-               restrictions as Kubernetes annotations. The total size of all keys and
-               values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-               and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
-               Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
-        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
-               than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
         :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']] logging_config: Logging configuration.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -992,10 +930,7 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']] proxy_config: Support for proxy configuration.
-               Structure is documented below.
         """
         ...
     @overload
@@ -1017,7 +952,6 @@ class AttachedCluster(pulumi.CustomResource):
 
         ### Container Attached Cluster Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1039,10 +973,8 @@ class AttachedCluster(pulumi.CustomResource):
                 project=f"projects/{project.number}",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1101,10 +1033,8 @@ class AttachedCluster(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Container Attached Cluster Ignore Errors
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1127,7 +1057,6 @@ class AttachedCluster(pulumi.CustomResource):
             ),
             deletion_policy="DELETE_IGNORE_ERRORS")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1269,26 +1198,20 @@ class AttachedCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same
-               restrictions as Kubernetes annotations. The total size of all keys and
-               values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-               and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+               all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
-               Structure is documented below.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
-        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
-               than 255 UTF-8 encoded bytes.
+        :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -1300,9 +1223,7 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']] logging_config: Logging configuration.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration.
-               Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -1315,10 +1236,7 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']] proxy_config: Support for proxy configuration.
-               Structure is documented below.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -1363,15 +1281,12 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Annotations on the cluster. This field has the same
-        restrictions as Kubernetes annotations. The total size of all keys and
-        values combined is limited to 256k. Key can have 2 segments: prefix (optional)
-        and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
+        all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1380,7 +1295,6 @@ class AttachedCluster(pulumi.CustomResource):
     def authorization(self) -> pulumi.Output[Optional['outputs.AttachedClusterAuthorization']]:
         """
         Configuration related to the cluster RBAC settings.
-        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -1389,7 +1303,6 @@ class AttachedCluster(pulumi.CustomResource):
     def binary_authorization(self) -> pulumi.Output['outputs.AttachedClusterBinaryAuthorization']:
         """
         Binary Authorization configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -1423,8 +1336,7 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A human readable description of this attached cluster. Cannot be longer
-        than 255 UTF-8 encoded bytes.
+        A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         """
         return pulumi.get(self, "description")
 
@@ -1485,7 +1397,6 @@ class AttachedCluster(pulumi.CustomResource):
     def logging_config(self) -> pulumi.Output[Optional['outputs.AttachedClusterLoggingConfig']]:
         """
         Logging configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "logging_config")
 
@@ -1494,7 +1405,6 @@ class AttachedCluster(pulumi.CustomResource):
     def monitoring_config(self) -> pulumi.Output['outputs.AttachedClusterMonitoringConfig']:
         """
         Monitoring configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "monitoring_config")
 
@@ -1534,10 +1444,6 @@ class AttachedCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1545,7 +1451,6 @@ class AttachedCluster(pulumi.CustomResource):
     def proxy_config(self) -> pulumi.Output[Optional['outputs.AttachedClusterProxyConfig']]:
         """
         Support for proxy configuration.
-        Structure is documented below.
         """
         return pulumi.get(self, "proxy_config")
 

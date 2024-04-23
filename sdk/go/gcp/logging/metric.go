@@ -26,7 +26,6 @@ import (
 //
 // ### Logging Metric Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,10 +80,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Logging Metric Counter Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,10 +110,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Logging Metric Counter Labels
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -155,10 +150,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Logging Metric Logging Bucket
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -192,10 +185,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Logging Metric Disabled
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -225,7 +216,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

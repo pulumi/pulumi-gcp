@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * Example creating a RuntimeConfig resource.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     description: "Runtime configuration values for my service",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

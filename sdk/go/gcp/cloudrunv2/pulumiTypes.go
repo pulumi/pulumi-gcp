@@ -4065,8 +4065,8 @@ type ServiceCondition struct {
 	// (Output)
 	// State of the condition.
 	State *string `pulumi:"state"`
+	// (Output)
 	// The allocation type for this traffic target.
-	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 }
 
@@ -4104,8 +4104,8 @@ type ServiceConditionArgs struct {
 	// (Output)
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
 	// The allocation type for this traffic target.
-	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -4203,8 +4203,8 @@ func (o ServiceConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The allocation type for this traffic target.
-// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -9448,8 +9448,8 @@ type ServiceTerminalCondition struct {
 	// (Output)
 	// State of the condition.
 	State *string `pulumi:"state"`
+	// (Output)
 	// The allocation type for this traffic target.
-	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 }
 
@@ -9487,8 +9487,8 @@ type ServiceTerminalConditionArgs struct {
 	// (Output)
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
 	// The allocation type for this traffic target.
-	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -9586,8 +9586,8 @@ func (o ServiceTerminalConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The allocation type for this traffic target.
-// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceTerminalConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -9740,14 +9740,17 @@ func (o ServiceTrafficArrayOutput) Index(i pulumi.IntInput) ServiceTrafficOutput
 }
 
 type ServiceTrafficStatus struct {
-	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+	// (Output)
+	// Specifies percent of the traffic to this Revision.
 	Percent *int `pulumi:"percent"`
-	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	// (Output)
+	// Revision to which this traffic is sent.
 	Revision *string `pulumi:"revision"`
-	// Indicates a string to be part of the URI to exclusively reference this target.
+	// (Output)
+	// Indicates the string used in the URI to exclusively reference this target.
 	Tag *string `pulumi:"tag"`
+	// (Output)
 	// The allocation type for this traffic target.
-	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 	// (Output)
 	// Displays the target URI.
@@ -9766,14 +9769,17 @@ type ServiceTrafficStatusInput interface {
 }
 
 type ServiceTrafficStatusArgs struct {
-	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+	// (Output)
+	// Specifies percent of the traffic to this Revision.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
-	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	// (Output)
+	// Revision to which this traffic is sent.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
-	// Indicates a string to be part of the URI to exclusively reference this target.
+	// (Output)
+	// Indicates the string used in the URI to exclusively reference this target.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// (Output)
 	// The allocation type for this traffic target.
-	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// (Output)
 	// Displays the target URI.
@@ -9831,23 +9837,26 @@ func (o ServiceTrafficStatusOutput) ToServiceTrafficStatusOutputWithContext(ctx 
 	return o
 }
 
-// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+// (Output)
+// Specifies percent of the traffic to this Revision.
 func (o ServiceTrafficStatusOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
 
-// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+// (Output)
+// Revision to which this traffic is sent.
 func (o ServiceTrafficStatusOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Revision }).(pulumi.StringPtrOutput)
 }
 
-// Indicates a string to be part of the URI to exclusively reference this target.
+// (Output)
+// Indicates the string used in the URI to exclusively reference this target.
 func (o ServiceTrafficStatusOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // The allocation type for this traffic target.
-// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceTrafficStatusOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

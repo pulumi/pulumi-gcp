@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Data Catalog Taxonomies Policy Tag Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,10 +32,8 @@ import * as utilities from "../utilities";
  *     description: "A policy tag normally associated with low security items",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Data Catalog Taxonomies Policy Tag Child Policies
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,7 +61,6 @@ import * as utilities from "../utilities";
  *     parentPolicyTag: parentPolicy.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

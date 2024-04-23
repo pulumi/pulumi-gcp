@@ -697,7 +697,6 @@ class RegionHealthCheck(pulumi.CustomResource):
 
         ### Region Health Check Tcp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,10 +709,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Tcp Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -733,10 +730,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Ssl
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -749,10 +744,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Ssl Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -772,10 +765,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -788,10 +779,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http Logs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -807,10 +796,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 enable=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -831,10 +818,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Https
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -847,10 +832,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Https Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -871,10 +854,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http2
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -887,10 +868,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http2 Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -911,10 +890,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Grpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -927,10 +904,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Grpc Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -945,7 +920,6 @@ class RegionHealthCheck(pulumi.CustomResource):
                 grpc_service_name="testservice",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1048,7 +1022,6 @@ class RegionHealthCheck(pulumi.CustomResource):
 
         ### Region Health Check Tcp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1061,10 +1034,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Tcp Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1084,10 +1055,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Ssl
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1100,10 +1069,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Ssl Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1123,10 +1090,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1139,10 +1104,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=80,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http Logs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1158,10 +1121,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 enable=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1182,10 +1143,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Https
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1198,10 +1157,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Https Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1222,10 +1179,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http2
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1238,10 +1193,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Http2 Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1262,10 +1215,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 response="I AM HEALTHY",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Grpc
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1278,10 +1229,8 @@ class RegionHealthCheck(pulumi.CustomResource):
                 port=443,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Health Check Grpc Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1296,7 +1245,6 @@ class RegionHealthCheck(pulumi.CustomResource):
                 grpc_service_name="testservice",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

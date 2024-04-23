@@ -346,7 +346,6 @@ class NetworkPeering(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,7 +365,6 @@ class NetworkPeering(pulumi.CustomResource):
             network=other.self_link,
             peer_network=default.self_link)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -411,7 +409,6 @@ class NetworkPeering(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -431,7 +428,6 @@ class NetworkPeering(pulumi.CustomResource):
             network=other.self_link,
             peer_network=default.self_link)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

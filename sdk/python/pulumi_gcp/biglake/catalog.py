@@ -246,7 +246,6 @@ class Catalog(pulumi.CustomResource):
 
         ### Bigquery Biglake Catalog
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -255,7 +254,6 @@ class Catalog(pulumi.CustomResource):
             name="my_catalog",
             location="US")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -311,7 +309,6 @@ class Catalog(pulumi.CustomResource):
 
         ### Bigquery Biglake Catalog
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -320,7 +317,6 @@ class Catalog(pulumi.CustomResource):
             name="my_catalog",
             location="US")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

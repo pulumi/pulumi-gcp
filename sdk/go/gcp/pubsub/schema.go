@@ -24,7 +24,6 @@ import (
 //
 // ### Pubsub Schema Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +65,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Pubsub Schema Protobuf
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,7 +110,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

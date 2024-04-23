@@ -29,7 +29,6 @@ import (
 //
 // ### Target Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,10 +78,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Instance Custom Network
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -139,10 +136,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Target Instance With Security Policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -247,7 +242,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

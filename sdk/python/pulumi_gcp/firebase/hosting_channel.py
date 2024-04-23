@@ -326,7 +326,6 @@ class HostingChannel(pulumi.CustomResource):
 
         ### Firebasehosting Channel Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,10 +337,8 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Channel Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,7 +355,6 @@ class HostingChannel(pulumi.CustomResource):
                 "some-key": "some-value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -408,7 +404,6 @@ class HostingChannel(pulumi.CustomResource):
 
         ### Firebasehosting Channel Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -420,10 +415,8 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Channel Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,7 +433,6 @@ class HostingChannel(pulumi.CustomResource):
                 "some-key": "some-value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -328,16 +328,16 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Duration of the patch. After the duration ends, the patch times out.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
+     * Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+     * digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
      * 
      */
     @Export(name="duration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> duration;
 
     /**
-     * @return Duration of the patch. After the duration ends, the patch times out.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
+     * @return Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
+     * digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
      * 
      */
     public Output<Optional<String>> duration() {
@@ -360,8 +360,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
         return this.instanceFilter;
     }
     /**
-     * (Output)
-     * The time the last patch job ran successfully.
+     * The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
@@ -369,8 +368,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
     private Output<String> lastExecuteTime;
 
     /**
-     * @return (Output)
-     * The time the last patch job ran successfully.
+     * @return The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
@@ -395,7 +393,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * Schedule a one-time execution.
-     * Structure is documented below.
      * 
      */
     @Export(name="oneTimeSchedule", refs={PatchDeploymentOneTimeSchedule.class}, tree="[0]")
@@ -403,7 +400,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Schedule a one-time execution.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<PatchDeploymentOneTimeSchedule>> oneTimeSchedule() {
@@ -411,7 +407,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * Patch configuration that is applied.
-     * Structure is documented below.
      * 
      */
     @Export(name="patchConfig", refs={PatchDeploymentPatchConfig.class}, tree="[0]")
@@ -419,7 +414,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Patch configuration that is applied.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<PatchDeploymentPatchConfig>> patchConfig() {
@@ -449,25 +443,14 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
     public Output<String> patchDeploymentId() {
         return this.patchDeploymentId;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
      * Schedule recurring executions.
-     * Structure is documented below.
      * 
      */
     @Export(name="recurringSchedule", refs={PatchDeploymentRecurringSchedule.class}, tree="[0]")
@@ -475,7 +458,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Schedule recurring executions.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<PatchDeploymentRecurringSchedule>> recurringSchedule() {
@@ -483,7 +465,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * Rollout strategy of the patch job.
-     * Structure is documented below.
      * 
      */
     @Export(name="rollout", refs={PatchDeploymentRollout.class}, tree="[0]")
@@ -491,7 +472,6 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Rollout strategy of the patch job.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<PatchDeploymentRollout>> rollout() {

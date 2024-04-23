@@ -365,7 +365,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
 
         ### Vertex Ai Feature Group Feature
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -419,7 +418,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -486,7 +484,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
 
         ### Vertex Ai Feature Group Feature
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,7 +537,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

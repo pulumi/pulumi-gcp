@@ -307,7 +307,6 @@ class LiteTopic(pulumi.CustomResource):
 
         ### Pubsub Lite Topic Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -334,7 +333,6 @@ class LiteTopic(pulumi.CustomResource):
                 throughput_reservation=example.name,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -402,7 +400,6 @@ class LiteTopic(pulumi.CustomResource):
 
         ### Pubsub Lite Topic Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -429,7 +426,6 @@ class LiteTopic(pulumi.CustomResource):
                 throughput_reservation=example.name,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

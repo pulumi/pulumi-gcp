@@ -566,7 +566,6 @@ class Slo(pulumi.CustomResource):
 
         ### Monitoring Slo Appengine
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -588,10 +587,8 @@ class Slo(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Request Based
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,10 +611,8 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Good Bad Metric Filter
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -640,10 +635,8 @@ class Slo(pulumi.CustomResource):
                     ]).result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Metric Mean
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -671,10 +664,8 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Metric Sum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,10 +693,8 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Ratio Threshold
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -739,7 +728,6 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -826,7 +814,6 @@ class Slo(pulumi.CustomResource):
 
         ### Monitoring Slo Appengine
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -848,10 +835,8 @@ class Slo(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Request Based
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -874,10 +859,8 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Good Bad Metric Filter
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -900,10 +883,8 @@ class Slo(pulumi.CustomResource):
                     ]).result,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Metric Mean
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -931,10 +912,8 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Metric Sum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -962,10 +941,8 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Monitoring Slo Windows Based Ratio Threshold
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -999,7 +976,6 @@ class Slo(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

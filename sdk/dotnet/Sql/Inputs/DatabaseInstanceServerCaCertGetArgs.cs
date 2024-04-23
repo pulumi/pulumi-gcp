@@ -31,8 +31,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The [RFC 3339](https://tools.ietf.org/html/rfc3339)
-        /// formatted date time string indicating when this whitelist expires.
+        /// Expiration time of the CA Cert.
         /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }

@@ -1143,7 +1143,6 @@ class InstanceTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1211,11 +1210,9 @@ class InstanceTemplate(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Automatic Envoy Deployment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1284,7 +1281,6 @@ class InstanceTemplate(pulumi.CustomResource):
                 "gce-service-proxy": "on",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Deploying the Latest Image
 
@@ -1412,7 +1408,6 @@ class InstanceTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1480,11 +1475,9 @@ class InstanceTemplate(pulumi.CustomResource):
                 scopes=["cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Automatic Envoy Deployment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1553,7 +1546,6 @@ class InstanceTemplate(pulumi.CustomResource):
                 "gce-service-proxy": "on",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Deploying the Latest Image
 

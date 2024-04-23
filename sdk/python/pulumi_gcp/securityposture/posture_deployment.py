@@ -462,7 +462,6 @@ class PostureDeployment(pulumi.CustomResource):
 
         ### Securityposture Posture Deployment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -497,7 +496,6 @@ class PostureDeployment(pulumi.CustomResource):
             posture_id=posture1.name,
             posture_revision_id=posture1.revision_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -550,7 +548,6 @@ class PostureDeployment(pulumi.CustomResource):
 
         ### Securityposture Posture Deployment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -585,7 +582,6 @@ class PostureDeployment(pulumi.CustomResource):
             posture_id=posture1.name,
             posture_revision_id=posture1.revision_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

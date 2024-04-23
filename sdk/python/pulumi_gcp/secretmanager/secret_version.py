@@ -305,7 +305,6 @@ class SecretVersion(pulumi.CustomResource):
 
         ### Secret Version Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -322,10 +321,8 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
-        <!--End PulumiCodeChooser -->
         ### Secret Version Deletion Policy Abandon
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,10 +341,8 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="ABANDON")
         ```
-        <!--End PulumiCodeChooser -->
         ### Secret Version Deletion Policy Disable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,10 +361,8 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="DISABLE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Secret Version With Base64 String Secret Data
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,7 +382,6 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -433,7 +425,6 @@ class SecretVersion(pulumi.CustomResource):
 
         ### Secret Version Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,10 +441,8 @@ class SecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
-        <!--End PulumiCodeChooser -->
         ### Secret Version Deletion Policy Abandon
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,10 +461,8 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="ABANDON")
         ```
-        <!--End PulumiCodeChooser -->
         ### Secret Version Deletion Policy Disable
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -494,10 +481,8 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="DISABLE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Secret Version With Base64 String Secret Data
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -517,7 +502,6 @@ class SecretVersion(pulumi.CustomResource):
             is_secret_data_base64=True,
             secret_data=std.filebase64(input="secret-data.pfx").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

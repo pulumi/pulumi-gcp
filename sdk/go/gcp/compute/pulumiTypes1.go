@@ -12711,8 +12711,7 @@ func (o GetInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 type GetInstanceNetworkInterfaceAccessConfig struct {
-	// The IP address that is be 1:1 mapped to the instance's
-	// network ip.
+	// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
 	NatIp string `pulumi:"natIp"`
 	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 	NetworkTier string `pulumi:"networkTier"`
@@ -12734,8 +12733,7 @@ type GetInstanceNetworkInterfaceAccessConfigInput interface {
 }
 
 type GetInstanceNetworkInterfaceAccessConfigArgs struct {
-	// The IP address that is be 1:1 mapped to the instance's
-	// network ip.
+	// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
 	NatIp pulumi.StringInput `pulumi:"natIp"`
 	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
@@ -12796,8 +12794,7 @@ func (o GetInstanceNetworkInterfaceAccessConfigOutput) ToGetInstanceNetworkInter
 	return o
 }
 
-// The IP address that is be 1:1 mapped to the instance's
-// network ip.
+// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
 func (o GetInstanceNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.NatIp }).(pulumi.StringOutput)
 }

@@ -1382,7 +1382,7 @@ func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) Index(i 
 }
 
 type ClusterBackupSource struct {
-	// The name of the backup that this cluster is restored from.
+	// The name of the backup resource.
 	BackupName *string `pulumi:"backupName"`
 }
 
@@ -1398,7 +1398,7 @@ type ClusterBackupSourceInput interface {
 }
 
 type ClusterBackupSourceArgs struct {
-	// The name of the backup that this cluster is restored from.
+	// The name of the backup resource.
 	BackupName pulumi.StringPtrInput `pulumi:"backupName"`
 }
 
@@ -1453,7 +1453,7 @@ func (o ClusterBackupSourceOutput) ToClusterBackupSourceOutputWithContext(ctx co
 	return o
 }
 
-// The name of the backup that this cluster is restored from.
+// The name of the backup resource.
 func (o ClusterBackupSourceOutput) BackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupSource) *string { return v.BackupName }).(pulumi.StringPtrOutput)
 }

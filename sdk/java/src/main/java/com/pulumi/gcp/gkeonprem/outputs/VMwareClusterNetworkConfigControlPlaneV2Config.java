@@ -13,7 +13,6 @@ import javax.annotation.Nullable;
 public final class VMwareClusterNetworkConfigControlPlaneV2Config {
     /**
      * @return Static IP addresses for the control plane nodes.
-     * Structure is documented below.
      * 
      */
     private @Nullable VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock controlPlaneIpBlock;
@@ -21,7 +20,6 @@ public final class VMwareClusterNetworkConfigControlPlaneV2Config {
     private VMwareClusterNetworkConfigControlPlaneV2Config() {}
     /**
      * @return Static IP addresses for the control plane nodes.
-     * Structure is documented below.
      * 
      */
     public Optional<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock> controlPlaneIpBlock() {

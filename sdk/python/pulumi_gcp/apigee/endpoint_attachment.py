@@ -240,7 +240,6 @@ class EndpointAttachment(pulumi.CustomResource):
 
         ### Apigee Endpoint Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -267,7 +266,6 @@ class EndpointAttachment(pulumi.CustomResource):
             location="{google_compute_service_attachment location}",
             service_attachment="{google_compute_service_attachment id}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -317,7 +315,6 @@ class EndpointAttachment(pulumi.CustomResource):
 
         ### Apigee Endpoint Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -344,7 +341,6 @@ class EndpointAttachment(pulumi.CustomResource):
             location="{google_compute_service_attachment location}",
             service_attachment="{google_compute_service_attachment id}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

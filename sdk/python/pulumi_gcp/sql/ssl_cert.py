@@ -265,7 +265,6 @@ class SslCert(pulumi.CustomResource):
 
         Example creating a SQL Client Certificate.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,7 +281,6 @@ class SslCert(pulumi.CustomResource):
             common_name="client-name",
             instance=main.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -310,7 +308,6 @@ class SslCert(pulumi.CustomResource):
 
         Example creating a SQL Client Certificate.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,7 +324,6 @@ class SslCert(pulumi.CustomResource):
             common_name="client-name",
             instance=main.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

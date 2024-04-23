@@ -277,7 +277,6 @@ class ConsentStoreIamMember(pulumi.CustomResource):
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,11 +290,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             consent_store_id=my_consent["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -306,11 +303,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,11 +316,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,11 +332,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             consent_store_id=my_consent["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,11 +345,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -369,7 +358,6 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -449,7 +437,6 @@ class ConsentStoreIamMember(pulumi.CustomResource):
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,11 +450,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             consent_store_id=my_consent["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -478,11 +463,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -493,11 +476,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -511,11 +492,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             consent_store_id=my_consent["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -526,11 +505,9 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_healthcare\\_consent\\_store\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -541,7 +518,6 @@ class ConsentStoreIamMember(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

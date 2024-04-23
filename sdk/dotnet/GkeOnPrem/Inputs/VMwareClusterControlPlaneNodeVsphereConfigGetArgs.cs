@@ -13,17 +13,13 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class VMwareClusterControlPlaneNodeVsphereConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// The Vsphere datastore used by the Control Plane Node.
         /// </summary>
         [Input("datastore")]
         public Input<string>? Datastore { get; set; }
 
         /// <summary>
-        /// (Output)
         /// The Vsphere storage policy used by the control plane Node.
-        /// 
-        /// - - -
         /// </summary>
         [Input("storagePolicyName")]
         public Input<string>? StoragePolicyName { get; set; }

@@ -46,22 +46,14 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Required. The consumer network where the network address of
-     * the discovery endpoint will be reserved, in the form of
-     * projects/{network_project_id_or_number}/global/networks/{network_id}.
-     * 
-     * ***
+     * The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Required. The consumer network where the network address of
-     * the discovery endpoint will be reserved, in the form of
-     * projects/{network_project_id_or_number}/global/networks/{network_id}.
-     * 
-     * ***
+     * @return The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
      * 
      */
     public Optional<Output<String>> network() {
@@ -169,11 +161,7 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param network Required. The consumer network where the network address of
-         * the discovery endpoint will be reserved, in the form of
-         * projects/{network_project_id_or_number}/global/networks/{network_id}.
-         * 
-         * ***
+         * @param network The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
          * 
          * @return builder
          * 
@@ -184,11 +172,7 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param network Required. The consumer network where the network address of
-         * the discovery endpoint will be reserved, in the form of
-         * projects/{network_project_id_or_number}/global/networks/{network_id}.
-         * 
-         * ***
+         * @param network The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
          * 
          * @return builder
          * 

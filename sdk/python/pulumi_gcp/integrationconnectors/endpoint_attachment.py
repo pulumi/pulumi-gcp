@@ -352,7 +352,6 @@ class EndpointAttachment(pulumi.CustomResource):
 
         ### Integration Connectors Endpoint Attachment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,7 +365,6 @@ class EndpointAttachment(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -427,7 +425,6 @@ class EndpointAttachment(pulumi.CustomResource):
 
         ### Integration Connectors Endpoint Attachment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,7 +438,6 @@ class EndpointAttachment(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

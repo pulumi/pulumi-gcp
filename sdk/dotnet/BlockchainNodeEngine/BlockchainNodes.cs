@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// ### Blockchain Nodes Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,10 +60,8 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Blockchain Nodes Geth Details
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -107,7 +104,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

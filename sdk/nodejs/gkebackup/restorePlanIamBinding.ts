@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Gkebackup Restoreplan All Namespaces
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,10 +65,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkebackup Restoreplan Rollback Namespace
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -127,10 +124,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkebackup Restoreplan Protected Application
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -181,10 +176,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkebackup Restoreplan All Cluster Resources
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -230,10 +223,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkebackup Restoreplan Rename Namespace
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -308,10 +299,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Gkebackup Restoreplan Second Transformation
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -382,7 +371,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -447,10 +435,6 @@ export class RestorePlanIamBinding extends pulumi.CustomResource {
      * The full name of the BackupPlan Resource.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     public readonly role!: pulumi.Output<string>;
 
@@ -510,10 +494,6 @@ export interface RestorePlanIamBindingState {
      * The full name of the BackupPlan Resource.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     role?: pulumi.Input<string>;
 }
@@ -532,10 +512,6 @@ export interface RestorePlanIamBindingArgs {
      * The full name of the BackupPlan Resource.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     role: pulumi.Input<string>;
 }

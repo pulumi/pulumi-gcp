@@ -105,7 +105,6 @@ def get_connection_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_connection_iam_policy(location: Optional[str] = None,
         location=my_connection["location"],
         name=my_connection["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location for the resource Used to find the parent resource to bind the IAM policy to
@@ -148,7 +146,6 @@ def get_connection_iam_policy_output(location: Optional[pulumi.Input[Optional[st
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -157,7 +154,6 @@ def get_connection_iam_policy_output(location: Optional[pulumi.Input[Optional[st
         location=my_connection["location"],
         name=my_connection["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location for the resource Used to find the parent resource to bind the IAM policy to

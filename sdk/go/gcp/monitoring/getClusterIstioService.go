@@ -29,7 +29,6 @@ import (
 //
 // ### Monitoring Cluster Istio Service
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetClusterIstioService(ctx *pulumi.Context, args *GetClusterIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetClusterIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClusterIstioServiceResult

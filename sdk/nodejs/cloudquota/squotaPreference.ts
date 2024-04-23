@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Cloudquotas Quota Preference Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -81,8 +79,10 @@ export class SQuotaPreference extends pulumi.CustomResource {
     }
 
     /**
-     * An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-     * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+     * An email address that can be used for quota related communication between the Google Cloud and the user in case the
+     * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+     * account for the email address must have quota update permission for the project, folder or organization this quota
+     * preference is for.
      */
     public readonly contactEmail!: pulumi.Output<string | undefined>;
     /**
@@ -91,9 +91,12 @@ export class SQuotaPreference extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "networkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-     * NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-     * Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+     * "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+     * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+     * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+     * and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+     * Inc"}' where "provider" is a service specific dimension.
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -101,9 +104,8 @@ export class SQuotaPreference extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The list of quota safety checks to be ignored.
-     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+     * The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+     * ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
      */
     public readonly ignoreSafetyChecks!: pulumi.Output<string | undefined>;
     /**
@@ -197,8 +199,10 @@ export class SQuotaPreference extends pulumi.CustomResource {
  */
 export interface SQuotaPreferenceState {
     /**
-     * An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-     * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+     * An email address that can be used for quota related communication between the Google Cloud and the user in case the
+     * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+     * account for the email address must have quota update permission for the project, folder or organization this quota
+     * preference is for.
      */
     contactEmail?: pulumi.Input<string>;
     /**
@@ -207,9 +211,12 @@ export interface SQuotaPreferenceState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "networkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-     * NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-     * Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+     * "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+     * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+     * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+     * and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+     * Inc"}' where "provider" is a service specific dimension.
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -217,9 +224,8 @@ export interface SQuotaPreferenceState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The list of quota safety checks to be ignored.
-     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+     * The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+     * ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
      */
     ignoreSafetyChecks?: pulumi.Input<string>;
     /**
@@ -264,20 +270,24 @@ export interface SQuotaPreferenceState {
  */
 export interface SQuotaPreferenceArgs {
     /**
-     * An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
-     * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
+     * An email address that can be used for quota related communication between the Google Cloud and the user in case the
+     * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
+     * account for the email address must have quota update permission for the project, folder or organization this quota
+     * preference is for.
      */
     contactEmail?: pulumi.Input<string>;
     /**
-     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "networkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
-     * NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
-     * Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
+     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
+     * "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from
+     * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
+     * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
+     * and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
+     * Inc"}' where "provider" is a service specific dimension.
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The list of quota safety checks to be ignored.
-     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
-     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
+     * The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
+     * ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
      */
     ignoreSafetyChecks?: pulumi.Input<string>;
     /**

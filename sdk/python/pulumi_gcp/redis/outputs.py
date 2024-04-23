@@ -102,11 +102,7 @@ class ClusterDiscoveryEndpointPscConfig(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None):
         """
-        :param str network: Required. The consumer network where the network address of
-               the discovery endpoint will be reserved, in the form of
-               projects/{network_project_id_or_number}/global/networks/{network_id}.
-               
-               - - -
+        :param str network: The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -115,11 +111,7 @@ class ClusterDiscoveryEndpointPscConfig(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        Required. The consumer network where the network address of
-        the discovery endpoint will be reserved, in the form of
-        projects/{network_project_id_or_number}/global/networks/{network_id}.
-
-        - - -
+        The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
 
@@ -182,11 +174,7 @@ class ClusterPscConnection(dict):
         """
         :param str address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         :param str forwarding_rule: Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
-        :param str network: Required. The consumer network where the network address of
-               the discovery endpoint will be reserved, in the form of
-               projects/{network_project_id_or_number}/global/networks/{network_id}.
-               
-               - - -
+        :param str network: The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         :param str project_id: Output only. The consumer projectId where the forwarding rule is created from.
         :param str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the service attachment.
         """
@@ -221,11 +209,7 @@ class ClusterPscConnection(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        Required. The consumer network where the network address of
-        the discovery endpoint will be reserved, in the form of
-        projects/{network_project_id_or_number}/global/networks/{network_id}.
-
-        - - -
+        The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
 
@@ -614,8 +598,10 @@ class InstanceMaintenanceSchedule(dict):
                can not go beyond, including reschedule.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param str start_time: Required. Start time of the window in UTC time.
-               Structure is documented below.
+        :param str start_time: (Output)
+               Output only. The start time of any upcoming scheduled maintenance for this instance.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
         """
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
@@ -651,8 +637,10 @@ class InstanceMaintenanceSchedule(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        Required. Start time of the window in UTC time.
-        Structure is documented below.
+        (Output)
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "start_time")
 
@@ -839,9 +827,7 @@ class InstanceServerCaCert(dict):
         :param str cert: (Output)
                The certificate data in PEM format.
         :param str create_time: (Output)
-               Output only. The time when the policy was created.
-               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits.
+               The time when the certificate was created.
         :param str expire_time: (Output)
                The time when the certificate expires.
         :param str serial_number: (Output)
@@ -874,9 +860,7 @@ class InstanceServerCaCert(dict):
     def create_time(self) -> Optional[str]:
         """
         (Output)
-        Output only. The time when the policy was created.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        The time when the certificate was created.
         """
         return pulumi.get(self, "create_time")
 

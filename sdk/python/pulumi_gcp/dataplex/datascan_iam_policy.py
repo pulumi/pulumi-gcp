@@ -200,7 +200,6 @@ class DatascanIamPolicy(pulumi.CustomResource):
 
         ## google\\_dataplex\\_datascan\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -215,11 +214,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             data_scan_id=basic_profile["dataScanId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -231,11 +228,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -247,11 +242,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,11 +259,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             data_scan_id=basic_profile["dataScanId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,11 +273,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -298,7 +287,6 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -370,7 +358,6 @@ class DatascanIamPolicy(pulumi.CustomResource):
 
         ## google\\_dataplex\\_datascan\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,11 +372,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             data_scan_id=basic_profile["dataScanId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -401,11 +386,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -417,11 +400,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -436,11 +417,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             data_scan_id=basic_profile["dataScanId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -452,11 +431,9 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataplex\\_datascan\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -468,7 +445,6 @@ class DatascanIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

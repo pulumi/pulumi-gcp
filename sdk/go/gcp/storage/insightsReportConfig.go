@@ -24,7 +24,6 @@ import (
 //
 // ### Storage Insights Report Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,7 +104,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -139,7 +137,6 @@ type InsightsReportConfig struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Options for configuring how inventory reports are generated.
-	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrOutput `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
@@ -147,11 +144,8 @@ type InsightsReportConfig struct {
 	// The UUID of the inventory report configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Options for including metadata in an inventory report.
-	// Structure is documented below.
 	ObjectMetadataReportOptions InsightsReportConfigObjectMetadataReportOptionsPtrOutput `pulumi:"objectMetadataReportOptions"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project                     pulumi.StringOutput                                      `pulumi:"project"`
 }
 
 // NewInsightsReportConfig registers a new resource with the given unique name, arguments, and options.
@@ -196,7 +190,6 @@ type insightsReportConfigState struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
 	// Options for configuring how inventory reports are generated.
-	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
@@ -204,11 +197,8 @@ type insightsReportConfigState struct {
 	// The UUID of the inventory report configuration.
 	Name *string `pulumi:"name"`
 	// Options for including metadata in an inventory report.
-	// Structure is documented below.
 	ObjectMetadataReportOptions *InsightsReportConfigObjectMetadataReportOptions `pulumi:"objectMetadataReportOptions"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project                     *string                                          `pulumi:"project"`
 }
 
 type InsightsReportConfigState struct {
@@ -218,7 +208,6 @@ type InsightsReportConfigState struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
 	// Options for configuring how inventory reports are generated.
-	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
@@ -226,11 +215,8 @@ type InsightsReportConfigState struct {
 	// The UUID of the inventory report configuration.
 	Name pulumi.StringPtrInput
 	// Options for including metadata in an inventory report.
-	// Structure is documented below.
 	ObjectMetadataReportOptions InsightsReportConfigObjectMetadataReportOptionsPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project                     pulumi.StringPtrInput
 }
 
 func (InsightsReportConfigState) ElementType() reflect.Type {
@@ -244,17 +230,13 @@ type insightsReportConfigArgs struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
 	// Options for configuring how inventory reports are generated.
-	// Structure is documented below.
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location string `pulumi:"location"`
 	// Options for including metadata in an inventory report.
-	// Structure is documented below.
 	ObjectMetadataReportOptions *InsightsReportConfigObjectMetadataReportOptions `pulumi:"objectMetadataReportOptions"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project                     *string                                          `pulumi:"project"`
 }
 
 // The set of arguments for constructing a InsightsReportConfig resource.
@@ -265,17 +247,13 @@ type InsightsReportConfigArgs struct {
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
 	// Options for configuring how inventory reports are generated.
-	// Structure is documented below.
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
 	Location pulumi.StringInput
 	// Options for including metadata in an inventory report.
-	// Structure is documented below.
 	ObjectMetadataReportOptions InsightsReportConfigObjectMetadataReportOptionsPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project                     pulumi.StringPtrInput
 }
 
 func (InsightsReportConfigArgs) ElementType() reflect.Type {
@@ -377,7 +355,6 @@ func (o InsightsReportConfigOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // Options for configuring how inventory reports are generated.
-// Structure is documented below.
 func (o InsightsReportConfigOutput) FrequencyOptions() InsightsReportConfigFrequencyOptionsPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigFrequencyOptionsPtrOutput { return v.FrequencyOptions }).(InsightsReportConfigFrequencyOptionsPtrOutput)
 }
@@ -394,15 +371,12 @@ func (o InsightsReportConfigOutput) Name() pulumi.StringOutput {
 }
 
 // Options for including metadata in an inventory report.
-// Structure is documented below.
 func (o InsightsReportConfigOutput) ObjectMetadataReportOptions() InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
 		return v.ObjectMetadataReportOptions
 	}).(InsightsReportConfigObjectMetadataReportOptionsPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o InsightsReportConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

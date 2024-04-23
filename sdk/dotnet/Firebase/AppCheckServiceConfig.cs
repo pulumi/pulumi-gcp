@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ### Firebase App Check Service Config Off
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,10 +45,8 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebase App Check Service Config Enforced
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,10 +71,8 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebase App Check Service Config Unenforced
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -102,7 +97,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

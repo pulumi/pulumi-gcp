@@ -108,33 +108,25 @@ public final class ProjectCustomModuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is &#34;projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the property for the custom output.
+     * @return The resource name of the custom module. Its format is &#34;projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -311,7 +303,8 @@ public final class ProjectCustomModuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the property for the custom output.
+         * @param name The resource name of the custom module. Its format is &#34;projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+         * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
          * 
          * @return builder
          * 
@@ -322,7 +315,8 @@ public final class ProjectCustomModuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the property for the custom output.
+         * @param name The resource name of the custom module. Its format is &#34;projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+         * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
          * 
          * @return builder
          * 
@@ -331,25 +325,11 @@ public final class ProjectCustomModuleState extends com.pulumi.resources.Resourc
             return name(Output.of(name));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -23,7 +23,6 @@ import (
 //
 // ### Vertex Ai Feature Online Store
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,10 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featureonlinestore With Beta Fields Optimized
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -103,10 +100,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -150,7 +145,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -24,7 +24,6 @@ import (
 //
 // ### Monitoring Metric Descriptor Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,10 +64,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Monitoring Metric Descriptor Alert
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,7 +115,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

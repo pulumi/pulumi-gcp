@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// ### Gkeonprem Bare Metal Admin Cluster Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -113,10 +112,8 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkeonprem Bare Metal Admin Cluster Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -272,7 +269,6 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

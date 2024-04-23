@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     name: "myrouter",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatus(args: RouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<RouterStatusResult> {
@@ -94,7 +92,6 @@ export interface RouterStatusResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -103,7 +100,6 @@ export interface RouterStatusResult {
  *     name: "myrouter",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatusOutput(args: RouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<RouterStatusResult> {

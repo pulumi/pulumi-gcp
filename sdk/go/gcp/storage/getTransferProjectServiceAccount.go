@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,7 +37,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTransferProjectServiceAccount(ctx *pulumi.Context, args *GetTransferProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransferProjectServiceAccountResult

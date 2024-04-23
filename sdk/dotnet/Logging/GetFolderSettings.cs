@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Folder Settings Basic
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFolderSettingsResult> InvokeAsync(GetFolderSettingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderSettingsResult>("gcp:logging/getFolderSettings:getFolderSettings", args ?? new GetFolderSettingsArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Folder Settings Basic
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFolderSettingsResult> Invoke(GetFolderSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderSettingsResult>("gcp:logging/getFolderSettings:getFolderSettings", args ?? new GetFolderSettingsInvokeArgs(), options.WithDefaults());

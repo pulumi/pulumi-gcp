@@ -433,7 +433,6 @@ class NetworkPolicy(pulumi.CustomResource):
 
         ### Vmware Engine Network Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,10 +448,8 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -475,7 +472,6 @@ class NetworkPolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -542,7 +538,6 @@ class NetworkPolicy(pulumi.CustomResource):
 
         ### Vmware Engine Network Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -558,10 +553,8 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -584,7 +577,6 @@ class NetworkPolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

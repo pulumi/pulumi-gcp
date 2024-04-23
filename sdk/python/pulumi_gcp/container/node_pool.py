@@ -808,7 +808,6 @@ class NodePool(pulumi.CustomResource):
 
         ### Using A Separately Managed Node Pool (Recommended)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -832,11 +831,9 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -866,7 +863,6 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -963,7 +959,6 @@ class NodePool(pulumi.CustomResource):
 
         ### Using A Separately Managed Node Pool (Recommended)
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -987,11 +982,9 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1021,7 +1014,6 @@ class NodePool(pulumi.CustomResource):
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

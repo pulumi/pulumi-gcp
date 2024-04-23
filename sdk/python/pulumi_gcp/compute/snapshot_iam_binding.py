@@ -275,7 +275,6 @@ class SnapshotIamBinding(pulumi.CustomResource):
 
         ## google\\_compute\\_snapshot\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -289,11 +288,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             name=snapshot["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -304,11 +301,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,11 +314,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -337,11 +330,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             name=snapshot["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -352,11 +343,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -367,7 +356,6 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -448,7 +436,6 @@ class SnapshotIamBinding(pulumi.CustomResource):
 
         ## google\\_compute\\_snapshot\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -462,11 +449,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             name=snapshot["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -477,11 +462,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -492,11 +475,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -510,11 +491,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             name=snapshot["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -525,11 +504,9 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_snapshot\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,7 +517,6 @@ class SnapshotIamBinding(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

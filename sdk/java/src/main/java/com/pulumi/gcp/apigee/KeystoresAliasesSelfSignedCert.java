@@ -310,7 +310,6 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
     }
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
-     * Structure is documented below.
      * 
      */
     @Export(name="subjectAlternativeDnsNames", refs={KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.class}, tree="[0]")
@@ -318,7 +317,6 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
 
     /**
      * @return List of alternative host names. Maximum length is 255 characters for each value.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>> subjectAlternativeDnsNames() {

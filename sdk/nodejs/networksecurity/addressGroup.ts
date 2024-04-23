@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Security Address Groups Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,10 +30,8 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Security Address Groups Organization Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -48,10 +45,8 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Security Address Groups Advanced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,7 +61,6 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

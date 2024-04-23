@@ -646,7 +646,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         ### Target Https Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -688,10 +687,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Https Proxy Http Keep Alive Timeout
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,10 +732,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Https Proxy Mtls
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -806,10 +801,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Https Proxy Certificate Manager Certificate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -849,7 +842,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -949,7 +941,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         ### Target Https Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -991,10 +982,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Https Proxy Http Keep Alive Timeout
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1038,10 +1027,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Https Proxy Mtls
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1109,10 +1096,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Https Proxy Certificate Manager Certificate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1152,7 +1137,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             certificate_manager_certificates=[default_certificate.id.apply(lambda id: f"//certificatemanager.googleapis.com/{id}")])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

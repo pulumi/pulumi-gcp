@@ -406,7 +406,6 @@ class CapacityCommitment(pulumi.CustomResource):
 
         ### Bigquery Reservation Capacity Commitment Docs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -418,7 +417,6 @@ class CapacityCommitment(pulumi.CustomResource):
             plan="FLEX_FLAT_RATE",
             edition="ENTERPRISE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -484,7 +482,6 @@ class CapacityCommitment(pulumi.CustomResource):
 
         ### Bigquery Reservation Capacity Commitment Docs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -496,7 +493,6 @@ class CapacityCommitment(pulumi.CustomResource):
             plan="FLEX_FLAT_RATE",
             edition="ENTERPRISE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

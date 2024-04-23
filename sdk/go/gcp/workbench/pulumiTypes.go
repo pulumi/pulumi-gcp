@@ -2191,8 +2191,7 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type InstanceUpgradeHistory struct {
 	// Optional. Action. Rolloback or Upgrade.
 	Action *string `pulumi:"action"`
-	// Use a container image to start the workbench instance.
-	// Structure is documented below.
+	// Optional. The container image before this instance upgrade.
 	ContainerImage *string `pulumi:"containerImage"`
 	// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
 	// The milliseconds portion (".SSS") is optional.
@@ -2208,9 +2207,7 @@ type InstanceUpgradeHistory struct {
 	TargetVersion *string `pulumi:"targetVersion"`
 	// Optional. The version of the workbench instance before this upgrade.
 	Version *string `pulumi:"version"`
-	// Definition of a custom Compute Engine virtual machine image for starting
-	// a workbench instance with the environment installed directly on the VM.
-	// Structure is documented below.
+	// Optional. The VM image before this instance upgrade.
 	VmImage *string `pulumi:"vmImage"`
 }
 
@@ -2228,8 +2225,7 @@ type InstanceUpgradeHistoryInput interface {
 type InstanceUpgradeHistoryArgs struct {
 	// Optional. Action. Rolloback or Upgrade.
 	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Use a container image to start the workbench instance.
-	// Structure is documented below.
+	// Optional. The container image before this instance upgrade.
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
 	// The milliseconds portion (".SSS") is optional.
@@ -2245,9 +2241,7 @@ type InstanceUpgradeHistoryArgs struct {
 	TargetVersion pulumi.StringPtrInput `pulumi:"targetVersion"`
 	// Optional. The version of the workbench instance before this upgrade.
 	Version pulumi.StringPtrInput `pulumi:"version"`
-	// Definition of a custom Compute Engine virtual machine image for starting
-	// a workbench instance with the environment installed directly on the VM.
-	// Structure is documented below.
+	// Optional. The VM image before this instance upgrade.
 	VmImage pulumi.StringPtrInput `pulumi:"vmImage"`
 }
 
@@ -2307,8 +2301,7 @@ func (o InstanceUpgradeHistoryOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUpgradeHistory) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// Use a container image to start the workbench instance.
-// Structure is documented below.
+// Optional. The container image before this instance upgrade.
 func (o InstanceUpgradeHistoryOutput) ContainerImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUpgradeHistory) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
 }
@@ -2345,9 +2338,7 @@ func (o InstanceUpgradeHistoryOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUpgradeHistory) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Definition of a custom Compute Engine virtual machine image for starting
-// a workbench instance with the environment installed directly on the VM.
-// Structure is documented below.
+// Optional. The VM image before this instance upgrade.
 func (o InstanceUpgradeHistoryOutput) VmImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUpgradeHistory) *string { return v.VmImage }).(pulumi.StringPtrOutput)
 }

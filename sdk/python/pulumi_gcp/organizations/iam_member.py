@@ -238,7 +238,6 @@ class IAMMember(pulumi.CustomResource):
            the best way to be sure that you are not making dangerous changes is to start
            by **importing** your existing policy, and examining the diff very closely.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,11 +250,9 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -273,13 +270,11 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_binding
 
         > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -289,11 +284,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,11 +301,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -322,11 +313,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,11 +330,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_audit\\_config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,7 +350,6 @@ class IAMMember(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_policy
 
@@ -379,7 +365,6 @@ class IAMMember(pulumi.CustomResource):
            the best way to be sure that you are not making dangerous changes is to start
            by **importing** your existing policy, and examining the diff very closely.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,11 +377,9 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -414,13 +397,11 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_binding
 
         > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,11 +411,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -449,11 +428,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,11 +440,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -482,11 +457,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_audit\\_config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -504,7 +477,6 @@ class IAMMember(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -579,7 +551,6 @@ class IAMMember(pulumi.CustomResource):
            the best way to be sure that you are not making dangerous changes is to start
            by **importing** your existing policy, and examining the diff very closely.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -592,11 +563,9 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -614,13 +583,11 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_binding
 
         > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,11 +597,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -649,11 +614,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -663,11 +626,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -682,11 +643,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_audit\\_config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -704,7 +663,6 @@ class IAMMember(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_policy
 
@@ -720,7 +678,6 @@ class IAMMember(pulumi.CustomResource):
            the best way to be sure that you are not making dangerous changes is to start
            by **importing** your existing policy, and examining the diff very closely.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -733,11 +690,9 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -755,13 +710,11 @@ class IAMMember(pulumi.CustomResource):
             org_id="1234567890",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_binding
 
         > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -771,11 +724,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -790,11 +741,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -804,11 +753,9 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -823,11 +770,9 @@ class IAMMember(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_organization\\_iam\\_audit\\_config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -845,7 +790,6 @@ class IAMMember(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Public Advertised Prefixes Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "127.127.0.0/16",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

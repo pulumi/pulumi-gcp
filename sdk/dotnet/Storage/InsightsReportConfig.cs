@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ### Storage Insights Report Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -97,7 +96,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -141,7 +139,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.
-        /// Structure is documented below.
         /// </summary>
         [Output("frequencyOptions")]
         public Output<Outputs.InsightsReportConfigFrequencyOptions?> FrequencyOptions { get; private set; } = null!;
@@ -161,15 +158,10 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for including metadata in an inventory report.
-        /// Structure is documented below.
         /// </summary>
         [Output("objectMetadataReportOptions")]
         public Output<Outputs.InsightsReportConfigObjectMetadataReportOptions?> ObjectMetadataReportOptions { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -234,7 +226,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.
-        /// Structure is documented below.
         /// </summary>
         [Input("frequencyOptions")]
         public Input<Inputs.InsightsReportConfigFrequencyOptionsArgs>? FrequencyOptions { get; set; }
@@ -248,15 +239,10 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for including metadata in an inventory report.
-        /// Structure is documented below.
         /// </summary>
         [Input("objectMetadataReportOptions")]
         public Input<Inputs.InsightsReportConfigObjectMetadataReportOptionsArgs>? ObjectMetadataReportOptions { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -283,7 +269,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for configuring how inventory reports are generated.
-        /// Structure is documented below.
         /// </summary>
         [Input("frequencyOptions")]
         public Input<Inputs.InsightsReportConfigFrequencyOptionsGetArgs>? FrequencyOptions { get; set; }
@@ -303,15 +288,10 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Options for including metadata in an inventory report.
-        /// Structure is documented below.
         /// </summary>
         [Input("objectMetadataReportOptions")]
         public Input<Inputs.InsightsReportConfigObjectMetadataReportOptionsGetArgs>? ObjectMetadataReportOptions { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

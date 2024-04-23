@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Dialogflowcx Security Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,10 +31,8 @@ import * as utilities from "../utilities";
  *     retentionWindowDays: 7,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dialogflowcx Security Settings Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -91,7 +88,6 @@ import * as utilities from "../utilities";
  *     retentionStrategy: "REMOVE_AFTER_CONVERSATION",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

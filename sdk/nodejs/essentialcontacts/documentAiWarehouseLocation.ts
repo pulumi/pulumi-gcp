@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Document Ai Warehouse Location
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  *     documentCreatorDefaultRole: "DOCUMENT_ADMIN",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

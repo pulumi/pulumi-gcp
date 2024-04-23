@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Access Context Manager Gcp User Access Binding Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -60,7 +59,6 @@ import * as utilities from "../utilities";
  *     accessLevels: accessLevelIdForUserAccessBinding.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

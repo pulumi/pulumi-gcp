@@ -508,7 +508,6 @@ class CryptoKey(pulumi.CustomResource):
 
         ### Kms Crypto Key Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,10 +520,8 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
-        <!--End PulumiCodeChooser -->
         ### Kms Crypto Key Asymmetric Sign
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -540,7 +537,6 @@ class CryptoKey(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -618,7 +614,6 @@ class CryptoKey(pulumi.CustomResource):
 
         ### Kms Crypto Key Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,10 +626,8 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
-        <!--End PulumiCodeChooser -->
         ### Kms Crypto Key Asymmetric Sign
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -650,7 +643,6 @@ class CryptoKey(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

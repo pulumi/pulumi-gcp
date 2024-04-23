@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// ### Securityposture Posture Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -183,7 +182,6 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -207,7 +205,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the expression
+        /// Description of the posture.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -225,7 +223,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The name of the custom constraint. This is unique within the organization.
+        /// Name of the posture.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -322,7 +320,7 @@ namespace Pulumi.Gcp.SecurityPosture
     public sealed class PostureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the expression
+        /// Description of the posture.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -381,7 +379,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Description of the expression
+        /// Description of the posture.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -399,7 +397,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. The name of the custom constraint. This is unique within the organization.
+        /// Name of the posture.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

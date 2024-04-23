@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<int>? _objectIdPaths;
 
         /// <summary>
+        /// (Output)
         /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         /// </summary>
         public InputList<int> ObjectIdPaths

@@ -389,7 +389,6 @@ class MangedSslCertificate(pulumi.CustomResource):
 
         ### Managed Ssl Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -435,7 +434,6 @@ class MangedSslCertificate(pulumi.CustomResource):
             target=default_target_https_proxy.id,
             port_range="443")
         ```
-        <!--End PulumiCodeChooser -->
         ## Import
 
         ManagedSslCertificate can be imported using any of these accepted formats:
@@ -520,7 +518,6 @@ class MangedSslCertificate(pulumi.CustomResource):
 
         ### Managed Ssl Certificate Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -566,7 +563,6 @@ class MangedSslCertificate(pulumi.CustomResource):
             target=default_target_https_proxy.id,
             port_range="443")
         ```
-        <!--End PulumiCodeChooser -->
         ## Import
 
         ManagedSslCertificate can be imported using any of these accepted formats:

@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     parent: "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVcenterCredentials(args: GetVcenterCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetVcenterCredentialsResult> {
 
@@ -67,7 +65,6 @@ export interface GetVcenterCredentialsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -76,7 +73,6 @@ export interface GetVcenterCredentialsResult {
  *     parent: "projects/my-project/locations/us-west1-a/privateClouds/my-cloud",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVcenterCredentialsOutput(args: GetVcenterCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVcenterCredentialsResult> {
     return pulumi.output(args).apply((a: any) => getVcenterCredentials(a, opts))

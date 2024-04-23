@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// ### Integrations Client Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,10 +39,8 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Integrations Client Advance
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,7 +92,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -6633,7 +6633,8 @@ type TaskExecutionStatusLatestJob struct {
 	// (Output)
 	// The full resource name for the job run under a particular service.
 	ServiceJob *string `pulumi:"serviceJob"`
-	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+	// (Output)
+	// The time when the job was started.
 	StartTime *string `pulumi:"startTime"`
 	// (Output)
 	// Execution state for the job.
@@ -6673,7 +6674,8 @@ type TaskExecutionStatusLatestJobArgs struct {
 	// (Output)
 	// The full resource name for the job run under a particular service.
 	ServiceJob pulumi.StringPtrInput `pulumi:"serviceJob"`
-	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+	// (Output)
+	// The time when the job was started.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// (Output)
 	// Execution state for the job.
@@ -6770,7 +6772,8 @@ func (o TaskExecutionStatusLatestJobOutput) ServiceJob() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.ServiceJob }).(pulumi.StringPtrOutput)
 }
 
-// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+// (Output)
+// The time when the job was started.
 func (o TaskExecutionStatusLatestJobOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }

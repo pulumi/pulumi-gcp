@@ -64,14 +64,14 @@ public final class DocumentAiWarehouseDocumentSchemaState extends com.pulumi.res
     }
 
     /**
-     * The name of the metadata property.
+     * The resource name of the document schema.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the metadata property.
+     * @return The resource name of the document schema.
      * 
      */
     public Optional<Output<String>> name() {
@@ -203,7 +203,7 @@ public final class DocumentAiWarehouseDocumentSchemaState extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the metadata property.
+         * @param name The resource name of the document schema.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class DocumentAiWarehouseDocumentSchemaState extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the metadata property.
+         * @param name The resource name of the document schema.
          * 
          * @return builder
          * 

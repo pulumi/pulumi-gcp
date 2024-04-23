@@ -23,7 +23,6 @@ import (
 //
 // ### Vpc Access Connector
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,10 +48,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vpc Access Connector Shared Vpc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,7 +94,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

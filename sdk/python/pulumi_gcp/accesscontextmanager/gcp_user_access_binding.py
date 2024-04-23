@@ -168,7 +168,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         ### Access Context Manager Gcp User Access Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,7 +206,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                 prefix="groups/").apply(lambda invoke: invoke.result),
             access_levels=access_level_id_for_user_access_binding.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -247,7 +245,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         ### Access Context Manager Gcp User Access Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,7 +283,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                 prefix="groups/").apply(lambda invoke: invoke.result),
             access_levels=access_level_id_for_user_access_binding.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

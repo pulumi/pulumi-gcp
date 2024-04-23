@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSourceIamPolicyResult> InvokeAsync(GetSourceIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSourceIamPolicyResult>("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args ?? new GetSourceIamPolicyArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSourceIamPolicyResult> Invoke(GetSourceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSourceIamPolicyResult>("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args ?? new GetSourceIamPolicyInvokeArgs(), options.WithDefaults());

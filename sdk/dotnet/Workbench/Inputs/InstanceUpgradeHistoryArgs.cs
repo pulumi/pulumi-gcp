@@ -19,8 +19,7 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Use a container image to start the workbench instance.
-        /// Structure is documented below.
+        /// Optional. The container image before this instance upgrade.
         /// </summary>
         [Input("containerImage")]
         public Input<string>? ContainerImage { get; set; }
@@ -64,9 +63,7 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// Definition of a custom Compute Engine virtual machine image for starting
-        /// a workbench instance with the environment installed directly on the VM.
-        /// Structure is documented below.
+        /// Optional. The VM image before this instance upgrade.
         /// </summary>
         [Input("vmImage")]
         public Input<string>? VmImage { get; set; }

@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ### Iam Deny Policy Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,7 +105,6 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

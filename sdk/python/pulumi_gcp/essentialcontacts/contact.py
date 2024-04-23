@@ -208,7 +208,6 @@ class Contact(pulumi.CustomResource):
 
         ### Essential Contact
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -220,7 +219,6 @@ class Contact(pulumi.CustomResource):
             language_tag="en-GB",
             notification_category_subscriptions=["ALL"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -269,7 +267,6 @@ class Contact(pulumi.CustomResource):
 
         ### Essential Contact
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -281,7 +278,6 @@ class Contact(pulumi.CustomResource):
             language_tag="en-GB",
             notification_category_subscriptions=["ALL"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

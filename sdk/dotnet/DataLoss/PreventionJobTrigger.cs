@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// ### Dlp Job Trigger Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -81,10 +80,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Bigquery Row Limit
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -147,10 +144,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Bigquery Row Limit Percentage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -213,10 +208,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Job Notification Emails
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -265,10 +258,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Deidentify
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -383,10 +374,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Hybrid
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -455,10 +444,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Inspect
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -606,10 +593,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Publish To Stackdriver
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -658,10 +643,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger With Id
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -721,10 +704,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Multiple Actions
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -790,10 +771,8 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -856,7 +835,6 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -880,14 +858,13 @@ namespace Pulumi.Gcp.DataLoss
     public partial class PreventionJobTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Output)
         /// The creation timestamp of an inspectTemplate. Set by the server.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        /// A description of the job trigger.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -900,7 +877,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Controls what and how to inspect for findings.
-        /// Structure is documented below.
         /// </summary>
         [Output("inspectJob")]
         public Output<Outputs.PreventionJobTriggerInspectJob?> InspectJob { get; private set; } = null!;
@@ -912,7 +888,7 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> LastRunTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name describing the field excluded from scanning.
+        /// The resource name of the job trigger. Set by the server.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -925,17 +901,14 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the trigger is currently active.
-        /// Default value is `HEALTHY`.
-        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        /// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Output("triggerId")]
         public Output<string> TriggerId { get; private set; } = null!;
@@ -1000,7 +973,7 @@ namespace Pulumi.Gcp.DataLoss
     public sealed class PreventionJobTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        /// A description of the job trigger.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -1013,7 +986,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Controls what and how to inspect for findings.
-        /// Structure is documented below.
         /// </summary>
         [Input("inspectJob")]
         public Input<Inputs.PreventionJobTriggerInspectJobArgs>? InspectJob { get; set; }
@@ -1026,17 +998,14 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Whether the trigger is currently active.
-        /// Default value is `HEALTHY`.
-        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        /// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }
@@ -1063,14 +1032,13 @@ namespace Pulumi.Gcp.DataLoss
     public sealed class PreventionJobTriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// The creation timestamp of an inspectTemplate. Set by the server.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        /// A description of the job trigger.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -1083,7 +1051,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Controls what and how to inspect for findings.
-        /// Structure is documented below.
         /// </summary>
         [Input("inspectJob")]
         public Input<Inputs.PreventionJobTriggerInspectJobGetArgs>? InspectJob { get; set; }
@@ -1095,7 +1062,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? LastRunTime { get; set; }
 
         /// <summary>
-        /// Name describing the field excluded from scanning.
+        /// The resource name of the job trigger. Set by the server.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1108,17 +1075,14 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Whether the trigger is currently active.
-        /// Default value is `HEALTHY`.
-        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        /// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }

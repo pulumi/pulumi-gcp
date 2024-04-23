@@ -296,7 +296,6 @@ class ServiceBinding(pulumi.CustomResource):
 
         ### Network Services Service Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,7 +318,6 @@ class ServiceBinding(pulumi.CustomResource):
             description="my description",
             service=default_service.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -371,7 +369,6 @@ class ServiceBinding(pulumi.CustomResource):
 
         ### Network Services Service Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -394,7 +391,6 @@ class ServiceBinding(pulumi.CustomResource):
             description="my description",
             service=default_service.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

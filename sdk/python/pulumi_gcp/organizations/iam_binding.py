@@ -194,7 +194,6 @@ class IAMBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -204,7 +203,6 @@ class IAMBinding(pulumi.CustomResource):
             role="roles/browser",
             members=["user:alice@gmail.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -246,7 +244,6 @@ class IAMBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -256,7 +253,6 @@ class IAMBinding(pulumi.CustomResource):
             role="roles/browser",
             members=["user:alice@gmail.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

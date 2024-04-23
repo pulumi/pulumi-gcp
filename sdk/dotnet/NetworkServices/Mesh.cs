@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ### Network Services Mesh Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,10 +35,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Mesh No Port
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

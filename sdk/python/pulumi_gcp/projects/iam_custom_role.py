@@ -289,7 +289,6 @@ class IAMCustomRole(pulumi.CustomResource):
 
         This snippet creates a customized IAM role.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -304,7 +303,6 @@ class IAMCustomRole(pulumi.CustomResource):
                 "iam.roles.delete",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -365,7 +363,6 @@ class IAMCustomRole(pulumi.CustomResource):
 
         This snippet creates a customized IAM role.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -380,7 +377,6 @@ class IAMCustomRole(pulumi.CustomResource):
                 "iam.roles.delete",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

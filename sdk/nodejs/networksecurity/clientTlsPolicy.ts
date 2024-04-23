@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Network Security Client Tls Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,10 +24,8 @@ import * as utilities from "../utilities";
  *     sni: "secure.example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Security Client Tls Policy Advanced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,7 +55,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -18,7 +18,6 @@ import (
 //
 // ### Gkeonprem Vmware Node Pool Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,7 +98,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ## Import
 //
 // VmwareNodePool can be imported using any of these accepted formats:
@@ -126,17 +124,12 @@ import (
 type VMwareNodePool struct {
 	pulumi.CustomResourceState
 
-	// Annotations on the node Pool.
-	// This field has the same restrictions as Kubernetes annotations.
-	// The total size of all keys and values combined is limited to 256k.
-	// Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/).
-	// Prefix must be a DNS subdomain.
-	// Name must be 63 characters or less, begin and end with alphanumerics,
-	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
+	// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
+	// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
+	// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
+	// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
+	// the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -161,13 +154,10 @@ type VMwareNodePool struct {
 	// The vmware node pool name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Node Pool autoscaling config for the node pool.
-	// Structure is documented below.
 	NodePoolAutoscaling VMwareNodePoolNodePoolAutoscalingPtrOutput `pulumi:"nodePoolAutoscaling"`
 	// Anthos version for the node pool. Defaults to the user cluster version.
 	OnPremVersion pulumi.StringOutput `pulumi:"onPremVersion"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project       pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the node pool.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// (Output)
@@ -223,17 +213,12 @@ func GetVMwareNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VMwareNodePool resources.
 type vmwareNodePoolState struct {
-	// Annotations on the node Pool.
-	// This field has the same restrictions as Kubernetes annotations.
-	// The total size of all keys and values combined is limited to 256k.
-	// Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/).
-	// Prefix must be a DNS subdomain.
-	// Name must be 63 characters or less, begin and end with alphanumerics,
-	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
+	// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
+	// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
+	// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
+	// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
+	// the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -258,13 +243,10 @@ type vmwareNodePoolState struct {
 	// The vmware node pool name.
 	Name *string `pulumi:"name"`
 	// Node Pool autoscaling config for the node pool.
-	// Structure is documented below.
 	NodePoolAutoscaling *VMwareNodePoolNodePoolAutoscaling `pulumi:"nodePoolAutoscaling"`
 	// Anthos version for the node pool. Defaults to the user cluster version.
 	OnPremVersion *string `pulumi:"onPremVersion"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project       *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the node pool.
 	Reconciling *bool `pulumi:"reconciling"`
 	// (Output)
@@ -282,17 +264,12 @@ type vmwareNodePoolState struct {
 }
 
 type VMwareNodePoolState struct {
-	// Annotations on the node Pool.
-	// This field has the same restrictions as Kubernetes annotations.
-	// The total size of all keys and values combined is limited to 256k.
-	// Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/).
-	// Prefix must be a DNS subdomain.
-	// Name must be 63 characters or less, begin and end with alphanumerics,
-	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
+	// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
+	// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
+	// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
+	// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
+	// the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -317,13 +294,10 @@ type VMwareNodePoolState struct {
 	// The vmware node pool name.
 	Name pulumi.StringPtrInput
 	// Node Pool autoscaling config for the node pool.
-	// Structure is documented below.
 	NodePoolAutoscaling VMwareNodePoolNodePoolAutoscalingPtrInput
 	// Anthos version for the node pool. Defaults to the user cluster version.
 	OnPremVersion pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project       pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the node pool.
 	Reconciling pulumi.BoolPtrInput
 	// (Output)
@@ -345,17 +319,12 @@ func (VMwareNodePoolState) ElementType() reflect.Type {
 }
 
 type vmwareNodePoolArgs struct {
-	// Annotations on the node Pool.
-	// This field has the same restrictions as Kubernetes annotations.
-	// The total size of all keys and values combined is limited to 256k.
-	// Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/).
-	// Prefix must be a DNS subdomain.
-	// Name must be 63 characters or less, begin and end with alphanumerics,
-	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
+	// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
+	// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
+	// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
+	// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
+	// the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -367,28 +336,20 @@ type vmwareNodePoolArgs struct {
 	// The vmware node pool name.
 	Name *string `pulumi:"name"`
 	// Node Pool autoscaling config for the node pool.
-	// Structure is documented below.
 	NodePoolAutoscaling *VMwareNodePoolNodePoolAutoscaling `pulumi:"nodePoolAutoscaling"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project             *string                            `pulumi:"project"`
 	// The cluster this node pool belongs to.
 	VmwareCluster string `pulumi:"vmwareCluster"`
 }
 
 // The set of arguments for constructing a VMwareNodePool resource.
 type VMwareNodePoolArgs struct {
-	// Annotations on the node Pool.
-	// This field has the same restrictions as Kubernetes annotations.
-	// The total size of all keys and values combined is limited to 256k.
-	// Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/).
-	// Prefix must be a DNS subdomain.
-	// Name must be 63 characters or less, begin and end with alphanumerics,
-	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
+	// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
+	// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
+	// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
+	// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
+	// the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The node configuration of the node pool.
 	// Structure is documented below.
@@ -400,11 +361,8 @@ type VMwareNodePoolArgs struct {
 	// The vmware node pool name.
 	Name pulumi.StringPtrInput
 	// Node Pool autoscaling config for the node pool.
-	// Structure is documented below.
 	NodePoolAutoscaling VMwareNodePoolNodePoolAutoscalingPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project             pulumi.StringPtrInput
 	// The cluster this node pool belongs to.
 	VmwareCluster pulumi.StringInput
 }
@@ -496,17 +454,12 @@ func (o VMwareNodePoolOutput) ToVMwareNodePoolOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Annotations on the node Pool.
-// This field has the same restrictions as Kubernetes annotations.
-// The total size of all keys and values combined is limited to 256k.
-// Key can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/).
-// Prefix must be a DNS subdomain.
-// Name must be 63 characters or less, begin and end with alphanumerics,
-// with dashes (-), underscores (_), dots (.), and alphanumerics between.
-//
-// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
+// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
+// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
+// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
+// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
+// the annotations present on the resource.
 func (o VMwareNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -558,7 +511,6 @@ func (o VMwareNodePoolOutput) Name() pulumi.StringOutput {
 }
 
 // Node Pool autoscaling config for the node pool.
-// Structure is documented below.
 func (o VMwareNodePoolOutput) NodePoolAutoscaling() VMwareNodePoolNodePoolAutoscalingPtrOutput {
 	return o.ApplyT(func(v *VMwareNodePool) VMwareNodePoolNodePoolAutoscalingPtrOutput { return v.NodePoolAutoscaling }).(VMwareNodePoolNodePoolAutoscalingPtrOutput)
 }
@@ -568,8 +520,6 @@ func (o VMwareNodePoolOutput) OnPremVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringOutput { return v.OnPremVersion }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o VMwareNodePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareNodePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

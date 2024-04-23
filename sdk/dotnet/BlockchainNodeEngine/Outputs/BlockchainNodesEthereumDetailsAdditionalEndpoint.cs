@@ -14,17 +14,14 @@ namespace Pulumi.Gcp.BlockchainNodeEngine.Outputs
     public sealed class BlockchainNodesEthereumDetailsAdditionalEndpoint
     {
         /// <summary>
-        /// (Output)
         /// The assigned URL for the node's Beacon API endpoint.
         /// </summary>
         public readonly string? BeaconApiEndpoint;
         /// <summary>
-        /// (Output)
         /// The assigned URL for the node's Beacon Prometheus metrics endpoint.
         /// </summary>
         public readonly string? BeaconPrometheusMetricsApiEndpoint;
         /// <summary>
-        /// (Output)
         /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
         /// </summary>
         public readonly string? ExecutionClientPrometheusMetricsApiEndpoint;

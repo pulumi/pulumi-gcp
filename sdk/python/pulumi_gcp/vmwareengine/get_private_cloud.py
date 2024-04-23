@@ -183,7 +183,6 @@ def get_private_cloud(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -191,7 +190,6 @@ def get_private_cloud(location: Optional[str] = None,
     my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
         location="us-central1-a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the resource.
@@ -239,7 +237,6 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -247,7 +244,6 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
     my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
         location="us-central1-a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: Location of the resource.

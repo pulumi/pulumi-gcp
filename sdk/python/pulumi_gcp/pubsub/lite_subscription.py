@@ -266,7 +266,6 @@ class LiteSubscription(pulumi.CustomResource):
 
         ### Pubsub Lite Subscription Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -292,7 +291,6 @@ class LiteSubscription(pulumi.CustomResource):
                 delivery_requirement="DELIVER_AFTER_STORED",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -358,7 +356,6 @@ class LiteSubscription(pulumi.CustomResource):
 
         ### Pubsub Lite Subscription Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -384,7 +381,6 @@ class LiteSubscription(pulumi.CustomResource):
                 delivery_requirement="DELIVER_AFTER_STORED",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

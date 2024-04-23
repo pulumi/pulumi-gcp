@@ -24,7 +24,6 @@ import (
 //
 // ### Bigquery Routine Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,10 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Json
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,10 +103,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Tvf
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -174,10 +169,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Pyspark
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -247,10 +240,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Pyspark Mainfile
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -306,10 +297,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Spark Jar
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -364,10 +353,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Data Governance Type
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -409,10 +396,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Routine Remote Function
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -462,7 +447,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

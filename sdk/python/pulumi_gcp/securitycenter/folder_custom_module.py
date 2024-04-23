@@ -120,7 +120,8 @@ class _FolderCustomModuleState:
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] folder: Numerical ID of the parent folder.
         :param pulumi.Input[str] last_editor: The editor that last updated the custom module.
-        :param pulumi.Input[str] name: Name of the property for the custom output.
+        :param pulumi.Input[str] name: The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+               The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -226,7 +227,8 @@ class _FolderCustomModuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the property for the custom output.
+        The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+        The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         """
         return pulumi.get(self, "name")
 
@@ -276,7 +278,6 @@ class FolderCustomModule(pulumi.CustomResource):
 
         ### Scc Folder Custom Module Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -300,10 +301,8 @@ class FolderCustomModule(pulumi.CustomResource):
                 severity="MEDIUM",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scc Folder Custom Module Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,7 +340,6 @@ class FolderCustomModule(pulumi.CustomResource):
                 recommendation="Steps to resolve violation",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -397,7 +395,6 @@ class FolderCustomModule(pulumi.CustomResource):
 
         ### Scc Folder Custom Module Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -421,10 +418,8 @@ class FolderCustomModule(pulumi.CustomResource):
                 severity="MEDIUM",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Scc Folder Custom Module Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -462,7 +457,6 @@ class FolderCustomModule(pulumi.CustomResource):
                 recommendation="Steps to resolve violation",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -565,7 +559,8 @@ class FolderCustomModule(pulumi.CustomResource):
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] folder: Numerical ID of the parent folder.
         :param pulumi.Input[str] last_editor: The editor that last updated the custom module.
-        :param pulumi.Input[str] name: Name of the property for the custom output.
+        :param pulumi.Input[str] name: The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+               The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -644,7 +639,8 @@ class FolderCustomModule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the property for the custom output.
+        The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+        The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         """
         return pulumi.get(self, "name")
 

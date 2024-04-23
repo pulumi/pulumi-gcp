@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Logging Project Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectSettings(args: GetProjectSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectSettingsResult> {
 
@@ -97,7 +95,6 @@ export interface GetProjectSettingsResult {
  *
  * ### Logging Project Settings Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,7 +103,6 @@ export interface GetProjectSettingsResult {
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectSettingsOutput(args: GetProjectSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSettingsResult> {
     return pulumi.output(args).apply((a: any) => getProjectSettings(a, opts))

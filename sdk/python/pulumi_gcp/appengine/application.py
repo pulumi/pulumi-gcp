@@ -419,7 +419,6 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -432,7 +431,6 @@ class Application(pulumi.CustomResource):
             project=my_project.project_id,
             location_id="us-central")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -480,7 +478,6 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -493,7 +490,6 @@ class Application(pulumi.CustomResource):
             project=my_project.project_id,
             location_id="us-central")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

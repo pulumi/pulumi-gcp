@@ -333,7 +333,6 @@ class TargetServer(pulumi.CustomResource):
 
         ### Apigee Target Server Test Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -383,7 +382,6 @@ class TargetServer(pulumi.CustomResource):
             port=8080,
             env_id=apigee_environment.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -439,7 +437,6 @@ class TargetServer(pulumi.CustomResource):
 
         ### Apigee Target Server Test Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -489,7 +486,6 @@ class TargetServer(pulumi.CustomResource):
             port=8080,
             env_id=apigee_environment.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

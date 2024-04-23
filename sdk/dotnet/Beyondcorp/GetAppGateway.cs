@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAppGatewayResult> InvokeAsync(GetAppGatewayArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppGatewayResult>("gcp:beyondcorp/getAppGateway:getAppGateway", args ?? new GetAppGatewayArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAppGatewayResult> Invoke(GetAppGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppGatewayResult>("gcp:beyondcorp/getAppGateway:getAppGateway", args ?? new GetAppGatewayInvokeArgs(), options.WithDefaults());

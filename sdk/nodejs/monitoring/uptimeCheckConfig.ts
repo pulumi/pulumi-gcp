@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Uptime Check Config Http
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -59,10 +58,8 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Uptime Check Config Status Code
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,10 +103,8 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Uptime Check Config Https
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -140,10 +135,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Uptime Check Tcp
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -167,10 +160,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Uptime Check Config Synthetic Monitor
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -214,7 +205,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -283,7 +273,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
-     * The fully qualified name of the cloud function resource.
+     * A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -418,7 +408,7 @@ export interface UptimeCheckConfigState {
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
-     * The fully qualified name of the cloud function resource.
+     * A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      */
     name?: pulumi.Input<string>;
     /**

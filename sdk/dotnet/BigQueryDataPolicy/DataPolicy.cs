@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// ### Bigquery Datapolicy Data Policy Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,7 +58,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

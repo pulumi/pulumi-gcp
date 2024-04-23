@@ -31,13 +31,11 @@ class GrpcRouteArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "hostnames", hostnames)
         pulumi.set(__self__, "rules", rules)
@@ -107,9 +105,9 @@ class GrpcRouteArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the GrpcRoute resource.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -144,10 +142,6 @@ class GrpcRouteArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -178,13 +172,11 @@ class _GrpcRouteState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
@@ -283,9 +275,9 @@ class _GrpcRouteState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the GrpcRoute resource.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -320,10 +312,6 @@ class _GrpcRouteState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -400,7 +388,6 @@ class GrpcRoute(pulumi.CustomResource):
 
         ### Network Services Grpc Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -427,10 +414,8 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Matches And Actions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -480,10 +465,8 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Actions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,7 +497,6 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -545,13 +527,11 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
@@ -566,7 +546,6 @@ class GrpcRoute(pulumi.CustomResource):
 
         ### Network Services Grpc Route Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -593,10 +572,8 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Matches And Actions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -646,10 +623,8 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Grpc Route Actions
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -680,7 +655,6 @@ class GrpcRoute(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -792,13 +766,11 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
@@ -869,9 +841,9 @@ class GrpcRoute(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Set of label tags associated with the GrpcRoute resource.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -894,10 +866,6 @@ class GrpcRoute(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

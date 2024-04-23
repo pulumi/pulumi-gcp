@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Backend Service Signed Url Key
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,7 +69,6 @@ import * as utilities from "../utilities";
  *     backendService: exampleBackend.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Bigquery Datapolicy Data Policy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  *     dataPolicyType: "COLUMN_LEVEL_SECURITY_POLICY",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

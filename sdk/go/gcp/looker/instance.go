@@ -24,7 +24,6 @@ import (
 //
 // ### Looker Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,10 +53,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Looker Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,10 +117,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Looker Instance Enterprise Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -236,10 +231,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Looker Instance Custom Domain
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -272,7 +265,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

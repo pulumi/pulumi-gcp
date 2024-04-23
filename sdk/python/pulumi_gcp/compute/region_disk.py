@@ -86,10 +86,12 @@ class RegionDiskArgs:
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -343,10 +345,12 @@ class RegionDiskArgs:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        example, the following are valid values: *
-        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. For example, the following are
+        valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
         """
         return pulumi.get(self, "snapshot")
 
@@ -494,10 +498,12 @@ class _RegionDiskState:
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -869,10 +875,12 @@ class _RegionDiskState:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        example, the following are valid values: *
-        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. For example, the following are
+        valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
         """
         return pulumi.get(self, "snapshot")
 
@@ -1022,7 +1030,6 @@ class RegionDisk(pulumi.CustomResource):
 
         ### Region Disk Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1048,10 +1055,8 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Disk Async
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1078,10 +1083,8 @@ class RegionDisk(pulumi.CustomResource):
                 "us-east1-c",
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Disk Features
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1108,7 +1111,6 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1193,10 +1195,12 @@ class RegionDisk(pulumi.CustomResource):
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1245,7 +1249,6 @@ class RegionDisk(pulumi.CustomResource):
 
         ### Region Disk Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1271,10 +1274,8 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Disk Async
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1301,10 +1302,8 @@ class RegionDisk(pulumi.CustomResource):
                 "us-east1-c",
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Disk Features
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1331,7 +1330,6 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1539,10 +1537,12 @@ class RegionDisk(pulumi.CustomResource):
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1809,10 +1809,12 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def snapshot(self) -> pulumi.Output[Optional[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        example, the following are valid values: *
-        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. For example, the following are
+        valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
         """
         return pulumi.get(self, "snapshot")
 

@@ -525,9 +525,7 @@ class _InstanceState:
                Default value is `DIRECT_PEERING`.
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] create_time: (Output)
-               Output only. The time when the policy was created.
-               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits.
+               The time when the certificate was created.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed.
                For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier
@@ -758,9 +756,7 @@ class _InstanceState:
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Output only. The time when the policy was created.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        The time when the certificate was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -1213,7 +1209,6 @@ class Instance(pulumi.CustomResource):
 
         ### Redis Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1222,10 +1217,8 @@ class Instance(pulumi.CustomResource):
             name="memory-cache",
             memory_size_gb=1)
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1265,10 +1258,8 @@ class Instance(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Full With Persistence Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1284,10 +1275,8 @@ class Instance(pulumi.CustomResource):
                 rdb_snapshot_period="TWELVE_HOURS",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Private Service
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1322,10 +1311,8 @@ class Instance(pulumi.CustomResource):
             redis_version="REDIS_4_0",
             display_name="Test Instance")
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Mrr
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1356,10 +1343,8 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1395,7 +1380,6 @@ class Instance(pulumi.CustomResource):
             },
             customer_managed_key=redis_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1520,7 +1504,6 @@ class Instance(pulumi.CustomResource):
 
         ### Redis Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1529,10 +1512,8 @@ class Instance(pulumi.CustomResource):
             name="memory-cache",
             memory_size_gb=1)
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1572,10 +1553,8 @@ class Instance(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Full With Persistence Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1591,10 +1570,8 @@ class Instance(pulumi.CustomResource):
                 rdb_snapshot_period="TWELVE_HOURS",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Private Service
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1629,10 +1606,8 @@ class Instance(pulumi.CustomResource):
             redis_version="REDIS_4_0",
             display_name="Test Instance")
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Mrr
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1663,10 +1638,8 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Redis Instance Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1702,7 +1675,6 @@ class Instance(pulumi.CustomResource):
             },
             customer_managed_key=redis_key.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1886,9 +1858,7 @@ class Instance(pulumi.CustomResource):
                Default value is `DIRECT_PEERING`.
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] create_time: (Output)
-               Output only. The time when the policy was created.
-               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits.
+               The time when the certificate was created.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed.
                For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier
@@ -2069,9 +2039,7 @@ class Instance(pulumi.CustomResource):
     def create_time(self) -> pulumi.Output[str]:
         """
         (Output)
-        Output only. The time when the policy was created.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        The time when the certificate was created.
         """
         return pulumi.get(self, "create_time")
 

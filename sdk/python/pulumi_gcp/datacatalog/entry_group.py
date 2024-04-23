@@ -246,17 +246,14 @@ class EntryGroup(pulumi.CustomResource):
 
         ### Data Catalog Entry Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Group Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,7 +263,6 @@ class EntryGroup(pulumi.CustomResource):
             display_name="entry group",
             description="example entry group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -312,17 +308,14 @@ class EntryGroup(pulumi.CustomResource):
 
         ### Data Catalog Entry Group Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Group Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -332,7 +325,6 @@ class EntryGroup(pulumi.CustomResource):
             display_name="entry group",
             description="example entry group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

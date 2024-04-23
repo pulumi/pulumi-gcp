@@ -24,11 +24,8 @@ class AttestorArgs:
         The set of arguments for constructing a Attestor resource.
         :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
-        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
-               displayed in chooser dialogs.
+        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "attestation_authority_note", attestation_authority_note)
         if description is not None:
@@ -55,8 +52,7 @@ class AttestorArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A descriptive comment. This field may be updated. The field may be
-        displayed in chooser dialogs.
+        A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         """
         return pulumi.get(self, "description")
 
@@ -79,10 +75,6 @@ class AttestorArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -101,11 +93,8 @@ class _AttestorState:
         Input properties used for looking up and filtering Attestor resources.
         :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
-        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
-               displayed in chooser dialogs.
+        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         if attestation_authority_note is not None:
             pulumi.set(__self__, "attestation_authority_note", attestation_authority_note)
@@ -133,8 +122,7 @@ class _AttestorState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A descriptive comment. This field may be updated. The field may be
-        displayed in chooser dialogs.
+        A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         """
         return pulumi.get(self, "description")
 
@@ -157,10 +145,6 @@ class _AttestorState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -191,7 +175,6 @@ class Attestor(pulumi.CustomResource):
 
         ### Binary Authorization Attestor Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -227,10 +210,8 @@ class Attestor(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Binary Authorization Attestor Kms
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,7 +247,6 @@ class Attestor(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -296,11 +276,8 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
-        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
-               displayed in chooser dialogs.
+        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -321,7 +298,6 @@ class Attestor(pulumi.CustomResource):
 
         ### Binary Authorization Attestor Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,10 +333,8 @@ class Attestor(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Binary Authorization Attestor Kms
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -396,7 +370,6 @@ class Attestor(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -479,11 +452,8 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AttestorAttestationAuthorityNoteArgs']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
-        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be
-               displayed in chooser dialogs.
+        :param pulumi.Input[str] description: A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] name: The resource name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -508,8 +478,7 @@ class Attestor(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A descriptive comment. This field may be updated. The field may be
-        displayed in chooser dialogs.
+        A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         """
         return pulumi.get(self, "description")
 
@@ -524,9 +493,5 @@ class Attestor(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 

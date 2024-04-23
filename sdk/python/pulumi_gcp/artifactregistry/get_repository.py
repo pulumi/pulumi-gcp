@@ -227,7 +227,6 @@ def get_repository(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -235,7 +234,6 @@ def get_repository(location: Optional[str] = None,
     my_repo = gcp.artifactregistry.get_repository(location="us-central1",
         repository_id="my-repository")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the artifact registry repository. eg us-central1
@@ -287,7 +285,6 @@ def get_repository_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -295,7 +292,6 @@ def get_repository_output(location: Optional[pulumi.Input[str]] = None,
     my_repo = gcp.artifactregistry.get_repository(location="us-central1",
         repository_id="my-repository")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the artifact registry repository. eg us-central1

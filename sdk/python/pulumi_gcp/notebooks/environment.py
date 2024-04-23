@@ -359,7 +359,6 @@ class Environment(pulumi.CustomResource):
 
         ### Notebook Environment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -371,7 +370,6 @@ class Environment(pulumi.CustomResource):
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -435,7 +433,6 @@ class Environment(pulumi.CustomResource):
 
         ### Notebook Environment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,7 +444,6 @@ class Environment(pulumi.CustomResource):
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

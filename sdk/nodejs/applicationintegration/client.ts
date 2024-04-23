@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Integrations Client Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,10 +29,8 @@ import * as utilities from "../utilities";
  *     provisionGmek: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Integrations Client Advance
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,7 +63,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

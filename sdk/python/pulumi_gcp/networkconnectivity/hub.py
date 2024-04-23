@@ -314,7 +314,6 @@ class Hub(pulumi.CustomResource):
 
         ### Basic_hub
         A basic test of a networkconnectivity hub
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,7 +326,6 @@ class Hub(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -380,7 +378,6 @@ class Hub(pulumi.CustomResource):
 
         ### Basic_hub
         A basic test of a networkconnectivity hub
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -393,7 +390,6 @@ class Hub(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

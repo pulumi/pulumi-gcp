@@ -374,7 +374,6 @@ class TargetGrpcProxy(pulumi.CustomResource):
 
         ### Target Grpc Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,7 +460,6 @@ class TargetGrpcProxy(pulumi.CustomResource):
             url_map=urlmap.id,
             validate_for_proxyless=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -538,7 +536,6 @@ class TargetGrpcProxy(pulumi.CustomResource):
 
         ### Target Grpc Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -625,7 +622,6 @@ class TargetGrpcProxy(pulumi.CustomResource):
             url_map=urlmap.id,
             validate_for_proxyless=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

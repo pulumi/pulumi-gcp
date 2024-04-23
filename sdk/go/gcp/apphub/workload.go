@@ -18,7 +18,6 @@ import (
 //
 // ### Apphub Workload Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -192,10 +191,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apphub Workload Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -397,7 +394,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

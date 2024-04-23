@@ -119,7 +119,6 @@ class Dashboard(pulumi.CustomResource):
 
         ### Monitoring Dashboard Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -137,11 +136,9 @@ class Dashboard(pulumi.CustomResource):
 
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Monitoring Dashboard GridLayout
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -207,7 +204,6 @@ class Dashboard(pulumi.CustomResource):
 
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -253,7 +249,6 @@ class Dashboard(pulumi.CustomResource):
 
         ### Monitoring Dashboard Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -271,11 +266,9 @@ class Dashboard(pulumi.CustomResource):
 
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Monitoring Dashboard GridLayout
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,7 +334,6 @@ class Dashboard(pulumi.CustomResource):
 
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

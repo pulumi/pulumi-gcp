@@ -16,7 +16,6 @@ import (
 //
 // ### Network Services Grpc Route Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -69,10 +68,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Grpc Route Matches And Actions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -148,10 +145,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Services Grpc Route Actions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -204,7 +199,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -242,16 +236,14 @@ type GrpcRoute struct {
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
-	// Set of label tags associated with the GrpcRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the GrpcRoute resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -316,16 +308,14 @@ type grpcRouteState struct {
 	Gateways []string `pulumi:"gateways"`
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames []string `pulumi:"hostnames"`
-	// Set of label tags associated with the GrpcRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes []string `pulumi:"meshes"`
 	// Name of the GrpcRoute resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -350,16 +340,14 @@ type GrpcRouteState struct {
 	Gateways pulumi.StringArrayInput
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames pulumi.StringArrayInput
-	// Set of label tags associated with the GrpcRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels pulumi.StringMapInput
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayInput
 	// Name of the GrpcRoute resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -384,16 +372,14 @@ type grpcRouteArgs struct {
 	Gateways []string `pulumi:"gateways"`
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames []string `pulumi:"hostnames"`
-	// Set of label tags associated with the GrpcRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes []string `pulumi:"meshes"`
 	// Name of the GrpcRoute resource.
-	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -408,16 +394,14 @@ type GrpcRouteArgs struct {
 	Gateways pulumi.StringArrayInput
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames pulumi.StringArrayInput
-	// Set of label tags associated with the GrpcRoute resource.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+	// present on the resource.
 	Labels pulumi.StringMapInput
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayInput
 	// Name of the GrpcRoute resource.
-	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -536,9 +520,9 @@ func (o GrpcRouteOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Set of label tags associated with the GrpcRoute resource.
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
+// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+// present on the resource.
 func (o GrpcRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -553,8 +537,6 @@ func (o GrpcRouteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o GrpcRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

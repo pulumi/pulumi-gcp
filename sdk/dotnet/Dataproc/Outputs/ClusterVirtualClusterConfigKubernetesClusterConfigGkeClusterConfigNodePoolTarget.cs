@@ -14,19 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget
     {
         /// <summary>
-        /// The target GKE node pool.
+        /// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{nodePool}'
         /// </summary>
         public readonly string NodePool;
         /// <summary>
-        /// The configuration for the GKE node pool. 
-        /// If specified, Dataproc attempts to create a node pool with the specified shape.
-        /// If one with the same name already exists, it is verified against all specified fields.
-        /// If a field differs, the virtual cluster creation will fail.
+        /// Input only. The configuration for the GKE node pool.
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig? NodePoolConfig;
         /// <summary>
-        /// Node group roles. 
-        /// One of `"DRIVER"`.
+        /// The roles associated with the GKE node pool.
         /// </summary>
         public readonly ImmutableArray<string> Roles;
 

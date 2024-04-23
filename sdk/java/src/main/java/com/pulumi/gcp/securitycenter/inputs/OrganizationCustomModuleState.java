@@ -108,14 +108,16 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
     }
 
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is &#34;organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the property for the custom output.
+     * @return The resource name of the custom module. Its format is &#34;organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      * 
      */
     public Optional<Output<String>> name() {
@@ -309,7 +311,8 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name of the property for the custom output.
+         * @param name The resource name of the custom module. Its format is &#34;organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+         * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
          * 
          * @return builder
          * 
@@ -320,7 +323,8 @@ public final class OrganizationCustomModuleState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name of the property for the custom output.
+         * @param name The resource name of the custom module. Its format is &#34;organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}&#34;.
+         * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
          * 
          * @return builder
          * 

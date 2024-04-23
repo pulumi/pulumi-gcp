@@ -35,11 +35,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// </summary>
         public readonly string? NotBeforeTime;
         /// <summary>
+        /// (Output)
         /// The subject alternative name fields.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> SubjectAltNames;
         /// <summary>
+        /// (Output)
         /// Contains distinguished name fields such as the location and organization.
         /// Structure is documented below.
         /// </summary>

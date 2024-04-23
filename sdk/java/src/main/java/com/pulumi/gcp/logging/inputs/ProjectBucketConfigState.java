@@ -141,14 +141,14 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The resource name of the CMEK settings.
+     * The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the CMEK settings.
+     * @return The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
      * 
      */
     public Optional<Output<String>> name() {
@@ -398,7 +398,7 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The resource name of the CMEK settings.
+         * @param name The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The resource name of the CMEK settings.
+         * @param name The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
          * 
          * @return builder
          * 

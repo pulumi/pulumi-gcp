@@ -396,7 +396,6 @@ class Membership(pulumi.CustomResource):
 
         ### Gkehub Membership Regional
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -417,10 +416,8 @@ class Membership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -443,10 +440,8 @@ class Membership(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Issuer
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -472,7 +467,6 @@ class Membership(pulumi.CustomResource):
                 issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -541,7 +535,6 @@ class Membership(pulumi.CustomResource):
 
         ### Gkehub Membership Regional
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,10 +555,8 @@ class Membership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -588,10 +579,8 @@ class Membership(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkehub Membership Issuer
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -617,7 +606,6 @@ class Membership(pulumi.CustomResource):
                 issuer=primary.id.apply(lambda id: f"https://container.googleapis.com/v1/{id}"),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -24,7 +24,6 @@ import (
 //
 // ### Organization Security Policy Rule Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,7 +77,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -99,12 +97,11 @@ type OrganizationSecurityPolicyRule struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are: `INGRESS`, `EGRESS`.
+	// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+	// "EGRESS"]
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
-	// Denotes whether to enable logging for a particular rule.
-	// If logging is enabled, logs will be exported to the
-	// configured export destination in Stackdriver.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver.
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -117,13 +114,10 @@ type OrganizationSecurityPolicyRule struct {
 	// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
 	// highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// A list of network resource URLs to which this rule applies.
-	// This field allows you to control which network's VMs get
-	// this rule. If this field is left blank, all VMs
-	// within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayOutput `pulumi:"targetResources"`
-	// A list of service accounts indicating the sets of
-	// instances that are applied with this rule.
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
 }
 
@@ -174,12 +168,11 @@ type organizationSecurityPolicyRuleState struct {
 	Action *string `pulumi:"action"`
 	// A description of the rule.
 	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are: `INGRESS`, `EGRESS`.
+	// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+	// "EGRESS"]
 	Direction *string `pulumi:"direction"`
-	// Denotes whether to enable logging for a particular rule.
-	// If logging is enabled, logs will be exported to the
-	// configured export destination in Stackdriver.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -192,13 +185,10 @@ type organizationSecurityPolicyRuleState struct {
 	// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
 	// highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
-	// A list of network resource URLs to which this rule applies.
-	// This field allows you to control which network's VMs get
-	// this rule. If this field is left blank, all VMs
-	// within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
-	// A list of service accounts indicating the sets of
-	// instances that are applied with this rule.
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
 }
 
@@ -208,12 +198,11 @@ type OrganizationSecurityPolicyRuleState struct {
 	Action pulumi.StringPtrInput
 	// A description of the rule.
 	Description pulumi.StringPtrInput
-	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are: `INGRESS`, `EGRESS`.
+	// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+	// "EGRESS"]
 	Direction pulumi.StringPtrInput
-	// Denotes whether to enable logging for a particular rule.
-	// If logging is enabled, logs will be exported to the
-	// configured export destination in Stackdriver.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver.
 	EnableLogging pulumi.BoolPtrInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -226,13 +215,10 @@ type OrganizationSecurityPolicyRuleState struct {
 	// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
 	// highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput
-	// A list of network resource URLs to which this rule applies.
-	// This field allows you to control which network's VMs get
-	// this rule. If this field is left blank, all VMs
-	// within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
-	// A list of service accounts indicating the sets of
-	// instances that are applied with this rule.
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
 }
 
@@ -246,12 +232,11 @@ type organizationSecurityPolicyRuleArgs struct {
 	Action string `pulumi:"action"`
 	// A description of the rule.
 	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are: `INGRESS`, `EGRESS`.
+	// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+	// "EGRESS"]
 	Direction *string `pulumi:"direction"`
-	// Denotes whether to enable logging for a particular rule.
-	// If logging is enabled, logs will be exported to the
-	// configured export destination in Stackdriver.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -264,13 +249,10 @@ type organizationSecurityPolicyRuleArgs struct {
 	// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
 	// highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
-	// A list of network resource URLs to which this rule applies.
-	// This field allows you to control which network's VMs get
-	// this rule. If this field is left blank, all VMs
-	// within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
-	// A list of service accounts indicating the sets of
-	// instances that are applied with this rule.
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
 }
 
@@ -281,12 +263,11 @@ type OrganizationSecurityPolicyRuleArgs struct {
 	Action pulumi.StringInput
 	// A description of the rule.
 	Description pulumi.StringPtrInput
-	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are: `INGRESS`, `EGRESS`.
+	// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+	// "EGRESS"]
 	Direction pulumi.StringPtrInput
-	// Denotes whether to enable logging for a particular rule.
-	// If logging is enabled, logs will be exported to the
-	// configured export destination in Stackdriver.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver.
 	EnableLogging pulumi.BoolPtrInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -299,13 +280,10 @@ type OrganizationSecurityPolicyRuleArgs struct {
 	// between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
 	// highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput
-	// A list of network resource URLs to which this rule applies.
-	// This field allows you to control which network's VMs get
-	// this rule. If this field is left blank, all VMs
-	// within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
-	// A list of service accounts indicating the sets of
-	// instances that are applied with this rule.
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
 }
 
@@ -407,15 +385,14 @@ func (o OrganizationSecurityPolicyRuleOutput) Description() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-// Possible values are: `INGRESS`, `EGRESS`.
+// The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: ["INGRESS",
+// "EGRESS"]
 func (o OrganizationSecurityPolicyRuleOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Denotes whether to enable logging for a particular rule.
-// If logging is enabled, logs will be exported to the
-// configured export destination in Stackdriver.
+// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+// export destination in Stackdriver.
 func (o OrganizationSecurityPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.BoolPtrOutput { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }
@@ -443,16 +420,13 @@ func (o OrganizationSecurityPolicyRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// A list of network resource URLs to which this rule applies.
-// This field allows you to control which network's VMs get
-// this rule. If this field is left blank, all VMs
-// within the organization will receive the rule.
+// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o OrganizationSecurityPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringArrayOutput { return v.TargetResources }).(pulumi.StringArrayOutput)
 }
 
-// A list of service accounts indicating the sets of
-// instances that are applied with this rule.
+// A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o OrganizationSecurityPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringArrayOutput { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
 }

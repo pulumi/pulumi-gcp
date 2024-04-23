@@ -303,7 +303,6 @@ class FeatureMembership(pulumi.CustomResource):
 
         ### Config Management
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,10 +337,8 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Config Management With OCI
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -380,11 +377,9 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Multi Cluster Service Discovery
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -396,11 +391,9 @@ class FeatureMembership(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Service Mesh
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -427,11 +420,9 @@ class FeatureMembership(pulumi.CustomResource):
                 management="MANAGEMENT_AUTOMATIC",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Config Management With Regional Membership
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -468,11 +459,9 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Policy Controller With Minimal Configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,11 +490,9 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Policy Controller With Custom Configurations
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -545,7 +532,6 @@ class FeatureMembership(pulumi.CustomResource):
                 version="1.17.0",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -595,7 +581,6 @@ class FeatureMembership(pulumi.CustomResource):
 
         ### Config Management
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,10 +615,8 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Config Management With OCI
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -672,11 +655,9 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Multi Cluster Service Discovery
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -688,11 +669,9 @@ class FeatureMembership(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Service Mesh
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -719,11 +698,9 @@ class FeatureMembership(pulumi.CustomResource):
                 management="MANAGEMENT_AUTOMATIC",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Config Management With Regional Membership
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -760,11 +737,9 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Policy Controller With Minimal Configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -793,11 +768,9 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Policy Controller With Custom Configurations
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -837,7 +810,6 @@ class FeatureMembership(pulumi.CustomResource):
                 version="1.17.0",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

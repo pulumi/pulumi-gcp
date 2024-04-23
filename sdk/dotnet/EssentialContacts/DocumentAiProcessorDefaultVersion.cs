@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// ### Documentai Default Version
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -435,7 +435,6 @@ class TargetSSLProxy(pulumi.CustomResource):
 
         ### Target Ssl Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -461,7 +460,6 @@ class TargetSSLProxy(pulumi.CustomResource):
             backend_service=default_backend_service.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -538,7 +536,6 @@ class TargetSSLProxy(pulumi.CustomResource):
 
         ### Target Ssl Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -564,7 +561,6 @@ class TargetSSLProxy(pulumi.CustomResource):
             backend_service=default_backend_service.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

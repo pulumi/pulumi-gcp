@@ -23,7 +23,6 @@ import (
 //
 // ### Network Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,10 +46,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Custom Mtu
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,10 +74,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Custom Firewall Enforcement Order
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,7 +102,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

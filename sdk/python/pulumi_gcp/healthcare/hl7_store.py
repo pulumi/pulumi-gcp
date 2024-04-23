@@ -433,7 +433,6 @@ class Hl7Store(pulumi.CustomResource):
 
         ### Healthcare Hl7 V2 Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,10 +452,8 @@ class Hl7Store(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Hl7 V2 Store Parser Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,10 +548,8 @@ class Hl7Store(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Hl7 V2 Store Unschematized
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -571,7 +566,6 @@ class Hl7Store(pulumi.CustomResource):
                 version="V2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -644,7 +638,6 @@ class Hl7Store(pulumi.CustomResource):
 
         ### Healthcare Hl7 V2 Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -664,10 +657,8 @@ class Hl7Store(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Hl7 V2 Store Parser Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -762,10 +753,8 @@ class Hl7Store(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Hl7 V2 Store Unschematized
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -782,7 +771,6 @@ class Hl7Store(pulumi.CustomResource):
                 version="V2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

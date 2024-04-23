@@ -186,7 +186,7 @@ class _ProjectBucketConfigState:
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
-        :param pulumi.Input[str] name: The resource name of the CMEK settings.
+        :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
@@ -313,7 +313,7 @@ class _ProjectBucketConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the CMEK settings.
+        The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         """
         return pulumi.get(self, "name")
 
@@ -370,7 +370,6 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,11 +384,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -400,11 +397,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with Log Analytics enabled
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,11 +411,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
             enable_analytics=True,
             bucket_id="custom-bucket")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId and cmekSettings
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,11 +439,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 kms_key_name=key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with index configs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,7 +456,6 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 "type": "INDEX_TYPE_STRING",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -506,7 +496,6 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,11 +510,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="_Default")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -536,11 +523,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
             retention_days=30,
             bucket_id="custom-bucket")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with Log Analytics enabled
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -552,11 +537,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
             enable_analytics=True,
             bucket_id="custom-bucket")
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with customId and cmekSettings
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -582,11 +565,9 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 kms_key_name=key.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Create logging bucket with index configs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -601,7 +582,6 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 "type": "INDEX_TYPE_STRING",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -701,7 +681,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
         :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
-        :param pulumi.Input[str] name: The resource name of the CMEK settings.
+        :param pulumi.Input[str] name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
@@ -790,7 +770,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the CMEK settings.
+        The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         """
         return pulumi.get(self, "name")
 

@@ -13,30 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterControlPlaneEncryptionKmsStatus {
     /**
-     * @return (Output)
-     * The status code, which should be an enum value of google.rpc.Code.
+     * @return The status code, which should be an enum value of google.rpc.Code.
      * 
      */
     private @Nullable Integer code;
     /**
-     * @return (Output)
-     * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+     * @return A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
      * 
      */
     private @Nullable String message;
 
     private ClusterControlPlaneEncryptionKmsStatus() {}
     /**
-     * @return (Output)
-     * The status code, which should be an enum value of google.rpc.Code.
+     * @return The status code, which should be an enum value of google.rpc.Code.
      * 
      */
     public Optional<Integer> code() {
         return Optional.ofNullable(this.code);
     }
     /**
-     * @return (Output)
-     * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+     * @return A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
      * 
      */
     public Optional<String> message() {

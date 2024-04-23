@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupCertificateTemplateIamPolicy(ctx *pulumi.Context, args *LookupCertificateTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCertificateTemplateIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateTemplateIamPolicyResult

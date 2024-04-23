@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### External Vpn Gateway
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -113,7 +112,6 @@ import * as utilities from "../utilities";
  *     "interface": router1Interface2.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

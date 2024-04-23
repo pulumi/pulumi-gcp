@@ -25,7 +25,6 @@ import (
 //
 // ### Cloudbuild Trigger Filename
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,10 +57,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Build
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -201,10 +198,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Service Account
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -268,10 +263,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Include Build Logs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -305,10 +298,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Pubsub Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -359,10 +350,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Webhook Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -452,10 +441,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Manual
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -493,10 +480,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Manual Github Enterprise
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -533,10 +518,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Manual Bitbucket Server
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -573,10 +556,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Repo
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -629,10 +610,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Bitbucket Server Push
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -667,10 +646,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Bitbucket Server Pull Request
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -706,10 +683,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Github Enterprise
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -743,10 +718,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Allow Failure
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -855,10 +828,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Allow Exit Codes
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -970,10 +941,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Cloudbuild Trigger Pubsub With Repo
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1041,7 +1010,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

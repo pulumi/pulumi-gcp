@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dlp Job Trigger Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,10 +54,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Bigquery Row Limit
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -98,10 +95,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Bigquery Row Limit Percentage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -141,10 +136,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Job Notification Emails
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -173,10 +166,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Deidentify
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -259,10 +250,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Hybrid
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -301,10 +290,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Inspect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -392,10 +379,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Publish To Stackdriver
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -424,10 +409,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger With Id
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -464,10 +447,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Multiple Actions
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -510,10 +491,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -552,7 +531,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -601,12 +579,11 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     }
 
     /**
-     * (Output)
      * The creation timestamp of an inspectTemplate. Set by the server.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -615,7 +592,6 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Controls what and how to inspect for findings.
-     * Structure is documented below.
      */
     public readonly inspectJob!: pulumi.Output<outputs.dataloss.PreventionJobTriggerInspectJob | undefined>;
     /**
@@ -623,7 +599,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
     /**
-     * Name describing the field excluded from scanning.
+     * The resource name of the job trigger. Set by the server.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -632,15 +608,12 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     public readonly triggerId!: pulumi.Output<string>;
     /**
@@ -707,12 +680,11 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
  */
 export interface PreventionJobTriggerState {
     /**
-     * (Output)
      * The creation timestamp of an inspectTemplate. Set by the server.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      */
     description?: pulumi.Input<string>;
     /**
@@ -721,7 +693,6 @@ export interface PreventionJobTriggerState {
     displayName?: pulumi.Input<string>;
     /**
      * Controls what and how to inspect for findings.
-     * Structure is documented below.
      */
     inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob>;
     /**
@@ -729,7 +700,7 @@ export interface PreventionJobTriggerState {
      */
     lastRunTime?: pulumi.Input<string>;
     /**
-     * Name describing the field excluded from scanning.
+     * The resource name of the job trigger. Set by the server.
      */
     name?: pulumi.Input<string>;
     /**
@@ -738,15 +709,12 @@ export interface PreventionJobTriggerState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
      */
     status?: pulumi.Input<string>;
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     triggerId?: pulumi.Input<string>;
     /**
@@ -765,7 +733,7 @@ export interface PreventionJobTriggerState {
  */
 export interface PreventionJobTriggerArgs {
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      */
     description?: pulumi.Input<string>;
     /**
@@ -774,7 +742,6 @@ export interface PreventionJobTriggerArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Controls what and how to inspect for findings.
-     * Structure is documented below.
      */
     inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob>;
     /**
@@ -783,15 +750,12 @@ export interface PreventionJobTriggerArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * Whether the trigger is currently active.
-     * Default value is `HEALTHY`.
-     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+     * Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
      */
     status?: pulumi.Input<string>;
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
-     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     triggerId?: pulumi.Input<string>;
     /**

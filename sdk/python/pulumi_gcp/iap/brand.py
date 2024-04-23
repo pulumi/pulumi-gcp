@@ -205,7 +205,6 @@ class Brand(pulumi.CustomResource):
 
         ### Iap Brand
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -222,7 +221,6 @@ class Brand(pulumi.CustomResource):
             application_title="Cloud IAP protected Application",
             project=project_service.project)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -273,7 +271,6 @@ class Brand(pulumi.CustomResource):
 
         ### Iap Brand
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -290,7 +287,6 @@ class Brand(pulumi.CustomResource):
             application_title="Cloud IAP protected Application",
             project=project_service.project)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

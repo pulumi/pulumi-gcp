@@ -125,7 +125,6 @@ def get_asset_iam_policy(asset: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -136,7 +135,6 @@ def get_asset_iam_policy(asset: Optional[str] = None,
         dataplex_zone=example["dataplexZone"],
         asset=example["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str asset: Used to find the parent resource to bind the IAM policy to
@@ -175,7 +173,6 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -186,7 +183,6 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[str]] = None,
         dataplex_zone=example["dataplexZone"],
         asset=example["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str asset: Used to find the parent resource to bind the IAM policy to

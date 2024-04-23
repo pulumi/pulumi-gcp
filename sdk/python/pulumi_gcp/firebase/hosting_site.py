@@ -197,7 +197,6 @@ class HostingSite(pulumi.CustomResource):
 
         ### Firebasehosting Site Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -206,10 +205,8 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-no-app")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Site Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -222,7 +219,6 @@ class HostingSite(pulumi.CustomResource):
             site_id="site-with-app",
             app_id=default.app_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,7 +271,6 @@ class HostingSite(pulumi.CustomResource):
 
         ### Firebasehosting Site Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -284,10 +279,8 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-no-app")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebasehosting Site Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -300,7 +293,6 @@ class HostingSite(pulumi.CustomResource):
             site_id="site-with-app",
             app_id=default.app_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -935,7 +935,6 @@ class Firewall(pulumi.CustomResource):
 
         ### Firewall Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -959,10 +958,8 @@ class Firewall(pulumi.CustomResource):
             ],
             source_tags=["web"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firewall With Target Tags
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -983,7 +980,6 @@ class Firewall(pulumi.CustomResource):
             source_tags=["foo"],
             target_tags=["web"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1127,7 +1123,6 @@ class Firewall(pulumi.CustomResource):
 
         ### Firewall Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1151,10 +1146,8 @@ class Firewall(pulumi.CustomResource):
             ],
             source_tags=["web"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firewall With Target Tags
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1175,7 +1168,6 @@ class Firewall(pulumi.CustomResource):
             source_tags=["foo"],
             target_tags=["web"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

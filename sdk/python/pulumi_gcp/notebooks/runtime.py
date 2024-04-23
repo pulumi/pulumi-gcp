@@ -432,7 +432,6 @@ class Runtime(pulumi.CustomResource):
 
         ### Notebook Runtime Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -456,10 +455,8 @@ class Runtime(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Basic Gpu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -490,10 +487,8 @@ class Runtime(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -527,10 +522,8 @@ class Runtime(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Kernels
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -563,10 +556,8 @@ class Runtime(pulumi.CustomResource):
                 "k": "val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Script
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,7 +587,6 @@ class Runtime(pulumi.CustomResource):
                 "k": "val",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -670,7 +660,6 @@ class Runtime(pulumi.CustomResource):
 
         ### Notebook Runtime Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -694,10 +683,8 @@ class Runtime(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Basic Gpu
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -728,10 +715,8 @@ class Runtime(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -765,10 +750,8 @@ class Runtime(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Kernels
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -801,10 +784,8 @@ class Runtime(pulumi.CustomResource):
                 "k": "val",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Notebook Runtime Script
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -834,7 +815,6 @@ class Runtime(pulumi.CustomResource):
                 "k": "val",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

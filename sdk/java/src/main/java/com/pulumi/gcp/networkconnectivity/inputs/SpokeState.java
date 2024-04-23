@@ -82,20 +82,20 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -103,14 +103,18 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      * 
      */
     @Import(name="linkedInterconnectAttachments")
     private @Nullable Output<SpokeLinkedInterconnectAttachmentsArgs> linkedInterconnectAttachments;
 
     /**
-     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      * 
      */
     public Optional<Output<SpokeLinkedInterconnectAttachmentsArgs>> linkedInterconnectAttachments() {
@@ -391,10 +395,10 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for
+         * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+         * `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -405,10 +409,10 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * @param labels Optional labels in key:value format. For more information about labels, see [Requirements for
+         * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+         * `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -418,7 +422,9 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+         * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+         * advertising the same prefixes.
          * 
          * @return builder
          * 
@@ -429,7 +435,9 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+         * @param linkedInterconnectAttachments A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+         * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+         * advertising the same prefixes.
          * 
          * @return builder
          * 

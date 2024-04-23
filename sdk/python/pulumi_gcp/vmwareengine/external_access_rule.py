@@ -468,7 +468,6 @@ class ExternalAccessRule(pulumi.CustomResource):
 
         ### Vmware Engine External Access Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -498,10 +497,8 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine External Access Rule Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,7 +548,6 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -602,7 +598,6 @@ class ExternalAccessRule(pulumi.CustomResource):
 
         ### Vmware Engine External Access Rule Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -632,10 +627,8 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine External Access Rule Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -685,7 +678,6 @@ class ExternalAccessRule(pulumi.CustomResource):
             )],
             destination_ports=["433"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

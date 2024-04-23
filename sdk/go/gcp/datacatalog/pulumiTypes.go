@@ -695,10 +695,8 @@ func (o EntryGcsFilesetSpecPtrOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSa
 }
 
 type EntryGcsFilesetSpecSampleGcsFileSpec struct {
-	// (Output)
 	// The full file path
 	FilePath *string `pulumi:"filePath"`
-	// (Output)
 	// The size of the file, in bytes.
 	SizeBytes *int `pulumi:"sizeBytes"`
 }
@@ -715,10 +713,8 @@ type EntryGcsFilesetSpecSampleGcsFileSpecInput interface {
 }
 
 type EntryGcsFilesetSpecSampleGcsFileSpecArgs struct {
-	// (Output)
 	// The full file path
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
-	// (Output)
 	// The size of the file, in bytes.
 	SizeBytes pulumi.IntPtrInput `pulumi:"sizeBytes"`
 }
@@ -774,13 +770,11 @@ func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) ToEntryGcsFilesetSpecSampleG
 	return o
 }
 
-// (Output)
 // The full file path
 func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpecSampleGcsFileSpec) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The size of the file, in bytes.
 func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) SizeBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpecSampleGcsFileSpec) *int { return v.SizeBytes }).(pulumi.IntPtrOutput)

@@ -20,7 +20,6 @@ import javax.annotation.Nullable;
 public final class AuthorityConfigX509Config {
     /**
      * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-     * Structure is documented below.
      * 
      */
     private @Nullable List<AuthorityConfigX509ConfigAdditionalExtension> additionalExtensions;
@@ -32,25 +31,21 @@ public final class AuthorityConfigX509Config {
     private @Nullable List<String> aiaOcspServers;
     /**
      * @return Describes values that are relevant in a CA certificate.
-     * Structure is documented below.
      * 
      */
     private AuthorityConfigX509ConfigCaOptions caOptions;
     /**
      * @return Indicates the intended use for keys that correspond to a certificate.
-     * Structure is documented below.
      * 
      */
     private AuthorityConfigX509ConfigKeyUsage keyUsage;
     /**
      * @return Describes the X.509 name constraints extension.
-     * Structure is documented below.
      * 
      */
     private @Nullable AuthorityConfigX509ConfigNameConstraints nameConstraints;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-     * Structure is documented below.
      * 
      */
     private @Nullable List<AuthorityConfigX509ConfigPolicyId> policyIds;
@@ -58,7 +53,6 @@ public final class AuthorityConfigX509Config {
     private AuthorityConfigX509Config() {}
     /**
      * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-     * Structure is documented below.
      * 
      */
     public List<AuthorityConfigX509ConfigAdditionalExtension> additionalExtensions() {
@@ -74,7 +68,6 @@ public final class AuthorityConfigX509Config {
     }
     /**
      * @return Describes values that are relevant in a CA certificate.
-     * Structure is documented below.
      * 
      */
     public AuthorityConfigX509ConfigCaOptions caOptions() {
@@ -82,7 +75,6 @@ public final class AuthorityConfigX509Config {
     }
     /**
      * @return Indicates the intended use for keys that correspond to a certificate.
-     * Structure is documented below.
      * 
      */
     public AuthorityConfigX509ConfigKeyUsage keyUsage() {
@@ -90,7 +82,6 @@ public final class AuthorityConfigX509Config {
     }
     /**
      * @return Describes the X.509 name constraints extension.
-     * Structure is documented below.
      * 
      */
     public Optional<AuthorityConfigX509ConfigNameConstraints> nameConstraints() {
@@ -98,7 +89,6 @@ public final class AuthorityConfigX509Config {
     }
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-     * Structure is documented below.
      * 
      */
     public List<AuthorityConfigX509ConfigPolicyId> policyIds() {

@@ -18,7 +18,6 @@ import (
 //
 // ### Config Management
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Config Management With OCI
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -161,11 +158,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Multi Cluster Service Discovery
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -193,11 +188,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Service Mesh
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -257,11 +250,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Config Management With Regional Membership
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -331,11 +322,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Policy Controller With Minimal Configuration
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -397,11 +386,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Policy Controller With Custom Configurations
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -474,7 +461,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

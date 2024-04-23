@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Billing Budget Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -47,10 +46,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Billing Budget Lastperiod
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,10 +70,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Billing Budget Filter
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -115,10 +110,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Billing Budget Notify
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -161,10 +154,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Billing Budget Customperiod
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -209,7 +200,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -264,10 +254,8 @@ export class Budget extends pulumi.CustomResource {
     }
 
     /**
-     * Defines notifications that are sent on every update to the
-     * billing account's spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
      * using threshold rules.
-     * Structure is documented below.
      */
     public readonly allUpdatesRule!: pulumi.Output<outputs.billing.BudgetAllUpdatesRule | undefined>;
     /**
@@ -280,9 +268,7 @@ export class Budget extends pulumi.CustomResource {
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
-     * Filters that define which resources are used to compute the actual
-     * spend against the budget.
-     * Structure is documented below.
+     * Filters that define which resources are used to compute the actual spend against the budget.
      */
     public readonly budgetFilter!: pulumi.Output<outputs.billing.BudgetBudgetFilter>;
     /**
@@ -296,10 +282,8 @@ export class Budget extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Rules that trigger alerts (notifications of thresholds being
-     * crossed) when spend exceeds the specified percentages of the
-     * budget.
-     * Structure is documented below.
+     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+     * the budget.
      */
     public readonly thresholdRules!: pulumi.Output<outputs.billing.BudgetThresholdRule[] | undefined>;
 
@@ -349,10 +333,8 @@ export class Budget extends pulumi.CustomResource {
  */
 export interface BudgetState {
     /**
-     * Defines notifications that are sent on every update to the
-     * billing account's spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
      * using threshold rules.
-     * Structure is documented below.
      */
     allUpdatesRule?: pulumi.Input<inputs.billing.BudgetAllUpdatesRule>;
     /**
@@ -365,9 +347,7 @@ export interface BudgetState {
      */
     billingAccount?: pulumi.Input<string>;
     /**
-     * Filters that define which resources are used to compute the actual
-     * spend against the budget.
-     * Structure is documented below.
+     * Filters that define which resources are used to compute the actual spend against the budget.
      */
     budgetFilter?: pulumi.Input<inputs.billing.BudgetBudgetFilter>;
     /**
@@ -381,10 +361,8 @@ export interface BudgetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Rules that trigger alerts (notifications of thresholds being
-     * crossed) when spend exceeds the specified percentages of the
-     * budget.
-     * Structure is documented below.
+     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+     * the budget.
      */
     thresholdRules?: pulumi.Input<pulumi.Input<inputs.billing.BudgetThresholdRule>[]>;
 }
@@ -394,10 +372,8 @@ export interface BudgetState {
  */
 export interface BudgetArgs {
     /**
-     * Defines notifications that are sent on every update to the
-     * billing account's spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
      * using threshold rules.
-     * Structure is documented below.
      */
     allUpdatesRule?: pulumi.Input<inputs.billing.BudgetAllUpdatesRule>;
     /**
@@ -410,9 +386,7 @@ export interface BudgetArgs {
      */
     billingAccount: pulumi.Input<string>;
     /**
-     * Filters that define which resources are used to compute the actual
-     * spend against the budget.
-     * Structure is documented below.
+     * Filters that define which resources are used to compute the actual spend against the budget.
      */
     budgetFilter?: pulumi.Input<inputs.billing.BudgetBudgetFilter>;
     /**
@@ -420,10 +394,8 @@ export interface BudgetArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Rules that trigger alerts (notifications of thresholds being
-     * crossed) when spend exceeds the specified percentages of the
-     * budget.
-     * Structure is documented below.
+     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
+     * the budget.
      */
     thresholdRules?: pulumi.Input<pulumi.Input<inputs.billing.BudgetThresholdRule>[]>;
 }

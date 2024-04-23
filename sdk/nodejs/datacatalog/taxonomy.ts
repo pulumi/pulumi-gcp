@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Data Catalog Taxonomy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

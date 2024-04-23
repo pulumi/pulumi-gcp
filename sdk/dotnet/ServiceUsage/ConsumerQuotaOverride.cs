@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// ### Consumer Quota Override
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,10 +58,8 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Region Consumer Quota Override
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -101,10 +98,8 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Consumer Quota Override Custom Dimension
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -143,7 +138,6 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

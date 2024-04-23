@@ -84,14 +84,12 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=hl7_v2_store["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str hl7_v2_store_id: The HL7v2 store ID, in the form
@@ -119,14 +117,12 @@ def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[st
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=hl7_v2_store["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str hl7_v2_store_id: The HL7v2 store ID, in the form

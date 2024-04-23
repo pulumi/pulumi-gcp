@@ -308,7 +308,6 @@ def get_job(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -316,7 +315,6 @@ def get_job(location: Optional[str] = None,
     my_job = gcp.cloudrunv2.get_job(name="my-job",
         location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the instance. eg us-central1
@@ -377,7 +375,6 @@ def get_job_output(location: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -385,7 +382,6 @@ def get_job_output(location: Optional[pulumi.Input[Optional[str]]] = None,
     my_job = gcp.cloudrunv2.get_job(name="my-job",
         location="us-central1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the instance. eg us-central1

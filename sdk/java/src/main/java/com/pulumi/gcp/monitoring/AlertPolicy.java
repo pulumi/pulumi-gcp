@@ -250,7 +250,6 @@ import javax.annotation.Nullable;
 public class AlertPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Control over how this alert policy&#39;s notification channels are notified.
-     * Structure is documented below.
      * 
      */
     @Export(name="alertStrategy", refs={AlertPolicyAlertStrategy.class}, tree="[0]")
@@ -258,7 +257,6 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Control over how this alert policy&#39;s notification channels are notified.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<AlertPolicyAlertStrategy>> alertStrategy() {
@@ -345,24 +343,20 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Documentation that is included with notifications and incidents related
-     * to this policy. Best practice is for the documentation to include information
-     * to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have
-     * limited capacity might not show this documentation.
-     * Structure is documented below.
+     * Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
+     * documentation.
      * 
      */
     @Export(name="documentation", refs={AlertPolicyDocumentation.class}, tree="[0]")
     private Output</* @Nullable */ AlertPolicyDocumentation> documentation;
 
     /**
-     * @return Documentation that is included with notifications and incidents related
-     * to this policy. Best practice is for the documentation to include information
-     * to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have
-     * limited capacity might not show this documentation.
-     * Structure is documented below.
+     * @return Documentation that is included with notifications and incidents related to this policy. Best practice is for the
+     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
+     * documentation.
      * 
      */
     public Output<Optional<AlertPolicyDocumentation>> documentation() {
@@ -383,110 +377,76 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * (Output)
-     * The unique resource name for this condition.
-     * Its syntax is:
-     * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
-     * [CONDITION_ID] is assigned by Stackdriver Monitoring when
-     * the condition is created as part of a new or updated alerting
-     * policy.
+     * The unique resource name for this policy.
+     * Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (Output)
-     * The unique resource name for this condition.
-     * Its syntax is:
-     * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
-     * [CONDITION_ID] is assigned by Stackdriver Monitoring when
-     * the condition is created as part of a new or updated alerting
-     * policy.
+     * @return The unique resource name for this policy.
+     * Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Identifies the notification channels to which notifications should be
-     * sent when incidents are opened or closed or when new violations occur
-     * on an already opened incident. Each element of this array corresponds
-     * to the name field in each of the NotificationChannel objects that are
-     * returned from the notificationChannels.list method. The syntax of the
-     * entries in this field is
-     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
+     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
+     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
+     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
+     * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
      * 
      */
     @Export(name="notificationChannels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationChannels;
 
     /**
-     * @return Identifies the notification channels to which notifications should be
-     * sent when incidents are opened or closed or when new violations occur
-     * on an already opened incident. Each element of this array corresponds
-     * to the name field in each of the NotificationChannel objects that are
-     * returned from the notificationChannels.list method. The syntax of the
-     * entries in this field is
-     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
+     * @return Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
+     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
+     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
+     * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
      * 
      */
     public Output<Optional<List<String>>> notificationChannels() {
         return Codegen.optional(this.notificationChannels);
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The severity of an alert policy indicates how important incidents generated
-     * by that policy are. The severity level will be displayed on the Incident
-     * detail page and in notifications.
-     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
+     * be displayed on the Incident detail page and in notifications. Possible values: [&#34;CRITICAL&#34;, &#34;ERROR&#34;, &#34;WARNING&#34;]
      * 
      */
     @Export(name="severity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> severity;
 
     /**
-     * @return The severity of an alert policy indicates how important incidents generated
-     * by that policy are. The severity level will be displayed on the Incident
-     * detail page and in notifications.
-     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * @return The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
+     * be displayed on the Incident detail page and in notifications. Possible values: [&#34;CRITICAL&#34;, &#34;ERROR&#34;, &#34;WARNING&#34;]
      * 
      */
     public Output<Optional<String>> severity() {
         return Codegen.optional(this.severity);
     }
     /**
-     * This field is intended to be used for organizing and identifying the AlertPolicy
-     * objects.The field can contain up to 64 entries. Each key and value is limited
-     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
-     * must begin with a letter.
+     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
+     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      * 
      */
     @Export(name="userLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> userLabels;
 
     /**
-     * @return This field is intended to be used for organizing and identifying the AlertPolicy
-     * objects.The field can contain up to 64 entries. Each key and value is limited
-     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
-     * must begin with a letter.
+     * @return This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
+     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      * 
      */
     public Output<Optional<Map<String,String>>> userLabels() {

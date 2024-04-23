@@ -249,7 +249,6 @@ class ReservationAssignment(pulumi.CustomResource):
         ## Example Usage
 
         ### Basic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -265,7 +264,6 @@ class ReservationAssignment(pulumi.CustomResource):
             job_type="PIPELINE",
             reservation=basic.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -315,7 +313,6 @@ class ReservationAssignment(pulumi.CustomResource):
         ## Example Usage
 
         ### Basic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -331,7 +328,6 @@ class ReservationAssignment(pulumi.CustomResource):
             job_type="PIPELINE",
             reservation=basic.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

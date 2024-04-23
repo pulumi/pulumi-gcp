@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
 
     public sealed class RestorePlanIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// User specified descriptive string for this RestorePlan.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 

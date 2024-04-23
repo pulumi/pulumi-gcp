@@ -671,7 +671,6 @@ class Routine(pulumi.CustomResource):
 
         ### Bigquery Routine Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -684,10 +683,8 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Json
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -711,10 +708,8 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Tvf
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -743,10 +738,8 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -786,10 +779,8 @@ class Routine(pulumi.CustomResource):
                 runtime_version="2.1",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark Mainfile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -814,10 +805,8 @@ class Routine(pulumi.CustomResource):
                 archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Spark Jar
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -845,10 +834,8 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Data Governance Type
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -867,10 +854,8 @@ class Routine(pulumi.CustomResource):
             )],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Remote Function
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -895,7 +880,6 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -982,7 +966,6 @@ class Routine(pulumi.CustomResource):
 
         ### Bigquery Routine Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -995,10 +978,8 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Json
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1022,10 +1003,8 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Tvf
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1054,10 +1033,8 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1097,10 +1074,8 @@ class Routine(pulumi.CustomResource):
                 runtime_version="2.1",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Pyspark Mainfile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1125,10 +1100,8 @@ class Routine(pulumi.CustomResource):
                 archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Spark Jar
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1156,10 +1129,8 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Data Governance Type
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1178,10 +1149,8 @@ class Routine(pulumi.CustomResource):
             )],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Routine Remote Function
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1206,7 +1175,6 @@ class Routine(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

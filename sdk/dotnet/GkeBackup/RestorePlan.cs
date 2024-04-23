@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// ### Gkebackup Restoreplan All Namespaces
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,10 +85,8 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkebackup Restoreplan Rollback Namespace
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -171,10 +168,8 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkebackup Restoreplan Protected Application
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -247,10 +242,8 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkebackup Restoreplan All Cluster Resources
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -313,10 +306,8 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkebackup Restoreplan Rename Namespace
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -432,10 +423,8 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Gkebackup Restoreplan Second Transformation
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -545,7 +534,6 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -600,12 +588,9 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Description: A set of custom labels supplied by the user.
-        /// A list of key-&gt;value pairs.
-        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Description: A set of custom labels supplied by the user. A list of key-&gt;value pairs. Example: { "name": "wrench",
+        /// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -622,10 +607,6 @@ namespace Pulumi.Gcp.GkeBackup
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -735,12 +716,9 @@ namespace Pulumi.Gcp.GkeBackup
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Description: A set of custom labels supplied by the user.
-        /// A list of key-&gt;value pairs.
-        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Description: A set of custom labels supplied by the user. A list of key-&gt;value pairs. Example: { "name": "wrench",
+        /// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -760,10 +738,6 @@ namespace Pulumi.Gcp.GkeBackup
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -821,12 +795,9 @@ namespace Pulumi.Gcp.GkeBackup
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Description: A set of custom labels supplied by the user.
-        /// A list of key-&gt;value pairs.
-        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Description: A set of custom labels supplied by the user. A list of key-&gt;value pairs. Example: { "name": "wrench",
+        /// "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -846,10 +817,6 @@ namespace Pulumi.Gcp.GkeBackup
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -105,7 +105,6 @@ def get_tunnel_dest_group_iam_policy(dest_group: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_tunnel_dest_group_iam_policy(dest_group: Optional[str] = None,
         region=dest_group["region"],
         dest_group=dest_group["groupName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.
@@ -150,7 +148,6 @@ def get_tunnel_dest_group_iam_policy_output(dest_group: Optional[pulumi.Input[st
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -159,7 +156,6 @@ def get_tunnel_dest_group_iam_policy_output(dest_group: Optional[pulumi.Input[st
         region=dest_group["region"],
         dest_group=dest_group["groupName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The ID of the project in which the resource belongs.

@@ -53,7 +53,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      * 
      */
     @Import(name="frequencyOptions")
@@ -61,7 +60,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<InsightsReportConfigFrequencyOptionsArgs>> frequencyOptions() {
@@ -87,7 +85,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * Options for including metadata in an inventory report.
-     * Structure is documented below.
      * 
      */
     @Import(name="objectMetadataReportOptions")
@@ -95,26 +92,15 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Options for including metadata in an inventory report.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<InsightsReportConfigObjectMetadataReportOptionsArgs>> objectMetadataReportOptions() {
         return Optional.ofNullable(this.objectMetadataReportOptions);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -194,7 +180,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param frequencyOptions Options for configuring how inventory reports are generated.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -206,7 +191,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param frequencyOptions Options for configuring how inventory reports are generated.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -240,7 +224,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param objectMetadataReportOptions Options for including metadata in an inventory report.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -252,7 +235,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param objectMetadataReportOptions Options for including metadata in an inventory report.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -261,25 +243,11 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
             return objectMetadataReportOptions(Output.of(objectMetadataReportOptions));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

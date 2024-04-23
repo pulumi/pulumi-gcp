@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Filestore Snapshot Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,10 +41,8 @@ import * as utilities from "../utilities";
  *     location: "us-east1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Filestore Snapshot Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,7 +70,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

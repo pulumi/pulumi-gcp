@@ -28,7 +28,6 @@ import (
 //
 // ### Alloydb Cluster Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +65,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Alloydb Cluster Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -143,10 +140,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Alloydb Cluster Restore
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -250,10 +245,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Alloydb Secondary Cluster Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -338,7 +331,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

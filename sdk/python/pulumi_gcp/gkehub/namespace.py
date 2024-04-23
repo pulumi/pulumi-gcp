@@ -419,7 +419,6 @@ class Namespace(pulumi.CustomResource):
 
         ### Gkehub Namespace Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,7 +439,6 @@ class Namespace(pulumi.CustomResource):
                 "keyc": "valuec",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -505,7 +503,6 @@ class Namespace(pulumi.CustomResource):
 
         ### Gkehub Namespace Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -526,7 +523,6 @@ class Namespace(pulumi.CustomResource):
                 "keyc": "valuec",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

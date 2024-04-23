@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? IdleDeleteTtl { get; set; }
 
         /// <summary>
-        /// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+        /// Time when the cluster became idle
+        /// (most recent job finished) and became eligible for deletion due to idleness.
         /// </summary>
         [Input("idleStartTime")]
         public Input<string>? IdleStartTime { get; set; }

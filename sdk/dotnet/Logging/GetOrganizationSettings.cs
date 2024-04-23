@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Organization Settings Basic
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOrganizationSettingsResult> InvokeAsync(GetOrganizationSettingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSettingsResult>("gcp:logging/getOrganizationSettings:getOrganizationSettings", args ?? new GetOrganizationSettingsArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Organization Settings Basic
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOrganizationSettingsResult> Invoke(GetOrganizationSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationSettingsResult>("gcp:logging/getOrganizationSettings:getOrganizationSettings", args ?? new GetOrganizationSettingsInvokeArgs(), options.WithDefaults());

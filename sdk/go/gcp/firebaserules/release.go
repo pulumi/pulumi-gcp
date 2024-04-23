@@ -18,7 +18,6 @@ import (
 //
 // ### Firestore_release
 // Creates a Firebase Rules Release to Cloud Firestore
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,10 +61,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Storage_release
 // Creates a Firebase Rules Release for a Storage bucket
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -131,7 +128,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

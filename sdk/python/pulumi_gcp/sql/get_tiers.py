@@ -76,7 +76,6 @@ def get_tiers(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -85,7 +84,6 @@ def get_tiers(project: Optional[str] = None,
     all_available_tiers = [v.tier for v in tiers.tiers]
     pulumi.export("avaialbleTiers", all_available_tiers)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
@@ -112,7 +110,6 @@ def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -121,7 +118,6 @@ def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     all_available_tiers = [v.tier for v in tiers.tiers]
     pulumi.export("avaialbleTiers", all_available_tiers)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.

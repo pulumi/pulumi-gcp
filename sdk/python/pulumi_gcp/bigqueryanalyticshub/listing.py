@@ -41,18 +41,14 @@ class ListingArgs:
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
-               Structure is documented below.
-        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+               except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] documentation: Documentation describing the listing.
         :param pulumi.Input[str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
-               Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         :param pulumi.Input['ListingRestrictedExportConfigArgs'] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
-               Structure is documented below.
         """
         pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
@@ -158,7 +154,6 @@ class ListingArgs:
     def data_provider(self) -> Optional[pulumi.Input['ListingDataProviderArgs']]:
         """
         Details of the data provider who owns the source data.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_provider")
 
@@ -170,7 +165,8 @@ class ListingArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+        except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         """
         return pulumi.get(self, "description")
 
@@ -217,10 +213,6 @@ class ListingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -232,7 +224,6 @@ class ListingArgs:
     def publisher(self) -> Optional[pulumi.Input['ListingPublisherArgs']]:
         """
         Details of the publisher who owns the listing and who can share the source data.
-        Structure is documented below.
         """
         return pulumi.get(self, "publisher")
 
@@ -257,7 +248,6 @@ class ListingArgs:
     def restricted_export_config(self) -> Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]:
         """
         If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        Structure is documented below.
         """
         return pulumi.get(self, "restricted_export_config")
 
@@ -292,22 +282,18 @@ class _ListingState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input['ListingDataProviderArgs'] data_provider: Details of the data provider who owns the source data.
-               Structure is documented below.
-        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+               except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[str] documentation: Documentation describing the listing.
         :param pulumi.Input[str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
-        :param pulumi.Input[str] name: Name of the data provider.
+        :param pulumi.Input[str] name: The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
-               Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         :param pulumi.Input['ListingRestrictedExportConfigArgs'] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
-               Structure is documented below.
         """
         if bigquery_dataset is not None:
             pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
@@ -384,7 +370,6 @@ class _ListingState:
     def data_provider(self) -> Optional[pulumi.Input['ListingDataProviderArgs']]:
         """
         Details of the data provider who owns the source data.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_provider")
 
@@ -396,7 +381,8 @@ class _ListingState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+        except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         """
         return pulumi.get(self, "description")
 
@@ -468,7 +454,7 @@ class _ListingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the data provider.
+        The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         """
         return pulumi.get(self, "name")
 
@@ -491,10 +477,6 @@ class _ListingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -506,7 +488,6 @@ class _ListingState:
     def publisher(self) -> Optional[pulumi.Input['ListingPublisherArgs']]:
         """
         Details of the publisher who owns the listing and who can share the source data.
-        Structure is documented below.
         """
         return pulumi.get(self, "publisher")
 
@@ -531,7 +512,6 @@ class _ListingState:
     def restricted_export_config(self) -> Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]:
         """
         If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        Structure is documented below.
         """
         return pulumi.get(self, "restricted_export_config")
 
@@ -574,7 +554,6 @@ class Listing(pulumi.CustomResource):
 
         ### Bigquery Analyticshub Listing Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -599,10 +578,8 @@ class Listing(pulumi.CustomResource):
                 dataset=listing_dataset.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Analyticshub Listing Restricted
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,7 +608,6 @@ class Listing(pulumi.CustomResource):
                 restrict_query_result=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -664,21 +640,17 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[pulumi.InputType['ListingDataProviderArgs']] data_provider: Details of the data provider who owns the source data.
-               Structure is documented below.
-        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+               except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[str] documentation: Documentation describing the listing.
         :param pulumi.Input[str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
-               Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         :param pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
-               Structure is documented below.
         """
         ...
     @overload
@@ -699,7 +671,6 @@ class Listing(pulumi.CustomResource):
 
         ### Bigquery Analyticshub Listing Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -724,10 +695,8 @@ class Listing(pulumi.CustomResource):
                 dataset=listing_dataset.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigquery Analyticshub Listing Restricted
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -756,7 +725,6 @@ class Listing(pulumi.CustomResource):
                 restrict_query_result=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -885,22 +853,18 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Categories of the listing. Up to two categories are allowed.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[pulumi.InputType['ListingDataProviderArgs']] data_provider: Details of the data provider who owns the source data.
-               Structure is documented below.
-        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        :param pulumi.Input[str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+               except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
         :param pulumi.Input[str] documentation: Documentation describing the listing.
         :param pulumi.Input[str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
-        :param pulumi.Input[str] name: Name of the data provider.
+        :param pulumi.Input[str] name: The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
-               Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         :param pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
-               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -954,7 +918,6 @@ class Listing(pulumi.CustomResource):
     def data_provider(self) -> pulumi.Output[Optional['outputs.ListingDataProvider']]:
         """
         Details of the data provider who owns the source data.
-        Structure is documented below.
         """
         return pulumi.get(self, "data_provider")
 
@@ -962,7 +925,8 @@ class Listing(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+        except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         """
         return pulumi.get(self, "description")
 
@@ -1010,7 +974,7 @@ class Listing(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the data provider.
+        The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456"
         """
         return pulumi.get(self, "name")
 
@@ -1025,10 +989,6 @@ class Listing(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1036,7 +996,6 @@ class Listing(pulumi.CustomResource):
     def publisher(self) -> pulumi.Output[Optional['outputs.ListingPublisher']]:
         """
         Details of the publisher who owns the listing and who can share the source data.
-        Structure is documented below.
         """
         return pulumi.get(self, "publisher")
 
@@ -1053,7 +1012,6 @@ class Listing(pulumi.CustomResource):
     def restricted_export_config(self) -> pulumi.Output[Optional['outputs.ListingRestrictedExportConfig']]:
         """
         If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        Structure is documented below.
         """
         return pulumi.get(self, "restricted_export_config")
 

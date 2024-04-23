@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  *
  * ### Node Group Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,10 +41,8 @@ import * as utilities from "../utilities";
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Node Group Maintenance Interval
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,10 +61,8 @@ import * as utilities from "../utilities";
  *     maintenanceInterval: "RECURRENT",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Node Group Autoscaling Policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,10 +89,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Node Group Share Settings
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -127,7 +120,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

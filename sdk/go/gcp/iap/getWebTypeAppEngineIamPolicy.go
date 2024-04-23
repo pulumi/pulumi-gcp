@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetWebTypeAppEngineIamPolicy(ctx *pulumi.Context, args *GetWebTypeAppEngineIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetWebTypeAppEngineIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebTypeAppEngineIamPolicyResult

@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Project Settings Basic
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectSettingsResult> InvokeAsync(GetProjectSettingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectSettingsResult>("gcp:logging/getProjectSettings:getProjectSettings", args ?? new GetProjectSettingsArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Logging Project Settings Basic
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectSettingsResult> Invoke(GetProjectSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectSettingsResult>("gcp:logging/getProjectSettings:getProjectSettings", args ?? new GetProjectSettingsInvokeArgs(), options.WithDefaults());

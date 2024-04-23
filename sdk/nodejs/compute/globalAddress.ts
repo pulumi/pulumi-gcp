@@ -18,17 +18,14 @@ import * as utilities from "../utilities";
  *
  * ### Global Address Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.GlobalAddress("default", {name: "global-appserver-ip"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Global Address Private Services Connect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,7 +42,6 @@ import * as utilities from "../utilities";
  *     address: "100.100.100.105",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

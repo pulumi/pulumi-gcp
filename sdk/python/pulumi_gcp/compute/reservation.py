@@ -36,13 +36,9 @@ class ReservationArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
-               Structure is documented below.
-        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
-               consume this reservation. Otherwise, it can be consumed by VMs with
-               affinity for any reservation. Defaults to false.
+        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+               consumed by VMs with affinity for any reservation. Defaults to false.
         """
         pulumi.set(__self__, "specific_reservation", specific_reservation)
         pulumi.set(__self__, "zone", zone)
@@ -115,10 +111,6 @@ class ReservationArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -130,7 +122,6 @@ class ReservationArgs:
     def share_settings(self) -> Optional[pulumi.Input['ReservationShareSettingsArgs']]:
         """
         The share setting for reservations.
-        Structure is documented below.
         """
         return pulumi.get(self, "share_settings")
 
@@ -142,9 +133,8 @@ class ReservationArgs:
     @pulumi.getter(name="specificReservationRequired")
     def specific_reservation_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, only VMs that target this reservation by name can
-        consume this reservation. Otherwise, it can be consumed by VMs with
-        affinity for any reservation. Defaults to false.
+        When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        consumed by VMs with affinity for any reservation. Defaults to false.
         """
         return pulumi.get(self, "specific_reservation_required")
 
@@ -180,16 +170,12 @@ class _ReservationState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
-               Structure is documented below.
         :param pulumi.Input['ReservationSpecificReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
-        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
-               consume this reservation. Otherwise, it can be consumed by VMs with
-               affinity for any reservation. Defaults to false.
+        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+               consumed by VMs with affinity for any reservation. Defaults to false.
         :param pulumi.Input[str] status: The status of the reservation.
         :param pulumi.Input[str] zone: The zone where the reservation is made.
         """
@@ -274,10 +260,6 @@ class _ReservationState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -301,7 +283,6 @@ class _ReservationState:
     def share_settings(self) -> Optional[pulumi.Input['ReservationShareSettingsArgs']]:
         """
         The share setting for reservations.
-        Structure is documented below.
         """
         return pulumi.get(self, "share_settings")
 
@@ -326,9 +307,8 @@ class _ReservationState:
     @pulumi.getter(name="specificReservationRequired")
     def specific_reservation_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, only VMs that target this reservation by name can
-        consume this reservation. Otherwise, it can be consumed by VMs with
-        affinity for any reservation. Defaults to false.
+        When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        consumed by VMs with affinity for any reservation. Defaults to false.
         """
         return pulumi.get(self, "specific_reservation_required")
 
@@ -394,7 +374,6 @@ class Reservation(pulumi.CustomResource):
 
         ### Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,7 +389,6 @@ class Reservation(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -452,15 +430,11 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']] share_settings: The share setting for reservations.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
-        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
-               consume this reservation. Otherwise, it can be consumed by VMs with
-               affinity for any reservation. Defaults to false.
+        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+               consumed by VMs with affinity for any reservation. Defaults to false.
         :param pulumi.Input[str] zone: The zone where the reservation is made.
         """
         ...
@@ -489,7 +463,6 @@ class Reservation(pulumi.CustomResource):
 
         ### Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,7 +478,6 @@ class Reservation(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -622,16 +594,12 @@ class Reservation(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[pulumi.InputType['ReservationShareSettingsArgs']] share_settings: The share setting for reservations.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ReservationSpecificReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
-        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
-               consume this reservation. Otherwise, it can be consumed by VMs with
-               affinity for any reservation. Defaults to false.
+        :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+               consumed by VMs with affinity for any reservation. Defaults to false.
         :param pulumi.Input[str] status: The status of the reservation.
         :param pulumi.Input[str] zone: The zone where the reservation is made.
         """
@@ -694,10 +662,6 @@ class Reservation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -713,7 +677,6 @@ class Reservation(pulumi.CustomResource):
     def share_settings(self) -> pulumi.Output['outputs.ReservationShareSettings']:
         """
         The share setting for reservations.
-        Structure is documented below.
         """
         return pulumi.get(self, "share_settings")
 
@@ -730,9 +693,8 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter(name="specificReservationRequired")
     def specific_reservation_required(self) -> pulumi.Output[Optional[bool]]:
         """
-        When set to true, only VMs that target this reservation by name can
-        consume this reservation. Otherwise, it can be consumed by VMs with
-        affinity for any reservation. Defaults to false.
+        When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
+        consumed by VMs with affinity for any reservation. Defaults to false.
         """
         return pulumi.get(self, "specific_reservation_required")
 

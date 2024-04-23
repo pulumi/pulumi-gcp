@@ -67,14 +67,16 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
     }
 
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -82,14 +84,18 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
     }
 
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     @Import(name="enableLogging")
     private @Nullable Output<Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * &#34;goto_next&#34; rules.
      * 
      */
     public Optional<Output<Boolean>> enableLogging() {
@@ -187,14 +193,24 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
     }
 
     /**
-     * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+     * instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     @Import(name="targetSecureTags")
     private @Nullable Output<List<RegionNetworkFirewallPolicyRuleTargetSecureTagArgs>> targetSecureTags;
 
     /**
-     * @return A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * @return A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+     * instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     public Optional<Output<List<RegionNetworkFirewallPolicyRuleTargetSecureTagArgs>>> targetSecureTags() {
@@ -316,7 +332,8 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+         * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
          * 
          * @return builder
          * 
@@ -327,7 +344,8 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+         * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
          * 
          * @return builder
          * 
@@ -337,7 +355,9 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+         * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+         * &#34;goto_next&#34; rules.
          * 
          * @return builder
          * 
@@ -348,7 +368,9 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
+         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+         * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+         * &#34;goto_next&#34; rules.
          * 
          * @return builder
          * 
@@ -484,7 +506,12 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+         * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+         * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+         * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+         * instances on the specified network. Maximum number of target label tags allowed is 256.
          * 
          * @return builder
          * 
@@ -495,7 +522,12 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+         * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+         * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+         * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+         * instances on the specified network. Maximum number of target label tags allowed is 256.
          * 
          * @return builder
          * 
@@ -505,7 +537,12 @@ public final class RegionNetworkFirewallPolicyRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+         * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+         * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+         * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+         * instances on the specified network. Maximum number of target label tags allowed is 256.
          * 
          * @return builder
          * 

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Binary Authorization Attestor Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,10 +56,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Binary Authorization Attestor Kms
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -102,7 +99,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -162,18 +158,13 @@ export class Attestor extends pulumi.CustomResource {
      */
     public readonly attestationAuthorityNote!: pulumi.Output<outputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
-     * A descriptive comment. This field may be updated. The field may be
-     * displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The resource name.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -218,18 +209,13 @@ export interface AttestorState {
      */
     attestationAuthorityNote?: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
-     * A descriptive comment. This field may be updated. The field may be
-     * displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
     description?: pulumi.Input<string>;
     /**
      * The resource name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }
 
@@ -243,17 +229,12 @@ export interface AttestorArgs {
      */
     attestationAuthorityNote: pulumi.Input<inputs.binaryauthorization.AttestorAttestationAuthorityNote>;
     /**
-     * A descriptive comment. This field may be updated. The field may be
-     * displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
     description?: pulumi.Input<string>;
     /**
      * The resource name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }

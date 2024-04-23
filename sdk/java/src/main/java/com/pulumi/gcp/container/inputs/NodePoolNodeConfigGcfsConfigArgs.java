@@ -15,16 +15,14 @@ public final class NodePoolNodeConfigGcfsConfigArgs extends com.pulumi.resources
     public static final NodePoolNodeConfigGcfsConfigArgs Empty = new NodePoolNodeConfigGcfsConfigArgs();
 
     /**
-     * Enable Confidential GKE Nodes for this cluster, to
-     * enforce encryption of data in-use.
+     * Whether or not GCFS is enabled
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Confidential GKE Nodes for this cluster, to
-     * enforce encryption of data in-use.
+     * @return Whether or not GCFS is enabled
      * 
      */
     public Output<Boolean> enabled() {
@@ -56,8 +54,7 @@ public final class NodePoolNodeConfigGcfsConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Enable Confidential GKE Nodes for this cluster, to
-         * enforce encryption of data in-use.
+         * @param enabled Whether or not GCFS is enabled
          * 
          * @return builder
          * 
@@ -68,8 +65,7 @@ public final class NodePoolNodeConfigGcfsConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Enable Confidential GKE Nodes for this cluster, to
-         * enforce encryption of data in-use.
+         * @param enabled Whether or not GCFS is enabled
          * 
          * @return builder
          * 

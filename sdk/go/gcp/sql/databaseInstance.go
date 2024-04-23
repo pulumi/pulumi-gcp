@@ -28,7 +28,6 @@ import (
 //
 // ### SQL Second Generation Instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,12 +56,10 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Private IP Instance
 // > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,11 +132,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### ENTERPRISE_PLUS Instance with dataCacheConfig
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -171,11 +166,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Cloud SQL Instance with PSC connectivity
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -219,7 +212,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

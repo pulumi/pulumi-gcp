@@ -441,7 +441,6 @@ class Topic(pulumi.CustomResource):
 
         ### Pubsub Topic Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,10 +452,8 @@ class Topic(pulumi.CustomResource):
             },
             message_retention_duration="86600s")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,10 +468,8 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             kms_key_name=crypto_key.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Geo Restricted
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,10 +480,8 @@ class Topic(pulumi.CustomResource):
                 allowed_persistence_regions=["europe-west3"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Schema Settings
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -518,10 +511,8 @@ class Topic(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Ingestion Kinesis
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -537,7 +528,6 @@ class Topic(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -619,7 +609,6 @@ class Topic(pulumi.CustomResource):
 
         ### Pubsub Topic Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -631,10 +620,8 @@ class Topic(pulumi.CustomResource):
             },
             message_retention_duration="86600s")
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -649,10 +636,8 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             kms_key_name=crypto_key.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Geo Restricted
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -663,10 +648,8 @@ class Topic(pulumi.CustomResource):
                 allowed_persistence_regions=["europe-west3"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Schema Settings
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -696,10 +679,8 @@ class Topic(pulumi.CustomResource):
                 encoding="JSON",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Pubsub Topic Ingestion Kinesis
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -715,7 +696,6 @@ class Topic(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

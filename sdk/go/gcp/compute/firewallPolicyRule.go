@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Basic_fir_sec_rule
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,7 +110,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -139,9 +137,12 @@ type FirewallPolicyRule struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+	// "goto_next" rules.
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
@@ -153,7 +154,8 @@ type FirewallPolicyRule struct {
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayOutput `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
@@ -210,9 +212,12 @@ type firewallPolicyRuleState struct {
 	Description *string `pulumi:"description"`
 	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
 	Direction *string `pulumi:"direction"`
-	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+	// "goto_next" rules.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
@@ -224,7 +229,8 @@ type firewallPolicyRuleState struct {
 	Priority *int `pulumi:"priority"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
@@ -237,9 +243,12 @@ type FirewallPolicyRuleState struct {
 	Description pulumi.StringPtrInput
 	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
 	Direction pulumi.StringPtrInput
-	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+	// "goto_next" rules.
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringPtrInput
@@ -251,7 +260,8 @@ type FirewallPolicyRuleState struct {
 	Priority pulumi.IntPtrInput
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntPtrInput
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
@@ -268,9 +278,12 @@ type firewallPolicyRuleArgs struct {
 	Description *string `pulumi:"description"`
 	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
 	Direction string `pulumi:"direction"`
-	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+	// "goto_next" rules.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
@@ -278,7 +291,8 @@ type firewallPolicyRuleArgs struct {
 	Match FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
@@ -292,9 +306,12 @@ type FirewallPolicyRuleArgs struct {
 	Description pulumi.StringPtrInput
 	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
 	Direction pulumi.StringInput
-	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+	// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+	// "goto_next" rules.
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringInput
@@ -302,7 +319,8 @@ type FirewallPolicyRuleArgs struct {
 	Match FirewallPolicyRuleMatchInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
@@ -410,12 +428,15 @@ func (o FirewallPolicyRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
-// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
 func (o FirewallPolicyRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+// "goto_next" rules.
 func (o FirewallPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.BoolPtrOutput { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }
@@ -445,7 +466,8 @@ func (o FirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.IntOutput { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
-// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringArrayOutput { return v.TargetResources }).(pulumi.StringArrayOutput)
 }

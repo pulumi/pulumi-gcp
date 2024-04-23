@@ -28,7 +28,6 @@ import (
 //
 // ## google\_service\_directory\_namespace\_iam\_policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,11 +66,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_service\_directory\_namespace\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,11 +96,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_service\_directory\_namespace\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,11 +124,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_service\_directory\_namespace\_iam\_policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -172,11 +165,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_service\_directory\_namespace\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -204,11 +195,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_service\_directory\_namespace\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -234,7 +223,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

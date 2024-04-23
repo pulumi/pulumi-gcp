@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
     [OutputType]
     public sealed class RestorePlanIamBindingCondition
     {
-        /// <summary>
-        /// User specified descriptive string for this RestorePlan.
-        /// </summary>
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;

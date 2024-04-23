@@ -105,7 +105,6 @@ def get_restore_plan_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_restore_plan_iam_policy(location: Optional[str] = None,
         location=all_ns["location"],
         name=all_ns["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The region of the Restore Plan.
@@ -149,7 +147,6 @@ def get_restore_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -158,7 +155,6 @@ def get_restore_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[
         location=all_ns["location"],
         name=all_ns["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The region of the Restore Plan.

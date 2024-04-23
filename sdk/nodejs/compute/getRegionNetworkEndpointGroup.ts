@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionNetworkEndpointGroup(args?: GetRegionNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionNetworkEndpointGroupResult> {
     args = args || {};
@@ -106,7 +104,6 @@ export interface GetRegionNetworkEndpointGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -119,7 +116,6 @@ export interface GetRegionNetworkEndpointGroupResult {
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionNetworkEndpointGroupOutput(args?: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
     return pulumi.output(args).apply((a: any) => getRegionNetworkEndpointGroup(a, opts))

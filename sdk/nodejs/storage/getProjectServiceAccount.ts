@@ -42,7 +42,6 @@ import * as utilities from "../utilities";
  *
  * ### Pub/Sub Notifications
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -54,11 +53,9 @@ import * as utilities from "../utilities";
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Cloud KMS Keys
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -77,7 +74,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};
@@ -162,7 +158,6 @@ export interface GetProjectServiceAccountResult {
  *
  * ### Pub/Sub Notifications
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -174,11 +169,9 @@ export interface GetProjectServiceAccountResult {
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Cloud KMS Keys
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -197,7 +190,6 @@ export interface GetProjectServiceAccountResult {
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectServiceAccountOutput(args?: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
     return pulumi.output(args).apply((a: any) => getProjectServiceAccount(a, opts))

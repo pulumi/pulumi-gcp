@@ -29,7 +29,6 @@ import (
 //
 // ### With A Separately Managed Node Pool (Recommended)
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,7 +80,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // > **Note:** It is recommended that node pools be created and managed as separate resources as in the example above.
 // This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
@@ -89,7 +87,6 @@ import (
 //
 // ### With The Default Node Pool
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -136,11 +133,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Autopilot
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -174,7 +169,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Region Target Http Proxy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,10 +60,8 @@ import * as utilities from "../utilities";
  *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Target Http Proxy Https Redirect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -83,7 +80,6 @@ import * as utilities from "../utilities";
  *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

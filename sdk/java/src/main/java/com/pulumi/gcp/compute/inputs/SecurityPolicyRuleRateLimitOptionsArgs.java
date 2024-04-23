@@ -140,18 +140,14 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
-     * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_threshold&#34;&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+     * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
      * 
      */
     @Import(name="exceedRedirectOptions")
     private @Nullable Output<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs> exceedRedirectOptions;
 
     /**
-     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_threshold&#34;&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
      * 
      */
     public Optional<Output<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs>> exceedRedirectOptions() {
@@ -377,9 +373,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param exceedRedirectOptions Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_threshold&#34;&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+         * @param exceedRedirectOptions Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
          * 
          * @return builder
          * 
@@ -390,9 +384,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param exceedRedirectOptions Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_threshold&#34;&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+         * @param exceedRedirectOptions Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
          * 
          * @return builder
          * 

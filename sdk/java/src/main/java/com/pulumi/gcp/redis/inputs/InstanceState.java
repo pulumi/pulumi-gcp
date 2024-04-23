@@ -119,9 +119,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * The time when the certificate was created.
      * 
      */
     @Import(name="createTime")
@@ -129,9 +127,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return (Output)
-     * Output only. The time when the policy was created.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * The time when the certificate was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -864,9 +860,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param createTime (Output)
-         * Output only. The time when the policy was created.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * The time when the certificate was created.
          * 
          * @return builder
          * 
@@ -878,9 +872,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param createTime (Output)
-         * Output only. The time when the policy was created.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * The time when the certificate was created.
          * 
          * @return builder
          * 

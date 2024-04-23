@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     {
         /// <summary>
-        /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        /// handle this extension, the client should consider this to be an error).
+        /// (Output)
+        /// Indicates whether or not the name constraints are marked critical.
         /// </summary>
         public readonly bool? Critical;
         /// <summary>

@@ -23,7 +23,6 @@ import (
 //
 // ### Bigquery Connection Cloud Resource
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,10 +50,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,10 +122,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -200,10 +195,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Aws
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -235,10 +228,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Azure
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -269,10 +260,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Cloudspanner
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -303,10 +292,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Cloudspanner Databoost
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -339,10 +326,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Connection Spark
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -396,7 +381,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

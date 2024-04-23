@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ### Backend Bucket Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -41,10 +40,8 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Backend Bucket Security Policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -66,10 +63,8 @@ import * as utilities from "../utilities";
  *     edgeSecurityPolicy: policy.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Backend Bucket Query String Whitelist
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -90,10 +85,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Backend Bucket Include Http Headers
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -114,7 +107,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

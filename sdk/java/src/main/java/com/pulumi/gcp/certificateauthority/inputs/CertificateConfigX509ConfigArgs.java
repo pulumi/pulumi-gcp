@@ -23,7 +23,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     public static final CertificateConfigX509ConfigArgs Empty = new CertificateConfigX509ConfigArgs();
 
     /**
-     * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+     * (Output)
+     * Describes custom X.509 extensions.
      * Structure is documented below.
      * 
      */
@@ -31,7 +32,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     private @Nullable Output<List<CertificateConfigX509ConfigAdditionalExtensionArgs>> additionalExtensions;
 
     /**
-     * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+     * @return (Output)
+     * Describes custom X.509 extensions.
      * Structure is documented below.
      * 
      */
@@ -40,6 +42,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
      * &#34;Authority Information Access&#34; extension in the certificate.
      * 
@@ -48,7 +51,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     private @Nullable Output<List<String>> aiaOcspServers;
 
     /**
-     * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+     * @return (Output)
+     * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
      * &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
@@ -57,6 +61,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
@@ -65,7 +70,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     private @Nullable Output<CertificateConfigX509ConfigCaOptionsArgs> caOptions;
 
     /**
-     * @return Describes values that are relevant in a CA certificate.
+     * @return (Output)
+     * Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
@@ -74,6 +80,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
      * 
@@ -82,7 +89,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     private Output<CertificateConfigX509ConfigKeyUsageArgs> keyUsage;
 
     /**
-     * @return Indicates the intended use for keys that correspond to a certificate.
+     * @return (Output)
+     * Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
      * 
      */
@@ -91,6 +99,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Describes the X.509 name constraints extension.
      * Structure is documented below.
      * 
@@ -99,7 +108,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     private @Nullable Output<CertificateConfigX509ConfigNameConstraintsArgs> nameConstraints;
 
     /**
-     * @return Describes the X.509 name constraints extension.
+     * @return (Output)
+     * Describes the X.509 name constraints extension.
      * Structure is documented below.
      * 
      */
@@ -108,6 +118,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Output)
      * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
@@ -116,7 +127,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
     private @Nullable Output<List<CertificateConfigX509ConfigPolicyIdArgs>> policyIds;
 
     /**
-     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return (Output)
+     * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
      */
@@ -154,7 +166,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param additionalExtensions Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * @param additionalExtensions (Output)
+         * Describes custom X.509 extensions.
          * Structure is documented below.
          * 
          * @return builder
@@ -166,7 +179,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param additionalExtensions Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * @param additionalExtensions (Output)
+         * Describes custom X.509 extensions.
          * Structure is documented below.
          * 
          * @return builder
@@ -177,7 +191,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param additionalExtensions Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         * @param additionalExtensions (Output)
+         * Describes custom X.509 extensions.
          * Structure is documented below.
          * 
          * @return builder
@@ -188,7 +203,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param aiaOcspServers Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * @param aiaOcspServers (Output)
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
          * &#34;Authority Information Access&#34; extension in the certificate.
          * 
          * @return builder
@@ -200,7 +216,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param aiaOcspServers Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * @param aiaOcspServers (Output)
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
          * &#34;Authority Information Access&#34; extension in the certificate.
          * 
          * @return builder
@@ -211,7 +228,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param aiaOcspServers Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * @param aiaOcspServers (Output)
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
          * &#34;Authority Information Access&#34; extension in the certificate.
          * 
          * @return builder
@@ -222,7 +240,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param caOptions Describes values that are relevant in a CA certificate.
+         * @param caOptions (Output)
+         * Describes values that are relevant in a CA certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -234,7 +253,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param caOptions Describes values that are relevant in a CA certificate.
+         * @param caOptions (Output)
+         * Describes values that are relevant in a CA certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -245,7 +265,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param keyUsage Indicates the intended use for keys that correspond to a certificate.
+         * @param keyUsage (Output)
+         * Indicates the intended use for keys that correspond to a certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -257,7 +278,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param keyUsage Indicates the intended use for keys that correspond to a certificate.
+         * @param keyUsage (Output)
+         * Indicates the intended use for keys that correspond to a certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -268,7 +290,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nameConstraints Describes the X.509 name constraints extension.
+         * @param nameConstraints (Output)
+         * Describes the X.509 name constraints extension.
          * Structure is documented below.
          * 
          * @return builder
@@ -280,7 +303,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param nameConstraints Describes the X.509 name constraints extension.
+         * @param nameConstraints (Output)
+         * Describes the X.509 name constraints extension.
          * Structure is documented below.
          * 
          * @return builder
@@ -291,7 +315,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param policyIds Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * @param policyIds (Output)
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
          * 
          * @return builder
@@ -303,7 +328,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param policyIds Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * @param policyIds (Output)
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
          * 
          * @return builder
@@ -314,7 +340,8 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param policyIds Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * @param policyIds (Output)
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
          * Structure is documented below.
          * 
          * @return builder

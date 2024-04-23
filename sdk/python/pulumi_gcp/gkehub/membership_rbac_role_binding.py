@@ -33,8 +33,6 @@ class MembershipRbacRoleBindingArgs:
                is required). Updating one will unset the other automatically.
                user is the name of the user as seen by the kubernetes cluster, example
                "alice" or "alice@domain.tld"
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "membership_id", membership_id)
@@ -111,10 +109,6 @@ class MembershipRbacRoleBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -145,8 +139,6 @@ class _MembershipRbacRoleBindingState:
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input['MembershipRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipRbacRoleBindingStateArgs']]] states: State of the RBAC Role Binding resource.
@@ -258,10 +250,6 @@ class _MembershipRbacRoleBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -351,7 +339,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
 
         ### Gkehub Membership Rbac Role Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -380,7 +367,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             ),
             location="global")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -411,8 +397,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the Membership
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
@@ -431,7 +415,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
 
         ### Gkehub Membership Rbac Role Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -460,7 +443,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             ),
             location="global")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -573,8 +555,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] membership_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRbacRoleBindingStateArgs']]]] states: State of the RBAC Role Binding resource.
@@ -655,10 +635,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

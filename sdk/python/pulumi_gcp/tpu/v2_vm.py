@@ -815,7 +815,6 @@ class V2Vm(pulumi.CustomResource):
 
         ### Tpu V2 Vm Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -826,10 +825,8 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             runtime_version="tpu-vm-tf-2.13.0")
         ```
-        <!--End PulumiCodeChooser -->
         ### Tpu V2 Vm Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -894,7 +891,6 @@ class V2Vm(pulumi.CustomResource):
         # Wait after service account creation to limit eventual consistency errors.
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -976,7 +972,6 @@ class V2Vm(pulumi.CustomResource):
 
         ### Tpu V2 Vm Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -987,10 +982,8 @@ class V2Vm(pulumi.CustomResource):
             zone="us-central1-c",
             runtime_version="tpu-vm-tf-2.13.0")
         ```
-        <!--End PulumiCodeChooser -->
         ### Tpu V2 Vm Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1055,7 +1048,6 @@ class V2Vm(pulumi.CustomResource):
         # Wait after service account creation to limit eventual consistency errors.
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

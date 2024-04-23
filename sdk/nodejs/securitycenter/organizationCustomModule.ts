@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Scc Organization Custom Module Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,10 +44,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Scc Organization Custom Module Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -84,7 +81,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -161,7 +157,8 @@ export class OrganizationCustomModule extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastEditor!: pulumi.Output<string>;
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -257,7 +254,8 @@ export interface OrganizationCustomModuleState {
      */
     lastEditor?: pulumi.Input<string>;
     /**
-     * Name of the property for the custom output.
+     * The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
+     * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
     name?: pulumi.Input<string>;
     /**

@@ -325,7 +325,6 @@ class Mesh(pulumi.CustomResource):
 
         ### Network Services Mesh Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,10 +337,8 @@ class Mesh(pulumi.CustomResource):
             description="my description",
             interception_port=443)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Mesh No Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -353,7 +350,6 @@ class Mesh(pulumi.CustomResource):
             },
             description="my description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -408,7 +404,6 @@ class Mesh(pulumi.CustomResource):
 
         ### Network Services Mesh Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -421,10 +416,8 @@ class Mesh(pulumi.CustomResource):
             description="my description",
             interception_port=443)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Mesh No Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -436,7 +429,6 @@ class Mesh(pulumi.CustomResource):
             },
             description="my description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

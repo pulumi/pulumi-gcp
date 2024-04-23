@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// ### Org Policy Custom Constraint Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,10 +50,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Org Policy Custom Constraint Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

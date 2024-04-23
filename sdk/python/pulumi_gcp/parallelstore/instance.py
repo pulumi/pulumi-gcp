@@ -599,7 +599,6 @@ class Instance(pulumi.CustomResource):
 
         ### Parallelstore Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -630,7 +629,6 @@ class Instance(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -711,7 +709,6 @@ class Instance(pulumi.CustomResource):
 
         ### Parallelstore Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -742,7 +739,6 @@ class Instance(pulumi.CustomResource):
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

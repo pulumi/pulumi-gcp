@@ -413,7 +413,6 @@ class WorkforcePool(pulumi.CustomResource):
 
         ### Iam Workforce Pool Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,10 +422,8 @@ class WorkforcePool(pulumi.CustomResource):
             parent="organizations/123456789",
             location="global")
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,7 +443,6 @@ class WorkforcePool(pulumi.CustomResource):
                 disable_programmatic_signin=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -512,7 +508,6 @@ class WorkforcePool(pulumi.CustomResource):
 
         ### Iam Workforce Pool Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -522,10 +517,8 @@ class WorkforcePool(pulumi.CustomResource):
             parent="organizations/123456789",
             location="global")
         ```
-        <!--End PulumiCodeChooser -->
         ### Iam Workforce Pool Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -545,7 +538,6 @@ class WorkforcePool(pulumi.CustomResource):
                 disable_programmatic_signin=False,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

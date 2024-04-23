@@ -32,7 +32,8 @@ public final class ClusterClusterConfigMasterConfig {
      */
     private @Nullable String imageUri;
     /**
-     * @return List of master instance names which have been assigned to the cluster.
+     * @return List of master instance names which
+     * have been assigned to the cluster.
      * 
      */
     private @Nullable List<String> instanceNames;
@@ -82,7 +83,8 @@ public final class ClusterClusterConfigMasterConfig {
         return Optional.ofNullable(this.imageUri);
     }
     /**
-     * @return List of master instance names which have been assigned to the cluster.
+     * @return List of master instance names which
+     * have been assigned to the cluster.
      * 
      */
     public List<String> instanceNames() {

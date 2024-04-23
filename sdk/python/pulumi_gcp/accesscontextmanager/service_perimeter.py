@@ -504,7 +504,6 @@ class ServicePerimeter(pulumi.CustomResource):
 
         ### Access Context Manager Service Perimeter Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -539,10 +538,8 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -649,10 +646,8 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Access Context Manager Service Perimeter Dry-Run
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -672,7 +667,6 @@ class ServicePerimeter(pulumi.CustomResource):
             ),
             use_explicit_dry_run_spec=True)
         ```
-        <!--End PulumiCodeChooser -->
         ## Import
 
         ServicePerimeter can be imported using any of these accepted formats:
@@ -766,7 +760,6 @@ class ServicePerimeter(pulumi.CustomResource):
 
         ### Access Context Manager Service Perimeter Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -801,10 +794,8 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -911,10 +902,8 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Access Context Manager Service Perimeter Dry-Run
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -934,7 +923,6 @@ class ServicePerimeter(pulumi.CustomResource):
             ),
             use_explicit_dry_run_spec=True)
         ```
-        <!--End PulumiCodeChooser -->
         ## Import
 
         ServicePerimeter can be imported using any of these accepted formats:

@@ -326,7 +326,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
 
         ### Public Delegated Prefixes Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,7 +342,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             ip_cidr_range="127.127.0.0/24",
             parent_prefix=advertised.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -413,7 +411,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
 
         ### Public Delegated Prefixes Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,7 +427,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             ip_cidr_range="127.127.0.0/24",
             parent_prefix=advertised.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

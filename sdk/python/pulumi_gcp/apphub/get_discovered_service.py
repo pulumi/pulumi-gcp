@@ -120,7 +120,6 @@ def get_discovered_service(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -128,7 +127,6 @@ def get_discovered_service(location: Optional[str] = None,
     my_service = gcp.apphub.get_discovered_service(location="my-location",
         service_uri="my-service-uri")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the discovered service.
@@ -162,7 +160,6 @@ def get_discovered_service_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -170,7 +167,6 @@ def get_discovered_service_output(location: Optional[pulumi.Input[str]] = None,
     my_service = gcp.apphub.get_discovered_service(location="my-location",
         service_uri="my-service-uri")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the discovered service.

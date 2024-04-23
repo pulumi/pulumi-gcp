@@ -301,7 +301,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
 
         ### Compute Network Edge Security Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -311,7 +310,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             region="us-east1",
             description="My basic resource")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -366,7 +364,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
 
         ### Compute Network Edge Security Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -376,7 +373,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             region="us-east1",
             description="My basic resource")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

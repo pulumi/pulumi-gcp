@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodeConfigEffectiveTaint
     {
         /// <summary>
-        /// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        /// Effect for taint.
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The default or custom node affinity label key name.
+        /// Key for taint.
         /// </summary>
         public readonly string? Key;
         /// <summary>

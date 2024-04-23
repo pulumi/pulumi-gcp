@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Secret Version Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,10 +29,8 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Secret Version Deletion Policy Abandon
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -54,10 +51,8 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "ABANDON",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Secret Version Deletion Policy Disable
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -78,10 +73,8 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DISABLE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Secret Version With Base64 String Secret Data
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -105,7 +98,6 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

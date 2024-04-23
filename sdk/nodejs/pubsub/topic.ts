@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Pubsub Topic Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,10 +34,8 @@ import * as utilities from "../utilities";
  *     messageRetentionDuration: "86600s",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Cmek
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,10 +53,8 @@ import * as utilities from "../utilities";
  *     kmsKeyName: cryptoKey.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Geo Restricted
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -71,10 +66,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Schema Settings
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,10 +99,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Pubsub Topic Ingestion Kinesis
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,7 +117,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

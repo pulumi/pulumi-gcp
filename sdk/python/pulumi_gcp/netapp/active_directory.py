@@ -834,7 +834,6 @@ class ActiveDirectory(pulumi.CustomResource):
 
         ### Netapp Active Directory Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -868,7 +867,6 @@ class ActiveDirectory(pulumi.CustomResource):
             ],
             site="test-site")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -949,7 +947,6 @@ class ActiveDirectory(pulumi.CustomResource):
 
         ### Netapp Active Directory Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -983,7 +980,6 @@ class ActiveDirectory(pulumi.CustomResource):
             ],
             site="test-site")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

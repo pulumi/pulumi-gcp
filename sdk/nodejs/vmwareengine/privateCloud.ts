@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Vmware Engine Private Cloud Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -45,10 +44,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Vmware Engine Private Cloud Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -78,7 +75,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -168,10 +164,6 @@ export class PrivateCloud extends pulumi.CustomResource {
      * The preferred single failure domain within a region.
      */
     public readonly preferredZone!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The secondary single failure domain within a region.
@@ -183,8 +175,7 @@ export class PrivateCloud extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -295,10 +286,6 @@ export interface PrivateCloudState {
      * The preferred single failure domain within a region.
      */
     preferredZone?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The secondary single failure domain within a region.
@@ -310,8 +297,7 @@ export interface PrivateCloudState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
      */
     type?: pulumi.Input<string>;
     /**
@@ -355,18 +341,13 @@ export interface PrivateCloudArgs {
      * The preferred single failure domain within a region.
      */
     preferredZone?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The secondary single failure domain within a region.
      */
     secondaryZone?: pulumi.Input<string>;
     /**
-     * Initial type of the private cloud.
-     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+     * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
      */
     type?: pulumi.Input<string>;
 }

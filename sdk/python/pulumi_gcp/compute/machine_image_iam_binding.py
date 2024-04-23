@@ -287,7 +287,6 @@ class MachineImageIamBinding(pulumi.CustomResource):
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
         ## google\\_compute\\_machine\\_image\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -301,11 +300,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,10 +321,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,11 +333,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -358,10 +351,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -372,11 +363,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,11 +381,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_machine\\_image\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,11 +397,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -433,10 +418,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -447,11 +430,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,10 +448,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -481,11 +460,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,7 +478,6 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -585,7 +561,6 @@ class MachineImageIamBinding(pulumi.CustomResource):
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
         ## google\\_compute\\_machine\\_image\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -599,11 +574,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -622,10 +595,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,11 +607,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,10 +625,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -670,11 +637,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -690,11 +655,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_compute\\_machine\\_image\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,11 +671,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,10 +692,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
             machine_image=image["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,11 +704,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -765,10 +722,8 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ## google\\_compute\\_machine\\_image\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -779,11 +734,9 @@ class MachineImageIamBinding(pulumi.CustomResource):
             role="roles/compute.admin",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         With IAM Conditions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -799,7 +752,6 @@ class MachineImageIamBinding(pulumi.CustomResource):
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

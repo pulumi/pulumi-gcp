@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

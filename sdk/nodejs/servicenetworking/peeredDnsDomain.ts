@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     service: "peering-service",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

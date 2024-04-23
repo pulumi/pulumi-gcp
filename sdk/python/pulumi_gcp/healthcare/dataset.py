@@ -217,7 +217,6 @@ class Dataset(pulumi.CustomResource):
 
         ### Healthcare Dataset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -227,7 +226,6 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -285,7 +283,6 @@ class Dataset(pulumi.CustomResource):
 
         ### Healthcare Dataset Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -295,7 +292,6 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

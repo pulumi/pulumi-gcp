@@ -204,7 +204,6 @@ class MembershipIamPolicy(pulumi.CustomResource):
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -219,11 +218,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             membership_id=membership["membershipId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -235,11 +232,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,11 +246,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -270,11 +263,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             membership_id=membership["membershipId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,11 +277,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -302,7 +291,6 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -375,7 +363,6 @@ class MembershipIamPolicy(pulumi.CustomResource):
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -390,11 +377,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             membership_id=membership["membershipId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -406,11 +391,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -422,11 +405,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,11 +422,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             membership_id=membership["membershipId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -457,11 +436,9 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_gke\\_hub\\_membership\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -473,7 +450,6 @@ class MembershipIamPolicy(pulumi.CustomResource):
             role="roles/viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

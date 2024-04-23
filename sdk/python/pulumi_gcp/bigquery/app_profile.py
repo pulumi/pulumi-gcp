@@ -394,7 +394,6 @@ class AppProfile(pulumi.CustomResource):
 
         ### Bigtable App Profile Anycluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -428,10 +427,8 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigtable App Profile Singlecluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -454,10 +451,8 @@ class AppProfile(pulumi.CustomResource):
             ),
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigtable App Profile Multicluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -495,10 +490,8 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigtable App Profile Priority
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,7 +517,6 @@ class AppProfile(pulumi.CustomResource):
             ),
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -588,7 +580,6 @@ class AppProfile(pulumi.CustomResource):
 
         ### Bigtable App Profile Anycluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -622,10 +613,8 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigtable App Profile Singlecluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -648,10 +637,8 @@ class AppProfile(pulumi.CustomResource):
             ),
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigtable App Profile Multicluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -689,10 +676,8 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Bigtable App Profile Priority
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -718,7 +703,6 @@ class AppProfile(pulumi.CustomResource):
             ),
             ignore_warnings=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

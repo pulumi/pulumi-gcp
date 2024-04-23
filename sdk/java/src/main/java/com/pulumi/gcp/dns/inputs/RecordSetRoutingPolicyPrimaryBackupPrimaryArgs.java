@@ -17,7 +17,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs extends com.pu
 
     /**
      * The list of internal load balancers to health check.
-     * Structure is documented below.
      * 
      */
     @Import(name="internalLoadBalancers", required=true)
@@ -25,7 +24,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs extends com.pu
 
     /**
      * @return The list of internal load balancers to health check.
-     * Structure is documented below.
      * 
      */
     public Output<List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs>> internalLoadBalancers() {
@@ -58,7 +56,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs extends com.pu
 
         /**
          * @param internalLoadBalancers The list of internal load balancers to health check.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -70,7 +67,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs extends com.pu
 
         /**
          * @param internalLoadBalancers The list of internal load balancers to health check.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -81,7 +77,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs extends com.pu
 
         /**
          * @param internalLoadBalancers The list of internal load balancers to health check.
-         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     name: "myrouter",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouterStatus(args: GetRouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterStatusResult> {
 
@@ -92,7 +90,6 @@ export interface GetRouterStatusResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,7 +98,6 @@ export interface GetRouterStatusResult {
  *     name: "myrouter",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouterStatusOutput(args: GetRouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterStatusResult> {
     return pulumi.output(args).apply((a: any) => getRouterStatus(a, opts))

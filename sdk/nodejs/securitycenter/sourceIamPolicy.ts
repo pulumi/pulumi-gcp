@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ### Scc Source Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  *     description: "My custom Cloud Security Command Center Finding Source",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -452,17 +452,12 @@ class AuthorityConfigX509ConfigArgs:
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]] = None):
         """
         :param pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
-               Structure is documented below.
         :param pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
         :param pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-               Structure is documented below.
         """
         pulumi.set(__self__, "ca_options", ca_options)
         pulumi.set(__self__, "key_usage", key_usage)
@@ -480,7 +475,6 @@ class AuthorityConfigX509ConfigArgs:
     def ca_options(self) -> pulumi.Input['AuthorityConfigX509ConfigCaOptionsArgs']:
         """
         Describes values that are relevant in a CA certificate.
-        Structure is documented below.
         """
         return pulumi.get(self, "ca_options")
 
@@ -493,7 +487,6 @@ class AuthorityConfigX509ConfigArgs:
     def key_usage(self) -> pulumi.Input['AuthorityConfigX509ConfigKeyUsageArgs']:
         """
         Indicates the intended use for keys that correspond to a certificate.
-        Structure is documented below.
         """
         return pulumi.get(self, "key_usage")
 
@@ -506,7 +499,6 @@ class AuthorityConfigX509ConfigArgs:
     def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]]]:
         """
         Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        Structure is documented below.
         """
         return pulumi.get(self, "additional_extensions")
 
@@ -532,7 +524,6 @@ class AuthorityConfigX509ConfigArgs:
     def name_constraints(self) -> Optional[pulumi.Input['AuthorityConfigX509ConfigNameConstraintsArgs']]:
         """
         Describes the X.509 name constraints extension.
-        Structure is documented below.
         """
         return pulumi.get(self, "name_constraints")
 
@@ -545,7 +536,6 @@ class AuthorityConfigX509ConfigArgs:
     def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]]:
         """
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-        Structure is documented below.
         """
         return pulumi.get(self, "policy_ids")
 
@@ -2789,11 +2779,9 @@ class CertificateCertificateDescriptionArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_distribution_points: (Output)
                Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]] public_keys: A PublicKey describes a public key.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]] public_keys: (Output)
+               A PublicKey describes a public key.
                Structure is documented below.
-               
-               
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]] subject_descriptions: (Output)
                Describes some of the values in a certificate that are related to the subject and lifetime.
                Structure is documented below.
@@ -2879,11 +2867,9 @@ class CertificateCertificateDescriptionArgs:
     @pulumi.getter(name="publicKeys")
     def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]]]:
         """
+        (Output)
         A PublicKey describes a public key.
         Structure is documented below.
-
-
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "public_keys")
 
@@ -3044,9 +3030,11 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
                The time at which the certificate expires.
         :param pulumi.Input[str] not_before_time: (Output)
                The time at which the certificate becomes valid.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]] subject_alt_names: The subject alternative name fields.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]] subject_alt_names: (Output)
+               The subject alternative name fields.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]] subjects: Contains distinguished name fields such as the location and organization.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]] subjects: (Output)
+               Contains distinguished name fields such as the location and organization.
                Structure is documented below.
         """
         if hex_serial_number is not None:
@@ -3119,6 +3107,7 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
     @pulumi.getter(name="subjectAltNames")
     def subject_alt_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]]]:
         """
+        (Output)
         The subject alternative name fields.
         Structure is documented below.
         """
@@ -3132,6 +3121,7 @@ class CertificateCertificateDescriptionSubjectDescriptionArgs:
     @pulumi.getter
     def subjects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]]]:
         """
+        (Output)
         Contains distinguished name fields such as the location and organization.
         Structure is documented below.
         """
@@ -3375,8 +3365,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
                  obect_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
-               handle this extension, the client should consider this to be an error).
+        :param pulumi.Input[bool] critical: (Output)
+               Indicates whether or not the name constraints are marked critical.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]] obect_ids: (Output)
                Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
@@ -3393,8 +3383,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     @pulumi.getter
     def critical(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        handle this extension, the client should consider this to be an error).
+        (Output)
+        Indicates whether or not the name constraints are marked critical.
         """
         return pulumi.get(self, "critical")
 
@@ -3434,7 +3424,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     def __init__(__self__, *,
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: (Output)
+               An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
         if object_id_paths is not None:
             pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -3443,6 +3434,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
+        (Output)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
         return pulumi.get(self, "object_id_paths")
@@ -3487,17 +3479,23 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
                  name_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]] additional_extensions: (Output)
+               Describes custom X.509 extensions.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: (Output)
+               Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]] ca_options: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]] ca_options: (Output)
+               Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]] key_usages: Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]] key_usages: (Output)
+               Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]] name_constraints: Describes the X.509 name constraints extension.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]] name_constraints: (Output)
+               Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]] policy_ids: (Output)
+               Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         if additional_extensions is not None:
@@ -3517,7 +3515,8 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @pulumi.getter(name="additionalExtensions")
     def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]]:
         """
-        Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        (Output)
+        Describes custom X.509 extensions.
         Structure is documented below.
         """
         return pulumi.get(self, "additional_extensions")
@@ -3530,6 +3529,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @pulumi.getter(name="aiaOcspServers")
     def aia_ocsp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
+        (Output)
         Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
         "Authority Information Access" extension in the certificate.
         """
@@ -3543,6 +3543,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @pulumi.getter(name="caOptions")
     def ca_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]]:
         """
+        (Output)
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
         """
@@ -3556,6 +3557,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @pulumi.getter(name="keyUsages")
     def key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]:
         """
+        (Output)
         Indicates the intended use for keys that correspond to a certificate.
         Structure is documented below.
         """
@@ -3569,6 +3571,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @pulumi.getter(name="nameConstraints")
     def name_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]]:
         """
+        (Output)
         Describes the X.509 name constraints extension.
         Structure is documented below.
         """
@@ -3582,6 +3585,7 @@ class CertificateCertificateDescriptionX509DescriptionArgs:
     @pulumi.getter(name="policyIds")
     def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]]:
         """
+        (Output)
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         Structure is documented below.
         """
@@ -4635,17 +4639,23 @@ class CertificateConfigX509ConfigArgs:
                  name_constraints: Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]] = None):
         """
-        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs'] key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs'] key_usage: (Output)
+               Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]] additional_extensions: (Output)
+               Describes custom X.509 extensions.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: (Output)
+               Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs'] ca_options: Describes values that are relevant in a CA certificate.
+        :param pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs'] ca_options: (Output)
+               Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs'] name_constraints: Describes the X.509 name constraints extension.
+        :param pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs'] name_constraints: (Output)
+               Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]] policy_ids: (Output)
+               Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "key_usage", key_usage)
@@ -4664,6 +4674,7 @@ class CertificateConfigX509ConfigArgs:
     @pulumi.getter(name="keyUsage")
     def key_usage(self) -> pulumi.Input['CertificateConfigX509ConfigKeyUsageArgs']:
         """
+        (Output)
         Indicates the intended use for keys that correspond to a certificate.
         Structure is documented below.
         """
@@ -4677,7 +4688,8 @@ class CertificateConfigX509ConfigArgs:
     @pulumi.getter(name="additionalExtensions")
     def additional_extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]]]:
         """
-        Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        (Output)
+        Describes custom X.509 extensions.
         Structure is documented below.
         """
         return pulumi.get(self, "additional_extensions")
@@ -4690,6 +4702,7 @@ class CertificateConfigX509ConfigArgs:
     @pulumi.getter(name="aiaOcspServers")
     def aia_ocsp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
+        (Output)
         Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
         "Authority Information Access" extension in the certificate.
         """
@@ -4703,6 +4716,7 @@ class CertificateConfigX509ConfigArgs:
     @pulumi.getter(name="caOptions")
     def ca_options(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigCaOptionsArgs']]:
         """
+        (Output)
         Describes values that are relevant in a CA certificate.
         Structure is documented below.
         """
@@ -4716,6 +4730,7 @@ class CertificateConfigX509ConfigArgs:
     @pulumi.getter(name="nameConstraints")
     def name_constraints(self) -> Optional[pulumi.Input['CertificateConfigX509ConfigNameConstraintsArgs']]:
         """
+        (Output)
         Describes the X.509 name constraints extension.
         Structure is documented below.
         """
@@ -4729,6 +4744,7 @@ class CertificateConfigX509ConfigArgs:
     @pulumi.getter(name="policyIds")
     def policy_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]]:
         """
+        (Output)
         Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         Structure is documented below.
         """

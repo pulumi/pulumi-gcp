@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// ### Healthcare Hl7 V2 Store Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,10 +62,8 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Hl7 V2 Store Parser Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -173,10 +170,8 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Healthcare Hl7 V2 Store Unschematized
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -205,7 +200,6 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

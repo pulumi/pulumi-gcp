@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// ### Cloudrunv2 Service Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,10 +49,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Limits
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -89,10 +86,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Sql
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -210,10 +205,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Vpcaccess
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -272,10 +265,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Directvpc
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -321,10 +312,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Probes
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -369,10 +358,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Secret
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -452,10 +439,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Multicontainer
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -533,10 +518,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Mount Gcs
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -591,10 +574,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudrunv2 Service Mount Nfs
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -679,7 +660,6 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -709,19 +689,19 @@ namespace Pulumi.Gcp.CloudRunV2
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-        /// All system annotations in v1 now have a corresponding field in v2 Service.
-        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+        /// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+        /// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+        /// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+        /// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        /// present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Settings for the Binary Authorization feature.
-        /// Structure is documented below.
         /// </summary>
         [Output("binaryAuthorization")]
         public Output<Outputs.ServiceBinaryAuthorization?> BinaryAuthorization { get; private set; } = null!;
@@ -758,8 +738,9 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
-        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         [Output("customAudiences")]
         public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
@@ -808,19 +789,22 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
-        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+        /// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+        /// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         /// </summary>
         [Output("ingress")]
         public Output<string> Ingress { get; private set; } = null!;
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-        /// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-        /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-        /// All system labels in v1 now have a corresponding field in v2 Service.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+        /// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+        /// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        /// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+        /// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -844,10 +828,12 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> LatestReadyRevision { get; private set; } = null!;
 
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        /// The launch stage as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+        /// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+        /// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+        /// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+        /// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         /// </summary>
         [Output("launchStage")]
         public Output<string> LaunchStage { get; private set; } = null!;
@@ -870,10 +856,6 @@ namespace Pulumi.Gcp.CloudRunV2
         [Output("observedGeneration")]
         public Output<string> ObservedGeneration { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -895,7 +877,6 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Scaling settings that apply to the whole service
-        /// Structure is documented below.
         /// </summary>
         [Output("scaling")]
         public Output<Outputs.ServiceScaling?> Scaling { get; private set; } = null!;
@@ -922,8 +903,8 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<Outputs.ServiceTrafficStatus>> TrafficStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-        /// Structure is documented below.
+        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+        /// provided, defaults to 100% traffic to the latest Ready Revision.
         /// </summary>
         [Output("traffics")]
         public Output<ImmutableArray<Outputs.ServiceTraffic>> Traffics { get; private set; } = null!;
@@ -1002,12 +983,13 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-        /// All system annotations in v1 now have a corresponding field in v2 Service.
-        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+        /// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+        /// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+        /// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+        /// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        /// present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1017,7 +999,6 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Settings for the Binary Authorization feature.
-        /// Structure is documented below.
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.ServiceBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
@@ -1038,8 +1019,9 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<string>? _customAudiences;
 
         /// <summary>
-        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         public InputList<string> CustomAudiences
         {
@@ -1054,8 +1036,9 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+        /// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+        /// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         /// </summary>
         [Input("ingress")]
         public Input<string>? Ingress { get; set; }
@@ -1064,12 +1047,14 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-        /// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-        /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-        /// All system labels in v1 now have a corresponding field in v2 Service.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+        /// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+        /// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        /// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+        /// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1078,10 +1063,12 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        /// The launch stage as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+        /// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+        /// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+        /// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+        /// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
@@ -1098,16 +1085,11 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Scaling settings that apply to the whole service
-        /// Structure is documented below.
         /// </summary>
         [Input("scaling")]
         public Input<Inputs.ServiceScalingArgs>? Scaling { get; set; }
@@ -1123,8 +1105,8 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<Inputs.ServiceTrafficArgs>? _traffics;
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-        /// Structure is documented below.
+        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+        /// provided, defaults to 100% traffic to the latest Ready Revision.
         /// </summary>
         public InputList<Inputs.ServiceTrafficArgs> Traffics
         {
@@ -1144,12 +1126,13 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-        /// All system annotations in v1 now have a corresponding field in v2 Service.
-        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+        /// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
+        /// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
+        /// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+        /// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
+        /// present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -1159,7 +1142,6 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Settings for the Binary Authorization feature.
-        /// Structure is documented below.
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.ServiceBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
@@ -1205,8 +1187,9 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<string>? _customAudiences;
 
         /// <summary>
-        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         public InputList<string> CustomAudiences
         {
@@ -1274,8 +1257,9 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Generation { get; set; }
 
         /// <summary>
-        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+        /// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
+        /// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         /// </summary>
         [Input("ingress")]
         public Input<string>? Ingress { get; set; }
@@ -1284,12 +1268,14 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-        /// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-        /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-        /// All system labels in v1 now have a corresponding field in v2 Service.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+        /// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+        /// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+        /// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
+        /// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+        /// 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1316,10 +1302,12 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? LatestReadyRevision { get; set; }
 
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+        /// The launch stage as defined by [Google Cloud Platform Launch
+        /// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+        /// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+        /// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+        /// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+        /// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
@@ -1342,10 +1330,6 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("observedGeneration")]
         public Input<string>? ObservedGeneration { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -1377,7 +1361,6 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Scaling settings that apply to the whole service
-        /// Structure is documented below.
         /// </summary>
         [Input("scaling")]
         public Input<Inputs.ServiceScalingGetArgs>? Scaling { get; set; }
@@ -1419,8 +1402,8 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<Inputs.ServiceTrafficGetArgs>? _traffics;
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-        /// Structure is documented below.
+        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+        /// provided, defaults to 100% traffic to the latest Ready Revision.
         /// </summary>
         public InputList<Inputs.ServiceTrafficGetArgs> Traffics
         {

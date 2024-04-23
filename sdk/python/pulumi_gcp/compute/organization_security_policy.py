@@ -242,7 +242,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         ### Organization Security Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,7 +250,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             display_name="tf-test",
             parent="organizations/123456789")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -305,7 +303,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         ### Organization Security Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -314,7 +311,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             display_name="tf-test",
             parent="organizations/123456789")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

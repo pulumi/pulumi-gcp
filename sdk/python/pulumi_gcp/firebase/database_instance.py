@@ -301,7 +301,6 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ### Firebase Database Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -311,10 +310,8 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             instance_id="active-db")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase Database Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -326,10 +323,8 @@ class DatabaseInstance(pulumi.CustomResource):
             type="USER_DATABASE",
             desired_state="DISABLED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase Database Instance Default Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -351,7 +346,6 @@ class DatabaseInstance(pulumi.CustomResource):
             instance_id="rtdb-project-default-rtdb",
             type="DEFAULT_DATABASE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -413,7 +407,6 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ### Firebase Database Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -423,10 +416,8 @@ class DatabaseInstance(pulumi.CustomResource):
             region="us-central1",
             instance_id="active-db")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase Database Instance Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -438,10 +429,8 @@ class DatabaseInstance(pulumi.CustomResource):
             type="USER_DATABASE",
             desired_state="DISABLED")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firebase Database Instance Default Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,7 +452,6 @@ class DatabaseInstance(pulumi.CustomResource):
             instance_id="rtdb-project-default-rtdb",
             type="DEFAULT_DATABASE")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

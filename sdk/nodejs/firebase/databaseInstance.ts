@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase Database Instance Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,10 +19,8 @@ import * as utilities from "../utilities";
  *     instanceId: "active-db",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase Database Instance Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,10 +33,8 @@ import * as utilities from "../utilities";
  *     desiredState: "DISABLED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase Database Instance Default Database
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,7 +59,6 @@ import * as utilities from "../utilities";
  *     type: "DEFAULT_DATABASE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Dataproc Metastore Federation Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,10 +35,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataproc Metastore Federation Bigquery
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -72,7 +69,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -146,9 +142,9 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public readonly federationId!: pulumi.Output<string>;
     /**
-     * User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -156,13 +152,9 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+     * The relative resource name of the metastore federation.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -268,9 +260,9 @@ export interface MetastoreFederationState {
      */
     federationId?: pulumi.Input<string>;
     /**
-     * User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -278,13 +270,9 @@ export interface MetastoreFederationState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
+     * The relative resource name of the metastore federation.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -325,19 +313,15 @@ export interface MetastoreFederationArgs {
      */
     federationId: pulumi.Input<string>;
     /**
-     * User-defined labels for the metastore federation.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the metastore federation should reside.
      */
     location?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.

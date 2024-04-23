@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ### Network Security Security Profile Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,10 +36,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Security Profile Overrides
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -83,7 +80,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

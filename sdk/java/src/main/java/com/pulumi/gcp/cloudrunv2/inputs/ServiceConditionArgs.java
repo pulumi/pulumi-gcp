@@ -137,16 +137,16 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
      * The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+     * @return (Output)
+     * The allocation type for this traffic target.
      * 
      */
     public Optional<Output<String>> type() {
@@ -348,8 +348,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The allocation type for this traffic target.
-         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * @param type (Output)
+         * The allocation type for this traffic target.
          * 
          * @return builder
          * 
@@ -360,8 +360,8 @@ public final class ServiceConditionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type The allocation type for this traffic target.
-         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * @param type (Output)
+         * The allocation type for this traffic target.
          * 
          * @return builder
          * 

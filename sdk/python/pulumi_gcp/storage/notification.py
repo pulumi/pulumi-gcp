@@ -300,7 +300,6 @@ class Notification(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -328,7 +327,6 @@ class Notification(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             members=[f"serviceAccount:{gcs_account.email_address}"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -382,7 +380,6 @@ class Notification(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -410,7 +407,6 @@ class Notification(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             members=[f"serviceAccount:{gcs_account.email_address}"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

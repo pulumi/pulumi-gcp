@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// ### Cloudbuildv2 Repository Ghe Doc
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -117,10 +116,8 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudbuildv2 Repository Github Doc
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -193,7 +190,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

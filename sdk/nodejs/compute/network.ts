@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  *
  * ### Network Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Custom Mtu
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,10 +36,8 @@ import * as utilities from "../utilities";
  *     mtu: 1460,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Network Custom Firewall Enforcement Order
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -54,7 +49,6 @@ import * as utilities from "../utilities";
  *     networkFirewallPolicyEnforcementOrder: "BEFORE_CLASSIC_FIREWALL",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

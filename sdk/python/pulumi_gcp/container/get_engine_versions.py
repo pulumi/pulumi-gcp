@@ -170,7 +170,6 @@ def get_engine_versions(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -185,7 +184,6 @@ def get_engine_versions(location: Optional[str] = None,
     pulumi.export("stableChannelDefaultVersion", central1b.release_channel_default_version["STABLE"])
     pulumi.export("stableChannelLatestVersion", central1b.release_channel_latest_version["STABLE"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location (region or zone) to list versions for.
@@ -238,7 +236,6 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -253,7 +250,6 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
     pulumi.export("stableChannelDefaultVersion", central1b.release_channel_default_version["STABLE"])
     pulumi.export("stableChannelLatestVersion", central1b.release_channel_latest_version["STABLE"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location (region or zone) to list versions for.

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTunnelDestGroupIamPolicyResult> InvokeAsync(GetTunnelDestGroupIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTunnelDestGroupIamPolicyResult>("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args ?? new GetTunnelDestGroupIamPolicyArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTunnelDestGroupIamPolicyResult> Invoke(GetTunnelDestGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelDestGroupIamPolicyResult>("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args ?? new GetTunnelDestGroupIamPolicyInvokeArgs(), options.WithDefaults());

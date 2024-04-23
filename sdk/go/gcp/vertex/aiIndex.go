@@ -22,7 +22,6 @@ import (
 //
 // ### Vertex Ai Index
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,10 +89,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Vertex Ai Index Streaming
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -158,7 +155,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

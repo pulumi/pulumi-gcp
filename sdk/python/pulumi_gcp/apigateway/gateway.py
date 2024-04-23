@@ -344,7 +344,6 @@ class Gateway(pulumi.CustomResource):
 
         ### Apigateway Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -364,7 +363,6 @@ class Gateway(pulumi.CustomResource):
             api_config=api_gw_api_config.id,
             gateway_id="my-gateway")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -433,7 +431,6 @@ class Gateway(pulumi.CustomResource):
 
         ### Apigateway Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,7 +450,6 @@ class Gateway(pulumi.CustomResource):
             api_config=api_gw_api_config.id,
             gateway_id="my-gateway")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

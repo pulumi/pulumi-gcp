@@ -29,7 +29,6 @@ import (
 //
 // ### Monitoring App Engine Service
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +93,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAppEngineService(ctx *pulumi.Context, args *GetAppEngineServiceArgs, opts ...pulumi.InvokeOption) (*GetAppEngineServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppEngineServiceResult

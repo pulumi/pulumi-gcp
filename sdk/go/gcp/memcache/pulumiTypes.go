@@ -503,8 +503,10 @@ type InstanceMaintenanceSchedule struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
-	// Required. Start time of the window in UTC time.
-	// Structure is documented below.
+	// (Output)
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -531,8 +533,10 @@ type InstanceMaintenanceScheduleArgs struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
-	// Required. Start time of the window in UTC time.
-	// Structure is documented below.
+	// (Output)
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -604,8 +608,10 @@ func (o InstanceMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringP
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. Start time of the window in UTC time.
-// Structure is documented below.
+// (Output)
+// Output only. The start time of any upcoming scheduled maintenance for this instance.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o InstanceMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }

@@ -14,20 +14,12 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreCo
     /**
      * @return Resource name of an existing Dataproc Metastore service.
      * 
-     * Only resource names including projectid and location (region) are valid. Examples:
-     * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
-     * 
      */
     private @Nullable String dataprocMetastoreService;
 
     private ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig() {}
     /**
      * @return Resource name of an existing Dataproc Metastore service.
-     * 
-     * Only resource names including projectid and location (region) are valid. Examples:
-     * 
-     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
      * 
      */
     public Optional<String> dataprocMetastoreService() {

@@ -18,8 +18,10 @@ public final class ClusterMaintenanceEvent {
      */
     private @Nullable String createTime;
     /**
-     * @return The time that the window ends. The end time must take place after the
-     * start time.
+     * @return (Output)
+     * The time when the maintenance event ended, either successfully or not. If
+     * the maintenance event is split into multiple maintenance windows,
+     * end_time is only updated when the whole flow ends.
      * 
      */
     private @Nullable String endTime;
@@ -39,7 +41,8 @@ public final class ClusterMaintenanceEvent {
      */
     private @Nullable String schedule;
     /**
-     * @return The time that the window first starts.
+     * @return (Output)
+     * The time when the maintenance event started.
      * 
      */
     private @Nullable String startTime;
@@ -50,7 +53,8 @@ public final class ClusterMaintenanceEvent {
      */
     private @Nullable String state;
     /**
-     * @return The target cluster version. For example: &#34;1.5.0&#34;.
+     * @return (Output)
+     * The target version of the cluster.
      * 
      */
     private @Nullable String targetVersion;
@@ -83,8 +87,10 @@ public final class ClusterMaintenanceEvent {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return The time that the window ends. The end time must take place after the
-     * start time.
+     * @return (Output)
+     * The time when the maintenance event ended, either successfully or not. If
+     * the maintenance event is split into multiple maintenance windows,
+     * end_time is only updated when the whole flow ends.
      * 
      */
     public Optional<String> endTime() {
@@ -110,7 +116,8 @@ public final class ClusterMaintenanceEvent {
         return Optional.ofNullable(this.schedule);
     }
     /**
-     * @return The time that the window first starts.
+     * @return (Output)
+     * The time when the maintenance event started.
      * 
      */
     public Optional<String> startTime() {
@@ -125,7 +132,8 @@ public final class ClusterMaintenanceEvent {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return The target cluster version. For example: &#34;1.5.0&#34;.
+     * @return (Output)
+     * The target version of the cluster.
      * 
      */
     public Optional<String> targetVersion() {

@@ -19,18 +19,18 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     public static final AccessApprovalSettingsState Empty = new AccessApprovalSettingsState();
 
     /**
-     * The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
-     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+     * The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+     * new non-empty values may not be set.
      * 
      */
     @Import(name="activeKeyVersion")
     private @Nullable Output<String> activeKeyVersion;
 
     /**
-     * @return The asymmetric crypto key version to use for signing approval requests.
-     * Empty active_key_version indicates that a Google-managed key should be used for signing.
-     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+     * @return The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+     * new non-empty values may not be set.
      * 
      */
     public Optional<Output<String>> activeKeyVersion() {
@@ -127,18 +127,18 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent.
-     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
-     * resources of that resource. A maximum of 50 email addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+     * addresses are allowed.
      * 
      */
     @Import(name="notificationEmails")
     private @Nullable Output<List<String>> notificationEmails;
 
     /**
-     * @return A list of email addresses to which notifications relating to approval requests should be sent.
-     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
-     * resources of that resource. A maximum of 50 email addresses are allowed.
+     * @return A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+     * addresses are allowed.
      * 
      */
     public Optional<Output<List<String>>> notificationEmails() {
@@ -146,10 +146,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Optional, Deprecated)
      * Project id.
-     * 
-     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      * @deprecated
      * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -160,10 +157,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     private @Nullable Output<String> project;
 
     /**
-     * @return (Optional, Deprecated)
-     * Project id.
-     * 
-     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+     * @return Project id.
      * 
      * @deprecated
      * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -222,9 +216,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
-         * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+         * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+         * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+         * new non-empty values may not be set.
          * 
          * @return builder
          * 
@@ -235,9 +229,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests.
-         * Empty active_key_version indicates that a Google-managed key should be used for signing.
-         * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
+         * @param activeKeyVersion The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
+         * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
+         * new non-empty values may not be set.
          * 
          * @return builder
          * 
@@ -380,9 +374,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param notificationEmails A list of email addresses to which notifications relating to approval requests should be sent.
-         * Notifications relating to a resource will be sent to all emails in the settings of ancestor
-         * resources of that resource. A maximum of 50 email addresses are allowed.
+         * @param notificationEmails A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+         * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+         * addresses are allowed.
          * 
          * @return builder
          * 
@@ -393,9 +387,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param notificationEmails A list of email addresses to which notifications relating to approval requests should be sent.
-         * Notifications relating to a resource will be sent to all emails in the settings of ancestor
-         * resources of that resource. A maximum of 50 email addresses are allowed.
+         * @param notificationEmails A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+         * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+         * addresses are allowed.
          * 
          * @return builder
          * 
@@ -405,9 +399,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param notificationEmails A list of email addresses to which notifications relating to approval requests should be sent.
-         * Notifications relating to a resource will be sent to all emails in the settings of ancestor
-         * resources of that resource. A maximum of 50 email addresses are allowed.
+         * @param notificationEmails A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+         * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+         * addresses are allowed.
          * 
          * @return builder
          * 
@@ -417,10 +411,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param project (Optional, Deprecated)
-         * Project id.
-         * 
-         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+         * @param project Project id.
          * 
          * @return builder
          * 
@@ -435,10 +426,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param project (Optional, Deprecated)
-         * Project id.
-         * 
-         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
+         * @param project Project id.
          * 
          * @return builder
          * 

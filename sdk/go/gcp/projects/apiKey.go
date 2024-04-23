@@ -17,7 +17,6 @@ import (
 //
 // ### Android_key
 // A basic example of a android api keys key
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,10 +69,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Basic_key
 // A basic example of a api keys key
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,10 +120,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Ios_key
 // A basic example of a ios api keys key
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,10 +171,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Minimal_key
 // A minimal example of a api keys key
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -214,10 +207,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Server_key
 // A basic example of a server api keys key
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -267,7 +258,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

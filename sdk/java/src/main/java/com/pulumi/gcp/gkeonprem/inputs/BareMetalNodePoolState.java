@@ -21,34 +21,24 @@ public final class BareMetalNodePoolState extends com.pulumi.resources.ResourceA
     public static final BareMetalNodePoolState Empty = new BareMetalNodePoolState();
 
     /**
-     * Annotations on the Bare Metal Node Pool.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the Bare Metal Node Pool.
-     * This field has the same restrictions as Kubernetes annotations.
-     * The total size of all keys and values combined is limited to 256k.
-     * Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/).
-     * Prefix must be a DNS subdomain.
-     * Name must be 63 characters or less, begin and end with alphanumerics,
-     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -202,19 +192,9 @@ public final class BareMetalNodePoolState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.nodePoolConfig);
     }
 
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -338,17 +318,12 @@ public final class BareMetalNodePoolState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param annotations Annotations on the Bare Metal Node Pool.
-         * This field has the same restrictions as Kubernetes annotations.
-         * The total size of all keys and values combined is limited to 256k.
-         * Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/).
-         * Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+         * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -359,17 +334,12 @@ public final class BareMetalNodePoolState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param annotations Annotations on the Bare Metal Node Pool.
-         * This field has the same restrictions as Kubernetes annotations.
-         * The total size of all keys and values combined is limited to 256k.
-         * Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/).
-         * Prefix must be a DNS subdomain.
-         * Name must be 63 characters or less, begin and end with alphanumerics,
-         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * @param annotations Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+         * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -579,25 +549,11 @@ public final class BareMetalNodePoolState extends com.pulumi.resources.ResourceA
             return nodePoolConfig(Output.of(nodePoolConfig));
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

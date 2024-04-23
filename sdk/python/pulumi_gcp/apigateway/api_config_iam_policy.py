@@ -199,7 +199,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -213,11 +212,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             api_config=api_cfg["apiConfigId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -228,11 +225,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -243,11 +238,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -261,11 +254,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             api_config=api_cfg["apiConfigId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -276,11 +267,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,7 +280,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -363,7 +351,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,11 +364,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             api_config=api_cfg["apiConfigId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -392,11 +377,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,11 +390,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -425,11 +406,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             api_config=api_cfg["apiConfigId"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,11 +419,9 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_api\\_gateway\\_api\\_config\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -455,7 +432,6 @@ class ApiConfigIamPolicy(pulumi.CustomResource):
             role="roles/apigateway.viewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

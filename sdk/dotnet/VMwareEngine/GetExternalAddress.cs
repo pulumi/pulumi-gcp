@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExternalAddressResult> InvokeAsync(GetExternalAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalAddressResult>("gcp:vmwareengine/getExternalAddress:getExternalAddress", args ?? new GetExternalAddressArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.VMwareEngine
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExternalAddressResult> Invoke(GetExternalAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalAddressResult>("gcp:vmwareengine/getExternalAddress:getExternalAddress", args ?? new GetExternalAddressInvokeArgs(), options.WithDefaults());

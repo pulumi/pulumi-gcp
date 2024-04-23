@@ -3547,7 +3547,7 @@ class JobStatusErrorArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[str] location: Specifies where the error occurred, if present.
         :param pulumi.Input[str] message: A human-readable description of the error.
         :param pulumi.Input[str] reason: A short error code that summarizes the error.
         """
@@ -3562,7 +3562,7 @@ class JobStatusErrorArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The geographic location of the job. The default value is US.
+        Specifies where the error occurred, if present.
         """
         return pulumi.get(self, "location")
 
@@ -3602,7 +3602,7 @@ class JobStatusErrorResultArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  reason: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[str] location: Specifies where the error occurred, if present.
         :param pulumi.Input[str] message: A human-readable description of the error.
         :param pulumi.Input[str] reason: A short error code that summarizes the error.
         """
@@ -3617,7 +3617,7 @@ class JobStatusErrorResultArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The geographic location of the job. The default value is US.
+        Specifies where the error occurred, if present.
         """
         return pulumi.get(self, "location")
 

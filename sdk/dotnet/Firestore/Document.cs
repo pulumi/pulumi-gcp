@@ -32,7 +32,6 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// ### Firestore Document Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,10 +78,8 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firestore Document Nested Document
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -147,7 +144,6 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

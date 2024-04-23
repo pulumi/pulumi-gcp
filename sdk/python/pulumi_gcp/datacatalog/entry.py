@@ -539,7 +539,6 @@ class Entry(pulumi.CustomResource):
 
         ### Data Catalog Entry Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -551,10 +550,8 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Fileset
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -568,10 +565,8 @@ class Entry(pulumi.CustomResource):
                 file_patterns=["gs://fake_bucket/dir/*"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -623,7 +618,6 @@ class Entry(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -695,7 +689,6 @@ class Entry(pulumi.CustomResource):
 
         ### Data Catalog Entry Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -707,10 +700,8 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Fileset
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -724,10 +715,8 @@ class Entry(pulumi.CustomResource):
                 file_patterns=["gs://fake_bucket/dir/*"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -779,7 +768,6 @@ class Entry(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

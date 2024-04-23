@@ -15,7 +15,6 @@ import (
 //
 // First, create a KMS KeyRing and CryptoKey using the resource definitions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,14 +54,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
 // some sensitive information:
 //
 // Finally, reference the encrypted ciphertext in your resource definitions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -132,7 +129,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // This will result in a Cloud SQL user being created with password `my-secret-password`.
 func GetKMSSecretAsymmetric(ctx *pulumi.Context, args *GetKMSSecretAsymmetricArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretAsymmetricResult, error) {

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCustomTargetTypeIamPolicyResult> InvokeAsync(GetCustomTargetTypeIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomTargetTypeIamPolicyResult>("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args ?? new GetCustomTargetTypeIamPolicyArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCustomTargetTypeIamPolicyResult> Invoke(GetCustomTargetTypeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomTargetTypeIamPolicyResult>("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args ?? new GetCustomTargetTypeIamPolicyInvokeArgs(), options.WithDefaults());

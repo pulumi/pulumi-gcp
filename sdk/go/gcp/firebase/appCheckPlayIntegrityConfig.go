@@ -25,7 +25,6 @@ import (
 //
 // ### Firebase App Check Play Integrity Config Minimal
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,10 +72,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firebase App Check Play Integrity Config Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,7 +122,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

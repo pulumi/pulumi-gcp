@@ -26,7 +26,6 @@ import (
 //
 // ### Dns Managed Zone Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,10 +54,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,10 +110,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private Forwarding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -181,10 +176,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private Gke
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -282,10 +275,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Private Peering
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -339,10 +330,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Service Directory
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -390,10 +379,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dns Managed Zone Cloud Logging
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -425,7 +412,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

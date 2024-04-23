@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Beyondcorp App Gateway Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,10 +32,8 @@ import * as utilities from "../utilities";
  *     hostType: "GCP_REGIONAL_MIG",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Beyondcorp App Gateway Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,7 +50,6 @@ import * as utilities from "../utilities";
  *     hostType: "GCP_REGIONAL_MIG",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

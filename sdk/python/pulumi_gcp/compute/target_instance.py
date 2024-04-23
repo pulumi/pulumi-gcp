@@ -418,7 +418,6 @@ class TargetInstance(pulumi.CustomResource):
 
         ### Target Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -441,10 +440,8 @@ class TargetInstance(pulumi.CustomResource):
             name="target",
             instance=target_vm.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Instance Custom Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -469,10 +466,8 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Instance With Security Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -528,7 +523,6 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm.id,
             security_policy=regionsecuritypolicy.self_link)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -613,7 +607,6 @@ class TargetInstance(pulumi.CustomResource):
 
         ### Target Instance Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -636,10 +629,8 @@ class TargetInstance(pulumi.CustomResource):
             name="target",
             instance=target_vm.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Instance Custom Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -664,10 +655,8 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm_instance.id,
             network=target_vm.self_link)
         ```
-        <!--End PulumiCodeChooser -->
         ### Target Instance With Security Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -723,7 +712,6 @@ class TargetInstance(pulumi.CustomResource):
             instance=target_vm.id,
             security_policy=regionsecuritypolicy.self_link)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

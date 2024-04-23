@@ -24,7 +24,6 @@ import (
 //
 // ### Logging Folder Settings All
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,7 +74,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

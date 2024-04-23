@@ -689,7 +689,6 @@ class ManagedZone(pulumi.CustomResource):
 
         ### Dns Managed Zone Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,10 +701,8 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,10 +732,8 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Forwarding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -778,10 +773,8 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Gke
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -843,10 +836,8 @@ class ManagedZone(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Peering
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -873,10 +864,8 @@ class ManagedZone(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Service Directory
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -898,10 +887,8 @@ class ManagedZone(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Cloud Logging
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -917,7 +904,6 @@ class ManagedZone(pulumi.CustomResource):
                 enable_logging=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1003,7 +989,6 @@ class ManagedZone(pulumi.CustomResource):
 
         ### Dns Managed Zone Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1016,10 +1001,8 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1049,10 +1032,8 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Forwarding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1092,10 +1073,8 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Gke
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1157,10 +1136,8 @@ class ManagedZone(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Private Peering
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1187,10 +1164,8 @@ class ManagedZone(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Service Directory
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1212,10 +1187,8 @@ class ManagedZone(pulumi.CustomResource):
             name="network",
             auto_create_subnetworks=False)
         ```
-        <!--End PulumiCodeChooser -->
         ### Dns Managed Zone Cloud Logging
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1231,7 +1204,6 @@ class ManagedZone(pulumi.CustomResource):
                 enable_logging=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ### Basic_azure_node_pool
     /// A basic example of a containerazure azure node pool
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -141,7 +140,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -171,10 +169,12 @@ namespace Pulumi.Gcp.Container
     public partial class AzureNodePool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+        /// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -338,10 +338,12 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+        /// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -427,10 +429,12 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        /// 
-        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+        /// of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        /// `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {

@@ -32,29 +32,29 @@ class EdgeCacheServiceArgs:
         The set of arguments for constructing a EdgeCacheService resource.
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
-        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
-               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+               and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+               have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+               being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
-        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-               Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-               Structure is documented below.
+        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+               EdgeCacheService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+               that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
+        :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+               Cloud Logging.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
-               Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-               You must have at least one (1) edgeSslCertificate specified to enable this.
-        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-               If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+               HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+               this.
+        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+               SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         pulumi.set(__self__, "routing", routing)
         if description is not None:
@@ -97,7 +97,7 @@ class EdgeCacheServiceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description of the hostRule.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -109,9 +109,10 @@ class EdgeCacheServiceArgs:
     @pulumi.getter(name="disableHttp2")
     def disable_http2(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disables HTTP/2.
-        HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-        Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+        and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+        have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+        being advertised and negotiated.
         """
         return pulumi.get(self, "disable_http2")
 
@@ -135,7 +136,8 @@ class EdgeCacheServiceArgs:
     @pulumi.getter(name="edgeSecurityPolicy")
     def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
+        Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+        EdgeCacheService.
         """
         return pulumi.get(self, "edge_security_policy")
 
@@ -147,8 +149,8 @@ class EdgeCacheServiceArgs:
     @pulumi.getter(name="edgeSslCertificates")
     def edge_ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-        Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+        that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         """
         return pulumi.get(self, "edge_ssl_certificates")
 
@@ -160,9 +162,9 @@ class EdgeCacheServiceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -174,8 +176,8 @@ class EdgeCacheServiceArgs:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]:
         """
-        Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-        Structure is documented below.
+        Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+        Cloud Logging.
         """
         return pulumi.get(self, "log_config")
 
@@ -200,10 +202,6 @@ class EdgeCacheServiceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -214,9 +212,9 @@ class EdgeCacheServiceArgs:
     @pulumi.getter(name="requireTls")
     def require_tls(self) -> Optional[pulumi.Input[bool]]:
         """
-        Require TLS (HTTPS) for all clients connecting to this service.
-        Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-        You must have at least one (1) edgeSslCertificate specified to enable this.
+        Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+        HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+        this.
         """
         return pulumi.get(self, "require_tls")
 
@@ -228,8 +226,8 @@ class EdgeCacheServiceArgs:
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-        If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+        SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         return pulumi.get(self, "ssl_policy")
 
@@ -259,36 +257,36 @@ class _EdgeCacheServiceState:
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
-        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
-               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+               and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+               have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+               being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
-        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-               Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+               EdgeCacheService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+               that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
+        :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+               Cloud Logging.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
-               Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-               You must have at least one (1) edgeSslCertificate specified to enable this.
+        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+               HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+               this.
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
-        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-               If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+               SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -327,7 +325,7 @@ class _EdgeCacheServiceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description of the hostRule.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -339,9 +337,10 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="disableHttp2")
     def disable_http2(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disables HTTP/2.
-        HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-        Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+        and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+        have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+        being advertised and negotiated.
         """
         return pulumi.get(self, "disable_http2")
 
@@ -365,7 +364,8 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="edgeSecurityPolicy")
     def edge_security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
+        Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+        EdgeCacheService.
         """
         return pulumi.get(self, "edge_security_policy")
 
@@ -377,8 +377,8 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="edgeSslCertificates")
     def edge_ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-        Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+        that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         """
         return pulumi.get(self, "edge_ssl_certificates")
 
@@ -426,9 +426,9 @@ class _EdgeCacheServiceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -440,8 +440,8 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]:
         """
-        Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-        Structure is documented below.
+        Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+        Cloud Logging.
         """
         return pulumi.get(self, "log_config")
 
@@ -466,10 +466,6 @@ class _EdgeCacheServiceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -493,9 +489,9 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="requireTls")
     def require_tls(self) -> Optional[pulumi.Input[bool]]:
         """
-        Require TLS (HTTPS) for all clients connecting to this service.
-        Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-        You must have at least one (1) edgeSslCertificate specified to enable this.
+        Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+        HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+        this.
         """
         return pulumi.get(self, "require_tls")
 
@@ -520,8 +516,8 @@ class _EdgeCacheServiceState:
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-        If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+        SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         return pulumi.get(self, "ssl_policy")
 
@@ -557,7 +553,6 @@ class EdgeCacheService(pulumi.CustomResource):
 
         ### Network Services Edge Cache Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -608,10 +603,8 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -805,10 +798,8 @@ class EdgeCacheService(pulumi.CustomResource):
                 sample_rate=0.01,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Dual Token
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -927,7 +918,6 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -955,31 +945,31 @@ class EdgeCacheService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
-        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
-               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+               and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+               have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+               being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
-        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-               Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-               Structure is documented below.
+        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+               EdgeCacheService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+               that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+               Cloud Logging.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
-               Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-               You must have at least one (1) edgeSslCertificate specified to enable this.
+        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+               HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+               this.
         :param pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
-        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-               If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+               SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         ...
     @overload
@@ -996,7 +986,6 @@ class EdgeCacheService(pulumi.CustomResource):
 
         ### Network Services Edge Cache Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1047,10 +1036,8 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1244,10 +1231,8 @@ class EdgeCacheService(pulumi.CustomResource):
                 sample_rate=0.01,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Edge Cache Service Dual Token
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1366,7 +1351,6 @@ class EdgeCacheService(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1481,36 +1465,36 @@ class EdgeCacheService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
-        :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
-               HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-               Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[bool] disable_http2: Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+               and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+               have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+               being advertised and negotiated.
         :param pulumi.Input[bool] disable_quic: HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
-        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-               Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        :param pulumi.Input[str] edge_security_policy: Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+               EdgeCacheService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] edge_ssl_certificates: URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+               that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+               present on the resource.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+               Cloud Logging.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
-               Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-               You must have at least one (1) edgeSslCertificate specified to enable this.
+        :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+               HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+               this.
         :param pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
-        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-               If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+               SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1538,7 +1522,7 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A human-readable description of the hostRule.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -1546,9 +1530,10 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="disableHttp2")
     def disable_http2(self) -> pulumi.Output[Optional[bool]]:
         """
-        Disables HTTP/2.
-        HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
-        Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
+        Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
+        and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
+        have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
+        being advertised and negotiated.
         """
         return pulumi.get(self, "disable_http2")
 
@@ -1564,7 +1549,8 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="edgeSecurityPolicy")
     def edge_security_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
+        Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
+        EdgeCacheService.
         """
         return pulumi.get(self, "edge_security_policy")
 
@@ -1572,8 +1558,8 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="edgeSslCertificates")
     def edge_ssl_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
-        Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+        URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
+        that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
         """
         return pulumi.get(self, "edge_ssl_certificates")
 
@@ -1605,9 +1591,9 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Set of label tags associated with the EdgeCache resource.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
+        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
+        present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1615,8 +1601,8 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="logConfig")
     def log_config(self) -> pulumi.Output[Optional['outputs.EdgeCacheServiceLogConfig']]:
         """
-        Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
-        Structure is documented below.
+        Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
+        Cloud Logging.
         """
         return pulumi.get(self, "log_config")
 
@@ -1633,10 +1619,6 @@ class EdgeCacheService(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1652,9 +1634,9 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="requireTls")
     def require_tls(self) -> pulumi.Output[bool]:
         """
-        Require TLS (HTTPS) for all clients connecting to this service.
-        Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
-        You must have at least one (1) edgeSslCertificate specified to enable this.
+        Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
+        HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
+        this.
         """
         return pulumi.get(self, "require_tls")
 
@@ -1671,8 +1653,8 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-        If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
+        URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
+        SSL policy configured, and will default to the "COMPATIBLE" policy.
         """
         return pulumi.get(self, "ssl_policy")
 

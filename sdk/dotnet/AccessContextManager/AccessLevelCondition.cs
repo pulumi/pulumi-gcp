@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ### Access Context Manager Access Level Condition Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,7 +123,6 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

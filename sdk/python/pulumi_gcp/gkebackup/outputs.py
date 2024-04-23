@@ -829,9 +829,6 @@ class RestorePlanIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        """
-        :param str description: User specified descriptive string for this RestorePlan.
-        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -850,9 +847,6 @@ class RestorePlanIamBindingCondition(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        User specified descriptive string for this RestorePlan.
-        """
         return pulumi.get(self, "description")
 
 
@@ -862,9 +856,6 @@ class RestorePlanIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
-        """
-        :param str description: User specified descriptive string for this RestorePlan.
-        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -883,9 +874,6 @@ class RestorePlanIamMemberCondition(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        User specified descriptive string for this RestorePlan.
-        """
         return pulumi.get(self, "description")
 
 

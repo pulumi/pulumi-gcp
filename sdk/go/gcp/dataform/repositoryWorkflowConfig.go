@@ -16,7 +16,6 @@ import (
 //
 // ### Dataform Repository Workflow Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -140,7 +139,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

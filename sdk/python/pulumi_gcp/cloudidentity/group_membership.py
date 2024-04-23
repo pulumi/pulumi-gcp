@@ -27,9 +27,7 @@ class GroupMembershipArgs:
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
-               Structure is documented below.
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
-               Structure is documented below.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "roles", roles)
@@ -69,7 +67,6 @@ class GroupMembershipArgs:
     def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
         """
         EntityKey of the member.
-        Structure is documented below.
         """
         return pulumi.get(self, "member_key")
 
@@ -82,7 +79,6 @@ class GroupMembershipArgs:
     def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]:
         """
         EntityKey of the member.
-        Structure is documented below.
         """
         return pulumi.get(self, "preferred_member_key")
 
@@ -107,11 +103,8 @@ class _GroupMembershipState:
         :param pulumi.Input[str] create_time: The time when the Membership was created.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
-               Structure is documented below.
-        :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-               Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        :param pulumi.Input[str] name: The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
@@ -164,7 +157,6 @@ class _GroupMembershipState:
     def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
         """
         EntityKey of the member.
-        Structure is documented below.
         """
         return pulumi.get(self, "member_key")
 
@@ -176,8 +168,7 @@ class _GroupMembershipState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         """
         return pulumi.get(self, "name")
 
@@ -190,7 +181,6 @@ class _GroupMembershipState:
     def preferred_member_key(self) -> Optional[pulumi.Input['GroupMembershipPreferredMemberKeyArgs']]:
         """
         EntityKey of the member.
-        Structure is documented below.
         """
         return pulumi.get(self, "preferred_member_key")
 
@@ -266,7 +256,6 @@ class GroupMembership(pulumi.CustomResource):
 
         ### Cloud Identity Group Membership
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -298,10 +287,8 @@ class GroupMembership(pulumi.CustomResource):
                 name="MEMBER",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloud Identity Group Membership User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,7 +316,6 @@ class GroupMembership(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -347,9 +333,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
         :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
@@ -379,7 +363,6 @@ class GroupMembership(pulumi.CustomResource):
 
         ### Cloud Identity Group Membership
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -411,10 +394,8 @@ class GroupMembership(pulumi.CustomResource):
                 name="MEMBER",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloud Identity Group Membership User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -442,7 +423,6 @@ class GroupMembership(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -524,11 +504,8 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the Membership was created.
         :param pulumi.Input[str] group: The name of the Group to create this membership in.
         :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
-               Structure is documented below.
-        :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-               Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        :param pulumi.Input[str] name: The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
@@ -570,7 +547,6 @@ class GroupMembership(pulumi.CustomResource):
     def member_key(self) -> pulumi.Output['outputs.GroupMembershipMemberKey']:
         """
         EntityKey of the member.
-        Structure is documented below.
         """
         return pulumi.get(self, "member_key")
 
@@ -578,8 +554,7 @@ class GroupMembership(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         """
         return pulumi.get(self, "name")
 
@@ -588,7 +563,6 @@ class GroupMembership(pulumi.CustomResource):
     def preferred_member_key(self) -> pulumi.Output['outputs.GroupMembershipPreferredMemberKey']:
         """
         EntityKey of the member.
-        Structure is documented below.
         """
         return pulumi.get(self, "preferred_member_key")
 

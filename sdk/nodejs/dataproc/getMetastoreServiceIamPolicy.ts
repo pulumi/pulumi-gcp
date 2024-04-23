@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     serviceId: _default.serviceId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMetastoreServiceIamPolicy(args: GetMetastoreServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreServiceIamPolicyResult> {
 
@@ -76,7 +74,6 @@ export interface GetMetastoreServiceIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,7 +84,6 @@ export interface GetMetastoreServiceIamPolicyResult {
  *     serviceId: _default.serviceId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMetastoreServiceIamPolicyOutput(args: GetMetastoreServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getMetastoreServiceIamPolicy(a, opts))

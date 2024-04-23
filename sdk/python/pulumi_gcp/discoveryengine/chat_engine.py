@@ -35,12 +35,8 @@ class ChatEngineArgs:
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
         :param pulumi.Input[str] location: Location.
         :param pulumi.Input['ChatEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
-               Structure is documented below.
-        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-               Default value is `GENERIC`.
-               Possible values are: `GENERIC`.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+               to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         """
         pulumi.set(__self__, "chat_engine_config", chat_engine_config)
         pulumi.set(__self__, "collection_id", collection_id)
@@ -133,7 +129,6 @@ class ChatEngineArgs:
     def common_config(self) -> Optional[pulumi.Input['ChatEngineCommonConfigArgs']]:
         """
         Common config spec that specifies the metadata of the engine.
-        Structure is documented below.
         """
         return pulumi.get(self, "common_config")
 
@@ -145,9 +140,8 @@ class ChatEngineArgs:
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[str]]:
         """
-        The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-        Default value is `GENERIC`.
-        Possible values are: `GENERIC`.
+        The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+        to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -158,10 +152,6 @@ class ChatEngineArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -193,21 +183,17 @@ class _ChatEngineState:
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
         :param pulumi.Input['ChatEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
-               Structure is documented below.
         :param pulumi.Input[str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
-        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-               Default value is `GENERIC`.
-               Possible values are: `GENERIC`.
+        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+               to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         :param pulumi.Input[str] location: Location.
         :param pulumi.Input[str] name: The unique full resource name of the chat engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Timestamp the Engine was last updated.
         """
         if chat_engine_config is not None:
@@ -280,7 +266,6 @@ class _ChatEngineState:
     def common_config(self) -> Optional[pulumi.Input['ChatEngineCommonConfigArgs']]:
         """
         Common config spec that specifies the metadata of the engine.
-        Structure is documented below.
         """
         return pulumi.get(self, "common_config")
 
@@ -340,9 +325,8 @@ class _ChatEngineState:
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[str]]:
         """
-        The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-        Default value is `GENERIC`.
-        Possible values are: `GENERIC`.
+        The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+        to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -380,10 +364,6 @@ class _ChatEngineState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -431,7 +411,6 @@ class ChatEngine(pulumi.CustomResource):
 
         ### Discoveryengine Chat Engine Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -471,7 +450,6 @@ class ChatEngine(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -503,16 +481,12 @@ class ChatEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
         :param pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
-        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-               Default value is `GENERIC`.
-               Possible values are: `GENERIC`.
+        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+               to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         :param pulumi.Input[str] location: Location.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -533,7 +507,6 @@ class ChatEngine(pulumi.CustomResource):
 
         ### Discoveryengine Chat Engine Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -573,7 +546,6 @@ class ChatEngine(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -693,21 +665,17 @@ class ChatEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] collection_id: The collection ID.
         :param pulumi.Input[pulumi.InputType['ChatEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
-               Structure is documented below.
         :param pulumi.Input[str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`. Adding or removing data stores will force recreation.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: The ID to use for chat engine.
-        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-               Default value is `GENERIC`.
-               Possible values are: `GENERIC`.
+        :param pulumi.Input[str] industry_vertical: The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+               to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         :param pulumi.Input[str] location: Location.
         :param pulumi.Input[str] name: The unique full resource name of the chat engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Timestamp the Engine was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -760,7 +728,6 @@ class ChatEngine(pulumi.CustomResource):
     def common_config(self) -> pulumi.Output[Optional['outputs.ChatEngineCommonConfig']]:
         """
         Common config spec that specifies the metadata of the engine.
-        Structure is documented below.
         """
         return pulumi.get(self, "common_config")
 
@@ -800,9 +767,8 @@ class ChatEngine(pulumi.CustomResource):
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> pulumi.Output[Optional[str]]:
         """
-        The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
-        Default value is `GENERIC`.
-        Possible values are: `GENERIC`.
+        The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
+        to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -828,10 +794,6 @@ class ChatEngine(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

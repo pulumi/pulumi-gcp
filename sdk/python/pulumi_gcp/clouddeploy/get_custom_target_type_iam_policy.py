@@ -105,7 +105,6 @@ def get_custom_target_type_iam_policy(location: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_custom_target_type_iam_policy(location: Optional[str] = None,
         location=custom_target_type["location"],
         name=custom_target_type["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the source. Used to find the parent resource to bind the IAM policy to
@@ -148,7 +146,6 @@ def get_custom_target_type_iam_policy_output(location: Optional[pulumi.Input[Opt
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -157,7 +154,6 @@ def get_custom_target_type_iam_policy_output(location: Optional[pulumi.Input[Opt
         location=custom_target_type["location"],
         name=custom_target_type["name"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location of the source. Used to find the parent resource to bind the IAM policy to

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ### Network Security Authorization Policy Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,10 +55,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Security Authorization Policy Destinations
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,7 +121,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

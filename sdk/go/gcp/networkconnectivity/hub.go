@@ -17,7 +17,6 @@ import (
 //
 // ### Basic_hub
 // A basic test of a networkconnectivity hub
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

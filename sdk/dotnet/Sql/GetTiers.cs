@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Sql
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.Gcp.Sql
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTiersResult> InvokeAsync(GetTiersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTiersResult>("gcp:sql/getTiers:getTiers", args ?? new GetTiersArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.Gcp.Sql
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.Gcp.Sql
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTiersResult> Invoke(GetTiersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTiersResult>("gcp:sql/getTiers:getTiers", args ?? new GetTiersInvokeArgs(), options.WithDefaults());

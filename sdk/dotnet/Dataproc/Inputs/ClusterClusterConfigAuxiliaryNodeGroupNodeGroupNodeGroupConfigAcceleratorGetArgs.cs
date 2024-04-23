@@ -13,16 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-        /// 
-        /// 
-        /// - - -
+        /// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of 1, 2, 4, or 8.
         /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;
 
         /// <summary>
-        /// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+        /// The short name of the accelerator type to expose to this instance. For example, nvidia-tesla-k80.
         /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;

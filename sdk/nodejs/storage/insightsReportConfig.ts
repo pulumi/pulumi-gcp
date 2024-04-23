@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Storage Insights Report Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,7 +72,6 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -138,7 +136,6 @@ export class InsightsReportConfig extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      */
     public readonly frequencyOptions!: pulumi.Output<outputs.storage.InsightsReportConfigFrequencyOptions | undefined>;
     /**
@@ -152,13 +149,8 @@ export class InsightsReportConfig extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Options for including metadata in an inventory report.
-     * Structure is documented below.
      */
     public readonly objectMetadataReportOptions!: pulumi.Output<outputs.storage.InsightsReportConfigObjectMetadataReportOptions | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -217,7 +209,6 @@ export interface InsightsReportConfigState {
     displayName?: pulumi.Input<string>;
     /**
      * Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      */
     frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions>;
     /**
@@ -231,13 +222,8 @@ export interface InsightsReportConfigState {
     name?: pulumi.Input<string>;
     /**
      * Options for including metadata in an inventory report.
-     * Structure is documented below.
      */
     objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }
 
@@ -256,7 +242,6 @@ export interface InsightsReportConfigArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Options for configuring how inventory reports are generated.
-     * Structure is documented below.
      */
     frequencyOptions?: pulumi.Input<inputs.storage.InsightsReportConfigFrequencyOptions>;
     /**
@@ -266,12 +251,7 @@ export interface InsightsReportConfigArgs {
     location: pulumi.Input<string>;
     /**
      * Options for including metadata in an inventory report.
-     * Structure is documented below.
      */
     objectMetadataReportOptions?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptions>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }

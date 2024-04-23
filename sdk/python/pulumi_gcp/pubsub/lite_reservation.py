@@ -201,7 +201,6 @@ class LiteReservation(pulumi.CustomResource):
 
         ### Pubsub Lite Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -212,7 +211,6 @@ class LiteReservation(pulumi.CustomResource):
             project=project.number,
             throughput_capacity=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -276,7 +274,6 @@ class LiteReservation(pulumi.CustomResource):
 
         ### Pubsub Lite Reservation Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -287,7 +284,6 @@ class LiteReservation(pulumi.CustomResource):
             project=project.number,
             throughput_capacity=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

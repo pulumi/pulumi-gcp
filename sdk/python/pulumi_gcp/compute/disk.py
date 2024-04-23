@@ -118,10 +118,13 @@ class DiskArgs:
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -462,10 +465,13 @@ class DiskArgs:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
         """
         return pulumi.get(self, "snapshot")
 
@@ -674,10 +680,13 @@ class _DiskState:
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1156,10 +1165,13 @@ class _DiskState:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
         """
         return pulumi.get(self, "snapshot")
 
@@ -1357,7 +1369,6 @@ class Disk(pulumi.CustomResource):
 
         ### Disk Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1372,10 +1383,8 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
-        <!--End PulumiCodeChooser -->
         ### Disk Async
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1394,10 +1403,8 @@ class Disk(pulumi.CustomResource):
             ),
             physical_block_size_bytes=4096)
         ```
-        <!--End PulumiCodeChooser -->
         ### Disk Features
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1423,7 +1430,6 @@ class Disk(pulumi.CustomResource):
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
             physical_block_size_bytes=4096)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1534,10 +1540,13 @@ class Disk(pulumi.CustomResource):
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1590,7 +1599,6 @@ class Disk(pulumi.CustomResource):
 
         ### Disk Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1605,10 +1613,8 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
-        <!--End PulumiCodeChooser -->
         ### Disk Async
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1627,10 +1633,8 @@ class Disk(pulumi.CustomResource):
             ),
             physical_block_size_bytes=4096)
         ```
-        <!--End PulumiCodeChooser -->
         ### Disk Features
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1656,7 +1660,6 @@ class Disk(pulumi.CustomResource):
             licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
             physical_block_size_bytes=4096)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1911,10 +1914,13 @@ class Disk(pulumi.CustomResource):
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
+               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+               * `projects/project/global/snapshots/snapshot`
+               * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -2260,10 +2266,13 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def snapshot(self) -> pulumi.Output[Optional[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
+        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
+        * `projects/project/global/snapshots/snapshot`
+        * `global/snapshots/snapshot`
         """
         return pulumi.get(self, "snapshot")
 

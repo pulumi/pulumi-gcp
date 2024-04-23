@@ -897,7 +897,8 @@ class ServiceStatus(dict):
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
-        :param Sequence['ServiceStatusTrafficArgs'] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param Sequence['ServiceStatusTrafficArgs'] traffics: (Output)
+               Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         :param str url: (Output)
@@ -966,6 +967,7 @@ class ServiceStatus(dict):
     @pulumi.getter
     def traffics(self) -> Optional[Sequence['outputs.ServiceStatusTraffic']]:
         """
+        (Output)
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
         Structure is documented below.

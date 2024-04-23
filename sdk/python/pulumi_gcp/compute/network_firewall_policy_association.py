@@ -201,7 +201,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         ## Example Usage
 
         ### Global
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -217,7 +216,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=network_firewall_policy.name,
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -260,7 +258,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         ## Example Usage
 
         ### Global
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -276,7 +273,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
             firewall_policy=network_firewall_policy.name,
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

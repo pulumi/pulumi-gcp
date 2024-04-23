@@ -340,7 +340,6 @@ class Kmsconfig(pulumi.CustomResource):
 
         ### Kms Config Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,7 +356,6 @@ class Kmsconfig(pulumi.CustomResource):
             crypto_key_name=crypto_key.id,
             location="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -420,7 +418,6 @@ class Kmsconfig(pulumi.CustomResource):
 
         ### Kms Config Create
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -437,7 +434,6 @@ class Kmsconfig(pulumi.CustomResource):
             crypto_key_name=crypto_key.id,
             location="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

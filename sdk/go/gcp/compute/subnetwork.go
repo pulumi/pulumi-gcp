@@ -46,7 +46,6 @@ import (
 //
 // ### Subnetwork Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Subnetwork Logging Config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,10 +125,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Subnetwork Internal L7lb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,10 +162,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Subnetwork Ipv6
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -206,10 +199,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Subnetwork Internal Ipv6
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -246,10 +237,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Subnetwork Purpose Private Nat
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -284,10 +273,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Subnetwork Cidr Overlap
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -322,7 +309,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

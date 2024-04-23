@@ -70,11 +70,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         private InputList<Inputs.CertificateCertificateDescriptionPublicKeyGetArgs>? _publicKeys;
 
         /// <summary>
+        /// (Output)
         /// A PublicKey describes a public key.
         /// Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionPublicKeyGetArgs> PublicKeys
         {

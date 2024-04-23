@@ -16,7 +16,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
     public static final VMwareClusterControlPlaneNodeVsphereConfigArgs Empty = new VMwareClusterControlPlaneNodeVsphereConfigArgs();
 
     /**
-     * (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
      */
@@ -24,8 +23,7 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
     private @Nullable Output<String> datastore;
 
     /**
-     * @return (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * @return The Vsphere datastore used by the Control Plane Node.
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -33,20 +31,14 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
     }
 
     /**
-     * (Output)
      * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
      * 
      */
     @Import(name="storagePolicyName")
     private @Nullable Output<String> storagePolicyName;
 
     /**
-     * @return (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * @return The Vsphere storage policy used by the control plane Node.
      * 
      */
     public Optional<Output<String>> storagePolicyName() {
@@ -79,8 +71,7 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
         }
 
         /**
-         * @param datastore (Output)
-         * The Vsphere datastore used by the Control Plane Node.
+         * @param datastore The Vsphere datastore used by the Control Plane Node.
          * 
          * @return builder
          * 
@@ -91,8 +82,7 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
         }
 
         /**
-         * @param datastore (Output)
-         * The Vsphere datastore used by the Control Plane Node.
+         * @param datastore The Vsphere datastore used by the Control Plane Node.
          * 
          * @return builder
          * 
@@ -102,10 +92,7 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
         }
 
         /**
-         * @param storagePolicyName (Output)
-         * The Vsphere storage policy used by the control plane Node.
-         * 
-         * ***
+         * @param storagePolicyName The Vsphere storage policy used by the control plane Node.
          * 
          * @return builder
          * 
@@ -116,10 +103,7 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
         }
 
         /**
-         * @param storagePolicyName (Output)
-         * The Vsphere storage policy used by the control plane Node.
-         * 
-         * ***
+         * @param storagePolicyName The Vsphere storage policy used by the control plane Node.
          * 
          * @return builder
          * 

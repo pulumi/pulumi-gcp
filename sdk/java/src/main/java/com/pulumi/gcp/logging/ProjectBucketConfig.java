@@ -380,14 +380,14 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.locked);
     }
     /**
-     * The resource name of the CMEK settings.
+     * The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name of the CMEK settings.
+     * @return The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
      * 
      */
     public Output<String> name() {

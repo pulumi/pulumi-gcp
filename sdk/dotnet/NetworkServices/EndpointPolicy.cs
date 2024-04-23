@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ### Network Services Endpoint Policy Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,10 +57,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Endpoint Policy Empty Match
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -97,7 +94,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -127,13 +123,15 @@ namespace Pulumi.Gcp.NetworkServices
     public partial class EndpointPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+        /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+        /// at the matched endpoints.
         /// </summary>
         [Output("authorizationPolicy")]
         public Output<string?> AuthorizationPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+        /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+        /// the proxy to the actual endpoints.
         /// </summary>
         [Output("clientTlsPolicy")]
         public Output<string?> ClientTlsPolicy { get; private set; } = null!;
@@ -164,9 +162,9 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<Outputs.EndpointPolicyEndpointMatcher> EndpointMatcher { get; private set; } = null!;
 
         /// <summary>
-        /// Set of label tags associated with the TcpRoute resource.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+        /// the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -177,10 +175,6 @@ namespace Pulumi.Gcp.NetworkServices
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -192,14 +186,14 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+        /// applied to terminate the inbound traffic at the identified backends.
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-        /// Structure is documented below.
         /// </summary>
         [Output("trafficPortSelector")]
         public Output<Outputs.EndpointPolicyTrafficPortSelector?> TrafficPortSelector { get; private set; } = null!;
@@ -269,13 +263,15 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EndpointPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+        /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+        /// at the matched endpoints.
         /// </summary>
         [Input("authorizationPolicy")]
         public Input<string>? AuthorizationPolicy { get; set; }
 
         /// <summary>
-        /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+        /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+        /// the proxy to the actual endpoints.
         /// </summary>
         [Input("clientTlsPolicy")]
         public Input<string>? ClientTlsPolicy { get; set; }
@@ -297,9 +293,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the TcpRoute resource.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+        /// the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -313,22 +309,18 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+        /// applied to terminate the inbound traffic at the identified backends.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-        /// Structure is documented below.
         /// </summary>
         [Input("trafficPortSelector")]
         public Input<Inputs.EndpointPolicyTrafficPortSelectorArgs>? TrafficPortSelector { get; set; }
@@ -349,13 +341,15 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EndpointPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
+        /// This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
+        /// at the matched endpoints.
         /// </summary>
         [Input("authorizationPolicy")]
         public Input<string>? AuthorizationPolicy { get; set; }
 
         /// <summary>
-        /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+        /// A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
+        /// the proxy to the actual endpoints.
         /// </summary>
         [Input("clientTlsPolicy")]
         public Input<string>? ClientTlsPolicy { get; set; }
@@ -399,9 +393,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the TcpRoute resource.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
+        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+        /// the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -415,10 +409,6 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -440,14 +430,14 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
-        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+        /// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
+        /// applied to terminate the inbound traffic at the identified backends.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
-        /// Structure is documented below.
         /// </summary>
         [Input("trafficPortSelector")]
         public Input<Inputs.EndpointPolicyTrafficPortSelectorGetArgs>? TrafficPortSelector { get; set; }

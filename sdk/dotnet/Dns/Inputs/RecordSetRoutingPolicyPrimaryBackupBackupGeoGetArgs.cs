@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dns.Inputs
     {
         /// <summary>
         /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        /// Structure is documented below.
         /// </summary>
         [Input("healthCheckedTargets")]
         public Input<Inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsGetArgs>? HealthCheckedTargets { get; set; }

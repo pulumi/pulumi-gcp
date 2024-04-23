@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Cloudbuildv2 Repository Ghe Doc
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -78,10 +77,8 @@ import * as utilities from "../utilities";
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Cloudbuildv2 Repository Github Doc
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -126,7 +123,6 @@ import * as utilities from "../utilities";
  *     remoteUri: "https://github.com/myuser/myrepo.git",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

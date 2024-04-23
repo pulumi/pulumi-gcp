@@ -27,7 +27,6 @@ import (
 //
 // ### Network Peering Routes Config Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Peering Routes Config Gke
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -171,7 +168,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// ### Dataproc Metastore Service Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,10 +53,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataproc Metastore Service Cmek Example
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,10 +92,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataproc Metastore Service Private Service Connect
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -144,10 +139,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataproc Metastore Service Private Service Connect Custom Routes
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -194,10 +187,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataproc Metastore Service Dpms2
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -223,10 +214,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataproc Metastore Service Dpms2 Scaling Factor
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -252,10 +241,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Dataproc Metastore Service Scheduled Backup
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -300,7 +287,6 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -358,7 +344,6 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.MetastoreServiceEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Output("endpointUri")]
@@ -739,7 +724,6 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.MetastoreServiceEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
-        /// (Output)
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Input("endpointUri")]

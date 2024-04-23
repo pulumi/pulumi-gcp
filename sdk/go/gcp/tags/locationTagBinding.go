@@ -26,7 +26,6 @@ import (
 //
 // To bind a tag to a Cloud Run service:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,11 +82,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Compute Instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -146,7 +143,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

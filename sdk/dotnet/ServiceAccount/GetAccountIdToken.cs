@@ -22,8 +22,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///   ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -42,7 +41,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
@@ -50,8 +48,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `target_service_account` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///   ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -85,13 +82,11 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Invoking Cloud Run Endpoint
         /// 
         ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -121,7 +116,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountIdTokenResult> InvokeAsync(GetAccountIdTokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenArgs(), options.WithDefaults());
@@ -137,8 +131,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ### ServiceAccount JSON Credential File.
         ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///   ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -157,7 +150,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Service Account Impersonation.
         ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
@@ -165,8 +157,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   Note: to use the following, you must grant `target_service_account` the
         ///   `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///   ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -200,13 +191,11 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ### Invoking Cloud Run Endpoint
         /// 
         ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -236,7 +225,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());

@@ -33,14 +33,16 @@ public final class BareMetalClusterValidationCheckStatusResultArgs extends com.p
     }
 
     /**
-     * A human readable description of this Bare Metal User Cluster.
+     * (Output)
+     * The description of the validation check.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human readable description of this Bare Metal User Cluster.
+     * @return (Output)
+     * The description of the validation check.
      * 
      */
     public Optional<Output<String>> description() {
@@ -150,7 +152,8 @@ public final class BareMetalClusterValidationCheckStatusResultArgs extends com.p
         }
 
         /**
-         * @param description A human readable description of this Bare Metal User Cluster.
+         * @param description (Output)
+         * The description of the validation check.
          * 
          * @return builder
          * 
@@ -161,7 +164,8 @@ public final class BareMetalClusterValidationCheckStatusResultArgs extends com.p
         }
 
         /**
-         * @param description A human readable description of this Bare Metal User Cluster.
+         * @param description (Output)
+         * The description of the validation check.
          * 
          * @return builder
          * 

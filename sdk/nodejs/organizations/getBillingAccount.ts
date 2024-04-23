@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get information about a Google Billing Account.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     billingAccount: acct.then(acct => acct.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetBillingAccountResult {
 /**
  * Use this data source to get information about a Google Billing Account.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -103,7 +100,6 @@ export interface GetBillingAccountResult {
  *     billingAccount: acct.then(acct => acct.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBillingAccountOutput(args?: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
     return pulumi.output(args).apply((a: any) => getBillingAccount(a, opts))

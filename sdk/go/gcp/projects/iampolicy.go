@@ -38,7 +38,6 @@ import (
 //	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
 //	applying the change.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,11 +76,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,11 +122,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,11 +152,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -194,11 +187,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,11 +215,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,11 +248,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_audit\_config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -299,7 +286,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_policy
 //
@@ -312,7 +298,6 @@ import (
 //	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
 //	applying the change.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -351,11 +336,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -399,11 +382,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -431,11 +412,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -468,11 +447,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -498,11 +475,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -533,11 +508,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_project\_iam\_audit\_config
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -573,7 +546,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

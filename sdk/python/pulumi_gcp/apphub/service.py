@@ -442,7 +442,6 @@ class Service(pulumi.CustomResource):
 
         ### Apphub Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -513,10 +512,8 @@ class Service(pulumi.CustomResource):
             service_id=forwarding_rule.name,
             discovered_service=catalog_service.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apphub Service Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -609,7 +606,6 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -664,7 +660,6 @@ class Service(pulumi.CustomResource):
 
         ### Apphub Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,10 +730,8 @@ class Service(pulumi.CustomResource):
             service_id=forwarding_rule.name,
             discovered_service=catalog_service.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apphub Service Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -831,7 +824,6 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

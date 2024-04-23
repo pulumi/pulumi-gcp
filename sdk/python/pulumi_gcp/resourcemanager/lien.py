@@ -252,7 +252,6 @@ class Lien(pulumi.CustomResource):
 
         ### Resource Manager Lien
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -266,7 +265,6 @@ class Lien(pulumi.CustomResource):
             origin="machine-readable-explanation",
             reason="This project is an important environment")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -313,7 +311,6 @@ class Lien(pulumi.CustomResource):
 
         ### Resource Manager Lien
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -327,7 +324,6 @@ class Lien(pulumi.CustomResource):
             origin="machine-readable-explanation",
             reason="This project is an important environment")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

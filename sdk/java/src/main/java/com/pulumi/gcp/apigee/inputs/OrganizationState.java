@@ -152,14 +152,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the property.
+     * Output only. Name of the Apigee organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the property.
+     * @return Output only. Name of the Apigee organization.
      * 
      */
     public Optional<Output<String>> name() {
@@ -505,7 +505,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the property.
+         * @param name Output only. Name of the Apigee organization.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the property.
+         * @param name Output only. Name of the Apigee organization.
          * 
          * @return builder
          * 

@@ -281,7 +281,6 @@ class Network(pulumi.CustomResource):
 
         ### Vmware Engine Network Standard
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -292,10 +291,8 @@ class Network(pulumi.CustomResource):
             type="STANDARD",
             description="VMwareEngine standard network sample")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Legacy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,7 +316,6 @@ class Network(pulumi.CustomResource):
             description="VMwareEngine legacy network sample")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -375,7 +371,6 @@ class Network(pulumi.CustomResource):
 
         ### Vmware Engine Network Standard
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -386,10 +381,8 @@ class Network(pulumi.CustomResource):
             type="STANDARD",
             description="VMwareEngine standard network sample")
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Network Legacy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -413,7 +406,6 @@ class Network(pulumi.CustomResource):
             description="VMwareEngine legacy network sample")
         wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

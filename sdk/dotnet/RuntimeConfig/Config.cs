@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// Example creating a RuntimeConfig resource.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

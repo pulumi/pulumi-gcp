@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     project: "test-project",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetDatabaseInstancesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -96,7 +93,6 @@ export interface GetDatabaseInstancesResult {
  *     project: "test-project",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseInstances(a, opts))

@@ -24,7 +24,6 @@ import (
 //
 // ### Dataproc Metastore Service Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,10 +60,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Service Cmek Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,10 +108,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Service Private Service Connect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,10 +162,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Service Private Service Connect Custom Routes
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,10 +217,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Service Dpms2
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,10 +250,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Service Dpms2 Scaling Factor
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -294,10 +283,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dataproc Metastore Service Scheduled Backup
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -352,7 +339,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -392,7 +378,6 @@ type MetastoreService struct {
 	// customer data at rest.
 	// Structure is documented below.
 	EncryptionConfig MetastoreServiceEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
-	// (Output)
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -509,7 +494,6 @@ type metastoreServiceState struct {
 	// customer data at rest.
 	// Structure is documented below.
 	EncryptionConfig *MetastoreServiceEncryptionConfig `pulumi:"encryptionConfig"`
-	// (Output)
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -589,7 +573,6 @@ type MetastoreServiceState struct {
 	// customer data at rest.
 	// Structure is documented below.
 	EncryptionConfig MetastoreServiceEncryptionConfigPtrInput
-	// (Output)
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringPtrInput
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -896,7 +879,6 @@ func (o MetastoreServiceOutput) EncryptionConfig() MetastoreServiceEncryptionCon
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceEncryptionConfigPtrOutput { return v.EncryptionConfig }).(MetastoreServiceEncryptionConfigPtrOutput)
 }
 
-// (Output)
 // The URI of the endpoint used to access the metastore service.
 func (o MetastoreServiceOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.EndpointUri }).(pulumi.StringOutput)

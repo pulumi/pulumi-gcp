@@ -20,7 +20,6 @@ import (
 //
 // ### Basic_aws_cluster
 // A basic example of a containeraws node pool
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -180,10 +179,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Basic_enum_aws_cluster
 // A basic example of a containeraws node pool with lowercase enums
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -340,10 +337,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Beta_basic_enum_aws_cluster
 // A basic example of a containeraws node pool with lowercase enums (beta)
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -504,7 +499,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -532,10 +526,12 @@ import (
 type AwsNodePool struct {
 	pulumi.CustomResourceState
 
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingOutput `pulumi:"autoscaling"`
@@ -627,10 +623,12 @@ func GetAwsNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsNodePool resources.
 type awsNodePoolState struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling *AwsNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -672,10 +670,12 @@ type awsNodePoolState struct {
 }
 
 type AwsNodePoolState struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingPtrInput
@@ -721,10 +721,12 @@ func (AwsNodePoolState) ElementType() reflect.Type {
 }
 
 type awsNodePoolArgs struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscaling `pulumi:"autoscaling"`
@@ -752,10 +754,12 @@ type awsNodePoolArgs struct {
 
 // The set of arguments for constructing a AwsNodePool resource.
 type AwsNodePoolArgs struct {
-	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+	// `effective_annotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Autoscaler configuration for this node pool.
 	Autoscaling AwsNodePoolAutoscalingInput
@@ -868,10 +872,12 @@ func (o AwsNodePoolOutput) ToAwsNodePoolOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-//
-// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size
+// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+// `effective_annotations` for all of the annotations present on the resource.
 func (o AwsNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }

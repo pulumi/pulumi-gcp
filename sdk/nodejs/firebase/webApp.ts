@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase Web App Custom Api Key
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

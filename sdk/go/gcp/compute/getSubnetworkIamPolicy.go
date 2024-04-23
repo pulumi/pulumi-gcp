@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSubnetworkIamPolicy(ctx *pulumi.Context, args *GetSubnetworkIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubnetworkIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetworkIamPolicyResult

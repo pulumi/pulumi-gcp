@@ -76,7 +76,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -92,7 +91,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
             host_project=host.project,
             service_project="service-project-id-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -127,7 +125,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -143,7 +140,6 @@ class SharedVPCHostProject(pulumi.CustomResource):
             host_project=host.project,
             service_project="service-project-id-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Target Http Proxy Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,10 +56,8 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Target Http Proxy Http Keep Alive Timeout
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -101,10 +98,8 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Target Http Proxy Https Redirect
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -121,7 +116,6 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

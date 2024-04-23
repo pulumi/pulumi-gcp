@@ -17,20 +17,14 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
     public static final InstanceNetworkInterfaceIpv6AccessConfigArgs Empty = new InstanceNetworkInterfaceIpv6AccessConfigArgs();
 
     /**
-     * The first IPv6 address of the external IPv6 range associated
-     * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-     * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
-     * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
      * 
      */
     @Import(name="externalIpv6")
     private @Nullable Output<String> externalIpv6;
 
     /**
-     * @return The first IPv6 address of the external IPv6 range associated
-     * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-     * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
-     * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
      * 
      */
     public Optional<Output<String>> externalIpv6() {
@@ -70,16 +64,14 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
     }
 
     /**
-     * The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
      * 
      */
     @Import(name="networkTier", required=true)
     private Output<String> networkTier;
 
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
      * 
      */
     public Output<String> networkTier() {
@@ -87,16 +79,14 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
     }
 
     /**
-     * The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
      * 
      */
     @Import(name="publicPtrDomainName")
     private @Nullable Output<String> publicPtrDomainName;
 
     /**
-     * @return The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
      * 
      */
     public Optional<Output<String>> publicPtrDomainName() {
@@ -148,10 +138,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         }
 
         /**
-         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated
-         * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-         * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
-         * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
          * 
          * @return builder
          * 
@@ -162,10 +149,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         }
 
         /**
-         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated
-         * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
-         * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
-         * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
          * 
          * @return builder
          * 
@@ -219,8 +203,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+         * @param networkTier The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
          * 
          * @return builder
          * 
@@ -231,8 +214,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+         * @param networkTier The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
          * 
          * @return builder
          * 
@@ -242,8 +224,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         }
 
         /**
-         * @param publicPtrDomainName The domain name to be used when creating DNSv6
-         * records for the external IPv6 ranges..
+         * @param publicPtrDomainName The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
          * 
          * @return builder
          * 
@@ -254,8 +235,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
         }
 
         /**
-         * @param publicPtrDomainName The domain name to be used when creating DNSv6
-         * records for the external IPv6 ranges..
+         * @param publicPtrDomainName The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
          * 
          * @return builder
          * 

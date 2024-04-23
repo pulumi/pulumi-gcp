@@ -30,9 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? GpuSharingConfig;
         /// <summary>
-        /// The type of the policy. Supports a single value: COMPACT.
-        /// Specifying COMPACT placement policy type places node pool's nodes in a closer
-        /// physical proximity in order to reduce network latency between nodes.
+        /// The accelerator type resource name.
         /// </summary>
         public readonly string Type;
 

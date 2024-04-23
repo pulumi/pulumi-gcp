@@ -169,7 +169,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -183,7 +182,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=folder["name"],
             name="my-association")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -226,7 +224,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -240,7 +237,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
             attachment_target=folder["name"],
             name="my-association")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

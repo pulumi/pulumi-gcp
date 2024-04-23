@@ -24,7 +24,6 @@ import (
 //
 // ### Edgecontainer Node Pool
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,10 +85,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Edgecontainer Node Pool With Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -173,10 +170,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Edgecontainer Local Control Plane Node Pool
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -245,7 +240,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

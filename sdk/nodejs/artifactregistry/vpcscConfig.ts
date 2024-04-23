@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Artifact Registry Vpcsc Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     vpcscPolicy: "ALLOW",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -34,16 +34,12 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
     /**
      * Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
      * 
-     * The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
-     * 
      */
     @Import(name="queryPlansPerMinute")
     private @Nullable Output<Integer> queryPlansPerMinute;
 
     /**
      * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-     * 
-     * The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
      * 
      */
     public Optional<Output<Integer>> queryPlansPerMinute() {
@@ -147,8 +143,6 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
         /**
          * @param queryPlansPerMinute Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
          * 
-         * The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
-         * 
          * @return builder
          * 
          */
@@ -159,8 +153,6 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
 
         /**
          * @param queryPlansPerMinute Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
-         * 
-         * The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
          * 
          * @return builder
          * 

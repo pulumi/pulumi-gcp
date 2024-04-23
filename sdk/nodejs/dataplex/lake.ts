@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic_lake
  * A basic example of a dataplex lake
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

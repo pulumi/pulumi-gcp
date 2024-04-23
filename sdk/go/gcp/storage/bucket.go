@@ -27,7 +27,6 @@ import (
 //
 // ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,11 +75,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Life Cycle Settings For Storage Bucket Objects
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,11 +121,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Enabling Public Access Prevention
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -155,7 +150,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

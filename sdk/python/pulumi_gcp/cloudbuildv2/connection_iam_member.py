@@ -308,7 +308,6 @@ class ConnectionIAMMember(pulumi.CustomResource):
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -323,11 +322,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             name=my_connection["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -339,11 +336,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -355,11 +350,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -374,11 +367,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             name=my_connection["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -390,11 +381,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -406,7 +395,6 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -490,7 +478,6 @@ class ConnectionIAMMember(pulumi.CustomResource):
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,11 +492,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             name=my_connection["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -521,11 +506,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -537,11 +520,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -556,11 +537,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             name=my_connection["name"],
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -572,11 +551,9 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -588,7 +565,6 @@ class ConnectionIAMMember(pulumi.CustomResource):
             role="roles/cloudbuild.connectionViewer",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

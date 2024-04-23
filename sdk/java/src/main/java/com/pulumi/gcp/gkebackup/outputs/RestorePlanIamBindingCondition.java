@@ -12,19 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RestorePlanIamBindingCondition {
-    /**
-     * @return User specified descriptive string for this RestorePlan.
-     * 
-     */
     private @Nullable String description;
     private String expression;
     private String title;
 
     private RestorePlanIamBindingCondition() {}
-    /**
-     * @return User specified descriptive string for this RestorePlan.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }

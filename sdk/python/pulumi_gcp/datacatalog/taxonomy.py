@@ -276,7 +276,6 @@ class Taxonomy(pulumi.CustomResource):
 
         ### Data Catalog Taxonomy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -286,7 +285,6 @@ class Taxonomy(pulumi.CustomResource):
             description="A collection of policy tags",
             activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -339,7 +337,6 @@ class Taxonomy(pulumi.CustomResource):
 
         ### Data Catalog Taxonomy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -349,7 +346,6 @@ class Taxonomy(pulumi.CustomResource):
             description="A collection of policy tags",
             activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

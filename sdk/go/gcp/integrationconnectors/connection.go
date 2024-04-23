@@ -24,7 +24,6 @@ import (
 //
 // ### Integration Connectors Connection Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Integration Connectors Connection Advanced
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -346,7 +343,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

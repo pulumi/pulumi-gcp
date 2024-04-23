@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: "my-beyondcorp-app-connection",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppConnection(args: GetAppConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectionResult> {
 
@@ -79,7 +77,6 @@ export interface GetAppConnectionResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,7 +85,6 @@ export interface GetAppConnectionResult {
  *     name: "my-beyondcorp-app-connection",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppConnectionOutput(args: GetAppConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectionResult> {
     return pulumi.output(args).apply((a: any) => getAppConnection(a, opts))

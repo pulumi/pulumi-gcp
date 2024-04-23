@@ -417,7 +417,6 @@ class AddressGroup(pulumi.CustomResource):
 
         ### Network Security Address Groups Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,10 +429,8 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Address Groups Organization Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,10 +443,8 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Address Groups Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,7 +458,6 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -516,7 +510,6 @@ class AddressGroup(pulumi.CustomResource):
 
         ### Network Security Address Groups Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -529,10 +522,8 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Address Groups Organization Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -545,10 +536,8 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Security Address Groups Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,7 +551,6 @@ class AddressGroup(pulumi.CustomResource):
             capacity=100,
             items=["208.80.154.224/32"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  *
  * ### Access Context Manager Service Perimeter Resource Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -53,7 +52,6 @@ import * as utilities from "../utilities";
  *     resource: "projects/987654321",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

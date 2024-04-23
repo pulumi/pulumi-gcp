@@ -22,7 +22,6 @@ import (
 //
 // ### Logging Organization Settings Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupOrganizationSettings(ctx *pulumi.Context, args *LookupOrganizationSettingsArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationSettingsResult

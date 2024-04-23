@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * ### Basic_fir_sec_rule
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -64,7 +63,6 @@ import * as utilities from "../utilities";
  *     targetServiceAccounts: ["my@service-account.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -125,11 +123,14 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public readonly direction!: pulumi.Output<string>;
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * "goto_next" rules.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
@@ -153,7 +154,8 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     public readonly targetResources!: pulumi.Output<string[] | undefined>;
     /**
@@ -238,11 +240,14 @@ export interface FirewallPolicyRuleState {
      */
     direction?: pulumi.Input<string>;
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * "goto_next" rules.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -266,7 +271,8 @@ export interface FirewallPolicyRuleState {
      */
     ruleTupleCount?: pulumi.Input<number>;
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -292,11 +298,14 @@ export interface FirewallPolicyRuleArgs {
      */
     direction: pulumi.Input<string>;
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "gotoNext" rules.
+     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+     * "goto_next" rules.
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
@@ -312,7 +321,8 @@ export interface FirewallPolicyRuleArgs {
      */
     priority: pulumi.Input<number>;
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
+     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
      */
     targetResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**

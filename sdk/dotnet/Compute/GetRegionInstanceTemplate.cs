@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionInstanceTemplateResult> InvokeAsync(GetRegionInstanceTemplateArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceTemplateResult>("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionInstanceTemplateResult> Invoke(GetRegionInstanceTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceTemplateResult>("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateInvokeArgs(), options.WithDefaults());

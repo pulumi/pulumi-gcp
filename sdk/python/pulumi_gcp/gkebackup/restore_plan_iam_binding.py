@@ -26,8 +26,6 @@ class RestorePlanIamBindingArgs:
         The set of arguments for constructing a RestorePlanIamBinding resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -94,10 +92,6 @@ class RestorePlanIamBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -119,8 +113,6 @@ class _RestorePlanIamBindingState:
         Input properties used for looking up and filtering RestorePlanIamBinding resources.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -191,10 +183,6 @@ class _RestorePlanIamBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -236,7 +224,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
 
         ### Gkebackup Restoreplan All Namespaces
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -280,10 +267,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rollback Namespace
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,10 +323,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Protected Application
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -389,10 +372,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan All Cluster Resources
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -435,10 +416,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rename Namespace
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -510,10 +489,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Second Transformation
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -581,7 +558,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -611,8 +587,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -633,7 +607,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
 
         ### Gkebackup Restoreplan All Namespaces
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +650,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rollback Namespace
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,10 +706,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Protected Application
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -786,10 +755,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan All Cluster Resources
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -832,10 +799,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 cluster_resource_conflict_policy="USE_EXISTING_VERSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Rename Namespace
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -907,10 +872,8 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkebackup Restoreplan Second Transformation
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -978,7 +941,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1071,8 +1033,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The region of the Restore Plan.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1121,10 +1081,6 @@ class RestorePlanIamBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

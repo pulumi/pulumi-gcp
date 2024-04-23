@@ -245,7 +245,6 @@ class Fleet(pulumi.CustomResource):
 
         ### Gkehub Fleet Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -259,7 +258,6 @@ class Fleet(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -307,7 +305,6 @@ class Fleet(pulumi.CustomResource):
 
         ### Gkehub Fleet Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -321,7 +318,6 @@ class Fleet(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

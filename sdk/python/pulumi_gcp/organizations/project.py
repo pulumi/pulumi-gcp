@@ -438,7 +438,6 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -448,11 +447,9 @@ class Project(pulumi.CustomResource):
             project_id="your-project-id",
             org_id="1234567")
         ```
-        <!--End PulumiCodeChooser -->
 
         To create a project under a specific folder
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,7 +462,6 @@ class Project(pulumi.CustomResource):
             project_id="your-project-id",
             folder_id=department1.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -535,7 +531,6 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -545,11 +540,9 @@ class Project(pulumi.CustomResource):
             project_id="your-project-id",
             org_id="1234567")
         ```
-        <!--End PulumiCodeChooser -->
 
         To create a project under a specific folder
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -562,7 +555,6 @@ class Project(pulumi.CustomResource):
             project_id="your-project-id",
             folder_id=department1.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

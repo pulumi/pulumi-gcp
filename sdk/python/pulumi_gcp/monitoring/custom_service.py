@@ -268,7 +268,6 @@ class CustomService(pulumi.CustomResource):
 
         ### Monitoring Service Custom
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -284,7 +283,6 @@ class CustomService(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -338,7 +336,6 @@ class CustomService(pulumi.CustomResource):
 
         ### Monitoring Service Custom
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -354,7 +351,6 @@ class CustomService(pulumi.CustomResource):
                 "my_other_key": "my_other_value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

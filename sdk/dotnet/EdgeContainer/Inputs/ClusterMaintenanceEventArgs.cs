@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The time that the window ends. The end time must take place after the
-        /// start time.
+        /// (Output)
+        /// The time when the maintenance event ended, either successfully or not. If
+        /// the maintenance event is split into multiple maintenance windows,
+        /// end_time is only updated when the whole flow ends.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -44,7 +46,8 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// The time that the window first starts.
+        /// (Output)
+        /// The time when the maintenance event started.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
@@ -57,7 +60,8 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The target cluster version. For example: "1.5.0".
+        /// (Output)
+        /// The target version of the cluster.
         /// </summary>
         [Input("targetVersion")]
         public Input<string>? TargetVersion { get; set; }

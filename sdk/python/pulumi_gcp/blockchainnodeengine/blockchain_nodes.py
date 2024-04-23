@@ -380,7 +380,6 @@ class BlockchainNodes(pulumi.CustomResource):
 
         ### Blockchain Nodes Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,10 +406,8 @@ class BlockchainNodes(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Blockchain Nodes Geth Details
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -440,7 +437,6 @@ class BlockchainNodes(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -503,7 +499,6 @@ class BlockchainNodes(pulumi.CustomResource):
 
         ### Blockchain Nodes Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,10 +525,8 @@ class BlockchainNodes(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Blockchain Nodes Geth Details
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -563,7 +556,6 @@ class BlockchainNodes(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

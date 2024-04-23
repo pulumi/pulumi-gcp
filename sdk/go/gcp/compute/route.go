@@ -45,7 +45,6 @@ import (
 //
 // ### Route Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,10 +78,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Route Ilb
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,10 +154,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Route Ilb Vip
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -271,7 +266,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

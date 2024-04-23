@@ -14,12 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterBinaryAuthorization
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        /// Enable Binary Authorization for this cluster.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        /// Mode of operation for Binary Authorization policy evaluation.
         /// </summary>
         public readonly string? EvaluationMode;
 

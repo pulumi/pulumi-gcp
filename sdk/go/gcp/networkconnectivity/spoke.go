@@ -17,7 +17,6 @@ import (
 // ## Example Usage
 //
 // ### Linked_vpc_network
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,9 +71,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Router_appliance
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,7 +162,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -201,12 +197,14 @@ type Spoke struct {
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for
+	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// `effective_labels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+	// advertising the same prefixes.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrOutput `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrOutput `pulumi:"linkedRouterApplianceInstances"`
@@ -279,12 +277,14 @@ type spokeState struct {
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for
+	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// `effective_labels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+	// advertising the same prefixes.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
@@ -317,12 +317,14 @@ type SpokeState struct {
 	EffectiveLabels pulumi.MapInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for
+	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// `effective_labels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+	// advertising the same prefixes.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
@@ -355,12 +357,14 @@ type spokeArgs struct {
 	Description *string `pulumi:"description"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for
+	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// `effective_labels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+	// advertising the same prefixes.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
@@ -382,12 +386,14 @@ type SpokeArgs struct {
 	Description pulumi.StringPtrInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-	//
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	// Optional labels in key:value format. For more information about labels, see [Requirements for
+	// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// `effective_labels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+	// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+	// advertising the same prefixes.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
@@ -510,15 +516,17 @@ func (o SpokeOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
 }
 
-// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-//
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+// Optional labels in key:value format. For more information about labels, see [Requirements for
+// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+// `effective_labels` for all of the labels present on the resource.
 func (o SpokeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+// prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+// advertising the same prefixes.
 func (o SpokeOutput) LinkedInterconnectAttachments() SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedInterconnectAttachmentsPtrOutput { return v.LinkedInterconnectAttachments }).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }

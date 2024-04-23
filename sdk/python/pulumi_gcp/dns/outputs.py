@@ -1201,7 +1201,6 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
         """
         :param str location: The location name defined in Google Cloud.
         :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if health_checked_targets is not None:
@@ -1222,7 +1221,6 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
     def health_checked_targets(self) -> Optional['outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets']:
         """
         For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
-        Structure is documented below.
         """
         return pulumi.get(self, "health_checked_targets")
 
@@ -1400,7 +1398,6 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
                  internal_load_balancers: Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer']):
         """
         :param Sequence['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs'] internal_load_balancers: The list of internal load balancers to health check.
-               Structure is documented below.
         """
         pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
 
@@ -1409,7 +1406,6 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary(dict):
     def internal_load_balancers(self) -> Sequence['outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer']:
         """
         The list of internal load balancers to health check.
-        Structure is documented below.
         """
         return pulumi.get(self, "internal_load_balancers")
 

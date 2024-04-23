@@ -718,7 +718,6 @@ class Gateway(pulumi.CustomResource):
 
         ### Network Services Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -729,10 +728,8 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -747,10 +744,8 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Secure Web Proxy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -805,10 +800,8 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Multiple Swp Same Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -875,7 +868,6 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -963,7 +955,6 @@ class Gateway(pulumi.CustomResource):
 
         ### Network Services Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -974,10 +965,8 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Advanced
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -992,10 +981,8 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Secure Web Proxy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1050,10 +1037,8 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
         ### Network Services Gateway Multiple Swp Same Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1120,7 +1105,6 @@ class Gateway(pulumi.CustomResource):
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

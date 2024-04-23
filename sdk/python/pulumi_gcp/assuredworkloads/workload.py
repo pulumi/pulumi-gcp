@@ -655,7 +655,6 @@ class Workload(pulumi.CustomResource):
 
         ### Basic_workload
         A basic test of a assuredworkloads api
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -689,10 +688,8 @@ class Workload(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Sovereign_controls_workload
         A Sovereign Controls test of the assuredworkloads api
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -724,7 +721,6 @@ class Workload(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -780,7 +776,6 @@ class Workload(pulumi.CustomResource):
 
         ### Basic_workload
         A basic test of a assuredworkloads api
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -814,10 +809,8 @@ class Workload(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Sovereign_controls_workload
         A Sovereign Controls test of the assuredworkloads api
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -849,7 +842,6 @@ class Workload(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.CloudIds
     /// 
     /// ### Cloudids Endpoint
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,7 +62,6 @@ namespace Pulumi.Gcp.CloudIds
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

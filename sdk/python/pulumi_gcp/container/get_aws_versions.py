@@ -94,7 +94,6 @@ def get_aws_versions(location: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -103,7 +102,6 @@ def get_aws_versions(location: Optional[str] = None,
         project="my-project")
     pulumi.export("firstAvailableVersion", versions["validVersions"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location to list versions for.
@@ -133,7 +131,6 @@ def get_aws_versions_output(location: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -142,7 +139,6 @@ def get_aws_versions_output(location: Optional[pulumi.Input[Optional[str]]] = No
         project="my-project")
     pulumi.export("firstAvailableVersion", versions["validVersions"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str location: The location to list versions for.

@@ -409,7 +409,6 @@ class AppGateway(pulumi.CustomResource):
 
         ### Beyondcorp App Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -420,10 +419,8 @@ class AppGateway(pulumi.CustomResource):
             region="us-central1",
             host_type="GCP_REGIONAL_MIG")
         ```
-        <!--End PulumiCodeChooser -->
         ### Beyondcorp App Gateway Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -439,7 +436,6 @@ class AppGateway(pulumi.CustomResource):
             },
             host_type="GCP_REGIONAL_MIG")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -513,7 +509,6 @@ class AppGateway(pulumi.CustomResource):
 
         ### Beyondcorp App Gateway Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -524,10 +519,8 @@ class AppGateway(pulumi.CustomResource):
             region="us-central1",
             host_type="GCP_REGIONAL_MIG")
         ```
-        <!--End PulumiCodeChooser -->
         ### Beyondcorp App Gateway Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -543,7 +536,6 @@ class AppGateway(pulumi.CustomResource):
             },
             host_type="GCP_REGIONAL_MIG")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

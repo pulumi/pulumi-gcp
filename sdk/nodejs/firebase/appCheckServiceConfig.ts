@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase App Check Service Config Off
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,10 +31,8 @@ import * as utilities from "../utilities";
  *     serviceId: "firestore.googleapis.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase App Check Service Config Enforced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -51,10 +48,8 @@ import * as utilities from "../utilities";
  *     enforcementMode: "ENFORCED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebase App Check Service Config Unenforced
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -70,7 +65,6 @@ import * as utilities from "../utilities";
  *     enforcementMode: "UNENFORCED",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * First, create a KMS KeyRing and CryptoKey using the resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,11 +36,9 @@ import * as utilities from "../utilities";
  *     keyRing: myKeyRing.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -68,7 +65,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The resulting instance can then access the encrypted password from its metadata
  * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
@@ -131,7 +127,6 @@ export interface GetKMSSecretCiphertextResult {
  *
  * First, create a KMS KeyRing and CryptoKey using the resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -146,11 +141,9 @@ export interface GetKMSSecretCiphertextResult {
  *     keyRing: myKeyRing.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -177,7 +170,6 @@ export interface GetKMSSecretCiphertextResult {
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The resulting instance can then access the encrypted password from its metadata
  * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):

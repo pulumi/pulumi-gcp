@@ -21,7 +21,6 @@ import (
 //
 // ### Privateca Certificate Generated Key
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -179,10 +178,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Privateca Certificate With Template
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -357,10 +354,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Privateca Certificate Csr
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -445,10 +440,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Privateca Certificate No Authority
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -564,7 +557,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

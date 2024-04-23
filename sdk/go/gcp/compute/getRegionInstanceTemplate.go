@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,7 +50,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupRegionInstanceTemplate(ctx *pulumi.Context, args *LookupRegionInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupRegionInstanceTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionInstanceTemplateResult

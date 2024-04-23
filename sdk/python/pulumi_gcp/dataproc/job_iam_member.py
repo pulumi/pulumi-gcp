@@ -295,7 +295,6 @@ class JobIAMMember(pulumi.CustomResource):
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,11 +309,9 @@ class JobIAMMember(pulumi.CustomResource):
             job_id="your-dataproc-job",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -324,11 +321,9 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -338,11 +333,9 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -357,11 +350,9 @@ class JobIAMMember(pulumi.CustomResource):
             job_id="your-dataproc-job",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -371,11 +362,9 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -385,7 +374,6 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -452,7 +440,6 @@ class JobIAMMember(pulumi.CustomResource):
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -467,11 +454,9 @@ class JobIAMMember(pulumi.CustomResource):
             job_id="your-dataproc-job",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -481,11 +466,9 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -495,11 +478,9 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -514,11 +495,9 @@ class JobIAMMember(pulumi.CustomResource):
             job_id="your-dataproc-job",
             policy_data=admin.policy_data)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_binding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -528,11 +507,9 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             members=["user:jane@example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## google\\_dataproc\\_job\\_iam\\_member
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -542,7 +519,6 @@ class JobIAMMember(pulumi.CustomResource):
             role="roles/editor",
             member="user:jane@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

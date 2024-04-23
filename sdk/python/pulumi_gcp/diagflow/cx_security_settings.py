@@ -553,7 +553,6 @@ class CxSecuritySettings(pulumi.CustomResource):
 
         ### Dialogflowcx Security Settings Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -564,10 +563,8 @@ class CxSecuritySettings(pulumi.CustomResource):
             purge_data_types=[],
             retention_window_days=7)
         ```
-        <!--End PulumiCodeChooser -->
         ### Dialogflowcx Security Settings Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -619,7 +616,6 @@ class CxSecuritySettings(pulumi.CustomResource):
             ),
             retention_strategy="REMOVE_AFTER_CONVERSATION")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -703,7 +699,6 @@ class CxSecuritySettings(pulumi.CustomResource):
 
         ### Dialogflowcx Security Settings Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -714,10 +709,8 @@ class CxSecuritySettings(pulumi.CustomResource):
             purge_data_types=[],
             retention_window_days=7)
         ```
-        <!--End PulumiCodeChooser -->
         ### Dialogflowcx Security Settings Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -769,7 +762,6 @@ class CxSecuritySettings(pulumi.CustomResource):
             ),
             retention_strategy="REMOVE_AFTER_CONVERSATION")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -186,7 +186,6 @@ def get_notification_channel(display_name: Optional[str] = None,
 
     ### Notification Channel Basic
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -209,7 +208,6 @@ def get_notification_channel(display_name: Optional[str] = None,
             ),
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: The display name for this notification channel.
@@ -272,7 +270,6 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
 
     ### Notification Channel Basic
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -295,7 +292,6 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
             ),
         )])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: The display name for this notification channel.

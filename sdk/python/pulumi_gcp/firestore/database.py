@@ -634,7 +634,6 @@ class Database(pulumi.CustomResource):
 
         ### Firestore Default Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -645,10 +644,8 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -664,10 +661,8 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Cmek Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -698,10 +693,8 @@ class Database(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Default Database In Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -712,10 +705,8 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="DATASTORE_MODE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Database In Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -731,10 +722,8 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Cmek Database In Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -765,7 +754,6 @@ class Database(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -859,7 +847,6 @@ class Database(pulumi.CustomResource):
 
         ### Firestore Default Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -870,10 +857,8 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -889,10 +874,8 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Cmek Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -923,10 +906,8 @@ class Database(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Default Database In Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -937,10 +918,8 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="DATASTORE_MODE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Database In Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -956,10 +935,8 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Firestore Cmek Database In Datastore Mode
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -990,7 +967,6 @@ class Database(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-firestore.iam.gserviceaccount.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

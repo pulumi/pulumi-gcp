@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Redis Cluster Ha
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,7 +56,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -119,8 +117,8 @@ export class Cluster extends pulumi.CustomResource {
 
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+     * "AUTH_MODE_DISABLED"]
      */
     public readonly authorizationMode!: pulumi.Output<string | undefined>;
     /**
@@ -142,19 +140,14 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The nodeType for the Redis cluster.
-     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+     * ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
      */
     public readonly nodeType!: pulumi.Output<string>;
     /**
      * Output only. Redis memory precise size in GB for the entire cluster.
      */
     public /*out*/ readonly preciseSizeGb!: pulumi.Output<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Required. Each PscConfig configures the consumer network where two
@@ -194,10 +187,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateInfos!: pulumi.Output<outputs.redis.ClusterStateInfo[]>;
     /**
-     * Optional. The in-transit encryption for the Redis cluster.
-     * If not provided, encryption is disabled for the cluster.
-     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+     * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+     * Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+     * "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
      */
     public readonly transitEncryptionMode!: pulumi.Output<string | undefined>;
     /**
@@ -272,8 +264,8 @@ export class Cluster extends pulumi.CustomResource {
 export interface ClusterState {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+     * "AUTH_MODE_DISABLED"]
      */
     authorizationMode?: pulumi.Input<string>;
     /**
@@ -295,19 +287,14 @@ export interface ClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The nodeType for the Redis cluster.
-     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+     * ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
      */
     nodeType?: pulumi.Input<string>;
     /**
      * Output only. Redis memory precise size in GB for the entire cluster.
      */
     preciseSizeGb?: pulumi.Input<number>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Required. Each PscConfig configures the consumer network where two
@@ -347,10 +334,9 @@ export interface ClusterState {
      */
     stateInfos?: pulumi.Input<pulumi.Input<inputs.redis.ClusterStateInfo>[]>;
     /**
-     * Optional. The in-transit encryption for the Redis cluster.
-     * If not provided, encryption is disabled for the cluster.
-     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+     * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+     * Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+     * "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
      */
     transitEncryptionMode?: pulumi.Input<string>;
     /**
@@ -365,8 +351,8 @@ export interface ClusterState {
 export interface ClusterArgs {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
+     * "AUTH_MODE_DISABLED"]
      */
     authorizationMode?: pulumi.Input<string>;
     /**
@@ -375,15 +361,10 @@ export interface ClusterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The nodeType for the Redis cluster.
-     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
+     * ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
      */
     nodeType?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Required. Each PscConfig configures the consumer network where two
@@ -405,10 +386,9 @@ export interface ClusterArgs {
      */
     shardCount: pulumi.Input<number>;
     /**
-     * Optional. The in-transit encryption for the Redis cluster.
-     * If not provided, encryption is disabled for the cluster.
-     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
-     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
+     * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
+     * Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
+     * "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
      */
     transitEncryptionMode?: pulumi.Input<string>;
 }

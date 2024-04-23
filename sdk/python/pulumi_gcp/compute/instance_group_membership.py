@@ -203,7 +203,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
 
         ### Instance Group Membership
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -225,7 +224,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
             instance=default_instance.self_link,
             instance_group=default_instance_group.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -298,7 +296,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
 
         ### Instance Group Membership
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -320,7 +317,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
             instance=default_instance.self_link,
             instance_group=default_instance_group.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

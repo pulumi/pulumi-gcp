@@ -18,7 +18,6 @@ import (
 //
 // ### Workbench Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,10 +42,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workbench Instance Basic Container
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,10 +74,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workbench Instance Basic Gpu
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,10 +113,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workbench Instance Labels Stopped
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -169,10 +162,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Workbench Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -269,7 +260,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

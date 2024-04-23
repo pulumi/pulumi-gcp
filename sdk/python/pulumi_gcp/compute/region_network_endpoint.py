@@ -270,7 +270,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
 
         ### Region Network Endpoint Internet Ip Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -289,10 +288,8 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Internet Fqdn Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -311,7 +308,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -381,7 +377,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
 
         ### Region Network Endpoint Internet Ip Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -400,10 +395,8 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Network Endpoint Internet Fqdn Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -422,7 +415,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -774,16 +774,11 @@ class ConfigSignInHashConfigArgs:
                  salt_separator: Optional[pulumi.Input[str]] = None,
                  signer_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] algorithm: (Output)
-               Different password hash algorithms used in Identity Toolkit.
-        :param pulumi.Input[int] memory_cost: (Output)
-               Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-        :param pulumi.Input[int] rounds: (Output)
-               How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-        :param pulumi.Input[str] salt_separator: (Output)
-               Non-printable character to be inserted between the salt and plain text password in base64.
-        :param pulumi.Input[str] signer_key: (Output)
-               Signer key in base64.
+        :param pulumi.Input[str] algorithm: Different password hash algorithms used in Identity Toolkit.
+        :param pulumi.Input[int] memory_cost: Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+        :param pulumi.Input[int] rounds: How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+        :param pulumi.Input[str] salt_separator: Non-printable character to be inserted between the salt and plain text password in base64.
+        :param pulumi.Input[str] signer_key: Signer key in base64.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -800,7 +795,6 @@ class ConfigSignInHashConfigArgs:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Different password hash algorithms used in Identity Toolkit.
         """
         return pulumi.get(self, "algorithm")
@@ -813,7 +807,6 @@ class ConfigSignInHashConfigArgs:
     @pulumi.getter(name="memoryCost")
     def memory_cost(self) -> Optional[pulumi.Input[int]]:
         """
-        (Output)
         Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
         """
         return pulumi.get(self, "memory_cost")
@@ -826,7 +819,6 @@ class ConfigSignInHashConfigArgs:
     @pulumi.getter
     def rounds(self) -> Optional[pulumi.Input[int]]:
         """
-        (Output)
         How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
         """
         return pulumi.get(self, "rounds")
@@ -839,7 +831,6 @@ class ConfigSignInHashConfigArgs:
     @pulumi.getter(name="saltSeparator")
     def salt_separator(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Non-printable character to be inserted between the salt and plain text password in base64.
         """
         return pulumi.get(self, "salt_separator")
@@ -852,7 +843,6 @@ class ConfigSignInHashConfigArgs:
     @pulumi.getter(name="signerKey")
     def signer_key(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Signer key in base64.
         """
         return pulumi.get(self, "signer_key")
@@ -1152,7 +1142,7 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
+        :param pulumi.Input[str] x509_certificate: The x509 certificate
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -1161,7 +1151,7 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The IdP's x509 certificate.
+        The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
 
@@ -1345,16 +1335,11 @@ class ProjectDefaultConfigSignInHashConfigArgs:
                  salt_separator: Optional[pulumi.Input[str]] = None,
                  signer_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] algorithm: (Output)
-               Different password hash algorithms used in Identity Toolkit.
-        :param pulumi.Input[int] memory_cost: (Output)
-               Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-        :param pulumi.Input[int] rounds: (Output)
-               How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-        :param pulumi.Input[str] salt_separator: (Output)
-               Non-printable character to be inserted between the salt and plain text password in base64.
-        :param pulumi.Input[str] signer_key: (Output)
-               Signer key in base64.
+        :param pulumi.Input[str] algorithm: Different password hash algorithms used in Identity Toolkit.
+        :param pulumi.Input[int] memory_cost: Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+        :param pulumi.Input[int] rounds: How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+        :param pulumi.Input[str] salt_separator: Non-printable character to be inserted between the salt and plain text password in base64.
+        :param pulumi.Input[str] signer_key: Signer key in base64.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -1371,7 +1356,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Different password hash algorithms used in Identity Toolkit.
         """
         return pulumi.get(self, "algorithm")
@@ -1384,7 +1368,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter(name="memoryCost")
     def memory_cost(self) -> Optional[pulumi.Input[int]]:
         """
-        (Output)
         Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
         """
         return pulumi.get(self, "memory_cost")
@@ -1397,7 +1380,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter
     def rounds(self) -> Optional[pulumi.Input[int]]:
         """
-        (Output)
         How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
         """
         return pulumi.get(self, "rounds")
@@ -1410,7 +1392,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter(name="saltSeparator")
     def salt_separator(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Non-printable character to be inserted between the salt and plain text password in base64.
         """
         return pulumi.get(self, "salt_separator")
@@ -1423,7 +1404,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter(name="signerKey")
     def signer_key(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         Signer key in base64.
         """
         return pulumi.get(self, "signer_key")

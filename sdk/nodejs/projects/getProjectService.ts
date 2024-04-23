@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  *     service: "my-project-service",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectService(args: GetProjectServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceResult> {
 
@@ -88,7 +86,6 @@ export interface GetProjectServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -97,7 +94,6 @@ export interface GetProjectServiceResult {
  *     service: "my-project-service",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectServiceOutput(args: GetProjectServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceResult> {
     return pulumi.output(args).apply((a: any) => getProjectService(a, opts))

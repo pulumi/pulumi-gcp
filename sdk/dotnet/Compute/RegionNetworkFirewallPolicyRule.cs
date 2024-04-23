@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Compute
     /// ## Example Usage
     /// 
     /// ### Regional
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -126,7 +125,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -180,13 +178,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+        /// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+        /// "goto_next" rules.
         /// </summary>
         [Output("enableLogging")]
         public Output<bool?> EnableLogging { get; private set; } = null!;
@@ -240,7 +241,12 @@ namespace Pulumi.Gcp.Compute
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
         /// <summary>
-        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+        /// tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+        /// instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         [Output("targetSecureTags")]
         public Output<ImmutableArray<Outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag>> TargetSecureTags { get; private set; } = null!;
@@ -316,13 +322,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+        /// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+        /// "goto_next" rules.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -367,7 +376,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagArgs>? _targetSecureTags;
 
         /// <summary>
-        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+        /// tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+        /// instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         public InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagArgs> TargetSecureTags
         {
@@ -414,13 +428,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        /// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
+        /// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
+        /// export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
+        /// "goto_next" rules.
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
@@ -477,7 +494,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagGetArgs>? _targetSecureTags;
 
         /// <summary>
-        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
+        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
+        /// tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
+        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
+        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
+        /// instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         public InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagGetArgs> TargetSecureTags
         {

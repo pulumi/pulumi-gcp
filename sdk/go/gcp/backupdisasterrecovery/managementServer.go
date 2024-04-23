@@ -16,7 +16,6 @@ import (
 //
 // ### Backup Dr Management Server
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,7 +75,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -116,12 +114,8 @@ type ManagementServer struct {
 	Networks ManagementServerNetworkArrayOutput `pulumi:"networks"`
 	// The oauth2ClientId of management console.
 	Oauth2ClientId pulumi.StringOutput `pulumi:"oauth2ClientId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
-	// The type of management server (management console).
-	// Default value is `BACKUP_RESTORE`.
-	// Possible values are: `BACKUP_RESTORE`.
+	Project        pulumi.StringOutput `pulumi:"project"`
+	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -173,12 +167,8 @@ type managementServerState struct {
 	Networks []ManagementServerNetwork `pulumi:"networks"`
 	// The oauth2ClientId of management console.
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
-	// The type of management server (management console).
-	// Default value is `BACKUP_RESTORE`.
-	// Possible values are: `BACKUP_RESTORE`.
+	Project        *string `pulumi:"project"`
+	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
 	Type *string `pulumi:"type"`
 }
 
@@ -195,12 +185,8 @@ type ManagementServerState struct {
 	Networks ManagementServerNetworkArrayInput
 	// The oauth2ClientId of management console.
 	Oauth2ClientId pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
-	// The type of management server (management console).
-	// Default value is `BACKUP_RESTORE`.
-	// Possible values are: `BACKUP_RESTORE`.
+	Project        pulumi.StringPtrInput
+	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
 	Type pulumi.StringPtrInput
 }
 
@@ -216,12 +202,8 @@ type managementServerArgs struct {
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks []ManagementServerNetwork `pulumi:"networks"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
-	// The type of management server (management console).
-	// Default value is `BACKUP_RESTORE`.
-	// Possible values are: `BACKUP_RESTORE`.
+	Project  *string                   `pulumi:"project"`
+	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
 	Type *string `pulumi:"type"`
 }
 
@@ -234,12 +216,8 @@ type ManagementServerArgs struct {
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks ManagementServerNetworkArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
-	// The type of management server (management console).
-	// Default value is `BACKUP_RESTORE`.
-	// Possible values are: `BACKUP_RESTORE`.
+	Project  pulumi.StringPtrInput
+	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
 	Type pulumi.StringPtrInput
 }
 
@@ -357,15 +335,11 @@ func (o ManagementServerOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o ManagementServerOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The type of management server (management console).
-// Default value is `BACKUP_RESTORE`.
-// Possible values are: `BACKUP_RESTORE`.
+// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
 func (o ManagementServerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

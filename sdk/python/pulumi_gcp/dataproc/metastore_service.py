@@ -382,8 +382,7 @@ class _MetastoreServiceState:
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
-        :param pulumi.Input[str] endpoint_uri: (Output)
-               The URI of the endpoint used to access the metastore service.
+        :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -535,7 +534,6 @@ class _MetastoreServiceState:
     @pulumi.getter(name="endpointUri")
     def endpoint_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")
@@ -844,7 +842,6 @@ class MetastoreService(pulumi.CustomResource):
 
         ### Dataproc Metastore Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -865,10 +862,8 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Cmek Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -890,10 +885,8 @@ class MetastoreService(pulumi.CustomResource):
                 version="3.1.2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Private Service Connect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -919,10 +912,8 @@ class MetastoreService(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Private Service Connect Custom Routes
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -949,10 +940,8 @@ class MetastoreService(pulumi.CustomResource):
                 custom_routes_enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Dpms2
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -968,10 +957,8 @@ class MetastoreService(pulumi.CustomResource):
                 instance_size="EXTRA_SMALL",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Dpms2 Scaling Factor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -987,10 +974,8 @@ class MetastoreService(pulumi.CustomResource):
                 scaling_factor=2,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Scheduled Backup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1020,7 +1005,6 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1111,7 +1095,6 @@ class MetastoreService(pulumi.CustomResource):
 
         ### Dataproc Metastore Service Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1132,10 +1115,8 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Cmek Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1157,10 +1138,8 @@ class MetastoreService(pulumi.CustomResource):
                 version="3.1.2",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Private Service Connect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1186,10 +1165,8 @@ class MetastoreService(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Private Service Connect Custom Routes
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1216,10 +1193,8 @@ class MetastoreService(pulumi.CustomResource):
                 custom_routes_enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Dpms2
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1235,10 +1210,8 @@ class MetastoreService(pulumi.CustomResource):
                 instance_size="EXTRA_SMALL",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Dpms2 Scaling Factor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1254,10 +1227,8 @@ class MetastoreService(pulumi.CustomResource):
                 scaling_factor=2,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Dataproc Metastore Service Scheduled Backup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1287,7 +1258,6 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1433,8 +1403,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
-        :param pulumi.Input[str] endpoint_uri: (Output)
-               The URI of the endpoint used to access the metastore service.
+        :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -1550,7 +1519,6 @@ class MetastoreService(pulumi.CustomResource):
     @pulumi.getter(name="endpointUri")
     def endpoint_uri(self) -> pulumi.Output[str]:
         """
-        (Output)
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")

@@ -269,7 +269,6 @@ class Database(pulumi.CustomResource):
 
         ### Biglake Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -297,7 +296,6 @@ class Database(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -338,7 +336,6 @@ class Database(pulumi.CustomResource):
 
         ### Biglake Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,7 +363,6 @@ class Database(pulumi.CustomResource):
                 },
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -22,7 +22,6 @@ import (
 //
 // ### Bigtable App Profile Anycluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,10 +76,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigtable App Profile Singlecluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,10 +123,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigtable App Profile Multicluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -188,10 +183,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigtable App Profile Priority
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -240,7 +233,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

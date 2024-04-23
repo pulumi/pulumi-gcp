@@ -118,7 +118,6 @@ class Project(pulumi.CustomResource):
 
         ### Firebase Project Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -132,7 +131,6 @@ class Project(pulumi.CustomResource):
             })
         default_project = gcp.firebase.Project("default", project=default.project_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -179,7 +177,6 @@ class Project(pulumi.CustomResource):
 
         ### Firebase Project Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -193,7 +190,6 @@ class Project(pulumi.CustomResource):
             })
         default_project = gcp.firebase.Project("default", project=default.project_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

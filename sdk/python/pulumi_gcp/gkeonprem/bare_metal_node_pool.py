@@ -29,21 +29,14 @@ class BareMetalNodePoolArgs:
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input['BareMetalNodePoolNodePoolConfigArgs'] node_pool_config: Node pool configuration.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
         :param pulumi.Input[str] name: The bare metal node pool name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "bare_metal_cluster", bare_metal_cluster)
         pulumi.set(__self__, "location", location)
@@ -98,17 +91,12 @@ class BareMetalNodePoolArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations on the Bare Metal Node Pool.
-        This field has the same restrictions as Kubernetes annotations.
-        The total size of all keys and values combined is limited to 256k.
-        Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/).
-        Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -143,10 +131,6 @@ class BareMetalNodePoolArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -175,17 +159,12 @@ class _BareMetalNodePoolState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BareMetalNodePool resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
@@ -201,8 +180,6 @@ class _BareMetalNodePoolState:
         :param pulumi.Input[str] name: The bare metal node pool name.
         :param pulumi.Input['BareMetalNodePoolNodePoolConfigArgs'] node_pool_config: Node pool configuration.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the Bare Metal User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
@@ -248,17 +225,12 @@ class _BareMetalNodePoolState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations on the Bare Metal Node Pool.
-        This field has the same restrictions as Kubernetes annotations.
-        The total size of all keys and values combined is limited to 256k.
-        Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/).
-        Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -383,10 +355,6 @@ class _BareMetalNodePoolState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -476,7 +444,6 @@ class BareMetalNodePool(pulumi.CustomResource):
 
         ### Gkeonprem Bare Metal Node Pool Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -560,10 +527,8 @@ class BareMetalNodePool(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Bare Metal Node Pool Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -656,7 +621,6 @@ class BareMetalNodePool(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -684,25 +648,18 @@ class BareMetalNodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[str] display_name: The display name for the Bare Metal Node Pool.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The bare metal node pool name.
         :param pulumi.Input[pulumi.InputType['BareMetalNodePoolNodePoolConfigArgs']] node_pool_config: Node pool configuration.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -717,7 +674,6 @@ class BareMetalNodePool(pulumi.CustomResource):
 
         ### Gkeonprem Bare Metal Node Pool Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -801,10 +757,8 @@ class BareMetalNodePool(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Gkeonprem Bare Metal Node Pool Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -897,7 +851,6 @@ class BareMetalNodePool(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1009,17 +962,12 @@ class BareMetalNodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool.
-               This field has the same restrictions as Kubernetes annotations.
-               The total size of all keys and values combined is limited to 256k.
-               Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/).
-               Prefix must be a DNS subdomain.
-               Name must be 63 characters or less, begin and end with alphanumerics,
-               with dashes (-), underscores (_), dots (.), and alphanumerics between.
-               
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+               'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_cluster: The cluster this node pool belongs to.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
@@ -1035,8 +983,6 @@ class BareMetalNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The bare metal node pool name.
         :param pulumi.Input[pulumi.InputType['BareMetalNodePoolNodePoolConfigArgs']] node_pool_config: Node pool configuration.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the Bare Metal User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
@@ -1071,17 +1017,12 @@ class BareMetalNodePool(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Annotations on the Bare Metal Node Pool.
-        This field has the same restrictions as Kubernetes annotations.
-        The total size of all keys and values combined is limited to 256k.
-        Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/).
-        Prefix must be a DNS subdomain.
-        Name must be 63 characters or less, begin and end with alphanumerics,
-        with dashes (-), underscores (_), dots (.), and alphanumerics between.
-
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
+        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
+        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
+        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
+        'effective_annotations' for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1166,10 +1107,6 @@ class BareMetalNodePool(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

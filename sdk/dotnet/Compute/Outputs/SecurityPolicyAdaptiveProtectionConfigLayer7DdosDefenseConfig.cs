@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// Rule visibility can be one of the following:
+        /// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
         /// </summary>
         public readonly string? RuleVisibility;
 

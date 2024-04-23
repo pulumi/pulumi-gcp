@@ -244,7 +244,6 @@ class User(pulumi.CustomResource):
 
         ### Alloydb User Builtin
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -279,10 +278,8 @@ class User(pulumi.CustomResource):
             password="user_secret",
             database_roles=["alloydbsuperuser"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb User Iam
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -316,7 +313,6 @@ class User(pulumi.CustomResource):
             user_type="ALLOYDB_IAM_USER",
             database_roles=["alloydbiamuser"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -374,7 +370,6 @@ class User(pulumi.CustomResource):
 
         ### Alloydb User Builtin
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -409,10 +404,8 @@ class User(pulumi.CustomResource):
             password="user_secret",
             database_roles=["alloydbsuperuser"])
         ```
-        <!--End PulumiCodeChooser -->
         ### Alloydb User Iam
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,7 +439,6 @@ class User(pulumi.CustomResource):
             user_type="ALLOYDB_IAM_USER",
             database_roles=["alloydbiamuser"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

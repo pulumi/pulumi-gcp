@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRouterStatus(ctx *pulumi.Context, args *GetRouterStatusArgs, opts ...pulumi.InvokeOption) (*GetRouterStatusResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouterStatusResult

@@ -111,14 +111,14 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The fully qualified name of the cloud function resource.
+     * A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully qualified name of the cloud function resource.
+     * @return A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -439,7 +439,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The fully qualified name of the cloud function resource.
+         * @param name A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The fully qualified name of the cloud function resource.
+         * @param name A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
          * 
          * @return builder
          * 

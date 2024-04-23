@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ### Firebasehosting Version Redirect
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,10 +54,8 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebasehosting Version Cloud Run
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -120,10 +117,8 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Firebasehosting Version Cloud Functions
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -191,7 +186,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

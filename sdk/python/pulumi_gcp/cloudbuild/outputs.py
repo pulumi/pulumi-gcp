@@ -1002,9 +1002,11 @@ class TriggerBuildArtifactsObjectsTiming(dict):
                  start_time: Optional[str] = None):
         """
         :param str end_time: End of time span.
+               
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param str start_time: Start of time span.
+               
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1018,6 +1020,7 @@ class TriggerBuildArtifactsObjectsTiming(dict):
     def end_time(self) -> Optional[str]:
         """
         End of time span.
+
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
         nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -1028,6 +1031,7 @@ class TriggerBuildArtifactsObjectsTiming(dict):
     def start_time(self) -> Optional[str]:
         """
         Start of time span.
+
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
         nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """

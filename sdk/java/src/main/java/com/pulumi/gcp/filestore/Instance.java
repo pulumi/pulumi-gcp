@@ -311,20 +311,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyName);
     }
     /**
-     * Resource labels to represent user-provided metadata.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user-provided metadata.
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
+     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
+     * resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -376,19 +374,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<List<InstanceNetwork>> networks() {
         return this.networks;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -425,10 +413,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tier;
     }
     /**
-     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
-     * 
-     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      * @deprecated
      * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -439,10 +424,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> zone;
 
     /**
-     * @return (Optional, Deprecated)
-     * The name of the Filestore zone of the instance.
-     * 
-     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * @return The name of the Filestore zone of the instance.
      * 
      */
     public Output<String> zone() {

@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic_certificate_template
  * An example of a basic privateca certificate template
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -100,7 +99,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -159,7 +157,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * Optional. A human-readable description of scenarios this template is intended for.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -167,14 +165,14 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+     * omitted, then this template will not add restrictions on a certificate's identity.
      */
     public readonly identityConstraints!: pulumi.Output<outputs.certificateauthority.CertificateTemplateIdentityConstraints | undefined>;
     /**
-     * Optional. Labels with user-defined metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -186,11 +184,18 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+     * If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+     * dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+     * request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+     * These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
      */
     public readonly passthroughExtensions!: pulumi.Output<outputs.certificateauthority.CertificateTemplatePassthroughExtensions | undefined>;
     /**
-     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
+     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+     * here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+     * certificate issuance request will fail.
      */
     public readonly predefinedValues!: pulumi.Output<outputs.certificateauthority.CertificateTemplatePredefinedValues | undefined>;
     /**
@@ -265,7 +270,7 @@ export interface CertificateTemplateState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * Optional. A human-readable description of scenarios this template is intended for.
      */
     description?: pulumi.Input<string>;
     /**
@@ -273,14 +278,14 @@ export interface CertificateTemplateState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+     * omitted, then this template will not add restrictions on a certificate's identity.
      */
     identityConstraints?: pulumi.Input<inputs.certificateauthority.CertificateTemplateIdentityConstraints>;
     /**
-     * Optional. Labels with user-defined metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -292,11 +297,18 @@ export interface CertificateTemplateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+     * If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+     * dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+     * request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+     * These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
      */
     passthroughExtensions?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePassthroughExtensions>;
     /**
-     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
+     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+     * here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+     * certificate issuance request will fail.
      */
     predefinedValues?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValues>;
     /**
@@ -318,18 +330,18 @@ export interface CertificateTemplateState {
  */
 export interface CertificateTemplateArgs {
     /**
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * Optional. A human-readable description of scenarios this template is intended for.
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+     * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is
+     * omitted, then this template will not add restrictions on a certificate's identity.
      */
     identityConstraints?: pulumi.Input<inputs.certificateauthority.CertificateTemplateIdentityConstraints>;
     /**
-     * Optional. Labels with user-defined metadata.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * Optional. Labels with user-defined metadata. **Note**: This field is non-authoritative, and will only manage the labels
+     * present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
+     * resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -341,11 +353,18 @@ export interface CertificateTemplateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baselineValues that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+     * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate.
+     * If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be
+     * dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance
+     * request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions.
+     * These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
      */
     passthroughExtensions?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePassthroughExtensions>;
     /**
-     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baselineValues for the same properties, the certificate issuance request will fail.
+     * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the
+     * certificate request includes conflicting values for the same properties, they will be overwritten by the values defined
+     * here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the
+     * certificate issuance request will fail.
      */
     predefinedValues?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValues>;
     /**

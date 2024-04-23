@@ -202,7 +202,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
         ## Example Usage
 
         ### Basic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -222,7 +221,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
             project=test_project.project_id,
             crypto_key_name=key1["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -271,7 +269,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
         ## Example Usage
 
         ### Basic
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -291,7 +288,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
             project=test_project.project_id,
             crypto_key_name=key1["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

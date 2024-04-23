@@ -307,7 +307,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         ### Region Target Http Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -346,10 +345,8 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Target Http Proxy Https Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -366,7 +363,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_region_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -438,7 +434,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         ### Region Target Http Proxy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -477,10 +472,8 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
         ### Region Target Http Proxy Https Redirect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -497,7 +490,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-https-redirect-proxy",
             url_map=default_region_url_map.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -41,7 +41,6 @@ import * as utilities from "../utilities";
  *
  * ### Subnetwork Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -61,10 +60,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Subnetwork Logging Config
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -85,10 +82,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Subnetwork Internal L7lb
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -106,10 +101,8 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Subnetwork Ipv6
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -127,10 +120,8 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Subnetwork Internal Ipv6
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -149,10 +140,8 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Subnetwork Purpose Private Nat
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -169,10 +158,8 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Subnetwork Cidr Overlap
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -189,7 +176,6 @@ import * as utilities from "../utilities";
  *     network: net_cidr_overlap.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

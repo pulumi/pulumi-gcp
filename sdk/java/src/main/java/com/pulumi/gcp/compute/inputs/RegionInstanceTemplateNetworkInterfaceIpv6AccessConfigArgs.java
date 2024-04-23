@@ -62,16 +62,14 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
     }
 
     /**
-     * The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+     * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
      * 
      */
     @Import(name="networkTier", required=true)
     private Output<String> networkTier;
 
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
      * 
      */
     public Output<String> networkTier() {
@@ -185,8 +183,7 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+         * @param networkTier The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
          * 
          * @return builder
          * 
@@ -197,8 +194,7 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+         * @param networkTier The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
          * 
          * @return builder
          * 

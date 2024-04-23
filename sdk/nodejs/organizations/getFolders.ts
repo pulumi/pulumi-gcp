@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Searching For Folders At The Root Of An Org
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     folder: my_org_folders.folders?.[0]?.name,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
 
@@ -70,7 +68,6 @@ export interface GetFoldersResult {
  *
  * ### Searching For Folders At The Root Of An Org
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -82,7 +79,6 @@ export interface GetFoldersResult {
  *     folder: my_org_folders.folders?.[0]?.name,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     return pulumi.output(args).apply((a: any) => getFolders(a, opts))

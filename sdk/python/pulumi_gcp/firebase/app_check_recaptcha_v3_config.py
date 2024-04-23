@@ -244,7 +244,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
 
         ### Firebase App Check Recaptcha V3 Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -262,7 +261,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
             site_secret="6Lf9YnQpAAAAAC3-MHmdAllTbPwTZxpUw5d34YzX",
             token_ttl="7200s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -323,7 +321,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
 
         ### Firebase App Check Recaptcha V3 Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -341,7 +338,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
             site_secret="6Lf9YnQpAAAAAC3-MHmdAllTbPwTZxpUw5d34YzX",
             token_ttl="7200s")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -393,7 +393,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
 
         ### Access Context Manager Authorized Orgs Desc Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -412,7 +411,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                 "organizations/98765",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -491,7 +489,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
 
         ### Access Context Manager Authorized Orgs Desc Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -510,7 +507,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                 "organizations/98765",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

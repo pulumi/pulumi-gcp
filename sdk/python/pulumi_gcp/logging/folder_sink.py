@@ -404,7 +404,6 @@ class FolderSink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -426,7 +425,6 @@ class FolderSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -478,7 +476,6 @@ class FolderSink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -500,7 +497,6 @@ class FolderSink(pulumi.CustomResource):
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

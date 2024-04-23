@@ -36,13 +36,10 @@ class OsPolicyAssignmentArgs:
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
                is deleted. Structure is documented below.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
-               description is limited to 1024 characters.
+        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout
-               during resource creation and update.
+        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         """
         pulumi.set(__self__, "instance_filter", instance_filter)
         pulumi.set(__self__, "location", location)
@@ -115,8 +112,7 @@ class OsPolicyAssignmentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        OS policy assignment description. Length of the
-        description is limited to 1024 characters.
+        OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -140,8 +136,7 @@ class OsPolicyAssignmentArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -153,8 +148,7 @@ class OsPolicyAssignmentArgs:
     @pulumi.getter(name="skipAwaitRollout")
     def skip_await_rollout(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to true to skip awaiting rollout
-        during resource creation and update.
+        Set to true to skip awaiting rollout during resource creation and update.
         """
         return pulumi.get(self, "skip_await_rollout")
 
@@ -190,8 +184,7 @@ class _OsPolicyAssignmentState:
                a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy
                assignment.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
-               description is limited to 1024 characters.
+        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
         :param pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'] instance_filter: Filter to select VMs. Structure is
@@ -200,8 +193,7 @@ class _OsPolicyAssignmentState:
         :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress
                for the revision. This value is `true` when the `rollout_state` is one of:
         :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the revision was
@@ -214,8 +206,7 @@ class _OsPolicyAssignmentState:
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
                is deleted. Structure is documented below.
         :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state
-        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout
-               during resource creation and update.
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment
                resource.
         """
@@ -284,8 +275,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        OS policy assignment description. Length of the
-        description is limited to 1024 characters.
+        OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -360,8 +350,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -440,8 +429,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter(name="skipAwaitRollout")
     def skip_await_rollout(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to true to skip awaiting rollout
-        during resource creation and update.
+        Set to true to skip awaiting rollout during resource creation and update.
         """
         return pulumi.get(self, "skip_await_rollout")
 
@@ -496,7 +484,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         ### Os Config Os Policy Assignment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -580,7 +567,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
             ),
             description="A test os policy assignment")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -608,23 +594,20 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
-               description is limited to 1024 characters.
+        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
                documented below.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout
                is triggered in the following situations: 1) OSPolicyAssignment is created.
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
                is deleted. Structure is documented below.
-        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout
-               during resource creation and update.
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         """
         ...
     @overload
@@ -651,7 +634,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         ### Os Config Os Policy Assignment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -735,7 +717,6 @@ class OsPolicyAssignment(pulumi.CustomResource):
             ),
             description="A test os policy assignment")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -856,8 +837,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy
                assignment.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
-               description is limited to 1024 characters.
+        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
@@ -866,8 +846,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
                Structure is documented below.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress
                for the revision. This value is `true` when the `rollout_state` is one of:
         :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the revision was
@@ -880,8 +859,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
                is deleted. Structure is documented below.
         :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state
-        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout
-               during resource creation and update.
+        :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment
                resource.
         """
@@ -931,8 +909,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        OS policy assignment description. Length of the
-        description is limited to 1024 characters.
+        OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -983,8 +960,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -1039,8 +1015,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter(name="skipAwaitRollout")
     def skip_await_rollout(self) -> pulumi.Output[Optional[bool]]:
         """
-        Set to true to skip awaiting rollout
-        during resource creation and update.
+        Set to true to skip awaiting rollout during resource creation and update.
         """
         return pulumi.get(self, "skip_await_rollout")
 

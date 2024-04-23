@@ -225,7 +225,6 @@ public class Listing extends com.pulumi.resources.CustomResource {
     }
     /**
      * Details of the data provider who owns the source data.
-     * Structure is documented below.
      * 
      */
     @Export(name="dataProvider", refs={ListingDataProvider.class}, tree="[0]")
@@ -233,21 +232,22 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Details of the data provider who owns the source data.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ListingDataProvider>> dataProvider() {
         return Codegen.optional(this.dataProvider);
     }
     /**
-     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+     * @return Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes
+     * except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
     public Output<Optional<String>> description() {
@@ -324,14 +324,14 @@ public class Listing extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Name of the data provider.
+     * The resource name of the listing. e.g. &#34;projects/myproject/locations/US/dataExchanges/123/listings/456&#34;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the data provider.
+     * @return The resource name of the listing. e.g. &#34;projects/myproject/locations/US/dataExchanges/123/listings/456&#34;
      * 
      */
     public Output<String> name() {
@@ -351,25 +351,14 @@ public class Listing extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> primaryContact() {
         return Codegen.optional(this.primaryContact);
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
     /**
      * Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      * 
      */
     @Export(name="publisher", refs={ListingPublisher.class}, tree="[0]")
@@ -377,7 +366,6 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Details of the publisher who owns the listing and who can share the source data.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ListingPublisher>> publisher() {
@@ -399,7 +387,6 @@ public class Listing extends com.pulumi.resources.CustomResource {
     }
     /**
      * If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      * 
      */
     @Export(name="restrictedExportConfig", refs={ListingRestrictedExportConfig.class}, tree="[0]")
@@ -407,7 +394,6 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ListingRestrictedExportConfig>> restrictedExportConfig() {

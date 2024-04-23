@@ -15,14 +15,14 @@ public final class TransferJobScheduleStartTimeOfDayArgs extends com.pulumi.reso
     public static final TransferJobScheduleStartTimeOfDayArgs Empty = new TransferJobScheduleStartTimeOfDayArgs();
 
     /**
-     * Hours of day in 24 hour format. Should be from 0 to 23
+     * Hours of day in 24 hour format. Should be from 0 to 23.
      * 
      */
     @Import(name="hours", required=true)
     private Output<Integer> hours;
 
     /**
-     * @return Hours of day in 24 hour format. Should be from 0 to 23
+     * @return Hours of day in 24 hour format. Should be from 0 to 23.
      * 
      */
     public Output<Integer> hours() {
@@ -102,7 +102,7 @@ public final class TransferJobScheduleStartTimeOfDayArgs extends com.pulumi.reso
         }
 
         /**
-         * @param hours Hours of day in 24 hour format. Should be from 0 to 23
+         * @param hours Hours of day in 24 hour format. Should be from 0 to 23.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class TransferJobScheduleStartTimeOfDayArgs extends com.pulumi.reso
         }
 
         /**
-         * @param hours Hours of day in 24 hour format. Should be from 0 to 23
+         * @param hours Hours of day in 24 hour format. Should be from 0 to 23.
          * 
          * @return builder
          * 

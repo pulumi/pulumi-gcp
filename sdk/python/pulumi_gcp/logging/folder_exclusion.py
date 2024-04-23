@@ -223,7 +223,6 @@ class FolderExclusion(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -237,7 +236,6 @@ class FolderExclusion(pulumi.CustomResource):
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,7 +278,6 @@ class FolderExclusion(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -294,7 +291,6 @@ class FolderExclusion(pulumi.CustomResource):
             description="Exclude GCE instance debug logs",
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

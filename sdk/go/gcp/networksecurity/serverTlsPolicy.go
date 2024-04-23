@@ -15,7 +15,6 @@ import (
 //
 // ### Network Security Server Tls Policy Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,10 +67,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Security Server Tls Policy Advanced
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -104,10 +101,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Security Server Tls Policy Server Cert
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -142,10 +137,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Network Security Server Tls Policy Mtls
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -227,7 +220,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

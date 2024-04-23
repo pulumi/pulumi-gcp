@@ -26,7 +26,6 @@ import (
 //
 // ### Os Config Guest Policies Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,10 +94,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Os Config Guest Policies Packages
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,10 +173,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Os Config Guest Policies Recipes
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -232,7 +227,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -283,21 +277,16 @@ type GuestPolicies struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringOutput `pulumi:"guestPolicyId"`
-	// The name of the repository.
+	// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of package repositories to configure on the VM instance.
-	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.
-	// Structure is documented below.
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+	// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+	// available.
 	PackageRepositories GuestPoliciesPackageRepositoryArrayOutput `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
-	// Structure is documented below.
 	Packages GuestPoliciesPackageArrayOutput `pulumi:"packages"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project  pulumi.StringOutput             `pulumi:"project"`
 	// A list of Recipes to install on the VM instance.
-	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayOutput `pulumi:"recipes"`
 	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	// Example: "2014-10-02T15:01:23.045123456Z".
@@ -363,21 +352,16 @@ type guestPoliciesState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId *string `pulumi:"guestPolicyId"`
-	// The name of the repository.
+	// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
 	Name *string `pulumi:"name"`
-	// A list of package repositories to configure on the VM instance.
-	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.
-	// Structure is documented below.
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+	// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+	// available.
 	PackageRepositories []GuestPoliciesPackageRepository `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
-	// Structure is documented below.
 	Packages []GuestPoliciesPackage `pulumi:"packages"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string                `pulumi:"project"`
 	// A list of Recipes to install on the VM instance.
-	// Structure is documented below.
 	Recipes []GuestPoliciesRecipe `pulumi:"recipes"`
 	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	// Example: "2014-10-02T15:01:23.045123456Z".
@@ -408,21 +392,16 @@ type GuestPoliciesState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringPtrInput
-	// The name of the repository.
+	// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
 	Name pulumi.StringPtrInput
-	// A list of package repositories to configure on the VM instance.
-	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.
-	// Structure is documented below.
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+	// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+	// available.
 	PackageRepositories GuestPoliciesPackageRepositoryArrayInput
 	// The software packages to be managed by this policy.
-	// Structure is documented below.
 	Packages GuestPoliciesPackageArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// A list of Recipes to install on the VM instance.
-	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayInput
 	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	// Example: "2014-10-02T15:01:23.045123456Z".
@@ -454,19 +433,14 @@ type guestPoliciesArgs struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId string `pulumi:"guestPolicyId"`
-	// A list of package repositories to configure on the VM instance.
-	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.
-	// Structure is documented below.
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+	// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+	// available.
 	PackageRepositories []GuestPoliciesPackageRepository `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
-	// Structure is documented below.
 	Packages []GuestPoliciesPackage `pulumi:"packages"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project *string `pulumi:"project"`
+	Project  *string                `pulumi:"project"`
 	// A list of Recipes to install on the VM instance.
-	// Structure is documented below.
 	Recipes []GuestPoliciesRecipe `pulumi:"recipes"`
 }
 
@@ -492,19 +466,14 @@ type GuestPoliciesArgs struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringInput
-	// A list of package repositories to configure on the VM instance.
-	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.
-	// Structure is documented below.
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+	// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+	// available.
 	PackageRepositories GuestPoliciesPackageRepositoryArrayInput
 	// The software packages to be managed by this policy.
-	// Structure is documented below.
 	Packages GuestPoliciesPackageArrayInput
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// A list of Recipes to install on the VM instance.
-	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayInput
 }
 
@@ -633,33 +602,28 @@ func (o GuestPoliciesOutput) GuestPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.GuestPolicyId }).(pulumi.StringOutput)
 }
 
-// The name of the repository.
+// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
 func (o GuestPoliciesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of package repositories to configure on the VM instance.
-// This is done before any other configs are applied so they can use these repos.
-// Package repositories are only configured if the corresponding package manager(s) are available.
-// Structure is documented below.
+// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
+// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
+// available.
 func (o GuestPoliciesOutput) PackageRepositories() GuestPoliciesPackageRepositoryArrayOutput {
 	return o.ApplyT(func(v *GuestPolicies) GuestPoliciesPackageRepositoryArrayOutput { return v.PackageRepositories }).(GuestPoliciesPackageRepositoryArrayOutput)
 }
 
 // The software packages to be managed by this policy.
-// Structure is documented below.
 func (o GuestPoliciesOutput) Packages() GuestPoliciesPackageArrayOutput {
 	return o.ApplyT(func(v *GuestPolicies) GuestPoliciesPackageArrayOutput { return v.Packages }).(GuestPoliciesPackageArrayOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
 func (o GuestPoliciesOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // A list of Recipes to install on the VM instance.
-// Structure is documented below.
 func (o GuestPoliciesOutput) Recipes() GuestPoliciesRecipeArrayOutput {
 	return o.ApplyT(func(v *GuestPolicies) GuestPoliciesRecipeArrayOutput { return v.Recipes }).(GuestPoliciesRecipeArrayOutput)
 }

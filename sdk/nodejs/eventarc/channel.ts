@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * ### Basic
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     thirdPartyProvider: testProject.then(testProject => `projects/${testProject.projectId}/locations/us-west1/providers/datadog`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

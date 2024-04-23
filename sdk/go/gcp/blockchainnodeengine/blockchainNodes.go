@@ -24,7 +24,6 @@ import (
 //
 // ### Blockchain Nodes Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,10 +66,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Blockchain Nodes Geth Details
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,7 +113,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

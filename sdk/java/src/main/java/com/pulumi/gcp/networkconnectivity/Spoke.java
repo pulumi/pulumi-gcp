@@ -259,34 +259,38 @@ public class Spoke extends com.pulumi.resources.CustomResource {
         return this.hub;
     }
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-     * 
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Optional labels in key:value format. For more information about labels, see [Requirements for
+     * labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements). **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      * 
      */
     @Export(name="linkedInterconnectAttachments", refs={SpokeLinkedInterconnectAttachments.class}, tree="[0]")
     private Output</* @Nullable */ SpokeLinkedInterconnectAttachments> linkedInterconnectAttachments;
 
     /**
-     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+     * @return A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same
+     * prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of
+     * advertising the same prefixes.
      * 
      */
     public Output<Optional<SpokeLinkedInterconnectAttachments>> linkedInterconnectAttachments() {

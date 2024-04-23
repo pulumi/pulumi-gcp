@@ -13,33 +13,25 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of local SSD disks to attach to the node, 
-        /// which is limited by the maximum number of disks allowable per zone.
+        /// The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
         /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
 
         /// <summary>
-        /// The name of a Google Compute Engine machine type
-        /// to create for the node group. If not specified, GCP will default to a predetermined
-        /// computed value (currently `n1-standard-4`).
+        /// The name of a Compute Engine machine type.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The name of a minimum generation of CPU family
-        /// for the node group. If not specified, GCP will default to a predetermined computed value
-        /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        /// for details about which CPU families are available (and defaulted) for each zone.
+        /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Whether the nodes are created as preemptible VM instances. 
-        /// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
-        /// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        /// Whether the nodes are created as preemptible VM instances. Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }

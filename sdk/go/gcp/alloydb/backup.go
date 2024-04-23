@@ -24,7 +24,6 @@ import (
 //
 // ### Alloydb Backup Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,10 +93,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Alloydb Backup Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -172,7 +169,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

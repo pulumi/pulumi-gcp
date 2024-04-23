@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  *
  * ### Firestore Document Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -57,10 +56,8 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firestore Document Nested Document
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -104,7 +101,6 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -33,7 +33,6 @@ import (
 //
 // ### Kms Crypto Key Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +65,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Kms Crypto Key Asymmetric Sign
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,7 +102,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

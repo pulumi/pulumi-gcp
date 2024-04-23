@@ -115,7 +115,6 @@ def get_task_iam_policy(lake: Optional[str] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -125,7 +124,6 @@ def get_task_iam_policy(lake: Optional[str] = None,
         lake=example["lake"],
         task_id=example["taskId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str lake: The lake in which the task will be created in.
@@ -164,7 +162,6 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
 
     ## example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -174,7 +171,6 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
         lake=example["lake"],
         task_id=example["taskId"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str lake: The lake in which the task will be created in.

@@ -382,7 +382,6 @@ class ResourcePolicy(pulumi.CustomResource):
 
         ### Resource Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -399,10 +398,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -430,10 +427,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -446,10 +441,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 collocation="COLLOCATED",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy Max Distance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -463,10 +456,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 max_distance=2,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Instance Schedule Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -485,10 +476,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 time_zone="US/Central",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Snapshot Schedule Chain Name
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -518,10 +507,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Consistency Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -533,7 +520,6 @@ class ResourcePolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -607,7 +593,6 @@ class ResourcePolicy(pulumi.CustomResource):
 
         ### Resource Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -624,10 +609,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -655,10 +638,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -671,10 +652,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 collocation="COLLOCATED",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Placement Policy Max Distance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -688,10 +667,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 max_distance=2,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Instance Schedule Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -710,10 +687,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 time_zone="US/Central",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Snapshot Schedule Chain Name
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -743,10 +718,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Resource Policy Consistency Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -758,7 +731,6 @@ class ResourcePolicy(pulumi.CustomResource):
                 enabled=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

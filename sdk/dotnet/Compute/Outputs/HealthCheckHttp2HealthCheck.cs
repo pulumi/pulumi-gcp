@@ -14,15 +14,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class HealthCheckHttp2HealthCheck
     {
         /// <summary>
-        /// The value of the host header in the HTTP health check request.
+        /// The value of the host header in the HTTP2 health check request.
         /// If left empty (default value), the public IP on behalf of which this health
         /// check is performed will be used.
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// The port number for the health check request.
-        /// Must be specified if portName and portSpecification are not set
-        /// or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        /// The TCP port number for the HTTP2 health check request.
+        /// The default value is 443.
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -33,17 +32,27 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies how port is selected for health checking, can be one of the
         /// following values:
+        /// 
+        ///   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+        /// 
+        ///   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+        /// 
+        ///   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+        ///   network endpoint is used for health checking. For other backends, the
+        ///   port or named port specified in the Backend Service is used for health
+        ///   checking.
+        /// 
+        /// If not specified, HTTP2 health check follows behavior specified in 'port' and
+        /// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
         /// </summary>
         public readonly string? PortSpecification;
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the
-        /// backend.
-        /// Default value is `NONE`.
-        /// Possible values are: `NONE`, `PROXY_V1`.
+        /// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
         /// </summary>
         public readonly string? ProxyHeader;
         /// <summary>
-        /// The request path of the HTTP health check request.
+        /// The request path of the HTTP2 health check request.
         /// The default value is /.
         /// </summary>
         public readonly string? RequestPath;

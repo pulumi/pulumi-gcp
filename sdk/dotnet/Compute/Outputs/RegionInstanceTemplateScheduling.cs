@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> LocalSsdRecoveryTimeouts;
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
         /// </summary>
         public readonly string? MaintenanceInterval;
         /// <summary>

@@ -33,7 +33,6 @@ import (
 //
 // ### Firestore Field Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,10 +81,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Field Timestamp
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,10 +122,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Firestore Field Match Override
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -179,7 +174,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

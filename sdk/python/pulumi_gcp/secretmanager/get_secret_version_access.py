@@ -105,14 +105,12 @@ def get_secret_version_access(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     basic = gcp.secretmanager.get_secret_version_access(secret="my-secret")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to get the secret version for. If it
@@ -147,14 +145,12 @@ def get_secret_version_access_output(project: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     basic = gcp.secretmanager.get_secret_version_access(secret="my-secret")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: The project to get the secret version for. If it

@@ -312,7 +312,6 @@ class PreferenceSet(pulumi.CustomResource):
 
         ### Preference Set Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -330,10 +329,8 @@ class PreferenceSet(pulumi.CustomResource):
                 target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Preference Set Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,7 +370,6 @@ class PreferenceSet(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -432,7 +428,6 @@ class PreferenceSet(pulumi.CustomResource):
 
         ### Preference Set Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -450,10 +445,8 @@ class PreferenceSet(pulumi.CustomResource):
                 target_product="COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Preference Set Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -493,7 +486,6 @@ class PreferenceSet(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

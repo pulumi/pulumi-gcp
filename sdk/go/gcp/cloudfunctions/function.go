@@ -28,7 +28,6 @@ import (
 //
 // ### Public Function
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,11 +85,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Single User
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -156,7 +153,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

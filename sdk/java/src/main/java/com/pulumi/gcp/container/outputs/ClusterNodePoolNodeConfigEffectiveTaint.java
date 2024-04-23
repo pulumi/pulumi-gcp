@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolNodeConfigEffectiveTaint {
     /**
-     * @return Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+     * @return Effect for taint.
      * 
      */
     private @Nullable String effect;
     /**
-     * @return The default or custom node affinity label key name.
+     * @return Key for taint.
      * 
      */
     private @Nullable String key;
@@ -29,14 +29,14 @@ public final class ClusterNodePoolNodeConfigEffectiveTaint {
 
     private ClusterNodePoolNodeConfigEffectiveTaint() {}
     /**
-     * @return Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+     * @return Effect for taint.
      * 
      */
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The default or custom node affinity label key name.
+     * @return Key for taint.
      * 
      */
     public Optional<String> key() {

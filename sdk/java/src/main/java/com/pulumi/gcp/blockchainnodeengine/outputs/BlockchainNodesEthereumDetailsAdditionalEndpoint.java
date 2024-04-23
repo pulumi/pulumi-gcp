@@ -12,44 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BlockchainNodesEthereumDetailsAdditionalEndpoint {
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s Beacon API endpoint.
+     * @return The assigned URL for the node&#39;s Beacon API endpoint.
      * 
      */
     private @Nullable String beaconApiEndpoint;
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
+     * @return The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
      * 
      */
     private @Nullable String beaconPrometheusMetricsApiEndpoint;
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
+     * @return The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
      * 
      */
     private @Nullable String executionClientPrometheusMetricsApiEndpoint;
 
     private BlockchainNodesEthereumDetailsAdditionalEndpoint() {}
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s Beacon API endpoint.
+     * @return The assigned URL for the node&#39;s Beacon API endpoint.
      * 
      */
     public Optional<String> beaconApiEndpoint() {
         return Optional.ofNullable(this.beaconApiEndpoint);
     }
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
+     * @return The assigned URL for the node&#39;s Beacon Prometheus metrics endpoint.
      * 
      */
     public Optional<String> beaconPrometheusMetricsApiEndpoint() {
         return Optional.ofNullable(this.beaconPrometheusMetricsApiEndpoint);
     }
     /**
-     * @return (Output)
-     * The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
+     * @return The assigned URL for the node&#39;s execution client&#39;s Prometheus metrics endpoint.
      * 
      */
     public Optional<String> executionClientPrometheusMetricsApiEndpoint() {

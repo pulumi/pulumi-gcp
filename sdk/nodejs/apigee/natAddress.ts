@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * ### Apigee Nat Address Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -75,7 +74,6 @@ import * as utilities from "../utilities";
  *     instanceId: apigeeInstance.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -355,7 +355,6 @@ class Scope(pulumi.CustomResource):
 
         ### Gkehub Scope Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -373,7 +372,6 @@ class Scope(pulumi.CustomResource):
                 "keyc": "valuec",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -436,7 +434,6 @@ class Scope(pulumi.CustomResource):
 
         ### Gkehub Scope Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -454,7 +451,6 @@ class Scope(pulumi.CustomResource):
                 "keyc": "valuec",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

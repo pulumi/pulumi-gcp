@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// NodeManagement configuration for this NodePool. Structure is documented below.
+        /// Node management configuration, wherein auto-repair and auto-upgrade is configured.
         /// </summary>
         [Input("management")]
         public Input<Inputs.ClusterNodePoolManagementGetArgs>? Management { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }
 
         /// <summary>
-        /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
         /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.ClusterNodePoolUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }

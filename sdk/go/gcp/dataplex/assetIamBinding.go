@@ -28,7 +28,6 @@ import (
 //
 // ## google\_dataplex\_asset\_iam\_policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,11 +70,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataplex\_asset\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,11 +104,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataplex\_asset\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,11 +136,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataplex\_asset\_iam\_policy
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -188,11 +181,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataplex\_asset\_iam\_binding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -224,11 +215,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## google\_dataplex\_asset\_iam\_member
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -258,7 +247,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

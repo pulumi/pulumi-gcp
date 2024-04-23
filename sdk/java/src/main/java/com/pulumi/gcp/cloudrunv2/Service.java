@@ -739,24 +739,26 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudrunv2/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
-     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-     * All system annotations in v1 now have a corresponding field in v2 Service.
-     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+     * should be preserved when modifying objects. Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;,
+     * &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected in new
+     * resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+     * annotations&#39; namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+     * present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
-     * All system annotations in v1 now have a corresponding field in v2 Service.
-     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
-     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
+     * should be preserved when modifying objects. Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;,
+     * &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected in new
+     * resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
+     * annotations&#39; namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
+     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
+     * present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -764,7 +766,6 @@ public class Service extends com.pulumi.resources.CustomResource {
     }
     /**
      * Settings for the Binary Authorization feature.
-     * Structure is documented below.
      * 
      */
     @Export(name="binaryAuthorization", refs={ServiceBinaryAuthorization.class}, tree="[0]")
@@ -772,7 +773,6 @@ public class Service extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Settings for the Binary Authorization feature.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ServiceBinaryAuthorization>> binaryAuthorization() {
@@ -851,16 +851,18 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.creator;
     }
     /**
-     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
      */
     @Export(name="customAudiences", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customAudiences;
 
     /**
-     * @return One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * @return One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
      */
     public Output<Optional<List<String>>> customAudiences() {
@@ -967,40 +969,46 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.generation;
     }
     /**
-     * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-     * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+     * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+     * INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: [&#34;INGRESS_TRAFFIC_ALL&#34;,
+     * &#34;INGRESS_TRAFFIC_INTERNAL_ONLY&#34;, &#34;INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER&#34;]
      * 
      */
     @Export(name="ingress", refs={String.class}, tree="[0]")
     private Output<String> ingress;
 
     /**
-     * @return Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-     * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+     * @return Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
+     * INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: [&#34;INGRESS_TRAFFIC_ALL&#34;,
+     * &#34;INGRESS_TRAFFIC_INTERNAL_ONLY&#34;, &#34;INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER&#34;]
      * 
      */
     public Output<String> ingress() {
         return this.ingress;
     }
     /**
-     * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
-     * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-     * Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-     * All system labels in v1 now have a corresponding field in v2 Service.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+     * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+     * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+     * https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+     * &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they
+     * will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
-     * environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
-     * Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
-     * All system labels in v1 now have a corresponding field in v2 Service.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
+     * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
+     * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+     * https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
+     * &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they
+     * will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
+     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+     * &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -1049,20 +1057,24 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.latestReadyRevision;
     }
     /**
-     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-     * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+     * The launch stage as defined by [Google Cloud Platform Launch
+     * Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+     * specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+     * stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+     * input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+     * [&#34;UNIMPLEMENTED&#34;, &#34;PRELAUNCH&#34;, &#34;EARLY_ACCESS&#34;, &#34;ALPHA&#34;, &#34;BETA&#34;, &#34;GA&#34;, &#34;DEPRECATED&#34;]
      * 
      */
     @Export(name="launchStage", refs={String.class}, tree="[0]")
     private Output<String> launchStage;
 
     /**
-     * @return The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
-     * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+     * @return The launch stage as defined by [Google Cloud Platform Launch
+     * Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
+     * specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
+     * stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
+     * input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
+     * [&#34;UNIMPLEMENTED&#34;, &#34;PRELAUNCH&#34;, &#34;EARLY_ACCESS&#34;, &#34;ALPHA&#34;, &#34;BETA&#34;, &#34;GA&#34;, &#34;DEPRECATED&#34;]
      * 
      */
     public Output<String> launchStage() {
@@ -1110,19 +1122,9 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<String> observedGeneration() {
         return this.observedGeneration;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -1164,7 +1166,6 @@ public class Service extends com.pulumi.resources.CustomResource {
     }
     /**
      * Scaling settings that apply to the whole service
-     * Structure is documented below.
      * 
      */
     @Export(name="scaling", refs={ServiceScaling.class}, tree="[0]")
@@ -1172,7 +1173,6 @@ public class Service extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Scaling settings that apply to the whole service
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ServiceScaling>> scaling() {
@@ -1227,16 +1227,16 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.trafficStatuses;
     }
     /**
-     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-     * Structure is documented below.
+     * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+     * provided, defaults to 100% traffic to the latest Ready Revision.
      * 
      */
     @Export(name="traffics", refs={List.class,ServiceTraffic.class}, tree="[0,1]")
     private Output<List<ServiceTraffic>> traffics;
 
     /**
-     * @return Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-     * Structure is documented below.
+     * @return Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
+     * provided, defaults to 100% traffic to the latest Ready Revision.
      * 
      */
     public Output<List<ServiceTraffic>> traffics() {

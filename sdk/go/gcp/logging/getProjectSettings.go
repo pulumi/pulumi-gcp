@@ -22,7 +22,6 @@ import (
 //
 // ### Logging Project Settings Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetProjectSettings(ctx *pulumi.Context, args *GetProjectSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectSettingsResult

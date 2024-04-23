@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,11 +35,9 @@ import * as utilities from "../utilities";
  *     orgId: "1234567",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * To create a project under a specific folder
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -55,7 +52,6 @@ import * as utilities from "../utilities";
  *     folderId: department1.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

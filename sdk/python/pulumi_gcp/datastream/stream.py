@@ -37,16 +37,12 @@ class StreamArgs:
                Structure is documented below.
         :param pulumi.Input[str] stream_id: The stream identifier.
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-               Structure is documented below.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
-        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+               encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         pulumi.set(__self__, "destination_config", destination_config)
         pulumi.set(__self__, "display_name", display_name)
@@ -133,7 +129,6 @@ class StreamArgs:
     def backfill_all(self) -> Optional[pulumi.Input['StreamBackfillAllArgs']]:
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-        Structure is documented below.
         """
         return pulumi.get(self, "backfill_all")
 
@@ -157,8 +152,8 @@ class StreamArgs:
     @pulumi.getter(name="customerManagedEncryptionKey")
     def customer_managed_encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-        will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+        encrypted using an internal Stream-specific encryption key provisioned through KMS.
         """
         return pulumi.get(self, "customer_managed_encryption_key")
 
@@ -170,7 +165,7 @@ class StreamArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
         """
         return pulumi.get(self, "desired_state")
 
@@ -182,9 +177,8 @@ class StreamArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -195,10 +189,6 @@ class StreamArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -227,22 +217,18 @@ class _StreamState:
         """
         Input properties used for looking up and filtering Stream resources.
         :param pulumi.Input['StreamBackfillAllArgs'] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-               Structure is documented below.
         :param pulumi.Input['StreamBackfillNoneArgs'] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
-        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+               encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this stream is located in.
         :param pulumi.Input[str] name: The stream's name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['StreamSourceConfigArgs'] source_config: Source connection profile configuration.
@@ -286,7 +272,6 @@ class _StreamState:
     def backfill_all(self) -> Optional[pulumi.Input['StreamBackfillAllArgs']]:
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-        Structure is documented below.
         """
         return pulumi.get(self, "backfill_all")
 
@@ -310,8 +295,8 @@ class _StreamState:
     @pulumi.getter(name="customerManagedEncryptionKey")
     def customer_managed_encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-        will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+        encrypted using an internal Stream-specific encryption key provisioned through KMS.
         """
         return pulumi.get(self, "customer_managed_encryption_key")
 
@@ -323,7 +308,7 @@ class _StreamState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
         """
         return pulumi.get(self, "desired_state")
 
@@ -372,9 +357,8 @@ class _StreamState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -409,10 +393,6 @@ class _StreamState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -500,7 +480,6 @@ class Stream(pulumi.CustomResource):
 
         ### Datastream Stream Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -669,10 +648,8 @@ class Stream(pulumi.CustomResource):
             ),
             customer_managed_encryption_key="kms-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -753,10 +730,8 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Oracle
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -837,10 +812,8 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -926,10 +899,8 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Bigquery
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1018,7 +989,6 @@ class Stream(pulumi.CustomResource):
             ),
             backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1047,20 +1017,16 @@ class Stream(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
-        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+               encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
         :param pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this stream is located in.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] stream_id: The stream identifier.
@@ -1084,7 +1050,6 @@ class Stream(pulumi.CustomResource):
 
         ### Datastream Stream Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1253,10 +1218,8 @@ class Stream(pulumi.CustomResource):
             ),
             customer_managed_encryption_key="kms-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1337,10 +1300,8 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Oracle
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1421,10 +1382,8 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Postgresql Bigquery Dataset Id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1510,10 +1469,8 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
-        <!--End PulumiCodeChooser -->
         ### Datastream Stream Bigquery
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1602,7 +1559,6 @@ class Stream(pulumi.CustomResource):
             ),
             backfill_none=gcp.datastream.StreamBackfillNoneArgs())
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1723,22 +1679,18 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['StreamBackfillAllArgs']] backfill_all: Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StreamBackfillNoneArgs']] backfill_none: Backfill strategy to disable automatic backfill for the Stream's objects.
-        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-               will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+        :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+               encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
         :param pulumi.Input[pulumi.InputType['StreamDestinationConfigArgs']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+               refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this stream is located in.
         :param pulumi.Input[str] name: The stream's name.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']] source_config: Source connection profile configuration.
@@ -1772,7 +1724,6 @@ class Stream(pulumi.CustomResource):
     def backfill_all(self) -> pulumi.Output[Optional['outputs.StreamBackfillAll']]:
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
-        Structure is documented below.
         """
         return pulumi.get(self, "backfill_all")
 
@@ -1788,8 +1739,8 @@ class Stream(pulumi.CustomResource):
     @pulumi.getter(name="customerManagedEncryptionKey")
     def customer_managed_encryption_key(self) -> pulumi.Output[Optional[str]]:
         """
-        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
-        will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
+        encrypted using an internal Stream-specific encryption key provisioned through KMS.
         """
         return pulumi.get(self, "customer_managed_encryption_key")
 
@@ -1797,7 +1748,7 @@ class Stream(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
         """
         return pulumi.get(self, "desired_state")
 
@@ -1830,9 +1781,8 @@ class Stream(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
+        refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1855,10 +1805,6 @@ class Stream(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

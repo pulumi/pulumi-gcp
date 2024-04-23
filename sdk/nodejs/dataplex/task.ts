@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Dataplex Task Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -58,10 +57,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataplex Task Spark
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -119,10 +116,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Dataplex Task Notebook
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -180,7 +175,6 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -261,10 +255,8 @@ export class Task extends pulumi.CustomResource {
      */
     public /*out*/ readonly executionStatuses!: pulumi.Output<outputs.dataplex.TaskExecutionStatus[]>;
     /**
-     * User-defined labels for the task.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+     * your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -281,14 +273,10 @@ export class Task extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-     * Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+     * its memory over time.
      */
     public readonly notebook!: pulumi.Output<outputs.dataplex.TaskNotebook | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -296,8 +284,8 @@ export class Task extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-     * Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+     * its memory over time.
      */
     public readonly spark!: pulumi.Output<outputs.dataplex.TaskSpark | undefined>;
     /**
@@ -423,10 +411,8 @@ export interface TaskState {
      */
     executionStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.TaskExecutionStatus>[]>;
     /**
-     * User-defined labels for the task.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+     * your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -443,14 +429,10 @@ export interface TaskState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-     * Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+     * its memory over time.
      */
     notebook?: pulumi.Input<inputs.dataplex.TaskNotebook>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -458,8 +440,8 @@ export interface TaskState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-     * Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+     * its memory over time.
      */
     spark?: pulumi.Input<inputs.dataplex.TaskSpark>;
     /**
@@ -506,10 +488,8 @@ export interface TaskArgs {
      */
     executionSpec: pulumi.Input<inputs.dataplex.TaskExecutionSpec>;
     /**
-     * User-defined labels for the task.
-     *
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
+     * your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -521,18 +501,14 @@ export interface TaskArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-     * Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+     * its memory over time.
      */
     notebook?: pulumi.Input<inputs.dataplex.TaskNotebook>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
-     * Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
+     * its memory over time.
      */
     spark?: pulumi.Input<inputs.dataplex.TaskSpark>;
     /**

@@ -32,14 +32,14 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
     }
 
     /**
-     * Rule visibility can be one of the following:
+     * Rule visibility. Supported values include: &#34;STANDARD&#34;, &#34;PREMIUM&#34;.
      * 
      */
     @Import(name="ruleVisibility")
     private @Nullable Output<String> ruleVisibility;
 
     /**
-     * @return Rule visibility can be one of the following:
+     * @return Rule visibility. Supported values include: &#34;STANDARD&#34;, &#34;PREMIUM&#34;.
      * 
      */
     public Optional<Output<String>> ruleVisibility() {
@@ -93,7 +93,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         }
 
         /**
-         * @param ruleVisibility Rule visibility can be one of the following:
+         * @param ruleVisibility Rule visibility. Supported values include: &#34;STANDARD&#34;, &#34;PREMIUM&#34;.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         }
 
         /**
-         * @param ruleVisibility Rule visibility can be one of the following:
+         * @param ruleVisibility Rule visibility. Supported values include: &#34;STANDARD&#34;, &#34;PREMIUM&#34;.
          * 
          * @return builder
          * 

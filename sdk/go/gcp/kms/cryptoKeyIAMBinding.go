@@ -22,7 +22,6 @@ import (
 //
 // > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,11 +75,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,9 +113,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -146,11 +141,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -183,9 +176,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -211,11 +202,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // With IAM Conditions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -246,7 +235,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

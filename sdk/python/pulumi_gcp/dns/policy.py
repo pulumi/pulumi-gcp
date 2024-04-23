@@ -328,7 +328,6 @@ class Policy(pulumi.CustomResource):
 
         ### Dns Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -363,7 +362,6 @@ class Policy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -431,7 +429,6 @@ class Policy(pulumi.CustomResource):
 
         ### Dns Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -466,7 +463,6 @@ class Policy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

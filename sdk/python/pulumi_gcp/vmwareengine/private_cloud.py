@@ -35,11 +35,8 @@ class PrivateCloudArgs:
         :param pulumi.Input[str] description: User-provided description for this private cloud.
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
         :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
-        :param pulumi.Input[str] type: Initial type of the private cloud.
-               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "management_cluster", management_cluster)
@@ -134,10 +131,6 @@ class PrivateCloudArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -160,8 +153,7 @@ class PrivateCloudArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Initial type of the private cloud.
-        Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         return pulumi.get(self, "type")
 
@@ -201,13 +193,10 @@ class _PrivateCloudState:
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
         :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
-        :param pulumi.Input[str] type: Initial type of the private cloud.
-               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
@@ -344,10 +333,6 @@ class _PrivateCloudState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -383,8 +368,7 @@ class _PrivateCloudState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Initial type of the private cloud.
-        Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         return pulumi.get(self, "type")
 
@@ -444,7 +428,6 @@ class PrivateCloud(pulumi.CustomResource):
 
         ### Vmware Engine Private Cloud Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -470,10 +453,8 @@ class PrivateCloud(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Private Cloud Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -501,7 +482,6 @@ class PrivateCloud(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -537,11 +517,8 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
         :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
-        :param pulumi.Input[str] type: Initial type of the private cloud.
-               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         ...
     @overload
@@ -560,7 +537,6 @@ class PrivateCloud(pulumi.CustomResource):
 
         ### Vmware Engine Private Cloud Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -586,10 +562,8 @@ class PrivateCloud(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Vmware Engine Private Cloud Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -617,7 +591,6 @@ class PrivateCloud(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -739,13 +712,10 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudNsxArgs']]]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
         :param pulumi.Input[str] preferred_zone: The preferred single failure domain within a region.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[str] secondary_zone: The secondary single failure domain within a region.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
-        :param pulumi.Input[str] type: Initial type of the private cloud.
-               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        :param pulumi.Input[str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudVcenterArgs']]]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
@@ -841,10 +811,6 @@ class PrivateCloud(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -868,8 +834,7 @@ class PrivateCloud(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Initial type of the private cloud.
-        Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
+        Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
         """
         return pulumi.get(self, "type")
 

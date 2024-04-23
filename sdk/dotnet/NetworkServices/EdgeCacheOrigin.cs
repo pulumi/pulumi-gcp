@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// ### Network Services Edge Cache Origin Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,10 +37,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Edge Cache Origin Advanced
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,10 +120,8 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Network Services Edge Cache Origin V4auth
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -165,7 +160,6 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

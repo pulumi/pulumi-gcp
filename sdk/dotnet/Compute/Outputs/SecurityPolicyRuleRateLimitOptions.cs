@@ -48,9 +48,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string ExceedAction;
         /// <summary>
-        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
-        /// 
-        /// &lt;a name="nested_threshold"&gt;&lt;/a&gt;The `{ban/rate_limit}_threshold` block supports:
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions? ExceedRedirectOptions;
         /// <summary>

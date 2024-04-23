@@ -206,7 +206,6 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -232,7 +231,6 @@ class Connection(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -278,7 +276,6 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -304,7 +301,6 @@ class Connection(pulumi.CustomResource):
             import_custom_routes=True,
             export_custom_routes=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

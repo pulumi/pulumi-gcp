@@ -46,38 +46,27 @@ class AuthorityArgs:
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
-        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-               such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-               (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-               my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-               created.
-        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-               Use with care. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
-               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-               "1.3kg", "count": "3" }.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-               fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
-               possible without a 30-day grace period where undeletion would have been
-               allowed. If you proceed, there will be no way to recover this CA.
-               Use with care. Defaults to `false`.
-        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
-               with the subordinate configuration, which describes its issuers.
-               Structure is documented below.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority.
-               > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be activated before they can issue certificates.
-               Default value is `SELF_SIGNED`.
-               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+               CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+               example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+               be created.
+        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+               unexpired certs. Use with care. Defaults to 'false'.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+               certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+               a third party issuer.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+               undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+               'false'.
+        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+               describes its issuers.
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+               before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
         pulumi.set(__self__, "config", config)
@@ -189,7 +178,7 @@ class AuthorityArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         """
         return pulumi.get(self, "desired_state")
 
@@ -201,11 +190,10 @@ class AuthorityArgs:
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-        such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-        (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-        my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-        created.
+        The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+        CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+        example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+        be created.
         """
         return pulumi.get(self, "gcs_bucket")
 
@@ -217,8 +205,8 @@ class AuthorityArgs:
     @pulumi.getter(name="ignoreActiveCertificatesOnDeletion")
     def ignore_active_certificates_on_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        Use with care. Defaults to `false`.
+        This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+        unexpired certs. Use with care. Defaults to 'false'.
         """
         return pulumi.get(self, "ignore_active_certificates_on_deletion")
 
@@ -230,12 +218,9 @@ class AuthorityArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels with user-defined metadata.
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-        "1.3kg", "count": "3" }.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+        "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -247,9 +232,8 @@ class AuthorityArgs:
     @pulumi.getter
     def lifetime(self) -> Optional[pulumi.Input[str]]:
         """
-        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        fractional digits, terminated by 's'. Example: "3.5s".
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+        certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "lifetime")
 
@@ -261,7 +245,8 @@ class AuthorityArgs:
     @pulumi.getter(name="pemCaCertificate")
     def pem_ca_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+        a third party issuer.
         """
         return pulumi.get(self, "pem_ca_certificate")
 
@@ -272,10 +257,6 @@ class AuthorityArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -286,10 +267,9 @@ class AuthorityArgs:
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> Optional[pulumi.Input[bool]]:
         """
-        If this flag is set, the Certificate Authority will be deleted as soon as
-        possible without a 30-day grace period where undeletion would have been
-        allowed. If you proceed, there will be no way to recover this CA.
-        Use with care. Defaults to `false`.
+        If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+        undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+        'false'.
         """
         return pulumi.get(self, "skip_grace_period")
 
@@ -301,9 +281,8 @@ class AuthorityArgs:
     @pulumi.getter(name="subordinateConfig")
     def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
         """
-        If this is a subordinate CertificateAuthority, this field will be set
-        with the subordinate configuration, which describes its issuers.
-        Structure is documented below.
+        If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+        describes its issuers.
         """
         return pulumi.get(self, "subordinate_config")
 
@@ -315,11 +294,8 @@ class AuthorityArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of this CertificateAuthority.
-        > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        be activated before they can issue certificates.
-        Default value is `SELF_SIGNED`.
-        Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         return pulumi.get(self, "type")
 
@@ -367,55 +343,44 @@ class _AuthorityState:
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-               such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-               (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-               my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-               created.
-        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-               Use with care. Defaults to `false`.
+        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+               CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+               example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+               be created.
+        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+               unexpired certs. Use with care. Defaults to 'false'.
         :param pulumi.Input['AuthorityKeySpecArgs'] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
-               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-               "1.3kg", "count": "3" }.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+               certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format
                projects/*/locations/*/certificateAuthorities/*.
-        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+               a third party issuer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current
                CertificateAuthority's certificate. Ordered such that the root issuer is the final
                element (consistent with RFC 5246). For a self-signed CA, this will only list the current
                CertificateAuthority's certificate.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
-               possible without a 30-day grace period where undeletion would have been
-               allowed. If you proceed, there will be no way to recover this CA.
-               Use with care. Defaults to `false`.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+               undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+               'false'.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
-        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
-               with the subordinate configuration, which describes its issuers.
-               Structure is documented below.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority.
-               > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be activated before they can issue certificates.
-               Default value is `SELF_SIGNED`.
-               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+               describes its issuers.
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+               before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -538,7 +503,7 @@ class _AuthorityState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         """
         return pulumi.get(self, "desired_state")
 
@@ -562,11 +527,10 @@ class _AuthorityState:
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-        such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-        (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-        my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-        created.
+        The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+        CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+        example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+        be created.
         """
         return pulumi.get(self, "gcs_bucket")
 
@@ -578,8 +542,8 @@ class _AuthorityState:
     @pulumi.getter(name="ignoreActiveCertificatesOnDeletion")
     def ignore_active_certificates_on_deletion(self) -> Optional[pulumi.Input[bool]]:
         """
-        This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        Use with care. Defaults to `false`.
+        This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+        unexpired certs. Use with care. Defaults to 'false'.
         """
         return pulumi.get(self, "ignore_active_certificates_on_deletion")
 
@@ -606,12 +570,9 @@ class _AuthorityState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels with user-defined metadata.
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-        "1.3kg", "count": "3" }.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+        "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -623,9 +584,8 @@ class _AuthorityState:
     @pulumi.getter
     def lifetime(self) -> Optional[pulumi.Input[str]]:
         """
-        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        fractional digits, terminated by 's'. Example: "3.5s".
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+        certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "lifetime")
 
@@ -663,7 +623,8 @@ class _AuthorityState:
     @pulumi.getter(name="pemCaCertificate")
     def pem_ca_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+        a third party issuer.
         """
         return pulumi.get(self, "pem_ca_certificate")
 
@@ -701,10 +662,6 @@ class _AuthorityState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -728,10 +685,9 @@ class _AuthorityState:
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> Optional[pulumi.Input[bool]]:
         """
-        If this flag is set, the Certificate Authority will be deleted as soon as
-        possible without a 30-day grace period where undeletion would have been
-        allowed. If you proceed, there will be no way to recover this CA.
-        Use with care. Defaults to `false`.
+        If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+        undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+        'false'.
         """
         return pulumi.get(self, "skip_grace_period")
 
@@ -755,9 +711,8 @@ class _AuthorityState:
     @pulumi.getter(name="subordinateConfig")
     def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
         """
-        If this is a subordinate CertificateAuthority, this field will be set
-        with the subordinate configuration, which describes its issuers.
-        Structure is documented below.
+        If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+        describes its issuers.
         """
         return pulumi.get(self, "subordinate_config")
 
@@ -769,11 +724,8 @@ class _AuthorityState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of this CertificateAuthority.
-        > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        be activated before they can issue certificates.
-        Default value is `SELF_SIGNED`.
-        Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         return pulumi.get(self, "type")
 
@@ -836,7 +788,6 @@ class Authority(pulumi.CustomResource):
 
         ### Privateca Certificate Authority Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -887,10 +838,8 @@ class Authority(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Subordinate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -980,10 +929,8 @@ class Authority(pulumi.CustomResource):
             ),
             type="SUBORDINATE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Byo Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1040,7 +987,6 @@ class Authority(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1073,45 +1019,34 @@ class Authority(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
-        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-               such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-               (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-               my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-               created.
-        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-               Use with care. Defaults to `false`.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+               CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+               example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+               be created.
+        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+               unexpired certs. Use with care. Defaults to 'false'.
         :param pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
-               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-               "1.3kg", "count": "3" }.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+               certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+               a third party issuer.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
-               possible without a 30-day grace period where undeletion would have been
-               allowed. If you proceed, there will be no way to recover this CA.
-               Use with care. Defaults to `false`.
-        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
-               with the subordinate configuration, which describes its issuers.
-               Structure is documented below.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority.
-               > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be activated before they can issue certificates.
-               Default value is `SELF_SIGNED`.
-               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+               undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+               'false'.
+        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+               describes its issuers.
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+               before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         ...
     @overload
@@ -1137,7 +1072,6 @@ class Authority(pulumi.CustomResource):
 
         ### Privateca Certificate Authority Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1188,10 +1122,8 @@ class Authority(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Subordinate
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1281,10 +1213,8 @@ class Authority(pulumi.CustomResource):
             ),
             type="SUBORDINATE")
         ```
-        <!--End PulumiCodeChooser -->
         ### Privateca Certificate Authority Byo Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1341,7 +1271,6 @@ class Authority(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1494,55 +1423,44 @@ class Authority(pulumi.CustomResource):
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-               such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-               (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-               my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-               created.
-        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-               Use with care. Defaults to `false`.
+        :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+               CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+               example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+               be created.
+        :param pulumi.Input[bool] ignore_active_certificates_on_deletion: This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+               unexpired certs. Use with care. Defaults to 'false'.
         :param pulumi.Input[pulumi.InputType['AuthorityKeySpecArgs']] key_spec: Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
                is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
                certificate. Otherwise, it is used to sign a CSR.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
-               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-               "1.3kg", "count": "3" }.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+               certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format
                projects/*/locations/*/certificateAuthorities/*.
-        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+               a third party issuer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current
                CertificateAuthority's certificate. Ordered such that the root issuer is the final
                element (consistent with RFC 5246). For a self-signed CA, this will only list the current
                CertificateAuthority's certificate.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
-               possible without a 30-day grace period where undeletion would have been
-               allowed. If you proceed, there will be no way to recover this CA.
-               Use with care. Defaults to `false`.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+               undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+               'false'.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
-        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
-               with the subordinate configuration, which describes its issuers.
-               Structure is documented below.
-        :param pulumi.Input[str] type: The Type of this CertificateAuthority.
-               > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-               be activated before they can issue certificates.
-               Default value is `SELF_SIGNED`.
-               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+               describes its issuers.
+        :param pulumi.Input[str] type: The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+               before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1626,7 +1544,7 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
         """
         return pulumi.get(self, "desired_state")
 
@@ -1642,11 +1560,10 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
-        such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
-        (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
-        my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
-        created.
+        The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
+        CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
+        example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
+        be created.
         """
         return pulumi.get(self, "gcs_bucket")
 
@@ -1654,8 +1571,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="ignoreActiveCertificatesOnDeletion")
     def ignore_active_certificates_on_deletion(self) -> pulumi.Output[Optional[bool]]:
         """
-        This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-        Use with care. Defaults to `false`.
+        This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
+        unexpired certs. Use with care. Defaults to 'false'.
         """
         return pulumi.get(self, "ignore_active_certificates_on_deletion")
 
@@ -1674,12 +1591,9 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels with user-defined metadata.
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
-        "1.3kg", "count": "3" }.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels with user-defined metadata. An object containing a list of "key": value pairs. Example: { "name": "wrench",
+        "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
+        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1687,9 +1601,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter
     def lifetime(self) -> pulumi.Output[Optional[str]]:
         """
-        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
-        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
-        fractional digits, terminated by 's'. Example: "3.5s".
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and "notAfterTime" fields inside an X.509
+        certificate. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "lifetime")
 
@@ -1715,7 +1628,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="pemCaCertificate")
     def pem_ca_certificate(self) -> pulumi.Output[Optional[str]]:
         """
-        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+        The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with
+        a third party issuer.
         """
         return pulumi.get(self, "pem_ca_certificate")
 
@@ -1741,10 +1655,6 @@ class Authority(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -1760,10 +1670,9 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="skipGracePeriod")
     def skip_grace_period(self) -> pulumi.Output[Optional[bool]]:
         """
-        If this flag is set, the Certificate Authority will be deleted as soon as
-        possible without a 30-day grace period where undeletion would have been
-        allowed. If you proceed, there will be no way to recover this CA.
-        Use with care. Defaults to `false`.
+        If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
+        undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
+        'false'.
         """
         return pulumi.get(self, "skip_grace_period")
 
@@ -1779,9 +1688,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="subordinateConfig")
     def subordinate_config(self) -> pulumi.Output[Optional['outputs.AuthoritySubordinateConfig']]:
         """
-        If this is a subordinate CertificateAuthority, this field will be set
-        with the subordinate configuration, which describes its issuers.
-        Structure is documented below.
+        If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
+        describes its issuers.
         """
         return pulumi.get(self, "subordinate_config")
 
@@ -1789,11 +1697,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Type of this CertificateAuthority.
-        > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
-        be activated before they can issue certificates.
-        Default value is `SELF_SIGNED`.
-        Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+        The Type of this CertificateAuthority. ~> **Note:** For 'SUBORDINATE' Certificate Authorities, they need to be activated
+        before they can issue certificates. Default value: "SELF_SIGNED" Possible values: ["SELF_SIGNED", "SUBORDINATE"]
         """
         return pulumi.get(self, "type")
 

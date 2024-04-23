@@ -3466,17 +3466,11 @@ class ClusterAddonsConfigCloudrunConfigArgs:
 class ClusterAddonsConfigConfigConnectorConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3488,17 +3482,11 @@ class ClusterAddonsConfigConfigConnectorConfigArgs:
 class ClusterAddonsConfigDnsCacheConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3510,17 +3498,11 @@ class ClusterAddonsConfigDnsCacheConfigArgs:
 class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3532,17 +3514,11 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
 class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3554,17 +3530,11 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
 class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3576,17 +3546,11 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
 class ClusterAddonsConfigGkeBackupAgentConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3690,17 +3654,11 @@ class ClusterAddonsConfigIstioConfigArgs:
 class ClusterAddonsConfigKalmConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3738,17 +3696,11 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
 class ClusterAddonsConfigStatefulHaConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
-        """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -3784,9 +3736,8 @@ class ClusterBinaryAuthorizationArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  evaluation_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
-        :param pulumi.Input[str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-               and `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster.
+        :param pulumi.Input[str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation.
         """
         if enabled is not None:
             warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
@@ -3800,7 +3751,7 @@ class ClusterBinaryAuthorizationArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        Enable Binary Authorization for this cluster.
         """
         warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
         pulumi.log.warn("""enabled is deprecated: Deprecated in favor of evaluation_mode.""")
@@ -3815,8 +3766,7 @@ class ClusterBinaryAuthorizationArgs:
     @pulumi.getter(name="evaluationMode")
     def evaluation_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        and `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        Mode of operation for Binary Authorization policy evaluation.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -3941,7 +3891,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
                > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools
         """
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
@@ -4080,7 +4030,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']]:
         """
-        Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        Specifies the upgrade settings for NAP created node pools
         """
         return pulumi.get(self, "upgrade_settings")
 
@@ -4100,7 +4050,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
                
                This block also contains several computed attributes, documented below.
         :param pulumi.Input[bool] auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]] upgrade_options: Specifies the Auto Upgrade knobs for the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]] upgrade_options: Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
         """
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
@@ -4139,7 +4089,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
     @pulumi.getter(name="upgradeOptions")
     def upgrade_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]]:
         """
-        Specifies the Auto Upgrade knobs for the node pool.
+        Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
         """
         return pulumi.get(self, "upgrade_options")
 
@@ -4655,7 +4605,7 @@ class ClusterEnableK8sBetaApisArgs:
     def __init__(__self__, *,
                  enabled_apis: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_apis: Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_apis: Enabled Kubernetes Beta APIs.
         """
         pulumi.set(__self__, "enabled_apis", enabled_apis)
 
@@ -4663,7 +4613,7 @@ class ClusterEnableK8sBetaApisArgs:
     @pulumi.getter(name="enabledApis")
     def enabled_apis(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+        Enabled Kubernetes Beta APIs.
         """
         return pulumi.get(self, "enabled_apis")
 
@@ -5149,6 +5099,11 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
     def __init__(__self__, *,
                  start_time: pulumi.Input[str],
                  duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] duration: Duration of the time window, automatically chosen to be
+               smallest possible in the given scenario.
+               Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
+        """
         pulumi.set(__self__, "start_time", start_time)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -5165,6 +5120,11 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration of the time window, automatically chosen to be
+        smallest possible in the given scenario.
+        Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -6516,8 +6476,8 @@ class ClusterNodeConfigEffectiveTaintArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        :param pulumi.Input[str] key: The default or custom node affinity label key name.
+        :param pulumi.Input[str] effect: Effect for taint.
+        :param pulumi.Input[str] key: Key for taint.
         :param pulumi.Input[str] value: Value for taint.
         """
         if effect is not None:
@@ -6531,7 +6491,7 @@ class ClusterNodeConfigEffectiveTaintArgs:
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
         """
-        Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        Effect for taint.
         """
         return pulumi.get(self, "effect")
 
@@ -6543,7 +6503,7 @@ class ClusterNodeConfigEffectiveTaintArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The default or custom node affinity label key name.
+        Key for taint.
         """
         return pulumi.get(self, "key")
 
@@ -7343,7 +7303,7 @@ class ClusterNodePoolArgs:
                `remove_default_node_pool` to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
-        :param pulumi.Input['ClusterNodePoolManagementArgs'] management: NodeManagement configuration for this NodePool. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolManagementArgs'] management: Node management configuration, wherein auto-repair and auto-upgrade is configured.
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
@@ -7371,7 +7331,7 @@ class ClusterNodePoolArgs:
                preferred.
         :param pulumi.Input['ClusterNodePoolPlacementPolicyArgs'] placement_policy: Specifies the node placement policy
         :param pulumi.Input['ClusterNodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies the configuration of queued provisioning
-        :param pulumi.Input['ClusterNodePoolUpgradeSettingsArgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -7463,7 +7423,7 @@ class ClusterNodePoolArgs:
     @pulumi.getter
     def management(self) -> Optional[pulumi.Input['ClusterNodePoolManagementArgs']]:
         """
-        NodeManagement configuration for this NodePool. Structure is documented below.
+        Node management configuration, wherein auto-repair and auto-upgrade is configured.
         """
         return pulumi.get(self, "management")
 
@@ -7601,7 +7561,7 @@ class ClusterNodePoolArgs:
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArgs']]:
         """
-        Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
         """
         return pulumi.get(self, "upgrade_settings")
 
@@ -7910,10 +7870,7 @@ class ClusterNodePoolNetworkConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
         :param pulumi.Input[bool] create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
-        :param pulumi.Input[bool] enable_private_nodes: Enables the private cluster feature,
-               creating a private endpoint on the cluster. In a private cluster, nodes only
-               have RFC 1918 private addresses and communicate with the master's private
-               endpoint via private networking.
+        :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only.
         :param pulumi.Input['ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
         :param pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs'] pod_cidr_overprovision_config: Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
         :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -7976,10 +7933,7 @@ class ClusterNodePoolNetworkConfigArgs:
     @pulumi.getter(name="enablePrivateNodes")
     def enable_private_nodes(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables the private cluster feature,
-        creating a private endpoint on the cluster. In a private cluster, nodes only
-        have RFC 1918 private addresses and communicate with the master's private
-        endpoint via private networking.
+        Whether nodes have internal IP addresses only.
         """
         return pulumi.get(self, "enable_private_nodes")
 
@@ -8970,8 +8924,8 @@ class ClusterNodePoolNodeConfigEffectiveTaintArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        :param pulumi.Input[str] key: The default or custom node affinity label key name.
+        :param pulumi.Input[str] effect: Effect for taint.
+        :param pulumi.Input[str] key: Key for taint.
         :param pulumi.Input[str] value: Value for taint.
         """
         if effect is not None:
@@ -8985,7 +8939,7 @@ class ClusterNodePoolNodeConfigEffectiveTaintArgs:
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
         """
-        Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
+        Effect for taint.
         """
         return pulumi.get(self, "effect")
 
@@ -8997,7 +8951,7 @@ class ClusterNodePoolNodeConfigEffectiveTaintArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The default or custom node affinity label key name.
+        Key for taint.
         """
         return pulumi.get(self, "key")
 
@@ -9829,7 +9783,7 @@ class ClusterNodePoolQueuedProvisioningArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        :param pulumi.Input[bool] enabled: Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -9837,7 +9791,7 @@ class ClusterNodePoolQueuedProvisioningArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
         """
         return pulumi.get(self, "enabled")
 
@@ -10578,7 +10532,7 @@ class ClusterTpuConfigArgs:
                  ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        :param pulumi.Input[bool] enabled: Whether Cloud TPU integration is enabled or not
         :param pulumi.Input[str] ipv4_cidr_block: IPv4 CIDR block reserved for Cloud TPU in the VPC.
         :param pulumi.Input[bool] use_service_networking: Whether to use service networking for Cloud TPU or not
         """
@@ -10592,7 +10546,7 @@ class ClusterTpuConfigArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        Whether Cloud TPU integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -11874,8 +11828,7 @@ class NodePoolNodeConfigFastSocketArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
-               enforce encryption of data in-use.
+        :param pulumi.Input[bool] enabled: Whether or not NCCL Fast Socket is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -11883,8 +11836,7 @@ class NodePoolNodeConfigFastSocketArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Confidential GKE Nodes for this cluster, to
-        enforce encryption of data in-use.
+        Whether or not NCCL Fast Socket is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -11898,8 +11850,7 @@ class NodePoolNodeConfigGcfsConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
-               enforce encryption of data in-use.
+        :param pulumi.Input[bool] enabled: Whether or not GCFS is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -11907,8 +11858,7 @@ class NodePoolNodeConfigGcfsConfigArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Confidential GKE Nodes for this cluster, to
-        enforce encryption of data in-use.
+        Whether or not GCFS is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -11927,9 +11877,7 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
                  gpu_sharing_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
         """
         :param pulumi.Input[int] count: The number of the accelerator cards exposed to an instance.
-        :param pulumi.Input[str] type: The type of the policy. Supports a single value: COMPACT.
-               Specifying COMPACT placement policy type places node pool's nodes in a closer
-               physical proximity in order to reduce network latency between nodes.
+        :param pulumi.Input[str] type: The accelerator type resource name.
         :param pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver.
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
         :param pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs'] gpu_sharing_config: Configuration for GPU sharing.
@@ -11959,9 +11907,7 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the policy. Supports a single value: COMPACT.
-        Specifying COMPACT placement policy type places node pool's nodes in a closer
-        physical proximity in order to reduce network latency between nodes.
+        The accelerator type resource name.
         """
         return pulumi.get(self, "type")
 
@@ -12070,8 +12016,7 @@ class NodePoolNodeConfigGvnicArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
-               enforce encryption of data in-use.
+        :param pulumi.Input[bool] enabled: Whether or not gvnic is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -12079,8 +12024,7 @@ class NodePoolNodeConfigGvnicArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Confidential GKE Nodes for this cluster, to
-        enforce encryption of data in-use.
+        Whether or not gvnic is enabled
         """
         return pulumi.get(self, "enabled")
 

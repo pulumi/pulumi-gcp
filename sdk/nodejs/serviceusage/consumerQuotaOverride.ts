@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Consumer Quota Override
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,10 +42,8 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Region Consumer Quota Override
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -73,10 +70,8 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Consumer Quota Override Custom Dimension
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -103,7 +98,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -36,9 +36,7 @@ public final class NodePoolNodeConfigGuestAccelerator {
      */
     private @Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
     /**
-     * @return The type of the policy. Supports a single value: COMPACT.
-     * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
-     * physical proximity in order to reduce network latency between nodes.
+     * @return The accelerator type resource name.
      * 
      */
     private String type;
@@ -73,9 +71,7 @@ public final class NodePoolNodeConfigGuestAccelerator {
         return Optional.ofNullable(this.gpuSharingConfig);
     }
     /**
-     * @return The type of the policy. Supports a single value: COMPACT.
-     * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
-     * physical proximity in order to reduce network latency between nodes.
+     * @return The accelerator type resource name.
      * 
      */
     public String type() {

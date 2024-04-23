@@ -38,14 +38,13 @@ class BitbucketServerConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
         :param pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]] connected_repositories: Connected Bitbucket Server repositories for this config.
-               Structure is documented below.
-        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-               This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-               no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-               projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+               service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+               public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+               will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+               {project} is a project number or id and {network} is the name of a VPC network in the project.
+        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+               .pem, .cer, or .crt.
         """
         pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "config_id", config_id)
@@ -142,7 +141,6 @@ class BitbucketServerConfigArgs:
     def connected_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]]:
         """
         Connected Bitbucket Server repositories for this config.
-        Structure is documented below.
         """
         return pulumi.get(self, "connected_repositories")
 
@@ -154,10 +152,11 @@ class BitbucketServerConfigArgs:
     @pulumi.getter(name="peeredNetwork")
     def peered_network(self) -> Optional[pulumi.Input[str]]:
         """
-        The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-        This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-        no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-        projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+        service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+        public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+        will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+        {project} is a project number or id and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
 
@@ -168,10 +167,6 @@ class BitbucketServerConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -182,7 +177,8 @@ class BitbucketServerConfigArgs:
     @pulumi.getter(name="sslCa")
     def ssl_ca(self) -> Optional[pulumi.Input[str]]:
         """
-        SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+        .pem, .cer, or .crt.
         """
         return pulumi.get(self, "ssl_ca")
 
@@ -212,20 +208,19 @@ class _BitbucketServerConfigState:
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
         :param pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]] connected_repositories: Connected Bitbucket Server repositories for this config.
-               Structure is documented below.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input[str] location: The location of this bitbucket server config.
         :param pulumi.Input[str] name: The resource name for the config.
-        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-               This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-               no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-               projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+               service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+               public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+               will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+               {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input['BitbucketServerConfigSecretsArgs'] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
-        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+               .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
         :param pulumi.Input[str] webhook_key: Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
         """
@@ -284,7 +279,6 @@ class _BitbucketServerConfigState:
     def connected_repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BitbucketServerConfigConnectedRepositoryArgs']]]]:
         """
         Connected Bitbucket Server repositories for this config.
-        Structure is documented below.
         """
         return pulumi.get(self, "connected_repositories")
 
@@ -333,10 +327,11 @@ class _BitbucketServerConfigState:
     @pulumi.getter(name="peeredNetwork")
     def peered_network(self) -> Optional[pulumi.Input[str]]:
         """
-        The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-        This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-        no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-        projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+        service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+        public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+        will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+        {project} is a project number or id and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
 
@@ -347,10 +342,6 @@ class _BitbucketServerConfigState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -374,7 +365,8 @@ class _BitbucketServerConfigState:
     @pulumi.getter(name="sslCa")
     def ssl_ca(self) -> Optional[pulumi.Input[str]]:
         """
-        SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+        .pem, .cer, or .crt.
         """
         return pulumi.get(self, "ssl_ca")
 
@@ -436,7 +428,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         ### Cloudbuild Bitbucket Server Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -453,10 +444,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Repositories
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -483,10 +472,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Peered Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -527,7 +514,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
         -----END CERTIFICATE-----
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -559,19 +545,18 @@ class BitbucketServerConfig(pulumi.CustomResource):
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
-               Structure is documented below.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input[str] location: The location of this bitbucket server config.
-        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-               This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-               no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-               projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+               service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+               public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+               will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+               {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
-        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+               .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
         """
         ...
@@ -593,7 +578,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         ### Cloudbuild Bitbucket Server Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -610,10 +594,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Repositories
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -640,10 +622,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Cloudbuild Bitbucket Server Config Peered Network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -684,7 +664,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
         -----END CERTIFICATE-----
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -801,20 +780,19 @@ class BitbucketServerConfig(pulumi.CustomResource):
                Changing this field will result in deleting/ recreating the resource.
         :param pulumi.Input[str] config_id: The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BitbucketServerConfigConnectedRepositoryArgs']]]] connected_repositories: Connected Bitbucket Server repositories for this config.
-               Structure is documented below.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
                If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input[str] location: The location of this bitbucket server config.
         :param pulumi.Input[str] name: The resource name for the config.
-        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-               This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-               no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-               projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] peered_network: The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+               service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+               public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+               will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+               {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[pulumi.InputType['BitbucketServerConfigSecretsArgs']] secrets: Secret Manager secrets needed by the config.
                Structure is documented below.
-        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+               .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
         :param pulumi.Input[str] webhook_key: Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
         """
@@ -858,7 +836,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
     def connected_repositories(self) -> pulumi.Output[Optional[Sequence['outputs.BitbucketServerConfigConnectedRepository']]]:
         """
         Connected Bitbucket Server repositories for this config.
-        Structure is documented below.
         """
         return pulumi.get(self, "connected_repositories")
 
@@ -891,20 +868,17 @@ class BitbucketServerConfig(pulumi.CustomResource):
     @pulumi.getter(name="peeredNetwork")
     def peered_network(self) -> pulumi.Output[Optional[str]]:
         """
-        The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-        This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-        no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-        projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+        service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+        public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+        will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+        {project} is a project number or id and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -920,7 +894,8 @@ class BitbucketServerConfig(pulumi.CustomResource):
     @pulumi.getter(name="sslCa")
     def ssl_ca(self) -> pulumi.Output[Optional[str]]:
         """
-        SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+        .pem, .cer, or .crt.
         """
         return pulumi.get(self, "ssl_ca")
 

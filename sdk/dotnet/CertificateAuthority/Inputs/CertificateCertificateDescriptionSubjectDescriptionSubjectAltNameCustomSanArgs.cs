@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
-        /// handle this extension, the client should consider this to be an error).
+        /// (Output)
+        /// Indicates whether or not the name constraints are marked critical.
         /// </summary>
         [Input("critical")]
         public Input<bool>? Critical { get; set; }

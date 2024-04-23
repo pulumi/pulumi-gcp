@@ -32,8 +32,10 @@ namespace Pulumi.Gcp.Memcache.Inputs
         public Input<string>? ScheduleDeadlineTime { get; set; }
 
         /// <summary>
-        /// Required. Start time of the window in UTC time.
-        /// Structure is documented below.
+        /// (Output)
+        /// Output only. The start time of any upcoming scheduled maintenance for this instance.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

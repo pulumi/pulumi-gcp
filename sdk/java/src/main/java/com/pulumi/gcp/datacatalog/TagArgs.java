@@ -19,20 +19,18 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
     public static final TagArgs Empty = new TagArgs();
 
     /**
-     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-     * individual column based on that schema.
-     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
-     * `outer_column.inner_column`
+     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+     * column based on that schema. For attaching a tag to a nested column, use &#39;.&#39; to separate the column names. Example:
+     * &#39;outer_column.inner_column&#39;
      * 
      */
     @Import(name="column")
     private @Nullable Output<String> column;
 
     /**
-     * @return Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-     * individual column based on that schema.
-     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
-     * `outer_column.inner_column`
+     * @return Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+     * column based on that schema. For attaching a tag to a nested column, use &#39;.&#39; to separate the column names. Example:
+     * &#39;outer_column.inner_column&#39;
      * 
      */
     public Optional<Output<String>> column() {
@@ -59,16 +57,16 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-     * all entries in that group.
+     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+     * the tag will be attached to all entries in that group.
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-     * all entries in that group.
+     * @return The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+     * the tag will be attached to all entries in that group.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -122,10 +120,9 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param column Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-         * individual column based on that schema.
-         * For attaching a tag to a nested column, use `.` to separate the column names. Example:
-         * `outer_column.inner_column`
+         * @param column Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+         * column based on that schema. For attaching a tag to a nested column, use &#39;.&#39; to separate the column names. Example:
+         * &#39;outer_column.inner_column&#39;
          * 
          * @return builder
          * 
@@ -136,10 +133,9 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param column Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-         * individual column based on that schema.
-         * For attaching a tag to a nested column, use `.` to separate the column names. Example:
-         * `outer_column.inner_column`
+         * @param column Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+         * column based on that schema. For attaching a tag to a nested column, use &#39;.&#39; to separate the column names. Example:
+         * &#39;outer_column.inner_column&#39;
          * 
          * @return builder
          * 
@@ -186,8 +182,8 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parent The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-         * all entries in that group.
+         * @param parent The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+         * the tag will be attached to all entries in that group.
          * 
          * @return builder
          * 
@@ -198,8 +194,8 @@ public final class TagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parent The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-         * all entries in that group.
+         * @param parent The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+         * the tag will be attached to all entries in that group.
          * 
          * @return builder
          * 

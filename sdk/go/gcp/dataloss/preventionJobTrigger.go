@@ -24,7 +24,6 @@ import (
 //
 // ### Dlp Job Trigger Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,10 +78,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Bigquery Row Limit
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,10 +138,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Bigquery Row Limit Percentage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -203,10 +198,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Job Notification Emails
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -254,10 +247,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Deidentify
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -368,10 +359,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Hybrid
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -433,10 +422,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Inspect
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -555,10 +542,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Publish To Stackdriver
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -606,10 +591,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger With Id
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -665,10 +648,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Multiple Actions
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -728,10 +709,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -789,7 +768,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -811,30 +789,25 @@ import (
 type PreventionJobTrigger struct {
 	pulumi.CustomResourceState
 
-	// (Output)
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Controls what and how to inspect for findings.
-	// Structure is documented below.
 	InspectJob PreventionJobTriggerInspectJobPtrOutput `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
-	// Name describing the field excluded from scanning.
+	// The resource name of the job trigger. Set by the server.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// Whether the trigger is currently active.
-	// Default value is `HEALTHY`.
-	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -879,30 +852,25 @@ func GetPreventionJobTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreventionJobTrigger resources.
 type preventionJobTriggerState struct {
-	// (Output)
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime *string `pulumi:"createTime"`
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls what and how to inspect for findings.
-	// Structure is documented below.
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime *string `pulumi:"lastRunTime"`
-	// Name describing the field excluded from scanning.
+	// The resource name of the job trigger. Set by the server.
 	Name *string `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent *string `pulumi:"parent"`
-	// Whether the trigger is currently active.
-	// Default value is `HEALTHY`.
-	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
 	Status *string `pulumi:"status"`
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -912,30 +880,25 @@ type preventionJobTriggerState struct {
 }
 
 type PreventionJobTriggerState struct {
-	// (Output)
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringPtrInput
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
 	// Controls what and how to inspect for findings.
-	// Structure is documented below.
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringPtrInput
-	// Name describing the field excluded from scanning.
+	// The resource name of the job trigger. Set by the server.
 	Name pulumi.StringPtrInput
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent pulumi.StringPtrInput
-	// Whether the trigger is currently active.
-	// Default value is `HEALTHY`.
-	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
 	Status pulumi.StringPtrInput
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -949,23 +912,19 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 }
 
 type preventionJobTriggerArgs struct {
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls what and how to inspect for findings.
-	// Structure is documented below.
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent string `pulumi:"parent"`
-	// Whether the trigger is currently active.
-	// Default value is `HEALTHY`.
-	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
 	Status *string `pulumi:"status"`
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -974,23 +933,19 @@ type preventionJobTriggerArgs struct {
 
 // The set of arguments for constructing a PreventionJobTrigger resource.
 type PreventionJobTriggerArgs struct {
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
 	// Controls what and how to inspect for findings.
-	// Structure is documented below.
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent pulumi.StringInput
-	// Whether the trigger is currently active.
-	// Default value is `HEALTHY`.
-	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
 	Status pulumi.StringPtrInput
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -1084,13 +1039,12 @@ func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx 
 	return o
 }
 
-// (Output)
 // The creation timestamp of an inspectTemplate. Set by the server.
 func (o PreventionJobTriggerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+// A description of the job trigger.
 func (o PreventionJobTriggerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1101,7 +1055,6 @@ func (o PreventionJobTriggerOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // Controls what and how to inspect for findings.
-// Structure is documented below.
 func (o PreventionJobTriggerOutput) InspectJob() PreventionJobTriggerInspectJobPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) PreventionJobTriggerInspectJobPtrOutput { return v.InspectJob }).(PreventionJobTriggerInspectJobPtrOutput)
 }
@@ -1111,7 +1064,7 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.LastRunTime }).(pulumi.StringOutput)
 }
 
-// Name describing the field excluded from scanning.
+// The resource name of the job trigger. Set by the server.
 func (o PreventionJobTriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1122,16 +1075,13 @@ func (o PreventionJobTriggerOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// Whether the trigger is currently active.
-// Default value is `HEALTHY`.
-// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
 func (o PreventionJobTriggerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
-// that is, it must match the regular expression: [a-zA-Z\d-_]+.
-// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
+// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 func (o PreventionJobTriggerOutput) TriggerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
 }

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Tag Binding Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

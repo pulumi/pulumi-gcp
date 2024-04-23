@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ### Using A Separately Managed Node Pool (Recommended)
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,11 +59,9 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,7 +120,6 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -194,7 +194,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
 
         ### Disk Resource Policy Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -223,7 +222,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
             disk=ssd.name,
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -283,7 +281,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
 
         ### Disk Resource Policy Attachment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -312,7 +309,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
             disk=ssd.name,
             zone="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

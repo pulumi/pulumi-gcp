@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     region: "us-east1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     args = args || {};
@@ -112,7 +110,6 @@ export interface GetSubnetworkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -122,7 +119,6 @@ export interface GetSubnetworkResult {
  *     region: "us-east1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetworkOutput(args?: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
     return pulumi.output(args).apply((a: any) => getSubnetwork(a, opts))

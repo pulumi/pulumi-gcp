@@ -20,7 +20,6 @@ import (
 //
 // ### Retrieve Project Logging Sink Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSink(ctx *pulumi.Context, args *GetSinkArgs, opts ...pulumi.InvokeOption) (*GetSinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSinkResult

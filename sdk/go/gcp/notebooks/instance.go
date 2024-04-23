@@ -30,7 +30,6 @@ import (
 //
 // ### Notebook Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,10 +59,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Basic Stopped
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,10 +91,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Basic Container
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,10 +125,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Basic Gpu
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -168,10 +161,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Notebook Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -245,7 +236,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

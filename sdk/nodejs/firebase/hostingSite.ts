@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebasehosting Site Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,10 +18,8 @@ import * as utilities from "../utilities";
  *     siteId: "site-no-app",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Firebasehosting Site Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -37,7 +34,6 @@ import * as utilities from "../utilities";
  *     appId: _default.appId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

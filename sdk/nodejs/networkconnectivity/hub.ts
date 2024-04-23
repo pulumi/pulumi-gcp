@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic_hub
  * A basic test of a networkconnectivity hub
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

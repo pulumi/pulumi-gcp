@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// ### Kms Secret Ciphertext Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,7 +85,6 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

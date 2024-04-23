@@ -114,7 +114,6 @@ def get_registry_image(digest: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -122,7 +121,6 @@ def get_registry_image(digest: Optional[str] = None,
     debian = gcp.container.get_registry_image(name="debian")
     pulumi.export("gcrLocation", debian.image_url)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str digest: The image digest to fetch, if any.
@@ -164,7 +162,6 @@ def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -172,7 +169,6 @@ def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = No
     debian = gcp.container.get_registry_image(name="debian")
     pulumi.export("gcrLocation", debian.image_url)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str digest: The image digest to fetch, if any.

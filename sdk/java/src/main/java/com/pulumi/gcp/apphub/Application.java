@@ -164,7 +164,6 @@ public class Application extends com.pulumi.resources.CustomResource {
     }
     /**
      * Consumer provided attributes.
-     * Structure is documented below.
      * 
      */
     @Export(name="attributes", refs={ApplicationAttributes.class}, tree="[0]")
@@ -172,7 +171,6 @@ public class Application extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Consumer provided attributes.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<ApplicationAttributes>> attributes() {
@@ -207,14 +205,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Optional. Contact&#39;s name.
+     * Optional. User-defined name for the Application.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return Optional. Contact&#39;s name.
+     * @return Optional. User-defined name for the Application.
      * 
      */
     public Output<Optional<String>> displayName() {
@@ -250,19 +248,9 @@ public class Application extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }

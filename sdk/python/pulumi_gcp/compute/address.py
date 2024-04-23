@@ -793,17 +793,14 @@ class Address(pulumi.CustomResource):
 
         ### Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         ip_address = gcp.compute.Address("ip_address", name="my-address")
         ```
-        <!--End PulumiCodeChooser -->
         ### Address With Subnetwork
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -821,10 +818,8 @@ class Address(pulumi.CustomResource):
             address="10.0.42.42",
             region="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Address With Gce Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -834,10 +829,8 @@ class Address(pulumi.CustomResource):
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
-        <!--End PulumiCodeChooser -->
         ### Instance With Ip
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -861,10 +854,8 @@ class Address(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Address Ipsec Interconnect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -880,7 +871,6 @@ class Address(pulumi.CustomResource):
             prefix_length=29,
             network=network.self_link)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1004,17 +994,14 @@ class Address(pulumi.CustomResource):
 
         ### Address Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         ip_address = gcp.compute.Address("ip_address", name="my-address")
         ```
-        <!--End PulumiCodeChooser -->
         ### Address With Subnetwork
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1032,10 +1019,8 @@ class Address(pulumi.CustomResource):
             address="10.0.42.42",
             region="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
         ### Address With Gce Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1045,10 +1030,8 @@ class Address(pulumi.CustomResource):
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
-        <!--End PulumiCodeChooser -->
         ### Instance With Ip
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1072,10 +1055,8 @@ class Address(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Compute Address Ipsec Interconnect
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1091,7 +1072,6 @@ class Address(pulumi.CustomResource):
             prefix_length=29,
             network=network.self_link)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

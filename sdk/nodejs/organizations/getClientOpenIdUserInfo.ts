@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Exporting An Email
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
 
@@ -69,7 +67,6 @@ export interface GetClientOpenIdUserInfoResult {
  *
  * ### Exporting An Email
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,7 +78,6 @@ export interface GetClientOpenIdUserInfoResult {
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
     return pulumi.output(getClientOpenIdUserInfo(opts))

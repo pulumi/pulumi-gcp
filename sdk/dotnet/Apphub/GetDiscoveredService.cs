@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDiscoveredServiceResult> InvokeAsync(GetDiscoveredServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiscoveredServiceResult>("gcp:apphub/getDiscoveredService:getDiscoveredService", args ?? new GetDiscoveredServiceArgs(), options.WithDefaults());
@@ -45,7 +43,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Gcp.Apphub
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDiscoveredServiceResult> Invoke(GetDiscoveredServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiscoveredServiceResult>("gcp:apphub/getDiscoveredService:getDiscoveredService", args ?? new GetDiscoveredServiceInvokeArgs(), options.WithDefaults());

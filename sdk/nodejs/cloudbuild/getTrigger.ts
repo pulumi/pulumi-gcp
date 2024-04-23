@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     location: "location of trigger build",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggerResult> {
 
@@ -101,7 +99,6 @@ export interface GetTriggerResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -112,7 +109,6 @@ export interface GetTriggerResult {
  *     location: "location of trigger build",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTriggerOutput(args: GetTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggerResult> {
     return pulumi.output(args).apply((a: any) => getTrigger(a, opts))

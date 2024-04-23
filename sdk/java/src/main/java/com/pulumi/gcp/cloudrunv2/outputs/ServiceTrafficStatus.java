@@ -13,23 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTrafficStatus {
     /**
-     * @return Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+     * @return (Output)
+     * Specifies percent of the traffic to this Revision.
      * 
      */
     private @Nullable Integer percent;
     /**
-     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * @return (Output)
+     * Revision to which this traffic is sent.
      * 
      */
     private @Nullable String revision;
     /**
-     * @return Indicates a string to be part of the URI to exclusively reference this target.
+     * @return (Output)
+     * Indicates the string used in the URI to exclusively reference this target.
      * 
      */
     private @Nullable String tag;
     /**
-     * @return The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+     * @return (Output)
+     * The allocation type for this traffic target.
      * 
      */
     private @Nullable String type;
@@ -42,29 +45,32 @@ public final class ServiceTrafficStatus {
 
     private ServiceTrafficStatus() {}
     /**
-     * @return Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+     * @return (Output)
+     * Specifies percent of the traffic to this Revision.
      * 
      */
     public Optional<Integer> percent() {
         return Optional.ofNullable(this.percent);
     }
     /**
-     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * @return (Output)
+     * Revision to which this traffic is sent.
      * 
      */
     public Optional<String> revision() {
         return Optional.ofNullable(this.revision);
     }
     /**
-     * @return Indicates a string to be part of the URI to exclusively reference this target.
+     * @return (Output)
+     * Indicates the string used in the URI to exclusively reference this target.
      * 
      */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
     /**
-     * @return The allocation type for this traffic target.
-     * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+     * @return (Output)
+     * The allocation type for this traffic target.
      * 
      */
     public Optional<String> type() {

@@ -37,7 +37,6 @@ import (
 //
 // ### Health Check Tcp
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +65,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Tcp Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,10 +102,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Ssl
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -137,10 +132,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Ssl Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,10 +169,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Http
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -208,10 +199,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Http Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -248,10 +237,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Https
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -280,10 +267,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Https Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -320,10 +305,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Http2
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -352,10 +335,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Http2 Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -392,10 +373,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Grpc
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -424,10 +403,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check Grpc Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -458,10 +435,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Health Check With Logging
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -493,7 +468,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

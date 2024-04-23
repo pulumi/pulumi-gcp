@@ -446,7 +446,6 @@ class Database(pulumi.CustomResource):
 
         ### Spanner Database Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,7 +464,6 @@ class Database(pulumi.CustomResource):
             ],
             deletion_protection=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -554,7 +552,6 @@ class Database(pulumi.CustomResource):
 
         ### Spanner Database Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -573,7 +570,6 @@ class Database(pulumi.CustomResource):
             ],
             deletion_protection=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -851,8 +851,7 @@ class InstanceUpgradeHistoryArgs:
                  vm_image: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: Optional. Action. Rolloback or Upgrade.
-        :param pulumi.Input[str] container_image: Use a container image to start the workbench instance.
-               Structure is documented below.
+        :param pulumi.Input[str] container_image: Optional. The container image before this instance upgrade.
         :param pulumi.Input[str] create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param pulumi.Input[str] framework: Optional. The framework of this workbench instance.
@@ -861,9 +860,7 @@ class InstanceUpgradeHistoryArgs:
                Output only. The state of this instance upgrade history entry.
         :param pulumi.Input[str] target_version: Optional. Target VM Version, like m63.
         :param pulumi.Input[str] version: Optional. The version of the workbench instance before this upgrade.
-        :param pulumi.Input[str] vm_image: Definition of a custom Compute Engine virtual machine image for starting
-               a workbench instance with the environment installed directly on the VM.
-               Structure is documented below.
+        :param pulumi.Input[str] vm_image: Optional. The VM image before this instance upgrade.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -900,8 +897,7 @@ class InstanceUpgradeHistoryArgs:
     @pulumi.getter(name="containerImage")
     def container_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Use a container image to start the workbench instance.
-        Structure is documented below.
+        Optional. The container image before this instance upgrade.
         """
         return pulumi.get(self, "container_image")
 
@@ -987,9 +983,7 @@ class InstanceUpgradeHistoryArgs:
     @pulumi.getter(name="vmImage")
     def vm_image(self) -> Optional[pulumi.Input[str]]:
         """
-        Definition of a custom Compute Engine virtual machine image for starting
-        a workbench instance with the environment installed directly on the VM.
-        Structure is documented below.
+        Optional. The VM image before this instance upgrade.
         """
         return pulumi.get(self, "vm_image")
 

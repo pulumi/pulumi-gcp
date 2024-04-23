@@ -183,7 +183,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
 
         ### Access Context Manager Service Perimeter Ingress Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -216,7 +215,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -271,7 +269,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
 
         ### Access Context Manager Service Perimeter Ingress Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -304,7 +301,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

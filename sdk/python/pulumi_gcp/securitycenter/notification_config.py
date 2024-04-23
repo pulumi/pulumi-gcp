@@ -263,7 +263,6 @@ class NotificationConfig(pulumi.CustomResource):
 
         ### Scc Notification Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -278,7 +277,6 @@ class NotificationConfig(pulumi.CustomResource):
                 filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,7 +332,6 @@ class NotificationConfig(pulumi.CustomResource):
 
         ### Scc Notification Config Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -349,7 +346,6 @@ class NotificationConfig(pulumi.CustomResource):
                 filter="category = \\"OPEN_FIREWALL\\" AND state = \\"ACTIVE\\"",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

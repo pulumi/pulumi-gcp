@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     workloadUri: "my-workload-uri",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDiscoveredWorkload(args: GetDiscoveredWorkloadArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredWorkloadResult> {
 
@@ -83,7 +81,6 @@ export interface GetDiscoveredWorkloadResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -93,7 +90,6 @@ export interface GetDiscoveredWorkloadResult {
  *     workloadUri: "my-workload-uri",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDiscoveredWorkloadOutput(args: GetDiscoveredWorkloadOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiscoveredWorkloadResult> {
     return pulumi.output(args).apply((a: any) => getDiscoveredWorkload(a, opts))

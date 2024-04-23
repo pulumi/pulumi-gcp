@@ -12,34 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VMwareClusterControlPlaneNodeVsphereConfig {
     /**
-     * @return (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * @return The Vsphere datastore used by the Control Plane Node.
      * 
      */
     private @Nullable String datastore;
     /**
-     * @return (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * @return The Vsphere storage policy used by the control plane Node.
      * 
      */
     private @Nullable String storagePolicyName;
 
     private VMwareClusterControlPlaneNodeVsphereConfig() {}
     /**
-     * @return (Output)
-     * The Vsphere datastore used by the Control Plane Node.
+     * @return The Vsphere datastore used by the Control Plane Node.
      * 
      */
     public Optional<String> datastore() {
         return Optional.ofNullable(this.datastore);
     }
     /**
-     * @return (Output)
-     * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
+     * @return The Vsphere storage policy used by the control plane Node.
      * 
      */
     public Optional<String> storagePolicyName() {

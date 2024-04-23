@@ -117,14 +117,12 @@ def get_region_instance_group(name: Optional[str] = None,
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     group = gcp.compute.get_region_instance_group(name="instance-group-name")
     ```
-    <!--End PulumiCodeChooser -->
 
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 
@@ -168,14 +166,12 @@ def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]]
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     group = gcp.compute.get_region_instance_group(name="instance-group-name")
     ```
-    <!--End PulumiCodeChooser -->
 
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### Public Delegated Prefixes Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  *     parentPrefix: advertised.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

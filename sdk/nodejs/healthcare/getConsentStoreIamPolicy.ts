@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     consentStoreId: my_consent.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConsentStoreIamPolicy(args: GetConsentStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConsentStoreIamPolicyResult> {
 
@@ -71,7 +69,6 @@ export interface GetConsentStoreIamPolicyResult {
  *
  * ## example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -81,7 +78,6 @@ export interface GetConsentStoreIamPolicyResult {
  *     consentStoreId: my_consent.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConsentStoreIamPolicyOutput(args: GetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentStoreIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getConsentStoreIamPolicy(a, opts))

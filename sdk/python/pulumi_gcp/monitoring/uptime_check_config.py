@@ -284,7 +284,7 @@ class _UptimeCheckConfigState:
                (https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
-        :param pulumi.Input[str] name: The fully qualified name of the cloud function resource.
+        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -403,7 +403,7 @@ class _UptimeCheckConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified name of the cloud function resource.
+        A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         """
         return pulumi.get(self, "name")
 
@@ -559,7 +559,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         ### Uptime Check Config Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -598,10 +597,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             )],
             checker_type="STATIC_IP_CHECKERS")
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Config Status Code
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -644,10 +641,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             )],
             checker_type="STATIC_IP_CHECKERS")
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Config Https
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -677,10 +672,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Tcp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -702,10 +695,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 group_id=check.name,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Config Synthetic Monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -745,7 +736,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -807,7 +797,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         ### Uptime Check Config Http
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -846,10 +835,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             )],
             checker_type="STATIC_IP_CHECKERS")
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Config Status Code
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -892,10 +879,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             )],
             checker_type="STATIC_IP_CHECKERS")
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Config Https
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -925,10 +910,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Tcp
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -950,10 +933,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 group_id=check.name,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Uptime Check Config Synthetic Monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -993,7 +974,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1106,7 +1086,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                (https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
-        :param pulumi.Input[str] name: The fully qualified name of the cloud function resource.
+        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1195,7 +1175,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully qualified name of the cloud function resource.
+        A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         """
         return pulumi.get(self, "name")
 

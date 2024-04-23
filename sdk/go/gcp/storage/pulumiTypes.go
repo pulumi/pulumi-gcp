@@ -4521,8 +4521,6 @@ func (o TransferJobSchedulePtrOutput) StartTimeOfDay() TransferJobScheduleStartT
 
 type TransferJobScheduleScheduleEndDate struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
-	//
-	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day int `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month int `pulumi:"month"`
@@ -4543,8 +4541,6 @@ type TransferJobScheduleScheduleEndDateInput interface {
 
 type TransferJobScheduleScheduleEndDateArgs struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
-	//
-	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day pulumi.IntInput `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month pulumi.IntInput `pulumi:"month"`
@@ -4630,8 +4626,6 @@ func (o TransferJobScheduleScheduleEndDateOutput) ToTransferJobScheduleScheduleE
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
-//
-// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleEndDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
@@ -4671,8 +4665,6 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) Elem() TransferJobScheduleS
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
-//
-// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) *int {
 		if v == nil {
@@ -4704,8 +4696,6 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) Year() pulumi.IntPtrOutput 
 
 type TransferJobScheduleScheduleStartDate struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
-	//
-	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day int `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month int `pulumi:"month"`
@@ -4726,8 +4716,6 @@ type TransferJobScheduleScheduleStartDateInput interface {
 
 type TransferJobScheduleScheduleStartDateArgs struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
-	//
-	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day pulumi.IntInput `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month pulumi.IntInput `pulumi:"month"`
@@ -4813,8 +4801,6 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
-//
-// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleStartDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Day }).(pulumi.IntOutput)
 }
@@ -4854,8 +4840,6 @@ func (o TransferJobScheduleScheduleStartDatePtrOutput) Elem() TransferJobSchedul
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
-//
-// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleStartDatePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
 		if v == nil {
@@ -4886,7 +4870,7 @@ func (o TransferJobScheduleScheduleStartDatePtrOutput) Year() pulumi.IntPtrOutpu
 }
 
 type TransferJobScheduleStartTimeOfDay struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23
+	// Hours of day in 24 hour format. Should be from 0 to 23.
 	Hours int `pulumi:"hours"`
 	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes int `pulumi:"minutes"`
@@ -4908,7 +4892,7 @@ type TransferJobScheduleStartTimeOfDayInput interface {
 }
 
 type TransferJobScheduleStartTimeOfDayArgs struct {
-	// Hours of day in 24 hour format. Should be from 0 to 23
+	// Hours of day in 24 hour format. Should be from 0 to 23.
 	Hours pulumi.IntInput `pulumi:"hours"`
 	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes pulumi.IntInput `pulumi:"minutes"`
@@ -4995,7 +4979,7 @@ func (o TransferJobScheduleStartTimeOfDayOutput) ToTransferJobScheduleStartTimeO
 	}).(TransferJobScheduleStartTimeOfDayPtrOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23
+// Hours of day in 24 hour format. Should be from 0 to 23.
 func (o TransferJobScheduleStartTimeOfDayOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleStartTimeOfDay) int { return v.Hours }).(pulumi.IntOutput)
 }
@@ -5039,7 +5023,7 @@ func (o TransferJobScheduleStartTimeOfDayPtrOutput) Elem() TransferJobScheduleSt
 	}).(TransferJobScheduleStartTimeOfDayOutput)
 }
 
-// Hours of day in 24 hour format. Should be from 0 to 23
+// Hours of day in 24 hour format. Should be from 0 to 23.
 func (o TransferJobScheduleStartTimeOfDayPtrOutput) Hours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransferJobScheduleStartTimeOfDay) *int {
 		if v == nil {
@@ -5411,9 +5395,9 @@ func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferS
 type TransferJobTransferSpecAwsS3DataSource struct {
 	// AWS credentials block.
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
-	// Google Cloud Storage bucket name.
+	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	// S3 Bucket path in bucket to transfer.
 	Path *string `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 	RoleArn *string `pulumi:"roleArn"`
@@ -5433,9 +5417,9 @@ type TransferJobTransferSpecAwsS3DataSourceInput interface {
 type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	// AWS credentials block.
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
-	// Google Cloud Storage bucket name.
+	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	// S3 Bucket path in bucket to transfer.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
@@ -5525,12 +5509,12 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJob
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
-// Google Cloud Storage bucket name.
+// S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+// S3 Bucket path in bucket to transfer.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -5574,7 +5558,7 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() Transfer
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
-// Google Cloud Storage bucket name.
+// S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
 		if v == nil {
@@ -5584,7 +5568,7 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+// S3 Bucket path in bucket to transfer.
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
 		if v == nil {

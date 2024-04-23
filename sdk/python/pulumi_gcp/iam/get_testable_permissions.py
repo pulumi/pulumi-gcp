@@ -98,7 +98,6 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
 
     Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -109,7 +108,6 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
             "BETA",
         ])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
@@ -143,7 +141,6 @@ def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[
 
     Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -154,7 +151,6 @@ def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[
             "BETA",
         ])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`

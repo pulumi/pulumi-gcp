@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ### Compute Packet Mirroring Full
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -141,7 +140,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -193,8 +191,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-        /// Structure is documented below.
+        /// A filter for mirrored traffic. If unset, all traffic is mirrored.
         /// </summary>
         [Output("filter")]
         public Output<Outputs.PacketMirroringFilter?> Filter { get; private set; } = null!;
@@ -222,23 +219,17 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.PacketMirroringNetwork> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is
-        /// used to break ties in the case of two rules that apply to
-        /// the same instances.
+        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+        /// same instances.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created address should reside.
-        /// If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -306,8 +297,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-        /// Structure is documented below.
+        /// A filter for mirrored traffic. If unset, all traffic is mirrored.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterArgs>? Filter { get; set; }
@@ -335,23 +325,17 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.PacketMirroringNetworkArgs> Network { get; set; } = null!;
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is
-        /// used to break ties in the case of two rules that apply to
-        /// the same instances.
+        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+        /// same instances.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside.
-        /// If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -381,8 +365,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
-        /// Structure is documented below.
+        /// A filter for mirrored traffic. If unset, all traffic is mirrored.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterGetArgs>? Filter { get; set; }
@@ -410,23 +393,17 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.PacketMirroringNetworkGetArgs>? Network { get; set; }
 
         /// <summary>
-        /// Since only one rule can be active at a time, priority is
-        /// used to break ties in the case of two rules that apply to
-        /// the same instances.
+        /// Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
+        /// same instances.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside.
-        /// If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

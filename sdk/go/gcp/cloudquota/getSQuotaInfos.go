@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSQuotaInfos(ctx *pulumi.Context, args *GetSQuotaInfosArgs, opts ...pulumi.InvokeOption) (*GetSQuotaInfosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSQuotaInfosResult

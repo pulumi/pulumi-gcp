@@ -98,7 +98,6 @@ def get_addresses(filter: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -114,7 +113,6 @@ def get_addresses(filter: Optional[str] = None,
         managed_zone=prod.name,
         rrdatas=[__item.address for __item in test.addresses])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A filter expression that
@@ -171,7 +169,6 @@ def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -187,7 +184,6 @@ def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
         managed_zone=prod.name,
         rrdatas=[__item.address for __item in test.addresses])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str filter: A filter expression that

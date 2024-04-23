@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Identity Platform Tenant Oauth Idp Config Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  *     clientSecret: "secret",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -24,7 +24,6 @@ import (
 //
 // ### Apigee Sync Authorization Basic Test
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,7 +98,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -18,7 +18,6 @@ import (
 //
 // ### Gkeonprem Bare Metal Admin Cluster Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -103,10 +102,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Gkeonprem Bare Metal Admin Cluster Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -235,7 +232,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

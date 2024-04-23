@@ -24,7 +24,6 @@ import (
 //
 // ### Apigee Instance Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,10 +90,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Instance Cidr Range
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -162,10 +159,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Instance Ip Range
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -233,10 +228,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Apigee Instance Full
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -344,7 +337,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

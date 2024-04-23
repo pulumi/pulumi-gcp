@@ -656,7 +656,6 @@ class DataTransferConfig(pulumi.CustomResource):
 
         ### Bigquerydatatransfer Config Scheduled Query
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -683,7 +682,6 @@ class DataTransferConfig(pulumi.CustomResource):
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -765,7 +763,6 @@ class DataTransferConfig(pulumi.CustomResource):
 
         ### Bigquerydatatransfer Config Scheduled Query
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -792,7 +789,6 @@ class DataTransferConfig(pulumi.CustomResource):
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

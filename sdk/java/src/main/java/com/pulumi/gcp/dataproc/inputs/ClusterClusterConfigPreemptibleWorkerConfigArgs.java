@@ -50,14 +50,16 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
     }
 
     /**
-     * List of preemptible instance names which have been assigned to the cluster.
+     * List of preemptible instance names which have been assigned
+     * to the cluster.
      * 
      */
     @Import(name="instanceNames")
     private @Nullable Output<List<String>> instanceNames;
 
     /**
-     * @return List of preemptible instance names which have been assigned to the cluster.
+     * @return List of preemptible instance names which have been assigned
+     * to the cluster.
      * 
      */
     public Optional<Output<List<String>>> instanceNames() {
@@ -175,7 +177,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
         }
 
         /**
-         * @param instanceNames List of preemptible instance names which have been assigned to the cluster.
+         * @param instanceNames List of preemptible instance names which have been assigned
+         * to the cluster.
          * 
          * @return builder
          * 
@@ -186,7 +189,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
         }
 
         /**
-         * @param instanceNames List of preemptible instance names which have been assigned to the cluster.
+         * @param instanceNames List of preemptible instance names which have been assigned
+         * to the cluster.
          * 
          * @return builder
          * 
@@ -196,7 +200,8 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
         }
 
         /**
-         * @param instanceNames List of preemptible instance names which have been assigned to the cluster.
+         * @param instanceNames List of preemptible instance names which have been assigned
+         * to the cluster.
          * 
          * @return builder
          * 

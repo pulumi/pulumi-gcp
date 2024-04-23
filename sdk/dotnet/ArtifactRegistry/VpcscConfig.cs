@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// ### Artifact Registry Vpcsc Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

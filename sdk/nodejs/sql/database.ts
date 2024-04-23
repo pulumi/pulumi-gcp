@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ### Sql Database Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,10 +31,8 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Sql Database Deletion Policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -56,7 +53,6 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "ABANDON",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

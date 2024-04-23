@@ -11882,7 +11882,8 @@ type BareMetalClusterValidationCheckStatusResult struct {
 	// (Output)
 	// The category of the validation.
 	Category *string `pulumi:"category"`
-	// A human readable description of this Bare Metal User Cluster.
+	// (Output)
+	// The description of the validation check.
 	Description *string `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -11910,7 +11911,8 @@ type BareMetalClusterValidationCheckStatusResultArgs struct {
 	// (Output)
 	// The category of the validation.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// A human readable description of this Bare Metal User Cluster.
+	// (Output)
+	// The description of the validation check.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -11980,7 +11982,8 @@ func (o BareMetalClusterValidationCheckStatusResultOutput) Category() pulumi.Str
 	return o.ApplyT(func(v BareMetalClusterValidationCheckStatusResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// A human readable description of this Bare Metal User Cluster.
+// (Output)
+// The description of the validation check.
 func (o BareMetalClusterValidationCheckStatusResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterValidationCheckStatusResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -13703,13 +13706,9 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Enabled() pulumi
 }
 
 type VMwareClusterControlPlaneNodeVsphereConfig struct {
-	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
 	Datastore *string `pulumi:"datastore"`
-	// (Output)
 	// The Vsphere storage policy used by the control plane Node.
-	//
-	// ***
 	StoragePolicyName *string `pulumi:"storagePolicyName"`
 }
 
@@ -13725,13 +13724,9 @@ type VMwareClusterControlPlaneNodeVsphereConfigInput interface {
 }
 
 type VMwareClusterControlPlaneNodeVsphereConfigArgs struct {
-	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
 	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
-	// (Output)
 	// The Vsphere storage policy used by the control plane Node.
-	//
-	// ***
 	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
 }
 
@@ -13786,16 +13781,12 @@ func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) ToVMwareClusterControl
 	return o
 }
 
-// (Output)
 // The Vsphere datastore used by the Control Plane Node.
 func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The Vsphere storage policy used by the control plane Node.
-//
-// ***
 func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) StoragePolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeVsphereConfig) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
 }
@@ -14312,8 +14303,7 @@ func (o VMwareClusterLoadBalancerPtrOutput) VipConfig() VMwareClusterLoadBalance
 }
 
 type VMwareClusterLoadBalancerF5Config struct {
-	// (Output)
-	// The vCenter IP address.
+	// The load balancer's IP address.
 	Address *string `pulumi:"address"`
 	// he preexisting partition to be used by the load balancer. T
 	// his partition is usually created for the admin cluster for example:
@@ -14335,8 +14325,7 @@ type VMwareClusterLoadBalancerF5ConfigInput interface {
 }
 
 type VMwareClusterLoadBalancerF5ConfigArgs struct {
-	// (Output)
-	// The vCenter IP address.
+	// The load balancer's IP address.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// he preexisting partition to be used by the load balancer. T
 	// his partition is usually created for the admin cluster for example:
@@ -14423,8 +14412,7 @@ func (o VMwareClusterLoadBalancerF5ConfigOutput) ToVMwareClusterLoadBalancerF5Co
 	}).(VMwareClusterLoadBalancerF5ConfigPtrOutput)
 }
 
-// (Output)
-// The vCenter IP address.
+// The load balancer's IP address.
 func (o VMwareClusterLoadBalancerF5ConfigOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterLoadBalancerF5Config) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -14465,8 +14453,7 @@ func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) Elem() VMwareClusterLoadBala
 	}).(VMwareClusterLoadBalancerF5ConfigOutput)
 }
 
-// (Output)
-// The vCenter IP address.
+// The load balancer's IP address.
 func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterLoadBalancerF5Config) *string {
 		if v == nil {
@@ -15448,7 +15435,6 @@ func (o VMwareClusterNetworkConfigPtrOutput) VcenterNetwork() pulumi.StringPtrOu
 
 type VMwareClusterNetworkConfigControlPlaneV2Config struct {
 	// Static IP addresses for the control plane nodes.
-	// Structure is documented below.
 	ControlPlaneIpBlock *VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock `pulumi:"controlPlaneIpBlock"`
 }
 
@@ -15465,7 +15451,6 @@ type VMwareClusterNetworkConfigControlPlaneV2ConfigInput interface {
 
 type VMwareClusterNetworkConfigControlPlaneV2ConfigArgs struct {
 	// Static IP addresses for the control plane nodes.
-	// Structure is documented below.
 	ControlPlaneIpBlock VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrInput `pulumi:"controlPlaneIpBlock"`
 }
 
@@ -15547,7 +15532,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigOutput) ToVMwareClusterNet
 }
 
 // Static IP addresses for the control plane nodes.
-// Structure is documented below.
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigOutput) ControlPlaneIpBlock() VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput {
 	return o.ApplyT(func(v VMwareClusterNetworkConfigControlPlaneV2Config) *VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
 		return v.ControlPlaneIpBlock
@@ -15579,7 +15563,6 @@ func (o VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput) Elem() VMwareCl
 }
 
 // Static IP addresses for the control plane nodes.
-// Structure is documented below.
 func (o VMwareClusterNetworkConfigControlPlaneV2ConfigPtrOutput) ControlPlaneIpBlock() VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterNetworkConfigControlPlaneV2Config) *VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
 		if v == nil {
@@ -17361,7 +17344,8 @@ type VMwareClusterValidationCheckStatusResult struct {
 	// (Output)
 	// The category of the validation.
 	Category *string `pulumi:"category"`
-	// A human readable description of this VMware User Cluster.
+	// (Output)
+	// The description of the validation check.
 	Description *string `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -17389,7 +17373,8 @@ type VMwareClusterValidationCheckStatusResultArgs struct {
 	// (Output)
 	// The category of the validation.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// A human readable description of this VMware User Cluster.
+	// (Output)
+	// The description of the validation check.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -17459,7 +17444,8 @@ func (o VMwareClusterValidationCheckStatusResultOutput) Category() pulumi.String
 	return o.ApplyT(func(v VMwareClusterValidationCheckStatusResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// A human readable description of this VMware User Cluster.
+// (Output)
+// The description of the validation check.
 func (o VMwareClusterValidationCheckStatusResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterValidationCheckStatusResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

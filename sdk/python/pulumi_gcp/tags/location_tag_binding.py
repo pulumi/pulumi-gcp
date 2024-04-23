@@ -169,7 +169,6 @@ class LocationTagBinding(pulumi.CustomResource):
 
         To bind a tag to a Cloud Run service:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -191,11 +190,9 @@ class LocationTagBinding(pulumi.CustomResource):
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
             location="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Compute Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -217,7 +214,6 @@ class LocationTagBinding(pulumi.CustomResource):
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
             location="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -260,7 +256,6 @@ class LocationTagBinding(pulumi.CustomResource):
 
         To bind a tag to a Cloud Run service:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -282,11 +277,9 @@ class LocationTagBinding(pulumi.CustomResource):
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
             location="us-central1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Compute Instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -308,7 +301,6 @@ class LocationTagBinding(pulumi.CustomResource):
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
             location="us-central1-a")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

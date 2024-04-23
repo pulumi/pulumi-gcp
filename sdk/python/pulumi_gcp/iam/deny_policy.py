@@ -198,7 +198,6 @@ class DenyPolicy(pulumi.CustomResource):
 
         ### Iam Deny Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -243,7 +242,6 @@ class DenyPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -284,7 +282,6 @@ class DenyPolicy(pulumi.CustomResource):
 
         ### Iam Deny Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -329,7 +326,6 @@ class DenyPolicy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -95,7 +95,6 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
 
     First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -113,14 +112,12 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
         ))
     my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
     some sensitive information:
 
     Finally, reference the encrypted ciphertext in your resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -153,7 +150,6 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
         host="me.com",
         password=sql_user_password_google_kms_secret["plaintext"])
     ```
-    <!--End PulumiCodeChooser -->
 
     This will result in a Cloud SQL user being created with password `my-secret-password`.
 
@@ -189,7 +185,6 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
 
     First, create a KMS KeyRing and CryptoKey using the resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -207,14 +202,12 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
         ))
     my_crypto_key = gcp.kms.get_kms_crypto_key_version_output(crypto_key=my_crypto_key_crypto_key.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
     some sensitive information:
 
     Finally, reference the encrypted ciphertext in your resource definitions:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -247,7 +240,6 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
         host="me.com",
         password=sql_user_password_google_kms_secret["plaintext"])
     ```
-    <!--End PulumiCodeChooser -->
 
     This will result in a Cloud SQL user being created with password `my-secret-password`.
 

@@ -123,7 +123,6 @@ class ProjectMetadata(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -134,11 +133,9 @@ class ProjectMetadata(pulumi.CustomResource):
             "13": "42",
         })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding An SSH Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -152,7 +149,6 @@ class ProjectMetadata(pulumi.CustomResource):
         \"\"\",
         })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -193,7 +189,6 @@ class ProjectMetadata(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -204,11 +199,9 @@ class ProjectMetadata(pulumi.CustomResource):
             "13": "42",
         })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Adding An SSH Key
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -222,7 +215,6 @@ class ProjectMetadata(pulumi.CustomResource):
         \"\"\",
         })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -28,12 +28,11 @@ class TagArgs:
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
                projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
                This field cannot be modified after creation.
-        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-               individual column based on that schema.
-               For attaching a tag to a nested column, use `.` to separate the column names. Example:
-               `outer_column.inner_column`
-        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-               all entries in that group.
+        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+               column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+               'outer_column.inner_column'
+        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+               the tag will be attached to all entries in that group.
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "template", template)
@@ -74,10 +73,9 @@ class TagArgs:
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
-        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-        individual column based on that schema.
-        For attaching a tag to a nested column, use `.` to separate the column names. Example:
-        `outer_column.inner_column`
+        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+        column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+        'outer_column.inner_column'
         """
         return pulumi.get(self, "column")
 
@@ -89,8 +87,8 @@ class TagArgs:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-        all entries in that group.
+        The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+        the tag will be attached to all entries in that group.
         """
         return pulumi.get(self, "parent")
 
@@ -110,10 +108,9 @@ class _TagState:
                  template_displayname: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
-        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-               individual column based on that schema.
-               For attaching a tag to a nested column, use `.` to separate the column names. Example:
-               `outer_column.inner_column`
+        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+               column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+               'outer_column.inner_column'
         :param pulumi.Input[Sequence[pulumi.Input['TagFieldArgs']]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
@@ -121,8 +118,8 @@ class _TagState:
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
                where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
-        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-               all entries in that group.
+        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+               the tag will be attached to all entries in that group.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
                projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
                This field cannot be modified after creation.
@@ -145,10 +142,9 @@ class _TagState:
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
-        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-        individual column based on that schema.
-        For attaching a tag to a nested column, use `.` to separate the column names. Example:
-        `outer_column.inner_column`
+        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+        column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+        'outer_column.inner_column'
         """
         return pulumi.get(self, "column")
 
@@ -189,8 +185,8 @@ class _TagState:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-        all entries in that group.
+        The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+        the tag will be attached to all entries in that group.
         """
         return pulumi.get(self, "parent")
 
@@ -250,7 +246,6 @@ class Tag(pulumi.CustomResource):
 
         ### Data Catalog Entry Tag Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -310,10 +305,8 @@ class Tag(pulumi.CustomResource):
                 string_value="my-string",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Group Tag
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -378,10 +371,8 @@ class Tag(pulumi.CustomResource):
                 string_value="my-string",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Tag Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -503,7 +494,6 @@ class Tag(pulumi.CustomResource):
             ],
             column="first_name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -519,15 +509,14 @@ class Tag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-               individual column based on that schema.
-               For attaching a tag to a nested column, use `.` to separate the column names. Example:
-               `outer_column.inner_column`
+        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+               column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+               'outer_column.inner_column'
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
-        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-               all entries in that group.
+        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+               the tag will be attached to all entries in that group.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
                projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
                This field cannot be modified after creation.
@@ -553,7 +542,6 @@ class Tag(pulumi.CustomResource):
 
         ### Data Catalog Entry Tag Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -613,10 +601,8 @@ class Tag(pulumi.CustomResource):
                 string_value="my-string",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Group Tag
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -681,10 +667,8 @@ class Tag(pulumi.CustomResource):
                 string_value="my-string",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ### Data Catalog Entry Tag Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -806,7 +790,6 @@ class Tag(pulumi.CustomResource):
             ],
             column="first_name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -881,10 +864,9 @@ class Tag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-               individual column based on that schema.
-               For attaching a tag to a nested column, use `.` to separate the column names. Example:
-               `outer_column.inner_column`
+        :param pulumi.Input[str] column: Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+               column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+               'outer_column.inner_column'
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TagFieldArgs']]]] fields: This maps the ID of a tag field to the value of and additional information about that field.
                Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
                Structure is documented below.
@@ -892,8 +874,8 @@ class Tag(pulumi.CustomResource):
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
                where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
-        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-               all entries in that group.
+        :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+               the tag will be attached to all entries in that group.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
                projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
                This field cannot be modified after creation.
@@ -915,10 +897,9 @@ class Tag(pulumi.CustomResource):
     @pulumi.getter
     def column(self) -> pulumi.Output[Optional[str]]:
         """
-        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-        individual column based on that schema.
-        For attaching a tag to a nested column, use `.` to separate the column names. Example:
-        `outer_column.inner_column`
+        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
+        column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
+        'outer_column.inner_column'
         """
         return pulumi.get(self, "column")
 
@@ -947,8 +928,8 @@ class Tag(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-        all entries in that group.
+        The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
+        the tag will be attached to all entries in that group.
         """
         return pulumi.get(self, "parent")
 

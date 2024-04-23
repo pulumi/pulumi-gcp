@@ -231,7 +231,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
         ### Global Network Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -245,7 +244,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             fqdn="www.example.com",
             port=90)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -305,7 +303,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
         ### Global Network Endpoint
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -319,7 +316,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             fqdn="www.example.com",
             port=90)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

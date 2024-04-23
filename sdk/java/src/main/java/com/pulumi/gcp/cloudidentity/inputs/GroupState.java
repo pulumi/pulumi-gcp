@@ -52,16 +52,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An extended description to help users determine the purpose of a Group.
-     * Must not be longer than 4,096 characters.
+     * An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An extended description to help users determine the purpose of a Group.
-     * Must not be longer than 4,096 characters.
+     * @return An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -101,24 +99,18 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The initial configuration options for creating a Group.
-     * See the
-     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
-     * for possible values.
-     * Default value is `EMPTY`.
-     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
+     * The initial configuration options for creating a Group. See the [API
+     * reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
+     * values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
      * 
      */
     @Import(name="initialGroupConfig")
     private @Nullable Output<String> initialGroupConfig;
 
     /**
-     * @return The initial configuration options for creating a Group.
-     * See the
-     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
-     * for possible values.
-     * Default value is `EMPTY`.
-     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
+     * @return The initial configuration options for creating a Group. See the [API
+     * reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
+     * values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
      * 
      */
     public Optional<Output<String>> initialGroupConfig() {
@@ -290,8 +282,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An extended description to help users determine the purpose of a Group.
-         * Must not be longer than 4,096 characters.
+         * @param description An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
          * 
          * @return builder
          * 
@@ -302,8 +293,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An extended description to help users determine the purpose of a Group.
-         * Must not be longer than 4,096 characters.
+         * @param description An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
          * 
          * @return builder
          * 
@@ -357,12 +347,9 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialGroupConfig The initial configuration options for creating a Group.
-         * See the
-         * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
-         * for possible values.
-         * Default value is `EMPTY`.
-         * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
+         * @param initialGroupConfig The initial configuration options for creating a Group. See the [API
+         * reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
+         * values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
          * 
          * @return builder
          * 
@@ -373,12 +360,9 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialGroupConfig The initial configuration options for creating a Group.
-         * See the
-         * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
-         * for possible values.
-         * Default value is `EMPTY`.
-         * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
+         * @param initialGroupConfig The initial configuration options for creating a Group. See the [API
+         * reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
+         * values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
          * 
          * @return builder
          * 

@@ -13,21 +13,18 @@ namespace Pulumi.Gcp.BlockchainNodeEngine.Inputs
     public sealed class BlockchainNodesEthereumDetailsAdditionalEndpointGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// The assigned URL for the node's Beacon API endpoint.
         /// </summary>
         [Input("beaconApiEndpoint")]
         public Input<string>? BeaconApiEndpoint { get; set; }
 
         /// <summary>
-        /// (Output)
         /// The assigned URL for the node's Beacon Prometheus metrics endpoint.
         /// </summary>
         [Input("beaconPrometheusMetricsApiEndpoint")]
         public Input<string>? BeaconPrometheusMetricsApiEndpoint { get; set; }
 
         /// <summary>
-        /// (Output)
         /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
         /// </summary>
         [Input("executionClientPrometheusMetricsApiEndpoint")]

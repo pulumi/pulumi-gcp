@@ -24,7 +24,6 @@ import (
 //
 // ### Service Attachment Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -136,10 +135,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Service Attachment Explicit Projects
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -261,10 +258,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Service Attachment Explicit Networks
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -396,10 +391,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Service Attachment Reconcile Connections
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -502,7 +495,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

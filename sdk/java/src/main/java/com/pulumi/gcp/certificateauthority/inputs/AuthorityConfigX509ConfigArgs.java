@@ -24,7 +24,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-     * Structure is documented below.
      * 
      */
     @Import(name="additionalExtensions")
@@ -32,7 +31,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AuthorityConfigX509ConfigAdditionalExtensionArgs>>> additionalExtensions() {
@@ -58,7 +56,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Describes values that are relevant in a CA certificate.
-     * Structure is documented below.
      * 
      */
     @Import(name="caOptions", required=true)
@@ -66,7 +63,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Describes values that are relevant in a CA certificate.
-     * Structure is documented below.
      * 
      */
     public Output<AuthorityConfigX509ConfigCaOptionsArgs> caOptions() {
@@ -75,7 +71,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Indicates the intended use for keys that correspond to a certificate.
-     * Structure is documented below.
      * 
      */
     @Import(name="keyUsage", required=true)
@@ -83,7 +78,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Indicates the intended use for keys that correspond to a certificate.
-     * Structure is documented below.
      * 
      */
     public Output<AuthorityConfigX509ConfigKeyUsageArgs> keyUsage() {
@@ -92,7 +86,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Describes the X.509 name constraints extension.
-     * Structure is documented below.
      * 
      */
     @Import(name="nameConstraints")
@@ -100,7 +93,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Describes the X.509 name constraints extension.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AuthorityConfigX509ConfigNameConstraintsArgs>> nameConstraints() {
@@ -109,7 +101,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-     * Structure is documented below.
      * 
      */
     @Import(name="policyIds")
@@ -117,7 +108,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AuthorityConfigX509ConfigPolicyIdArgs>>> policyIds() {
@@ -155,7 +145,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param additionalExtensions Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -167,7 +156,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param additionalExtensions Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -178,7 +166,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param additionalExtensions Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -223,7 +210,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param caOptions Describes values that are relevant in a CA certificate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -235,7 +221,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param caOptions Describes values that are relevant in a CA certificate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -246,7 +231,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param keyUsage Indicates the intended use for keys that correspond to a certificate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -258,7 +242,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param keyUsage Indicates the intended use for keys that correspond to a certificate.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -269,7 +252,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param nameConstraints Describes the X.509 name constraints extension.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -281,7 +263,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param nameConstraints Describes the X.509 name constraints extension.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -292,7 +273,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param policyIds Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -304,7 +284,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param policyIds Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -315,7 +294,6 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param policyIds Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-         * Structure is documented below.
          * 
          * @return builder
          * 

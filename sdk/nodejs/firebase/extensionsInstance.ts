@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Firebase Extentions Instance Resize Image
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -50,7 +49,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -110,8 +108,7 @@ export class ExtensionsInstance extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.firebase.ExtensionsInstanceConfig>;
     /**
-     * (Output)
-     * The time at which the Extension Instance Config was created.
+     * The time at which the Extension Instance was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -141,14 +138,9 @@ export class ExtensionsInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastOperationType!: pulumi.Output<string>;
     /**
-     * (Output)
-     * The unique identifier for this configuration.
+     * The fully-qualified resource name of the Extension Instance.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Data set by the extension instance at runtime.
@@ -232,8 +224,7 @@ export interface ExtensionsInstanceState {
      */
     config?: pulumi.Input<inputs.firebase.ExtensionsInstanceConfig>;
     /**
-     * (Output)
-     * The time at which the Extension Instance Config was created.
+     * The time at which the Extension Instance was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -263,14 +254,9 @@ export interface ExtensionsInstanceState {
      */
     lastOperationType?: pulumi.Input<string>;
     /**
-     * (Output)
-     * The unique identifier for this configuration.
+     * The fully-qualified resource name of the Extension Instance.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Data set by the extension instance at runtime.
@@ -306,9 +292,5 @@ export interface ExtensionsInstanceArgs {
      * component of the instance's name.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
 }

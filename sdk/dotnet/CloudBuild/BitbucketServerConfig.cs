@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// ### Cloudbuild Bitbucket Server Config
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,10 +47,8 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudbuild Bitbucket Server Config Repositories
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,10 +87,8 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Cloudbuild Bitbucket Server Config Peered Network
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -169,7 +164,6 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -213,7 +207,6 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Connected Bitbucket Server repositories for this config.
-        /// Structure is documented below.
         /// </summary>
         [Output("connectedRepositories")]
         public Output<ImmutableArray<Outputs.BitbucketServerConfigConnectedRepository>> ConnectedRepositories { get; private set; } = null!;
@@ -238,18 +231,15 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-        /// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-        /// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-        /// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+        /// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+        /// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+        /// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+        /// {project} is a project number or id and {network} is the name of a VPC network in the project.
         /// </summary>
         [Output("peeredNetwork")]
         public Output<string?> PeeredNetwork { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -261,7 +251,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<Outputs.BitbucketServerConfigSecrets> Secrets { get; private set; } = null!;
 
         /// <summary>
-        /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+        /// .pem, .cer, or .crt.
         /// </summary>
         [Output("sslCa")]
         public Output<string?> SslCa { get; private set; } = null!;
@@ -342,7 +333,6 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Connected Bitbucket Server repositories for this config.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.BitbucketServerConfigConnectedRepositoryArgs> ConnectedRepositories
         {
@@ -364,18 +354,15 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-        /// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-        /// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-        /// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+        /// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+        /// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+        /// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+        /// {project} is a project number or id and {network} is the name of a VPC network in the project.
         /// </summary>
         [Input("peeredNetwork")]
         public Input<string>? PeeredNetwork { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -387,7 +374,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<Inputs.BitbucketServerConfigSecretsArgs> Secrets { get; set; } = null!;
 
         /// <summary>
-        /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+        /// .pem, .cer, or .crt.
         /// </summary>
         [Input("sslCa")]
         public Input<string>? SslCa { get; set; }
@@ -424,7 +412,6 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// Connected Bitbucket Server repositories for this config.
-        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.BitbucketServerConfigConnectedRepositoryGetArgs> ConnectedRepositories
         {
@@ -452,18 +439,15 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
-        /// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
-        /// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
-        /// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
+        /// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
+        /// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
+        /// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
+        /// {project} is a project number or id and {network} is the name of a VPC network in the project.
         /// </summary>
         [Input("peeredNetwork")]
         public Input<string>? PeeredNetwork { get; set; }
 
-        /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -475,7 +459,8 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<Inputs.BitbucketServerConfigSecretsGetArgs>? Secrets { get; set; }
 
         /// <summary>
-        /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+        /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
+        /// .pem, .cer, or .crt.
         /// </summary>
         [Input("sslCa")]
         public Input<string>? SslCa { get; set; }

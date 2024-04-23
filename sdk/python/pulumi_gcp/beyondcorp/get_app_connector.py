@@ -135,14 +135,12 @@ def get_app_connector(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_beyondcorp_app_connector = gcp.beyondcorp.get_app_connector(name="my-beyondcorp-app-connector")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the App Connector.
@@ -183,14 +181,12 @@ def get_app_connector_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     my_beyondcorp_app_connector = gcp.beyondcorp.get_app_connector(name="my-beyondcorp-app-connector")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the App Connector.

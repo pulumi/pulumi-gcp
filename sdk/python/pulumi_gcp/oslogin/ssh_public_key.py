@@ -204,7 +204,6 @@ class SshPublicKey(pulumi.CustomResource):
 
         ### Os Login Ssh Key Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -215,7 +214,6 @@ class SshPublicKey(pulumi.CustomResource):
             user=me.email,
             key=std.file(input="path/to/id_rsa.pub").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -264,7 +262,6 @@ class SshPublicKey(pulumi.CustomResource):
 
         ### Os Login Ssh Key Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -275,7 +272,6 @@ class SshPublicKey(pulumi.CustomResource):
             user=me.email,
             key=std.file(input="path/to/id_rsa.pub").result)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -27,7 +27,6 @@ import (
 //
 // ### Exporting An Email
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,7 +49,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientOpenIdUserInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientOpenIdUserInfoResult

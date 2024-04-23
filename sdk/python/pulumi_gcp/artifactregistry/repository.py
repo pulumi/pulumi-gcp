@@ -716,7 +716,6 @@ class Repository(pulumi.CustomResource):
 
         ### Artifact Registry Repository Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -727,10 +726,8 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Docker
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -744,10 +741,8 @@ class Repository(pulumi.CustomResource):
                 immutable_tags=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -764,10 +759,8 @@ class Repository(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Virtual
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -803,10 +796,8 @@ class Repository(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -824,10 +815,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote Apt
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -848,10 +837,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote Yum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -872,10 +859,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Cleanup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -925,10 +910,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote Custom
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -965,7 +948,6 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1064,7 +1046,6 @@ class Repository(pulumi.CustomResource):
 
         ### Artifact Registry Repository Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1075,10 +1056,8 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Docker
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1092,10 +1071,8 @@ class Repository(pulumi.CustomResource):
                 immutable_tags=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Cmek
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1112,10 +1089,8 @@ class Repository(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Virtual
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1151,10 +1126,8 @@ class Repository(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1172,10 +1145,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote Apt
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1196,10 +1167,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote Yum
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1220,10 +1189,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Cleanup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1273,10 +1240,8 @@ class Repository(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         ### Artifact Registry Repository Remote Custom
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1313,7 +1278,6 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * ### Alloydb Cluster Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -36,10 +35,8 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Alloydb Cluster Full
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -84,10 +81,8 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Alloydb Cluster Restore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -147,10 +142,8 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Alloydb Secondary Cluster Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -195,7 +188,6 @@ import * as utilities from "../utilities";
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

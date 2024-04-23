@@ -74,14 +74,12 @@ def get_managed_zones(managed_zones: Optional[Sequence[pulumi.InputType['GetMana
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     zones = gcp.dns.get_managed_zones(project="my-project-id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetManagedZonesManagedZoneArgs']] managed_zones: A list of managed zones.
@@ -110,14 +108,12 @@ def get_managed_zones_output(managed_zones: Optional[pulumi.Input[Optional[Seque
     and
     [API](https://cloud.google.com/dns/api/v1/managedZones).
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
     zones = gcp.dns.get_managed_zones(project="my-project-id")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetManagedZonesManagedZoneArgs']] managed_zones: A list of managed zones.

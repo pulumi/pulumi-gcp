@@ -29,19 +29,13 @@ class ScopeRbacRoleBindingArgs:
                Structure is documented below.
         :param pulumi.Input[str] scope_id: Id of the scope
         :param pulumi.Input[str] scope_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
-        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               group is the group, as seen by the kubernetes cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               user is the name of the user as seen by the kubernetes cluster, example
-               "alice" or "alice@domain.tld"
+        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+               "alice@domain.tld"
         """
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "scope_id", scope_id)
@@ -96,9 +90,8 @@ class ScopeRbacRoleBindingArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        Principal that is be authorized in the cluster (at least of one the oneof
-        is required). Updating one will unset the other automatically.
-        group is the group, as seen by the kubernetes cluster.
+        Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        other automatically. group is the group, as seen by the kubernetes cluster.
         """
         return pulumi.get(self, "group")
 
@@ -110,10 +103,8 @@ class ScopeRbacRoleBindingArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels for this ScopeRBACRoleBinding.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -124,10 +115,6 @@ class ScopeRbacRoleBindingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -138,10 +125,9 @@ class ScopeRbacRoleBindingArgs:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
         """
-        Principal that is be authorized in the cluster (at least of one the oneof
-        is required). Updating one will unset the other automatically.
-        user is the name of the user as seen by the kubernetes cluster, example
-        "alice" or "alice@domain.tld"
+        Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+        "alice@domain.tld"
         """
         return pulumi.get(self, "user")
 
@@ -173,16 +159,11 @@ class _ScopeRbacRoleBindingState:
         :param pulumi.Input[str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the RBAC Role Binding was deleted in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               group is the group, as seen by the kubernetes cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['ScopeRbacRoleBindingRoleArgs'] role: Role to bind to the principal.
@@ -193,10 +174,9 @@ class _ScopeRbacRoleBindingState:
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.
-        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               user is the name of the user as seen by the kubernetes cluster, example
-               "alice" or "alice@domain.tld"
+        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+               "alice@domain.tld"
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -269,9 +249,8 @@ class _ScopeRbacRoleBindingState:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        Principal that is be authorized in the cluster (at least of one the oneof
-        is required). Updating one will unset the other automatically.
-        group is the group, as seen by the kubernetes cluster.
+        Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        other automatically. group is the group, as seen by the kubernetes cluster.
         """
         return pulumi.get(self, "group")
 
@@ -283,10 +262,8 @@ class _ScopeRbacRoleBindingState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels for this ScopeRBACRoleBinding.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -309,10 +286,6 @@ class _ScopeRbacRoleBindingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -410,10 +383,9 @@ class _ScopeRbacRoleBindingState:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
         """
-        Principal that is be authorized in the cluster (at least of one the oneof
-        is required). Updating one will unset the other automatically.
-        user is the name of the user as seen by the kubernetes cluster, example
-        "alice" or "alice@domain.tld"
+        Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+        "alice@domain.tld"
         """
         return pulumi.get(self, "user")
 
@@ -448,7 +420,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
 
         ### Gkehub Scope Rbac Role Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -465,7 +436,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -493,23 +463,17 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               group is the group, as seen by the kubernetes cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
                Structure is documented below.
         :param pulumi.Input[str] scope_id: Id of the scope
         :param pulumi.Input[str] scope_rbac_role_binding_id: The client-provided identifier of the RBAC Role Binding.
-        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               user is the name of the user as seen by the kubernetes cluster, example
-               "alice" or "alice@domain.tld"
+        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+               "alice@domain.tld"
         """
         ...
     @overload
@@ -530,7 +494,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
 
         ### Gkehub Scope Rbac Role Binding Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -547,7 +510,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -662,16 +624,11 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time the RBAC Role Binding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the RBAC Role Binding was deleted in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               group is the group, as seen by the kubernetes cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
-               
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
@@ -682,10 +639,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the RBAC Role Binding was updated in UTC.
-        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
-               is required). Updating one will unset the other automatically.
-               user is the name of the user as seen by the kubernetes cluster, example
-               "alice" or "alice@domain.tld"
+        :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+               other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+               "alice@domain.tld"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -736,9 +692,8 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[str]]:
         """
-        Principal that is be authorized in the cluster (at least of one the oneof
-        is required). Updating one will unset the other automatically.
-        group is the group, as seen by the kubernetes cluster.
+        Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        other automatically. group is the group, as seen by the kubernetes cluster.
         """
         return pulumi.get(self, "group")
 
@@ -746,10 +701,8 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels for this ScopeRBACRoleBinding.
-
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
+        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -764,10 +717,6 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -833,10 +782,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
     @pulumi.getter
     def user(self) -> pulumi.Output[Optional[str]]:
         """
-        Principal that is be authorized in the cluster (at least of one the oneof
-        is required). Updating one will unset the other automatically.
-        user is the name of the user as seen by the kubernetes cluster, example
-        "alice" or "alice@domain.tld"
+        Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
+        other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
+        "alice@domain.tld"
         """
         return pulumi.get(self, "user")
 

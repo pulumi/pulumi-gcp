@@ -29,35 +29,21 @@ class DeploymentArgs:
         :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
-        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on
-               create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-               `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-               the deployment will fail. Note that updating this field does not
-               actually affect the deployment, just how it is updated.
-               Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
-        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
-               Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-               resource is deleted after removal from Deployment Manager. If
-               `ABANDON`, the resource is only removed from Deployment Manager
-               and is not actually deleted. Note that updating this field does not
-               actually change the deployment, just how it is updated.
-               Default value is `DELETE`.
-               Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+               (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+               updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+               Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
+        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+               'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+               Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+               just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
-               Structure is documented below.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+               deployments if either preview is updated to true or if other fields are updated while preview is true.
         """
         pulumi.set(__self__, "target", target)
         if create_policy is not None:
@@ -93,13 +79,10 @@ class DeploymentArgs:
     @pulumi.getter(name="createPolicy")
     def create_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the policy to use for creating new resources. Only used on
-        create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-        `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-        the deployment will fail. Note that updating this field does not
-        actually affect the deployment, just how it is updated.
-        Default value is `CREATE_OR_ACQUIRE`.
-        Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+        Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+        (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+        updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+        Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
         """
         return pulumi.get(self, "create_policy")
 
@@ -111,14 +94,10 @@ class DeploymentArgs:
     @pulumi.getter(name="deletePolicy")
     def delete_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the policy to use for deleting new resources on update/delete.
-        Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-        resource is deleted after removal from Deployment Manager. If
-        `ABANDON`, the resource is only removed from Deployment Manager
-        and is not actually deleted. Note that updating this field does not
-        actually change the deployment, just how it is updated.
-        Default value is `DELETE`.
-        Possible values are: `ABANDON`, `DELETE`.
+        Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+        'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+        Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+        just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         """
         return pulumi.get(self, "delete_policy")
 
@@ -143,7 +122,6 @@ class DeploymentArgs:
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]]:
         """
         Key-value pairs to apply to this labels.
-        Structure is documented below.
         """
         return pulumi.get(self, "labels")
 
@@ -167,14 +145,10 @@ class DeploymentArgs:
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true, a deployment is created with "shell" resources
-        that are not actually instantiated. This allows you to preview a
-        deployment. It can be updated to false to actually deploy
-        with real resources.
-        ~>**NOTE:** Deployment Manager does not allow update
-        of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
-        to true or if other fields are updated while preview is true.
+        If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+        preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+        does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+        deployments if either preview is updated to true or if other fields are updated while preview is true.
         """
         return pulumi.get(self, "preview")
 
@@ -185,10 +159,6 @@ class DeploymentArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -212,38 +182,24 @@ class _DeploymentState:
                  target: Optional[pulumi.Input['DeploymentTargetArgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
-        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on
-               create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-               `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-               the deployment will fail. Note that updating this field does not
-               actually affect the deployment, just how it is updated.
-               Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
-        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
-               Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-               resource is deleted after removal from Deployment Manager. If
-               `ABANDON`, the resource is only removed from Deployment Manager
-               and is not actually deleted. Note that updating this field does not
-               actually change the deployment, just how it is updated.
-               Default value is `DELETE`.
-               Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+               (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+               updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+               Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
+        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+               'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+               Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+               just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
-               Structure is documented below.
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+               deployments if either preview is updated to true or if other fields are updated while preview is true.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input['DeploymentTargetArgs'] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
@@ -276,13 +232,10 @@ class _DeploymentState:
     @pulumi.getter(name="createPolicy")
     def create_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the policy to use for creating new resources. Only used on
-        create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-        `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-        the deployment will fail. Note that updating this field does not
-        actually affect the deployment, just how it is updated.
-        Default value is `CREATE_OR_ACQUIRE`.
-        Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+        Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+        (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+        updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+        Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
         """
         return pulumi.get(self, "create_policy")
 
@@ -294,14 +247,10 @@ class _DeploymentState:
     @pulumi.getter(name="deletePolicy")
     def delete_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the policy to use for deleting new resources on update/delete.
-        Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-        resource is deleted after removal from Deployment Manager. If
-        `ABANDON`, the resource is only removed from Deployment Manager
-        and is not actually deleted. Note that updating this field does not
-        actually change the deployment, just how it is updated.
-        Default value is `DELETE`.
-        Possible values are: `ABANDON`, `DELETE`.
+        Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+        'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+        Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+        just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         """
         return pulumi.get(self, "delete_policy")
 
@@ -338,7 +287,6 @@ class _DeploymentState:
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]]]:
         """
         Key-value pairs to apply to this labels.
-        Structure is documented below.
         """
         return pulumi.get(self, "labels")
 
@@ -375,14 +323,10 @@ class _DeploymentState:
     @pulumi.getter
     def preview(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true, a deployment is created with "shell" resources
-        that are not actually instantiated. This allows you to preview a
-        deployment. It can be updated to false to actually deploy
-        with real resources.
-        ~>**NOTE:** Deployment Manager does not allow update
-        of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
-        to true or if other fields are updated while preview is true.
+        If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+        preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+        does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+        deployments if either preview is updated to true or if other fields are updated while preview is true.
         """
         return pulumi.get(self, "preview")
 
@@ -393,10 +337,6 @@ class _DeploymentState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -463,7 +403,6 @@ class Deployment(pulumi.CustomResource):
 
         ### Deployment Manager Deployment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -481,7 +420,6 @@ class Deployment(pulumi.CustomResource):
                 value="bar",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ## Import
 
         Deployment can be imported using any of these accepted formats:
@@ -508,35 +446,21 @@ class Deployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on
-               create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-               `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-               the deployment will fail. Note that updating this field does not
-               actually affect the deployment, just how it is updated.
-               Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
-        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
-               Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-               resource is deleted after removal from Deployment Manager. If
-               `ABANDON`, the resource is only removed from Deployment Manager
-               and is not actually deleted. Note that updating this field does not
-               actually change the deployment, just how it is updated.
-               Default value is `DELETE`.
-               Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+               (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+               updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+               Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
+        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+               'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+               Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+               just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
-               Structure is documented below.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+               deployments if either preview is updated to true or if other fields are updated while preview is true.
         :param pulumi.Input[pulumi.InputType['DeploymentTargetArgs']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
                Structure is documented below.
@@ -566,7 +490,6 @@ class Deployment(pulumi.CustomResource):
 
         ### Deployment Manager Deployment Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -584,7 +507,6 @@ class Deployment(pulumi.CustomResource):
                 value="bar",
             )])
         ```
-        <!--End PulumiCodeChooser -->
         ## Import
 
         Deployment can be imported using any of these accepted formats:
@@ -682,38 +604,24 @@ class Deployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on
-               create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-               `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-               the deployment will fail. Note that updating this field does not
-               actually affect the deployment, just how it is updated.
-               Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
-        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
-               Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-               resource is deleted after removal from Deployment Manager. If
-               `ABANDON`, the resource is only removed from Deployment Manager
-               and is not actually deleted. Note that updating this field does not
-               actually change the deployment, just how it is updated.
-               Default value is `DELETE`.
-               Possible values are: `ABANDON`, `DELETE`.
+        :param pulumi.Input[str] create_policy: Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+               (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+               updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+               Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
+        :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+               'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+               Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+               just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
-               Structure is documented below.
         :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
                was successfully deployed.
         :param pulumi.Input[str] name: Unique name for the deployment
-        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
-               that are not actually instantiated. This allows you to preview a
-               deployment. It can be updated to false to actually deploy
-               with real resources.
-               ~>**NOTE:** Deployment Manager does not allow update
-               of a deployment in preview (unless updating to preview=false). Thus,
-               the provider will force-recreate deployments if either preview is updated
-               to true or if other fields are updated while preview is true.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+               preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+               does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+               deployments if either preview is updated to true or if other fields are updated while preview is true.
         :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['DeploymentTargetArgs']] target: Parameters that define your deployment, including the deployment
                configuration and relevant templates.
@@ -740,13 +648,10 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter(name="createPolicy")
     def create_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Set the policy to use for creating new resources. Only used on
-        create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
-        `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
-        the deployment will fail. Note that updating this field does not
-        actually affect the deployment, just how it is updated.
-        Default value is `CREATE_OR_ACQUIRE`.
-        Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
+        Set the policy to use for creating new resources. Only used on create and update. Valid values are 'CREATE_OR_ACQUIRE'
+        (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment will fail. Note that
+        updating this field does not actually affect the deployment, just how it is updated. Default value: "CREATE_OR_ACQUIRE"
+        Possible values: ["ACQUIRE", "CREATE_OR_ACQUIRE"]
         """
         return pulumi.get(self, "create_policy")
 
@@ -754,14 +659,10 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter(name="deletePolicy")
     def delete_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Set the policy to use for deleting new resources on update/delete.
-        Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
-        resource is deleted after removal from Deployment Manager. If
-        `ABANDON`, the resource is only removed from Deployment Manager
-        and is not actually deleted. Note that updating this field does not
-        actually change the deployment, just how it is updated.
-        Default value is `DELETE`.
-        Possible values are: `ABANDON`, `DELETE`.
+        Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'. If
+        'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed from
+        Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
+        just how it is updated. Default value: "DELETE" Possible values: ["ABANDON", "DELETE"]
         """
         return pulumi.get(self, "delete_policy")
 
@@ -786,7 +687,6 @@ class Deployment(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.DeploymentLabel']]]:
         """
         Key-value pairs to apply to this labels.
-        Structure is documented below.
         """
         return pulumi.get(self, "labels")
 
@@ -811,24 +711,16 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter
     def preview(self) -> pulumi.Output[Optional[bool]]:
         """
-        If set to true, a deployment is created with "shell" resources
-        that are not actually instantiated. This allows you to preview a
-        deployment. It can be updated to false to actually deploy
-        with real resources.
-        ~>**NOTE:** Deployment Manager does not allow update
-        of a deployment in preview (unless updating to preview=false). Thus,
-        the provider will force-recreate deployments if either preview is updated
-        to true or if other fields are updated while preview is true.
+        If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you to
+        preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE:** Deployment Manager
+        does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will force-recreate
+        deployments if either preview is updated to true or if other fields are updated while preview is true.
         """
         return pulumi.get(self, "preview")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
-        """
         return pulumi.get(self, "project")
 
     @property

@@ -9,18 +9,15 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Configure Basic TPU VM With Available Version
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,7 +29,6 @@ import * as utilities from "../utilities";
  *     runtimeVersion: available.then(available => available.versions?.[0]),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getV2RuntimeVersions(args?: GetV2RuntimeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetV2RuntimeVersionsResult> {
     args = args || {};
@@ -80,18 +76,15 @@ export interface GetV2RuntimeVersionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Configure Basic TPU VM With Available Version
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -103,7 +96,6 @@ export interface GetV2RuntimeVersionsResult {
  *     runtimeVersion: available.then(available => available.versions?.[0]),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getV2RuntimeVersionsOutput(args?: GetV2RuntimeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2RuntimeVersionsResult> {
     return pulumi.output(args).apply((a: any) => getV2RuntimeVersions(a, opts))

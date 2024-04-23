@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  *     keyRing: myKeyRing.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> {
 
@@ -98,7 +96,6 @@ export interface GetKMSCryptoKeyResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -112,7 +109,6 @@ export interface GetKMSCryptoKeyResult {
  *     keyRing: myKeyRing.id,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSCryptoKeyResult> {
     return pulumi.output(args).apply((a: any) => getKMSCryptoKey(a, opts))

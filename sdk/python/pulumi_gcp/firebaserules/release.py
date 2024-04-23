@@ -202,7 +202,6 @@ class Release(pulumi.CustomResource):
 
         ### Firestore_release
         Creates a Firebase Rules Release to Cloud Firestore
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -220,10 +219,8 @@ class Release(pulumi.CustomResource):
             ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Storage_release
         Creates a Firebase Rules Release for a Storage bucket
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -251,7 +248,6 @@ class Release(pulumi.CustomResource):
             project="my-project-name",
             bucket_id=bucket.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -287,7 +283,6 @@ class Release(pulumi.CustomResource):
 
         ### Firestore_release
         Creates a Firebase Rules Release to Cloud Firestore
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -305,10 +300,8 @@ class Release(pulumi.CustomResource):
             ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
             project="my-project-name")
         ```
-        <!--End PulumiCodeChooser -->
         ### Storage_release
         Creates a Firebase Rules Release for a Storage bucket
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -336,7 +329,6 @@ class Release(pulumi.CustomResource):
             project="my-project-name",
             bucket_id=bucket.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Service Attachment Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -88,10 +87,8 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Service Attachment Explicit Projects
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -168,10 +165,8 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Service Attachment Explicit Networks
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -254,10 +249,8 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Service Attachment Reconcile Connections
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -321,7 +314,6 @@ import * as utilities from "../utilities";
  *     reconcileConnections: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

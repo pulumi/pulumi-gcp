@@ -851,7 +851,6 @@ class VPNTunnel(pulumi.CustomResource):
 
         ### Vpn Tunnel Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -893,7 +892,6 @@ class VPNTunnel(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -993,7 +991,6 @@ class VPNTunnel(pulumi.CustomResource):
 
         ### Vpn Tunnel Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1035,7 +1032,6 @@ class VPNTunnel(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Backup Dr Management Server
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -115,15 +113,9 @@ export class ManagementServer extends pulumi.CustomResource {
      * The oauth2ClientId of management console.
      */
     public /*out*/ readonly oauth2ClientId!: pulumi.Output<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -194,15 +186,9 @@ export interface ManagementServerState {
      * The oauth2ClientId of management console.
      */
     oauth2ClientId?: pulumi.Input<string>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
      */
     type?: pulumi.Input<string>;
 }
@@ -224,15 +210,9 @@ export interface ManagementServerArgs {
      * Structure is documented below.
      */
     networks: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[]>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
-     * The type of management server (management console).
-     * Default value is `BACKUP_RESTORE`.
-     * Possible values are: `BACKUP_RESTORE`.
+     * The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
      */
     type?: pulumi.Input<string>;
 }

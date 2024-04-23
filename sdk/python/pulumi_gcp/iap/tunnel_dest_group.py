@@ -242,7 +242,6 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         ### Iap Destgroup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -255,7 +254,6 @@ class TunnelDestGroup(pulumi.CustomResource):
                 "192.168.10.0/24",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -330,7 +328,6 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         ### Iap Destgroup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -343,7 +340,6 @@ class TunnelDestGroup(pulumi.CustomResource):
                 "192.168.10.0/24",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

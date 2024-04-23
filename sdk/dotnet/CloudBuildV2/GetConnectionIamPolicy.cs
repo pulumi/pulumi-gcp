@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectionIamPolicyResult> InvokeAsync(GetConnectionIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionIamPolicyResult>("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// 
         /// ## example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectionIamPolicyResult> Invoke(GetConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithDefaults());

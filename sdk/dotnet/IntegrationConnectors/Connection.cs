@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// ### Integration Connectors Connection Basic
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,10 +55,8 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Integration Connectors Connection Advanced
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -383,7 +380,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -15,7 +15,6 @@ import (
 //
 // ## example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHl7V2StoreIamPolicy(ctx *pulumi.Context, args *GetHl7V2StoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetHl7V2StoreIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHl7V2StoreIamPolicyResult

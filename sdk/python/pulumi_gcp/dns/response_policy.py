@@ -231,7 +231,6 @@ class ResponsePolicy(pulumi.CustomResource):
 
         ### Dns Response Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -296,7 +295,6 @@ class ResponsePolicy(pulumi.CustomResource):
                 gke_cluster_name=cluster_1.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -350,7 +348,6 @@ class ResponsePolicy(pulumi.CustomResource):
 
         ### Dns Response Policy Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -415,7 +412,6 @@ class ResponsePolicy(pulumi.CustomResource):
                 gke_cluster_name=cluster_1.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

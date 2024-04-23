@@ -438,7 +438,6 @@ class Workload(pulumi.CustomResource):
 
         ### Apphub Workload Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -530,10 +529,8 @@ class Workload(pulumi.CustomResource):
             workload_id=mig.name,
             discovered_workload=catalog_workload.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apphub Workload Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -647,7 +644,6 @@ class Workload(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -702,7 +698,6 @@ class Workload(pulumi.CustomResource):
 
         ### Apphub Workload Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -794,10 +789,8 @@ class Workload(pulumi.CustomResource):
             workload_id=mig.name,
             discovered_workload=catalog_workload.name)
         ```
-        <!--End PulumiCodeChooser -->
         ### Apphub Workload Full
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -911,7 +904,6 @@ class Workload(pulumi.CustomResource):
                 )],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ import (
 //
 // ### Bigquery Dataset Basic
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,10 +63,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset Cmek
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,10 +110,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset Authorized Dataset
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -198,10 +193,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset Authorized Routine
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -287,10 +280,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Bigquery Dataset External Reference Aws Docs
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -321,7 +312,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

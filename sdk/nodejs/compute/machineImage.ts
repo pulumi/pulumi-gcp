@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ### Machine Image Basic
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -43,10 +42,8 @@ import * as utilities from "../utilities";
  *     sourceInstance: vm.selfLink,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Compute Machine Image Kms
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -79,7 +76,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -756,7 +756,6 @@ class FhirStore(pulumi.CustomResource):
 
         ### Healthcare Fhir Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -782,10 +781,8 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Streaming Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -825,10 +822,8 @@ class FhirStore(pulumi.CustomResource):
             )])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -852,10 +847,8 @@ class FhirStore(pulumi.CustomResource):
                 pubsub_topic=topic.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Configs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -882,7 +875,6 @@ class FhirStore(pulumi.CustomResource):
                 send_previous_resource_on_delete=True,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -988,7 +980,6 @@ class FhirStore(pulumi.CustomResource):
 
         ### Healthcare Fhir Store Basic
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1014,10 +1005,8 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Streaming Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1057,10 +1046,8 @@ class FhirStore(pulumi.CustomResource):
             )])
         topic = gcp.pubsub.Topic("topic", name="fhir-notifications")
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Config
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1084,10 +1071,8 @@ class FhirStore(pulumi.CustomResource):
                 pubsub_topic=topic.id,
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Healthcare Fhir Store Notification Configs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1114,7 +1099,6 @@ class FhirStore(pulumi.CustomResource):
                 send_previous_resource_on_delete=True,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

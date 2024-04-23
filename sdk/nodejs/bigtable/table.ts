@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -46,7 +45,6 @@ import * as utilities from "../utilities";
  *     changeStreamRetention: "24h0m0s",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

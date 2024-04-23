@@ -640,7 +640,6 @@ class Target(pulumi.CustomResource):
 
         ### Multi_target
         tests creating and updating a multi-target
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -674,10 +673,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Run_target
         tests creating and updating a cloud run target
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -708,10 +705,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Target
         Creates a basic Cloud Deploy target
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -737,7 +732,6 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -802,7 +796,6 @@ class Target(pulumi.CustomResource):
 
         ### Multi_target
         tests creating and updating a multi-target
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -836,10 +829,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Run_target
         tests creating and updating a cloud run target
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -870,10 +861,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        <!--End PulumiCodeChooser -->
         ### Target
         Creates a basic Cloud Deploy target
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -899,7 +888,6 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
