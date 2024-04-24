@@ -53,6 +53,11 @@ func TestPulumiLabelsSecretGo(t *testing.T) {
 }
 
 func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	if os.Getenv("PULUMI_GO_DEP_ROOT") == "" {
+		depRoot := getCwd(t) + "/../../"
+		err := os.Setenv("PULUMI_GO_DEP_ROOT", depRoot)
+		require.NoError(t, err)
+	}
 	base := getBaseOptions(t)
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
