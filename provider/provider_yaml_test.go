@@ -18,6 +18,8 @@
 package gcp
 
 import (
+	"bytes"
+	"context"
 	"fmt"
 	"os"
 	"os/exec"
@@ -851,238 +853,79 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 	]`, proj, proj))
 }
 
-//nolint:lll
-func TestBucketImportedWithLabels(t *testing.T) {
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+func pulumiTestExec(ptest *pulumitest.PulumiTest, args ...string) {
+	t := ptest.T()
+	workspace := ptest.CurrentStack().Workspace()
+	ctx := context.Background()
+	workdir := workspace.WorkDir()
+	var env []string
+	for k, v := range workspace.GetEnvVars() {
+		env = append(env, fmt.Sprintf("%s=%s", k, v))
 	}
+	stdin := bytes.NewReader([]byte{})
 
-	cwd, err := os.Getwd()
+	s1, s2, code, err := workspace.PulumiCommand().Run(ctx, workdir, stdin, nil, nil, env, args...)
+	t.Logf("cmd: %s", args)
+	t.Logf("stdout: %s", s1)
+	t.Logf("stderr: %s", s2)
+	t.Logf("code=%v", code)
+
 	require.NoError(t, err)
-	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "labeled-bucket"),
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
-	)
-	googleProj := getProject()
-	test.SetConfig("gcp:config:project", googleProj)
-
-	res := test.Up()
-	bucketID := res.Outputs["bucketId"].Value.(string)
-
-	// Automation API can't import, so we work around that...
-	json := fmt.Sprintf(`
-	[
-		{
-			"method": "/pulumirpc.ResourceProvider/Configure",
-			"request": {
-				"variables": {
-					"gcp:config:project": "pulumi-development"
-				},
-				"args": {
-					"project": "pulumi-development",
-					"version": "7.18.0"
-				},
-				"acceptSecrets": true,
-				"acceptResources": true,
-				"sendsOldInputs": true,
-				"sendsOldInputsToDelete": true
-			},
-			"response": {
-				"supportsPreview": true
-			},
-			"metadata": {
-				"kind": "resource",
-				"mode": "client",
-				"name": "gcp"
-			}
-		},
-		{
-			"method": "/pulumirpc.ResourceProvider/Read",
-			"request": {
-				"id": %q,
-				"urn": "urn:pulumi:test1::gcp_bucket_import::gcp:storage/bucket:Bucket::my-bucket-zbuchheit",
-				"properties": {}
-			},
-			"response": {
-				"id": "*",
-				"properties": {
-					"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"read\":240000000000,\"update\":240000000000},\"schema_version\":\"1\"}",
-					"autoclass": null,
-					"cors": [],
-					"customPlacementConfig": null,
-					"defaultEventBasedHold": false,
-					"effectiveLabels": {
-						"app": "my-bucket"
-					},
-					"enableObjectRetention": false,
-					"encryption": null,
-					"forceDestroy": false,
-					"id": "*",
-					"labels": {
-						"app": "my-bucket"
-					},
-					"lifecycleRules": [],
-					"location": "US",
-					"logging": null,
-					"name": "*",
-					"project": "*",
-					"projectNumber": "*",
-					"publicAccessPrevention": "inherited",
-					"pulumiLabels": {
-						"app": "my-bucket"
-					},
-					"requesterPays": false,
-					"retentionPolicy": null,
-					"rpo": "DEFAULT",
-					"selfLink": "*",
-					"softDeletePolicy": {
-						"effectiveTime": "*",
-						"retentionDurationSeconds": 604800
-					},
-					"storageClass": "STANDARD",
-					"uniformBucketLevelAccess": false,
-					"url": "*",
-					"versioning": null,
-					"website": null
-				},
-				"inputs": {
-					"__defaults": [],
-					"location": "US",
-					"name": "*",
-					"project": "*",
-					"publicAccessPrevention": "inherited",
-					"rpo": "DEFAULT"
-				}
-			},
-			"metadata": {
-				"kind": "resource",
-				"mode": "client",
-				"name": "gcp"
-			}
-		}
-	]`, bucketID)
-	replay.ReplaySequence(t, providerServer(t), json)
 }
 
-//nolint:lll
-func TestBucketImportedWithLabelsAndDefaultLabels(t *testing.T) {
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+func pulumiTestImport(ptest *pulumitest.PulumiTest, resourceType, resourceName, resourceID string, providerString string) {
+	arguments := []string{
+		"import", resourceType, resourceName, resourceID, "--yes", "--protect=false", "-s", ptest.CurrentStack().Name(),
 	}
+	if providerString != "" {
+		arguments = append(arguments, "--provider", providerString)
+	}
+	pulumiTestExec(ptest, arguments...)
+}
 
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "labeled-bucket-with-defaults"),
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
-	)
-	googleProj := getProject()
-	test.SetConfig("gcp:config:project", googleProj)
+func pulumiTestDeleteFromState(ptest *pulumitest.PulumiTest, resourceURN string) {
+	arguments := []string{
+		"state", "delete", resourceURN, "--yes", "-s", ptest.CurrentStack().Name(),
+	}
+	pulumiTestExec(ptest, arguments...)
+}
 
-	res := test.Up()
-	bucketID := res.Outputs["bucketId"].Value.(string)
-
-	bucketLabels := res.Outputs["bucketLabels"].Value.(map[string]interface{})
-	require.Equal(t, bucketLabels["app"], "my-bucket")
-
-	bucketPulumiLabels := res.Outputs["bucketPulumiLabels"].Value.(map[string]interface{})
-	require.Equal(t, bucketPulumiLabels["app"], "my-bucket")
-	require.Equal(t, bucketPulumiLabels["def"], "defaultlabel")
-
-	// Automation API can't import, so we work around that...
-	json := fmt.Sprintf(`
-	[
+func TestLabelImport(t *testing.T) {
+	for _, tc := range []struct {
+		testName         string
+		programPath      string
+		resourceType     string
+		explicitProvider bool
+	}{
 		{
-			"method": "/pulumirpc.ResourceProvider/Configure",
-			"request": {
-				"variables": {
-					"gcp:config:defaultLabels": "{\"def\":\"defaultlabel\"}",
-					"gcp:config:project": "pulumi-development"
-				},
-				"args": {
-					"project": "pulumi-development",
-					"version": "7.18.0",
-					"defaultLabels": "{\"def\":\"defaultlabel\"}"
-				},
-				"acceptSecrets": true,
-				"acceptResources": true,
-				"sendsOldInputs": true,
-				"sendsOldInputsToDelete": true
-			},
-			"response": {
-				"supportsPreview": true
-			},
-			"metadata": {
-				"kind": "resource",
-				"mode": "client",
-				"name": "gcp"
-			}
+			testName:     "bucket",
+			programPath:  filepath.Join("test-programs", "labeled-bucket"),
+			resourceType: "gcp:storage/bucket:Bucket",
 		},
 		{
-			"method": "/pulumirpc.ResourceProvider/Read",
-			"request": {
-				"id": %q,
-				"urn": "urn:pulumi:test1::gcp_bucket_import::gcp:storage/bucket:Bucket::my-bucket-zbuchheit",
-				"properties": {}
-			},
-			"response": {
-				"id": "*",
-				"properties": {
-					"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"read\":240000000000,\"update\":240000000000},\"schema_version\":\"1\"}",
-					"autoclass": null,
-					"cors": [],
-					"customPlacementConfig": null,
-					"defaultEventBasedHold": false,
-					"effectiveLabels": {
-						"app": "my-bucket",
-						"def": "defaultlabel"
-					},
-					"enableObjectRetention": false,
-					"encryption": null,
-					"forceDestroy": false,
-					"id": "*",
-					"labels": {
-						"app": "my-bucket"
-					},
-					"lifecycleRules": [],
-					"location": "US",
-					"logging": null,
-					"name": "*",
-					"project": "*",
-					"projectNumber": "*",
-					"publicAccessPrevention": "inherited",
-					"pulumiLabels": {
-						"app": "my-bucket",
-						"def": "defaultlabel"
-					},
-					"requesterPays": false,
-					"retentionPolicy": null,
-					"rpo": "DEFAULT",
-					"selfLink": "*",
-					"softDeletePolicy": {
-						"effectiveTime": "*",
-						"retentionDurationSeconds": 604800
-					},
-					"storageClass": "STANDARD",
-					"uniformBucketLevelAccess": false,
-					"url": "*",
-					"versioning": null,
-					"website": null
-				},
-				"inputs": {
-					"__defaults": [],
-					"labels": "*",
-					"location": "US",
-					"name": "*",
-					"project": "*",
-					"publicAccessPrevention": "inherited",
-					"rpo": "DEFAULT"
-				}
-			},
-			"metadata": {
-				"kind": "resource",
-				"mode": "client",
-				"name": "gcp"
+			testName:     "bucket-with-defaults",
+			programPath:  filepath.Join("test-programs", "labeled-bucket-with-defaults"),
+			resourceType: "gcp:storage/bucket:Bucket",
+		},
+	} {
+		t.Run(tc.testName, func(t *testing.T) {
+			test := pulumiTest(t, tc.programPath)
+
+			res := test.Up()
+			resourceID := res.Outputs["resourceId"].Value.(string)
+			resourceUrn := res.Outputs["resourceUrn"].Value.(string)
+
+			providerString := ""
+			if tc.explicitProvider {
+				providerUrn := res.Outputs["providerUrn"].Value.(string)
+				providerString = "prov=" + providerUrn
 			}
-		}
-	]`, bucketID)
-	replay.ReplaySequence(t, providerServer(t), json)
+
+			pulumiTestDeleteFromState(test, resourceUrn)
+			pulumiTestImport(test, tc.resourceType, "resource", resourceID, providerString)
+
+			prevResult := test.Preview()
+			assertpreview.HasNoChanges(t, prevResult)
+		})
+	}
 }

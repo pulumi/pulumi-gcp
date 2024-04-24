@@ -2,11 +2,12 @@ name: labeled-bucket
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
 outputs:
-  bucketId: ${my-bucket.id}
+  resourceId: ${resource.id}
+  resourceUrn: ${resource.urn}
 resources:
-  my-bucket:
+  resource:
     properties:
       location: US
       labels:
-        app: my-bucket
+        app: my-label
     type: gcp:storage:Bucket
