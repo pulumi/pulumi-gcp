@@ -32,6 +32,7 @@ class FunctionBuildConfigArgs:
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
@@ -47,6 +48,7 @@ class FunctionBuildConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: User-provided build-time environment variables for the function.
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
+        :param pulumi.Input[str] service_account: The fully-qualified name of the service account to be used for building the container.
         :param pulumi.Input['FunctionBuildConfigSourceArgs'] source: The location of the function source code.
                Structure is documented below.
         :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -61,6 +63,8 @@ class FunctionBuildConfigArgs:
             pulumi.set(__self__, "environment_variables", environment_variables)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if worker_pool is not None:
@@ -132,6 +136,18 @@ class FunctionBuildConfigArgs:
     @runtime.setter
     def runtime(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "runtime", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified name of the service account to be used for building the container.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
 
     @property
     @pulumi.getter

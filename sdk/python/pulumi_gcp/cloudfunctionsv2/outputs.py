@@ -46,6 +46,8 @@ class FunctionBuildConfig(dict):
             suggest = "entry_point"
         elif key == "environmentVariables":
             suggest = "environment_variables"
+        elif key == "serviceAccount":
+            suggest = "service_account"
         elif key == "workerPool":
             suggest = "worker_pool"
 
@@ -66,6 +68,7 @@ class FunctionBuildConfig(dict):
                  entry_point: Optional[str] = None,
                  environment_variables: Optional[Mapping[str, str]] = None,
                  runtime: Optional[str] = None,
+                 service_account: Optional[str] = None,
                  source: Optional['outputs.FunctionBuildConfigSource'] = None,
                  worker_pool: Optional[str] = None):
         """
@@ -81,6 +84,7 @@ class FunctionBuildConfig(dict):
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function.
         :param str runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
+        :param str service_account: The fully-qualified name of the service account to be used for building the container.
         :param 'FunctionBuildConfigSourceArgs' source: The location of the function source code.
                Structure is documented below.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
@@ -95,6 +99,8 @@ class FunctionBuildConfig(dict):
             pulumi.set(__self__, "environment_variables", environment_variables)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if worker_pool is not None:
@@ -146,6 +152,14 @@ class FunctionBuildConfig(dict):
         function, optional when updating an existing function.
         """
         return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        The fully-qualified name of the service account to be used for building the container.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter
@@ -1093,6 +1107,7 @@ class GetFunctionBuildConfigResult(dict):
                  entry_point: str,
                  environment_variables: Mapping[str, str],
                  runtime: str,
+                 service_account: str,
                  sources: Sequence['outputs.GetFunctionBuildConfigSourceResult'],
                  worker_pool: str):
         """
@@ -1107,6 +1122,7 @@ class GetFunctionBuildConfigResult(dict):
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function.
         :param str runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
+        :param str service_account: The fully-qualified name of the service account to be used for building the container.
         :param Sequence['GetFunctionBuildConfigSourceArgs'] sources: The location of the function source code.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
@@ -1115,6 +1131,7 @@ class GetFunctionBuildConfigResult(dict):
         pulumi.set(__self__, "entry_point", entry_point)
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "sources", sources)
         pulumi.set(__self__, "worker_pool", worker_pool)
 
@@ -1163,6 +1180,14 @@ class GetFunctionBuildConfigResult(dict):
         function, optional when updating an existing function.
         """
         return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        The fully-qualified name of the service account to be used for building the container.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter

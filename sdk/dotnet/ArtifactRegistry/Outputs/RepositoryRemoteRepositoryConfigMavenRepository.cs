@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class RepositoryRemoteRepositoryConfigMavenRepository
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository? CustomRepository;
+        /// <summary>
         /// Address of the remote repository.
         /// Default value is `MAVEN_CENTRAL`.
         /// Possible values are: `MAVEN_CENTRAL`.
@@ -21,8 +26,12 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         public readonly string? PublicRepository;
 
         [OutputConstructor]
-        private RepositoryRemoteRepositoryConfigMavenRepository(string? publicRepository)
+        private RepositoryRemoteRepositoryConfigMavenRepository(
+            Outputs.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository? customRepository,
+
+            string? publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

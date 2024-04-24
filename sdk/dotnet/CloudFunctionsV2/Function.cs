@@ -516,6 +516,99 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// ### Cloudfunctions2 Basic Builder
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = "my-project-name";
+    /// 
+    ///     var account = new Gcp.ServiceAccount.Account("account", new()
+    ///     {
+    ///         AccountId = "gcf-sa",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var logWriter = new Gcp.Projects.IAMMember("log_writer", new()
+    ///     {
+    ///         Project = account.Project,
+    ///         Role = "roles/logging.logWriter",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var artifactRegistryWriter = new Gcp.Projects.IAMMember("artifact_registry_writer", new()
+    ///     {
+    ///         Project = account.Project,
+    ///         Role = "roles/artifactregistry.writer",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var storageObjectAdmin = new Gcp.Projects.IAMMember("storage_object_admin", new()
+    ///     {
+    ///         Project = account.Project,
+    ///         Role = "roles/storage.objectAdmin",
+    ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = $"{project}-gcf-source",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Name = "function-source.zip",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("function-source.zip"),
+    ///     });
+    /// 
+    ///     // builder permissions need to stablize before it can pull the source zip
+    ///     var wait60s = new Time.Index.Sleep("wait_60s", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     });
+    /// 
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
+    ///     {
+    ///         Name = "function-v2",
+    ///         Location = "us-central1",
+    ///         Description = "a new function",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///         {
+    ///             Runtime = "nodejs16",
+    ///             EntryPoint = "helloHttp",
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
+    ///                 {
+    ///                     Bucket = bucket.Name,
+    ///                     Object = @object.Name,
+    ///                 },
+    ///             },
+    ///             ServiceAccount = account.Id,
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
+    ///         {
+    ///             MaxInstanceCount = 1,
+    ///             AvailableMemory = "256M",
+    ///             TimeoutSeconds = 60,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["functionUri"] = function.ServiceConfig.Apply(serviceConfig =&gt; serviceConfig?.Uri),
+    ///     };
+    /// });
+    /// ```
     /// ### Cloudfunctions2 Secret Env
     /// 
     /// ```csharp

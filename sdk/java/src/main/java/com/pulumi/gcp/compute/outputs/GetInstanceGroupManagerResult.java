@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAutoHealingPolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerNamedPort;
+import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerParam;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatefulInternalIp;
@@ -42,6 +43,7 @@ public final class GetInstanceGroupManagerResult {
     private @Nullable String name;
     private List<GetInstanceGroupManagerNamedPort> namedPorts;
     private String operation;
+    private List<GetInstanceGroupManagerParam> params;
     private @Nullable String project;
     private @Nullable String selfLink;
     private List<GetInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -99,6 +101,9 @@ public final class GetInstanceGroupManagerResult {
     }
     public String operation() {
         return this.operation;
+    }
+    public List<GetInstanceGroupManagerParam> params() {
+        return this.params;
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -162,6 +167,7 @@ public final class GetInstanceGroupManagerResult {
         private @Nullable String name;
         private List<GetInstanceGroupManagerNamedPort> namedPorts;
         private String operation;
+        private List<GetInstanceGroupManagerParam> params;
         private @Nullable String project;
         private @Nullable String selfLink;
         private List<GetInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -191,6 +197,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.name = defaults.name;
     	      this.namedPorts = defaults.namedPorts;
     	      this.operation = defaults.operation;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
     	      this.statefulDisks = defaults.statefulDisks;
@@ -319,6 +326,17 @@ public final class GetInstanceGroupManagerResult {
             }
             this.operation = operation;
             return this;
+        }
+        @CustomType.Setter
+        public Builder params(List<GetInstanceGroupManagerParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetInstanceGroupManagerParam... params) {
+            return params(List.of(params));
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
@@ -454,6 +472,7 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.name = name;
             _resultValue.namedPorts = namedPorts;
             _resultValue.operation = operation;
+            _resultValue.params = params;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;
             _resultValue.statefulDisks = statefulDisks;

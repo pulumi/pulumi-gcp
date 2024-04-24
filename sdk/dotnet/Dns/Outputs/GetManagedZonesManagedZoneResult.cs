@@ -13,37 +13,16 @@ namespace Pulumi.Gcp.Dns.Outputs
     [OutputType]
     public sealed class GetManagedZonesManagedZoneResult
     {
-        /// <summary>
-        /// A textual description field.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The fully qualified DNS name of this zone.
-        /// </summary>
         public readonly string DnsName;
-        /// <summary>
-        /// DNS managed zone identifier
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Unique identifier for the resource; defined by the server.
-        /// </summary>
         public readonly int ManagedZoneId;
-        /// <summary>
-        /// A unique name for the resource.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-        /// </summary>
+        public readonly string? Name;
         public readonly ImmutableArray<string> NameServers;
         /// <summary>
         /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         /// </summary>
-        public readonly string Project;
-        /// <summary>
-        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-        /// </summary>
+        public readonly string? Project;
         public readonly string Visibility;
 
         [OutputConstructor]
@@ -56,11 +35,11 @@ namespace Pulumi.Gcp.Dns.Outputs
 
             int managedZoneId,
 
-            string name,
+            string? name,
 
             ImmutableArray<string> nameServers,
 
-            string project,
+            string? project,
 
             string visibility)
         {

@@ -6,9 +6,11 @@ package com.pulumi.gcp.vmwareengine.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.PrivateCloudManagementClusterNodeTypeConfig;
+import com.pulumi.gcp.vmwareengine.outputs.PrivateCloudManagementClusterStretchedClusterConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -30,6 +32,12 @@ public final class PrivateCloudManagementCluster {
      * 
      */
     private @Nullable List<PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
+    /**
+     * @return The stretched cluster configuration for the private cloud.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PrivateCloudManagementClusterStretchedClusterConfig stretchedClusterConfig;
 
     private PrivateCloudManagementCluster() {}
     /**
@@ -53,6 +61,14 @@ public final class PrivateCloudManagementCluster {
     public List<PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs() {
         return this.nodeTypeConfigs == null ? List.of() : this.nodeTypeConfigs;
     }
+    /**
+     * @return The stretched cluster configuration for the private cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfig() {
+        return Optional.ofNullable(this.stretchedClusterConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,11 +81,13 @@ public final class PrivateCloudManagementCluster {
     public static final class Builder {
         private String clusterId;
         private @Nullable List<PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
+        private @Nullable PrivateCloudManagementClusterStretchedClusterConfig stretchedClusterConfig;
         public Builder() {}
         public Builder(PrivateCloudManagementCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
     	      this.nodeTypeConfigs = defaults.nodeTypeConfigs;
+    	      this.stretchedClusterConfig = defaults.stretchedClusterConfig;
         }
 
         @CustomType.Setter
@@ -89,10 +107,17 @@ public final class PrivateCloudManagementCluster {
         public Builder nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfig... nodeTypeConfigs) {
             return nodeTypeConfigs(List.of(nodeTypeConfigs));
         }
+        @CustomType.Setter
+        public Builder stretchedClusterConfig(@Nullable PrivateCloudManagementClusterStretchedClusterConfig stretchedClusterConfig) {
+
+            this.stretchedClusterConfig = stretchedClusterConfig;
+            return this;
+        }
         public PrivateCloudManagementCluster build() {
             final var _resultValue = new PrivateCloudManagementCluster();
             _resultValue.clusterId = clusterId;
             _resultValue.nodeTypeConfigs = nodeTypeConfigs;
+            _resultValue.stretchedClusterConfig = stretchedClusterConfig;
             return _resultValue;
         }
     }

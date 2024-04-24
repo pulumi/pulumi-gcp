@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult> CidrBlocks;
         /// <summary>
-        /// Whether master is accessbile via Google Compute Engine Public IP addresses.
+        /// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
         /// </summary>
         public readonly bool GcpPublicCidrsAccessEnabled;
 

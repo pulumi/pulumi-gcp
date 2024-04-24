@@ -206,6 +206,12 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerNamedPort[] | undefined>;
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     *
+     * - - -
+     */
+    public readonly params!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -226,8 +232,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     public readonly statefulDisks!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerStatefulDisk[] | undefined>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     *
-     * - - -
      */
     public readonly statefulExternalIps!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerStatefulExternalIp[] | undefined>;
     /**
@@ -299,6 +303,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = state ? state.listManagedInstancesResults : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -330,6 +335,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["statefulDisks"] = args ? args.statefulDisks : undefined;
@@ -428,6 +434,12 @@ export interface RegionInstanceGroupManagerState {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     *
+     * - - -
+     */
+    params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -448,8 +460,6 @@ export interface RegionInstanceGroupManagerState {
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     *
-     * - - -
      */
     statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[]>;
     /**
@@ -560,6 +570,12 @@ export interface RegionInstanceGroupManagerArgs {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     *
+     * - - -
+     */
+    params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -576,8 +592,6 @@ export interface RegionInstanceGroupManagerArgs {
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     *
-     * - - -
      */
     statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[]>;
     /**

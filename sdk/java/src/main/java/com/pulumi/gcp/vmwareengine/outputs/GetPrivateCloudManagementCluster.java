@@ -6,6 +6,7 @@ package com.pulumi.gcp.vmwareengine.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementClusterNodeTypeConfig;
+import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementClusterStretchedClusterConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,11 @@ public final class GetPrivateCloudManagementCluster {
      * 
      */
     private List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
+    /**
+     * @return The stretched cluster configuration for the private cloud.
+     * 
+     */
+    private List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs;
 
     private GetPrivateCloudManagementCluster() {}
     /**
@@ -50,6 +56,13 @@ public final class GetPrivateCloudManagementCluster {
     public List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs() {
         return this.nodeTypeConfigs;
     }
+    /**
+     * @return The stretched cluster configuration for the private cloud.
+     * 
+     */
+    public List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs() {
+        return this.stretchedClusterConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,11 +75,13 @@ public final class GetPrivateCloudManagementCluster {
     public static final class Builder {
         private String clusterId;
         private List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
+        private List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs;
         public Builder() {}
         public Builder(GetPrivateCloudManagementCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
     	      this.nodeTypeConfigs = defaults.nodeTypeConfigs;
+    	      this.stretchedClusterConfigs = defaults.stretchedClusterConfigs;
         }
 
         @CustomType.Setter
@@ -88,10 +103,22 @@ public final class GetPrivateCloudManagementCluster {
         public Builder nodeTypeConfigs(GetPrivateCloudManagementClusterNodeTypeConfig... nodeTypeConfigs) {
             return nodeTypeConfigs(List.of(nodeTypeConfigs));
         }
+        @CustomType.Setter
+        public Builder stretchedClusterConfigs(List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs) {
+            if (stretchedClusterConfigs == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudManagementCluster", "stretchedClusterConfigs");
+            }
+            this.stretchedClusterConfigs = stretchedClusterConfigs;
+            return this;
+        }
+        public Builder stretchedClusterConfigs(GetPrivateCloudManagementClusterStretchedClusterConfig... stretchedClusterConfigs) {
+            return stretchedClusterConfigs(List.of(stretchedClusterConfigs));
+        }
         public GetPrivateCloudManagementCluster build() {
             final var _resultValue = new GetPrivateCloudManagementCluster();
             _resultValue.clusterId = clusterId;
             _resultValue.nodeTypeConfigs = nodeTypeConfigs;
+            _resultValue.stretchedClusterConfigs = stretchedClusterConfigs;
             return _resultValue;
         }
     }

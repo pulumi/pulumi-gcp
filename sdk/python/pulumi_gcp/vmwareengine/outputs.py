@@ -20,6 +20,7 @@ __all__ = [
     'PrivateCloudHcx',
     'PrivateCloudManagementCluster',
     'PrivateCloudManagementClusterNodeTypeConfig',
+    'PrivateCloudManagementClusterStretchedClusterConfig',
     'PrivateCloudNetworkConfig',
     'PrivateCloudNsx',
     'PrivateCloudVcenter',
@@ -33,6 +34,7 @@ __all__ = [
     'GetPrivateCloudHcxResult',
     'GetPrivateCloudManagementClusterResult',
     'GetPrivateCloudManagementClusterNodeTypeConfigResult',
+    'GetPrivateCloudManagementClusterStretchedClusterConfigResult',
     'GetPrivateCloudNetworkConfigResult',
     'GetPrivateCloudNsxResult',
     'GetPrivateCloudVcenterResult',
@@ -397,6 +399,8 @@ class PrivateCloudManagementCluster(dict):
             suggest = "cluster_id"
         elif key == "nodeTypeConfigs":
             suggest = "node_type_configs"
+        elif key == "stretchedClusterConfig":
+            suggest = "stretched_cluster_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PrivateCloudManagementCluster. Access the value via the '{suggest}' property getter instead.")
@@ -411,7 +415,8 @@ class PrivateCloudManagementCluster(dict):
 
     def __init__(__self__, *,
                  cluster_id: str,
-                 node_type_configs: Optional[Sequence['outputs.PrivateCloudManagementClusterNodeTypeConfig']] = None):
+                 node_type_configs: Optional[Sequence['outputs.PrivateCloudManagementClusterNodeTypeConfig']] = None,
+                 stretched_cluster_config: Optional['outputs.PrivateCloudManagementClusterStretchedClusterConfig'] = None):
         """
         :param str cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
                * Only contains 1-63 alphanumeric characters and hyphens
@@ -422,10 +427,14 @@ class PrivateCloudManagementCluster(dict):
         :param Sequence['PrivateCloudManagementClusterNodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
+        :param 'PrivateCloudManagementClusterStretchedClusterConfigArgs' stretched_cluster_config: The stretched cluster configuration for the private cloud.
+               Structure is documented below.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if node_type_configs is not None:
             pulumi.set(__self__, "node_type_configs", node_type_configs)
+        if stretched_cluster_config is not None:
+            pulumi.set(__self__, "stretched_cluster_config", stretched_cluster_config)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -449,6 +458,15 @@ class PrivateCloudManagementCluster(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "node_type_configs")
+
+    @property
+    @pulumi.getter(name="stretchedClusterConfig")
+    def stretched_cluster_config(self) -> Optional['outputs.PrivateCloudManagementClusterStretchedClusterConfig']:
+        """
+        The stretched cluster configuration for the private cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stretched_cluster_config")
 
 
 @pulumi.output_type
@@ -485,8 +503,6 @@ class PrivateCloudManagementClusterNodeTypeConfig(dict):
                This number must always be one of `nodeType.availableCustomCoreCounts`.
                If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
                This cannot be changed once the PrivateCloud is created.
-               
-               - - -
         """
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_type_id", node_type_id)
@@ -517,10 +533,62 @@ class PrivateCloudManagementClusterNodeTypeConfig(dict):
         This number must always be one of `nodeType.availableCustomCoreCounts`.
         If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
         This cannot be changed once the PrivateCloud is created.
+        """
+        return pulumi.get(self, "custom_core_count")
+
+
+@pulumi.output_type
+class PrivateCloudManagementClusterStretchedClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preferredLocation":
+            suggest = "preferred_location"
+        elif key == "secondaryLocation":
+            suggest = "secondary_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudManagementClusterStretchedClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudManagementClusterStretchedClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudManagementClusterStretchedClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 preferred_location: Optional[str] = None,
+                 secondary_location: Optional[str] = None):
+        """
+        :param str preferred_location: Zone that will remain operational when connection between the two zones is lost.
+        :param str secondary_location: Additional zone for a higher level of availability and load balancing.
+               
+               - - -
+        """
+        if preferred_location is not None:
+            pulumi.set(__self__, "preferred_location", preferred_location)
+        if secondary_location is not None:
+            pulumi.set(__self__, "secondary_location", secondary_location)
+
+    @property
+    @pulumi.getter(name="preferredLocation")
+    def preferred_location(self) -> Optional[str]:
+        """
+        Zone that will remain operational when connection between the two zones is lost.
+        """
+        return pulumi.get(self, "preferred_location")
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> Optional[str]:
+        """
+        Additional zone for a higher level of availability and load balancing.
 
         - - -
         """
-        return pulumi.get(self, "custom_core_count")
+        return pulumi.get(self, "secondary_location")
 
 
 @pulumi.output_type
@@ -1082,7 +1150,8 @@ class GetPrivateCloudHcxResult(dict):
 class GetPrivateCloudManagementClusterResult(dict):
     def __init__(__self__, *,
                  cluster_id: str,
-                 node_type_configs: Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']):
+                 node_type_configs: Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult'],
+                 stretched_cluster_configs: Sequence['outputs.GetPrivateCloudManagementClusterStretchedClusterConfigResult']):
         """
         :param str cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
                  * Only contains 1-63 alphanumeric characters and hyphens
@@ -1092,9 +1161,11 @@ class GetPrivateCloudManagementClusterResult(dict):
                  * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
         :param Sequence['GetPrivateCloudManagementClusterNodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
+        :param Sequence['GetPrivateCloudManagementClusterStretchedClusterConfigArgs'] stretched_cluster_configs: The stretched cluster configuration for the private cloud.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "node_type_configs", node_type_configs)
+        pulumi.set(__self__, "stretched_cluster_configs", stretched_cluster_configs)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1117,6 +1188,14 @@ class GetPrivateCloudManagementClusterResult(dict):
         where the key is canonical identifier of the node type (corresponds to the NodeType).
         """
         return pulumi.get(self, "node_type_configs")
+
+    @property
+    @pulumi.getter(name="stretchedClusterConfigs")
+    def stretched_cluster_configs(self) -> Sequence['outputs.GetPrivateCloudManagementClusterStretchedClusterConfigResult']:
+        """
+        The stretched cluster configuration for the private cloud.
+        """
+        return pulumi.get(self, "stretched_cluster_configs")
 
 
 @pulumi.output_type
@@ -1159,6 +1238,35 @@ class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> str:
         return pulumi.get(self, "node_type_id")
+
+
+@pulumi.output_type
+class GetPrivateCloudManagementClusterStretchedClusterConfigResult(dict):
+    def __init__(__self__, *,
+                 preferred_location: str,
+                 secondary_location: str):
+        """
+        :param str preferred_location: Zone that will remain operational when connection between the two zones is lost.
+        :param str secondary_location: Additional zone for a higher level of availability and load balancing.
+        """
+        pulumi.set(__self__, "preferred_location", preferred_location)
+        pulumi.set(__self__, "secondary_location", secondary_location)
+
+    @property
+    @pulumi.getter(name="preferredLocation")
+    def preferred_location(self) -> str:
+        """
+        Zone that will remain operational when connection between the two zones is lost.
+        """
+        return pulumi.get(self, "preferred_location")
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> str:
+        """
+        Additional zone for a higher level of availability and load balancing.
+        """
+        return pulumi.get(self, "secondary_location")
 
 
 @pulumi.output_type

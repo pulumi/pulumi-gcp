@@ -23,6 +23,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// If true, the remote repository upstream and upstream credentials will
+        /// not be validated.
+        /// </summary>
+        public readonly bool? DisableUpstreamValidation;
+        /// <summary>
         /// Specific settings for a Docker remote repository.
         /// Structure is documented below.
         /// </summary>
@@ -59,6 +64,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             string? description,
 
+            bool? disableUpstreamValidation,
+
             Outputs.RepositoryRemoteRepositoryConfigDockerRepository? dockerRepository,
 
             Outputs.RepositoryRemoteRepositoryConfigMavenRepository? mavenRepository,
@@ -73,6 +80,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         {
             AptRepository = aptRepository;
             Description = description;
+            DisableUpstreamValidation = disableUpstreamValidation;
             DockerRepository = dockerRepository;
             MavenRepository = mavenRepository;
             NpmRepository = npmRepository;

@@ -21,9 +21,13 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigAptRepositoryArgs',
     'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs',
     'RepositoryRemoteRepositoryConfigDockerRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs',
     'RepositoryRemoteRepositoryConfigMavenRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs',
     'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs',
     'RepositoryRemoteRepositoryConfigPythonRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs',
     'RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs',
     'RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs',
     'RepositoryRemoteRepositoryConfigYumRepositoryArgs',
@@ -407,6 +411,7 @@ class RepositoryRemoteRepositoryConfigArgs:
     def __init__(__self__, *,
                  apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_upstream_validation: Optional[pulumi.Input[bool]] = None,
                  docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
                  maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
                  npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
@@ -417,6 +422,8 @@ class RepositoryRemoteRepositoryConfigArgs:
         :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the remote source.
+        :param pulumi.Input[bool] disable_upstream_validation: If true, the remote repository upstream and upstream credentials will
+               not be validated.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs'] docker_repository: Specific settings for a Docker remote repository.
                Structure is documented below.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs'] maven_repository: Specific settings for a Maven remote repository.
@@ -434,6 +441,8 @@ class RepositoryRemoteRepositoryConfigArgs:
             pulumi.set(__self__, "apt_repository", apt_repository)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_upstream_validation is not None:
+            pulumi.set(__self__, "disable_upstream_validation", disable_upstream_validation)
         if docker_repository is not None:
             pulumi.set(__self__, "docker_repository", docker_repository)
         if maven_repository is not None:
@@ -471,6 +480,19 @@ class RepositoryRemoteRepositoryConfigArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableUpstreamValidation")
+    def disable_upstream_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the remote repository upstream and upstream credentials will
+        not be validated.
+        """
+        return pulumi.get(self, "disable_upstream_validation")
+
+    @disable_upstream_validation.setter
+    def disable_upstream_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_upstream_validation", value)
 
     @property
     @pulumi.getter(name="dockerRepository")
@@ -618,14 +640,32 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
     def __init__(__self__, *,
+                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+               Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `DOCKER_HUB`.
                Possible values are: `DOCKER_HUB`.
         """
+        if custom_repository is not None:
+            pulumi.set(__self__, "custom_repository", custom_repository)
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]:
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_repository")
+
+    @custom_repository.setter
+    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]):
+        pulumi.set(self, "custom_repository", value)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -643,16 +683,57 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
 
 
 @pulumi.input_type
+class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs:
+    def __init__(__self__, *,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
     def __init__(__self__, *,
+                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+               Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `MAVEN_CENTRAL`.
                Possible values are: `MAVEN_CENTRAL`.
         """
+        if custom_repository is not None:
+            pulumi.set(__self__, "custom_repository", custom_repository)
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]:
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_repository")
+
+    @custom_repository.setter
+    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]):
+        pulumi.set(self, "custom_repository", value)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -670,16 +751,57 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
 
 
 @pulumi.input_type
+class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
+    def __init__(__self__, *,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
     def __init__(__self__, *,
+                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+               Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `NPMJS`.
                Possible values are: `NPMJS`.
         """
+        if custom_repository is not None:
+            pulumi.set(__self__, "custom_repository", custom_repository)
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]:
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_repository")
+
+    @custom_repository.setter
+    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]):
+        pulumi.set(self, "custom_repository", value)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -697,16 +819,57 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
 
 
 @pulumi.input_type
+class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs:
+    def __init__(__self__, *,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     def __init__(__self__, *,
+                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+               Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `PYPI`.
                Possible values are: `PYPI`.
         """
+        if custom_repository is not None:
+            pulumi.set(__self__, "custom_repository", custom_repository)
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]:
+        """
+        Settings for a remote repository with a custom uri.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_repository")
+
+    @custom_repository.setter
+    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]):
+        pulumi.set(self, "custom_repository", value)
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -721,6 +884,29 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     @public_repository.setter
     def public_repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs:
+    def __init__(__self__, *,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specific uri to the registry, e.g. `"https://pypi.io"`
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type

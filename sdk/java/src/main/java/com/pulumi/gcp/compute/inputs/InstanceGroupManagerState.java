@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
+import com.pulumi.gcp.compute.inputs.InstanceGroupManagerParamsArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulExternalIpArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStatefulInternalIpArgs;
@@ -237,6 +238,25 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InstanceGroupManagerParamsArgs> params;
+
+    /**
+     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<InstanceGroupManagerParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -365,18 +385,14 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     * 
-     * ***
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      * 
      */
     @Import(name="updatePolicy")
     private @Nullable Output<InstanceGroupManagerUpdatePolicyArgs> updatePolicy;
 
     /**
-     * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     * 
-     * ***
+     * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      * 
      */
     public Optional<Output<InstanceGroupManagerUpdatePolicyArgs>> updatePolicy() {
@@ -478,6 +494,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         this.name = $.name;
         this.namedPorts = $.namedPorts;
         this.operation = $.operation;
+        this.params = $.params;
         this.project = $.project;
         this.selfLink = $.selfLink;
         this.statefulDisks = $.statefulDisks;
@@ -799,6 +816,31 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InstanceGroupManagerParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InstanceGroupManagerParamsArgs params) {
+            return params(Output.of(params));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs. If it
          * is not provided, the provider project is used.
          * 
@@ -1027,9 +1069,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-         * 
-         * ***
+         * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
          * 
          * @return builder
          * 
@@ -1040,9 +1080,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-         * 
-         * ***
+         * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
          * 
          * @return builder
          * 

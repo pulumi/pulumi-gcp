@@ -9,90 +9,40 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetManagedZonesManagedZone {
-    /**
-     * @return A textual description field.
-     * 
-     */
     private String description;
-    /**
-     * @return The fully qualified DNS name of this zone.
-     * 
-     */
     private String dnsName;
-    /**
-     * @return DNS managed zone identifier
-     * 
-     */
     private String id;
-    /**
-     * @return Unique identifier for the resource; defined by the server.
-     * 
-     */
     private Integer managedZoneId;
-    /**
-     * @return A unique name for the resource.
-     * 
-     */
-    private String name;
-    /**
-     * @return The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-     * 
-     */
+    private @Nullable String name;
     private List<String> nameServers;
     /**
      * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      * 
      */
-    private String project;
-    /**
-     * @return The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-     * 
-     */
+    private @Nullable String project;
     private String visibility;
 
     private GetManagedZonesManagedZone() {}
-    /**
-     * @return A textual description field.
-     * 
-     */
     public String description() {
         return this.description;
     }
-    /**
-     * @return The fully qualified DNS name of this zone.
-     * 
-     */
     public String dnsName() {
         return this.dnsName;
     }
-    /**
-     * @return DNS managed zone identifier
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Unique identifier for the resource; defined by the server.
-     * 
-     */
     public Integer managedZoneId() {
         return this.managedZoneId;
     }
-    /**
-     * @return A unique name for the resource.
-     * 
-     */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
-    /**
-     * @return The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-     * 
-     */
     public List<String> nameServers() {
         return this.nameServers;
     }
@@ -100,13 +50,9 @@ public final class GetManagedZonesManagedZone {
      * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      * 
      */
-    public String project() {
-        return this.project;
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
-    /**
-     * @return The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-     * 
-     */
     public String visibility() {
         return this.visibility;
     }
@@ -124,9 +70,9 @@ public final class GetManagedZonesManagedZone {
         private String dnsName;
         private String id;
         private Integer managedZoneId;
-        private String name;
+        private @Nullable String name;
         private List<String> nameServers;
-        private String project;
+        private @Nullable String project;
         private String visibility;
         public Builder() {}
         public Builder(GetManagedZonesManagedZone defaults) {
@@ -174,10 +120,8 @@ public final class GetManagedZonesManagedZone {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetManagedZonesManagedZone", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
@@ -193,10 +137,8 @@ public final class GetManagedZonesManagedZone {
             return nameServers(List.of(nameServers));
         }
         @CustomType.Setter
-        public Builder project(String project) {
-            if (project == null) {
-              throw new MissingRequiredPropertyException("GetManagedZonesManagedZone", "project");
-            }
+        public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

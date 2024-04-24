@@ -97,41 +97,11 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         return this.networkConfig;
     }
 
-    /**
-     * The preferred single failure domain within a region.
-     * 
-     */
-    @Import(name="preferredZone")
-    private @Nullable Output<String> preferredZone;
-
-    /**
-     * @return The preferred single failure domain within a region.
-     * 
-     */
-    public Optional<Output<String>> preferredZone() {
-        return Optional.ofNullable(this.preferredZone);
-    }
-
     @Import(name="project")
     private @Nullable Output<String> project;
 
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
-    }
-
-    /**
-     * The secondary single failure domain within a region.
-     * 
-     */
-    @Import(name="secondaryZone")
-    private @Nullable Output<String> secondaryZone;
-
-    /**
-     * @return The secondary single failure domain within a region.
-     * 
-     */
-    public Optional<Output<String>> secondaryZone() {
-        return Optional.ofNullable(this.secondaryZone);
     }
 
     /**
@@ -157,9 +127,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         this.managementCluster = $.managementCluster;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
-        this.preferredZone = $.preferredZone;
         this.project = $.project;
-        this.secondaryZone = $.secondaryZone;
         this.type = $.type;
     }
 
@@ -290,27 +258,6 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
             return networkConfig(Output.of(networkConfig));
         }
 
-        /**
-         * @param preferredZone The preferred single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder preferredZone(@Nullable Output<String> preferredZone) {
-            $.preferredZone = preferredZone;
-            return this;
-        }
-
-        /**
-         * @param preferredZone The preferred single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder preferredZone(String preferredZone) {
-            return preferredZone(Output.of(preferredZone));
-        }
-
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
@@ -318,27 +265,6 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param secondaryZone The secondary single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secondaryZone(@Nullable Output<String> secondaryZone) {
-            $.secondaryZone = secondaryZone;
-            return this;
-        }
-
-        /**
-         * @param secondaryZone The secondary single failure domain within a region.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder secondaryZone(String secondaryZone) {
-            return secondaryZone(Output.of(secondaryZone));
         }
 
         /**

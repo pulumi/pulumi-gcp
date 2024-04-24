@@ -12,6 +12,7 @@ import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNp
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +53,23 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * If true, the remote repository upstream and upstream credentials will
+     * not be validated.
+     * 
+     */
+    @Import(name="disableUpstreamValidation")
+    private @Nullable Output<Boolean> disableUpstreamValidation;
+
+    /**
+     * @return If true, the remote repository upstream and upstream credentials will
+     * not be validated.
+     * 
+     */
+    public Optional<Output<Boolean>> disableUpstreamValidation() {
+        return Optional.ofNullable(this.disableUpstreamValidation);
     }
 
     /**
@@ -161,6 +179,7 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
     private RepositoryRemoteRepositoryConfigArgs(RepositoryRemoteRepositoryConfigArgs $) {
         this.aptRepository = $.aptRepository;
         this.description = $.description;
+        this.disableUpstreamValidation = $.disableUpstreamValidation;
         this.dockerRepository = $.dockerRepository;
         this.mavenRepository = $.mavenRepository;
         this.npmRepository = $.npmRepository;
@@ -229,6 +248,29 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disableUpstreamValidation If true, the remote repository upstream and upstream credentials will
+         * not be validated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableUpstreamValidation(@Nullable Output<Boolean> disableUpstreamValidation) {
+            $.disableUpstreamValidation = disableUpstreamValidation;
+            return this;
+        }
+
+        /**
+         * @param disableUpstreamValidation If true, the remote repository upstream and upstream credentials will
+         * not be validated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableUpstreamValidation(Boolean disableUpstreamValidation) {
+            return disableUpstreamValidation(Output.of(disableUpstreamValidation));
         }
 
         /**

@@ -135,8 +135,8 @@ import javax.annotation.Nullable;
  *                     .coreCount(1)
  *                     .build())
  *                 .vmImage(InstanceGceSetupVmImageArgs.builder()
- *                     .project(&#34;deeplearning-platform-release&#34;)
- *                     .family(&#34;tf-latest-gpu&#34;)
+ *                     .project(&#34;cloud-notebooks-managed&#34;)
+ *                     .family(&#34;workbench-instances&#34;)
  *                     .build())
  *                 .build())
  *             .build());

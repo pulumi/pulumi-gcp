@@ -296,6 +296,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<bool?> RequirePartitionFilter { get; private set; } = null!;
 
         /// <summary>
+        /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        /// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        /// tag key. Tag value is expected to be the short name, for example "Production".
+        /// </summary>
+        [Output("resourceTags")]
+        public Output<ImmutableDictionary<string, string>?> ResourceTags { get; private set; } = null!;
+
+        /// <summary>
         /// A JSON schema for the table.
         /// </summary>
         [Output("schema")]
@@ -516,6 +524,20 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("requirePartitionFilter")]
         public Input<bool>? RequirePartitionFilter { get; set; }
+
+        [Input("resourceTags")]
+        private InputMap<string>? _resourceTags;
+
+        /// <summary>
+        /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        /// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        /// tag key. Tag value is expected to be the short name, for example "Production".
+        /// </summary>
+        public InputMap<string> ResourceTags
+        {
+            get => _resourceTags ?? (_resourceTags = new InputMap<string>());
+            set => _resourceTags = value;
+        }
 
         /// <summary>
         /// A JSON schema for the table.
@@ -772,6 +794,20 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("requirePartitionFilter")]
         public Input<bool>? RequirePartitionFilter { get; set; }
+
+        [Input("resourceTags")]
+        private InputMap<string>? _resourceTags;
+
+        /// <summary>
+        /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        /// example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        /// tag key. Tag value is expected to be the short name, for example "Production".
+        /// </summary>
+        public InputMap<string> ResourceTags
+        {
+            get => _resourceTags ?? (_resourceTags = new InputMap<string>());
+            set => _resourceTags = value;
+        }
 
         /// <summary>
         /// A JSON schema for the table.

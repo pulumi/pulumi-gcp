@@ -224,43 +224,224 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Artifact Registry Repository Remote Custom
+ * ### Artifact Registry Repository Remote Dockerhub Auth
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const example_custom_remote_secret = new gcp.secretmanager.Secret("example-custom-remote-secret", {
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
  *     secretId: "example-secret",
  *     replication: {
  *         auto: {},
  *     },
  * });
- * const example_custom_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-custom-remote-secret_version", {
- *     secret: example_custom_remote_secret.id,
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
  *     secretData: "remote-password",
  * });
  * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
- *     secretId: example_custom_remote_secret.id,
+ *     secretId: example_remote_secret.id,
  *     role: "roles/secretmanager.secretAccessor",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
  * });
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
- *     repositoryId: "example-custom-remote",
- *     description: "example remote docker repository with credentials",
+ *     repositoryId: "example-dockerhub-remote",
+ *     description: "example remote dockerhub repository with credentials",
  *     format: "DOCKER",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
  *         description: "docker hub with custom credentials",
+ *         disableUpstreamValidation: true,
  *         dockerRepository: {
  *             publicRepository: "DOCKER_HUB",
  *         },
  *         upstreamCredentials: {
  *             usernamePasswordCredentials: {
  *                 username: "remote-username",
- *                 passwordSecretVersion: example_custom_remote_secretVersion.name,
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote Docker Custom With Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+ *     secretId: "example-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
+ *     secretData: "remote-password",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: example_remote_secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-docker-custom-remote",
+ *     description: "example remote custom docker repository with credentials",
+ *     format: "DOCKER",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "custom docker remote with credentials",
+ *         disableUpstreamValidation: true,
+ *         dockerRepository: {
+ *             customRepository: {
+ *                 uri: "https://registry-1.docker.io",
+ *             },
+ *         },
+ *         upstreamCredentials: {
+ *             usernamePasswordCredentials: {
+ *                 username: "remote-username",
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote Maven Custom With Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+ *     secretId: "example-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
+ *     secretData: "remote-password",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: example_remote_secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-maven-custom-remote",
+ *     description: "example remote custom maven repository with credentials",
+ *     format: "MAVEN",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "custom maven remote with credentials",
+ *         disableUpstreamValidation: true,
+ *         mavenRepository: {
+ *             customRepository: {
+ *                 uri: "https://my.maven.registry",
+ *             },
+ *         },
+ *         upstreamCredentials: {
+ *             usernamePasswordCredentials: {
+ *                 username: "remote-username",
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote Npm Custom With Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+ *     secretId: "example-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
+ *     secretData: "remote-password",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: example_remote_secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-npm-custom-remote",
+ *     description: "example remote custom npm repository with credentials",
+ *     format: "NPM",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "custom npm with credentials",
+ *         disableUpstreamValidation: true,
+ *         npmRepository: {
+ *             customRepository: {
+ *                 uri: "https://my.npm.registry",
+ *             },
+ *         },
+ *         upstreamCredentials: {
+ *             usernamePasswordCredentials: {
+ *                 username: "remote-username",
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote Python Custom With Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+ *     secretId: "example-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
+ *     secretData: "remote-password",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: example_remote_secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-python-custom-remote",
+ *     description: "example remote custom python repository with credentials",
+ *     format: "PYTHON",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "custom npm with credentials",
+ *         disableUpstreamValidation: true,
+ *         pythonRepository: {
+ *             customRepository: {
+ *                 uri: "https://my.python.registry",
+ *             },
+ *         },
+ *         upstreamCredentials: {
+ *             usernamePasswordCredentials: {
+ *                 username: "remote-username",
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
  *             },
  *         },
  *     },

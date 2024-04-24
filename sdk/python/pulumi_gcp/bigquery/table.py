@@ -31,6 +31,7 @@ class TableArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
@@ -77,6 +78,9 @@ class TableArgs:
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -114,6 +118,8 @@ class TableArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if table_constraints is not None:
@@ -330,6 +336,20 @@ class TableArgs:
         pulumi.set(self, "require_partition_filter", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        tag key. Tag value is expected to be the short name, for example "Production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
@@ -419,6 +439,7 @@ class _TableState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
@@ -490,6 +511,9 @@ class _TableState:
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
@@ -549,6 +573,8 @@ class _TableState:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if self_link is not None:
@@ -881,6 +907,20 @@ class _TableState:
         pulumi.set(self, "require_partition_filter", value)
 
     @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        tag key. Tag value is expected to be the short name, for example "Production".
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1000,6 +1040,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -1131,6 +1172,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -1262,6 +1306,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -1293,6 +1338,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["require_partition_filter"] = require_partition_filter
+            __props__.__dict__["resource_tags"] = resource_tags
             __props__.__dict__["schema"] = schema
             __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
@@ -1347,6 +1393,7 @@ class Table(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
             require_partition_filter: Optional[pulumi.Input[bool]] = None,
+            resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
@@ -1423,6 +1470,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+               example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+               tag key. Tag value is expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
@@ -1463,6 +1513,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["range_partitioning"] = range_partitioning
         __props__.__dict__["require_partition_filter"] = require_partition_filter
+        __props__.__dict__["resource_tags"] = resource_tags
         __props__.__dict__["schema"] = schema
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
@@ -1694,6 +1745,16 @@ class Table(pulumi.CustomResource):
         specified.
         """
         return pulumi.get(self, "require_partition_filter")
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for
+        example "123456789012/environment" where 123456789012 is the ID of the parent organization or project resource for this
+        tag key. Tag value is expected to be the short name, for example "Production".
+        """
+        return pulumi.get(self, "resource_tags")
 
     @property
     @pulumi.getter

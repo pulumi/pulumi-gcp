@@ -225,6 +225,9 @@ type WorkstationCluster struct {
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
 	Conditions WorkstationClusterConditionArrayOutput `pulumi:"conditions"`
+	// The private IP address of the control plane for this workstation cluster.
+	// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	ControlPlaneIp pulumi.StringOutput `pulumi:"controlPlaneIp"`
 	// Time when this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
@@ -325,6 +328,9 @@ type workstationClusterState struct {
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
 	Conditions []WorkstationClusterCondition `pulumi:"conditions"`
+	// The private IP address of the control plane for this workstation cluster.
+	// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	ControlPlaneIp *string `pulumi:"controlPlaneIp"`
 	// Time when this resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
@@ -382,6 +388,9 @@ type WorkstationClusterState struct {
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
 	Conditions WorkstationClusterConditionArrayInput
+	// The private IP address of the control plane for this workstation cluster.
+	// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	ControlPlaneIp pulumi.StringPtrInput
 	// Time when this resource was created.
 	CreateTime pulumi.StringPtrInput
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
@@ -602,6 +611,12 @@ func (o WorkstationClusterOutput) Annotations() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o WorkstationClusterOutput) Conditions() WorkstationClusterConditionArrayOutput {
 	return o.ApplyT(func(v *WorkstationCluster) WorkstationClusterConditionArrayOutput { return v.Conditions }).(WorkstationClusterConditionArrayOutput)
+}
+
+// The private IP address of the control plane for this workstation cluster.
+// Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+func (o WorkstationClusterOutput) ControlPlaneIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.ControlPlaneIp }).(pulumi.StringOutput)
 }
 
 // Time when this resource was created.
