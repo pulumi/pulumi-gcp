@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class RepositoryRemoteRepositoryConfigPythonRepository
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository? CustomRepository;
+        /// <summary>
         /// Address of the remote repository.
         /// Default value is `PYPI`.
         /// Possible values are: `PYPI`.
@@ -21,8 +26,12 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         public readonly string? PublicRepository;
 
         [OutputConstructor]
-        private RepositoryRemoteRepositoryConfigPythonRepository(string? publicRepository)
+        private RepositoryRemoteRepositoryConfigPythonRepository(
+            Outputs.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository? customRepository,
+
+            string? publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

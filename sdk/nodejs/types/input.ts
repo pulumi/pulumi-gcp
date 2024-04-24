@@ -3963,6 +3963,11 @@ export namespace artifactregistry {
          */
         description?: pulumi.Input<string>;
         /**
+         * If true, the remote repository upstream and upstream credentials will
+         * not be validated.
+         */
+        disableUpstreamValidation?: pulumi.Input<boolean>;
+        /**
          * Specific settings for a Docker remote repository.
          * Structure is documented below.
          */
@@ -4016,6 +4021,11 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfigDockerRepository {
         /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository>;
+        /**
          * Address of the remote repository.
          * Default value is `DOCKER_HUB`.
          * Possible values are: `DOCKER_HUB`.
@@ -4023,7 +4033,19 @@ export namespace artifactregistry {
         publicRepository?: pulumi.Input<string>;
     }
 
+    export interface RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: pulumi.Input<string>;
+    }
+
     export interface RepositoryRemoteRepositoryConfigMavenRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository>;
         /**
          * Address of the remote repository.
          * Default value is `MAVEN_CENTRAL`.
@@ -4032,7 +4054,19 @@ export namespace artifactregistry {
         publicRepository?: pulumi.Input<string>;
     }
 
+    export interface RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: pulumi.Input<string>;
+    }
+
     export interface RepositoryRemoteRepositoryConfigNpmRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository>;
         /**
          * Address of the remote repository.
          * Default value is `NPMJS`.
@@ -4041,13 +4075,32 @@ export namespace artifactregistry {
         publicRepository?: pulumi.Input<string>;
     }
 
+    export interface RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: pulumi.Input<string>;
+    }
+
     export interface RepositoryRemoteRepositoryConfigPythonRepository {
+        /**
+         * Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         */
+        customRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>;
         /**
          * Address of the remote repository.
          * Default value is `PYPI`.
          * Possible values are: `PYPI`.
          */
         publicRepository?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+        /**
+         * Specific uri to the registry, e.g. `"https://pypi.io"`
+         */
+        uri?: pulumi.Input<string>;
     }
 
     export interface RepositoryRemoteRepositoryConfigUpstreamCredentials {
@@ -10868,6 +10921,10 @@ export namespace cloudfunctionsv2 {
          */
         runtime?: pulumi.Input<string>;
         /**
+         * The fully-qualified name of the service account to be used for building the container.
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
          * The location of the function source code.
          * Structure is documented below.
          */
@@ -16887,6 +16944,13 @@ export namespace compute {
         port: pulumi.Input<number>;
     }
 
+    export interface InstanceGroupManagerParams {
+        /**
+         * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+    }
+
     export interface InstanceGroupManagerStatefulDisk {
         /**
          * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the disk when the VM is deleted, but do not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
@@ -19696,6 +19760,13 @@ export namespace compute {
          * - - -
          */
         port: pulumi.Input<number>;
+    }
+
+    export interface RegionInstanceGroupManagerParams {
+        /**
+         * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface RegionInstanceGroupManagerStatefulDisk {
@@ -42303,76 +42374,6 @@ export namespace dns {
         title: pulumi.Input<string>;
     }
 
-    export interface GetManagedZonesManagedZone {
-        /**
-         * A textual description field.
-         */
-        description?: string;
-        /**
-         * The fully qualified DNS name of this zone.
-         */
-        dnsName?: string;
-        /**
-         * DNS managed zone identifier
-         */
-        id?: string;
-        /**
-         * Unique identifier for the resource; defined by the server.
-         */
-        managedZoneId?: number;
-        /**
-         * A unique name for the resource.
-         */
-        name?: string;
-        /**
-         * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-         */
-        nameServers?: string[];
-        /**
-         * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-         */
-        project?: string;
-        /**
-         * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-         */
-        visibility?: string;
-    }
-
-    export interface GetManagedZonesManagedZoneArgs {
-        /**
-         * A textual description field.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * The fully qualified DNS name of this zone.
-         */
-        dnsName?: pulumi.Input<string>;
-        /**
-         * DNS managed zone identifier
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * Unique identifier for the resource; defined by the server.
-         */
-        managedZoneId?: pulumi.Input<number>;
-        /**
-         * A unique name for the resource.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-         */
-        nameServers?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-         */
-        project?: pulumi.Input<string>;
-        /**
-         * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
-         */
-        visibility?: pulumi.Input<string>;
-    }
-
     export interface ManagedZoneCloudLoggingConfig {
         /**
          * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
@@ -61762,6 +61763,11 @@ export namespace vmwareengine {
          * Structure is documented below.
          */
         nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterNodeTypeConfig>[]>;
+        /**
+         * The stretched cluster configuration for the private cloud.
+         * Structure is documented below.
+         */
+        stretchedClusterConfig?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterStretchedClusterConfig>;
     }
 
     export interface PrivateCloudManagementClusterNodeTypeConfig {
@@ -61770,8 +61776,6 @@ export namespace vmwareengine {
          * This number must always be one of `nodeType.availableCustomCoreCounts`.
          * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
          * This cannot be changed once the PrivateCloud is created.
-         *
-         * - - -
          */
         customCoreCount?: pulumi.Input<number>;
         /**
@@ -61782,6 +61786,19 @@ export namespace vmwareengine {
          * The identifier for this object. Format specified above.
          */
         nodeTypeId: pulumi.Input<string>;
+    }
+
+    export interface PrivateCloudManagementClusterStretchedClusterConfig {
+        /**
+         * Zone that will remain operational when connection between the two zones is lost.
+         */
+        preferredLocation?: pulumi.Input<string>;
+        /**
+         * Additional zone for a higher level of availability and load balancing.
+         *
+         * - - -
+         */
+        secondaryLocation?: pulumi.Input<string>;
     }
 
     export interface PrivateCloudNetworkConfig {

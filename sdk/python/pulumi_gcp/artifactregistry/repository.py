@@ -910,40 +910,205 @@ class Repository(pulumi.CustomResource):
                 ),
             ])
         ```
-        ### Artifact Registry Repository Remote Custom
+        ### Artifact Registry Repository Remote Dockerhub Auth
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_custom_remote_secret = gcp.secretmanager.Secret("example-custom-remote-secret",
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secret_version",
-            secret=example_custom_remote_secret.id,
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
             secret_data="remote-password")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=example_custom_remote_secret.id,
+            secret_id=example_remote_secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
-            repository_id="example-custom-remote",
-            description="example remote docker repository with credentials",
+            repository_id="example-dockerhub-remote",
+            description="example remote dockerhub repository with credentials",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="docker hub with custom credentials",
+                disable_upstream_validation=True,
                 docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
                     public_repository="DOCKER_HUB",
                 ),
                 upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
                     username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
                         username="remote-username",
-                        password_secret_version=example_custom_remote_secret_version.name,
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Docker Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-docker-custom-remote",
+            description="example remote custom docker repository with credentials",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom docker remote with credentials",
+                disable_upstream_validation=True,
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs(
+                        uri="https://registry-1.docker.io",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Maven Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-maven-custom-remote",
+            description="example remote custom maven repository with credentials",
+            format="MAVEN",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom maven remote with credentials",
+                disable_upstream_validation=True,
+                maven_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs(
+                        uri="https://my.maven.registry",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Npm Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-npm-custom-remote",
+            description="example remote custom npm repository with credentials",
+            format="NPM",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom npm with credentials",
+                disable_upstream_validation=True,
+                npm_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs(
+                        uri="https://my.npm.registry",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Python Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-python-custom-remote",
+            description="example remote custom python repository with credentials",
+            format="PYTHON",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom npm with credentials",
+                disable_upstream_validation=True,
+                python_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs(
+                        uri="https://my.python.registry",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
                     ),
                 ),
             ))
@@ -1240,40 +1405,205 @@ class Repository(pulumi.CustomResource):
                 ),
             ])
         ```
-        ### Artifact Registry Repository Remote Custom
+        ### Artifact Registry Repository Remote Dockerhub Auth
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        example_custom_remote_secret = gcp.secretmanager.Secret("example-custom-remote-secret",
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
             secret_id="example-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
-        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secret_version",
-            secret=example_custom_remote_secret.id,
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
             secret_data="remote-password")
         secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=example_custom_remote_secret.id,
+            secret_id=example_remote_secret.id,
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
-            repository_id="example-custom-remote",
-            description="example remote docker repository with credentials",
+            repository_id="example-dockerhub-remote",
+            description="example remote dockerhub repository with credentials",
             format="DOCKER",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="docker hub with custom credentials",
+                disable_upstream_validation=True,
                 docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
                     public_repository="DOCKER_HUB",
                 ),
                 upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
                     username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
                         username="remote-username",
-                        password_secret_version=example_custom_remote_secret_version.name,
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Docker Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-docker-custom-remote",
+            description="example remote custom docker repository with credentials",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom docker remote with credentials",
+                disable_upstream_validation=True,
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs(
+                        uri="https://registry-1.docker.io",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Maven Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-maven-custom-remote",
+            description="example remote custom maven repository with credentials",
+            format="MAVEN",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom maven remote with credentials",
+                disable_upstream_validation=True,
+                maven_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs(
+                        uri="https://my.maven.registry",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Npm Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-npm-custom-remote",
+            description="example remote custom npm repository with credentials",
+            format="NPM",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom npm with credentials",
+                disable_upstream_validation=True,
+                npm_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs(
+                        uri="https://my.npm.registry",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
+                    ),
+                ),
+            ))
+        ```
+        ### Artifact Registry Repository Remote Python Custom With Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-python-custom-remote",
+            description="example remote custom python repository with credentials",
+            format="PYTHON",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="custom npm with credentials",
+                disable_upstream_validation=True,
+                python_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryArgs(
+                    custom_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs(
+                        uri="https://my.python.registry",
+                    ),
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_remote_secret_version.name,
                     ),
                 ),
             ))

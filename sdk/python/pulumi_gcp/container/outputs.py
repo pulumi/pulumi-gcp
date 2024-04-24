@@ -15043,7 +15043,7 @@ class GetClusterMasterAuthorizedNetworksConfigResult(dict):
                  gcp_public_cidrs_access_enabled: bool):
         """
         :param Sequence['GetClusterMasterAuthorizedNetworksConfigCidrBlockArgs'] cidr_blocks: External networks that can access the Kubernetes cluster master through HTTPS.
-        :param bool gcp_public_cidrs_access_enabled: Whether master is accessbile via Google Compute Engine Public IP addresses.
+        :param bool gcp_public_cidrs_access_enabled: Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
         """
         pulumi.set(__self__, "cidr_blocks", cidr_blocks)
         pulumi.set(__self__, "gcp_public_cidrs_access_enabled", gcp_public_cidrs_access_enabled)
@@ -15060,7 +15060,7 @@ class GetClusterMasterAuthorizedNetworksConfigResult(dict):
     @pulumi.getter(name="gcpPublicCidrsAccessEnabled")
     def gcp_public_cidrs_access_enabled(self) -> bool:
         """
-        Whether master is accessbile via Google Compute Engine Public IP addresses.
+        Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
         """
         return pulumi.get(self, "gcp_public_cidrs_access_enabled")
 
@@ -18403,7 +18403,7 @@ class GetClusterServiceExternalIpsConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: When enabled, services with exterenal ips specified will be allowed.
+        :param bool enabled: When enabled, services with external ips specified will be allowed.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -18411,7 +18411,7 @@ class GetClusterServiceExternalIpsConfigResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        When enabled, services with exterenal ips specified will be allowed.
+        When enabled, services with external ips specified will be allowed.
         """
         return pulumi.get(self, "enabled")
 

@@ -269,6 +269,22 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
         return this.conditions;
     }
     /**
+     * The private IP address of the control plane for this workstation cluster.
+     * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     * 
+     */
+    @Export(name="controlPlaneIp", refs={String.class}, tree="[0]")
+    private Output<String> controlPlaneIp;
+
+    /**
+     * @return The private IP address of the control plane for this workstation cluster.
+     * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     * 
+     */
+    public Output<String> controlPlaneIp() {
+        return this.controlPlaneIp;
+    }
+    /**
      * Time when this resource was created.
      * 
      */

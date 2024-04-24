@@ -129,6 +129,7 @@ __all__ = [
     'InstanceGroupManagerAutoHealingPolicies',
     'InstanceGroupManagerInstanceLifecyclePolicy',
     'InstanceGroupManagerNamedPort',
+    'InstanceGroupManagerParams',
     'InstanceGroupManagerStatefulDisk',
     'InstanceGroupManagerStatefulExternalIp',
     'InstanceGroupManagerStatefulInternalIp',
@@ -260,6 +261,7 @@ __all__ = [
     'RegionInstanceGroupManagerAutoHealingPolicies',
     'RegionInstanceGroupManagerInstanceLifecyclePolicy',
     'RegionInstanceGroupManagerNamedPort',
+    'RegionInstanceGroupManagerParams',
     'RegionInstanceGroupManagerStatefulDisk',
     'RegionInstanceGroupManagerStatefulExternalIp',
     'RegionInstanceGroupManagerStatefulInternalIp',
@@ -578,6 +580,7 @@ __all__ = [
     'GetInstanceGroupManagerAutoHealingPolicyResult',
     'GetInstanceGroupManagerInstanceLifecyclePolicyResult',
     'GetInstanceGroupManagerNamedPortResult',
+    'GetInstanceGroupManagerParamResult',
     'GetInstanceGroupManagerStatefulDiskResult',
     'GetInstanceGroupManagerStatefulExternalIpResult',
     'GetInstanceGroupManagerStatefulInternalIpResult',
@@ -9474,6 +9477,42 @@ class InstanceGroupManagerNamedPort(dict):
         - - -
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class InstanceGroupManagerParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param Mapping[str, Any] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -18660,6 +18699,42 @@ class RegionInstanceGroupManagerNamedPort(dict):
         - - -
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param Mapping[str, Any] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -42189,6 +42264,24 @@ class GetInstanceGroupManagerNamedPortResult(dict):
         The port number.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetInstanceGroupManagerParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, Any]):
+        """
+        :param Mapping[str, Any] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, Any]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type

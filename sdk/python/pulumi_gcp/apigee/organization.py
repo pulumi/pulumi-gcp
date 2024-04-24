@@ -18,8 +18,11 @@ class OrganizationArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str],
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -34,10 +37,16 @@ class OrganizationArgs:
                
                - - -
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
+        :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers using non-default data residency regions.
+               Apigee stores some control plane data only in single region.
+               This field determines which single region Apigee should use.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+               Only used for the data residency region "US" or "EU".
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -64,10 +73,16 @@ class OrganizationArgs:
         pulumi.set(__self__, "project_id", project_id)
         if analytics_region is not None:
             pulumi.set(__self__, "analytics_region", analytics_region)
+        if api_consumer_data_encryption_key_name is not None:
+            pulumi.set(__self__, "api_consumer_data_encryption_key_name", api_consumer_data_encryption_key_name)
+        if api_consumer_data_location is not None:
+            pulumi.set(__self__, "api_consumer_data_location", api_consumer_data_location)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
         if billing_type is not None:
             pulumi.set(__self__, "billing_type", billing_type)
+        if control_plane_encryption_key_name is not None:
+            pulumi.set(__self__, "control_plane_encryption_key_name", control_plane_encryption_key_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_vpc_peering is not None:
@@ -111,6 +126,32 @@ class OrganizationArgs:
         pulumi.set(self, "analytics_region", value)
 
     @property
+    @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
+    def api_consumer_data_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting API consumer data.
+        """
+        return pulumi.get(self, "api_consumer_data_encryption_key_name")
+
+    @api_consumer_data_encryption_key_name.setter
+    def api_consumer_data_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_consumer_data_encryption_key_name", value)
+
+    @property
+    @pulumi.getter(name="apiConsumerDataLocation")
+    def api_consumer_data_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is needed only for customers using non-default data residency regions.
+        Apigee stores some control plane data only in single region.
+        This field determines which single region Apigee should use.
+        """
+        return pulumi.get(self, "api_consumer_data_location")
+
+    @api_consumer_data_location.setter
+    def api_consumer_data_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_consumer_data_location", value)
+
+    @property
     @pulumi.getter(name="authorizedNetwork")
     def authorized_network(self) -> Optional[pulumi.Input[str]]:
         """
@@ -135,6 +176,19 @@ class OrganizationArgs:
     @billing_type.setter
     def billing_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "billing_type", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneEncryptionKeyName")
+    def control_plane_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+        Only used for the data residency region "US" or "EU".
+        """
+        return pulumi.get(self, "control_plane_encryption_key_name")
+
+    @control_plane_encryption_key_name.setter
+    def control_plane_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_encryption_key_name", value)
 
     @property
     @pulumi.getter
@@ -240,10 +294,13 @@ class OrganizationArgs:
 class _OrganizationState:
     def __init__(__self__, *,
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  apigee_project_id: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -257,6 +314,10 @@ class _OrganizationState:
         """
         Input properties used for looking up and filtering Organization resources.
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
+        :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers using non-default data residency regions.
+               Apigee stores some control plane data only in single region.
+               This field determines which single region Apigee should use.
         :param pulumi.Input[str] apigee_project_id: Output only. Project ID of the Apigee Tenant Project.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
@@ -264,6 +325,8 @@ class _OrganizationState:
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
                Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
+        :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+               Only used for the data residency region "US" or "EU".
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -296,6 +359,10 @@ class _OrganizationState:
         """
         if analytics_region is not None:
             pulumi.set(__self__, "analytics_region", analytics_region)
+        if api_consumer_data_encryption_key_name is not None:
+            pulumi.set(__self__, "api_consumer_data_encryption_key_name", api_consumer_data_encryption_key_name)
+        if api_consumer_data_location is not None:
+            pulumi.set(__self__, "api_consumer_data_location", api_consumer_data_location)
         if apigee_project_id is not None:
             pulumi.set(__self__, "apigee_project_id", apigee_project_id)
         if authorized_network is not None:
@@ -304,6 +371,8 @@ class _OrganizationState:
             pulumi.set(__self__, "billing_type", billing_type)
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if control_plane_encryption_key_name is not None:
+            pulumi.set(__self__, "control_plane_encryption_key_name", control_plane_encryption_key_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_vpc_peering is not None:
@@ -336,6 +405,32 @@ class _OrganizationState:
     @analytics_region.setter
     def analytics_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "analytics_region", value)
+
+    @property
+    @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
+    def api_consumer_data_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting API consumer data.
+        """
+        return pulumi.get(self, "api_consumer_data_encryption_key_name")
+
+    @api_consumer_data_encryption_key_name.setter
+    def api_consumer_data_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_consumer_data_encryption_key_name", value)
+
+    @property
+    @pulumi.getter(name="apiConsumerDataLocation")
+    def api_consumer_data_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is needed only for customers using non-default data residency regions.
+        Apigee stores some control plane data only in single region.
+        This field determines which single region Apigee should use.
+        """
+        return pulumi.get(self, "api_consumer_data_location")
+
+    @api_consumer_data_location.setter
+    def api_consumer_data_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_consumer_data_location", value)
 
     @property
     @pulumi.getter(name="apigeeProjectId")
@@ -387,6 +482,19 @@ class _OrganizationState:
     @ca_certificate.setter
     def ca_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ca_certificate", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneEncryptionKeyName")
+    def control_plane_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+        Only used for the data residency region "US" or "EU".
+        """
+        return pulumi.get(self, "control_plane_encryption_key_name")
+
+    @control_plane_encryption_key_name.setter
+    def control_plane_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_encryption_key_name", value)
 
     @property
     @pulumi.getter
@@ -534,8 +642,11 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -681,10 +792,16 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
+        :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers using non-default data residency regions.
+               Apigee stores some control plane data only in single region.
+               This field determines which single region Apigee should use.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+               Only used for the data residency region "US" or "EU".
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -867,8 +984,11 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -887,8 +1007,11 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["analytics_region"] = analytics_region
+            __props__.__dict__["api_consumer_data_encryption_key_name"] = api_consumer_data_encryption_key_name
+            __props__.__dict__["api_consumer_data_location"] = api_consumer_data_location
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["billing_type"] = billing_type
+            __props__.__dict__["control_plane_encryption_key_name"] = control_plane_encryption_key_name
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
             __props__.__dict__["display_name"] = display_name
@@ -914,10 +1037,13 @@ class Organization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             analytics_region: Optional[pulumi.Input[str]] = None,
+            api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+            api_consumer_data_location: Optional[pulumi.Input[str]] = None,
             apigee_project_id: Optional[pulumi.Input[str]] = None,
             authorized_network: Optional[pulumi.Input[str]] = None,
             billing_type: Optional[pulumi.Input[str]] = None,
             ca_certificate: Optional[pulumi.Input[str]] = None,
+            control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -936,6 +1062,10 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
+        :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers using non-default data residency regions.
+               Apigee stores some control plane data only in single region.
+               This field determines which single region Apigee should use.
         :param pulumi.Input[str] apigee_project_id: Output only. Project ID of the Apigee Tenant Project.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
@@ -943,6 +1073,8 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
                Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
+        :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+               Only used for the data residency region "US" or "EU".
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -978,10 +1110,13 @@ class Organization(pulumi.CustomResource):
         __props__ = _OrganizationState.__new__(_OrganizationState)
 
         __props__.__dict__["analytics_region"] = analytics_region
+        __props__.__dict__["api_consumer_data_encryption_key_name"] = api_consumer_data_encryption_key_name
+        __props__.__dict__["api_consumer_data_location"] = api_consumer_data_location
         __props__.__dict__["apigee_project_id"] = apigee_project_id
         __props__.__dict__["authorized_network"] = authorized_network
         __props__.__dict__["billing_type"] = billing_type
         __props__.__dict__["ca_certificate"] = ca_certificate
+        __props__.__dict__["control_plane_encryption_key_name"] = control_plane_encryption_key_name
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
         __props__.__dict__["display_name"] = display_name
@@ -1001,6 +1136,24 @@ class Organization(pulumi.CustomResource):
         Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
+
+    @property
+    @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
+    def api_consumer_data_encryption_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cloud KMS key name used for encrypting API consumer data.
+        """
+        return pulumi.get(self, "api_consumer_data_encryption_key_name")
+
+    @property
+    @pulumi.getter(name="apiConsumerDataLocation")
+    def api_consumer_data_location(self) -> pulumi.Output[Optional[str]]:
+        """
+        This field is needed only for customers using non-default data residency regions.
+        Apigee stores some control plane data only in single region.
+        This field determines which single region Apigee should use.
+        """
+        return pulumi.get(self, "api_consumer_data_location")
 
     @property
     @pulumi.getter(name="apigeeProjectId")
@@ -1036,6 +1189,15 @@ class Organization(pulumi.CustomResource):
         Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         """
         return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="controlPlaneEncryptionKeyName")
+    def control_plane_encryption_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+        Only used for the data residency region "US" or "EU".
+        """
+        return pulumi.get(self, "control_plane_encryption_key_name")
 
     @property
     @pulumi.getter

@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult
     {
         /// <summary>
+        /// Settings for a remote repository with a custom uri.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryResult> CustomRepositories;
+        /// <summary>
         /// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
         /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]
-        private GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(string publicRepository)
+        private GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryResult> customRepositories,
+
+            string publicRepository)
         {
+            CustomRepositories = customRepositories;
             PublicRepository = publicRepository;
         }
     }

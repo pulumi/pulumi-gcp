@@ -274,7 +274,7 @@ public class Document extends com.pulumi.resources.CustomResource {
         return this.fields;
     }
     /**
-     * A server defined name for this index. Format:
+     * A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
@@ -282,7 +282,7 @@ public class Document extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return A server defined name for this index. Format:
+     * @return A server defined name for this document. Format:
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */

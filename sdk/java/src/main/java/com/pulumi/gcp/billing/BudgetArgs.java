@@ -101,6 +101,23 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
+     * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+     * 
+     */
+    @Import(name="ownershipScope")
+    private @Nullable Output<String> ownershipScope;
+
+    /**
+     * @return The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
+     * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+     * 
+     */
+    public Optional<Output<String>> ownershipScope() {
+        return Optional.ofNullable(this.ownershipScope);
+    }
+
+    /**
      * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
      * the budget.
      * 
@@ -125,6 +142,7 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
         this.billingAccount = $.billingAccount;
         this.budgetFilter = $.budgetFilter;
         this.displayName = $.displayName;
+        this.ownershipScope = $.ownershipScope;
         this.thresholdRules = $.thresholdRules;
     }
 
@@ -253,6 +271,29 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param ownershipScope The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
+         * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipScope(@Nullable Output<String> ownershipScope) {
+            $.ownershipScope = ownershipScope;
+            return this;
+        }
+
+        /**
+         * @param ownershipScope The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
+         * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownershipScope(String ownershipScope) {
+            return ownershipScope(Output.of(ownershipScope));
         }
 
         /**

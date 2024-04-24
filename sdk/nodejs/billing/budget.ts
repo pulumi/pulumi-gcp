@@ -282,6 +282,11 @@ export class Budget extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
+     * budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+     */
+    public readonly ownershipScope!: pulumi.Output<string | undefined>;
+    /**
      * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
      * the budget.
      */
@@ -306,6 +311,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["budgetFilter"] = state ? state.budgetFilter : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ownershipScope"] = state ? state.ownershipScope : undefined;
             resourceInputs["thresholdRules"] = state ? state.thresholdRules : undefined;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
@@ -320,6 +326,7 @@ export class Budget extends pulumi.CustomResource {
             resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
             resourceInputs["budgetFilter"] = args ? args.budgetFilter : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["ownershipScope"] = args ? args.ownershipScope : undefined;
             resourceInputs["thresholdRules"] = args ? args.thresholdRules : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -361,6 +368,11 @@ export interface BudgetState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
+     * budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+     */
+    ownershipScope?: pulumi.Input<string>;
+    /**
      * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
      * the budget.
      */
@@ -393,6 +405,11 @@ export interface BudgetArgs {
      * User data for display name in UI. Must be <= 60 chars.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
+     * budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+     */
+    ownershipScope?: pulumi.Input<string>;
     /**
      * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
      * the budget.

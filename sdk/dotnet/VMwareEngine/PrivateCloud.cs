@@ -182,20 +182,8 @@ namespace Pulumi.Gcp.VMwareEngine
         [Output("nsxes")]
         public Output<ImmutableArray<Outputs.PrivateCloudNsx>> Nsxes { get; private set; } = null!;
 
-        /// <summary>
-        /// The preferred single failure domain within a region.
-        /// </summary>
-        [Output("preferredZone")]
-        public Output<string?> PreferredZone { get; private set; } = null!;
-
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
-
-        /// <summary>
-        /// The secondary single failure domain within a region.
-        /// </summary>
-        [Output("secondaryZone")]
-        public Output<string?> SecondaryZone { get; private set; } = null!;
 
         /// <summary>
         /// State of the appliance.
@@ -301,20 +289,8 @@ namespace Pulumi.Gcp.VMwareEngine
         [Input("networkConfig", required: true)]
         public Input<Inputs.PrivateCloudNetworkConfigArgs> NetworkConfig { get; set; } = null!;
 
-        /// <summary>
-        /// The preferred single failure domain within a region.
-        /// </summary>
-        [Input("preferredZone")]
-        public Input<string>? PreferredZone { get; set; }
-
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The secondary single failure domain within a region.
-        /// </summary>
-        [Input("secondaryZone")]
-        public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
         /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
@@ -388,20 +364,8 @@ namespace Pulumi.Gcp.VMwareEngine
             set => _nsxes = value;
         }
 
-        /// <summary>
-        /// The preferred single failure domain within a region.
-        /// </summary>
-        [Input("preferredZone")]
-        public Input<string>? PreferredZone { get; set; }
-
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The secondary single failure domain within a region.
-        /// </summary>
-        [Input("secondaryZone")]
-        public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
         /// State of the appliance.

@@ -25,6 +25,7 @@ class InstanceGroupManagerArgs:
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
+                 params: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]]] = None,
@@ -66,6 +67,9 @@ class InstanceGroupManagerArgs:
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
+        :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -76,9 +80,7 @@ class InstanceGroupManagerArgs:
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
-        :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
+        :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
@@ -107,6 +109,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
             pulumi.set(__self__, "named_ports", named_ports)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if stateful_disks is not None:
@@ -258,6 +262,20 @@ class InstanceGroupManagerArgs:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
+        """
+        Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+
+        - - -
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs. If it
@@ -336,9 +354,7 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']]:
         """
-        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-
-        - - -
+        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         """
         return pulumi.get(self, "update_policy")
 
@@ -406,6 +422,7 @@ class _InstanceGroupManagerState:
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
                  operation: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]]] = None,
@@ -450,6 +467,9 @@ class _InstanceGroupManagerState:
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
+        :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
@@ -462,9 +482,7 @@ class _InstanceGroupManagerState:
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
-        :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
+        :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -504,6 +522,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "named_ports", named_ports)
         if operation is not None:
             pulumi.set(__self__, "operation", operation)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
@@ -692,6 +712,20 @@ class _InstanceGroupManagerState:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
+        """
+        Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+
+        - - -
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs. If it
@@ -794,9 +828,7 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']]:
         """
-        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-
-        - - -
+        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         """
         return pulumi.get(self, "update_policy")
 
@@ -876,6 +908,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
@@ -1024,6 +1057,9 @@ class InstanceGroupManager(pulumi.CustomResource):
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
@@ -1034,9 +1070,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -1189,6 +1223,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
                  stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulExternalIpArgs']]]]] = None,
@@ -1219,6 +1254,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["stateful_disks"] = stateful_disks
             __props__.__dict__["stateful_external_ips"] = stateful_external_ips
@@ -1260,6 +1296,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
             operation: Optional[pulumi.Input[str]] = None,
+            params: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerStatefulDiskArgs']]]]] = None,
@@ -1309,6 +1346,9 @@ class InstanceGroupManager(pulumi.CustomResource):
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
@@ -1321,9 +1361,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                not affect existing instances.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -1355,6 +1393,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["named_ports"] = named_ports
         __props__.__dict__["operation"] = operation
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stateful_disks"] = stateful_disks
@@ -1483,6 +1522,16 @@ class InstanceGroupManager(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerParams']]:
+        """
+        Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+
+        - - -
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
         The ID of the project in which the resource belongs. If it
@@ -1553,9 +1602,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="updatePolicy")
     def update_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerUpdatePolicy']:
         """
-        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-
-        - - -
+        The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
         """
         return pulumi.get(self, "update_policy")
 

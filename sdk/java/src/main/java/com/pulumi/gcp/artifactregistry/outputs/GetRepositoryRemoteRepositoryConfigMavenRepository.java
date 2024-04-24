@@ -5,11 +5,18 @@ package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigMavenRepository {
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * 
+     */
+    private List<GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository> customRepositories;
     /**
      * @return Address of the remote repository. Default value: &#34;MAVEN_CENTRAL&#34; Possible values: [&#34;MAVEN_CENTRAL&#34;]
      * 
@@ -17,6 +24,13 @@ public final class GetRepositoryRemoteRepositoryConfigMavenRepository {
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigMavenRepository() {}
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * 
+     */
+    public List<GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository> customRepositories() {
+        return this.customRepositories;
+    }
     /**
      * @return Address of the remote repository. Default value: &#34;MAVEN_CENTRAL&#34; Possible values: [&#34;MAVEN_CENTRAL&#34;]
      * 
@@ -34,13 +48,26 @@ public final class GetRepositoryRemoteRepositoryConfigMavenRepository {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository> customRepositories;
         private String publicRepository;
         public Builder() {}
         public Builder(GetRepositoryRemoteRepositoryConfigMavenRepository defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customRepositories = defaults.customRepositories;
     	      this.publicRepository = defaults.publicRepository;
         }
 
+        @CustomType.Setter
+        public Builder customRepositories(List<GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository> customRepositories) {
+            if (customRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigMavenRepository", "customRepositories");
+            }
+            this.customRepositories = customRepositories;
+            return this;
+        }
+        public Builder customRepositories(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository... customRepositories) {
+            return customRepositories(List.of(customRepositories));
+        }
         @CustomType.Setter
         public Builder publicRepository(String publicRepository) {
             if (publicRepository == null) {
@@ -51,6 +78,7 @@ public final class GetRepositoryRemoteRepositoryConfigMavenRepository {
         }
         public GetRepositoryRemoteRepositoryConfigMavenRepository build() {
             final var _resultValue = new GetRepositoryRemoteRepositoryConfigMavenRepository();
+            _resultValue.customRepositories = customRepositories;
             _resultValue.publicRepository = publicRepository;
             return _resultValue;
         }

@@ -23,8 +23,6 @@ public final class PrivateCloudManagementClusterNodeTypeConfigArgs extends com.p
      * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
      * This cannot be changed once the PrivateCloud is created.
      * 
-     * ***
-     * 
      */
     @Import(name="customCoreCount")
     private @Nullable Output<Integer> customCoreCount;
@@ -34,8 +32,6 @@ public final class PrivateCloudManagementClusterNodeTypeConfigArgs extends com.p
      * This number must always be one of `nodeType.availableCustomCoreCounts`.
      * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
      * This cannot be changed once the PrivateCloud is created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> customCoreCount() {
@@ -104,8 +100,6 @@ public final class PrivateCloudManagementClusterNodeTypeConfigArgs extends com.p
          * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
          * This cannot be changed once the PrivateCloud is created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -119,8 +113,6 @@ public final class PrivateCloudManagementClusterNodeTypeConfigArgs extends com.p
          * This number must always be one of `nodeType.availableCustomCoreCounts`.
          * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
          * This cannot be changed once the PrivateCloud is created.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -19,6 +19,7 @@ __all__ = [
     'PrivateCloudHcxArgs',
     'PrivateCloudManagementClusterArgs',
     'PrivateCloudManagementClusterNodeTypeConfigArgs',
+    'PrivateCloudManagementClusterStretchedClusterConfigArgs',
     'PrivateCloudNetworkConfigArgs',
     'PrivateCloudNsxArgs',
     'PrivateCloudVcenterArgs',
@@ -370,7 +371,8 @@ class PrivateCloudHcxArgs:
 class PrivateCloudManagementClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]] = None):
+                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]] = None,
+                 stretched_cluster_config: Optional[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs']] = None):
         """
         :param pulumi.Input[str] cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
                * Only contains 1-63 alphanumeric characters and hyphens
@@ -381,10 +383,14 @@ class PrivateCloudManagementClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
+        :param pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs'] stretched_cluster_config: The stretched cluster configuration for the private cloud.
+               Structure is documented below.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if node_type_configs is not None:
             pulumi.set(__self__, "node_type_configs", node_type_configs)
+        if stretched_cluster_config is not None:
+            pulumi.set(__self__, "stretched_cluster_config", stretched_cluster_config)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -417,6 +423,19 @@ class PrivateCloudManagementClusterArgs:
     def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
+    @property
+    @pulumi.getter(name="stretchedClusterConfig")
+    def stretched_cluster_config(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs']]:
+        """
+        The stretched cluster configuration for the private cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stretched_cluster_config")
+
+    @stretched_cluster_config.setter
+    def stretched_cluster_config(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs']]):
+        pulumi.set(self, "stretched_cluster_config", value)
+
 
 @pulumi.input_type
 class PrivateCloudManagementClusterNodeTypeConfigArgs:
@@ -431,8 +450,6 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
                This number must always be one of `nodeType.availableCustomCoreCounts`.
                If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
                This cannot be changed once the PrivateCloud is created.
-               
-               - - -
         """
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_type_id", node_type_id)
@@ -471,14 +488,55 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
         This number must always be one of `nodeType.availableCustomCoreCounts`.
         If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
         This cannot be changed once the PrivateCloud is created.
-
-        - - -
         """
         return pulumi.get(self, "custom_core_count")
 
     @custom_core_count.setter
     def custom_core_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "custom_core_count", value)
+
+
+@pulumi.input_type
+class PrivateCloudManagementClusterStretchedClusterConfigArgs:
+    def __init__(__self__, *,
+                 preferred_location: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] preferred_location: Zone that will remain operational when connection between the two zones is lost.
+        :param pulumi.Input[str] secondary_location: Additional zone for a higher level of availability and load balancing.
+               
+               - - -
+        """
+        if preferred_location is not None:
+            pulumi.set(__self__, "preferred_location", preferred_location)
+        if secondary_location is not None:
+            pulumi.set(__self__, "secondary_location", secondary_location)
+
+    @property
+    @pulumi.getter(name="preferredLocation")
+    def preferred_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone that will remain operational when connection between the two zones is lost.
+        """
+        return pulumi.get(self, "preferred_location")
+
+    @preferred_location.setter
+    def preferred_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_location", value)
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional zone for a higher level of availability and load balancing.
+
+        - - -
+        """
+        return pulumi.get(self, "secondary_location")
+
+    @secondary_location.setter
+    def secondary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_location", value)
 
 
 @pulumi.input_type

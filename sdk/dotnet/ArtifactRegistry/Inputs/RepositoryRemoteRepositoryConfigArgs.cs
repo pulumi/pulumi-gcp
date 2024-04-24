@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If true, the remote repository upstream and upstream credentials will
+        /// not be validated.
+        /// </summary>
+        [Input("disableUpstreamValidation")]
+        public Input<bool>? DisableUpstreamValidation { get; set; }
+
+        /// <summary>
         /// Specific settings for a Docker remote repository.
         /// Structure is documented below.
         /// </summary>

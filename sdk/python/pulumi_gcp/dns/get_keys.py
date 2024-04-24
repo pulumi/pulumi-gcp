@@ -43,7 +43,7 @@ class GetKeysResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        Unique identifier for the resource; defined by the server.
+        The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
 

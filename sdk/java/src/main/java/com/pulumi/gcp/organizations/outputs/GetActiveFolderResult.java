@@ -7,9 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetActiveFolderResult {
+    private @Nullable String apiMethod;
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +27,9 @@ public final class GetActiveFolderResult {
     private String parent;
 
     private GetActiveFolderResult() {}
+    public Optional<String> apiMethod() {
+        return Optional.ofNullable(this.apiMethod);
+    }
     public String displayName() {
         return this.displayName;
     }
@@ -54,6 +60,7 @@ public final class GetActiveFolderResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String apiMethod;
         private String displayName;
         private String id;
         private String name;
@@ -61,12 +68,19 @@ public final class GetActiveFolderResult {
         public Builder() {}
         public Builder(GetActiveFolderResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiMethod = defaults.apiMethod;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
+        public Builder apiMethod(@Nullable String apiMethod) {
+
+            this.apiMethod = apiMethod;
+            return this;
+        }
         @CustomType.Setter
         public Builder displayName(String displayName) {
             if (displayName == null) {
@@ -101,6 +115,7 @@ public final class GetActiveFolderResult {
         }
         public GetActiveFolderResult build() {
             final var _resultValue = new GetActiveFolderResult();
+            _resultValue.apiMethod = apiMethod;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.name = name;

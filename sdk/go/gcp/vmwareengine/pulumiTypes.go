@@ -929,6 +929,9 @@ type PrivateCloudManagementCluster struct {
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs []PrivateCloudManagementClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
+	// The stretched cluster configuration for the private cloud.
+	// Structure is documented below.
+	StretchedClusterConfig *PrivateCloudManagementClusterStretchedClusterConfig `pulumi:"stretchedClusterConfig"`
 }
 
 // PrivateCloudManagementClusterInput is an input type that accepts PrivateCloudManagementClusterArgs and PrivateCloudManagementClusterOutput values.
@@ -954,6 +957,9 @@ type PrivateCloudManagementClusterArgs struct {
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs PrivateCloudManagementClusterNodeTypeConfigArrayInput `pulumi:"nodeTypeConfigs"`
+	// The stretched cluster configuration for the private cloud.
+	// Structure is documented below.
+	StretchedClusterConfig PrivateCloudManagementClusterStretchedClusterConfigPtrInput `pulumi:"stretchedClusterConfig"`
 }
 
 func (PrivateCloudManagementClusterArgs) ElementType() reflect.Type {
@@ -1052,6 +1058,14 @@ func (o PrivateCloudManagementClusterOutput) NodeTypeConfigs() PrivateCloudManag
 	}).(PrivateCloudManagementClusterNodeTypeConfigArrayOutput)
 }
 
+// The stretched cluster configuration for the private cloud.
+// Structure is documented below.
+func (o PrivateCloudManagementClusterOutput) StretchedClusterConfig() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementCluster) *PrivateCloudManagementClusterStretchedClusterConfig {
+		return v.StretchedClusterConfig
+	}).(PrivateCloudManagementClusterStretchedClusterConfigPtrOutput)
+}
+
 type PrivateCloudManagementClusterPtrOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudManagementClusterPtrOutput) ElementType() reflect.Type {
@@ -1103,13 +1117,22 @@ func (o PrivateCloudManagementClusterPtrOutput) NodeTypeConfigs() PrivateCloudMa
 	}).(PrivateCloudManagementClusterNodeTypeConfigArrayOutput)
 }
 
+// The stretched cluster configuration for the private cloud.
+// Structure is documented below.
+func (o PrivateCloudManagementClusterPtrOutput) StretchedClusterConfig() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementCluster) *PrivateCloudManagementClusterStretchedClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StretchedClusterConfig
+	}).(PrivateCloudManagementClusterStretchedClusterConfigPtrOutput)
+}
+
 type PrivateCloudManagementClusterNodeTypeConfig struct {
 	// Customized number of cores available to each node of the type.
 	// This number must always be one of `nodeType.availableCustomCoreCounts`.
 	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
 	// This cannot be changed once the PrivateCloud is created.
-	//
-	// ***
 	CustomCoreCount *int `pulumi:"customCoreCount"`
 	// The number of nodes of this type in the cluster.
 	NodeCount int `pulumi:"nodeCount"`
@@ -1133,8 +1156,6 @@ type PrivateCloudManagementClusterNodeTypeConfigArgs struct {
 	// This number must always be one of `nodeType.availableCustomCoreCounts`.
 	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
 	// This cannot be changed once the PrivateCloud is created.
-	//
-	// ***
 	CustomCoreCount pulumi.IntPtrInput `pulumi:"customCoreCount"`
 	// The number of nodes of this type in the cluster.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
@@ -1197,8 +1218,6 @@ func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToPrivateCloudManagem
 // This number must always be one of `nodeType.availableCustomCoreCounts`.
 // If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
 // This cannot be changed once the PrivateCloud is created.
-//
-// ***
 func (o PrivateCloudManagementClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterNodeTypeConfig) *int { return v.CustomCoreCount }).(pulumi.IntPtrOutput)
 }
@@ -1231,6 +1250,170 @@ func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudManagementClusterNodeTypeConfig {
 		return vs[0].([]PrivateCloudManagementClusterNodeTypeConfig)[vs[1].(int)]
 	}).(PrivateCloudManagementClusterNodeTypeConfigOutput)
+}
+
+type PrivateCloudManagementClusterStretchedClusterConfig struct {
+	// Zone that will remain operational when connection between the two zones is lost.
+	PreferredLocation *string `pulumi:"preferredLocation"`
+	// Additional zone for a higher level of availability and load balancing.
+	//
+	// ***
+	SecondaryLocation *string `pulumi:"secondaryLocation"`
+}
+
+// PrivateCloudManagementClusterStretchedClusterConfigInput is an input type that accepts PrivateCloudManagementClusterStretchedClusterConfigArgs and PrivateCloudManagementClusterStretchedClusterConfigOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterStretchedClusterConfigInput` via:
+//
+//	PrivateCloudManagementClusterStretchedClusterConfigArgs{...}
+type PrivateCloudManagementClusterStretchedClusterConfigInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterStretchedClusterConfigOutput() PrivateCloudManagementClusterStretchedClusterConfigOutput
+	ToPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(context.Context) PrivateCloudManagementClusterStretchedClusterConfigOutput
+}
+
+type PrivateCloudManagementClusterStretchedClusterConfigArgs struct {
+	// Zone that will remain operational when connection between the two zones is lost.
+	PreferredLocation pulumi.StringPtrInput `pulumi:"preferredLocation"`
+	// Additional zone for a higher level of availability and load balancing.
+	//
+	// ***
+	SecondaryLocation pulumi.StringPtrInput `pulumi:"secondaryLocation"`
+}
+
+func (PrivateCloudManagementClusterStretchedClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterStretchedClusterConfigArgs) ToPrivateCloudManagementClusterStretchedClusterConfigOutput() PrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return i.ToPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterStretchedClusterConfigArgs) ToPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(ctx context.Context) PrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterStretchedClusterConfigOutput)
+}
+
+func (i PrivateCloudManagementClusterStretchedClusterConfigArgs) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutput() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return i.ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterStretchedClusterConfigArgs) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterStretchedClusterConfigOutput).ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudManagementClusterStretchedClusterConfigPtrInput is an input type that accepts PrivateCloudManagementClusterStretchedClusterConfigArgs, PrivateCloudManagementClusterStretchedClusterConfigPtr and PrivateCloudManagementClusterStretchedClusterConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterStretchedClusterConfigPtrInput` via:
+//
+//	        PrivateCloudManagementClusterStretchedClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudManagementClusterStretchedClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutput() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput
+	ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(context.Context) PrivateCloudManagementClusterStretchedClusterConfigPtrOutput
+}
+
+type privateCloudManagementClusterStretchedClusterConfigPtrType PrivateCloudManagementClusterStretchedClusterConfigArgs
+
+func PrivateCloudManagementClusterStretchedClusterConfigPtr(v *PrivateCloudManagementClusterStretchedClusterConfigArgs) PrivateCloudManagementClusterStretchedClusterConfigPtrInput {
+	return (*privateCloudManagementClusterStretchedClusterConfigPtrType)(v)
+}
+
+func (*privateCloudManagementClusterStretchedClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (i *privateCloudManagementClusterStretchedClusterConfigPtrType) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutput() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return i.ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudManagementClusterStretchedClusterConfigPtrType) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterStretchedClusterConfigPtrOutput)
+}
+
+type PrivateCloudManagementClusterStretchedClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterStretchedClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) ToPrivateCloudManagementClusterStretchedClusterConfigOutput() PrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) ToPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(ctx context.Context) PrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutput() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return o.ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementClusterStretchedClusterConfig) *PrivateCloudManagementClusterStretchedClusterConfig {
+		return &v
+	}).(PrivateCloudManagementClusterStretchedClusterConfigPtrOutput)
+}
+
+// Zone that will remain operational when connection between the two zones is lost.
+func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) PreferredLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterStretchedClusterConfig) *string { return v.PreferredLocation }).(pulumi.StringPtrOutput)
+}
+
+// Additional zone for a higher level of availability and load balancing.
+//
+// ***
+func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) SecondaryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterStretchedClusterConfig) *string { return v.SecondaryLocation }).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudManagementClusterStretchedClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutput() PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) ToPrivateCloudManagementClusterStretchedClusterConfigPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterStretchedClusterConfigPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) Elem() PrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) PrivateCloudManagementClusterStretchedClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudManagementClusterStretchedClusterConfig
+		return ret
+	}).(PrivateCloudManagementClusterStretchedClusterConfigOutput)
+}
+
+// Zone that will remain operational when connection between the two zones is lost.
+func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) PreferredLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional zone for a higher level of availability and load balancing.
+//
+// ***
+func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) SecondaryLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryLocation
+	}).(pulumi.StringPtrOutput)
 }
 
 type PrivateCloudNetworkConfig struct {
@@ -2645,6 +2828,8 @@ type GetPrivateCloudManagementCluster struct {
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	NodeTypeConfigs []GetPrivateCloudManagementClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
+	// The stretched cluster configuration for the private cloud.
+	StretchedClusterConfigs []GetPrivateCloudManagementClusterStretchedClusterConfig `pulumi:"stretchedClusterConfigs"`
 }
 
 // GetPrivateCloudManagementClusterInput is an input type that accepts GetPrivateCloudManagementClusterArgs and GetPrivateCloudManagementClusterOutput values.
@@ -2669,6 +2854,8 @@ type GetPrivateCloudManagementClusterArgs struct {
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	NodeTypeConfigs GetPrivateCloudManagementClusterNodeTypeConfigArrayInput `pulumi:"nodeTypeConfigs"`
+	// The stretched cluster configuration for the private cloud.
+	StretchedClusterConfigs GetPrivateCloudManagementClusterStretchedClusterConfigArrayInput `pulumi:"stretchedClusterConfigs"`
 }
 
 func (GetPrivateCloudManagementClusterArgs) ElementType() reflect.Type {
@@ -2738,6 +2925,13 @@ func (o GetPrivateCloudManagementClusterOutput) NodeTypeConfigs() GetPrivateClou
 	return o.ApplyT(func(v GetPrivateCloudManagementCluster) []GetPrivateCloudManagementClusterNodeTypeConfig {
 		return v.NodeTypeConfigs
 	}).(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput)
+}
+
+// The stretched cluster configuration for the private cloud.
+func (o GetPrivateCloudManagementClusterOutput) StretchedClusterConfigs() GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementCluster) []GetPrivateCloudManagementClusterStretchedClusterConfig {
+		return v.StretchedClusterConfigs
+	}).(GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput)
 }
 
 type GetPrivateCloudManagementClusterArrayOutput struct{ *pulumi.OutputState }
@@ -2879,6 +3073,112 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterNodeTypeConfig {
 		return vs[0].([]GetPrivateCloudManagementClusterNodeTypeConfig)[vs[1].(int)]
 	}).(GetPrivateCloudManagementClusterNodeTypeConfigOutput)
+}
+
+type GetPrivateCloudManagementClusterStretchedClusterConfig struct {
+	// Zone that will remain operational when connection between the two zones is lost.
+	PreferredLocation string `pulumi:"preferredLocation"`
+	// Additional zone for a higher level of availability and load balancing.
+	SecondaryLocation string `pulumi:"secondaryLocation"`
+}
+
+// GetPrivateCloudManagementClusterStretchedClusterConfigInput is an input type that accepts GetPrivateCloudManagementClusterStretchedClusterConfigArgs and GetPrivateCloudManagementClusterStretchedClusterConfigOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterStretchedClusterConfigInput` via:
+//
+//	GetPrivateCloudManagementClusterStretchedClusterConfigArgs{...}
+type GetPrivateCloudManagementClusterStretchedClusterConfigInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterStretchedClusterConfigOutput() GetPrivateCloudManagementClusterStretchedClusterConfigOutput
+	ToGetPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(context.Context) GetPrivateCloudManagementClusterStretchedClusterConfigOutput
+}
+
+type GetPrivateCloudManagementClusterStretchedClusterConfigArgs struct {
+	// Zone that will remain operational when connection between the two zones is lost.
+	PreferredLocation pulumi.StringInput `pulumi:"preferredLocation"`
+	// Additional zone for a higher level of availability and load balancing.
+	SecondaryLocation pulumi.StringInput `pulumi:"secondaryLocation"`
+}
+
+func (GetPrivateCloudManagementClusterStretchedClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterStretchedClusterConfigArgs) ToGetPrivateCloudManagementClusterStretchedClusterConfigOutput() GetPrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return i.ToGetPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterStretchedClusterConfigArgs) ToGetPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterStretchedClusterConfigOutput)
+}
+
+// GetPrivateCloudManagementClusterStretchedClusterConfigArrayInput is an input type that accepts GetPrivateCloudManagementClusterStretchedClusterConfigArray and GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterStretchedClusterConfigArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterStretchedClusterConfigArray{ GetPrivateCloudManagementClusterStretchedClusterConfigArgs{...} }
+type GetPrivateCloudManagementClusterStretchedClusterConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput() GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput
+	ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput
+}
+
+type GetPrivateCloudManagementClusterStretchedClusterConfigArray []GetPrivateCloudManagementClusterStretchedClusterConfigInput
+
+func (GetPrivateCloudManagementClusterStretchedClusterConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterStretchedClusterConfigArray) ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput() GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterStretchedClusterConfigArray) ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterStretchedClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterStretchedClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) ToGetPrivateCloudManagementClusterStretchedClusterConfigOutput() GetPrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) ToGetPrivateCloudManagementClusterStretchedClusterConfigOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return o
+}
+
+// Zone that will remain operational when connection between the two zones is lost.
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) PreferredLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterStretchedClusterConfig) string { return v.PreferredLocation }).(pulumi.StringOutput)
+}
+
+// Additional zone for a higher level of availability and load balancing.
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigOutput) SecondaryLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterStretchedClusterConfig) string { return v.SecondaryLocation }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterStretchedClusterConfig)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput) ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput() GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput) ToGetPrivateCloudManagementClusterStretchedClusterConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterStretchedClusterConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterStretchedClusterConfig {
+		return vs[0].([]GetPrivateCloudManagementClusterStretchedClusterConfig)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterStretchedClusterConfigOutput)
 }
 
 type GetPrivateCloudNetworkConfig struct {
@@ -3411,6 +3711,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterPtrInput)(nil)).Elem(), PrivateCloudManagementClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfigInput)(nil)).Elem(), PrivateCloudManagementClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfigArrayInput)(nil)).Elem(), PrivateCloudManagementClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterStretchedClusterConfigInput)(nil)).Elem(), PrivateCloudManagementClusterStretchedClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterStretchedClusterConfigPtrInput)(nil)).Elem(), PrivateCloudManagementClusterStretchedClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNetworkConfigInput)(nil)).Elem(), PrivateCloudNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNetworkConfigPtrInput)(nil)).Elem(), PrivateCloudNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNsxInput)(nil)).Elem(), PrivateCloudNsxArgs{})
@@ -3437,6 +3739,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfigInput)(nil)).Elem(), GetPrivateCloudManagementClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterStretchedClusterConfigInput)(nil)).Elem(), GetPrivateCloudManagementClusterStretchedClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterStretchedClusterConfigArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterStretchedClusterConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNetworkConfigInput)(nil)).Elem(), GetPrivateCloudNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNetworkConfigArrayInput)(nil)).Elem(), GetPrivateCloudNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNsxInput)(nil)).Elem(), GetPrivateCloudNsxArgs{})
@@ -3463,6 +3767,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterPtrOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterStretchedClusterConfigOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterStretchedClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateCloudNetworkConfigOutput{})
 	pulumi.RegisterOutputType(PrivateCloudNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateCloudNsxOutput{})
@@ -3489,6 +3795,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterStretchedClusterConfigOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterStretchedClusterConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudNetworkConfigOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudNsxOutput{})

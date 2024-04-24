@@ -28,15 +28,23 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PrivateCloudManagementClusterNodeTypeConfig> NodeTypeConfigs;
+        /// <summary>
+        /// The stretched cluster configuration for the private cloud.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PrivateCloudManagementClusterStretchedClusterConfig? StretchedClusterConfig;
 
         [OutputConstructor]
         private PrivateCloudManagementCluster(
             string clusterId,
 
-            ImmutableArray<Outputs.PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs)
+            ImmutableArray<Outputs.PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs,
+
+            Outputs.PrivateCloudManagementClusterStretchedClusterConfig? stretchedClusterConfig)
         {
             ClusterId = clusterId;
             NodeTypeConfigs = nodeTypeConfigs;
+            StretchedClusterConfig = stretchedClusterConfig;
         }
     }
 }

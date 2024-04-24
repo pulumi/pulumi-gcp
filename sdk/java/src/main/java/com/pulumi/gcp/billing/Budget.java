@@ -486,6 +486,22 @@ public class Budget extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
+     * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+     * 
+     */
+    @Export(name="ownershipScope", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ownershipScope;
+
+    /**
+     * @return The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
+     * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+     * 
+     */
+    public Output<Optional<String>> ownershipScope() {
+        return Codegen.optional(this.ownershipScope);
+    }
+    /**
      * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
      * the budget.
      * 

@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerAutoHealingPolicies;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerNamedPort;
+import com.pulumi.gcp.compute.outputs.InstanceGroupManagerParams;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulDisk;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulExternalIp;
 import com.pulumi.gcp.compute.outputs.InstanceGroupManagerStatefulInternalIp;
@@ -387,6 +388,24 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.operation;
     }
     /**
+     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    @Export(name="params", refs={InstanceGroupManagerParams.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceGroupManagerParams> params;
+
+    /**
+     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<InstanceGroupManagerParams>> params() {
+        return Codegen.optional(this.params);
+    }
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -507,18 +526,14 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.targetSize;
     }
     /**
-     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     * 
-     * ***
+     * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      * 
      */
     @Export(name="updatePolicy", refs={InstanceGroupManagerUpdatePolicy.class}, tree="[0]")
     private Output<InstanceGroupManagerUpdatePolicy> updatePolicy;
 
     /**
-     * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     * 
-     * ***
+     * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
      * 
      */
     public Output<InstanceGroupManagerUpdatePolicy> updatePolicy() {

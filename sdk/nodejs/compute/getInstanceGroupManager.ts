@@ -80,6 +80,7 @@ export interface GetInstanceGroupManagerResult {
     readonly name?: string;
     readonly namedPorts: outputs.compute.GetInstanceGroupManagerNamedPort[];
     readonly operation: string;
+    readonly params: outputs.compute.GetInstanceGroupManagerParam[];
     readonly project?: string;
     readonly selfLink?: string;
     readonly statefulDisks: outputs.compute.GetInstanceGroupManagerStatefulDisk[];

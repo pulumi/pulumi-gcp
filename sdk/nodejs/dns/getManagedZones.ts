@@ -27,7 +27,6 @@ export function getManagedZones(args?: GetManagedZonesArgs, opts?: pulumi.Invoke
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getManagedZones:getManagedZones", {
-        "managedZones": args.managedZones,
         "project": args.project,
     }, opts);
 }
@@ -36,10 +35,6 @@ export function getManagedZones(args?: GetManagedZonesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getManagedZones.
  */
 export interface GetManagedZonesArgs {
-    /**
-     * A list of managed zones.
-     */
-    managedZones?: inputs.dns.GetManagedZonesManagedZone[];
     /**
      * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      */
@@ -54,7 +49,7 @@ export interface GetManagedZonesResult {
     /**
      * A list of managed zones.
      */
-    readonly managedZones?: outputs.dns.GetManagedZonesManagedZone[];
+    readonly managedZones: outputs.dns.GetManagedZonesManagedZone[];
     readonly project?: string;
 }
 /**
@@ -81,10 +76,6 @@ export function getManagedZonesOutput(args?: GetManagedZonesOutputArgs, opts?: p
  * A collection of arguments for invoking getManagedZones.
  */
 export interface GetManagedZonesOutputArgs {
-    /**
-     * A list of managed zones.
-     */
-    managedZones?: pulumi.Input<pulumi.Input<inputs.dns.GetManagedZonesManagedZoneArgs>[]>;
     /**
      * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      */

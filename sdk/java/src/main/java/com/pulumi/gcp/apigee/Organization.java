@@ -325,6 +325,38 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.analyticsRegion);
     }
     /**
+     * Cloud KMS key name used for encrypting API consumer data.
+     * 
+     */
+    @Export(name="apiConsumerDataEncryptionKeyName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiConsumerDataEncryptionKeyName;
+
+    /**
+     * @return Cloud KMS key name used for encrypting API consumer data.
+     * 
+     */
+    public Output<Optional<String>> apiConsumerDataEncryptionKeyName() {
+        return Codegen.optional(this.apiConsumerDataEncryptionKeyName);
+    }
+    /**
+     * This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     * 
+     */
+    @Export(name="apiConsumerDataLocation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiConsumerDataLocation;
+
+    /**
+     * @return This field is needed only for customers using non-default data residency regions.
+     * Apigee stores some control plane data only in single region.
+     * This field determines which single region Apigee should use.
+     * 
+     */
+    public Output<Optional<String>> apiConsumerDataLocation() {
+        return Codegen.optional(this.apiConsumerDataLocation);
+    }
+    /**
      * Output only. Project ID of the Apigee Tenant Project.
      * 
      */
@@ -385,6 +417,22 @@ public class Organization extends com.pulumi.resources.CustomResource {
      */
     public Output<String> caCertificate() {
         return this.caCertificate;
+    }
+    /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region &#34;US&#34; or &#34;EU&#34;.
+     * 
+     */
+    @Export(name="controlPlaneEncryptionKeyName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> controlPlaneEncryptionKeyName;
+
+    /**
+     * @return Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+     * Only used for the data residency region &#34;US&#34; or &#34;EU&#34;.
+     * 
+     */
+    public Output<Optional<String>> controlPlaneEncryptionKeyName() {
+        return Codegen.optional(this.controlPlaneEncryptionKeyName);
     }
     /**
      * Description of the Apigee organization.

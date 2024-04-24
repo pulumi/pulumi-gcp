@@ -40,6 +40,11 @@ export const getProjectService: typeof import("./getProjectService").getProjectS
 export const getProjectServiceOutput: typeof import("./getProjectService").getProjectServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectService","getProjectServiceOutput"], () => require("./getProjectService"));
 
+export { IamMemberRemoveArgs, IamMemberRemoveState } from "./iamMemberRemove";
+export type IamMemberRemove = import("./iamMemberRemove").IamMemberRemove;
+export const IamMemberRemove: typeof import("./iamMemberRemove").IamMemberRemove = null as any;
+utilities.lazyLoad(exports, ["IamMemberRemove"], () => require("./iamMemberRemove"));
+
 export { IAMAuditConfigArgs, IAMAuditConfigState } from "./iamauditConfig";
 export type IAMAuditConfig = import("./iamauditConfig").IAMAuditConfig;
 export const IAMAuditConfig: typeof import("./iamauditConfig").IAMAuditConfig = null as any;
@@ -106,6 +111,8 @@ const _module = {
                 return new IAMMember(name, <any>undefined, { urn })
             case "gcp:projects/iAMPolicy:IAMPolicy":
                 return new IAMPolicy(name, <any>undefined, { urn })
+            case "gcp:projects/iamMemberRemove:IamMemberRemove":
+                return new IamMemberRemove(name, <any>undefined, { urn })
             case "gcp:projects/organizationPolicy:OrganizationPolicy":
                 return new OrganizationPolicy(name, <any>undefined, { urn })
             case "gcp:projects/service:Service":
@@ -127,6 +134,7 @@ pulumi.runtime.registerResourceModule("gcp", "projects/iAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/iAMCustomRole", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/iAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/iAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "projects/iamMemberRemove", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/organizationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/service", _module)
 pulumi.runtime.registerResourceModule("gcp", "projects/serviceIdentity", _module)

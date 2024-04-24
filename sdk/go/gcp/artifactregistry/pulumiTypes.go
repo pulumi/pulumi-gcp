@@ -1184,6 +1184,9 @@ type RepositoryRemoteRepositoryConfig struct {
 	AptRepository *RepositoryRemoteRepositoryConfigAptRepository `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description *string `pulumi:"description"`
+	// If true, the remote repository upstream and upstream credentials will
+	// not be validated.
+	DisableUpstreamValidation *bool `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	// Structure is documented below.
 	DockerRepository *RepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepository"`
@@ -1221,6 +1224,9 @@ type RepositoryRemoteRepositoryConfigArgs struct {
 	AptRepository RepositoryRemoteRepositoryConfigAptRepositoryPtrInput `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// If true, the remote repository upstream and upstream credentials will
+	// not be validated.
+	DisableUpstreamValidation pulumi.BoolPtrInput `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	// Structure is documented below.
 	DockerRepository RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput `pulumi:"dockerRepository"`
@@ -1331,6 +1337,12 @@ func (o RepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringPtrOu
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If true, the remote repository upstream and upstream credentials will
+// not be validated.
+func (o RepositoryRemoteRepositoryConfigOutput) DisableUpstreamValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *bool { return v.DisableUpstreamValidation }).(pulumi.BoolPtrOutput)
+}
+
 // Specific settings for a Docker remote repository.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigOutput) DockerRepository() RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput {
@@ -1422,6 +1434,17 @@ func (o RepositoryRemoteRepositoryConfigPtrOutput) Description() pulumi.StringPt
 		}
 		return v.Description
 	}).(pulumi.StringPtrOutput)
+}
+
+// If true, the remote repository upstream and upstream credentials will
+// not be validated.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) DisableUpstreamValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableUpstreamValidation
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Specific settings for a Docker remote repository.
@@ -1794,6 +1817,9 @@ func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) 
 }
 
 type RepositoryRemoteRepositoryConfigDockerRepository struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `DOCKER_HUB`.
 	// Possible values are: `DOCKER_HUB`.
@@ -1812,6 +1838,9 @@ type RepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `DOCKER_HUB`.
 	// Possible values are: `DOCKER_HUB`.
@@ -1895,6 +1924,14 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigDockerRepository) *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `DOCKER_HUB`.
 // Possible values are: `DOCKER_HUB`.
@@ -1926,6 +1963,17 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) Elem() Reposi
 	}).(RepositoryRemoteRepositoryConfigDockerRepositoryOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepository) *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `DOCKER_HUB`.
 // Possible values are: `DOCKER_HUB`.
@@ -1938,7 +1986,147 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) PublicReposit
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri *string `pulumi:"uri"`
+}
+
+// RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs and RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput).ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs, RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtr and RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtr(v *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository) *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository) RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type RepositoryRemoteRepositoryConfigMavenRepository struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `MAVEN_CENTRAL`.
 	// Possible values are: `MAVEN_CENTRAL`.
@@ -1957,6 +2145,9 @@ type RepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `MAVEN_CENTRAL`.
 	// Possible values are: `MAVEN_CENTRAL`.
@@ -2040,6 +2231,14 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemot
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigMavenRepository) *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `MAVEN_CENTRAL`.
 // Possible values are: `MAVEN_CENTRAL`.
@@ -2071,6 +2270,17 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) Elem() Reposit
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepository) *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `MAVEN_CENTRAL`.
 // Possible values are: `MAVEN_CENTRAL`.
@@ -2083,7 +2293,147 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) PublicReposito
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri *string `pulumi:"uri"`
+}
+
+// RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs and RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput).ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs, RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtr and RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtr(v *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository) *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository) RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type RepositoryRemoteRepositoryConfigNpmRepository struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `NPMJS`.
 	// Possible values are: `NPMJS`.
@@ -2102,6 +2452,9 @@ type RepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `NPMJS`.
 	// Possible values are: `NPMJS`.
@@ -2185,6 +2538,14 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteR
 	}).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigNpmRepository) *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `NPMJS`.
 // Possible values are: `NPMJS`.
@@ -2216,6 +2577,17 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) Elem() Repositor
 	}).(RepositoryRemoteRepositoryConfigNpmRepositoryOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepository) *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `NPMJS`.
 // Possible values are: `NPMJS`.
@@ -2228,7 +2600,147 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) PublicRepository
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri *string `pulumi:"uri"`
+}
+
+// RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs and RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput).ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs, RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtr and RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtr(v *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository) *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository) RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type RepositoryRemoteRepositoryConfigPythonRepository struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `PYPI`.
 	// Possible values are: `PYPI`.
@@ -2247,6 +2759,9 @@ type RepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	// Structure is documented below.
+	CustomRepository RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
 	// Default value is `PYPI`.
 	// Possible values are: `PYPI`.
@@ -2330,6 +2845,14 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigPythonRepository) *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `PYPI`.
 // Possible values are: `PYPI`.
@@ -2361,6 +2884,17 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) Elem() Reposi
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryOutput)
 }
 
+// Settings for a remote repository with a custom uri.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepository) *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
 // Address of the remote repository.
 // Default value is `PYPI`.
 // Possible values are: `PYPI`.
@@ -2370,6 +2904,143 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) PublicReposit
 			return nil
 		}
 		return v.PublicRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri *string `pulumi:"uri"`
+}
+
+// RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs and RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. `"https://pypi.io"`
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput).ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs, RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtr and RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtr(v *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository) *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository) RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput)
+}
+
+// Specific uri to the registry, e.g. `"https://pypi.io"`
+func (o RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3837,6 +4508,9 @@ type GetRepositoryRemoteRepositoryConfig struct {
 	AptRepositories []GetRepositoryRemoteRepositoryConfigAptRepository `pulumi:"aptRepositories"`
 	// The description of the remote source.
 	Description string `pulumi:"description"`
+	// If true, the remote repository upstream and upstream credentials will
+	// not be validated.
+	DisableUpstreamValidation bool `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	DockerRepositories []GetRepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepositories"`
 	// Specific settings for a Maven remote repository.
@@ -3867,6 +4541,9 @@ type GetRepositoryRemoteRepositoryConfigArgs struct {
 	AptRepositories GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput `pulumi:"aptRepositories"`
 	// The description of the remote source.
 	Description pulumi.StringInput `pulumi:"description"`
+	// If true, the remote repository upstream and upstream credentials will
+	// not be validated.
+	DisableUpstreamValidation pulumi.BoolInput `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	DockerRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput `pulumi:"dockerRepositories"`
 	// Specific settings for a Maven remote repository.
@@ -3942,6 +4619,12 @@ func (o GetRepositoryRemoteRepositoryConfigOutput) AptRepositories() GetReposito
 // The description of the remote source.
 func (o GetRepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// If true, the remote repository upstream and upstream credentials will
+// not be validated.
+func (o GetRepositoryRemoteRepositoryConfigOutput) DisableUpstreamValidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) bool { return v.DisableUpstreamValidation }).(pulumi.BoolOutput)
 }
 
 // Specific settings for a Docker remote repository.
@@ -4216,6 +4899,8 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOut
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepository struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories []GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -4232,6 +4917,8 @@ type GetRepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
@@ -4287,6 +4974,13 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetReposito
 	return o
 }
 
+// Settings for a remote repository with a custom uri.
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepository) []GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+		return v.CustomRepositories
+	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput)
+}
+
 // Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -4312,7 +5006,106 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) Index(i 
 	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput)
 }
 
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
+	Uri string `pulumi:"uri"`
+}
+
+// GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs and GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray and GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray{ GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray []GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o
+}
+
+// Specific uri to the registry, e.g. '"https://registry-1.docker.io"'
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput)
+}
+
 type GetRepositoryRemoteRepositoryConfigMavenRepository struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories []GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -4329,6 +5122,8 @@ type GetRepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
@@ -4384,6 +5179,13 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositor
 	return o
 }
 
+// Settings for a remote repository with a custom uri.
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepository) []GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+		return v.CustomRepositories
+	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput)
+}
+
 // Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -4409,7 +5211,106 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) Index(i p
 	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput)
 }
 
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
+	Uri string `pulumi:"uri"`
+}
+
+// GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs and GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray and GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray{ GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray []GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o
+}
+
+// Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
 type GetRepositoryRemoteRepositoryConfigNpmRepository struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories []GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -4426,6 +5327,8 @@ type GetRepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
@@ -4481,6 +5384,13 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryR
 	return o
 }
 
+// Settings for a remote repository with a custom uri.
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepository) []GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+		return v.CustomRepositories
+	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput)
+}
+
 // Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -4506,7 +5416,106 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) Index(i pul
 	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput)
 }
 
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. '"https://registry.npmjs.org"'
+	Uri string `pulumi:"uri"`
+}
+
+// GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs and GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. '"https://registry.npmjs.org"'
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray and GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray{ GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray []GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o
+}
+
+// Specific uri to the registry, e.g. '"https://registry.npmjs.org"'
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput)
+}
+
 type GetRepositoryRemoteRepositoryConfigPythonRepository struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories []GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -4523,6 +5532,8 @@ type GetRepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
+	// Settings for a remote repository with a custom uri.
+	CustomRepositories GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
@@ -4578,6 +5589,13 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetReposito
 	return o
 }
 
+// Settings for a remote repository with a custom uri.
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepository) []GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+		return v.CustomRepositories
+	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput)
+}
+
 // Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -4601,6 +5619,103 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) Index(i 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigPythonRepository {
 		return vs[0].([]GetRepositoryRemoteRepositoryConfigPythonRepository)[vs[1].(int)]
 	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository struct {
+	// Specific uri to the registry, e.g. '"https://pypi.io"'
+	Uri string `pulumi:"uri"`
+}
+
+// GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs and GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs struct {
+	// Specific uri to the registry, e.g. '"https://pypi.io"'
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray and GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray{ GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray []GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o
+}
+
+// Specific uri to the registry, e.g. '"https://pypi.io"'
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput)
 }
 
 type GetRepositoryRemoteRepositoryConfigUpstreamCredential struct {
@@ -5270,12 +6385,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{})
@@ -5306,12 +6429,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs{})
@@ -5346,12 +6477,20 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput{})
@@ -5382,12 +6521,20 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput{})

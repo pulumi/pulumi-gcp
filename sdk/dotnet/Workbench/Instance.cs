@@ -85,8 +85,8 @@ namespace Pulumi.Gcp.Workbench
     ///             },
     ///             VmImage = new Gcp.Workbench.Inputs.InstanceGceSetupVmImageArgs
     ///             {
-    ///                 Project = "deeplearning-platform-release",
-    ///                 Family = "tf-latest-gpu",
+    ///                 Project = "cloud-notebooks-managed",
+    ///                 Family = "workbench-instances",
     ///             },
     ///         },
     ///     });

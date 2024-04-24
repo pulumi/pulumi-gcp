@@ -46,6 +46,11 @@ public final class FunctionBuildConfig {
      */
     private @Nullable String runtime;
     /**
+     * @return The fully-qualified name of the service account to be used for building the container.
+     * 
+     */
+    private @Nullable String serviceAccount;
+    /**
      * @return The location of the function source code.
      * Structure is documented below.
      * 
@@ -101,6 +106,13 @@ public final class FunctionBuildConfig {
         return Optional.ofNullable(this.runtime);
     }
     /**
+     * @return The fully-qualified name of the service account to be used for building the container.
+     * 
+     */
+    public Optional<String> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+    /**
      * @return The location of the function source code.
      * Structure is documented below.
      * 
@@ -130,6 +142,7 @@ public final class FunctionBuildConfig {
         private @Nullable String entryPoint;
         private @Nullable Map<String,String> environmentVariables;
         private @Nullable String runtime;
+        private @Nullable String serviceAccount;
         private @Nullable FunctionBuildConfigSource source;
         private @Nullable String workerPool;
         public Builder() {}
@@ -140,6 +153,7 @@ public final class FunctionBuildConfig {
     	      this.entryPoint = defaults.entryPoint;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.runtime = defaults.runtime;
+    	      this.serviceAccount = defaults.serviceAccount;
     	      this.source = defaults.source;
     	      this.workerPool = defaults.workerPool;
         }
@@ -175,6 +189,12 @@ public final class FunctionBuildConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccount(@Nullable String serviceAccount) {
+
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder source(@Nullable FunctionBuildConfigSource source) {
 
             this.source = source;
@@ -193,6 +213,7 @@ public final class FunctionBuildConfig {
             _resultValue.entryPoint = entryPoint;
             _resultValue.environmentVariables = environmentVariables;
             _resultValue.runtime = runtime;
+            _resultValue.serviceAccount = serviceAccount;
             _resultValue.source = source;
             _resultValue.workerPool = workerPool;
             return _resultValue;

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
+import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterStretchedClusterConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -62,11 +63,29 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
         return Optional.ofNullable(this.nodeTypeConfigs);
     }
 
+    /**
+     * The stretched cluster configuration for the private cloud.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="stretchedClusterConfig")
+    private @Nullable Output<PrivateCloudManagementClusterStretchedClusterConfigArgs> stretchedClusterConfig;
+
+    /**
+     * @return The stretched cluster configuration for the private cloud.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PrivateCloudManagementClusterStretchedClusterConfigArgs>> stretchedClusterConfig() {
+        return Optional.ofNullable(this.stretchedClusterConfig);
+    }
+
     private PrivateCloudManagementClusterArgs() {}
 
     private PrivateCloudManagementClusterArgs(PrivateCloudManagementClusterArgs $) {
         this.clusterId = $.clusterId;
         this.nodeTypeConfigs = $.nodeTypeConfigs;
+        this.stretchedClusterConfig = $.stretchedClusterConfig;
     }
 
     public static Builder builder() {
@@ -153,6 +172,29 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
          */
         public Builder nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs... nodeTypeConfigs) {
             return nodeTypeConfigs(List.of(nodeTypeConfigs));
+        }
+
+        /**
+         * @param stretchedClusterConfig The stretched cluster configuration for the private cloud.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stretchedClusterConfig(@Nullable Output<PrivateCloudManagementClusterStretchedClusterConfigArgs> stretchedClusterConfig) {
+            $.stretchedClusterConfig = stretchedClusterConfig;
+            return this;
+        }
+
+        /**
+         * @param stretchedClusterConfig The stretched cluster configuration for the private cloud.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stretchedClusterConfig(PrivateCloudManagementClusterStretchedClusterConfigArgs stretchedClusterConfig) {
+            return stretchedClusterConfig(Output.of(stretchedClusterConfig));
         }
 
         public PrivateCloudManagementClusterArgs build() {

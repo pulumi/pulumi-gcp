@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Name;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerNamedPortResult> NamedPorts;
         public readonly string Operation;
+        public readonly ImmutableArray<Outputs.GetInstanceGroupManagerParamResult> Params;
         public readonly string? Project;
         public readonly string? SelfLink;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatefulDiskResult> StatefulDisks;
@@ -203,6 +204,8 @@ namespace Pulumi.Gcp.Compute
 
             string operation,
 
+            ImmutableArray<Outputs.GetInstanceGroupManagerParamResult> @params,
+
             string? project,
 
             string? selfLink,
@@ -242,6 +245,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NamedPorts = namedPorts;
             Operation = operation;
+            Params = @params;
             Project = project;
             SelfLink = selfLink;
             StatefulDisks = statefulDisks;

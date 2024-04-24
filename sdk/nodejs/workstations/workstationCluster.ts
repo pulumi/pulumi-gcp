@@ -173,6 +173,11 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.workstations.WorkstationClusterCondition[]>;
     /**
+     * The private IP address of the control plane for this workstation cluster.
+     * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     */
+    public /*out*/ readonly controlPlaneIp!: pulumi.Output<string>;
+    /**
      * Time when this resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -270,6 +275,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             const state = argsOrState as WorkstationClusterState | undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["controlPlaneIp"] = state ? state.controlPlaneIp : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["degraded"] = state ? state.degraded : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -309,6 +315,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["controlPlaneIp"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["degraded"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -340,6 +347,11 @@ export interface WorkstationClusterState {
      * Structure is documented below.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationClusterCondition>[]>;
+    /**
+     * The private IP address of the control plane for this workstation cluster.
+     * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     */
+    controlPlaneIp?: pulumi.Input<string>;
     /**
      * Time when this resource was created.
      */

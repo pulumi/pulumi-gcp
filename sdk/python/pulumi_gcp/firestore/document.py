@@ -126,7 +126,7 @@ class _DocumentState:
                
                - - -
         :param pulumi.Input[str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
-        :param pulumi.Input[str] name: A server defined name for this index. Format:
+        :param pulumi.Input[str] name: A server defined name for this document. Format:
                `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
         :param pulumi.Input[str] path: A relative path to the collection this document exists within
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -219,7 +219,7 @@ class _DocumentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A server defined name for this index. Format:
+        A server defined name for this document. Format:
         `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
         """
         return pulumi.get(self, "name")
@@ -573,7 +573,7 @@ class Document(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
-        :param pulumi.Input[str] name: A server defined name for this index. Format:
+        :param pulumi.Input[str] name: A server defined name for this document. Format:
                `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
         :param pulumi.Input[str] path: A relative path to the collection this document exists within
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -642,7 +642,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A server defined name for this index. Format:
+        A server defined name for this document. Format:
         `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
         """
         return pulumi.get(self, "name")

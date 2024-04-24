@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RepositoryRemoteRepositoryConfigPythonRepositoryArgs Empty = new RepositoryRemoteRepositoryConfigPythonRepositoryArgs();
+
+    /**
+     * Settings for a remote repository with a custom uri.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customRepository")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs> customRepository;
+
+    /**
+     * @return Settings for a remote repository with a custom uri.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs>> customRepository() {
+        return Optional.ofNullable(this.customRepository);
+    }
 
     /**
      * Address of the remote repository.
@@ -37,6 +55,7 @@ public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends 
     private RepositoryRemoteRepositoryConfigPythonRepositoryArgs() {}
 
     private RepositoryRemoteRepositoryConfigPythonRepositoryArgs(RepositoryRemoteRepositoryConfigPythonRepositoryArgs $) {
+        this.customRepository = $.customRepository;
         this.publicRepository = $.publicRepository;
     }
 
@@ -56,6 +75,29 @@ public final class RepositoryRemoteRepositoryConfigPythonRepositoryArgs extends 
 
         public Builder(RepositoryRemoteRepositoryConfigPythonRepositoryArgs defaults) {
             $ = new RepositoryRemoteRepositoryConfigPythonRepositoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customRepository Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customRepository(@Nullable Output<RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs> customRepository) {
+            $.customRepository = customRepository;
+            return this;
+        }
+
+        /**
+         * @param customRepository Settings for a remote repository with a custom uri.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customRepository(RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs customRepository) {
+            return customRepository(Output.of(customRepository));
         }
 
         /**

@@ -22,7 +22,7 @@ class GetPrivateCloudResult:
     """
     A collection of values returned by getPrivateCloud.
     """
-    def __init__(__self__, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, preferred_zone=None, project=None, secondary_zone=None, state=None, type=None, uid=None, vcenters=None):
+    def __init__(__self__, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, state=None, type=None, uid=None, vcenters=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -47,15 +47,9 @@ class GetPrivateCloudResult:
         if nsxes and not isinstance(nsxes, list):
             raise TypeError("Expected argument 'nsxes' to be a list")
         pulumi.set(__self__, "nsxes", nsxes)
-        if preferred_zone and not isinstance(preferred_zone, str):
-            raise TypeError("Expected argument 'preferred_zone' to be a str")
-        pulumi.set(__self__, "preferred_zone", preferred_zone)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if secondary_zone and not isinstance(secondary_zone, str):
-            raise TypeError("Expected argument 'secondary_zone' to be a str")
-        pulumi.set(__self__, "secondary_zone", secondary_zone)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -113,19 +107,9 @@ class GetPrivateCloudResult:
         return pulumi.get(self, "nsxes")
 
     @property
-    @pulumi.getter(name="preferredZone")
-    def preferred_zone(self) -> str:
-        return pulumi.get(self, "preferred_zone")
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> str:
-        return pulumi.get(self, "secondary_zone")
 
     @property
     @pulumi.getter
@@ -162,9 +146,7 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
             name=self.name,
             network_configs=self.network_configs,
             nsxes=self.nsxes,
-            preferred_zone=self.preferred_zone,
             project=self.project,
-            secondary_zone=self.secondary_zone,
             state=self.state,
             type=self.type,
             uid=self.uid,
@@ -215,9 +197,7 @@ def get_private_cloud(location: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         network_configs=pulumi.get(__ret__, 'network_configs'),
         nsxes=pulumi.get(__ret__, 'nsxes'),
-        preferred_zone=pulumi.get(__ret__, 'preferred_zone'),
         project=pulumi.get(__ret__, 'project'),
-        secondary_zone=pulumi.get(__ret__, 'secondary_zone'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),

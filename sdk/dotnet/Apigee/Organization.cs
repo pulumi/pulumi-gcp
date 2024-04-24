@@ -238,6 +238,20 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> AnalyticsRegion { get; private set; } = null!;
 
         /// <summary>
+        /// Cloud KMS key name used for encrypting API consumer data.
+        /// </summary>
+        [Output("apiConsumerDataEncryptionKeyName")]
+        public Output<string?> ApiConsumerDataEncryptionKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is needed only for customers using non-default data residency regions.
+        /// Apigee stores some control plane data only in single region.
+        /// This field determines which single region Apigee should use.
+        /// </summary>
+        [Output("apiConsumerDataLocation")]
+        public Output<string?> ApiConsumerDataLocation { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Project ID of the Apigee Tenant Project.
         /// </summary>
         [Output("apigeeProjectId")]
@@ -263,6 +277,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Output("caCertificate")]
         public Output<string> CaCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+        /// Only used for the data residency region "US" or "EU".
+        /// </summary>
+        [Output("controlPlaneEncryptionKeyName")]
+        public Output<string?> ControlPlaneEncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
         /// Description of the Apigee organization.
@@ -396,6 +417,20 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? AnalyticsRegion { get; set; }
 
         /// <summary>
+        /// Cloud KMS key name used for encrypting API consumer data.
+        /// </summary>
+        [Input("apiConsumerDataEncryptionKeyName")]
+        public Input<string>? ApiConsumerDataEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// This field is needed only for customers using non-default data residency regions.
+        /// Apigee stores some control plane data only in single region.
+        /// This field determines which single region Apigee should use.
+        /// </summary>
+        [Input("apiConsumerDataLocation")]
+        public Input<string>? ApiConsumerDataLocation { get; set; }
+
+        /// <summary>
         /// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
         /// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
         /// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -408,6 +443,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("billingType")]
         public Input<string>? BillingType { get; set; }
+
+        /// <summary>
+        /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+        /// Only used for the data residency region "US" or "EU".
+        /// </summary>
+        [Input("controlPlaneEncryptionKeyName")]
+        public Input<string>? ControlPlaneEncryptionKeyName { get; set; }
 
         /// <summary>
         /// Description of the Apigee organization.
@@ -490,6 +532,20 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? AnalyticsRegion { get; set; }
 
         /// <summary>
+        /// Cloud KMS key name used for encrypting API consumer data.
+        /// </summary>
+        [Input("apiConsumerDataEncryptionKeyName")]
+        public Input<string>? ApiConsumerDataEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// This field is needed only for customers using non-default data residency regions.
+        /// Apigee stores some control plane data only in single region.
+        /// This field determines which single region Apigee should use.
+        /// </summary>
+        [Input("apiConsumerDataLocation")]
+        public Input<string>? ApiConsumerDataLocation { get; set; }
+
+        /// <summary>
         /// Output only. Project ID of the Apigee Tenant Project.
         /// </summary>
         [Input("apigeeProjectId")]
@@ -515,6 +571,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("caCertificate")]
         public Input<string>? CaCertificate { get; set; }
+
+        /// <summary>
+        /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
+        /// Only used for the data residency region "US" or "EU".
+        /// </summary>
+        [Input("controlPlaneEncryptionKeyName")]
+        public Input<string>? ControlPlaneEncryptionKeyName { get; set; }
 
         /// <summary>
         /// Description of the Apigee organization.

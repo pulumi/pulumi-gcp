@@ -67,18 +67,6 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class GetManagedZonesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("managedZones")]
-        private List<Inputs.GetManagedZonesManagedZoneArgs>? _managedZones;
-
-        /// <summary>
-        /// A list of managed zones.
-        /// </summary>
-        public List<Inputs.GetManagedZonesManagedZoneArgs> ManagedZones
-        {
-            get => _managedZones ?? (_managedZones = new List<Inputs.GetManagedZonesManagedZoneArgs>());
-            set => _managedZones = value;
-        }
-
         /// <summary>
         /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         /// </summary>
@@ -93,18 +81,6 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class GetManagedZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("managedZones")]
-        private InputList<Inputs.GetManagedZonesManagedZoneInputArgs>? _managedZones;
-
-        /// <summary>
-        /// A list of managed zones.
-        /// </summary>
-        public InputList<Inputs.GetManagedZonesManagedZoneInputArgs> ManagedZones
-        {
-            get => _managedZones ?? (_managedZones = new InputList<Inputs.GetManagedZonesManagedZoneInputArgs>());
-            set => _managedZones = value;
-        }
-
         /// <summary>
         /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         /// </summary>

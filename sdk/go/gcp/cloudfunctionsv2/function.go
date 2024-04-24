@@ -592,6 +592,119 @@ import (
 //	}
 //
 // ```
+// ### Cloudfunctions2 Basic Builder
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project := "my-project-name"
+//			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("gcf-sa"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "log_writer", &projects.IAMMemberArgs{
+//				Project: account.Project,
+//				Role:    pulumi.String("roles/logging.logWriter"),
+//				Member: account.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "artifact_registry_writer", &projects.IAMMemberArgs{
+//				Project: account.Project,
+//				Role:    pulumi.String("roles/artifactregistry.writer"),
+//				Member: account.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "storage_object_admin", &projects.IAMMemberArgs{
+//				Project: account.Project,
+//				Role:    pulumi.String("roles/storage.objectAdmin"),
+//				Member: account.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String(fmt.Sprintf("%v-gcf-source", project)),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("function-source.zip"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("function-source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// builder permissions need to stablize before it can pull the source zip
+//			_, err = time.NewSleep(ctx, "wait_60s", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			function, err := cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Name:        pulumi.String("function-v2"),
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("a new function"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs16"),
+//					EntryPoint: pulumi.String("helloHttp"),
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//					ServiceAccount: account.ID(),
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount: pulumi.Int(1),
+//					AvailableMemory:  pulumi.String("256M"),
+//					TimeoutSeconds:   pulumi.Int(60),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("functionUri", function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (*string, error) {
+//				return &serviceConfig.Uri, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudfunctions2 Secret Env
 //
 // ```go

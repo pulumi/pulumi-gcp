@@ -45,6 +45,11 @@ public final class GetFunctionBuildConfig {
      */
     private String runtime;
     /**
+     * @return The fully-qualified name of the service account to be used for building the container.
+     * 
+     */
+    private String serviceAccount;
+    /**
      * @return The location of the function source code.
      * 
      */
@@ -98,6 +103,13 @@ public final class GetFunctionBuildConfig {
         return this.runtime;
     }
     /**
+     * @return The fully-qualified name of the service account to be used for building the container.
+     * 
+     */
+    public String serviceAccount() {
+        return this.serviceAccount;
+    }
+    /**
      * @return The location of the function source code.
      * 
      */
@@ -126,6 +138,7 @@ public final class GetFunctionBuildConfig {
         private String entryPoint;
         private Map<String,String> environmentVariables;
         private String runtime;
+        private String serviceAccount;
         private List<GetFunctionBuildConfigSource> sources;
         private String workerPool;
         public Builder() {}
@@ -136,6 +149,7 @@ public final class GetFunctionBuildConfig {
     	      this.entryPoint = defaults.entryPoint;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.runtime = defaults.runtime;
+    	      this.serviceAccount = defaults.serviceAccount;
     	      this.sources = defaults.sources;
     	      this.workerPool = defaults.workerPool;
         }
@@ -181,6 +195,14 @@ public final class GetFunctionBuildConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccount(String serviceAccount) {
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sources(List<GetFunctionBuildConfigSource> sources) {
             if (sources == null) {
               throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "sources");
@@ -206,6 +228,7 @@ public final class GetFunctionBuildConfig {
             _resultValue.entryPoint = entryPoint;
             _resultValue.environmentVariables = environmentVariables;
             _resultValue.runtime = runtime;
+            _resultValue.serviceAccount = serviceAccount;
             _resultValue.sources = sources;
             _resultValue.workerPool = workerPool;
             return _resultValue;
