@@ -230,34 +230,31 @@ index 3baddab29..180e45a13 100644
  	}
  	if err := d.Set("effective_labels", res.Labels); err != nil {
 diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
-index 42bd5647d..32ef8c8cb 100644
+index 42bd5647d..b4e8701b4 100644
 --- a/google-beta/tpgresource/labels.go
 +++ b/google-beta/tpgresource/labels.go
-@@ -17,14 +17,23 @@ import (
+@@ -17,15 +17,23 @@ import (
  // So the field "labels" and "terraform_labels" in the state will only have the user defined labels.
  // param "labels" is all of labels returned from API read reqeust.
  // param "lineage" is the terraform lineage of the field and could be "labels" or "terraform_labels".
 -func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string) error {
 +func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string, skippedLabels map[string]string) error {
  	transformed := make(map[string]interface{})
-+	resourceLabels, labelsSpecified := d.GetOk(lineage)
  
--	if v, ok := d.GetOk(lineage); ok {
--		if labels != nil {
--			for k := range v.(map[string]interface{}) {
-+	if labelsSpecified {
+ 	if v, ok := d.GetOk(lineage); ok {
 +		// We are reading after an update, so populate just the user defined labels.
-+		for k := range resourceLabels.(map[string]interface{}) {
-+			if labels != nil {
+ 		if labels != nil {
+ 			for k := range v.(map[string]interface{}) {
  				transformed[k] = labels[k]
  			}
-+        }
-+    } else {
-+		// We are reading for an import, so populate all of the labels, except the skipped ones.
-+		for k, v := range labels {
-+			if _, ok := skippedLabels[k];!ok {
-+				transformed[k] = v
-+			}
  		}
++	} else {
++		// We are reading for an import, so populate all of the labels, except the skipped ones.
++		// for k, v := range labels {
++		// 	if _, ok := skippedLabels[k]; !ok {
++		// 		transformed[k] = v
++		// 	}
++		// }
  	}
  
+ 	return d.Set(lineage, transformed)
